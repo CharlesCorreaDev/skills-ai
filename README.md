@@ -115,6 +115,7 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 | **`website-for-markdown`** | Hybrid web scraping engine (Firecrawl + Playwright/Chromium) for clean Markdown extraction from web pages and SPAs. | Active | [View README](website-for-markdown/README.md) |
 | **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | Active | [View README](website-for-skill/README.md) |
 | **`image-to-prompt`** | High-fidelity visual reverse engineering: extracts art styles, eras, clothing, lighting, camera angles, and facial physiognomy to create generative prompts (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Active | [View README](image-to-prompt/README.md) |
+| **`master-of-foundryvtt`** | Master development, architecture, scripting, and rule ingestion suite for Foundry VTT (v8–v14) by GM Charles Corrêa. | Active | [View README](master-of-foundryvtt/README.md) |
 
 > ℹ️ *Note: More skills for game engines, design systems, and cloud architectures will be added to this repository soon.*
 
@@ -156,6 +157,13 @@ Analyze technical image metadata and reverse-engineer rich prompts for image/vid
 python image-to-prompt/scripts/analyze_image.py "path/to/image.png"
 ```
 👉 *Detailed instructions:* [image-to-prompt README](image-to-prompt/README.md)
+
+#### 6. Master of Foundry VTT Development & Rule Ingestion
+Consult versions, develop systems, modules, macros, and ingest RPG rulebooks:
+```bash
+python master-of-foundryvtt/scripts/version_advisor.py 12
+```
+👉 *Detailed instructions:* [master-of-foundryvtt README](master-of-foundryvtt/README.md)
 
 ---
 ---
@@ -248,6 +256,7 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 | **`website-for-markdown`** | Motor híbrido de raspagem web (Firecrawl + Playwright/Chromium) para extração de Markdown limpo a partir de sites e SPAs. | Ativo | [Ver README](website-for-markdown/README.md) |
 | **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | Ativo | [Ver README](website-for-skill/README.md) |
 | **`image-to-prompt`** | Engenharia reversa visual de alta fidelidade: extrai traços artísticos, época, vestimentas, iluminação, fisionomia e câmeras para gerar prompts de imagem/vídeo (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Ativo | [Ver README](image-to-prompt/README.md) |
+| **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting e ingestão de regras para Foundry VTT (v8–v14) por GM Charles Corrêa. | Ativo | [Ver README](master-of-foundryvtt/README.md) |
 
 > ℹ️ *Nota: Em breve serão adicionadas novas skills especializadas em outros frameworks, engines de jogos e cloud.*
 
@@ -289,6 +298,13 @@ Analise propriedades técnicas de imagens e faça a engenharia reversa de prompt
 python image-to-prompt/scripts/analyze_image.py "caminho/da/imagem.png"
 ```
 👉 *Consulte o guia completo:* [README do image-to-prompt](image-to-prompt/README.md)
+
+#### 6. Mestria em Desenvolvimento e Ingestão de Regras para Foundry VTT
+Consulte versões, desenvolva sistemas, módulos, macros e ingira livros de RPG:
+```bash
+python master-of-foundryvtt/scripts/version_advisor.py 12
+```
+👉 *Consulte o guia completo:* [README do master-of-foundryvtt](master-of-foundryvtt/README.md)
 
 ---
 
