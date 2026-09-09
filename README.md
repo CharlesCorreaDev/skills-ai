@@ -114,6 +114,7 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 | **`docs-for-skill`** | Transforms document Markdown into high-performance, modular AI Skills. | Active | [View README](docs-for-skill/README.md) |
 | **`website-for-markdown`** | Hybrid web scraping engine (Firecrawl + Playwright/Chromium) for clean Markdown extraction from web pages and SPAs. | Active | [View README](website-for-markdown/README.md) |
 | **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | Active | [View README](website-for-skill/README.md) |
+| **`image-to-prompt`** | High-fidelity visual reverse engineering: extracts art styles, eras, clothing, lighting, camera angles, and facial physiognomy to create generative prompts (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Active | [View README](image-to-prompt/README.md) |
 
 > ℹ️ *Note: More skills for game engines, design systems, and cloud architectures will be added to this repository soon.*
 
@@ -148,6 +149,13 @@ Directly build a ready-to-use AI Skill from any live website URL:
 python website-for-skill/Scripts/build_skill.py --url "https://example.com/docs" --name "my-web-skill"
 ```
 👉 *Detailed instructions:* [website-for-skill README](website-for-skill/README.md)
+
+#### 5. Image to Generative Prompt (Visual Reverse-Engineering)
+Analyze technical image metadata and reverse-engineer rich prompts for image/video AI generators:
+```bash
+python image-to-prompt/scripts/analyze_image.py "path/to/image.png"
+```
+👉 *Detailed instructions:* [image-to-prompt README](image-to-prompt/README.md)
 
 ---
 ---
@@ -239,6 +247,7 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 | **`docs-for-skill`** | Transforma Markdowns extraídos de documentos em Skills modulares de alto desempenho para IA. | Ativo | [Ver README](docs-for-skill/README.md) |
 | **`website-for-markdown`** | Motor híbrido de raspagem web (Firecrawl + Playwright/Chromium) para extração de Markdown limpo a partir de sites e SPAs. | Ativo | [Ver README](website-for-markdown/README.md) |
 | **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | Ativo | [Ver README](website-for-skill/README.md) |
+| **`image-to-prompt`** | Engenharia reversa visual de alta fidelidade: extrai traços artísticos, época, vestimentas, iluminação, fisionomia e câmeras para gerar prompts de imagem/vídeo (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Ativo | [Ver README](image-to-prompt/README.md) |
 
 > ℹ️ *Nota: Em breve serão adicionadas novas skills especializadas em outros frameworks, engines de jogos e cloud.*
 
@@ -273,6 +282,13 @@ Construa uma Skill completa e pronta para uso diretamente da URL de documentaç�
 python website-for-skill/Scripts/build_skill.py --url "https://exemplo.com/docs" --name "minha-web-skill"
 ```
 👉 *Consulte o guia completo:* [README do website-for-skill](website-for-skill/README.md)
+
+#### 5. Imagem para Prompt Generativo (Engenharia Reversa Visual)
+Analise propriedades técnicas de imagens e faça a engenharia reversa de prompts descritivos para IA:
+```bash
+python image-to-prompt/scripts/analyze_image.py "caminho/da/imagem.png"
+```
+👉 *Consulte o guia completo:* [README do image-to-prompt](image-to-prompt/README.md)
 
 ---
 
