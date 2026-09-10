@@ -308,6 +308,11 @@ python master-of-foundryvtt/scripts/version_advisor.py 12
 
 ---
 
+## 📜 Changelog
+Para conferir o histórico completo de versões e alterações, consulte o arquivo [**CHANGELOG.md**](CHANGELOG.md).
+
+---
+
 ## 👨‍💻 Author / Autor
 
 **Charles Corrêa**  
