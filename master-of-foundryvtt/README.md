@@ -10,31 +10,29 @@
 ### 📌 Overview
 **Master of Foundry VTT** is an end-to-end development, scripting, and rule ingestion suite designed for developers, module creators, and Game Masters running **Foundry Virtual Tabletop**.
 
-It encapsulates official documentation, knowledge base articles, policies, and API references from **Version 8 through Version 14**, providing intelligent assistance for:
-- Developing **Game Systems** (`system.json`, TypeDataModels, Custom Sheets).
-- Developing **Add-on Modules** (`module.json`, Settings, Sockets, libWrapper, Hooks).
-- Scripting advanced **Macros, Rollable Tables, Compendiums, and Active Effects**.
-- Ingesting and cross-referencing external RPG rulebooks (Pathfinder 2e, D&D 5e, GURPS, Savage Worlds, Fate, Tormenta20).
+It encapsulates official documentation, knowledge base articles, policies, API references from **Version 8 through Version 14**, Model Context Protocol (MCP) integrations, and architecture guides for over 60 famous RPG systems.
 
 ---
 
-### 🌐 Official Knowledge Sources & Documentation
+### 🌐 Knowledge Sources & Documentation
 
-| Category | URL |
+| Category | Reference / Guides |
 |---|---|
-| **Knowledge Base** | [https://foundryvtt.com/kb/](https://foundryvtt.com/kb/) |
+| **Model Context Protocol (MCP)** | [`mcp/README.md`](mcp/README.md) (ninjos-foundry-mcp, foundryvtt-mcp, foundry-vtt-mcp) |
+| **Famous Systems Knowledge Base** | [`systems/README.md`](systems/README.md) (D&D, PF2e, WoD, SWADE, Tormenta20, YZE, GURPS, CoC7, etc.) |
+| **Knowledge Base (Official)** | [`kb/`](kb/) & [https://foundryvtt.com/kb/](https://foundryvtt.com/kb/) |
 | **Releases & Changelogs** | [https://foundryvtt.com/releases/](https://foundryvtt.com/releases/) |
-| **Limited License Agreement** | [https://foundryvtt.com/article/license/](https://foundryvtt.com/article/license/) |
-| **AI Policy** | [https://foundryvtt.com/article/ai-policy/](https://foundryvtt.com/article/ai-policy/) |
-| **Branding Guidelines** | [https://foundryvtt.com/article/branding/](https://foundryvtt.com/article/branding/) |
-| **Privacy Policy** | [https://foundryvtt.com/article/privacy-policy/](https://foundryvtt.com/article/privacy-policy/) |
-| **API Version 14** | [https://foundryvtt.com/api/v14/](https://foundryvtt.com/api/v14/) |
-| **API Version 13** | [https://foundryvtt.com/api/v13/](https://foundryvtt.com/api/v13/) |
-| **API Version 12** | [https://foundryvtt.com/api/v12/](https://foundryvtt.com/api/v12/) |
-| **API Version 11** | [https://foundryvtt.com/api/v11/](https://foundryvtt.com/api/v11/) |
-| **API Version 10** | [https://foundryvtt.com/api/v10/](https://foundryvtt.com/api/v10/) |
-| **API Version 9** | [https://foundryvtt.com/api/v9/](https://foundryvtt.com/api/v9/) |
-| **API Version 8** | [https://foundryvtt.com/api/v8/](https://foundryvtt.com/api/v8/) |
+| **Limited License Agreement** | [`policies/license.md`](policies/license.md) |
+| **AI Policy** | [`policies/ai-policy.md`](policies/ai-policy.md) |
+| **Branding Guidelines** | [`policies/branding.md`](policies/branding.md) |
+| **Privacy Policy** | [`policies/privacy-policy.md`](policies/privacy-policy.md) |
+| **API Version 14** | [`versions/v14-api-guide.md`](versions/v14-api-guide.md) |
+| **API Version 13** | [`versions/v13-api-guide.md`](versions/v13-api-guide.md) |
+| **API Version 12** | [`versions/v12-api-guide.md`](versions/v12-api-guide.md) |
+| **API Version 11** | [`versions/v11-api-guide.md`](versions/v11-api-guide.md) |
+| **API Version 10** | [`versions/v10-api-guide.md`](versions/v10-api-guide.md) |
+| **API Version 9** | [`versions/v09-api-guide.md`](versions/v09-api-guide.md) |
+| **API Version 8** | [`versions/v08-api-guide.md`](versions/v08-api-guide.md) |
 
 ---
 
@@ -53,20 +51,21 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 ### 📌 Visão Geral
 O **Master of Foundry VTT** é uma suíte de desenvolvimento, automação e ingestão de regras desenvolvida para desenvolvedores de sistemas, criadores de módulos e Mestres de RPG que utilizam o **Foundry Virtual Tabletop**.
 
-Ela consolida a base de conhecimento oficial, artigos, termos de licença e referências de API da **Versão 8 até a Versão 14**, oferecendo suporte para:
+Ela consolida a base de conhecimento oficial, artigos, termos de licença, integrações MCP e referências de API da **Versão 8 até a Versão 14**, oferecendo suporte para:
+- Integração com **Servidores MCP** ([`mcp/README.md`](mcp/README.md)) para inspeção em tempo real e teste de macros.
+- Base de conhecimento arquitetural para **mais de 60 sistemas de RPG** ([`systems/README.md`](systems/README.md)).
 - Criação de **Sistemas de RPG** (`system.json`, TypeDataModels, Fichas Customizadas).
 - Criação de **Módulos Adicionais** (`module.json`, Configurações, Sockets, libWrapper, Hooks).
 - Criação de **Macros Avançadas, Tabelas Roláveis, Compêndios e Efeitos Ativos**.
-- Ingestão e cruzamento de dados de manuais de RPG (Pathfinder 2e, D&D 5e, GURPS, Savage Worlds, Fate, Tormenta20).
 
 ---
 
 ### 🛡️ Protocolo de Auto-Correção e Recuperação de Erros (Para Agentes de IA)
 
 Sempre que o Agente de IA encontrar falhas na instalação, execução ou configuração de ambiente da skill:
-1. **Diagnóstico de Causa Raiz e Auto-Correção:** O agente DEVE analisar a causa exata do erro (dependências ausentes, permissões, ferramentas de SO, encoding de caracteres) e tentar se auto-corrigir iterativamente até que a skill esteja funcionando perfeitamente conforme seu propósito.
-2. **Solicitação de Permissão para Instalações Extras:** Se a correção exigir a instalação de binários de sistema (`pandoc`, `libreoffice`, `tesseract`), pacotes globais ou configuração de chaves de API, o agente DEVE explicar o diagnóstico com clareza e solicitar a permissão explícita do desenvolvedor/operador antes de instalar.
-3. **Relatório de Configuração e Validação:** Após a confirmação, o agente deve informar detalhadamente o que foi instalado e configurado para resolver o problema e executar imediatamente um teste de validação (ou solicitar ao operador os dados/arquivos necessários para testar a skill).
+1. **Diagnóstico de Causa Raiz e Auto-Correção:** O agente DEVE analisar a causa exata do erro e tentar se auto-corrigir iterativamente até que a skill esteja funcionando perfeitamente.
+2. **Solicitação de Permissão para Instalações Extras:** Se a correção exigir pacotes extras, o agente DEVE solicitar permissão explícita ao desenvolvedor antes de instalar.
+3. **Relatório de Configuração e Validação:** Após a confirmação, o agente deve informar o que foi instalado e configurado e executar um teste de validação.
 
 ---
 

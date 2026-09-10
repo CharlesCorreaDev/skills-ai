@@ -1,6 +1,6 @@
 ---
 name: master-of-foundryvtt
-description: Master development, administration, and automation suite for Foundry Virtual Tabletop (v8, v9, v10, v11, v12, v13, v14) by GM Charles Corrêa. Ingests Knowledge Base, Release Notes, Policies (Branding, AI, License, Privacy), and API documentation across all versions. Guides creation of Systems, Modules, Macros, Rollable Tables, Handouts, Items, and Active Effects. Use when developing for Foundry VTT, troubleshooting module conflicts, verifying license compliance, or ingesting RPG system rulebooks (Pathfinder 2e, D&D 5e, GURPS, Savage Worlds, Fate, Tormenta20) via Antigravity, Claude Code, Copilot CLI, Hermes Agent, Orca, Gemini, Kilo, NVIDIA, or Ollama.
+description: Master development, administration, and automation suite for Foundry Virtual Tabletop (v8, v9, v10, v11, v12, v13, v14) by GM Charles Corrêa. Ingests Knowledge Base, Release Notes, Policies (Branding, AI, License, Privacy), API documentation across all versions, MCP integration (ninjos-foundry-mcp, foundryvtt-mcp, foundry-vtt-mcp), and 60+ famous RPG system architectures (PF2e, D&D 5e/3.5e, WoD20/5E, SWADE, Tormenta20, YZE, GURPS, Cyberpunk RED, CoC7, CSB). Use when developing systems/modules, troubleshooting errors, configuring MCP bridges, or scripting Foundry VTT via Antigravity, Claude Code, Copilot CLI, Hermes Agent, Orca, Gemini, Kilo, NVIDIA, or Ollama.
 ---
 
 # Master of Foundry VTT 🎲⚡
@@ -12,13 +12,13 @@ description: Master development, administration, and automation suite for Foundr
 
 ### 📌 Core Mission & Agent Mandates
 
-**Master of Foundry VTT** is the definitive, multi-version knowledge base and development companion for **Foundry Virtual Tabletop**. It covers client/server architecture, API evolutions from v8 through v14, policies, system and module creation, macro scripting, and RPG system integration.
+**Master of Foundry VTT** is the definitive, multi-version knowledge base, MCP bridge, and development companion for **Foundry Virtual Tabletop**. It covers client/server architecture, API evolutions from v8 through v14, policies, system and module creation, macro scripting, Model Context Protocol (MCP) integrations, and 60+ RPG system architectures.
 
 ---
 
 ### 🚨 Mandatory Directives for AI Agents
 
-Whenever an AI Agent is tasked with any Foundry VTT assignment, it **MUST ALWAYS** follow these five core protocols:
+Whenever an AI Agent is tasked with any Foundry VTT assignment, it **MUST ALWAYS** follow these core protocols:
 
 #### 1. Version Inquiry Mandate (Gatekeeper)
 Before writing any code, script macro, DataModel, or advising on APIs:
@@ -29,27 +29,44 @@ Before writing any code, script macro, DataModel, or advising on APIs:
 - The Agent must audit every planned feature against Foundry VTT's **Limited License Agreement**, **AI Policy**, and **Branding Guidelines**.
 - **Crucial Rule:** Never redistribute core Foundry software, proprietary premium compendium content, or trademarked logos without authorization. If a requested feature risks violating policies, the Agent **MUST WARN the developer immediately**.
 
-#### 3. RPG System Ingestion & Context Protocol
-When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 2e, D&D 5e, Savage Worlds, GURPS, Fate, Tormenta20**):
-1. The Agent **MUST ask the developer for:**
-   - The rulebook PDF or reference material.
-   - The repository link (GitHub/GitLab) of the Foundry system.
-   - The exact system version installed.
-2. The Agent will ingest and convert these references into clean Markdown under a dedicated knowledge base for persistent context.
+#### 3. MCP Installation, Configuration & Credential Request Protocol
+When installing or configuring Model Context Protocol (MCP) servers ([`ninjos-foundry-mcp`](https://github.com/Niclasp1501/ninjos-foundry-mcp), [`foundryvtt-mcp`](https://github.com/laurigates/foundryvtt-mcp), [`foundry-vtt-mcp`](https://github.com/adambdooley/foundry-vtt-mcp)):
+1. **Explain the benefits clearly:** Explain how the MCP server empowers the AI to read live world data, inspect DataModels, run safe macro tests, and diagnose errors in real time.
+2. **Interactive Credential & Path Checklist:** Ask the developer for required connection details if not autodetected:
+   - Local Foundry User Data Path (e.g., `AppData/Local/FoundryVTT/Data` or custom directory).
+   - Foundry VTT instance URL and Port (e.g., `http://localhost:30000`).
+   - Admin Access Key or World Password / API key.
+   - Active World ID and target user role.
+3. **Permission Gate:** Always explain what packages (`npm`, `npx`, Node.js) or companion modules will be installed and obtain user approval before executing modifying setup commands.
 
-#### 4. Active Module Audit & Troubleshooting Protocol
+#### 4. RPG System Ingestion & Multi-System Knowledge Base
+When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 2e, D&D 5e, Savage Worlds, WoD20, Tormenta20, YZE, GURPS, CoC7, Cyberpunk RED**):
+1. Consult the pre-indexed knowledge base under [`systems/`](systems/).
+2. Ask the developer for custom rulebook PDFs, system repository links, and the exact installed version.
+
+#### 5. Active Module Audit & Troubleshooting Protocol
 When diagnosing errors, console exceptions, or unexpected UI behavior:
 - The Agent **MUST ask the developer for the list of currently active modules and their versions**.
 - Isolate conflicts by advising binary search testing (`Find the Culprit` / safe mode) and checking `libWrapper` hooks.
 
-#### 5. Autonomous Error Recovery & Permission Protocol
-- If installation or execution fails, the agent must diagnose root causes and self-correct.
+#### 6. Autonomous Error Recovery & Permission Protocol
+- If installation or execution fails, diagnose root causes and self-correct iteratively.
 - For extra system packages or external tools, request explicit user permission before proceeding.
 
 ---
 
 ### 📚 Structure & Fast-Path Navigation
 
+- [Model Context Protocol (MCP) Guide](mcp/README.md)
+  - [MCP Integration & Configuration](mcp/README.md)
+- [Famous RPG Systems Knowledge Base](systems/README.md)
+  - [Fantasy, D20 & Duality Dice (D&D 5e, PF2e, Daggerheart, T20, OD2e, Draw Steel)](systems/01-d20-and-fantasy.md)
+  - [Storyteller & World of Darkness (WoD20, V5, WoD5E, KULT)](systems/02-storyteller-and-world-of-darkness.md)
+  - [Investigative & Cosmic Horror (CoC 7e, Delta Green, GUMSHOE)](systems/03-investigative-and-horror.md)
+  - [Year Zero Engine (Alien, Blade Runner, Vaesen, Twilight 2000, Dragonbane)](systems/04-year-zero-engine.md)
+  - [Sci-Fi, Cyberpunk & Pulp (Cyberpunk RED/2020, Shadowrun, Cosmere)](systems/05-pulp-scifi-and-cyberpunk.md)
+  - [Narrative, PbtA & FitD (Blades in the Dark, City of Mist, Fate, Perils & Princesses)](systems/06-narrative-and-pbta-fitd.md)
+  - [Generic & Rules-Light (GURPS 4e, SWADE, CSB, Worldbuilding, 3D&T, ABEA)](systems/07-generic-and-rules-light.md)
 - [API Versions Guide](versions/)
   - [Version 14 API Guide](versions/v14-api-guide.md)
   - [Version 13 API Guide](versions/v13-api-guide.md)
@@ -58,6 +75,13 @@ When diagnosing errors, console exceptions, or unexpected UI behavior:
   - [Version 10 API Guide & Schemas](versions/v10-api-guide.md)
   - [Version 9 API Guide & Canvas](versions/v09-api-guide.md)
   - [Version 8 API Guide & Document Refactor](versions/v08-api-guide.md)
+- [Knowledge Base & Operations](kb/)
+  - [Getting Started & Hosting](kb/01-getting-started-and-hosting.md)
+  - [Scenes, Lighting & Vision](kb/02-scenes-lighting-and-vision.md)
+  - [Actors, Items & Tokens](kb/03-actors-items-and-tokens.md)
+  - [Dice Rolling & Chat](kb/04-dice-rolling-and-chat.md)
+  - [Audio, Video & WebRTC](kb/05-audio-video-and-webrtc.md)
+  - [Compendiums & World Data](kb/06-compendiums-and-world-data.md)
 - [Development Guides](guides/)
   - [Creating Game Systems](guides/creating-systems.md)
   - [Creating Modules](guides/creating-modules.md)
@@ -69,9 +93,6 @@ When diagnosing errors, console exceptions, or unexpected UI behavior:
   - [AI Policy](policies/ai-policy.md)
   - [Branding Guidelines](policies/branding.md)
   - [Privacy Policy](policies/privacy-policy.md)
-- [Quick Cheatsheet](cheatsheet.md)
-- [Canonical Glossary](glossary.md)
-- [Architectural Patterns](patterns.md)
 
 ---
 
@@ -79,36 +100,43 @@ When diagnosing errors, console exceptions, or unexpected UI behavior:
 
 ### 📌 Missão Central e Mandatos do Agente de IA
 
-O **Master of Foundry VTT** é a base de conhecimento e guia de desenvolvimento definitiva para o **Foundry Virtual Tabletop**, cobrindo a arquitetura do cliente/servidor, evolução das APIs da v8 até a v14, políticas de uso, criação de sistemas, módulos, macros e integração de sistemas de RPG.
+O **Master of Foundry VTT** é a base de conhecimento, ponte MCP e guia de desenvolvimento definitivo para o **Foundry Virtual Tabletop**, cobrindo a arquitetura do cliente/servidor, evolução das APIs da v8 até a v14, integração de servidores MCP, políticas de uso e arquitetura de mais de 60 sistemas de RPG.
 
 ---
 
 ### 🚨 Diretrizes Obrigatórias para o Agente de IA
 
-Sempre que o Agente for solicitado a realizar qualquer tarefa relacionada ao Foundry VTT, ele **DEVE OBRIGATORIAMENTE** seguir estes cinco protocolos:
+Sempre que o Agente for solicitado a realizar qualquer tarefa relacionada ao Foundry VTT, ele **DEVE OBRIGATORIAMENTE** seguir estes protocolos:
 
 #### 1. Consulta Obrigatória de Versão
 Antes de escrever código, macros, esquemas de dados (DataModel) ou orientar sobre métodos da API:
 - **O Agente DEVE PERGUNTAR ao desenvolvedor/operador qual versão do Foundry VTT está sendo utilizada** (ex: v12, v11, v13, v10, v9 ou v8), a menos que já tenha sido explicitado no prompt.
-- **Motivo:** As APIs mudam profundamente entre versões (ex: migração de documentos na `0.8.x`, introdução de `DataModel` na `v10`, `ApplicationV2` na `v12`). Misturar sintaxes gera erros silenciosos.
+- **Motivo:** As APIs mudam profundamente entre versões (ex: migração de documentos na `0.8.x`, introdução de `DataModel` na `v10`, `ApplicationV2` na `v12`).
 
 #### 2. Auditoria de Licenças e Políticas do Foundry
 - O Agente deve auditar se a funcionalidade solicitada cumpre o **Contrato de Licença Limitada**, a **Política de IA** e as **Diretrizes de Marca (Branding)** do Foundry VTT.
-- **Regra Crucial:** Nunca redistribuir código-fonte do core, conteúdos proprietários de pacotes pagos ou usar marcas registradas indevidamente. Caso haja risco de violação, o Agente **DEVE ALERTAR o desenvolvedor imediatamente**.
+- **Regra Crucial:** Nunca redistribuir código-fonte do core, conteúdos proprietários de pacotes pagos ou usar marcas registradas indevidamente. Caso haja risco, o Agente **DEVE ALERTAR o desenvolvedor imediatamente**.
 
-#### 3. Protocolo de Ingestão de Livros e Repositórios de Sistemas de RPG
-Ao desenvolver ou prestar suporte para sistemas de RPG (ex: **Pathfinder 2e, D&D 5e, Savage Worlds, GURPS, Fate, Tormenta20**):
-1. O Agente **DEVE solicitar ao desenvolvedor:**
-   - Os livros/manuais em PDF de referência.
-   - O link do repositório (GitHub/GitLab) do sistema do Foundry.
-   - A versão exata do sistema instalada.
-2. O Agente converterá/ingerirá esses materiais em Markdown modular estruturado para servir de base perene de consulta.
+#### 3. Protocolo de Instalação de MCPs e Solicitação de Credenciais
+Ao configurar servidores MCP ([`ninjos-foundry-mcp`](https://github.com/Niclasp1501/ninjos-foundry-mcp), [`foundryvtt-mcp`](https://github.com/laurigates/foundryvtt-mcp), [`foundry-vtt-mcp`](https://github.com/adambdooley/foundry-vtt-mcp)):
+1. **Explicar os motivos e vantagens:** Explicar detalhadamente como o MCP permite ao agente ler dados reais do mundo, testar macros, inspecionar esquemas e resolver bugs em tempo real.
+2. **Solicitar dados necessários ao desenvolvedor:**
+   - Caminho local da pasta de dados (`Data/`).
+   - URL e porta da instância do Foundry (ex: `http://localhost:30000`).
+   - Chave de administração (`adminPassword`) ou senha de usuário/mundo.
+   - Nome do mundo ativo e papel de usuário (GM / Assistente).
+3. **Solicitar autorização prévia:** Explicar os comandos e pacotes que serão instalados e pedir confirmação antes de executar.
 
-#### 4. Auditoria de Módulos Ativos e Resolução de Erros
+#### 4. Protocolo de Ingestão e Conhecimento de Sistemas de RPG
+Ao desenvolver ou prestar suporte para sistemas de RPG:
+1. Consultar a base de conhecimento de mais de 60 sistemas catalogados em [`systems/`](systems/).
+2. Solicitar ao desenvolvedor os manuais/PDFs de regras específicas, link do repositório e versão instalada do sistema.
+
+#### 5. Auditoria de Módulos Ativos e Resolução de Erros
 Ao investigar erros no console, exceções ou conflitos visuais:
 - O Agente **DEVE solicitar a lista completa de módulos ativos e suas respectivas versões**.
 - Isolar incompatibilidades orientando testes em modo seguro e inspecionando ganchos (`libWrapper`).
 
-#### 5. Protocolo de Auto-Correção e Permissão
+#### 6. Protocolo de Auto-Correção e Permissão
 - Se houver falhas de execução, diagnosticar e auto-corrigir iterativamente.
-- Solicitar permissão explícita ao desenvolvedor caso haja necessidade de instalar pacotes extras ou ferramentas de sistema.
+- Solicitar permissão explícita ao desenvolvedor caso haja necessidade de instalar pacotes extras de sistema.
