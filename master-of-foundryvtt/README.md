@@ -19,6 +19,7 @@ It encapsulates official documentation, knowledge base articles, policies, API r
 | Category | Reference / Guides |
 |---|---|
 | **Model Context Protocol (MCP)** | [`mcp/README.md`](mcp/README.md) (ninjos-foundry-mcp, foundryvtt-mcp, foundry-vtt-mcp) |
+| **CLI Tools & Automation** | [`guides/cli-tools.md`](guides/cli-tools.md) (`@foundryvtt/foundryvtt-cli` & `fvtt-world-cli`) |
 | **Famous Systems Knowledge Base** | [`systems/README.md`](systems/README.md) (D&D, PF2e, WoD, SWADE, Tormenta20, YZE, GURPS, CoC7, etc.) |
 | **Official Systems Directory** | [https://foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems) |
 | **Knowledge Base (Official)** | [`kb/`](kb/) & [https://foundryvtt.com/kb/](https://foundryvtt.com/kb/) |
@@ -54,6 +55,7 @@ O **Master of Foundry VTT** é uma suíte de desenvolvimento, automação e inge
 
 Ela consolida a base de conhecimento oficial, artigos, termos de licença, integrações MCP e referências de API da **Versão 8 até a Versão 14**, oferecendo suporte para:
 - Integração com **Servidores MCP** ([`mcp/README.md`](mcp/README.md)) para inspeção em tempo real e teste de macros.
+- **Ferramentas de Linha de Comando (CLI)** ([`guides/cli-tools.md`](guides/cli-tools.md)) com `@foundryvtt/foundryvtt-cli` e `fvtt-world-cli` para automação de compêndios e mundos.
 - Base de conhecimento arquitetural para **mais de 60 sistemas de RPG** ([`systems/README.md`](systems/README.md)).
 - Criação de **Sistemas de RPG** (`system.json`, TypeDataModels, Fichas Customizadas).
 - Criação de **Módulos Adicionais** (`module.json`, Configurações, Sockets, libWrapper, Hooks).

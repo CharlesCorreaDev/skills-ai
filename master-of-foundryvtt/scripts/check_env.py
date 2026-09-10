@@ -81,7 +81,21 @@ def main():
         print('  ℹ️ Nenhuma pasta padrão de dados do Foundry VTT foi encontrada automaticamente.')
         print('     (Se o Foundry estiver instalado em caminho customizado ou servidor remoto, forneça a URL ou caminho ao Agente).')
 
-    # 5. Summary & Guidance
+    # 5. CLI Tools (Foundry CLI & World CLI)
+    print('\n💻 Ferramentas de Linha de Comando (CLI):')
+    fvtt_cli = shutil.which('fvtt')
+    if fvtt_cli:
+        print(f'  ✅ @foundryvtt/foundryvtt-cli: Encontrado ({fvtt_cli})')
+    else:
+        print('  ℹ️ @foundryvtt/foundryvtt-cli: Não instalado globalmente. (Disponível via "npx @foundryvtt/foundryvtt-cli").')
+
+    world_cli = shutil.which('fvtt-world-cli')
+    if world_cli:
+        print(f'  ✅ fvtt-world-cli: Encontrado ({world_cli})')
+    else:
+        print('  ℹ️ fvtt-world-cli: Não instalado globalmente. (Disponível via "npx fvtt-world-cli").')
+
+    # 6. Summary & Guidance
     print('\n🔌 Integração MCP (Model Context Protocol):')
     print('  - ninjos-foundry-mcp: Pronto para conexão via URL/WebSocket (http://localhost:30000).')
     print('  - foundryvtt-mcp: Pronto para leitura direta da pasta Data.')
