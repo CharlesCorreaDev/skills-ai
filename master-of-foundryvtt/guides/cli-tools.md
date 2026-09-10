@@ -84,12 +84,12 @@ npx fvtt-world-cli --help
 
 ```mermaid
 flowchart LR
-    A["Fontes YAML/JSON (src/packs)"] -->|fvtt package pack| B["ClassicLevel / LevelDB (.db)"]
-    B -->|Testes no Foundry VTT| C["Mundo de Teste"]
-    C -->|Novos Itens/Atores criados| B
-    B -->|fvtt package unpack| A
-    A -->|git commit & push| D["GitHub / GitLab"]
-    D -->|GitHub Actions (fvtt package release)| E["Release Zip + Manifest"]
+    A["Fontes YAML ou JSON em src/packs"] -->|"fvtt package pack"| B["Bancos ClassicLevel / LevelDB"]
+    B -->|"Testes no Foundry VTT"| C["Mundo de Teste"]
+    C -->|"Novos Itens ou Atores criados"| B
+    B -->|"fvtt package unpack"| A
+    A -->|"git commit & push"| D["Repositório GitHub ou GitLab"]
+    D -->|"GitHub Actions - fvtt release"| E["Release Zip e Manifest"]
 ```
 
 ---
