@@ -43,7 +43,7 @@
 
 ---
 
-## 5. Perils & Princesses (perilsandprincesses)
+## 5. Perigos & Princesas / Perils & Princesses (perilsandprincesses)
 - **Repositório:** [https://github.com/helloshyann/perilsandprincesses](https://github.com/helloshyann/perilsandprincesses)
 - **Arquitetura & Especificidades:**
-  - RPG de fantasia de contos de fadas com mecânicas narrativas de presentes mágicos, coragem e determinação.
+  - RPG de fantasia de contos de fadas e aventura (*Perigos & Princesas*) com mecânicas narrativas de presentes mágicos (Gifts), coragem, determinação e fichas estilizadas para princesas heroínas.

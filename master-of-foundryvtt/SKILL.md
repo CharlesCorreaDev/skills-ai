@@ -65,7 +65,7 @@ When diagnosing errors, console exceptions, or unexpected UI behavior:
   - [Investigative & Cosmic Horror (CoC 7e, Delta Green, GUMSHOE)](systems/03-investigative-and-horror.md)
   - [Year Zero Engine (Alien, Blade Runner, Vaesen, Twilight 2000, Dragonbane)](systems/04-year-zero-engine.md)
   - [Sci-Fi, Cyberpunk & Pulp (Cyberpunk RED/2020, Shadowrun, Cosmere)](systems/05-pulp-scifi-and-cyberpunk.md)
-  - [Narrative, PbtA & FitD (Blades in the Dark, City of Mist, Fate, Perils & Princesses)](systems/06-narrative-and-pbta-fitd.md)
+  - [Narrative, PbtA & FitD (Blades in the Dark, City of Mist, Fate, Perigos & Princesas)](systems/06-narrative-and-pbta-fitd.md)
   - [Generic & Rules-Light (GURPS 4e, SWADE, CSB, Worldbuilding, 3D&T, ABEA)](systems/07-generic-and-rules-light.md)
 - [API Versions Guide](versions/)
   - [Version 14 API Guide](versions/v14-api-guide.md)

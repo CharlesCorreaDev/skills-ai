@@ -20,7 +20,7 @@ O objetivo é orientar o desenvolvedor e o Agente de IA para evitar conflitos de
 | **03. Investigação & Horror Cósmico** | [`03-investigative-and-horror.md`](03-investigative-and-horror.md) | Call of Cthulhu 7e, Delta Green, GUMSHOE, Cthulhu Dark, Arkham Horror RPG. |
 | **04. Year Zero Engine (Fria Ligan)** | [`04-year-zero-engine.md`](04-year-zero-engine.md) | Year Zero Roller, Alien RPG, Blade Runner, Vaesen, Twilight 2000, Forbidden Lands, Coriolis (TGD, Overhaul), Mutant Year Zero, Dragonbane, The Walking Dead Universe (TWDU). |
 | **05. Sci-Fi, Cyberpunk & Pulp** | [`05-pulp-scifi-and-cyberpunk.md`](05-pulp-scifi-and-cyberpunk.md) | Cyberpunk RED, Cyberpunk 2020, Shadowrun 5e/6e, CBR+PNK, Invincible RPG, Triangle Agency, Cosmere RPG, Warhammer 40k Wrath & Glory. |
-| **06. Narrativos, PbtA & FitD** | [`06-narrative-and-pbta-fitd.md`](06-narrative-and-pbta-fitd.md) | Blades in the Dark, PbtA Generic, City of Mist, Fate Core/Accelerated, Perils & Princesses. |
+| **06. Narrativos, PbtA & FitD** | [`06-narrative-and-pbta-fitd.md`](06-narrative-and-pbta-fitd.md) | Blades in the Dark, PbtA Generic, City of Mist, Fate Core/Accelerated, Perigos & Princesas (Perils & Princesses). |
 | **07. Genéricos & Regras Customizadas** | [`07-generic-and-rules-light.md`](07-generic-and-rules-light.md) | GURPS 4e Game Aid, Savage Worlds (SWADE & SWADE BR), Custom System Builder (CSB), Simple Worldbuilding, TinyD6, 3D&T Alpha, 3D&T Victory, ABEA, Ars Magica 5e, Shadow of the Demon Lord / Weird Wizard, The Witcher TRPG. |
 
 ---
