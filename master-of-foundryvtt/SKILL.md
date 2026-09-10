@@ -99,6 +99,7 @@ When diagnosing errors, console exceptions, or unexpected UI behavior:
   - [Privacy Policy](policies/privacy-policy.md)
 
 ---
+---
 
 ## 🇧🇷 Português (Brasil)
 
@@ -112,10 +113,10 @@ O **Master of Foundry VTT** é a base de conhecimento, ponte MCP e guia de desen
 
 Sempre que o Agente for solicitado a realizar qualquer tarefa relacionada ao Foundry VTT, ele **DEVE OBRIGATORIAMENTE** seguir estes protocolos:
 
-#### 1. Consulta Obrigatória de Versão
+#### 1. Consulta Obrigatória de Versão (Portão de Entrada)
 Antes de escrever código, macros, esquemas de dados (DataModel) ou orientar sobre métodos da API:
 - **O Agente DEVE PERGUNTAR ao desenvolvedor/operador qual versão do Foundry VTT está sendo utilizada** (ex: v12, v11, v13, v10, v9 ou v8), a menos que já tenha sido explicitado no prompt.
-- **Motivo:** As APIs mudam profundamente entre versões (ex: migração de documentos na `0.8.x`, introdução de `DataModel` na `v10`, `ApplicationV2` na `v12`).
+- **Motivo:** As APIs mudam profundamente entre versões (ex: migração de documentos na `0.8.x`, introdução de `DataModel` na `v10`, `ApplicationV2` na `v12`). Misturar sintaxes gera falhas silenciosas.
 
 #### 2. Auditoria de Licenças e Políticas do Foundry
 - O Agente deve auditar se a funcionalidade solicitada cumpre o **Contrato de Licença Limitada**, a **Política de IA** e as **Diretrizes de Marca (Branding)** do Foundry VTT.
@@ -125,11 +126,11 @@ Antes de escrever código, macros, esquemas de dados (DataModel) ou orientar sob
 Ao configurar servidores MCP ([`ninjos-foundry-mcp`](https://github.com/Niclasp1501/ninjos-foundry-mcp), [`foundryvtt-mcp`](https://github.com/laurigates/foundryvtt-mcp), [`foundry-vtt-mcp`](https://github.com/adambdooley/foundry-vtt-mcp)):
 1. **Explicar os motivos e vantagens:** Explicar detalhadamente como o MCP permite ao agente ler dados reais do mundo, testar macros, inspecionar esquemas e resolver bugs em tempo real.
 2. **Solicitar dados necessários ao desenvolvedor:**
-   - Caminho local da pasta de dados (`Data/`).
+   - Caminho local da pasta de dados (`Data/` / `User Data Path`).
    - URL e porta da instância do Foundry (ex: `http://localhost:30000`).
    - Chave de administração (`adminPassword`) ou senha de usuário/mundo.
    - Nome do mundo ativo e papel de usuário (GM / Assistente).
-3. **Solicitar autorização prévia:** Explicar os comandos e pacotes que serão instalados e pedir confirmação antes de executar.
+3. **Solicitar autorização prévia:** Explicar os comandos e pacotes que serão instalados e pedir confirmação antes de executar comandos de instalação.
 
 #### 4. Protocolo de Ingestão e Conhecimento de Sistemas de RPG
 Ao desenvolver ou prestar suporte para sistemas de RPG:
@@ -149,3 +150,54 @@ Ao investigar erros no console, exceções ou conflitos visuais:
 #### 7. Protocolo de Atualização Mensal da Base de Conhecimento
 - A base de conhecimento, notas de lançamento e políticas do Foundry VTT devem ser atualizadas periodicamente (aproximadamente 1 vez ao mês) executando o script `scripts/update_foundry_docs.py` ou via agendamento com `/schedule` para garantir que novos métodos da API, migrações e sistemas permaneçam sempre em dia.
 
+---
+
+### 📚 Estrutura e Navegação Rápida
+
+- [Guia de Servidores MCP (Model Context Protocol)](mcp/README.md)
+  - [Integração e Configuração dos MCPs](mcp/README.md)
+- [Base de Conhecimento dos Sistemas de RPG Famosos](systems/README.md)
+  - [Fantasia Heroica, D20 & Duality Dice (D&D 5e, PF2e, Daggerheart, T20, OD2e, Draw Steel)](systems/01-d20-and-fantasy.md)
+  - [Storyteller & Mundo das Trevas (WoD20, V5, WoD5E, KULT)](systems/02-storyteller-and-world-of-darkness.md)
+  - [Investigação & Horror Cósmico (CoC 7e, Delta Green, GUMSHOE)](systems/03-investigative-and-horror.md)
+  - [Year Zero Engine (Alien, Blade Runner, Vaesen, Twilight 2000, Dragonbane)](systems/04-year-zero-engine.md)
+  - [Sci-Fi, Cyberpunk & Pulp (Cyberpunk RED/2020, Shadowrun, Cosmere)](systems/05-pulp-scifi-and-cyberpunk.md)
+  - [Narrativos, PbtA & FitD (Blades in the Dark, City of Mist, Fate, Perigos & Princesas)](systems/06-narrative-and-pbta-fitd.md)
+  - [Genéricos & Regras Customizadas (GURPS 4e, SWADE, CSB, Worldbuilding, 3D&T, ABEA)](systems/07-generic-and-rules-light.md)
+- [Guias das Versões da API](versions/)
+  - [Guia da API Versão 14](versions/v14-api-guide.md)
+  - [Guia da API Versão 13](versions/v13-api-guide.md)
+  - [Guia da API Versão 12 & ApplicationV2](versions/v12-api-guide.md)
+  - [Guia da API Versão 11 & DataModels](versions/v11-api-guide.md)
+  - [Guia da API Versão 10 & Schemas](versions/v10-api-guide.md)
+  - [Guia da API Versão 9 & Canvas](versions/v09-api-guide.md)
+  - [Guia da API Versão 8 & Refatoração de Documentos](versions/v08-api-guide.md)
+- [Base de Conhecimento e Operações (KB)](kb/)
+  - [Primeiros Passos e Hospedagem](kb/01-getting-started-and-hosting.md)
+  - [Cenas, Iluminação e Visão](kb/02-scenes-lighting-and-vision.md)
+  - [Atores, Itens e Tokens](kb/03-actors-items-and-tokens.md)
+  - [Rolagens de Dados e Chat](kb/04-dice-rolling-and-chat.md)
+  - [Áudio, Vídeo e WebRTC](kb/05-audio-video-and-webrtc.md)
+  - [Compêndios e Dados do Mundo](kb/06-compendiums-and-world-data.md)
+- [Guias de Desenvolvimento](guides/)
+  - [Criando Sistemas de Jogo](guides/creating-systems.md)
+  - [Criando Módulos](guides/creating-modules.md)
+  - [Macros, Tabelas e Compêndios](guides/macros-and-tables.md)
+  - [Efeitos Ativos e Condições](guides/active-effects.md)
+  - [Resolução de Erros e Isolamento de Conflitos](guides/troubleshooting.md)
+- [Políticas e Governança](policies/)
+  - [Contrato de Licença Limitada](policies/license.md)
+  - [Política de Inteligência Artificial](policies/ai-policy.md)
+  - [Diretrizes de Marca (Branding)](policies/branding.md)
+  - [Política de Privacidade](policies/privacy-policy.md)
+
+---
+
+## 👨‍💻 Author / Autor
+
+**Charles Corrêa**  
+- 📧 **Email:** [charlescorreaweb@gmail.com](mailto:charlescorreaweb@gmail.com)  
+- 📷 **Instagram:** [@mestrecharlescorrea](https://www.instagram.com/mestrecharlescorrea)  
+- 🌐 **Websites:** [charlescorrea.com.br](https://charlescorrea.com.br) | [rpg.charlescorrea.com.br](https://rpg.charlescorrea.com.br)  
+- 🐙 **GitHub:** [CharlesCorreaDev](https://github.com/CharlesCorreaDev)  
+- ⚡ **Skills de IA By Charles Corrêa Repo:** [https://github.com/CharlesCorreaDev/skills-ai](https://github.com/CharlesCorreaDev/skills-ai)
