@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.4.0] - 2026-09-10
+
+### Added / Adicionado
+- **Skill `php-dev-expert`:** Especialista Sênior em PHP (7.4 a 8.5), focada em arquitetura moderna, design patterns (MVC, ADR), segurança e integração com frameworks (Laravel/Symfony). Implementada regra crítica para detecção proativa da versão do PHP.
+- **Skill `python-dev-expert`:** Especialista em Python (3.x a 3.16), focada em tipagem avançada, Web (Django 6.1/FastAPI), Scripting e Data Science. Conta com automação inteligente para validar a versão do Python instalada no host.
+- **Skill `docker-master`:** Especialista DevOps em orquestração Docker, multi-stage builds e ambientes rootless. Destaque para adaptação dinâmica do Docker Compose (V2) e detecção invisível do Sistema Operacional (Windows/Mac/Linux) para bind mounts perfeitos. Adicionado mapeamento do ecossistema Cloud (Hub, Scout, Build).
+
+---
+
 ## [1.3.1] - 2026-09-09
 
 ### Added / Adicionado

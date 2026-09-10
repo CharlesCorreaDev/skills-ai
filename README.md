@@ -116,6 +116,9 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 | **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | Active | [View README](website-for-skill/README.md) |
 | **`image-to-prompt`** | High-fidelity visual reverse engineering: extracts art styles, eras, clothing, lighting, camera angles, and facial physiognomy to create generative prompts (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Active | [View README](image-to-prompt/README.md) |
 | **`master-of-foundryvtt`** | Master development, architecture, scripting, and rule ingestion suite for Foundry VTT (v8–v14) by GM Charles Corrêa. | Active | [View README](master-of-foundryvtt/README.md) |
+| **`php-dev-expert`** | Senior Software Engineer skill focused on PHP (7.4 to 8.5), modern patterns, debugging, and frameworks. | Active | [View Skill](php-dev-expert/SKILL.md) |
+| **`python-dev-expert`** | Python expert skill covering Web (Django/FastAPI), CLI, Data Science, and modern type hinting. | Active | [View Skill](python-dev-expert/SKILL.md) |
+| **`docker-master`** | DevOps specialist for Docker optimization, security, local environments, and smart OS detection. | Active | [View Skill](docker-master/SKILL.md) |
 
 > ℹ️ *Note: More skills for game engines, design systems, and cloud architectures will be added to this repository soon.*
 
@@ -257,6 +260,9 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 | **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | Ativo | [Ver README](website-for-skill/README.md) |
 | **`image-to-prompt`** | Engenharia reversa visual de alta fidelidade: extrai traços artísticos, época, vestimentas, iluminação, fisionomia e câmeras para gerar prompts de imagem/vídeo (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Ativo | [Ver README](image-to-prompt/README.md) |
 | **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting e ingestão de regras para Foundry VTT (v8–v14) por GM Charles Corrêa. | Ativo | [Ver README](master-of-foundryvtt/README.md) |
+| **`php-dev-expert`** | Skill de Engenheiro de Software Sênior focada em PHP (7.4 a 8.5), arquitetura moderna, debugging e frameworks. | Ativo | [Ver Skill](php-dev-expert/SKILL.md) |
+| **`python-dev-expert`** | Especialista Python abordando Web (Django/FastAPI), Automações, Data Science e tipagem avançada. | Ativo | [Ver Skill](python-dev-expert/SKILL.md) |
+| **`docker-master`** | Especialista DevOps para otimização de imagens Docker, segurança, Compose e detecção inteligente de SO. | Ativo | [Ver Skill](docker-master/SKILL.md) |
 
 > ℹ️ *Nota: Em breve serão adicionadas novas skills especializadas em outros frameworks, engines de jogos e cloud.*
 
