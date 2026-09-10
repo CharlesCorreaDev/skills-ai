@@ -25,6 +25,15 @@ O objetivo é orientar o desenvolvedor e o Agente de IA para evitar conflitos de
 
 ---
 
+## 🔍 Descoberta Dinâmica de Sistemas Não Catalogados
+
+Caso o desenvolvedor solicite suporte ou desenvolvimento para um sistema de RPG que ainda não esteja listado nesta base de conhecimento:
+1. O Agente de IA **deve consultar o Diretório Oficial de Sistemas do Foundry VTT**: [**https://foundryvtt.com/packages/systems**](https://foundryvtt.com/packages/systems).
+2. Localizar o identificador único do pacote (`id`), a versão mínima/máxima do Foundry VTT suportada (`compatibility`), o link do manifesto (`manifest`) e o link do repositório de código-fonte (GitHub, GitLab, etc.).
+3. Inspecionar o `system.json` e os templates/DataModels do repositório para compreender a árvore de dados do sistema antes de escrever código ou macros.
+
+---
+
 ## ⚠️ Armadilhas Comuns e Boas Práticas ao Desenvolver para Sistemas
 
 1. **Evitar Sobrescrita Direta de Métodos:** Nunca substitua métodos de classe (`Actor.prototype.prepareDerivedData` ou `Item.prototype.roll`) com atribuição direta. Utilize sempre a biblioteca `libWrapper` para garantir compatibilidade com múltiplos módulos.

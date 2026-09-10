@@ -20,6 +20,7 @@ It encapsulates official documentation, knowledge base articles, policies, API r
 |---|---|
 | **Model Context Protocol (MCP)** | [`mcp/README.md`](mcp/README.md) (ninjos-foundry-mcp, foundryvtt-mcp, foundry-vtt-mcp) |
 | **Famous Systems Knowledge Base** | [`systems/README.md`](systems/README.md) (D&D, PF2e, WoD, SWADE, Tormenta20, YZE, GURPS, CoC7, etc.) |
+| **Official Systems Directory** | [https://foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems) |
 | **Knowledge Base (Official)** | [`kb/`](kb/) & [https://foundryvtt.com/kb/](https://foundryvtt.com/kb/) |
 | **Releases & Changelogs** | [https://foundryvtt.com/releases/](https://foundryvtt.com/releases/) |
 | **Limited License Agreement** | [`policies/license.md`](policies/license.md) |

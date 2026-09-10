@@ -42,7 +42,8 @@ When installing or configuring Model Context Protocol (MCP) servers ([`ninjos-fo
 #### 4. RPG System Ingestion & Multi-System Knowledge Base
 When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 2e, D&D 5e, Savage Worlds, WoD20, Tormenta20, YZE, GURPS, CoC7, Cyberpunk RED**):
 1. Consult the pre-indexed knowledge base under [`systems/`](systems/).
-2. Ask the developer for custom rulebook PDFs, system repository links, and the exact installed version.
+2. **Dynamic System Discovery:** If the requested RPG system is **not** yet cataloged in the local knowledge base, the Agent **MUST automatically search [https://foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems)** to locate the official package entry, manifest URL, compatibility tags, and the source code repository (GitHub, GitLab, etc.).
+3. Ingest the system's data model, template schema, and sheet architecture into context, and ask the developer for custom rulebook PDFs and the exact installed version.
 
 #### 5. Active Module Audit & Troubleshooting Protocol
 When diagnosing errors, console exceptions, or unexpected UI behavior:
@@ -52,6 +53,9 @@ When diagnosing errors, console exceptions, or unexpected UI behavior:
 #### 6. Autonomous Error Recovery & Permission Protocol
 - If installation or execution fails, diagnose root causes and self-correct iteratively.
 - For extra system packages or external tools, request explicit user permission before proceeding.
+
+#### 7. Monthly Knowledge Base Refresh Protocol
+- The Knowledge Base, release notes, and policies should be refreshed periodically (e.g., once a month) using the built-in update script `scripts/update_foundry_docs.py` or scheduled via `/schedule` to ensure API methods, deprecations, and system links stay 100% current.
 
 ---
 
@@ -130,7 +134,8 @@ Ao configurar servidores MCP ([`ninjos-foundry-mcp`](https://github.com/Niclasp1
 #### 4. Protocolo de Ingestão e Conhecimento de Sistemas de RPG
 Ao desenvolver ou prestar suporte para sistemas de RPG:
 1. Consultar a base de conhecimento de mais de 60 sistemas catalogados em [`systems/`](systems/).
-2. Solicitar ao desenvolvedor os manuais/PDFs de regras específicas, link do repositório e versão instalada do sistema.
+2. **Descoberta Dinâmica de Sistemas Não Catalogados:** Se o sistema solicitado **não** constar na base local da skill, o Agente **DEVE OBRIGATORIAMENTE buscar em [https://foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems)** a página do pacote, a URL do manifesto (`system.json`), as versões compatíveis do Foundry e o repositório oficial do código-fonte (GitHub, GitLab, etc.).
+3. Ingerir a arquitetura de esquemas, fichas e templates do repositório localizado e solicitar ao desenvolvedor os manuais/PDFs de regras específicas e a versão instalada.
 
 #### 5. Auditoria de Módulos Ativos e Resolução de Erros
 Ao investigar erros no console, exceções ou conflitos visuais:
@@ -140,3 +145,7 @@ Ao investigar erros no console, exceções ou conflitos visuais:
 #### 6. Protocolo de Auto-Correção e Permissão
 - Se houver falhas de execução, diagnosticar e auto-corrigir iterativamente.
 - Solicitar permissão explícita ao desenvolvedor caso haja necessidade de instalar pacotes extras de sistema.
+
+#### 7. Protocolo de Atualização Mensal da Base de Conhecimento
+- A base de conhecimento, notas de lançamento e políticas do Foundry VTT devem ser atualizadas periodicamente (aproximadamente 1 vez ao mês) executando o script `scripts/update_foundry_docs.py` ou via agendamento com `/schedule` para garantir que novos métodos da API, migrações e sistemas permaneçam sempre em dia.
+
