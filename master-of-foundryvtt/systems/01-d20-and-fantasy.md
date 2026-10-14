@@ -67,12 +67,15 @@
 
 ---
 
-## 6. D&D 3.5e (D35E)
-- **Repositório:** [https://gitlab.com/dragonshorn/D35E](https://gitlab.com/dragonshorn/D35E)
+## 6. D&D 3.5e (D35E / dnd35e)
+- **Repositórios:**
+  - Sistema Oficial da Comunidade (Dragonshorn Studios / Antoni Sobkowicz): [https://gitlab.com/dragonshorn/D35E](https://gitlab.com/dragonshorn/D35E)
+  - Manutenção Comunitária (Chapel Studios / RevJake): [https://github.com/Dragonshorn-Studios/dnd35e](https://github.com/Dragonshorn-Studios/dnd35e)
 - **Arquitetura & Especificidades:**
   - Sistema completo para Dungeons & Dragons 3.5 com suporte a cálculo detalhado de BAB, modificadores de tamanho, resistências e tabelas de progressão de classe clássicas.
+  - Implementa pipelines extensos de bônus cumulativos e condicionais em magias e perícias.
 - **Armadilhas Comuns:**
-  - Complexidade alta de bônus acumulativos (Stacking Rules: Enhancement, Morale, Luck, Insight, Competence). O sistema possui motor próprio para filtrar bônus não cumulativos.
+  - Complexidade alta de bônus acumulativos (*Stacking Rules*: Enhancement, Morale, Luck, Insight, Competence). O sistema possui motor próprio para filtrar bônus não cumulativos. Não tente aplicar bônus brutos sem verificar as chaves de stacking.
 
 ---
 

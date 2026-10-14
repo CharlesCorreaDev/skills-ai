@@ -189,6 +189,8 @@ Ao investigar erros no console, exceções ou conflitos visuais:
   - [Ferramentas CLI & Automação de Compêndios (`@foundryvtt/foundryvtt-cli` e `fvtt-world-cli`)](guides/cli-tools.md)
   - [Criando Sistemas de Jogo](guides/creating-systems.md)
   - [Criando Módulos](guides/creating-modules.md)
+  - [Sockets e Comunicação Cliente-Servidor (Nativo e socketlib)](guides/sockets.md)
+  - [Gerenciamento de Combate, Tracker e Iniciativa](guides/combat.md)
   - [Macros, Tabelas e Compêndios](guides/macros-and-tables.md)
   - [Efeitos Ativos e Condições](guides/active-effects.md)
   - [Resolução de Erros e Isolamento de Conflitos](guides/troubleshooting.md)

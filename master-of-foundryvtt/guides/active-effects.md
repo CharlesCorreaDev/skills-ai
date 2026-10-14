@@ -44,9 +44,29 @@ const effectData = {
   ],
   duration: {
     rounds: 10,
-    seconds: 60
-  }
+    seconds: 60,
+    startRound: game.combat?.round ?? 0,
+    startTurn: game.combat?.turn ?? 0
+  },
+  // Transfer effect from an Item to the Actor that owns it
+  transfer: true
 };
 
 await actor.createEmbeddedDocuments('ActiveEffect', [effectData]);
 ```
+
+---
+
+## 4. Item Transfers & Temporary Effects
+- **`transfer: true`**: When attached to an Item (weapon, armor, passive feat), the effect automatically transfers to the owning Actor upon equipping/adding.
+- **`transfer: false`**: The effect represents an active toggle or spell duration applied on demand (e.g., Cast Spell -> Apply status to Target).
+
+---
+
+## 5. ActiveEffect V2 & v14 Specifics
+- In v14, ActiveEffects utilize `TypeDataModel` schemas for system-specific effect subtypes.
+- **Hooks:**
+  - `applyActiveEffect(actor, change, current, delta, changes)`: Custom handler hook for `CONST.ACTIVE_EFFECT_MODES.CUSTOM (0)`.
+  - `createActiveEffect` / `deleteActiveEffect`: Track when conditions are applied or removed (e.g., status overlays).
+- **Status Effects Matrix:** Use `CONFIG.statusEffects` to customize default icons and token overlays.
+

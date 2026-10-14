@@ -25,6 +25,8 @@ This suite encapsulates official documentation, knowledge base articles, policie
 |---|---|
 | **Model Context Protocol (MCP)** | [`mcp/README.md`](mcp/README.md) (ninjos-foundry-mcp, foundryvtt-mcp, foundry-vtt-mcp) |
 | **CLI Tools & Automation** | [`guides/cli-tools.md`](guides/cli-tools.md) (`@foundryvtt/foundryvtt-cli` & `fvtt-world-cli`) |
+| **Sockets & Client-Server RPC** | [`guides/sockets.md`](guides/sockets.md) (Native `game.socket` & `socketlib`) |
+| **Combat Tracker & Automation** | [`guides/combat.md`](guides/combat.md) (`Combat`, `Combatant`, `CombatTracker`) |
 | **Famous Systems Knowledge Base** | [`systems/README.md`](systems/README.md) (D&D, PF2e, WoD, SWADE, Tormenta20, YZE, GURPS, CoC7, etc.) |
 | **Official Systems Directory** | [https://foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems) |
 | **Knowledge Base (Official & Guides)** | [`kb/`](kb/) & [https://foundryvtt.com/kb/](https://foundryvtt.com/kb/) |
