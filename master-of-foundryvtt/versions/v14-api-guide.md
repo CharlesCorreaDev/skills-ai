@@ -717,6 +717,19 @@ The primary point of interaction for community packages with the foundry codebas
 
 ---
 
+## 🔧 Recent Updates (v14.368 - v14.369 Stable)
+- **SSL / Hosting (14.369):** Foundry now natively supports automated Let's Encrypt certificate generation for public domains and self-signed certificates for local use, reducing the need for external reverse proxies.
+- **DataModels API:** 
+  - Added `DataModel#getNearestDocument` which returns the nearest Document or `null` if none. (14.368)
+  - Added `relativize` options to `DocumentUUIDField`. (14.368)
+  - Addressed bugs and improved strictness in `NumberField`, `ArrayField`, `SetField`, `ObjectField`, and `ForcedReplacement` operations. (14.369)
+- **ContextMenu API (14.369):** `ContextMenu` instances can now be configured with a custom CSS class.
+- **Game Canvas:** 
+  - Region shapes and Placeables correctly scale and reposition when a Scene's dimensions are updated. (14.369)
+  - Improved KTX2 texture performance by performing transcoding in a worker. (14.368)
+
+---
+
 ## 🔗 Official Reference & Links
 - **API Reference:** [https://foundryvtt.com/api/v14/](https://foundryvtt.com/api/v14/)
 - **Knowledge Base:** [https://foundryvtt.com/kb/](https://foundryvtt.com/kb/)
