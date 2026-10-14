@@ -83,3 +83,218 @@
 - **Repositório:** [https://gitlab.com/architech99/foundry-tinyd6](https://gitlab.com/architech99/foundry-tinyd6)
 - **Especificidades:**
   - Sistema minimalista (Tiny Dungeon, Tiny Frontiers, Tiny Wastelands): rolar 2d6 padrão (3d6 com Vantagem, 1d6 com Desvantagem). Qualquer `5` ou `6` representa um Sucesso completo.
+
+---
+
+## 9. Basic RolePlaying (BRP / brp)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/brp](https://foundryvtt.com/packages/brp)
+- **Repositório:** [https://github.com/cragstone/BRP](https://github.com/cragstone/BRP)
+- **Arquitetura & Especificidades:**
+  - O motor d100 clássico universal da Chaosium (base de RuneQuest, Stormbringer e Call of Cthulhu).
+  - Testes percentuais Roll-Under, níveis de sucesso (Crítico, Especial, Sucesso, Falha, Desastre), tabelas de armas e categorias de poderes (Magia, Mutações, Psionismo, Superpoderes).
+
+---
+
+## 10. Tagmar & Tagmar 3.0 Oficial (tagmar & tagmar3er-oficial)
+- **Pacotes Foundry:**
+  - Tagmar 3.0 Oficial: [https://foundryvtt.com/packages/tagmar3er-oficial](https://foundryvtt.com/packages/tagmar3er-oficial)
+  - Tagmar: [https://foundryvtt.com/packages/tagmar](https://foundryvtt.com/packages/tagmar)
+- **Repositórios:**
+  - Tagmar 3.0 Oficial: [https://github.com/piratabarba-blip/tagmar3er-oficial](https://github.com/piratabarba-blip/tagmar3er-oficial)
+  - Tagmar: [https://github.com/marcoswalker/tagmar](https://github.com/marcoswalker/tagmar)
+- **Arquitetura & Especificidades:**
+  - Primeiro RPG brasileiro (1991 / Projeto Tagmar 3.0 Open Source).
+  - Utiliza a clássica **Tabela de Resolução** baseada em d20 colorido (Resultados: Branco/Falha Crítica, Amarelo/Falha, Verde/Sucesso Normal, Azul/Sucesso Bom, Cinza/Sucesso Decisivo). Fórmulas automatizadas calculando colunas de dificuldade.
+
+---
+
+## 11. Warhammer Fantasy Roleplay 4th Edition (wfrp4e)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/wfrp4e](https://foundryvtt.com/packages/wfrp4e)
+- **Repositório Oficial:** [https://github.com/moo-man/WFRP4e-FoundryVTT](https://github.com/moo-man/WFRP4e-FoundryVTT)
+- **Arquitetura & Especificidades:**
+  - Um dos sistemas com automação mais avançada e profunda no Foundry VTT (mantido por Moo Man).
+  - Testes d100 opostos com cálculo automático de Níveis de Sucesso (SL / Success Levels), cálculo de **Vantagem (Advantage)** que acumula em combate, tabelas de Ferimentos Críticos com desmembramentos, Mutações do Caos e Corrupção.
+
+---
+
+## 12. Zweihänder Grim & Perilous RPG (zweihander & zweihander-reforged-wogd)
+- **Pacotes Foundry:**
+  - Zweihänder: [https://foundryvtt.com/packages/zweihander](https://foundryvtt.com/packages/zweihander)
+  - Zweihänder Reforged: [https://foundryvtt.com/packages/zweihander-reforged-wogd](https://foundryvtt.com/packages/zweihander-reforged-wogd)
+- **Repositórios:**
+  - Zweihänder Core: [https://github.com/fh-fvtt/zweihander](https://github.com/fh-fvtt/zweihander)
+  - Zweihänder Reforged: [https://github.com/Jared-Nielsen/gamecodex-vtt-releases/releases/latest/download/zweihander-reforged-wogd.json](https://github.com/Jared-Nielsen/gamecodex-vtt-releases/releases/latest/download/zweihander-reforged-wogd.json)
+- **Arquitetura & Especificidades:**
+  - Fantasia sombria grimdark d100.
+  - Mecânicas de Dados de Fúria (Fury Dice), Perigo (Peril Threshold), Dano Físico e Insanidade / Corrupção moral.
+
+---
+
+## 13. Legend of the Five Rings 4th & 5th Edition (l5r4 & l5r5e)
+- **Pacotes Foundry:**
+  - L5R 4th Edition: [https://foundryvtt.com/packages/l5r4](https://foundryvtt.com/packages/l5r4)
+  - L5R 5th Edition: [https://foundryvtt.com/packages/l5r5e](https://foundryvtt.com/packages/l5r5e)
+- **Repositórios:**
+  - L5R 4E: [https://gitlab.com/team-l5r4/l5r4](https://gitlab.com/team-l5r4/l5r4)
+  - L5R 5E: [https://gitlab.com/teaml5r/l5r5e](https://gitlab.com/teaml5r/l5r5e)
+- **Arquitetura & Especificidades:**
+  - **4ª Edição:** Sistema tradicional Roll & Keep em d10 (ex: rolar 6 dados e guardar os 3 melhores `6k3`), com dados que explodem em 10.
+  - **5ª Edição (FFG):** Dados Customizados de Anéis (d6) e Perícias (d12) com símbolos proprietários: Sucessos, Oportunidades e Discórdia/Conflito (Strife), acumulando tensão até o personagem ter um Compromisso de Honra (*Unmasking*).
+
+---
+
+## 14. Mutants & Masterminds 3rd Edition (mutants-and-masterminds-3e)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/mutants-and-masterminds-3e](https://foundryvtt.com/packages/mutants-and-masterminds-3e)
+- **Repositório:** [https://github.com/Zakarik/foundry-mm3](https://github.com/Zakarik/foundry-mm3)
+- **Arquitetura & Especificidades:**
+  - Sistema de super-heróis em d20 sem pontos de vida (*Damage Save / Toughness Check*).
+  - Cada falha no teste de Resistência acumula penalidades progressivas de -1 contra novos testes ou condições de Atordoado (*Dazed*), Cambaleante (*Staggered*) e Incapacitado.
+
+---
+
+## 15. Cypher System (cyphersystem)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/cyphersystem](https://foundryvtt.com/packages/cyphersystem)
+- **Repositório:** [https://github.com/mrkwnzl/cyphersystem-foundryvtt](https://github.com/mrkwnzl/cyphersystem-foundryvtt)
+- **Jogos Suportados:** Numenera, The Strange, Cypher System Core Rulebook, Old Gods of Appalachia.
+- **Arquitetura & Especificidades:**
+  - Nível de Dificuldade de 1 a 10 multiplicado por 3 (Target Number de 3 a 30).
+  - Gastos dos Pools de Atributos (Might, Speed, Intellect) para aplicar Esforço (*Effort*) e reduzir a dificuldade antes da rolagem 1d20. Gestão de Cifras (Cyphers) de uso único e Intrusões do Mestre (GM Intrusions).
+
+---
+
+## 16. Symbaroum (symbaroum)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/symbaroum](https://foundryvtt.com/packages/symbaroum)
+- **Repositório:** [https://github.com/pwatson100/symbaroum](https://github.com/pwatson100/symbaroum)
+- **Arquitetura & Especificidades:**
+  - Fantasia sombria da Free League com rolagens 1d20 Roll-Under feitas exclusivamente pelos jogadores (o Mestre nunca rola dados; testes são modificados pelos atributos dos inimigos).
+  - Mecânica implacável de **Corrupção Temporária e Permanente** ao lançar rituais ou usar itens profanados.
+
+---
+
+## 17. Warhammer Age of Sigmar: Soulbound (age-of-sigmar-soulbound)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/age-of-sigmar-soulbound](https://foundryvtt.com/packages/age-of-sigmar-soulbound)
+- **Repositório Oficial:** [https://github.com/moo-man/AoS-Soulbound-FoundryVTT](https://github.com/moo-man/AoS-Soulbound-FoundryVTT)
+- **Arquitetura & Especificidades:**
+  - Pool de d6s contra Dificuldade com foco em combate heroico contra hordas.
+  - Gerenciamento de Alma Vinculada (Soulbound), Foco, Mettler e Doom que afeta todo o reino.
+
+---
+
+## 18. ICRPG Core & Master Edition (icrpg & icrpgme)
+- **Pacotes Foundry:**
+  - ICRPG Master Edition: [https://foundryvtt.com/packages/icrpgme](https://foundryvtt.com/packages/icrpgme)
+  - ICRPG Original: [https://foundryvtt.com/packages/icrpg](https://foundryvtt.com/packages/icrpg)
+- **Repositórios:**
+  - Master Edition: [https://github.com/ClipplerBlood/icrpgme](https://github.com/ClipplerBlood/icrpgme)
+  - Original: [https://github.com/jessev14/FoundryVTT-ICRPG](https://github.com/jessev14/FoundryVTT-ICRPG)
+- **Arquitetura & Especificidades:**
+  - Sistema de Runehammer (Hankerin Ferinale).
+  - **Dificuldade Global de Sala (Room Target):** Toda rolagem da cena é testada contra o mesmo Target DC (modificável por Fácil [-3] ou Difícil [+3]).
+  - **Sistema de Esforço (Effort):** Tarefas, monstros e obstáculos possuem pontos de esforço roláveis (Basic d4, Weapons d6, Guns d8, Magic d10, Ultimate d12).
+
+---
+
+## 19. EZD6 (ezd6)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/ezd6](https://foundryvtt.com/packages/ezd6)
+- **Repositório:** [https://github.com/drl2/ezd6-fvtt](https://github.com/drl2/ezd6-fvtt)
+- **Arquitetura & Especificidades:**
+  - Sistema rápido e intuitivo criado por DM Scotty baseado em rolagens de d6 contra Target Number 3 (ou dados com Boon/Bane). Suporte a dados milagrosos e Karma.
+
+---
+
+## 20. True D6 (trued6)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/trued6](https://foundryvtt.com/packages/trued6)
+- **Repositório:** [https://github.com/Cussa/fvtt-true-d6](https://github.com/Cussa/fvtt-true-d6)
+- **Arquitetura & Especificidades:**
+  - Motor nacional focado na flexibilidade de dados d6 com combate ágil e cálculo direto de acertos e ferimentos.
+
+---
+
+## 21. Cordel RPG (cordelrpg)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/cordelrpg](https://foundryvtt.com/packages/cordelrpg)
+- **Repositório:** [https://github.com/coppolaop/CordelRPG](https://github.com/coppolaop/CordelRPG)
+- **Arquitetura & Especificidades:**
+  - RPG nacional com temáticas de literatura de cordel, xilogravuras e sertão fantástico brasileiro com rolagens temáticas e fichas ilustradas no estilo xilográfico.
+
+---
+
+## 22. Universal Tabletop System (universal-tabletop-system)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/universal-tabletop-system](https://foundryvtt.com/packages/universal-tabletop-system)
+- **Repositório:** [https://github.com/MetaMorphic-Digital/universal-tabletop-system](https://github.com/MetaMorphic-Digital/universal-tabletop-system)
+- **Arquitetura & Especificidades:**
+  - Framework sandbox genérico para prototipação e construção rápida de regras independentes sem código.
+
+---
+
+## 23. 7th Sea 2nd Edition (svnsea2e)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/svnsea2e](https://foundryvtt.com/packages/svnsea2e)
+- **Repositório:** [https://github.com/Detailing-the-Realm/svnsea2e/](https://github.com/Detailing-the-Realm/svnsea2e/)
+- **Arquitetura & Especificidades:**
+  - RPG de capa e espada da John Wick Presents / Chaosium.
+  - Pool de d10 somados em conjuntos de 10 (chamados de **Aumentos / Raises**), que os heróis gastam para realizar proezas e evitar consequências durante as sequências de ação dramáticas.
+
+---
+
+## 24. Cortex Prime (cortexprime)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/cortexprime](https://foundryvtt.com/packages/cortexprime)
+- **Repositório:** [https://github.com/Secular12/cortexprime](https://github.com/Secular12/cortexprime)
+- **Arquitetura & Especificidades:**
+  - Kit de ferramentas modular de dados poliédricos (d4 a d12).
+  - Montagem de pool de dados a partir de traços (Atributos, Distinções, Habilidades), rolando todos e escolhendo 2 para o **Total** e 1 para o **Dado de Efeito (Effect Die)**. 1s geram Complicações/Oportunidades para o Narrador.
+
+---
+
+## 25. Mausritter (mausritter)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/mausritter](https://foundryvtt.com/packages/mausritter)
+- **Repositório:** [https://github.com/Futil/foundry-mausritter](https://github.com/Futil/foundry-mausritter)
+- **Arquitetura & Especificidades:**
+  - RPG Into the Odd de bravos ratos exploradores (Losing Games).
+  - **Inventário em Grid Visual:** Fichas de personagem com slots em grade onde itens, feitiços e condições são representados como cartões com formatos físicos (armas ocupam 2 mãos, condições ocupam espaço de mochila).
+
+---
+
+## 26. TRPG / Tormenta RPG Clássico (trpg)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/trpg](https://foundryvtt.com/packages/trpg)
+- **Repositório:** [https://github.com/mclemente/fvtt-trpg](https://github.com/mclemente/fvtt-trpg)
+- **Arquitetura & Especificidades:**
+  - A edição clássica d20 de Tormenta RPG (sistema OGL 3.5 com regras consolidadas da Jambô Editora).
+
+---
+
+## 27. Shinobi no Sho & Shinobi no Sho Revamp (shinobinosho & shinobi-no-sho-revamp)
+- **Pacotes Foundry:**
+  - Shinobi no Sho: [https://foundryvtt.com/packages/shinobinosho](https://foundryvtt.com/packages/shinobinosho)
+  - Shinobi no Sho Revamp: [https://foundryvtt.com/packages/shinobi-no-sho-revamp](https://foundryvtt.com/packages/shinobi-no-sho-revamp)
+- **Repositórios:**
+  - Shinobi no Sho: [https://github.com/SouOWendel/shinobi-no-sho](https://github.com/SouOWendel/shinobi-no-sho)
+  - Shinobi no Sho Revamp: [https://github.com/NelaTrex/shinobi-no-sho-revamp](https://github.com/NelaTrex/shinobi-no-sho-revamp)
+- **Arquitetura & Especificidades:**
+  - Sistemas dedicados a RPG ninja e anime tático com suporte a Jutsus, consumo de Chakra e combates rápidos.
+
+---
+
+## 28. Ronin (ronin-foundryvtt)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/ronin-foundryvtt](https://foundryvtt.com/packages/ronin-foundryvtt)
+- **Repositório:** [https://github.com/andrewschetera/ronin-foundryvtt](https://github.com/andrewschetera/ronin-foundryvtt)
+- **Arquitetura & Especificidades:**
+  - RPG de combate solitário e cooperativo com samurais e ronins errantes no Japão feudal mítico.
+
+---
+
+## 29. Project FU / Fabula Ultima (projectfu)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/projectfu](https://foundryvtt.com/packages/projectfu)
+- **Repositório:** [https://github.com/League-of-Fabulous-Developers/FoundryVTT-Fabula-Ultima](https://github.com/League-of-Fabulous-Developers/FoundryVTT-Fabula-Ultima)
+- **Arquitetura & Especificidades:**
+  - RPG inspirado em JRPGs clássicos (Need Games / Emanuele Galletto).
+  - Rolagens de **2 atributos em dados escalonados** (ex: d8 + d10). Crítico quando ambos os dados caem no mesmo número (6+) e Fumble quando ambos caem em 1. O dado de High Roll (HR) determina o cálculo de dano e eficácia de magias.
+  - Relógios de progresso (Clocks), Pontos Fabula e Pontos Ultima.
+
+---
+
+## 30. Goblin Slayer TTRPG (gs)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/gs](https://foundryvtt.com/packages/gs)
+- **Repositório:** [https://github.com/Rostaen/goblin-slayer-ttrpg](https://github.com/Rostaen/goblin-slayer-ttrpg)
+- **Arquitetura & Especificidades:**
+  - RPG oficial japonês baseado na franquia Goblin Slayer (Group SNE / Kumo Kagyu).
+  - Testes baseados em 2d6 + Habilidade + Perícia contra Dificuldade com críticos em 12 e desastres em 2.
+

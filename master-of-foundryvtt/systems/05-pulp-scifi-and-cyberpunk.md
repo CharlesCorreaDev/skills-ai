@@ -60,8 +60,64 @@
 ---
 
 ## 7. Triangle Agency (triangleagency) & Invincible RPG (invincible)
+- **Pacotes Foundry:**
+  - Invincible: [https://foundryvtt.com/packages/invincible](https://foundryvtt.com/packages/invincible)
 - **Repositórios:**
   - Triangle Agency: [https://www.twincitiesrpg.com/mystyldyne/triangleagency](https://www.twincitiesrpg.com/mystyldyne/triangleagency)
   - Invincible: [https://github.com/hodpub/invincible](https://github.com/hodpub/invincible)
 - **Especificidades:**
   - Investigação corporativa anômala e super-heróis cinéticos com interfaces personalizadas no Foundry.
+
+---
+
+## 8. Lancer Mech TTRPG (lancer)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/lancer](https://foundryvtt.com/packages/lancer)
+- **Repositório:** [https://github.com/Eranziel/foundryvtt-lancer](https://github.com/Eranziel/foundryvtt-lancer)
+- **Arquitetura & Especificidades:**
+  - RPG de combate tático de mechas da Massif Press (Miguel Lopez e Tom Parkinson Morgan).
+  - Integração profunda com COMP/CON (importação de builds e dados JSON de pilotos/mechas).
+  - Gerenciamento de Calor (*Heat*), Estresse do Reator (*Reactor Stress*), Estrutura (*Structure Damage*) e dados de Precisão/Dificuldade (d6s que cancelam).
+
+---
+
+## 9. Warhammer 40,000: Imperium Maledictum (impmal)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/impmal](https://foundryvtt.com/packages/impmal)
+- **Repositório Oficial:** [https://github.com/moo-man/ImpMal-FoundryVTT](https://github.com/moo-man/ImpMal-FoundryVTT)
+- **Arquitetura & Especificidades:**
+  - Sistema investigativo e sombrio de Warhammer 40k da Cubicle 7 baseado em d100.
+  - Cálculo de Níveis de Sucesso (SL) usando o dígito das dezenas, Zonas de Combate táticas e gestão de Patronos e Influência de Facções.
+
+---
+
+## 10. OpenD6 Space (od6s)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/od6s](https://foundryvtt.com/packages/od6s)
+- **Repositório:** [https://gitlab.com/vtt2/opend6-space](https://gitlab.com/vtt2/opend6-space)
+- **Arquitetura & Especificidades:**
+  - Motor clássico OpenD6 espacial (Star Wars D6 / West End Games).
+  - Rolagens de atributos/perícias em número de d6s (ex: 4D+2) com o Dado Selvagem (*Wild Die* que explode em 6 e gera complicações em 1).
+
+---
+
+## 11. Fallout 2d20 (fallout)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/fallout](https://foundryvtt.com/packages/fallout)
+- **Repositório:** [https://github.com/Muttley/foundryvtt-fallout](https://github.com/Muttley/foundryvtt-fallout)
+- **Arquitetura & Especificidades:**
+  - Sistema 2d20 da Modiphius Entertainment ambientado no deserto pós-nuclear de Fallout.
+  - Gerenciamento de Pontos de Ação (AP) de grupo, Dados de Combate (CD d6 estilizados para dano e efeitos de Radiação/Efeito), Localização de Acerto no corpo e desgaste de Armas e Servoarmaduras (Power Armor).
+
+---
+
+## 12. CAIN (cain)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/cain](https://foundryvtt.com/packages/cain)
+- **Repositório:** [https://github.com/diabeatz96/cain](https://github.com/diabeatz96/cain)
+- **Arquitetura & Especificidades:**
+  - RPG de exorcistas psíquicos e horrores biomórficos cinemáticos com fichas estilizadas e mecânicas de dano corporal e tensão psicológica.
+
+---
+
+## 13. Wasteland RPG (fvtt-wasteland)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/fvtt-wasteland](https://foundryvtt.com/packages/fvtt-wasteland)
+- **Repositório:** [https://www.uberwald.me/gitea/public/fvtt-wasteland](https://www.uberwald.me/gitea/public/fvtt-wasteland)
+- **Arquitetura & Especificidades:**
+  - RPG tático pós-apocalíptico com regras de escassez, sobrevivência e combate balístico no ermo.
+

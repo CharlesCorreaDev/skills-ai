@@ -18,13 +18,13 @@ Its purpose is to guide developers, module creators, and AI Agents in avoiding r
 
 | Category | Guide File | Major Systems Covered |
 | :--- | :--- | :--- |
-| **01. Heroic Fantasy, D20 & Duality Dice** | [`01-d20-and-fantasy.md`](01-d20-and-fantasy.md) | D&D 5e (Official + PT-BR), D&D 3.5e, Pathfinder 2e (Rule Elements), Daggerheart (2d12 Hope & Fear), Tormenta 20, Old Dragon 2e, Draw Steel (MCDM), Advanced Roleplay System (Rolemaster). |
+| **01. Heroic Fantasy, D20 & Duality Dice** | [`01-d20-and-fantasy.md`](01-d20-and-fantasy.md) | D&D 5e (Official + PT-BR), D&D 3.5e, Pathfinder 2e (Rule Elements), Level Up A5E, OSE, Swords & Wizardry, 13th Age (Archmage), Daggerheart, Tormenta 20, Old Dragon 2e, Draw Steel (MCDM), DC20 RPG, Shadowdark, Nimble 5e, Skyfall RPG & Fastplay, Beyond the Wall, Mini D20, ARS. |
 | **02. Storyteller & World of Darkness** | [`02-storyteller-and-world-of-darkness.md`](02-storyteller-and-world-of-darkness.md) | WoD20 (Vampire, Werewolf, Mage), Vampire V5, WoD5E, WoD6E, Changeling 5E, KULT: Divinity Lost. |
-| **03. Investigation & Cosmic Horror** | [`03-investigative-and-horror.md`](03-investigative-and-horror.md) | Call of Cthulhu 7e, Delta Green, GUMSHOE, Cthulhu Dark, Arkham Horror RPG. |
+| **03. Investigation & Cosmic Horror** | [`03-investigative-and-horror.md`](03-investigative-and-horror.md) | Call of Cthulhu 7e, Delta Green, GUMSHOE, Cthulhu Dark, Arkham Horror RPG, Ordem Paranormal RPG (v2 & 2e), Casos Insólitos. |
 | **04. Year Zero Engine (Free League)** | [`04-year-zero-engine.md`](04-year-zero-engine.md) | Year Zero Roller, Alien RPG, Blade Runner, Vaesen, Twilight: 2000, Forbidden Lands, Coriolis (TGD, Overhaul, YZE), Mutant: Year Zero, Dragonbane, The Walking Dead Universe (TWDU). |
-| **05. Sci-Fi, Cyberpunk & Pulp** | [`05-pulp-scifi-and-cyberpunk.md`](05-pulp-scifi-and-cyberpunk.md) | Cyberpunk RED Core, Cyberpunk 2020, Shadowrun 5e/6e, CBR+PNK, Invincible RPG, Triangle Agency, Cosmere RPG, Warhammer 40k: Wrath & Glory. |
-| **06. Narrative, PbtA & FitD** | [`06-narrative-and-pbta-fitd.md`](06-narrative-and-pbta-fitd.md) | Blades in the Dark, PbtA Generic, City of Mist, Fate Core/Accelerated, Perils & Princesses (*Perigos & Princesas*). |
-| **07. Generic & Rules-Light Systems** | [`07-generic-and-rules-light.md`](07-generic-and-rules-light.md) | GURPS 4e Game Aid, Savage Worlds (SWADE Official + PT-BR), Custom System Builder (CSB), Simple Worldbuilding, TinyD6, 3D&T Alpha, 3D&T Victory, ABEA, Ars Magica 5e, The Witcher TRPG, Shadow of the Demon Lord / Weird Wizard. |
+| **05. Sci-Fi, Cyberpunk, Mecha & Space** | [`05-pulp-scifi-and-cyberpunk.md`](05-pulp-scifi-and-cyberpunk.md) | Cyberpunk RED Core, Cyberpunk 2020, Shadowrun 5e/6e, CBR+PNK, Lancer Mech, Warhammer 40k (Wrath & Glory, Imperium Maledictum), OpenD6 Space, Fallout 2d20, CAIN, Wasteland, Cosmere RPG, Invincible, Triangle Agency. |
+| **06. Narrative, PbtA & FitD** | [`06-narrative-and-pbta-fitd.md`](06-narrative-and-pbta-fitd.md) | Blades in the Dark, PbtA Generic, Dungeon World, City of Mist, Fate Core/Accelerated, Perils & Princesses (*Perigos & Princesas*). |
+| **07. Generic, Classic & Rules-Light Systems** | [`07-generic-and-rules-light.md`](07-generic-and-rules-light.md) | GURPS 4e, Savage Worlds (SWADE), Basic RolePlaying (BRP), Tagmar & Tagmar 3.0, Warhammer Fantasy 4e (WFRP4e), Zweihänder & Reforged, Legend of the Five Rings (L5R 4e/5e), Mutants & Masterminds 3e, Cypher System, Symbaroum, Age of Sigmar Soulbound, ICRPG (Master Edition & Core), EZD6, True D6, Cordel RPG, Universal Tabletop System, 7th Sea 2e, Cortex Prime, Mausritter, TRPG (Tormenta clássico), Shinobi no Sho & Revamp, Ronin, Fabula Ultima (Project FU), Goblin Slayer TTRPG, CSB, Worldbuilding, 3D&T Alpha/Victory, ABEA, Ars Magica 5e, The One Ring 2e, The Witcher, Shadow of the Demon Lord / Weird Wizard, TinyD6. |
 
 ---
 
@@ -51,7 +51,7 @@ If a developer or user requests support for an RPG system that is **not** curren
 
 ### 📌 Visão Geral & Índice dos Sistemas
 
-Esta base de conhecimento cataloga a arquitetura técnica, repositórios oficiais, ganchos (`Hooks`), particularidades de `DataModel`, tratamento de rolagens e armadilhas comuns para **mais de 60 dos sistemas mais populares** do ecossistema Foundry Virtual Tabletop.
+Esta base de conhecimento cataloga a arquitetura técnica, repositórios oficiais, ganchos (`Hooks`), particularidades de `DataModel`, tratamento de rolagens e armadilhas comuns para **mais de 80 dos sistemas mais populares** do ecossistema Foundry Virtual Tabletop.
 
 Seu propósito é orientar desenvolvedores, criadores de módulos e Agentes de IA a evitar conflitos de execução, erros de migração de esquemas e violações de termos de licença.
 
@@ -61,13 +61,13 @@ Seu propósito é orientar desenvolvedores, criadores de módulos e Agentes de I
 
 | Categoria | Arquivo do Guia | Principais Sistemas Cobertos |
 | :--- | :--- | :--- |
-| **01. Fantasia Heroica, D20 & Duality Dice** | [`01-d20-and-fantasy.md`](01-d20-and-fantasy.md) | D&D 5e (Oficial + PT-BR), D&D 3.5e, Pathfinder 2e (Rule Elements), Daggerheart (2d12 Hope & Fear), Tormenta 20, Old Dragon 2e, Draw Steel (MCDM), Advanced Roleplay System (Rolemaster). |
+| **01. Fantasia Heroica, D20 & Duality Dice** | [`01-d20-and-fantasy.md`](01-d20-and-fantasy.md) | D&D 5e (Oficial + PT-BR), D&D 3.5e, Pathfinder 2e (Rule Elements), Level Up A5E, OSE, Swords & Wizardry, 13th Age (Archmage), Daggerheart, Tormenta 20, Old Dragon 2e, Draw Steel (MCDM), DC20 RPG, Shadowdark, Nimble 5e, Skyfall RPG & Fastplay, Beyond the Wall, Mini D20, ARS. |
 | **02. Storyteller & Mundo das Trevas** | [`02-storyteller-and-world-of-darkness.md`](02-storyteller-and-world-of-darkness.md) | WoD20 (Vampiro, Lobisomem, Mago), Vampiro V5, WoD5E, WoD6E, Changeling 5E, KULT: Divinity Lost. |
-| **03. Investigação & Horror Cósmico** | [`03-investigative-and-horror.md`](03-investigative-and-horror.md) | Call of Cthulhu 7e, Delta Green, GUMSHOE, Cthulhu Dark, Arkham Horror RPG. |
+| **03. Investigação & Horror Cósmico** | [`03-investigative-and-horror.md`](03-investigative-and-horror.md) | Call of Cthulhu 7e, Delta Green, GUMSHOE, Cthulhu Dark, Arkham Horror RPG, Ordem Paranormal RPG (v2 & 2e), Casos Insólitos. |
 | **04. Year Zero Engine (Fria Ligan)** | [`04-year-zero-engine.md`](04-year-zero-engine.md) | Year Zero Roller, Alien RPG, Blade Runner, Vaesen, Twilight: 2000, Forbidden Lands, Coriolis (TGD, Overhaul, YZE), Mutant: Year Zero, Dragonbane, The Walking Dead Universe (TWDU). |
-| **05. Sci-Fi, Cyberpunk & Pulp** | [`05-pulp-scifi-and-cyberpunk.md`](05-pulp-scifi-and-cyberpunk.md) | Cyberpunk RED Core, Cyberpunk 2020, Shadowrun 5e/6e, CBR+PNK, Invincible RPG, Triangle Agency, Cosmere RPG, Warhammer 40k: Wrath & Glory. |
-| **06. Narrativos, PbtA & FitD** | [`06-narrative-and-pbta-fitd.md`](06-narrative-and-pbta-fitd.md) | Blades in the Dark, PbtA Genérico, City of Mist, Fate Core/Accelerated, Perigos & Princesas (*Perils & Princesses*). |
-| **07. Genéricos & Regras Customizadas** | [`07-generic-and-rules-light.md`](07-generic-and-rules-light.md) | GURPS 4e Game Aid, Savage Worlds (SWADE Oficial + PT-BR), Custom System Builder (CSB), Simple Worldbuilding, TinyD6, 3D&T Alpha, 3D&T Victory, ABEA, Ars Magica 5e, The Witcher TRPG, Shadow of the Demon Lord / Weird Wizard. |
+| **05. Sci-Fi, Cyberpunk, Mecha & Espaço** | [`05-pulp-scifi-and-cyberpunk.md`](05-pulp-scifi-and-cyberpunk.md) | Cyberpunk RED Core, Cyberpunk 2020, Shadowrun 5e/6e, CBR+PNK, Lancer Mech, Warhammer 40k (Wrath & Glory, Imperium Maledictum), OpenD6 Space, Fallout 2d20, CAIN, Wasteland, Cosmere RPG, Invincible, Triangle Agency. |
+| **06. Narrativos, PbtA & FitD** | [`06-narrative-and-pbta-fitd.md`](06-narrative-and-pbta-fitd.md) | Blades in the Dark, PbtA Genérico, Dungeon World, City of Mist, Fate Core/Accelerated, Perigos & Princesas (*Perils & Princesses*). |
+| **07. Genéricos, Clássicos & Regras Leves** | [`07-generic-and-rules-light.md`](07-generic-and-rules-light.md) | GURPS 4e, Savage Worlds (SWADE), Basic RolePlaying (BRP), Tagmar & Tagmar 3.0, Warhammer Fantasy 4e (WFRP4e), Zweihänder & Reforged, Legend of the Five Rings (L5R 4e/5e), Mutants & Masterminds 3e, Cypher System, Symbaroum, Age of Sigmar Soulbound, ICRPG (Master Edition & Core), EZD6, True D6, Cordel RPG, Universal Tabletop System, 7th Sea 2e, Cortex Prime, Mausritter, TRPG (Tormenta clássico), Shinobi no Sho & Revamp, Ronin, Fabula Ultima (Project FU), Goblin Slayer TTRPG, CSB, Worldbuilding, 3D&T Alpha/Victory, ABEA, Ars Magica 5e, The One Ring 2e, The Witcher, Shadow of the Demon Lord / Weird Wizard, TinyD6. |
 
 ---
 

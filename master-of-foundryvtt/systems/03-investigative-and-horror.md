@@ -46,6 +46,31 @@
 ---
 
 ## 5. Arkham Horror RPG (arkham-horror-rpg-fvtt)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/arkham-horror-rpg-fvtt](https://foundryvtt.com/packages/arkham-horror-rpg-fvtt)
 - **Repositório:** [https://github.com/MrTheBino/arkham-horror-rpg-fvtt](https://github.com/MrTheBino/arkham-horror-rpg-fvtt)
 - **Arquitetura & Especificidades:**
   - Sistema da Edge Studio / Fantasy Flight Games baseado no sistema Dynamic Pool System com dados de 6 faces estilizados.
+
+---
+
+## 6. Ordem Paranormal RPG (ordemparanormal2 & ordem-paranormal-2e)
+- **Pacotes Foundry:**
+  - Ordem Paranormal 2: [https://foundryvtt.com/packages/ordemparanormal2](https://foundryvtt.com/packages/ordemparanormal2)
+  - Ordem Paranormal 2e FVTT: [https://foundryvtt.com/packages/ordem-paranormal-2e](https://foundryvtt.com/packages/ordem-paranormal-2e)
+- **Repositórios:**
+  - Antonio Monteiro: [https://github.com/antoniohbmonteiro/ordemparanormal2](https://github.com/antoniohbmonteiro/ordemparanormal2)
+  - SergioSJS: [https://github.com/SergioSJS/ordem-paranormal-2e-fvtt](https://github.com/SergioSJS/ordem-paranormal-2e-fvtt)
+- **Arquitetura & Especificidades:**
+  - Sistema brasileiro de investigação paranormal e terror criado por Cellbit / Jambô Editora.
+  - Rolagem baseada em pool de d20 (quantidade de dados igual ao Atributo, escolhendo o maior valor) somado à Perícia. Margem de ameaça para Acertos Críticos e dano multiplicado.
+  - Gerenciamento detalhado de Pontos de Vida (PV), Pontos de Esforço (PE), Sanidade (SAN), Nex (% de Exposição Paranormal) e Rituais com elementos do Outro Lado (Sangue, Morte, Conhecimento, Energia, Medo).
+
+---
+
+## 7. Casos Insólitos (casos-insolitos)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/casos-insolitos](https://foundryvtt.com/packages/casos-insolitos)
+- **Repositório:** [https://github.com/douglasbaiense/casos-insolitos-foundry](https://github.com/douglasbaiense/casos-insolitos-foundry)
+- **Arquitetura & Especificidades:**
+  - RPG nacional de investigação sobrenatural e mistério urbano.
+  - Fichas estilizadas para casos misteriosos com mecânicas de pistas, dedução investigativa e gestão de trauma psicológico.
+

@@ -15,12 +15,18 @@
 
 ---
 
-## 2. Powered by the Apocalypse Genérico (pbta)
-- **Repositório Oficial:** [https://github.com/asacolips-projects/pbta](https://github.com/asacolips-projects/pbta)
+## 2. Powered by the Apocalypse Genérico & Dungeon World (pbta & dungeonworld)
+- **Pacotes Foundry:**
+  - PbtA Genérico: [https://foundryvtt.com/packages/pbta](https://foundryvtt.com/packages/pbta)
+  - Dungeon World Oficial: [https://foundryvtt.com/packages/dungeonworld](https://foundryvtt.com/packages/dungeonworld)
+- **Repositórios Oficiais:**
+  - PbtA Core: [https://github.com/asacolips-projects/pbta](https://github.com/asacolips-projects/pbta)
+  - Dungeon World: [https://github.com/asacolips-projects/dungeonworld](https://github.com/asacolips-projects/dungeonworld)
 - **Jogos Suportados via Configuração:** Dungeon World, Monster of the Week, Apocalypse World, Masks, Avatar Legends, Urban Shadows, etc.
 - **Arquitetura & Especificidades:**
   - Motor altamente configurável em JSON/TOML para definir estatísticas, movimentos básicos, avanços e Playbooks.
   - Rolagem padrão 2d6 + Atributo: 10+ (Sucesso Forte), 7-9 (Sucesso Fraco), 6- (Falha/Miss).
+  - Dungeon World possui fichas dedicadas com classes de fantasia clássica, dano por classe de personagem e gestão de vínculos (*Bonds*).
 - **Armadilhas Comuns:**
   - Ao criar um sistema baseado em PbtA, declare a estrutura em `game.pbta` ou na chave de configuração do mundo para evitar sobrescrever a matriz de estatísticas padrão.
 
