@@ -58,6 +58,55 @@ For studying third-party systems and modules directly in the browser or via auto
 
 ---
 
+### 🚀 How to Install & Use this Skill in Your Favorite AI Agent
+
+This skill is compatible with modern AI coding assistants and CLI agents (e.g., **Antigravity, Claude Code, Cursor, Copilot CLI, Gemini Code Assist, Windsurf, Roo Code, Cline, Ollama / Local LLMs**).
+
+#### Option 1: Install from GitHub via Agent Customizations / Skills Root
+Clone or copy the `master-of-foundryvtt` folder into your agent's global or workspace skills directory:
+
+```bash
+# 1. Clone this repository (or copy the master-of-foundryvtt directory)
+git clone https://github.com/CharlesCorreaDev/skills-ai.git
+
+# 2. Link or copy to your agent's skill folder:
+# For Antigravity / Gemini CLI:
+# Global: ~/.gemini/config/skills/master-of-foundryvtt (or %USERPROFILE%\.gemini\config\skills\master-of-foundryvtt on Windows)
+# Workspace: .agents/skills/master-of-foundryvtt
+
+# For Claude Code:
+# Global: ~/.claude/skills/master-of-foundryvtt
+# Workspace: .claude/skills/master-of-foundryvtt
+
+# For Cursor / Windsurf:
+# Place inside .cursor/rules/ or reference SKILL.md in project rules (.cursorrules / .windsurfrules)
+```
+
+#### Option 2: Direct Workspace Integration
+Simply drop the `master-of-foundryvtt/` folder inside your Foundry VTT module or system project root:
+```text
+my-foundry-system/
+├── src/
+├── system.json
+└── .agents/
+    └── skills/
+        └── master-of-foundryvtt/   <-- Entire skill folder here
+```
+
+#### 💬 How to Prompt Your AI Agent
+Once loaded, the AI Agent automatically detects `SKILL.md`. You can invoke it naturally or explicitly:
+
+- **Developing a New System (v14):**
+  > *"Create a new Foundry VTT v14 system using ApplicationV2 and TypeDataModel for a d20-based modern horror game."*
+- **Migrating Modules from v11/v12 to v14:**
+  > *"Analyze this module's sheet code and migrate it from legacy Application to ApplicationV2 following the Master of Foundry VTT v14 standards."*
+- **Connecting via MCP:**
+  > *"Connect to my local Foundry VTT server using the ninjos-foundry-mcp server and inspect the active actors in the world."*
+- **Investigating System Rules & Compendiums:**
+  > *"Using the master-of-foundryvtt knowledge base, show me how to register custom roll formulas and active effects for Savage Worlds Adventure Edition (SWADE)."*
+
+---
+
 ### 🛡️ Autonomous Error Recovery & Self-Healing Protocol (For AI Agents)
 
 When an AI Agent encounters errors during skill installation, execution, or environment setup:
@@ -85,6 +134,55 @@ Ela consolida a base de conhecimento oficial, artigos, termos de licença, integ
 - Criação de **Módulos Adicionais** (`module.json`, Configurações, Sockets, libWrapper, Hooks).
 - Guia nativo de **SSL, HTTPS e Let's Encrypt** ([`kb/07-ssl-and-https.md`](kb/07-ssl-and-https.md)) introduzido na v14.369.
 - Ferramentas web para inspeção e estudo reverso de código de repositórios do ecossistema.
+
+---
+
+### 🚀 Como Instalar e Usar no seu Agente de IA Favorito
+
+Esta skill é universal e funciona com os principais agentes e assistentes de código com IA (**Antigravity, Claude Code, Cursor, Copilot CLI, Gemini Code Assist, Windsurf, Roo Code, Cline, Ollama / LLMs Locais**).
+
+#### Opção 1: Instalação via Diretório de Skills / Customizações
+Clone o repositório ou copie a pasta `master-of-foundryvtt` para a pasta de skills do seu assistente:
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/CharlesCorreaDev/skills-ai.git
+
+# 2. Vincule ou copie a pasta master-of-foundryvtt para o diretório de skills:
+# No Antigravity / Gemini CLI:
+# Global: ~/.gemini/config/skills/master-of-foundryvtt (ou %USERPROFILE%\.gemini\config\skills\master-of-foundryvtt no Windows)
+# Workspace local: .agents/skills/master-of-foundryvtt
+
+# No Claude Code:
+# Global: ~/.claude/skills/master-of-foundryvtt
+# Workspace local: .claude/skills/master-of-foundryvtt
+
+# No Cursor / Windsurf:
+# Copie para .cursor/rules/ ou referencie o SKILL.md no seu .cursorrules ou .windsurfrules
+```
+
+#### Opção 2: Integração Direta no Repositório do seu Módulo ou Sistema
+Você pode colocar a pasta `master-of-foundryvtt/` dentro da raiz do seu projeto de módulo ou sistema:
+```text
+meu-modulo-foundry/
+├── src/
+├── module.json
+└── .agents/
+    └── skills/
+        └── master-of-foundryvtt/   <-- Pasta completa da skill aqui
+```
+
+#### 💬 Exemplos de Comandos e Prompts para o Agente
+Com a skill ativa, seu agente reconhece automaticamente as diretrizes do `SKILL.md`. Experimente prompts como:
+
+- **Desenvolvimento de Novo Sistema (v14):**
+  > *"Crie a base de um novo sistema para Foundry VTT v14 utilizando ApplicationV2 e TypeDataModel para um RPG de investigação cósmica."*
+- **Migração de Fichas Legadas:**
+  > *"Migre esta ficha de ator feita no Application antigo do v11 para ApplicationV2 com template Handlebars limpo no padrão v14."*
+- **Inspeção de Mundo em Tempo Real via MCP:**
+  > *"Conecte ao meu servidor Foundry local usando o ninjos-foundry-mcp e liste todos os atores e itens do compêndio."*
+- **Desenvolvimento de Módulos e Hooks:**
+  > *"Crie um módulo com um hook de 'renderActorSheet' que injete um botão de rolagem rápida e envie notificações sonoras."*
 
 ---
 
