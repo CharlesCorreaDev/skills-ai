@@ -60,7 +60,16 @@ For studying third-party systems and modules directly in the browser or via auto
 
 ### 🚀 How to Install & Use this Skill in Your Favorite AI Agent
 
-This skill is compatible with modern AI coding assistants and CLI agents (e.g., **Antigravity, Claude Code, Cursor, Copilot CLI, Gemini Code Assist, Windsurf, Roo Code, Cline, Ollama / Local LLMs**).
+#### ⚡ Fast Installation via `npx skills` (Skills.sh & Agent Skills Directory)
+The fastest way to install this skill directly into your AI coding assistant (Antigravity, Claude Code, Cursor, Windsurf, etc.) is via the official **`skills`** CLI:
+
+```bash
+# Install directly from GitHub into your current project:
+npx skills add CharlesCorreaDev/skills-ai --skill master-of-foundryvtt
+
+# Or install it globally for your user across all projects:
+npx skills add CharlesCorreaDev/skills-ai --skill master-of-foundryvtt -g
+```
 
 #### Option 1: Install from GitHub via Agent Customizations / Skills Root
 Clone or copy the `master-of-foundryvtt` folder into your agent's global or workspace skills directory:
@@ -139,7 +148,16 @@ Ela consolida a base de conhecimento oficial, artigos, termos de licença, integ
 
 ### 🚀 Como Instalar e Usar no seu Agente de IA Favorito
 
-Esta skill é universal e funciona com os principais agentes e assistentes de código com IA (**Antigravity, Claude Code, Cursor, Copilot CLI, Gemini Code Assist, Windsurf, Roo Code, Cline, Ollama / LLMs Locais**).
+#### ⚡ Instalação Rápida via `npx skills` (Skills.sh & Diretório Agent Skills)
+A maneira mais rápida de instalar esta skill diretamente no seu agente de IA (Antigravity, Claude Code, Cursor, Windsurf, etc.) é utilizando a CLI oficial do **`skills`**:
+
+```bash
+# Instalar diretamente no projeto atual:
+npx skills add CharlesCorreaDev/skills-ai --skill master-of-foundryvtt
+
+# Ou instalar globalmente para seu usuário (todos os projetos):
+npx skills add CharlesCorreaDev/skills-ai --skill master-of-foundryvtt -g
+```
 
 #### Opção 1: Instalação via Diretório de Skills / Customizações
 Clone o repositório ou copie a pasta `master-of-foundryvtt` para a pasta de skills do seu assistente:
