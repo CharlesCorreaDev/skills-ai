@@ -1,0 +1,9 @@
+# Local environment & agents customizations
+.agents/
+.gemini/
+.claude/
+*.env
+*.env.local
+node_modules/
+dist/
+scratch/
