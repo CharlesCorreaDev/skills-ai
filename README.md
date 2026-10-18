@@ -115,7 +115,7 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 | **`website-for-markdown`** | Hybrid web scraping engine (Firecrawl + Playwright/Chromium) for clean Markdown extraction from web pages and SPAs. | Active | [View README](website-for-markdown/README.md) |
 | **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | Active | [View README](website-for-skill/README.md) |
 | **`image-to-prompt`** | High-fidelity visual reverse engineering: extracts art styles, eras, clothing, lighting, camera angles, and facial physiognomy to create generative prompts (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Active | [View README](image-to-prompt/README.md) |
-| **`master-of-foundryvtt`** | Master development, architecture, scripting, and rule ingestion suite for Foundry VTT (v8–v14) by GM Charles Corrêa. | Active | [View README](master-of-foundryvtt/README.md) |
+| **`master-of-foundryvtt`** | Master development, architecture, scripting, rule ingestion suite (100+ RPG systems) and native MCP Server for Foundry VTT (v8–v14) by GM Charles Corrêa. | Active | [View README](master-of-foundryvtt/README.md) |
 | **`php-dev-expert`** | Senior Software Engineer skill focused on PHP (7.4 to 8.5), modern patterns, debugging, and frameworks. | Active | [View Skill](php-dev-expert/SKILL.md) |
 | **`python-dev-expert`** | Python expert skill covering Web (Django/FastAPI), CLI, Data Science, and modern type hinting. | Active | [View Skill](python-dev-expert/SKILL.md) |
 | **`docker-master`** | DevOps specialist for Docker optimization, security, local environments, and smart OS detection. | Active | [View Skill](docker-master/SKILL.md) |
@@ -161,12 +161,19 @@ python image-to-prompt/scripts/analyze_image.py "path/to/image.png"
 ```
 👉 *Detailed instructions:* [image-to-prompt README](image-to-prompt/README.md)
 
-#### 6. Master of Foundry VTT Development & Rule Ingestion
-Consult versions, develop systems, modules, macros, and ingest RPG rulebooks:
+#### 6. Master of Foundry VTT Development, Rule Ingestion & Native MCP Server
+Run the native zero-dependency MCP server or query Foundry versions, create packages, scenes, walls, lights, and automated traps:
 ```bash
+# Run the native Node.js MCP Server (JSON-RPC 2.0 stdio):
+node master-of-foundryvtt/mcp/foundry_mcp_server.js
+
+# Scaffold a production-ready v12/v14 package (module or system):
+python master-of-foundryvtt/scripts/scaffold_package.py --id "my-system" --title "My System" --type system
+
+# Consult version migration guides:
 python master-of-foundryvtt/scripts/version_advisor.py 12
 ```
-👉 *Detailed instructions:* [master-of-foundryvtt README](master-of-foundryvtt/README.md)
+👉 *Detailed instructions:* [master-of-foundryvtt README](master-of-foundryvtt/README.md) & [MCP Installation Guide](master-of-foundryvtt/mcp/INSTALLATION.md)
 
 ---
 ---
@@ -259,7 +266,7 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 | **`website-for-markdown`** | Motor híbrido de raspagem web (Firecrawl + Playwright/Chromium) para extração de Markdown limpo a partir de sites e SPAs. | Ativo | [Ver README](website-for-markdown/README.md) |
 | **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | Ativo | [Ver README](website-for-skill/README.md) |
 | **`image-to-prompt`** | Engenharia reversa visual de alta fidelidade: extrai traços artísticos, época, vestimentas, iluminação, fisionomia e câmeras para gerar prompts de imagem/vídeo (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Ativo | [Ver README](image-to-prompt/README.md) |
-| **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting e ingestão de regras para Foundry VTT (v8–v14) por GM Charles Corrêa. | Ativo | [Ver README](master-of-foundryvtt/README.md) |
+| **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting, ingestão de regras (+100 sistemas de RPG) e Servidor MCP Nativo para Foundry VTT (v8–v14) por GM Charles Corrêa. | Ativo | [Ver README](master-of-foundryvtt/README.md) |
 | **`php-dev-expert`** | Skill de Engenheiro de Software Sênior focada em PHP (7.4 a 8.5), arquitetura moderna, debugging e frameworks. | Ativo | [Ver Skill](php-dev-expert/SKILL.md) |
 | **`python-dev-expert`** | Especialista Python abordando Web (Django/FastAPI), Automações, Data Science e tipagem avançada. | Ativo | [Ver Skill](python-dev-expert/SKILL.md) |
 | **`docker-master`** | Especialista DevOps para otimização de imagens Docker, segurança, Compose e detecção inteligente de SO. | Ativo | [Ver Skill](docker-master/SKILL.md) |
@@ -305,12 +312,19 @@ python image-to-prompt/scripts/analyze_image.py "caminho/da/imagem.png"
 ```
 👉 *Consulte o guia completo:* [README do image-to-prompt](image-to-prompt/README.md)
 
-#### 6. Mestria em Desenvolvimento e Ingestão de Regras para Foundry VTT
-Consulte versões, desenvolva sistemas, módulos, macros e ingira livros de RPG:
+#### 6. Mestria em Desenvolvimento, Ingestão de Regras e Servidor MCP Nativo para Foundry VTT
+Execute o servidor MCP nativo com zero dependências externas ou consulte versões, crie pacotes, cenas, paredes, luzes e armadilhas automatizadas:
 ```bash
+# Executar o Servidor MCP Nativo em Node.js (JSON-RPC 2.0 via stdio):
+node master-of-foundryvtt/mcp/foundry_mcp_server.js
+
+# Gerar scaffold de módulo ou sistema pronto para Foundry v12/v14:
+python master-of-foundryvtt/scripts/scaffold_package.py --id "meu-sistema" --title "Meu Sistema" --type system
+
+# Consultar guia de migração e versões:
 python master-of-foundryvtt/scripts/version_advisor.py 12
 ```
-👉 *Consulte o guia completo:* [README do master-of-foundryvtt](master-of-foundryvtt/README.md)
+👉 *Consulte o guia completo:* [README do master-of-foundryvtt](master-of-foundryvtt/README.md) & [Manual de Instalação do MCP](master-of-foundryvtt/mcp/INSTALLATION.md)
 
 ---
 
