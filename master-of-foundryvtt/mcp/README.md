@@ -68,8 +68,16 @@ O agente deve solicitar ao desenvolvedor as informações necessárias que não 
 {
   "mcpServers": {
     "master-of-foundryvtt-mcp": {
-      "command": "python",
-      "args": ["e:/Projetos_Docker/skills-ai/master-of-foundryvtt/mcp/foundry_mcp_server.py"]
+      "command": "node",
+      "args": ["e:/Projetos_Docker/skills-ai/master-of-foundryvtt/mcp/foundry_mcp_server.js"],
+      "env": {
+        "FOUNDRY_URL": "http://localhost:30000",
+        "FOUNDRY_WORLD": "<NOME_DO_MUNDO>",
+        "FOUNDRY_USER": "Gamemaster",
+        "FOUNDRY_PASSWORD": "<SENHA_DO_GM_SE_HOUVER>",
+        "FOUNDRY_ADMIN_KEY": "<SENHA_MASTER_ADMIN>",
+        "FOUNDRY_DATA_PATH": "C:/Users/<SEU_USUARIO>/AppData/Local/FoundryVTT/Data"
+      }
     },
     "ninjos-foundry-mcp": {
       "command": "npx",

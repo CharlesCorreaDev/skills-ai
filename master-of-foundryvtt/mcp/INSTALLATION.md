@@ -37,7 +37,7 @@ Abra o seu arquivo de configuração MCP:
 - **No Antigravity IDE / Claude Desktop (Windows):** `%APPDATA%\Claude\claude_desktop_config.json` ou `mcp_config.json` do seu espaço de trabalho.
 - **No Linux/macOS:** `~/.config/Claude/claude_desktop_config.json`
 
-Adicione o servidor sob a chave `mcpServers`:
+Adicione o servidor sob a chave `mcpServers`, informando opcionalmente as credenciais do seu mundo e a chave de administrador:
 
 ```json
 {
@@ -46,11 +46,24 @@ Adicione o servidor sob a chave `mcpServers`:
       "command": "node",
       "args": [
         "e:/Projetos_Docker/skills-ai/master-of-foundryvtt/mcp/foundry_mcp_server.js"
-      ]
+      ],
+      "env": {
+        "FOUNDRY_URL": "http://localhost:30000",
+        "FOUNDRY_WORLD": "<NOME_DO_MUNDO_EX_dnd5e-campaign>",
+        "FOUNDRY_USER": "Gamemaster",
+        "FOUNDRY_PASSWORD": "<SENHA_DO_GM_SE_HOUVER>",
+        "FOUNDRY_ADMIN_KEY": "<SENHA_MASTER_ADMIN_DO_FOUNDRY>",
+        "FOUNDRY_DATA_PATH": "C:/Users/<SEU_USUARIO>/AppData/Local/FoundryVTT/Data"
+      }
     }
   }
 }
 ```
+
+#### 🔑 O que cada credencial permite ao Agente fazer:
+- **`FOUNDRY_USER` & `FOUNDRY_PASSWORD` (Acesso GM ao Mundo):** Permite ao agente atuar com permissões de Mestre para criar e preencher fichas completas de **Atores (PCs, NPCs, monstros)**, forjar **Itens/Magias/Armas**, publicar **Diários/Handouts** e criar **Tabelas Roláveis** e **Macros**.
+- **`FOUNDRY_ADMIN_KEY` (Chave Master de Administração):** Permite ao agente gerenciar pacotes, instalar e ativar sistemas/módulos, criar backups e gerenciar mundos na tela de Setup do Foundry VTT.
+- **`FOUNDRY_DATA_PATH` (Acesso Direto ao Disco):** Permite leitura e escrita direta em bancos de dados `.db` / ClassicLevel e compêndios locais.
 
 *(Se preferir usar Python, basta trocar `"command": "python"` e o arquivo para `foundry_mcp_server.py`).*
 
