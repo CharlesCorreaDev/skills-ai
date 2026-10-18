@@ -61,15 +61,18 @@ When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 
 - If installation or execution fails, diagnose root causes and self-correct iteratively.
 - For extra system packages or external tools, request explicit user permission before proceeding.
 
+#### 7. Monthly Knowledge Base Refresh Protocol
+- The Knowledge Base, release notes, and policies should be refreshed periodically (e.g., once a month) using the built-in update script `scripts/update_foundry_docs.py` or scheduled via `/schedule` to ensure API methods, deprecations, and system links stay 100% current.
+
 #### 8. Interactive Clarification, Content Ingestion & Transparent Scoping Protocol (CRITICAL)
 Whenever the user or Game Master asks to create or configure ANY game asset or development unit, including:
-- **Cenas e Mapas:** Dimensões, iluminação, paredes, portas, níveis de escuridão, clima, trilha sonora associada.
-- **Paredes e Iluminação:** Tipo de bloqueio (visão, movimento, som), portas secretas, cor e animação de tochas/luzes.
-- **Fichas de Personagem, NPCs e Criaturas:** Atributos, perícias, itens embutidos, vantagens, fraquezas, armaduras, dano e biografia.
-- **Itens e Equipamentos:** Mecânica detalhada, custo, peso, dano, alcance, propriedades e efeitos ativos.
-- **Diários, Handouts e Documentos:** Conteúdo narrativo, mistérios, permissões de jogadores, imagens e formatação.
-- **Tabelas Roláveis, Baralhos e Cartas:** Fórmulas de dados, resultados ponderados, naipes, artes e regras de compra/descarte.
-- **Compêndios, Módulos e Sistemas:** Escopo da arquitetura, dependências, versão do Foundry e compatibilidade com livros oficiais.
+- **Scenes and Maps:** Dimensions, lighting, walls, doors, darkness levels, weather, and linked soundtracks.
+- **Walls and Lighting:** Occlusion types (sight, movement, sound), secret doors, light colors, and animations.
+- **Character, NPC, and Creature Sheets:** Attributes, skills, embedded items, edges, hindrances, armor, damage, and lore.
+- **Items and Equipment:** Detailed mechanics, cost, weight, damage, range, traits, and active effects.
+- **Journals, Handouts, and Notes:** Narrative content, mysteries, player permissions, images, and formatting.
+- **Rollable Tables, Decks, and Cards:** Dice formulas, weighted results, suits, faces, and draw/discard rules.
+- **Compendiums, Modules, and Systems:** Architectural scope, dependencies, target Foundry version, and rulebook alignment.
 
 **The Agent MUST STRICTLY follow these rules:**
 1. **Never Assume or Hallucinate Incomplete Data:** If the request lacks mechanics, specific book references, or aesthetic intent, **do NOT blindly guess or create half-empty placeholder assets**.
@@ -116,6 +119,7 @@ Whenever the user or Game Master asks to create or configure ANY game asset or d
   - [AI & LLM Integration Guide (Integrate AI, Phil's Assistant, AI Actors)](guides/ai-and-llm-integration.md)
   - [Development Skills Matrix & Engineering Domains](guides/development-skills-matrix.md)
   - [Macros, Tables & Compendiums](guides/macros-and-tables.md)
+  - [Automated Traps & Triggers (Sequencer & Monk's Active Tile Triggers)](guides/automated-traps-and-triggers.md)
   - [Active Effects & Statuses](guides/active-effects.md)
   - [Troubleshooting & Conflict Isolation](guides/troubleshooting.md)
 - [Policies & Governance](policies/)
@@ -182,6 +186,25 @@ Ao desenvolver ou prestar suporte para sistemas de RPG:
 #### 7. Protocolo de Atualização Mensal da Base de Conhecimento
 - A base de conhecimento, notas de lançamento e políticas do Foundry VTT devem ser atualizadas periodicamente (aproximadamente 1 vez ao mês) executando o script `scripts/update_foundry_docs.py` ou via agendamento com `/schedule` para garantir que novos métodos da API, migrações e sistemas permaneçam sempre em dia.
 
+#### 8. Protocolo de Esclarecimento Interativo, Ingestão de Livros e Escopo Transparente (CRÍTICO)
+Sempre que o usuário ou Mestre solicitar a criação ou configuração de QUALQUER recurso de jogo, incluindo:
+- **Cenas e Mapas:** Dimensões, iluminação, paredes, portas, níveis de escuridão, clima e trilha sonora associada.
+- **Paredes e Iluminação:** Tipo de bloqueio (visão, movimento, som), portas secretas, cor e animação de tochas/luzes.
+- **Fichas de Personagem, NPCs e Criaturas:** Atributos, perícias, itens embutidos, vantagens, fraquezas, armaduras, dano e biografia.
+- **Itens e Equipamentos:** Mecânica detalhada, custo, peso, dano, alcance, propriedades e efeitos ativos.
+- **Diários, Handouts e Documentos:** Conteúdo narrativo, mistérios, permissões de jogadores, imagens e formatação.
+- **Tabelas Roláveis, Baralhos e Cartas:** Fórmulas de dados, resultados ponderados, naipes, artes e regras de compra/descarte.
+- **Compêndios, Módulos e Sistemas:** Escopo da arquitetura, dependências, versão do Foundry e compatibilidade com livros oficiais.
+
+**O Agente DEVE OBRIGATORIAMENTE seguir estas regras:**
+1. **Nunca Supor ou Alucinar Dados Incompletos:** Se o pedido não contiver mecânicas completas, referências de livros ou intenção estética, **NÃO tente adivinhar nem crie recursos vazios/placeholders**.
+2. **Portão Obrigatório de Questionamento:** O Agente **DEVE questionar ativamente o usuário**, solicitando:
+   - Livro de regras oficial, suplemento ou cenário base (ex: SWADE Básico, Compêndios, D&D 5e PHB/MM, PF2e Remaster, Tormenta20 JdA).
+   - Estágio do personagem, nível, ND/CR do monstro ou papel tático exato (lacaio, chefe, carta selvagem).
+   - Tema do mapa, escala pretendida (tamanho do quadrado em metros/pés), atmosfera de iluminação e pontos de interesse.
+   - Modificações caseiras (homebrews), módulos integrados existentes ou detalhes de ambientação.
+3. **Plano Transparente e Explicativo:** Antes de gerar arquivos ou salvar no mundo, explique claramente qual estrutura será montada, por que ela atende ao esquema do sistema e como ficará no mundo. Peça confirmação ou ajustes ao usuário.
+
 ---
 
 ### 📚 Estrutura e Navegação Rápida
@@ -222,6 +245,7 @@ Ao desenvolver ou prestar suporte para sistemas de RPG:
   - [Sockets e Comunicação Cliente-Servidor (Nativo e socketlib)](guides/sockets.md)
   - [Gerenciamento de Combate, Tracker e Iniciativa](guides/combat.md)
   - [Macros, Tabelas e Compêndios](guides/macros-and-tables.md)
+  - [Armadilhas Automáticas & Gatilhos (Sequencer & Monk's Active Tile Triggers)](guides/automated-traps-and-triggers.md)
   - [Efeitos Ativos e Condições](guides/active-effects.md)
   - [Resolução de Erros e Isolamento de Conflitos](guides/troubleshooting.md)
 - [Políticas e Governança](policies/)
