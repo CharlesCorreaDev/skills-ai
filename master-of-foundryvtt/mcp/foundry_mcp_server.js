@@ -354,10 +354,25 @@ function toolCreateItem(args) {
     }
   };
 
+  let savedPath = null;
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  if (worldId) {
+    const dataPath = getLocalDataPath();
+    const worldDir = path.join(dataPath, "worlds", worldId);
+    if (fs.existsSync(worldDir)) {
+      const exportDir = path.join(worldDir, "mcp_generated");
+      fs.mkdirSync(exportDir, { recursive: true });
+      const safeName = args.name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      savedPath = path.join(exportDir, `item_${safeName}.json`);
+      fs.writeFileSync(savedPath, JSON.stringify(itemDoc, null, 2), "utf8");
+    }
+  }
+
   return JSON.stringify({
     status: "success",
     item_name: args.name,
     item_type: args.type,
+    local_file_saved: savedPath,
     document_payload: itemDoc
   }, null, 2);
 }
@@ -384,10 +399,25 @@ function toolCreateJournalHandout(args) {
     }
   };
 
+  let savedPath = null;
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  if (worldId) {
+    const dataPath = getLocalDataPath();
+    const worldDir = path.join(dataPath, "worlds", worldId);
+    if (fs.existsSync(worldDir)) {
+      const exportDir = path.join(worldDir, "mcp_generated");
+      fs.mkdirSync(exportDir, { recursive: true });
+      const safeName = args.title.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      savedPath = path.join(exportDir, `journal_${safeName}.json`);
+      fs.writeFileSync(savedPath, JSON.stringify(journalDoc, null, 2), "utf8");
+    }
+  }
+
   return JSON.stringify({
     status: "success",
     journal_title: args.title,
     pages_count: journalDoc.pages.length,
+    local_file_saved: savedPath,
     document_payload: journalDoc
   }, null, 2);
 }
@@ -420,11 +450,26 @@ function toolCreateRollableTable(args) {
     }
   };
 
+  let savedPath = null;
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  if (worldId) {
+    const dataPath = getLocalDataPath();
+    const worldDir = path.join(dataPath, "worlds", worldId);
+    if (fs.existsSync(worldDir)) {
+      const exportDir = path.join(worldDir, "mcp_generated");
+      fs.mkdirSync(exportDir, { recursive: true });
+      const safeName = args.name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      savedPath = path.join(exportDir, `table_${safeName}.json`);
+      fs.writeFileSync(savedPath, JSON.stringify(tableDoc, null, 2), "utf8");
+    }
+  }
+
   return JSON.stringify({
     status: "success",
     table_name: args.name,
     formula: tableDoc.formula,
     total_outcomes: results.length,
+    local_file_saved: savedPath,
     document_payload: tableDoc
   }, null, 2);
 }
