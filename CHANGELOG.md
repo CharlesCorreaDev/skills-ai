@@ -7,6 +7,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.5.0] - 2026-10-18
+
+### Added / Adicionado
+- **Servidor MCP Nativo (`master-of-foundryvtt-mcp`):**
+  - Implementado servidor MCP autônomo e sem dependências externas em Node.js (`mcp/foundry_mcp_server.js`) e Python (`mcp/foundry_mcp_server.py`).
+  - Suporte completo a geração e manipulação de: Atores, Itens, Cenas (paredes, iluminação, portas), Combates, Playlists de som, Baralhos de cartas e Compêndios.
+  - Conexão e sincronização direta com instâncias ativas do Foundry VTT e mundos locais.
+  - Manual passo a passo de instalação para Antigravity IDE, Claude Desktop, Claude Code e Cursor (`mcp/INSTALLATION.md`).
+- **Guia de Armadilhas Automáticas & Gatilhos (`guides/automated-traps-and-triggers.md`):**
+  - Documentação de integração bilíngue para o motor de efeitos visuais **Sequencer** e o motor de gatilhos em tiles **Monk's Active Tile Triggers (MATT)**.
+  - Mapeamento de dependências e pacotes recomendados (`JB2A`, `Item Piles`, `Automated Animations`, `Token Magic FX`).
+- **Mandato 8 para Agentes de IA:**
+  - Protocolo obrigatório de esclarecimento interativo, ingestão de livros/manuais e escopo transparente antes da criação de qualquer recurso de jogo.
+- **Expansão do Catálogo para +100 Sistemas de RPG:**
+  - Adição de novos sistemas: Cosmere RPG, Mörk Borg, Cy_Borg, Star Wars FFG, Star Trek Adventures, Traveller, Starfinder, Achtung! Cthulhu 2d20, Crônicas RPG, Sword World 2.5, Shinobigami, Wilderfeast, Mythic GME e HERO System.
+- **Suporte Oficial à Loja do Foundry VTT:**
+  - Diretriz e ferramentas para pesquisa de conteúdo comercial e módulos licenciados (`https://www.foundryvtt.store/search?q=...`).
+
+### Changed / Alterado
+- **Assinatura e Atribuição:** Atualizada a assinatura nos metadados de geração para *"Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br"*.
+- **Compatibilidade v14:** Ajustada tipagem de resultados de tabelas roláveis (`RollTable`) para formato string `text` em conformidade com o DataModel do Foundry v12–v14.
+- **Configuração Git:** Criação do `.gitignore` para preservar a pasta local `.agents/`.
+
+---
+
 ## [1.4.0] - 2026-09-10
 
 ### Added / Adicionado
