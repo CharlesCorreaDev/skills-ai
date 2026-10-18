@@ -304,7 +304,7 @@ function toolCreateActor(args) {
     items: args.items || [],
     flags: {
       "master-of-foundryvtt": {
-        generatedBy: "Master of Foundry VTT MCP",
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
         timestamp: new Date().toISOString()
       }
     }
@@ -348,7 +348,7 @@ function toolCreateItem(args) {
     },
     flags: {
       "master-of-foundryvtt": {
-        generatedBy: "Master of Foundry VTT MCP",
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
         timestamp: new Date().toISOString()
       }
     }
@@ -393,7 +393,7 @@ function toolCreateJournalHandout(args) {
     ],
     flags: {
       "master-of-foundryvtt": {
-        generatedBy: "Master of Foundry VTT MCP",
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
         timestamp: new Date().toISOString()
       }
     }
@@ -444,7 +444,7 @@ function toolCreateRollableTable(args) {
     displayRoll: true,
     flags: {
       "master-of-foundryvtt": {
-        generatedBy: "Master of Foundry VTT MCP",
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
         timestamp: new Date().toISOString()
       }
     }
@@ -483,7 +483,7 @@ function toolCreateMacro(args) {
     img: "icons/svg/dice-target.svg",
     flags: {
       "master-of-foundryvtt": {
-        generatedBy: "Master of Foundry VTT MCP",
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
         timestamp: new Date().toISOString()
       }
     }
