@@ -428,7 +428,7 @@ function toolCreateRollableTable(args) {
     const range = r.range || [currentRange, currentRange];
     currentRange = range[1] + 1;
     return {
-      type: 0, // Text
+      type: "text", // CONST.TABLE_RESULT_TYPES.TEXT ('text' in v12/v13/v14)
       text: r.text,
       weight: r.weight || 1,
       range: range,
