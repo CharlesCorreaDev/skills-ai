@@ -53,3 +53,22 @@
 - **Repositório:** [https://github.com/helloshyann/perilsandprincesses](https://github.com/helloshyann/perilsandprincesses)
 - **Arquitetura & Especificidades:**
   - RPG de fantasia de contos de fadas e aventura (*Perigos & Princesas*) com mecânicas narrativas de presentes mágicos (Gifts), coragem, determinação e fichas estilizadas para princesas heroínas.
+
+---
+
+## 6. Crônicas RPG (cronicasrpg)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/cronicasrpg](https://foundryvtt.com/packages/cronicasrpg)
+- **Repositório:** [https://github.com/coppolaop/cronicasrpg](https://github.com/coppolaop/cronicasrpg)
+- **Arquitetura & Especificidades:**
+  - Sistema narrativo brasileiro criado por Pedro Coppola para contação de histórias com mecânicas leves e focadas em conflitos dramáticos.
+  - Fichas estilizadas, foco em aspectos descritivos de personagens, recursos dramáticos e rolagens ágeis.
+
+---
+
+## 7. The Witch Is Dead (TheWitchIsDead)
+- **Repositório:** [https://github.com/SaikoMdfk/TheWitchIsDead](https://github.com/SaikoMdfk/TheWitchIsDead)
+- **Arquitetura & Especificidades:**
+  - RPG minimalista e cômico/trágico de uma página de Grant Howitt, onde os jogadores interpretam familiares animais buscando vingança pelo assassinato de sua bruxa.
+  - Testes baseados em 1d10 contra o valor de um dos quatro traços dos animais: Raposa, Rato, Lebre, Coruja, etc.
+  - Ficha de personagem simplificada com rolagem direta de feitiços caóticos e instintos animais.
+

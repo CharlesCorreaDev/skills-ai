@@ -28,7 +28,9 @@ This suite encapsulates official documentation, knowledge base articles, policie
 | **Sockets & Client-Server RPC** | [`guides/sockets.md`](guides/sockets.md) (Native `game.socket` & `socketlib`) |
 | **Combat Tracker & Automation** | [`guides/combat.md`](guides/combat.md) (`Combat`, `Combatant`, `CombatTracker`) |
 | **Famous Systems Knowledge Base** | [`systems/README.md`](systems/README.md) (D&D, PF2e, WoD, SWADE, Tormenta20, YZE, GURPS, CoC7, etc.) |
-| **Official Systems Directory** | [https://foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems) |
+| **Official Systems Directory** | [https://foundryvtt.com/packages/systems?page=1](https://foundryvtt.com/packages/systems?page=1) (com paginação `?page=N`) |
+| **Official Modules Directory** | [https://foundryvtt.com/packages/modules?page=1](https://foundryvtt.com/packages/modules?page=1) (com paginação `?page=N`) |
+| **Official Foundry VTT Store** | [https://www.foundryvtt.store/search?q=Savage+Worlds](https://www.foundryvtt.store/search?q=Savage+Worlds) (busca por sistema: `?q=<termo>`) |
 | **Knowledge Base (Official & Guides)** | [`kb/`](kb/) & [https://foundryvtt.com/kb/](https://foundryvtt.com/kb/) |
 | **SSL, HTTPS & Let's Encrypt (v14+)** | [`kb/07-ssl-and-https.md`](kb/07-ssl-and-https.md) (Native SSL in v14.369 vs Reverse Proxy) |
 | **Releases & Changelogs** | [https://foundryvtt.com/releases/](https://foundryvtt.com/releases/) |

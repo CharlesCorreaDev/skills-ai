@@ -298,3 +298,52 @@
   - RPG oficial japonês baseado na franquia Goblin Slayer (Group SNE / Kumo Kagyu).
   - Testes baseados em 2d6 + Habilidade + Perícia contra Dificuldade com críticos em 12 e desastres em 2.
 
+---
+
+## 31. Sword World 2.5 (sw25)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/sw25](https://foundryvtt.com/packages/sw25)
+- **Repositório:** [https://github.com/jeannjeann/sw25-fvtt](https://github.com/jeannjeann/sw25-fvtt)
+- **Arquitetura & Especificidades:**
+  - O RPG de fantasia mais influente e popular do Japão (Group SNE), ambientado no mundo de Raxia.
+  - Baseado no motor 2d6 com Tabela de Avaliação de Poder (*Power Table* / *Rating Table*) para determinar dano de armas e feitiços.
+  - Sistema de classes escalonadas de aventureiro, magias de diversas tradições (Feiticeiro, Conjurador, Sacerdote, Magitech), dados de crescimento de atributos e combate em áreas simplificadas.
+
+---
+
+## 32. Shinobigami (shinobigami)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/shinobigami](https://foundryvtt.com/packages/shinobigami)
+- **Repositório:** [https://github.com/ksx0330/FVTT-Shinobigami-System](https://github.com/ksx0330/FVTT-Shinobigami-System)
+- **Arquitetura & Especificidades:**
+  - O cultuado RPG japonês da série Saikoro Fiction (Bouken企画 / Adventure Planning Service) focado em drama ninja e intriga secreta.
+  - Foco na matriz de Perícias (*Skill Matrix* com distância em saltos na tabela determinando o modificador de dificuldade ao usar perícias não treinadas).
+  - Gestão de Segredos (*Secrets / Himitsu*), Laços emocionais (*Emotional Bonds*) e Ciclos de Cenas estruturados em Fases (Introdução, Meio, Clímax e Desfecho).
+
+---
+
+## 33. Wilderfeast (wilderfeast)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/wilderfeast](https://foundryvtt.com/packages/wilderfeast)
+- **Repositório:** [https://github.com/Khaali-dev/wilderfeast](https://github.com/Khaali-dev/wilderfeast)
+- **Arquitetura & Especificidades:**
+  - RPG pós-pós-apocalíptico de caçadores gastronômicos de monstros (KC Shi / Horrible Guild).
+  - Sistema de dados de Estilo e Ação (d8s e d6s) com dados de Técnica.
+  - Mecânicas de Caçada e Culinária: os personagens absorvem traços e poderes dos monstros gigantes (monstros-ingredientes) após cozinhá-los e compartilharem refeições em banquete comunitário.
+
+---
+
+## 34. Mythic RPG / Mythic Game Master Emulator (mythic)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/mythic](https://foundryvtt.com/packages/mythic)
+- **Repositório:** [https://github.com/AugmenTab/mythic](https://github.com/AugmenTab/mythic)
+- **Arquitetura & Especificidades:**
+  - Sistema universal e motor solo / emulador de mestre criado por Tana Pigeon (Word Mill Games).
+  - Utiliza a lendária **Tabela de Destino (Fate Chart)** com cálculo percentual 1d100 cruzando Odds (Probabilidade) e o Fator de Caos (Chaos Factor de 1 a 9).
+  - Níveis de resposta automatizados: *Exceptional Yes*, *Yes*, *No*, *Exceptional No* e Eventos Aleatórios (*Random Events*) baseados em Ação e Tema.
+
+---
+
+## 35. HERO System 6th Edition (fvtt-hero-system-6)
+- **Repositório:** [https://www.uberwald.me/gitea/public/fvtt-hero-system-6](https://www.uberwald.me/gitea/public/fvtt-hero-system-6)
+- **Arquitetura & Especificidades:**
+  - O consagrado sistema genérico e de super-heróis em 3d6 (Champions / Hero Games).
+  - Construção minuciosa baseada em pontos de personagem (Character Points) com poderes, modificadores de vantagens e desvantagens, cálculo de OCV/DCV e escala de tempo em segmentos de velocidade (*Speed Chart* de 1 a 12 fases).
+
+

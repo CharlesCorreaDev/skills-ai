@@ -81,3 +81,23 @@
 - **Repositório:** [https://github.com/drogres/twdu](https://github.com/drogres/twdu)
 - **Especificidades:**
   - Sobrevivência com medidor de Nível de Ameaça (*Threat Level*) de walkers e dados de Estresse aplicados a encontros mortais.
+
+---
+
+## 11. MÖRK BORG (morkborg)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/morkborg](https://foundryvtt.com/packages/morkborg)
+- **Repositório Oficial:** [https://github.com/fvtt-fria-ligan/morkborg-foundry-vtt](https://github.com/fvtt-fria-ligan/morkborg-foundry-vtt)
+- **Especificidades:**
+  - Fantasia apocalíptica e sombria com design gráfico punk/heavy metal (Free League / Ockult Örtmästare Games).
+  - Testes d20 + Habilidade contra Dificuldade (DR 12 padrão). Defesa e esquiva feitas pelos jogadores com armadura atuando como redução de dano (d2 a d6).
+  - Calendário do Juízo Final (Miséria / *Miseries*), tabelas de catástrofes dos Salmos e rolagens automatizadas de presságios (*Omens*).
+
+---
+
+## 12. CY_BORG (cy_borg)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/cy_borg](https://foundryvtt.com/packages/cy_borg)
+- **Repositório Oficial:** [https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt](https://github.com/fvtt-fria-ligan/cyborg-foundry-vtt)
+- **Especificidades:**
+  - RPG de nanorreligião, revolta cibernética e colapso urbano baseado no motor e estética punk do Mörk Borg (Free League / Stockholm Kartell).
+  - Dificuldade DR 12 padrão com testes d20, aplicativos cibernéticos (Apps) que geram corrupção por Nano-parasitas (*Nano Infestation / Glitches*), dívidas corporativas e contagem regressiva de desastres com a Tabela de Manchetes (*Miserable Currencies / Incidents*).
+

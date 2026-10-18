@@ -44,10 +44,16 @@
 ---
 
 ## 5. Cosmere RPG (cosmere-rpg)
-- **Repositório:** [https://github.com/the-metalworks/cosmere-rpg](https://github.com/the-metalworks/cosmere-rpg)
+- **Pacotes Foundry:**
+  - Sistema Core: [https://foundryvtt.com/packages/cosmere-rpg](https://foundryvtt.com/packages/cosmere-rpg)
+  - Stormlight Chasmfiend Compendium: [https://foundryvtt.com/packages/cosmere-rpg-stormlight-chasmfiend-compendium](https://foundryvtt.com/packages/cosmere-rpg-stormlight-chasmfiend-compendium)
+- **Repositórios:**
+  - Sistema Core: [https://github.com/the-metalworks/cosmere-rpg](https://github.com/the-metalworks/cosmere-rpg)
+  - Compendium Aventura: [https://github.com/the-metalworks/stormlight-chasmfiend-compendium-public](https://github.com/the-metalworks/stormlight-chasmfiend-compendium-public)
 - **Arquitetura & Especificidades:**
-  - Sistema oficial para o universo do Cosmere de Brandon Sanderson (Brotherwise Games).
-  - Utiliza o dado de Trama (*Plot Die*) d6 em conjunto com 2d20 de atributos, gerando Oportunidades ou Complicações independentemente do sucesso do teste.
+  - Sistema oficial para o universo do Cosmere de Brandon Sanderson (Brotherwise Games / The Metalworks).
+  - Utiliza o dado de Trama (*Plot Die*) d6 em conjunto com o d20 de teste, gerando Oportunidades ou Complicações independentemente do sucesso da rolagem.
+  - Compêndios integrados com monstros (Chasmfiend), fichas pré-geradas e suporte completo a talentos, habilidades de Investidura e recursos dinâmicos.
 
 ---
 
@@ -120,4 +126,60 @@
 - **Repositório:** [https://www.uberwald.me/gitea/public/fvtt-wasteland](https://www.uberwald.me/gitea/public/fvtt-wasteland)
 - **Arquitetura & Especificidades:**
   - RPG tático pós-apocalíptico com regras de escassez, sobrevivência e combate balístico no ermo.
+
+---
+
+## 14. Star Wars RPG - FFG (starwarsffg)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/starwarsffg](https://foundryvtt.com/packages/starwarsffg)
+- **Repositório:** [https://github.com/StarWarsFoundryVTT/StarWarsFFG](https://github.com/StarWarsFoundryVTT/StarWarsFFG)
+- **Arquitetura & Especificidades:**
+  - Sistema narrativo proprietário da Fantasy Flight Games / Edge Studio cobrindo *Edge of the Empire*, *Age of Rebellion* e *Force and Destiny*.
+  - Sistema de dados narrativos customizados: Dados de Habilidade (d8 verde), Proficiência (d12 amarelo), Dificuldade (d8 roxo), Desafio (d12 vermelho), Amplificação (d6 azul), Complicação (d6 preto) e Força (d12 branco).
+  - Cálculo de Sucessos vs Fracassos, Vantagens vs Ameaças, e Triunfo vs Desespero, com medidor de Pontos de Destino (Destiny Pool) compartilhado entre Jogadores e Mestre.
+
+---
+
+## 15. Star Trek Adventures (sta)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/sta](https://foundryvtt.com/packages/sta)
+- **Repositório:** [https://github.com/mkscho63/sta](https://github.com/mkscho63/sta)
+- **Arquitetura & Especificidades:**
+  - Sistema oficial da Modiphius Entertainment com o motor 2d20 espacial.
+  - Testes com soma de Atributo + Disciplina gerando o Número-Alvo (Target Number), rolando 2d20 a 5d20. Resultados iguais ou menores que a Disciplina contam como 2 sucessos quando aplicável foco de perícia.
+  - Gerenciamento compartilhado de Momentum de tripulação e Ameaça (*Threat*) do Mestre, além de fichas detalhadas para Naves Estelares (*Starships*) e suporte a combate tático de naves.
+
+---
+
+## 16. Traveller Mongoose 2e (twodsix / traveller-foundryvtt)
+- **Repositório Oficial:** [https://github.com/Mongoose-Publishing/traveller-foundryvtt](https://github.com/Mongoose-Publishing/traveller-foundryvtt)
+- **Arquitetura & Especificidades:**
+  - Implementação oficial da Mongoose Publishing baseada no motor clássico 2d6 sci-fi.
+  - Rolagem padrão 2d6 + DM (Modificador de Característica) + Nível de Perícia contra Dificuldade 8+ (Média). Efeito (Effect) medido pela margem acima ou abaixo do alvo.
+  - Fichas completas de viajante, naves espaciais com gerenciamento de energia de reator, componentes, viagens de Salto (*Jump drive*) e comércio interestelar.
+
+---
+
+## 17. Starfinder 1e (starfinder)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/starfinder](https://foundryvtt.com/packages/starfinder)
+- **Repositório:** [https://github.com/foundryvtt-starfinder/foundryvtt-starfinder](https://github.com/foundryvtt-starfinder/foundryvtt-starfinder)
+- **Arquitetura & Especificidades:**
+  - Sistema de Space Fantasy d20 oficial da Paizo Inc.
+  - Separação de Pontos de Vigor (*Stamina Points - SP*), Pontos de Vida (*Hit Points - HP*) e Pontos de Determinação (*Resolve Points - RP*).
+  - Suporte completo a combate espacial em hexágonos com papéis táticos de tripulação (Capitão, Engenheiro, Artilheiro, Piloto, Oficial de Ciência), mechas, computadores customizáveis e magitech.
+
+---
+
+## 18. Achtung! Cthulhu 2d20 (ac2d20)
+- **Pacote Foundry:** [https://foundryvtt.com/packages/ac2d20](https://foundryvtt.com/packages/ac2d20)
+- **Repositório:** [https://github.com/Muttley/foundryvtt-ac2d20](https://github.com/Muttley/foundryvtt-ac2d20)
+- **Arquitetura & Especificidades:**
+  - Sistema cinematográfico 2d20 da Modiphius mesclando Segunda Guerra Mundial secreta, pulpficção, feitiçaria e mitos de Cthulhu.
+  - Mecânica de Momentum de grupo, Ameaça (*Threat*), rolagens de dados de dano de Desafio (Challenge Dice d6 com efeitos especiais), talentos arcanos e armas militares da época.
+
+---
+
+## 19. Shadow City: Blood & Neon (shadowcity-blood-neon-vtt)
+- **Repositório:** [https://github.com/MrTheBino/shadowcity-blood-neon-vtt](https://github.com/MrTheBino/shadowcity-blood-neon-vtt)
+- **Arquitetura & Especificidades:**
+  - RPG cyberpunk urbano visceral e estilizado com estética synthwave e sangue sob neons.
+  - Fichas estilizadas, mecânicas de implantes cibernéticos, tiroteios cinemáticos e gestão de dívida/pressão urbana.
 

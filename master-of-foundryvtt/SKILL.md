@@ -44,13 +44,18 @@ When installing or configuring Model Context Protocol (MCP) servers ([`ninjos-fo
 #### 4. RPG System Ingestion & Multi-System Knowledge Base
 When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 2e, D&D 5e, Savage Worlds, WoD20, Tormenta20, YZE, GURPS, CoC7, Cyberpunk RED**):
 1. Consult the pre-indexed knowledge base under [`systems/`](systems/).
-2. **Dynamic System Discovery:** If the requested RPG system is **not** yet cataloged in the local knowledge base, the Agent **MUST automatically search [https://foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems)** to locate the official package entry, manifest URL, compatibility tags, and the source code repository (GitHub, GitLab, etc.).
+2. **Dynamic System Discovery:** If the requested RPG system is **not** yet cataloged in the local knowledge base, the Agent **MUST automatically search [https://foundryvtt.com/packages/systems?page=1](https://foundryvtt.com/packages/systems?page=1)** (checking paginated listings `?page=2`, `?page=3`, etc., as needed) to locate the official package entry, manifest URL, compatibility tags, and the source code repository (GitHub, GitLab, Gitea, etc.).
 3. Ingest the system's data model, template schema, and sheet architecture into context, and ask the developer for custom rulebook PDFs and the exact installed version.
 
-#### 5. Active Module Audit & Troubleshooting Protocol
-When diagnosing errors, console exceptions, or unexpected UI behavior:
-- The Agent **MUST ask the developer for the list of currently active modules and their versions**.
-- Isolate conflicts by advising binary search testing (`Find the Culprit` / safe mode) and checking `libWrapper` hooks.
+#### 5. Module Recommendation, Premium Content & Troubleshooting Protocol
+- **Module Recommendations for Systems:** Whenever the developer or user asks for module recommendations to enhance a specific RPG system (UI, automation, audio, tokens, sheets, compendiums):
+  - The Agent **MUST consult the official Foundry VTT Modules Directory with pagination support**: [**https://foundryvtt.com/packages/modules?page=1**](https://foundryvtt.com/packages/modules?page=1) (iterating through `?page=2`, `?page=3`, etc., as needed).
+  - Note that while most community modules are cataloged there, some specialized or premium modules (e.g., Patreon-exclusive, developer stores, external GitHub packages) might not appear in this listing. Highlight whether a module is officially listed, open-source, or third-party/paid.
+- **Premium / Commercial Content & Official Store Search:** If the developer is willing to invest or asks for official/premium modules, adventures, rules compendiums, or assets:
+  - The Agent **MUST search the official Foundry VTT Store**: [**https://www.foundryvtt.store/search?q=<QUERY>**](https://www.foundryvtt.store/search?q=Savage+Worlds) replacing the query string with the system name or keywords (e.g., `?q=Savage+Worlds`, `?q=dnd`, `?q=pathfinder`, `?q=warhammer`, `?q=alien`) to find and recommend official commercial packages and license keys.
+- **Active Module Audit & Diagnostics:** When diagnosing errors, console exceptions, or unexpected UI behavior:
+  - The Agent **MUST ask the developer for the list of currently active modules and their versions**.
+  - Isolate conflicts by advising binary search testing (`Find the Culprit` / safe mode) and checking `libWrapper` hooks.
 
 #### 6. Autonomous Error Recovery & Permission Protocol
 - If installation or execution fails, diagnose root causes and self-correct iteratively.
@@ -140,13 +145,18 @@ Ao configurar servidores MCP ([`ninjos-foundry-mcp`](https://github.com/Niclasp1
 #### 4. Protocolo de Ingestão e Conhecimento de Sistemas de RPG
 Ao desenvolver ou prestar suporte para sistemas de RPG:
 1. Consultar a base de conhecimento de mais de 60 sistemas catalogados em [`systems/`](systems/).
-2. **Descoberta Dinâmica de Sistemas Não Catalogados:** Se o sistema solicitado **não** constar na base local da skill, o Agente **DEVE OBRIGATORIAMENTE buscar em [https://foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems)** a página do pacote, a URL do manifesto (`system.json`), as versões compatíveis do Foundry e o repositório oficial do código-fonte (GitHub, GitLab, etc.).
+2. **Descoberta Dinâmica de Sistemas Não Catalogados:** Se o sistema solicitado **não** constar na base local da skill, o Agente **DEVE OBRIGATORIAMENTE buscar no diretório oficial com suporte a paginação [https://foundryvtt.com/packages/systems?page=1](https://foundryvtt.com/packages/systems?page=1)** (consultando as páginas subsequentes `?page=2`, `?page=3`, etc., conforme necessário) a página do pacote, a URL do manifesto (`system.json`), as versões compatíveis do Foundry e o repositório oficial do código-fonte (GitHub, GitLab, Gitea, etc.).
 3. Ingerir a arquitetura de esquemas, fichas e templates do repositório localizado utilizando as ferramentas web de inspeção e engenharia reversa (detalhadas na seção [Extração de Dados de Repositórios](#8-extração-de-dados-de-repositórios-e-engenharia-reversa)), além de solicitar ao desenvolvedor os manuais/PDFs de regras específicas e a versão instalada.
 
-#### 5. Auditoria de Módulos Ativos e Resolução de Erros
-Ao investigar erros no console, exceções ou conflitos visuais:
-- O Agente **DEVE solicitar a lista completa de módulos ativos e suas respectivas versões**.
-- Isolar incompatibilidades orientando testes em modo seguro e inspecionando ganchos (`libWrapper`).
+#### 5. Protocolo de Recomendação de Módulos, Conteúdo Premium e Resolução de Erros
+- **Recomendação de Módulos para Sistemas:** Sempre que o desenvolvedor ou usuário pedir recomendação de módulos para usar com determinado sistema (automação, combate, fichas, interface, iluminação, áudio, compêndios):
+  - O Agente **DEVE OBRIGATORIAMENTE consultar o Diretório Oficial de Módulos do Foundry VTT com suporte a paginação**: [**https://foundryvtt.com/packages/modules?page=1**](https://foundryvtt.com/packages/modules?page=1) (iterando pelas páginas subsequentes `?page=2`, `?page=3`, etc., conforme necessário).
+  - É importante lembrar e esclarecer ao desenvolvedor que, embora a maioria dos módulos comunitários conste nesse diretório oficial, existem módulos específicos, premium ou pagos (ex: Patreon, lojas de criadores, repositórios externos do GitHub) que podem não estar listados nessa página. O Agente deve deixar claro a origem (oficial, comunitário ou comercial/externo).
+- **Conteúdo Comercial & Loja Oficial (Investimento do Desenvolvedor):** Caso o desenvolvedor queira investir dinheiro ou busque suplementos oficiais, compêndios de regras completos, aventuras e módulos premium licenciados:
+  - O Agente **DEVE OBRIGATORIAMENTE pesquisar na Loja Oficial do Foundry VTT**: [**https://www.foundryvtt.store/search?q=<PALAVRA_CHAVE>**](https://www.foundryvtt.store/search?q=Savage+Worlds) substituindo o parâmetro de busca pelo nome do sistema ou produto desejado (ex: `?q=Savage+Worlds`, `?q=dnd`, `?q=pathfinder`, `?q=warhammer`, `?q=alien`, `?q=cthulhu`), recomendando os pacotes e conteúdos oficiais ideais para a demanda.
+- **Auditoria de Módulos Ativos e Resolução de Erros:** Ao investigar erros no console, exceções ou conflitos visuais:
+  - O Agente **DEVE solicitar a lista completa de módulos ativos e suas respectivas versões**.
+  - Isolar incompatibilidades orientando testes em modo seguro e inspecionando ganchos (`libWrapper`).
 
 #### 6. Protocolo de Auto-Correção e Permissão
 - Se houver falhas de execução, diagnosticar e auto-corrigir iterativamente.
