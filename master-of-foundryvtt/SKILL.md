@@ -70,6 +70,7 @@ When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 
 
 - [Model Context Protocol (MCP) Guide](mcp/README.md)
   - [MCP Integration & Configuration](mcp/README.md)
+  - [Native MCP Server Installation Manual (`INSTALLATION.md`)](mcp/INSTALLATION.md)
 - [Famous RPG Systems Knowledge Base](systems/README.md)
   - [Fantasy, D20 & Duality Dice (D&D 5e, PF2e, Daggerheart, T20, OD2e, Draw Steel)](systems/01-d20-and-fantasy.md)
   - [Storyteller & World of Darkness (WoD20, V5, WoD5E, KULT)](systems/02-storyteller-and-world-of-darkness.md)
@@ -98,6 +99,8 @@ When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 
   - [CLI Tools & Compendium Automation (`@foundryvtt/foundryvtt-cli` & `fvtt-world-cli`)](guides/cli-tools.md)
   - [Creating Game Systems](guides/creating-systems.md)
   - [Creating Modules](guides/creating-modules.md)
+  - [AI & LLM Integration Guide (Integrate AI, Phil's Assistant, AI Actors)](guides/ai-and-llm-integration.md)
+  - [Development Skills Matrix & Engineering Domains](guides/development-skills-matrix.md)
   - [Macros, Tables & Compendiums](guides/macros-and-tables.md)
   - [Active Effects & Statuses](guides/active-effects.md)
   - [Troubleshooting & Conflict Isolation](guides/troubleshooting.md)
@@ -171,6 +174,7 @@ Ao desenvolver ou prestar suporte para sistemas de RPG:
 
 - [Guia de Servidores MCP (Model Context Protocol)](mcp/README.md)
   - [Integração e Configuração dos MCPs](mcp/README.md)
+  - [Manual de Instalação do MCP Nativo (`INSTALLATION.md`)](mcp/INSTALLATION.md)
 - [Base de Conhecimento dos Sistemas de RPG Famosos](systems/README.md)
   - [Fantasia Heroica, D20 & Duality Dice (D&D 5e, PF2e, Daggerheart, T20, OD2e, Draw Steel)](systems/01-d20-and-fantasy.md)
   - [Storyteller & Mundo das Trevas (WoD20, V5, WoD5E, KULT)](systems/02-storyteller-and-world-of-darkness.md)
@@ -199,6 +203,8 @@ Ao desenvolver ou prestar suporte para sistemas de RPG:
   - [Ferramentas CLI & Automação de Compêndios (`@foundryvtt/foundryvtt-cli` e `fvtt-world-cli`)](guides/cli-tools.md)
   - [Criando Sistemas de Jogo](guides/creating-systems.md)
   - [Criando Módulos](guides/creating-modules.md)
+  - [Integração de IA & LLMs (Integrate AI, Phil's Assistant, AI Actors)](guides/ai-and-llm-integration.md)
+  - [Matriz de Competências & Especializações de Desenvolvimento](guides/development-skills-matrix.md)
   - [Sockets e Comunicação Cliente-Servidor (Nativo e socketlib)](guides/sockets.md)
   - [Gerenciamento de Combate, Tracker e Iniciativa](guides/combat.md)
   - [Macros, Tabelas e Compêndios](guides/macros-and-tables.md)

@@ -23,10 +23,12 @@ This suite encapsulates official documentation, knowledge base articles, policie
 
 | Category | Reference / Guides |
 |---|---|
-| **Model Context Protocol (MCP)** | [`mcp/README.md`](mcp/README.md) (ninjos-foundry-mcp, foundryvtt-mcp, foundry-vtt-mcp) |
+| **Model Context Protocol (MCP)** | [`mcp/README.md`](mcp/README.md) & [Manual de Instalação (`mcp/INSTALLATION.md`)](mcp/INSTALLATION.md) (Nativo `foundry_mcp_server.py`, ninjos-foundry-mcp, foundryvtt-mcp) |
 | **CLI Tools & Automation** | [`guides/cli-tools.md`](guides/cli-tools.md) (`@foundryvtt/foundryvtt-cli` & `fvtt-world-cli`) |
 | **Sockets & Client-Server RPC** | [`guides/sockets.md`](guides/sockets.md) (Native `game.socket` & `socketlib`) |
 | **Combat Tracker & Automation** | [`guides/combat.md`](guides/combat.md) (`Combat`, `Combatant`, `CombatTracker`) |
+| **AI & LLM Integration** | [`guides/ai-and-llm-integration.md`](guides/ai-and-llm-integration.md) (Integrate AI, Phil's Assistant, AI Actors) |
+| **Development Skills Matrix** | [`guides/development-skills-matrix.md`](guides/development-skills-matrix.md) (14 Engineering Domains & Standards) |
 | **Famous Systems Knowledge Base** | [`systems/README.md`](systems/README.md) (D&D, PF2e, WoD, SWADE, Tormenta20, YZE, GURPS, CoC7, etc.) |
 | **Official Systems Directory** | [https://foundryvtt.com/packages/systems?page=1](https://foundryvtt.com/packages/systems?page=1) (com paginação `?page=N`) |
 | **Official Modules Directory** | [https://foundryvtt.com/packages/modules?page=1](https://foundryvtt.com/packages/modules?page=1) (com paginação `?page=N`) |

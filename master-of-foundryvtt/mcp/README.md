@@ -14,15 +14,19 @@ O **Model Context Protocol (MCP)** é o padrão aberto que permite a agentes de 
 4. **Resolução Rápida de Erros & Conflitos:** Diagnóstico em tempo real inspecionando logs de console, ganchos (`Hooks`) registrados e árvores de dependência do `libWrapper`.
 5. **Automação de Criação de Conteúdo:** Geração instantânea de itens de RPG, magias, NPCs e encontros estruturados diretamente nos bancos de dados do mundo ou compêndios `.db`/ClassicLevel.
 
+> 📖 **Manual de Instalação Rápida:** Consulte o [**Manual de Instalação do MCP Nativo (`INSTALLATION.md`)**](INSTALLATION.md) para o passo a passo com exemplos práticos no Antigravity IDE, Claude Desktop, Claude Code e Cursor.
+
 ---
 
 ## 🛠️ Servidores MCP Recomendados para Foundry VTT
 
-| Repositório MCP | Autor | Foco Principal & Recursos | Tipo de Conexão |
+| Repositório / Servidor MCP | Autor | Foco Principal & Recursos | Tipo de Conexão |
 | :--- | :--- | :--- | :--- |
+| [**master-of-foundryvtt-mcp**](foundry_mcp_server.py) | **Nativo (GM Charles Corrêa)** | Servidor MCP autônomo sem dependências externas. Inspeção de ambiente, busca oficial com paginação, validação de manifestos e gerador de boilerplate. | Python stdio (JSON-RPC 2.0) |
 | [**ninjos-foundry-mcp**](https://github.com/Niclasp1501/ninjos-foundry-mcp) | Niclasp1501 | Consulta e modificação de documentos do mundo, busca semântica em compêndios, execução de comandos e macros. | Conexão HTTP/WebSocket ao Foundry ativo |
 | [**foundryvtt-mcp**](https://github.com/laurigates/foundryvtt-mcp) | laurigates | Integração profunda para desenvolvedores de módulos/sistemas, inspeção de pacotes e depuração. | Sistema de Arquivos / API REST |
 | [**foundry-vtt-mcp**](https://github.com/adambdooley/foundry-vtt-mcp) | adambdooley | Leitura de pacotes LevelDB/ClassicLevel locais, validação estática de schemas e execução rápida. | Local CLI / Node.js stdio |
+| [**foundry-vtt-bridge / GM Puppeteer**](https://mcpmarket.com/server/foundry-vtt-bridge) | Comunidade MCPMarket | Ponte de automação para controle de cenas, combate e diários do mestre via MCP. | HTTP / WebSocket Bridge |
 
 ---
 
@@ -63,6 +67,10 @@ O agente deve solicitar ao desenvolvedor as informações necessárias que não 
 ```json
 {
   "mcpServers": {
+    "master-of-foundryvtt-mcp": {
+      "command": "python",
+      "args": ["e:/Projetos_Docker/skills-ai/master-of-foundryvtt/mcp/foundry_mcp_server.py"]
+    },
     "ninjos-foundry-mcp": {
       "command": "npx",
       "args": ["-y", "ninjos-foundry-mcp"],
