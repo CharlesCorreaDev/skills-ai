@@ -61,10 +61,24 @@ When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 
 - If installation or execution fails, diagnose root causes and self-correct iteratively.
 - For extra system packages or external tools, request explicit user permission before proceeding.
 
-#### 7. Monthly Knowledge Base Refresh Protocol
-- The Knowledge Base, release notes, and policies should be refreshed periodically (e.g., once a month) using the built-in update script `scripts/update_foundry_docs.py` or scheduled via `/schedule` to ensure API methods, deprecations, and system links stay 100% current.
+#### 8. Interactive Clarification, Content Ingestion & Transparent Scoping Protocol (CRITICAL)
+Whenever the user or Game Master asks to create or configure ANY game asset or development unit, including:
+- **Cenas e Mapas:** Dimensões, iluminação, paredes, portas, níveis de escuridão, clima, trilha sonora associada.
+- **Paredes e Iluminação:** Tipo de bloqueio (visão, movimento, som), portas secretas, cor e animação de tochas/luzes.
+- **Fichas de Personagem, NPCs e Criaturas:** Atributos, perícias, itens embutidos, vantagens, fraquezas, armaduras, dano e biografia.
+- **Itens e Equipamentos:** Mecânica detalhada, custo, peso, dano, alcance, propriedades e efeitos ativos.
+- **Diários, Handouts e Documentos:** Conteúdo narrativo, mistérios, permissões de jogadores, imagens e formatação.
+- **Tabelas Roláveis, Baralhos e Cartas:** Fórmulas de dados, resultados ponderados, naipes, artes e regras de compra/descarte.
+- **Compêndios, Módulos e Sistemas:** Escopo da arquitetura, dependências, versão do Foundry e compatibilidade com livros oficiais.
 
----
+**The Agent MUST STRICTLY follow these rules:**
+1. **Never Assume or Hallucinate Incomplete Data:** If the request lacks mechanics, specific book references, or aesthetic intent, **do NOT blindly guess or create half-empty placeholder assets**.
+2. **Mandatory Clarification Gate:** The Agent **MUST question the user**, actively asking for:
+   - Specific rulebook edition, supplement, or setting source (e.g., SWADE Core, Companions, D&D 5e PHB/MM, PF2e Remaster, Tormenta20 JdA).
+   - Character tier, level, monster threat rating, or exact tactical role (minion, boss, wild card).
+   - Map theme, intended scale (grid square size in meters/feet), lighting atmosphere, and points of interest.
+   - Any homebrew tweaks, existing module integrations, or specific lore nuances.
+3. **Transparent & Explanatory Plan:** Before generating or writing files, explain clearly what structure is going to be built, why it fits the system's schema, and how it will appear in the world. Ask the user for confirmation or adjustments.
 
 ### 📚 Structure & Fast-Path Navigation
 
