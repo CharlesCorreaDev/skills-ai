@@ -220,14 +220,126 @@ function handleListTools() {
       }
     },
     {
-      name: "validate_manifest",
-      description: "Performs static validation on a system.json or module.json manifest file for Foundry VTT v10-v14 compliance.",
+      name: "create_scene",
+      description: "Creates a complete Foundry VTT Scene with dimensions, grid settings, darkness level, walls, and ambient lights.",
       inputSchema: {
         type: "object",
         properties: {
-          manifest_path: { type: "string", description: "Absolute path to system.json or module.json." }
+          world_id: { type: "string", description: "Target world ID (optional)." },
+          name: { type: "string", description: "Scene Name (e.g. 'Dungeon Level 1', 'Cyberpunk Alleyway')." },
+          width: { type: "integer", default: 4000 },
+          height: { type: "integer", default: 3000 },
+          grid_size: { type: "integer", default: 100 },
+          grid_type: { type: "integer", default: 1, description: "1 = Square, 2 = Hex Rows, 3 = Hex Columns, 0 = Gridless." },
+          darkness: { type: "number", default: 0.0, description: "Darkness level from 0.0 (daylight) to 1.0 (pitch black)." },
+          background_img: { type: "string", description: "Path to map background image/webp." },
+          walls: {
+            type: "array",
+            description: "List of wall segments [x1, y1, x2, y2, doorType, senseType].",
+            items: { type: "object" }
+          },
+          lights: {
+            type: "array",
+            description: "List of ambient light sources (x, y, dim, bright, color, animation).",
+            items: { type: "object" }
+          }
         },
-        required: ["manifest_path"]
+        required: ["name"]
+      }
+    },
+    {
+      name: "create_combat",
+      description: "Creates or sets up a Combat Encounter Tracker with combatant tokens, initiative rules, and round counter.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          world_id: { type: "string", description: "Target world ID (optional)." },
+          scene_id: { type: "string", description: "Associated Scene ID." },
+          combatants: {
+            type: "array",
+            description: "List of combatant Actor/Token IDs to add to tracker.",
+            items: {
+              type: "object",
+              properties: {
+                name: { type: "string" },
+                actor_id: { type: "string" },
+                initiative: { type: "number" },
+                hidden: { type: "boolean", default: false }
+              },
+              required: ["name"]
+            }
+          }
+        }
+      }
+    },
+    {
+      name: "create_playlist",
+      description: "Creates an Audio Playlist with ambient tracks, combat sound effects, and playback mode.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          world_id: { type: "string", description: "Target world ID (optional)." },
+          name: { type: "string", description: "Playlist Name (e.g. 'Tavern Ambience', 'Epic Boss Battle')." },
+          mode: { type: "integer", default: 1, description: "Playback mode: 0 = Sequential, 1 = Shuffle, 2 = Simultaneous, -1 = Soundboard." },
+          sounds: {
+            type: "array",
+            description: "List of audio tracks in this playlist.",
+            items: {
+              type: "object",
+              properties: {
+                name: { type: "string" },
+                path: { type: "string", description: "Audio file path (e.g. 'worlds/swade-dev/audio/combat.ogg')." },
+                volume: { type: "number", default: 0.5 },
+                repeat: { type: "boolean", default: true }
+              },
+              required: ["name", "path"]
+            }
+          }
+        },
+        required: ["name"]
+      }
+    },
+    {
+      name: "create_deck",
+      description: "Creates a Cards Stack (Deck, Hand, or Pile) such as Action Decks, Tarot, Adventure Cards, or Loot Decks.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          world_id: { type: "string", description: "Target world ID (optional)." },
+          name: { type: "string", description: "Deck Name (e.g. 'Action Deck', 'Baralho de Iniciativa SWADE')." },
+          type: { type: "string", enum: ["deck", "hand", "pile"], default: "deck" },
+          description: { type: "string" },
+          cards: {
+            type: "array",
+            description: "Cards list with suit, value, faces and backs.",
+            items: {
+              type: "object",
+              properties: {
+                name: { type: "string" },
+                suit: { type: "string" },
+                value: { type: "integer" },
+                face_img: { type: "string" }
+              },
+              required: ["name"]
+            }
+          }
+        },
+        required: ["name"]
+      }
+    },
+    {
+      name: "create_compendium_pack",
+      description: "Registers a new Compendium Pack in a world or module (Actors, Items, Journals, Scenes, RollTables, Cards, Macros).",
+      inputSchema: {
+        type: "object",
+        properties: {
+          world_id: { type: "string", description: "Target world ID (e.g. 'swade-dev')." },
+          name: { type: "string", description: "Pack technical name in kebab-case (e.g. 'cyber-weapons', 'boss-actors')." },
+          label: { type: "string", description: "Human visible label (e.g. 'Armas Cyberpunk Customizadas')." },
+          entity_type: { type: "string", enum: ["Actor", "Item", "JournalEntry", "Scene", "RollTable", "Cards", "Macro"], default: "Item" },
+          system: { type: "string", description: "System lock or compatibility tag (e.g. 'swade', 'dnd5e')." }
+        },
+        required: ["name", "label", "entity_type"]
       }
     }
   ];
@@ -497,6 +609,258 @@ function toolCreateMacro(args) {
   }, null, 2);
 }
 
+function toolCreateScene(args) {
+  const sceneDoc = {
+    name: args.name,
+    width: args.width || 4000,
+    height: args.height || 3000,
+    grid: {
+      size: args.grid_size || 100,
+      type: args.grid_type !== undefined ? args.grid_type : 1,
+      color: "#000000",
+      alpha: 0.2
+    },
+    background: {
+      src: args.background_img || null
+    },
+    environment: {
+      darknessLevel: args.darkness !== undefined ? args.darkness : 0.0,
+      globalLight: {
+        enabled: (args.darkness || 0.0) < 0.5
+      }
+    },
+    walls: (args.walls || []).map((w, idx) => ({
+      c: [w.x1 || 0, w.y1 || 0, w.x2 || 100, w.y2 || 100],
+      light: w.light !== undefined ? w.light : 20, // CONST.WALL_SENSE_TYPES.NORMAL
+      sight: w.sight !== undefined ? w.sight : 20,
+      sound: w.sound !== undefined ? w.sound : 20,
+      move: w.move !== undefined ? w.move : 20,
+      door: w.door !== undefined ? w.door : 0
+    })),
+    lights: (args.lights || []).map((l, idx) => ({
+      x: l.x || 500,
+      y: l.y || 500,
+      config: {
+        dim: l.dim || 30,
+        bright: l.bright || 15,
+        color: l.color || "#ff9900",
+        alpha: l.alpha || 0.4,
+        animation: {
+          type: l.animation_type || "torch",
+          speed: l.animation_speed || 5,
+          intensity: l.animation_intensity || 5
+        }
+      }
+    })),
+    ownership: { default: 3 },
+    flags: {
+      "master-of-foundryvtt": {
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
+        timestamp: new Date().toISOString()
+      }
+    }
+  };
+
+  let savedPath = null;
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  if (worldId) {
+    const dataPath = getLocalDataPath();
+    const worldDir = path.join(dataPath, "worlds", worldId);
+    if (fs.existsSync(worldDir)) {
+      const exportDir = path.join(worldDir, "mcp_generated");
+      fs.mkdirSync(exportDir, { recursive: true });
+      const safeName = args.name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      savedPath = path.join(exportDir, `scene_${safeName}.json`);
+      fs.writeFileSync(savedPath, JSON.stringify(sceneDoc, null, 2), "utf8");
+    }
+  }
+
+  return JSON.stringify({
+    status: "success",
+    scene_name: args.name,
+    walls_count: sceneDoc.walls.length,
+    lights_count: sceneDoc.lights.length,
+    local_file_saved: savedPath,
+    document_payload: sceneDoc
+  }, null, 2);
+}
+
+function toolCreateCombat(args) {
+  const combatDoc = {
+    round: 1,
+    turn: 0,
+    scene: args.scene_id || null,
+    combatants: (args.combatants || []).map((c, idx) => ({
+      name: c.name,
+      actorId: c.actor_id || null,
+      initiative: c.initiative !== undefined ? c.initiative : null,
+      hidden: c.hidden || false,
+      defeated: false
+    })),
+    ownership: { default: 3 },
+    flags: {
+      "master-of-foundryvtt": {
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
+        timestamp: new Date().toISOString()
+      }
+    }
+  };
+
+  let savedPath = null;
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  if (worldId) {
+    const dataPath = getLocalDataPath();
+    const worldDir = path.join(dataPath, "worlds", worldId);
+    if (fs.existsSync(worldDir)) {
+      const exportDir = path.join(worldDir, "mcp_generated");
+      fs.mkdirSync(exportDir, { recursive: true });
+      const safeName = (args.scene_id || "combat_encounter").toLowerCase().replace(/[^a-z0-9]/g, "_");
+      savedPath = path.join(exportDir, `combat_${safeName}.json`);
+      fs.writeFileSync(savedPath, JSON.stringify(combatDoc, null, 2), "utf8");
+    }
+  }
+
+  return JSON.stringify({
+    status: "success",
+    combatants_count: combatDoc.combatants.length,
+    local_file_saved: savedPath,
+    document_payload: combatDoc
+  }, null, 2);
+}
+
+function toolCreatePlaylist(args) {
+  const playlistDoc = {
+    name: args.name,
+    mode: args.mode !== undefined ? args.mode : 1,
+    playing: false,
+    sounds: (args.sounds || []).map(s => ({
+      name: s.name,
+      path: s.path,
+      volume: s.volume !== undefined ? s.volume : 0.5,
+      repeat: s.repeat !== undefined ? s.repeat : true,
+      streaming: false
+    })),
+    ownership: { default: 3 },
+    flags: {
+      "master-of-foundryvtt": {
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
+        timestamp: new Date().toISOString()
+      }
+    }
+  };
+
+  let savedPath = null;
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  if (worldId) {
+    const dataPath = getLocalDataPath();
+    const worldDir = path.join(dataPath, "worlds", worldId);
+    if (fs.existsSync(worldDir)) {
+      const exportDir = path.join(worldDir, "mcp_generated");
+      fs.mkdirSync(exportDir, { recursive: true });
+      const safeName = args.name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      savedPath = path.join(exportDir, `playlist_${safeName}.json`);
+      fs.writeFileSync(savedPath, JSON.stringify(playlistDoc, null, 2), "utf8");
+    }
+  }
+
+  return JSON.stringify({
+    status: "success",
+    playlist_name: args.name,
+    tracks_count: playlistDoc.sounds.length,
+    local_file_saved: savedPath,
+    document_payload: playlistDoc
+  }, null, 2);
+}
+
+function toolCreateDeck(args) {
+  const deckDoc = {
+    name: args.name,
+    type: args.type || "deck",
+    description: args.description || "",
+    cards: (args.cards || []).map((c, idx) => ({
+      name: c.name,
+      suit: c.suit || null,
+      value: c.value !== undefined ? c.value : idx + 1,
+      faces: [{ img: c.face_img || "icons/svg/card-hand.svg", name: c.name }],
+      back: { img: "icons/svg/card-joker.svg" },
+      drawn: false
+    })),
+    ownership: { default: 3 },
+    flags: {
+      "master-of-foundryvtt": {
+        generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
+        timestamp: new Date().toISOString()
+      }
+    }
+  };
+
+  let savedPath = null;
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  if (worldId) {
+    const dataPath = getLocalDataPath();
+    const worldDir = path.join(dataPath, "worlds", worldId);
+    if (fs.existsSync(worldDir)) {
+      const exportDir = path.join(worldDir, "mcp_generated");
+      fs.mkdirSync(exportDir, { recursive: true });
+      const safeName = args.name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      savedPath = path.join(exportDir, `deck_${safeName}.json`);
+      fs.writeFileSync(savedPath, JSON.stringify(deckDoc, null, 2), "utf8");
+    }
+  }
+
+  return JSON.stringify({
+    status: "success",
+    deck_name: args.name,
+    cards_count: deckDoc.cards.length,
+    local_file_saved: savedPath,
+    document_payload: deckDoc
+  }, null, 2);
+}
+
+function toolCreateCompendiumPack(args) {
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const packName = args.name.toLowerCase().replace(/[^a-z0-9-]/g, "-");
+  const dataPath = getLocalDataPath();
+  const worldDir = path.join(dataPath, "worlds", worldId);
+  const worldJsonPath = path.join(worldDir, "world.json");
+
+  let modifiedWorld = false;
+  if (fs.existsSync(worldJsonPath)) {
+    try {
+      const worldData = JSON.parse(fs.readFileSync(worldJsonPath, "utf8"));
+      if (!Array.isArray(worldData.packs)) {
+        worldData.packs = [];
+      }
+      const existing = worldData.packs.find(p => p.name === packName);
+      if (!existing) {
+        worldData.packs.push({
+          name: packName,
+          label: args.label,
+          type: args.entity_type,
+          system: args.system || "swade",
+          ownership: { PLAYER: "OBSERVER", ASSISTANT: "OWNER" }
+        });
+        fs.writeFileSync(worldJsonPath, JSON.stringify(worldData, null, 2), "utf8");
+        modifiedWorld = true;
+      }
+    } catch (e) {
+      // Ignore
+    }
+  }
+
+  const packDir = path.join(worldDir, "packs", packName);
+  fs.mkdirSync(packDir, { recursive: true });
+
+  return JSON.stringify({
+    status: "success",
+    pack_name: packName,
+    label: args.label,
+    entity_type: args.entity_type,
+    registered_in_world_json: modifiedWorld,
+    directory: packDir
+  }, null, 2);
+}
+
 function toolScaffoldPackage(args) {
   const pkgId = args.id;
   const title = args.title;
@@ -692,6 +1056,21 @@ rl.on('line', (line) => {
           break;
         case "query_foundry_store":
           content = toolQueryStore(toolArgs);
+          break;
+        case "create_scene":
+          content = toolCreateScene(toolArgs);
+          break;
+        case "create_combat":
+          content = toolCreateCombat(toolArgs);
+          break;
+        case "create_playlist":
+          content = toolCreatePlaylist(toolArgs);
+          break;
+        case "create_deck":
+          content = toolCreateDeck(toolArgs);
+          break;
+        case "create_compendium_pack":
+          content = toolCreateCompendiumPack(toolArgs);
           break;
         case "validate_manifest":
           content = toolValidateManifest(toolArgs);
