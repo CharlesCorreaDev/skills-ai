@@ -83,6 +83,17 @@ Whenever the user or Game Master asks to create or configure ANY game asset or d
    - Any homebrew tweaks, existing module integrations, or specific lore nuances.
 3. **Transparent & Explanatory Plan:** Before generating or writing files, explain clearly what structure is going to be built, why it fits the system's schema, and how it will appear in the world. Ask the user for confirmation or adjustments.
 
+#### 9. Mandatory Icon & Asset Selection Protocol for Items, Abilities & Powers (CRITICAL)
+Whenever asked to create or configure any **Item**, **Ability / Talent**, **Power / Spell**, **Weapon**, **Armor**, **Shield**, **Natural Weapon** (claws, bites, horns, tentacles, etc.), **Accessory** (boots, gloves, rings, cloaks), **Consumable** (potions, medicines, remedies, scrolls), or any other game document:
+1. **First Priority — Core Foundry VTT Standard Icons:**
+   - Search and prioritize using the official default Foundry VTT icons located at:
+     `%url-foundry-vtt%/App/resources/app/public/icons/` (serving web paths like `icons/...`, e.g., `icons/weapons/...`, `icons/equipment/...`, `icons/magic/...`, `icons/consumables/...`, `icons/commodities/...`, `icons/tools/...`, `icons/skills/...`).
+2. **Second Priority — System Specific Icons Directory:**
+   - If a suitable core icon is not found, verify and explore the active game system folder for custom icons (e.g., `systems/<system-id>/icons/` or system assets directory).
+3. **Third Priority / Fallback — Generic Core SVG Icons:**
+   - If no specific icon exists in core or the system directory, use a generic fallback SVG icon from:
+     `%url-foundry-vtt%/App/resources/app/public/icons/svg/` (serving web paths like `icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/d20-black.svg`, `icons/svg/mystery-man.svg`).
+
 ### 📚 Structure & Fast-Path Navigation
 
 - [Model Context Protocol (MCP) Guide](mcp/README.md)
@@ -204,6 +215,17 @@ Sempre que o usuário ou Mestre solicitar a criação ou configuração de QUALQ
    - Tema do mapa, escala pretendida (tamanho do quadrado em metros/pés), atmosfera de iluminação e pontos de interesse.
    - Modificações caseiras (homebrews), módulos integrados existentes ou detalhes de ambientação.
 3. **Plano Transparente e Explicativo:** Antes de gerar arquivos ou salvar no mundo, explique claramente qual estrutura será montada, por que ela atende ao esquema do sistema e como ficará no mundo. Peça confirmação ou ajustes ao usuário.
+
+#### 9. Protocolo Obrigatório de Seleção de Ícones e Assets para Itens, Habilidades e Poderes (CRÍTICO)
+Sempre que for solicitado criar ou configurar qualquer **Item**, **Habilidade**, **Poder**, **Magia**, **Arma**, **Armadura**, **Escudo**, **Arma Natural** (garras, presas, mordidas, chifres, caudas, tentáculos), **Acessório** (botas, luvas, anéis, capas), **Consumível** (poções, remédios, elixires, pergaminhos) ou qualquer outro documento de jogo:
+1. **Primeira Prioridade — Ícones Padrão do Core do Foundry VTT:**
+   - Busque e priorize sempre os ícones padrão oficiais do Foundry VTT localizados em:
+     `%url-foundry-vtt%/App/resources/app/public/icons/` (servidos em caminhos web relativos como `icons/...`, ex: `icons/weapons/...`, `icons/equipment/...`, `icons/magic/...`, `icons/consumables/...`, `icons/commodities/...`, `icons/tools/...`, `icons/skills/...`).
+2. **Segunda Prioridade — Pasta de Ícones do Sistema de Jogo (System):**
+   - Caso não encontre um ícone correspondente no core, verifique e vasculhe a pasta do próprio sistema de jogo ativo por ícones dedicados (ex: `systems/<id-do-sistema>/icons/` ou diretório de assets do sistema).
+3. **Terceira Prioridade / Fallback — Ícones Genéricos SVG do Core:**
+   - Se ainda assim não houver um ícone específico nem no core nem no sistema, utilize obrigatoriamente um ícone SVG genérico de fallback de:
+     `%url-foundry-vtt%/App/resources/app/public/icons/svg/` (servidos em caminhos como `icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/d20-black.svg`, `icons/svg/mystery-man.svg`).
 
 ---
 
