@@ -42,6 +42,11 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 2. **Permission Gate for Extra / System Software:** If resolving an issue requires installing system binaries (pandoc, libreoffice, tesseract), elevated global packages, or configuring API keys, the agent MUST explicitly explain the situation to the developer/operator and request authorization before proceeding.
 3. **Configuration Report & Verification:** Upon approval, the agent must clearly state what was installed and configured, then immediately execute an end-to-end test or ask the operator for sample inputs to validate that the skill is 100% operational.
 
+### 🏷️ Semantic Versioning, VERSION File & Release Protocol
+- **`VERSION` File:** Contains the exact skill version string (e.g. `0.1.0-beta`).
+- **Version Awareness:** The Agent must read `VERSION` to notify the operator/caller of the active skill version.
+- **Update Protocol:** Always bump `VERSION` following [SemVer](https://semver.org/spec/v2.0.0.html), register updates in [`CHANGELOG.md`](CHANGELOG.md), and create a git release tag (`website-for-markdown-v<version>`).
+
 ---
 
 ## 🇧🇷 Português (Brasil)
@@ -76,3 +81,9 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 1. **Diagnóstico de Causa Raiz e Auto-Correção:** O agente DEVE analisar a causa exata do erro (dependências ausentes, permissões, ferramentas de SO, encoding de caracteres) e tentar se auto-corrigir iterativamente até que a skill esteja funcionando perfeitamente conforme seu propósito.
 2. **Solicitação de Permissão para Instalações Extras:** Se a correção exigir a instalação de binários de sistema (pandoc, libreoffice, tesseract), pacotes globais ou configuração de chaves de API, o agente DEVE explicar o diagnóstico com clareza e solicitar a permissão explícita do desenvolvedor/operador antes de instalar.
 3. **Relatório de Configuração e Validação:** Após a confirmação, o agente deve informar detalhadamente o que foi instalado e configurado para resolver o problema e executar imediatamente um teste de validação (ou solicitar ao operador os dados/arquivos necessários para testar a skill).
+
+### 🏷️ Protocolo de Versionamento Semântico e Arquivo VERSION
+- **Arquivo `VERSION`:** Contém a versão semântica da skill (ex: `0.1.0-beta`).
+- **Alerta de Versão:** O Agente deve consultar `VERSION` para informar a versão ativa ao usuário/agente solicitante.
+- **Atualizações:** Sempre incremente `VERSION` com base no [SemVer](https://semver.org/spec/v2.0.0.html), registre em [`CHANGELOG.md`](CHANGELOG.md) e associe a uma tag git (`website-for-markdown-v<versao>`).
+

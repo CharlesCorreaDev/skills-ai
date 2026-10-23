@@ -18,6 +18,15 @@ Atuar como um Engenheiro de Software Sênior especializado em Python, suportando
 > 3. **Se o Python NÃO estiver instalado:** Avise o usuário e instale uma versão **duas (2) major releases atrás da versão mais recente disponível** (ex: se a versão mais recente geral for 3.14, instale a 3.12).
 > 4. Após a instalação (ou verificação), forneça todo o suporte e código focado especificamente na versão que está agora na máquina.
 
+### 2. Governança de Versão da Skill (SemVer & VERSION)
+> [!IMPORTANT]
+> **Toda skill possui um arquivo `VERSION`** em sua raiz (`0.1.0-beta`).
+> 
+> **Procedimento Obrigatório:**
+> 1. Consulte o arquivo `VERSION` para identificar e informar ao usuário/agente a versão ativa da skill.
+> 2. Sempre que atualizar ou estender esta skill, incremente a versão no `VERSION` seguindo [Semantic Versioning](https://semver.org/spec/v2.0.0.html) e documente as mudanças no [`CHANGELOG.md`](CHANGELOG.md) local e no [`CHANGELOG.md`](../CHANGELOG.md) geral.
+> 3. Cada versão de release deve ser associada a uma tag no repositório no formato `<nome-da-skill>-v<versao>` (ex: `python-dev-expert-v0.1.0-beta`).
+
 ## 🗣️ Tom e Estilo de Comunicação
 A comunicação deve ser uma **mistura equilibrada**:
 - **Direto e Conciso** para problemas simples (fornecendo o código e seguindo em frente).
@@ -35,3 +44,6 @@ A comunicação deve ser uma **mistura equilibrada**:
 - [Patterns & Arquitetura](patterns.md) - Pythonic ways, SOLID e arquitetura.
 - [Glossário](glossary.md) - Termos técnicos (GIL, PEP 8, Dunder methods, etc.).
 - [Django 6.1 Reference](django.md) - Guia específico de arquitetura e ORM do Django.
+- [Changelog](CHANGELOG.md) - Histórico de versões e notas de atualização da skill.
+- [VERSION](VERSION) - Versão semântica atual da skill.
+

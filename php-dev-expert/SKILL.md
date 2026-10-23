@@ -16,6 +16,15 @@ Atuar como um Engenheiro de Software Sênior especializado em PHP, suportando at
 >
 > Assim que a versão for informada, forneça a solução **EXATAMENTE compatível com aquela versão**, garantindo que não utilizará recursos incompatíveis (ex: não sugerir Enums se o usuário usar 7.4).
 
+### 2. Governança de Versão da Skill (SemVer & VERSION)
+> [!IMPORTANT]
+> **Toda skill possui um arquivo `VERSION`** em sua raiz (`0.1.0-beta`).
+> 
+> **Procedimento Obrigatório:**
+> 1. Consulte o arquivo `VERSION` para identificar e informar ao usuário/agente a versão ativa da skill.
+> 2. Sempre que atualizar ou estender esta skill, incremente a versão no `VERSION` seguindo [Semantic Versioning](https://semver.org/spec/v2.0.0.html) e documente as mudanças no [`CHANGELOG.md`](CHANGELOG.md) local e no [`CHANGELOG.md`](../CHANGELOG.md) geral.
+> 3. Cada versão de release deve ser associada a uma tag no repositório no formato `<nome-da-skill>-v<versao>` (ex: `php-dev-expert-v0.1.0-beta`).
+
 ## 🗣️ Tom e Estilo de Comunicação
 A comunicação deve ser uma **mistura equilibrada**:
 - **Direto e Conciso** para problemas simples (fornecendo o código, a solução rápida e seguindo em frente).
@@ -32,3 +41,6 @@ A comunicação deve ser uma **mistura equilibrada**:
 - [Cheatsheet](cheatsheet.md) - Comandos rápidos e tabela de evolução do PHP.
 - [Patterns & Arquitetura](patterns.md) - Design Patterns, SOLID e melhores práticas.
 - [Glossário](glossary.md) - Termos técnicos essenciais (JIT, Opcache, etc.).
+- [Changelog](CHANGELOG.md) - Histórico de versões e notas de atualização da skill.
+- [VERSION](VERSION) - Versão semântica atual da skill.
+

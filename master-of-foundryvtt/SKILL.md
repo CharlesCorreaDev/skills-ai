@@ -115,6 +115,16 @@ When the user asks to install, update, or reinstall this skill (or when a requir
    - Ask for authorization once. If confirmed, install and configure everything (`python scripts/setup_dev_env.py --yes`, MCP registrations, `npx rea-agents setup`, `fvtt configure`), self-correcting failures.
    - If denied, continue with limited capabilities and explicitly state what is missing.
 
+#### 12. Semantic Versioning, VERSION File & Update Notification Protocol (CRITICAL)
+- **Every Skill MUST have a `VERSION` file** in its root directory containing its exact version string adhering to [Semantic Versioning (SemVer)](https://semver.org/spec/v2.0.0.html) (e.g., `0.9.0-beta`).
+- **Check & Notify Active Version:** Whenever the Agent invokes or references this skill, it **MUST read the `VERSION` file** to determine the current skill version and inform/alert the user or calling agent of the active version.
+- **Dedicated Changelog:** All notable changes to this skill **MUST be documented in its own [`CHANGELOG.md`](CHANGELOG.md)** and mirrored in the repository's root [`CHANGELOG.md`](../CHANGELOG.md).
+- **SemVer Rule on Updates:** Whenever updating or modifying this skill, the Agent **MUST bump the version in `VERSION`** according to SemVer rules:
+  - `PATCH` (`0.9.x`): Backwards-compatible bug fixes, minor documentation updates.
+  - `MINOR` (`0.x.0`): Backwards-compatible new features, new guides, new RPG systems, new scripts.
+  - `MAJOR` (`x.0.0`): Breaking changes, major architectural redesigns.
+  - Pre-release suffixes (e.g. `-beta`) are preserved until the skill achieves full production stability.
+
 
 ### 📚 Structure & Fast-Path Navigation
 
@@ -273,6 +283,16 @@ Sempre que o usuário solicitar a instalação, reinstalação ou atualização 
    - Pedir autorização uma única vez para instalar/atualizar o ambiente.
    - **Se o dev responder sim**, o agente tem permissão para instalar e configurar tudo da melhor forma para o desenvolvimento Foundry (winget/npm/pip/git, `python scripts/setup_dev_env.py --yes`, registro dos MCPs, `npx rea-agents setup`, `fvtt configure`), auto-corrigindo falhas. Credenciais/caminhos continuam sendo perguntados, nunca chutados. Reiniciar o agente depois.
    - **Se não**, seguir com recursos limitados informando o que ficará indisponível.
+
+#### 12. Protocolo de Versionamento Semântico, Arquivo VERSION e Alerta ao Usuário (CRÍTICO)
+- **Toda Skill DEVE ter um arquivo `VERSION`** em sua pasta raiz contendo exatamente a string de versão segundo as regras do [Versionamento Semântico (SemVer)](https://semver.org/spec/v2.0.0.html) (ex: `0.9.0-beta`).
+- **Consultar e Avisar Versão Ativa:** Sempre que o Agente for acionado ou referenciar esta skill, ele **DEVE ler o arquivo `VERSION`** para identificar a versão instalada/ativa e avisar/alertar o desenvolvedor ou agente solicitante sobre a versão corrente.
+- **Changelog Dedicado:** Todas as alterações notáveis nesta skill **DEVEM ser registradas em seu [`CHANGELOG.md`](CHANGELOG.md)** próprio e espelhadas no [`CHANGELOG.md`](../CHANGELOG.md) geral na raiz do repositório.
+- **Regra de Atualização SemVer:** Sempre que atualizar ou estender esta skill, o Agente **DEVE incrementar a versão no arquivo `VERSION`**:
+  - `PATCH` (`0.9.x`): Correções de bugs retrocompatíveis, melhorias menores em documentação.
+  - `MINOR` (`0.x.0`): Adição de novas funcionalidades retrocompatíveis, novos guias, novos sistemas de RPG, novos scripts.
+  - `MAJOR` (`x.0.0`): Mudanças que quebram compatibilidade ou reestruturações arquiteturais drásticas.
+  - O sufixo de pré-lançamento (ex: `-beta`) deve ser mantido enquanto a skill estiver em fase de validação/beta.
 
 
 ---

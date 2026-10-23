@@ -108,19 +108,19 @@ When an AI Agent encounters errors during skill installation, execution, or envi
                      (SKILL.md, chapters, cheatsheet)
 ```
 
-| Skill | Purpose | Status | Documentation |
-|---|---|---|---|
-| **`docs-for-markdown`** | Universal converter for multi-format documents (PDF, DOCX, XLSX, PPTX, ODT, HTML, RTF) into clean Markdown. | Active | [View README](docs-for-markdown/README.md) |
-| **`docs-for-skill`** | Transforms document Markdown into high-performance, modular AI Skills. | Active | [View README](docs-for-skill/README.md) |
-| **`website-for-markdown`** | Hybrid web scraping engine (Firecrawl + Playwright/Chromium) for clean Markdown extraction from web pages and SPAs. | Active | [View README](website-for-markdown/README.md) |
-| **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | Active | [View README](website-for-skill/README.md) |
-| **`image-to-prompt`** | High-fidelity visual reverse engineering: extracts art styles, eras, clothing, lighting, camera angles, and facial physiognomy to create generative prompts (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Active | [View README](image-to-prompt/README.md) |
-| **`master-of-foundryvtt`** | Master development, architecture, scripting, rule ingestion suite (100+ RPG systems) and native MCP Server for Foundry VTT (v8–v14) by GM Charles Corrêa. | Active | [View README](master-of-foundryvtt/README.md) |
-| **`php-dev-expert`** | Senior Software Engineer skill focused on PHP (7.4 to 8.5), modern patterns, debugging, and frameworks. | Active | [View Skill](php-dev-expert/SKILL.md) |
-| **`python-dev-expert`** | Python expert skill covering Web (Django/FastAPI), CLI, Data Science, and modern type hinting. | Active | [View Skill](python-dev-expert/SKILL.md) |
-| **`docker-master`** | DevOps specialist for Docker optimization, security, local environments, and smart OS detection. | Active | [View Skill](docker-master/SKILL.md) |
+| Skill | Purpose | Version | Status | Documentation & Changelog |
+|---|---|---|---|---|
+| **`docs-for-markdown`** | Universal converter for multi-format documents (PDF, DOCX, XLSX, PPTX, ODT, HTML, RTF) into clean Markdown. | [`0.1.0-beta`](docs-for-markdown/VERSION) | Beta | [README](docs-for-markdown/README.md) • [Changelog](docs-for-markdown/CHANGELOG.md) |
+| **`docs-for-skill`** | Transforms document Markdown into high-performance, modular AI Skills. | [`0.1.0-beta`](docs-for-skill/VERSION) | Beta | [README](docs-for-skill/README.md) • [Changelog](docs-for-skill/CHANGELOG.md) |
+| **`website-for-markdown`** | Hybrid web scraping engine (Firecrawl + Playwright/Chromium) for clean Markdown extraction from web pages and SPAs. | [`0.1.0-beta`](website-for-markdown/VERSION) | Beta | [README](website-for-markdown/README.md) • [Changelog](website-for-markdown/CHANGELOG.md) |
+| **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | [`0.1.0-beta`](website-for-skill/VERSION) | Beta | [README](website-for-skill/README.md) • [Changelog](website-for-skill/CHANGELOG.md) |
+| **`image-to-prompt`** | High-fidelity visual reverse engineering: extracts art styles, eras, clothing, lighting, camera angles, and facial physiognomy to create generative prompts (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | [`0.1.0-beta`](image-to-prompt/VERSION) | Beta | [README](image-to-prompt/README.md) • [Changelog](image-to-prompt/CHANGELOG.md) |
+| **`master-of-foundryvtt`** | Master development, architecture, scripting, rule ingestion suite (100+ RPG systems) and native MCP Server for Foundry VTT (v8–v14) by GM Charles Corrêa. | [`0.9.0-beta`](master-of-foundryvtt/VERSION) | Beta | [README](master-of-foundryvtt/README.md) • [Changelog](master-of-foundryvtt/CHANGELOG.md) |
+| **`php-dev-expert`** | Senior Software Engineer skill focused on PHP (7.4 to 8.5), modern patterns, debugging, and frameworks. | [`0.1.0-beta`](php-dev-expert/VERSION) | Beta | [Skill](php-dev-expert/SKILL.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
+| **`python-dev-expert`** | Python expert skill covering Web (Django/FastAPI), CLI, Data Science, and modern type hinting. | [`0.1.0-beta`](python-dev-expert/VERSION) | Beta | [Skill](python-dev-expert/SKILL.md) • [Changelog](python-dev-expert/CHANGELOG.md) |
+| **`docker-master`** | DevOps specialist for Docker optimization, security, local environments, and smart OS detection. | [`0.1.0-beta`](docker-master/VERSION) | Beta | [Skill](docker-master/SKILL.md) • [Changelog](docker-master/CHANGELOG.md) |
 
-> ℹ️ *Note: More skills for game engines, design systems, and cloud architectures will be added to this repository soon.*
+> ℹ️ *Note: All skills in this repository are currently in **Beta** and adhere to [Semantic Versioning (SemVer)](https://semver.org/spec/v2.0.0.html). Each skill contains a dedicated `VERSION` file and `CHANGELOG.md`. See also the global [**CHANGELOG.md**](CHANGELOG.md).*
 
 ---
 
@@ -174,6 +174,11 @@ python master-of-foundryvtt/scripts/scaffold_package.py --id "my-system" --title
 python master-of-foundryvtt/scripts/version_advisor.py 12
 ```
 👉 *Detailed instructions:* [master-of-foundryvtt README](master-of-foundryvtt/README.md) & [MCP Installation Guide](master-of-foundryvtt/mcp/INSTALLATION.md)
+
+---
+
+## 📜 Changelog
+To inspect all releases, versions, and notable changes across the repository and individual skills, see [**CHANGELOG.md**](CHANGELOG.md).
 
 ---
 ---
@@ -257,21 +262,19 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 
 ---
 
-### 🧩 Mapa do Ecossistema e Skills Disponíveis
+| Skill | Finalidade | Versão | Status | Documentação & Changelog |
+|---|---|---|---|---|
+| **`docs-for-markdown`** | Conversor universal de documentos multiformato (PDF, DOCX, XLSX, PPTX, ODT, HTML, RTF) para Markdown limpo. | [`0.1.0-beta`](docs-for-markdown/VERSION) | Beta | [README](docs-for-markdown/README.md) • [Changelog](docs-for-markdown/CHANGELOG.md) |
+| **`docs-for-skill`** | Transforma Markdowns extraídos de documentos em Skills modulares de alto desempenho para IA. | [`0.1.0-beta`](docs-for-skill/VERSION) | Beta | [README](docs-for-skill/README.md) • [Changelog](docs-for-skill/CHANGELOG.md) |
+| **`website-for-markdown`** | Motor híbrido de raspagem web (Firecrawl + Playwright/Chromium) para extração de Markdown limpo a partir de sites e SPAs. | [`0.1.0-beta`](website-for-markdown/VERSION) | Beta | [README](website-for-markdown/README.md) • [Changelog](website-for-markdown/CHANGELOG.md) |
+| **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | [`0.1.0-beta`](website-for-skill/VERSION) | Beta | [README](website-for-skill/README.md) • [Changelog](website-for-skill/CHANGELOG.md) |
+| **`image-to-prompt`** | Engenharia reversa visual de alta fidelidade: extrai traços artísticos, época, vestimentas, iluminação, fisionomia e câmeras para gerar prompts de imagem/vídeo (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | [`0.1.0-beta`](image-to-prompt/VERSION) | Beta | [README](image-to-prompt/README.md) • [Changelog](image-to-prompt/CHANGELOG.md) |
+| **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting, ingestão de regras (+100 sistemas de RPG) e Servidor MCP Nativo para Foundry VTT (v8–v14) por GM Charles Corrêa. | [`0.9.0-beta`](master-of-foundryvtt/VERSION) | Beta | [README](master-of-foundryvtt/README.md) • [Changelog](master-of-foundryvtt/CHANGELOG.md) |
+| **`php-dev-expert`** | Skill de Engenheiro de Software Sênior focada em PHP (7.4 a 8.5), arquitetura moderna, debugging e frameworks. | [`0.1.0-beta`](php-dev-expert/VERSION) | Beta | [Skill](php-dev-expert/SKILL.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
+| **`python-dev-expert`** | Especialista Python abordando Web (Django/FastAPI), Automações, Data Science e tipagem avançada. | [`0.1.0-beta`](python-dev-expert/VERSION) | Beta | [Skill](python-dev-expert/SKILL.md) • [Changelog](python-dev-expert/CHANGELOG.md) |
+| **`docker-master`** | Especialista DevOps para otimização de imagens Docker, segurança, Compose e detecção inteligente de SO. | [`0.1.0-beta`](docker-master/VERSION) | Beta | [Skill](docker-master/SKILL.md) • [Changelog](docker-master/CHANGELOG.md) |
 
-| Skill | Finalidade | Status | Documentação |
-|---|---|---|---|
-| **`docs-for-markdown`** | Conversor universal de documentos multiformato (PDF, DOCX, XLSX, PPTX, ODT, HTML, RTF) para Markdown limpo. | Ativo | [Ver README](docs-for-markdown/README.md) |
-| **`docs-for-skill`** | Transforma Markdowns extraídos de documentos em Skills modulares de alto desempenho para IA. | Ativo | [Ver README](docs-for-skill/README.md) |
-| **`website-for-markdown`** | Motor híbrido de raspagem web (Firecrawl + Playwright/Chromium) para extração de Markdown limpo a partir de sites e SPAs. | Ativo | [Ver README](website-for-markdown/README.md) |
-| **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | Ativo | [Ver README](website-for-skill/README.md) |
-| **`image-to-prompt`** | Engenharia reversa visual de alta fidelidade: extrai traços artísticos, época, vestimentas, iluminação, fisionomia e câmeras para gerar prompts de imagem/vídeo (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | Ativo | [Ver README](image-to-prompt/README.md) |
-| **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting, ingestão de regras (+100 sistemas de RPG) e Servidor MCP Nativo para Foundry VTT (v8–v14) por GM Charles Corrêa. | Ativo | [Ver README](master-of-foundryvtt/README.md) |
-| **`php-dev-expert`** | Skill de Engenheiro de Software Sênior focada em PHP (7.4 a 8.5), arquitetura moderna, debugging e frameworks. | Ativo | [Ver Skill](php-dev-expert/SKILL.md) |
-| **`python-dev-expert`** | Especialista Python abordando Web (Django/FastAPI), Automações, Data Science e tipagem avançada. | Ativo | [Ver Skill](python-dev-expert/SKILL.md) |
-| **`docker-master`** | Especialista DevOps para otimização de imagens Docker, segurança, Compose e detecção inteligente de SO. | Ativo | [Ver Skill](docker-master/SKILL.md) |
-
-> ℹ️ *Nota: Em breve serão adicionadas novas skills especializadas em outros frameworks, engines de jogos e cloud.*
+> ℹ️ *Nota: Todas as skills deste repositório encontram-se em estágio **Beta** e aderem ao [Versionamento Semântico (SemVer)](https://semver.org/spec/v2.0.0.html). Cada skill conta com seu arquivo individual `VERSION` e `CHANGELOG.md`. Veja também o histórico global no [**CHANGELOG.md**](CHANGELOG.md).*
 
 ---
 

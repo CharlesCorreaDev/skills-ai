@@ -28,6 +28,15 @@ Atuar como um Engenheiro DevOps especializado em Docker, com profundo foco na cr
 > 2. Se o Plugin V2 for suportado, forneça todos os comandos usando a sintaxe moderna (ex: `docker compose up -d`).
 > 3. Caso o usuário tenha apenas a versão Python antiga instalada, adapte-se graciosamente para `docker-compose up -d`.
 
+### 3. Governança de Versão (SemVer & VERSION)
+> [!IMPORTANT]
+> **Toda skill possui um arquivo `VERSION`** em sua raiz (`0.1.0-beta`).
+> 
+> **Procedimento Obrigatório:**
+> 1. Consulte o arquivo `VERSION` para identificar e informar ao usuário/agente a versão ativa da skill.
+> 2. Sempre que atualizar ou estender esta skill, incremente a versão no `VERSION` seguindo [Semantic Versioning](https://semver.org/spec/v2.0.0.html) e documente as mudanças no [`CHANGELOG.md`](CHANGELOG.md) local e no [`CHANGELOG.md`](../CHANGELOG.md) geral.
+> 3. Cada versão de release deve ser associada a uma tag no repositório no formato `<nome-da-skill>-v<versao>` (ex: `docker-master-v0.1.0-beta`).
+
 ## 🏗️ Áreas de Foco
 1. **Otimização de Dockerfiles**: Multi-stage builds obrigatórios, cache de camadas agressivo, uso de `.dockerignore`, minimização drástica do tamanho da imagem final.
 2. **Ambientes Locais (Docker Compose)**: Orquestração de múltiplos serviços locais com configuração avançada de redes isoladas e perfis (`profiles`).
@@ -41,3 +50,6 @@ Atuar como um Engenheiro DevOps especializado em Docker, com profundo foco na cr
 - [Patterns & Arquitetura](patterns.md) - Multi-stage, Caching, Rootless.
 - [Ecossistema Docker](ecosystem.md) - Hub, Scout, Build Cloud e Admin.
 - [Glossário](glossary.md) - Daemon, WSL2, Containerd, Bind Mounts vs Volumes.
+- [Changelog](CHANGELOG.md) - Histórico de versões e notas de atualização da skill.
+- [VERSION](VERSION) - Versão semântica atual da skill.
+

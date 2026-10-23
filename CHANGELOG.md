@@ -7,6 +7,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.6.0] - 2026-10-23
+
+### Added / Adicionado
+- **Governança de Versão por Skill (`VERSION` & SemVer):**
+  - Implementado arquivo `VERSION` obrigatório em todas as skills do repositório (`master-of-foundryvtt`, `docker-master`, `php-dev-expert`, `python-dev-expert`, `image-to-prompt`, `docs-for-markdown`, `docs-for-skill`, `website-for-markdown`, `website-for-skill`).
+  - Estabelecido que todas as skills iniciam seu ciclo com versionamento explícito e sufixo de maturidade **Beta** (ex: `0.9.0-beta` para `master-of-foundryvtt` e `0.1.0-beta` para as demais).
+  - Diretiva mandatória nos `SKILL.md` para que agentes e usuários leiam o arquivo `VERSION` para identificar a versão ativa e avisar o operador sobre novidades e atualizações.
+- **Changelogs Dedicados por Skill (`<skill>/CHANGELOG.md`):**
+  - Cada skill do repositório passa a ter seu próprio arquivo `CHANGELOG.md` detalhado, permitindo rastreamento granular do ciclo de vida sem inflar o histórico de outras skills.
+  - Histórico do `master-of-foundryvtt` detalhado desde a sua criação, cobrindo motores de RPG do Tio Nitro, engenharia reversa do v14, REA, servidor MCP nativo e banco de 100+ sistemas.
+- **Padronização de Git Tags por Skill:**
+  - Definida convenção de tags no formato `<nome-da-skill>-v<versao>` (ex: `master-of-foundryvtt-v0.9.0-beta`), além das tags globais de repositório (`v1.6.0`).
+- **Detecção de Instalação Existente e Alerta de Sobrescrita Consciente (Mandato 11):**
+  - Protocolo para verificar se a skill já está presente no projeto local ou globalmente (`~/.gemini/config/skills/`, `~/.claude/skills/`, `~/.agents/skills/`), emitindo alerta transparente antes de atualizar/reinstalar e preservando memórias locais (`memory/`).
+- **Motores de Regras do Tio Nitro (`systems/07-generic-and-rules-light.md`):**
+  - Ingestão completa das mecânicas, regras e arquitetura de dados dos sistemas de Nitro: **3d6World**, **2d6World**, **Pocket 2d6World**, **2d10Solo** e **2d6Solo**.
+- **Compêndio de 60 Engines de RPG para Engenharia Reversa (`kb/09-rpg-engines-and-mechanics.md`):**
+  - Guia aprofundado com matriz técnica cobrindo 60 motores de RPG (resolução de dados, esquemas de dados, hooks e padrões de implementação no Foundry VTT).
+- **Engenharia Reversa Completa do Core v14.369 (`kb/08-core-reverse-engineering-v14.md`):**
+  - Mapeamento detalhado dos pacotes internos do Foundry v14 (`@foundryvtt/foundryvtt`, `@foundryvtt/commons`, ESM, DataModels, ApplicationV2).
+- **Suporte a Engenharia Reversa com REA (`guides/reverse-engineering.md`):**
+  - Integração com `rea-agents` (REA MCP/CLI), setup de ambiente automatizado (`scripts/setup_dev_env.py`) e diretório de memórias locais persistentes (`memory/learnings.md`).
+- **Hierarquia e Protocolo de Ícones Padrão (Mandato 9):**
+  - Prioridade mandatória para ícones core do Foundry (`icons/...`), ícones dedicados de sistemas e fallback seguro para SVGs padrão (`icons/svg/...`).
+- **Integração no README Geral:**
+  - Tabela bilíngue de skills no `README.md` atualizada com colunas dedicadas para Versão, Status (Beta) e links diretos para a documentação e para o `CHANGELOG.md` de cada skill.
+
+### Changed / Alterado
+- **Remoção de Travas de Engenharia Reversa:** Atualização das diretrizes para encorajar análise e inspeção de código e APIs do core e de sistemas para maior precisão no desenvolvimento.
+- **Configuração do Workspace:** Inclusão de novos atalhos e padronização de configurações no ambiente.
+
+---
+
 ## [1.5.0] - 2026-10-18
 
 ### Added / Adicionado
