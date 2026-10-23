@@ -100,12 +100,21 @@ Tools: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) and the guid
 - **Trigger:** ANY request to generate a module for a system/Foundry, reverse engineer something, **create a new system, adjust/fix a system, recreate or rebuild from scratch**.
 - **Before work:** read `memory/learnings.md` and `memory/<target>.md`. **After work (even on failure):** save findings, pitfalls, patterns and improvements there using the template in the guide (verified facts only, no secrets/licensed content), then promote generalizable lessons into `guides/`/`systems/`.
 
-#### 11. Auto-Install on Skill Setup (CRITICAL)
-When this skill is installed/first used (or when a required tool is missing), the agent MUST:
-1. **Inform the developer** that, for the skill to work fully, these components must be installed: Node.js + npm, Git, Python 3.8+, REA (`rea-agents`), `@foundryvtt/foundryvtt-cli`, `fvtt-world-cli`, the Foundry MCPs (`ninjos-foundry-mcp`, `foundryvtt-mcp`, `foundry-vtt-mcp`, native `master-of-foundryvtt`) and optionally Ghidra/Hopper/IDA for native binaries.
-2. **Ask for authorization once** to install them.
-3. **If the dev says yes**, the agent has permission to install and configure everything as it sees fit for Foundry development (winget/npm/pip/git, `python scripts/setup_dev_env.py --yes`, MCP registration, `npx rea-agents setup`, `fvtt configure`), self-correcting failures. Credentials/paths must still be asked, never guessed. Restart the agent afterwards.
-4. **If no**, continue with limited features and say what is unavailable.
+#### 11. Auto-Install, Reinstallation & Update Protocol (CRITICAL)
+When the user asks to install, update, or reinstall this skill (or when a required tool is missing):
+1. **Detect Existing Installation (Local Workspace or Global Roots):**
+   - The Agent **MUST check if the skill is already present** either locally in the current project (e.g. `skills/master-of-foundryvtt` or root) or globally in agent configuration directories:
+     - Windows/Linux: `~/.gemini/config/skills/master-of-foundryvtt`, `~/.claude/skills/master-of-foundryvtt`, `~/.agents/skills/master-of-foundryvtt`.
+2. **Alert Developer & Overwrite with Latest Features:**
+   - If an existing installation is found and the user requested an update/reinstall:
+     - **The Agent MUST alert the user:** *"Identifiquei que a skill `master-of-foundryvtt` já estava instalada no ambiente (local/global). Estou atualizando e sobrescrevendo os arquivos com a versão mais recente e todos os novos recursos (motores de regras, reverse engineering do v14, MCPs atualizados)."*
+     - Overwrite/update the target directory files cleanly (via junction/symlink or files copy) ensuring existing configuration and memories (`memory/`) remain safe while all knowledge bases (`kb/`), guides, systems, and scripts are upgraded to the latest version.
+3. **Toolchain & Dependency Check:**
+   - Inform the developer of the full toolchain required: Node.js + npm, Git, Python 3.8+, REA (`rea-agents`), `@foundryvtt/foundryvtt-cli`, `fvtt-world-cli`, the Foundry MCPs (`ninjos-foundry-mcp`, `foundryvtt-mcp`, `foundry-vtt-mcp`, native `master-of-foundryvtt`) and optional decompilers.
+4. **Single-Permission Execution:**
+   - Ask for authorization once. If confirmed, install and configure everything (`python scripts/setup_dev_env.py --yes`, MCP registrations, `npx rea-agents setup`, `fvtt configure`), self-correcting failures.
+   - If denied, continue with limited capabilities and explicitly state what is missing.
+
 
 ### 📚 Structure & Fast-Path Navigation
 
@@ -248,12 +257,23 @@ Ferramentas: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) e o gu
 - **Gatilho:** QUALQUER pedido para gerar módulo para um sistema/Foundry, fazer engenharia reversa, **criar sistema novo, ajustar sistema, recriar ou criar do zero**.
 - **Antes:** ler `memory/learnings.md` e `memory/<alvo>.md`. **Depois (mesmo se falhar):** salvar descobertas, armadilhas, padrões e melhorias ali com o template do guia (só fatos verificados, sem segredos/conteúdo licenciado) e promover o que for geral para `guides/`/`systems/`.
 
-#### 11. Auto-Instalação ao Instalar a Skill (CRÍTICO)
-Ao instalar/usar a skill pela primeira vez (ou se faltar alguma ferramenta), o agente DEVE:
-1. **Comunicar o desenvolvedor** que, para a skill funcionar na totalidade, é preciso instalar: Node.js + npm, Git, Python 3.8+, REA (`rea-agents`), `@foundryvtt/foundryvtt-cli`, `fvtt-world-cli`, os MCPs do Foundry (`ninjos-foundry-mcp`, `foundryvtt-mcp`, `foundry-vtt-mcp`, nativo `master-of-foundryvtt`) e, opcionalmente, Ghidra/Hopper/IDA para binários nativos.
-2. **Pedir autorização uma única vez** para instalar.
-3. **Se o dev responder sim**, o agente tem permissão para instalar e configurar tudo da melhor forma para o desenvolvimento Foundry (winget/npm/pip/git, `python scripts/setup_dev_env.py --yes`, registro dos MCPs, `npx rea-agents setup`, `fvtt configure`), auto-corrigindo falhas. Credenciais/caminhos continuam sendo perguntados, nunca chutados. Reiniciar o agente depois.
-4. **Se não**, seguir com recursos limitados informando o que ficará indisponível.
+#### 11. Protocolo de Auto-Instalação, Reinstalação e Atualização com Sobrescrita Consciente (CRÍTICO)
+Sempre que o usuário solicitar a instalação, reinstalação ou atualização desta skill (ou quando ferramentas essenciais estiverem ausentes):
+1. **Verificar se a Skill Já Existe (No Projeto ou Globalmente):**
+   - O Agente **DEVE verificar se a skill já está presente** localmente no projeto (`skills/master-of-foundryvtt` ou diretório atual) ou globalmente no ecossistema do desenvolvedor:
+     - Windows/Linux: `~/.gemini/config/skills/master-of-foundryvtt`, `~/.claude/skills/master-of-foundryvtt`, `~/.agents/skills/master-of-foundryvtt`.
+2. **Avisar o Usuário e Sobrescrever com os Novos Recursos:**
+   - Se a skill já existir e o usuário pediu para reinstalar/atualizar:
+     - **O Agente DEVE OBRIGATORIAMENTE emitir o aviso ao usuário:**  
+       > 📢 *"Identifiquei que a skill `master-of-foundryvtt` já estava instalada no ambiente (local/global). Estou atualizando e sobrescrevendo os arquivos com a versão mais recente e todos os novos recursos (motores de regras do Tio Nitro, engenharia reversa do Foundry v14, MCPs e bases de conhecimento)."*
+     - Prosseguir com a sobrescrita/atualização dos arquivos (via junção/symlink ou cópia direta), preservando memórias persistentes locais (`memory/`) e garantindo que todas as bases de conhecimento (`kb/`), guias, sistemas e scripts fiquem 100% atualizados.
+3. **Comunicação de Dependências:**
+   - Comunicar ao desenvolvedor os componentes necessários: Node.js + npm, Git, Python 3.8+, REA (`rea-agents`), `@foundryvtt/foundryvtt-cli`, `fvtt-world-cli`, os MCPs do Foundry (`ninjos-foundry-mcp`, `foundryvtt-mcp`, `foundry-vtt-mcp`, nativo `master-of-foundryvtt`) e, opcionalmente, Ghidra/Hopper/IDA para binários nativos.
+4. **Autorização Única e Execução Completa:**
+   - Pedir autorização uma única vez para instalar/atualizar o ambiente.
+   - **Se o dev responder sim**, o agente tem permissão para instalar e configurar tudo da melhor forma para o desenvolvimento Foundry (winget/npm/pip/git, `python scripts/setup_dev_env.py --yes`, registro dos MCPs, `npx rea-agents setup`, `fvtt configure`), auto-corrigindo falhas. Credenciais/caminhos continuam sendo perguntados, nunca chutados. Reiniciar o agente depois.
+   - **Se não**, seguir com recursos limitados informando o que ficará indisponível.
+
 
 ---
 

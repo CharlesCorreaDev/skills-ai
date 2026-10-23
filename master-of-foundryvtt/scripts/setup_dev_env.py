@@ -206,23 +206,34 @@ def step_global_skill():
             continue  # agent not installed
         base.mkdir(parents=True, exist_ok=True)
         dest = base / SKILL_DIR.name
-        if dest.resolve() == SKILL_DIR.resolve():
-            print(f"  = already global: {dest}")
-            continue
-        if dest.exists() and not dest.is_symlink():
-            backup = HOME / ".master-of-foundryvtt" / "backups" / f"{base.parent.name}-{dest.name}"
-            backup.parent.mkdir(parents=True, exist_ok=True)
-            if backup.exists():
-                shutil.rmtree(backup, ignore_errors=True)
-            shutil.move(str(dest), str(backup))
-            print(f"  backup of previous copy: {backup}")
-        elif dest.is_symlink():
-            dest.unlink()
+        
+        # Check if already installed
+        if dest.exists() or dest.is_symlink():
+            print(f"\n[AVISO DE ATUALIZACAO] A skill '{SKILL_DIR.name}' ja existia em {dest}.")
+            print("  -> Atualizando e sobrescrevendo com os novos recursos, bases de conhecimento e correcoes.")
+            
+            if dest.resolve() == SKILL_DIR.resolve() and dest.is_symlink():
+                print(f"  = Link simbolico/juncao ja aponta para a versao atual: {dest}")
+                continue
+            
+            if not dest.is_symlink():
+                backup = HOME / ".master-of-foundryvtt" / "backups" / f"{base.parent.name}-{dest.name}"
+                backup.parent.mkdir(parents=True, exist_ok=True)
+                if backup.exists():
+                    shutil.rmtree(backup, ignore_errors=True)
+                shutil.move(str(dest), str(backup))
+                print(f"  -> Backup seguro da versao anterior criado em: {backup}")
+            else:
+                dest.unlink()
+        else:
+            print(f"\n[NOVA INSTALACAO] Instalando skill '{SKILL_DIR.name}' em {dest}...")
+
         ok = link_dir(dest, SKILL_DIR)
-        print(f"  {'linked' if ok else 'FAILED to link'} {dest} -> {SKILL_DIR}")
+        print(f"  {'Vinculado com sucesso' if ok else 'FALHA ao criar vinculo'} {dest} -> {SKILL_DIR}")
         if not ok:
             shutil.copytree(SKILL_DIR, dest)
-            print("  copied instead (re-run after updating the skill)")
+            print("  -> Copiado como pasta fisica independente (atualizacao completa).")
+
 
 
 def third_party_entries():
