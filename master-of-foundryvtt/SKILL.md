@@ -94,6 +94,20 @@ Whenever asked to create or configure any **Item**, **Ability / Talent**, **Powe
    - If no specific icon exists in core or the system directory, use a generic fallback SVG icon from:
      `%url-foundry-vtt%/App/resources/app/public/icons/svg/` (serving web paths like `icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/d20-black.svg`, `icons/svg/mystery-man.svg`).
 
+#### 10. Reverse Engineering (REA) & Persistent Memory Protocol (CRITICAL)
+Tools: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) and the guide [`rea-engenharia-reversa`](https://github.com/inematds/rea-engenharia-reversa). Full workflow: [guides/reverse-engineering.md](guides/reverse-engineering.md).
+- **Use REA** to study Foundry core, systems and modules (real APIs, hooks, DataModels, sheets) before building, so new code matches the target precisely.
+- **Trigger:** ANY request to generate a module for a system/Foundry, reverse engineer something, **create a new system, adjust/fix a system, recreate or rebuild from scratch**.
+- **Before work:** read `memory/learnings.md` and `memory/<target>.md`. **After work (even on failure):** save findings, pitfalls, patterns and improvements there using the template in the guide (verified facts only, no secrets/licensed content), then promote generalizable lessons into `guides/`/`systems/`.
+- Reverse engineer only for interoperability/learning; never to bypass licenses or redistribute premium content (warn the user).
+
+#### 11. Auto-Install on Skill Setup (CRITICAL)
+When this skill is installed/first used (or when a required tool is missing), the agent MUST:
+1. **Inform the developer** that, for the skill to work fully, these components must be installed: Node.js + npm, Git, Python 3.8+, REA (`rea-agents`), `@foundryvtt/foundryvtt-cli`, `fvtt-world-cli`, the Foundry MCPs (`ninjos-foundry-mcp`, `foundryvtt-mcp`, `foundry-vtt-mcp`, native `master-of-foundryvtt`) and optionally Ghidra/Hopper/IDA for native binaries.
+2. **Ask for authorization once** to install them.
+3. **If the dev says yes**, the agent has permission to install and configure everything as it sees fit for Foundry development (winget/npm/pip/git, `python scripts/setup_dev_env.py --yes`, MCP registration, `npx rea-agents setup`, `fvtt configure`), self-correcting failures. Credentials/paths must still be asked, never guessed. Restart the agent afterwards.
+4. **If no**, continue with limited features and say what is unavailable.
+
 ### 📚 Structure & Fast-Path Navigation
 
 - [Model Context Protocol (MCP) Guide](mcp/README.md)
@@ -226,6 +240,20 @@ Sempre que for solicitado criar ou configurar qualquer **Item**, **Habilidade**,
 3. **Terceira Prioridade / Fallback — Ícones Genéricos SVG do Core:**
    - Se ainda assim não houver um ícone específico nem no core nem no sistema, utilize obrigatoriamente um ícone SVG genérico de fallback de:
      `%url-foundry-vtt%/App/resources/app/public/icons/svg/` (servidos em caminhos como `icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/d20-black.svg`, `icons/svg/mystery-man.svg`).
+
+#### 10. Protocolo de Engenharia Reversa (REA) e Memória Persistente (CRÍTICO)
+Ferramentas: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) e o guia [`rea-engenharia-reversa`](https://github.com/inematds/rea-engenharia-reversa). Fluxo completo: [guides/reverse-engineering.md](guides/reverse-engineering.md).
+- **Use o REA** para estudar o core do Foundry, sistemas e módulos (APIs reais, hooks, DataModels, fichas) antes de construir, garantindo precisão e menos erros.
+- **Gatilho:** QUALQUER pedido para gerar módulo para um sistema/Foundry, fazer engenharia reversa, **criar sistema novo, ajustar sistema, recriar ou criar do zero**.
+- **Antes:** ler `memory/learnings.md` e `memory/<alvo>.md`. **Depois (mesmo se falhar):** salvar descobertas, armadilhas, padrões e melhorias ali com o template do guia (só fatos verificados, sem segredos/conteúdo licenciado) e promover o que for geral para `guides/`/`systems/`.
+- Engenharia reversa só para interoperabilidade/aprendizado; nunca para burlar licenças ou redistribuir conteúdo premium (alertar o usuário).
+
+#### 11. Auto-Instalação ao Instalar a Skill (CRÍTICO)
+Ao instalar/usar a skill pela primeira vez (ou se faltar alguma ferramenta), o agente DEVE:
+1. **Comunicar o desenvolvedor** que, para a skill funcionar na totalidade, é preciso instalar: Node.js + npm, Git, Python 3.8+, REA (`rea-agents`), `@foundryvtt/foundryvtt-cli`, `fvtt-world-cli`, os MCPs do Foundry (`ninjos-foundry-mcp`, `foundryvtt-mcp`, `foundry-vtt-mcp`, nativo `master-of-foundryvtt`) e, opcionalmente, Ghidra/Hopper/IDA para binários nativos.
+2. **Pedir autorização uma única vez** para instalar.
+3. **Se o dev responder sim**, o agente tem permissão para instalar e configurar tudo da melhor forma para o desenvolvimento Foundry (winget/npm/pip/git, `python scripts/setup_dev_env.py --yes`, registro dos MCPs, `npx rea-agents setup`, `fvtt configure`), auto-corrigindo falhas. Credenciais/caminhos continuam sendo perguntados, nunca chutados. Reiniciar o agente depois.
+4. **Se não**, seguir com recursos limitados informando o que ficará indisponível.
 
 ---
 
