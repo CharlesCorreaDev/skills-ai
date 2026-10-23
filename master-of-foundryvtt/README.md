@@ -235,9 +235,10 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 
 ## 👨‍💻 Author / Autor
 
-**Charles Corrêa**  
+**GM Charles Corrêa**  
+- 🌐 **Website:** [rpg.charlescorrea.com.br](https://rpg.charlescorrea.com.br)  
 - 📧 **Email:** [charlescorreaweb@gmail.com](mailto:charlescorreaweb@gmail.com)  
 - 📷 **Instagram:** [@mestrecharlescorrea](https://www.instagram.com/mestrecharlescorrea)  
-- 🌐 **Websites:** [charlescorrea.com.br](https://charlescorrea.com.br) | [rpg.charlescorrea.com.br](https://rpg.charlescorrea.com.br)  
 - 🐙 **GitHub:** [CharlesCorreaDev](https://github.com/CharlesCorreaDev)  
 - ⚡ **Skills de IA By Charles Corrêa Repo:** [https://github.com/CharlesCorreaDev/skills-ai](https://github.com/CharlesCorreaDev/skills-ai)
+
