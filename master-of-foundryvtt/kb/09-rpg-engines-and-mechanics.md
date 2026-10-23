@@ -551,3 +551,103 @@ Este guia cataloga dezenas de **motores de regras (engines)** conceituados do RP
 - **Site Oficial:** [twolittlemice.net/outgunned](https://twolittlemice.net/outgunned)
 - **Jogos Derivados:** *Outgunned*, *Outgunned: World Tour*, *Household*.
 - **Implementação no Foundry:** Card interativo no chat com botões para trancar dados e arriscar o Gambito, avaliando automaticamente pares, trincas e desastres.
+
+---
+
+### 61. 3d6World (Newton Nitro / NitroGames)
+- **Descrição:** Sistema de RPG genérico, modular, dinâmico e flexível criado pelo Prof. Newton "Tio Nitro" Rocha (2026), distribuído sob licença livre Creative Commons Attribution 4.0 International (CC-BY 4.0). Projetado para alta customização modular, oferecendo uma curva de sino equilibrada com 3d6 e velocidade tático-narrativa.
+- **Mecânicas:**
+  - **Mecânica Central (Roll-Under com Curva Normal):** Rola-se `3d6` contra `Atributo + Perícia + Modificador de Dificuldade` (atributos variam de 1 a 10). Se o resultado nos dados for menor ou igual ao Valor Alvo, a ação é um sucesso.
+  - **Margens Críticas:** Rolagens naturais de **3 ou 4** resultam em **Sucesso Crítico**. Rolagens naturais de **17 ou 18** resultam em **Falha Crítica (Desastre)**.
+  - **O Dado do Destino (Fate Die):** Ao obter um sucesso regular (5 a 16), o jogador rola um dado de 6 faces adicional (ou designa um dos dados do 3d6 como Dado do Destino com cor diferente):
+    - **1 a 3 no Dado do Destino:** *Sucesso Parcial* (o objetivo é atingido, mas acompanhado de complicação ficcional, custo ou dilema).
+    - **4 a 6 no Dado do Destino:** *Sucesso Total* (o objetivo é atingido plenamente, sem reveses adicionais).
+    - *Regra de Ouro:* O Dado do Destino **nunca anula um sucesso**, ele apenas adiciona nuance e dinâmica narrativa imediata.
+  - **Economia de Sorte (Jogadores) e Azar (Mestre):**
+    - Quando um jogador obtém um **Sucesso Parcial**, ele ganha **1 Ponto de Sorte** (Lucky Point), que pode ser gasto para Flashbacks narrativos, mitigar dano, ativar façanhas ou adicionar dados de bônus.
+    - Quando um jogador obtém um **Sucesso Total**, o Mestre ganha **1 Ponto de Azar** (Doom/Misfortune Point), utilizado para intensificar perigos, introduzir reforços inimigos ou ativar complicações ambientais no momento dramático ideal.
+  - **Modos de Resolução de Conflito:**
+    - *Conflito Narrativo:* Resolução rápida e abstrata para perseguições, debates ou combates cinematográficos com poucas rolagens.
+    - *Combate Tático-Convencional:* Resolução por rodadas, iniciativa, ações principais, reações defensivas e *Trilhas de Pressão/Dano* (Pressure Tracks) que substituem contabilidade excessiva de pontos de vida por condições e exaustão.
+- **Site Oficial:** [3d6world no Nitroblog](https://newtonrocha.wordpress.com/3d6world-sistema-generico-e-modular-de-rpg/)
+- **Jogos Derivados:** Cenários modulares NitroGames, campanhas multi-gênero (fantasia sombria, sci-fi, investigação contemporânea).
+- **Implementação no Foundry VTT:**
+  - `Roll Engine`: Rolagem customizada `new Roll("3d6").evaluate()` avaliando limites de sucesso contra `actor.system.attributes[attr].value + actor.system.skills[skill].value`. Se sucesso, dispara ou avalia o `fateDie` (`1d6`) exibindo no ChatMessage cards ricos com badges de "Sucesso Total", "Sucesso Parcial" e "Crítico".
+  - `Resource Tracker`: Variáveis de sessão `luck` (no Actor) e `doom` (em `game.settings` ou Actor de Mestre/World Tracker) integradas a botões de clique na interface de cena ou no header da ficha.
+
+---
+
+### 62. 2d6World (Newton Nitro / NitroGames)
+- **Descrição:** Motor narrativista e ágil concebido por Newton Nitro como a evolução contemporânea das regras do *NitroDungeon* (Segunda Edição). Inspirado na cartilha Powered by the Apocalypse (PbtA) e no clássico *Dungeon World*, mas reconstruído com sabor visceral, foco em agilidade na mesa, playbooks modulares e alta personalização.
+- **Mecânicas:**
+  - **Distribuição Tripartite de Sucesso (2d6 + Modificador):**
+    - **10+:** *Sucesso Pleno* (o personagem alcança o objetivo com maestria e pode escolher efeitos adicionais).
+    - **7–9:** *Sucesso Parcial ou com Custo* (o objetivo é atingido, mas com complicação, recurso gasto, perigo iminente ou retaliação).
+    - **6 ou menos:** *Falha Dramática / Movimento do Mestre* (o Mestre faz um Movimento Duro ou Suave para alterar o estado ficcional, e o jogador marca 1 Ponto de Experiência/Aprendizado).
+  - **Estrutura de Movimentos (Moves):** Ações categorizadas em *Movimentos Básicos*, *Movimentos de Combate* e *Movimentos Especiais de Arquétipo*. A ficção sempre lidera a mecânica ("para fazer, você precisa narrar o que faz").
+  - **Playbooks de Gênero Customizáveis:** Arquétipos que combinam Atributos (Força, Agilidade, Vigor, Mente, Espírito), Vínculos entre personagens, Equipamentos com tags narrativas e Habilidades Especiais desbloqueáveis por avanço.
+  - **Dano Ficcional e Condições:** Substituição de HP inflacionado por dano baseado em dados de classe e Tags (Penetrante, Devastador, Furtivo), aplicando condições debilitantes que impactam rolagens subsequentes.
+- **Site Oficial:** [2d6world no Nitroblog](https://newtonrocha.wordpress.com/2d6world/)
+- **Jogos Derivados:** *NitroDungeon 2ª Edição*, *Legião: A Era da Desolação (Adaptação 2d6World)*, *CyberDungeon 20XX*.
+- **Implementação no Foundry VTT:**
+  - `Item Type DataModel`: Itens do tipo `move` com gatilhos (`trigger`), tipo de movimento (`basic`, `class`, `special`) e fórmulas vinculadas a atributos dinâmicos.
+  - `Chat Cards PbtA`: Exibição instantânea do resultado com cores temáticas (Verde 10+, Amarelo 7-9, Vermelho 6-) e botões de opções de escolha embutidos diretamente na mensagem do chat para escolhas do jogador em sucessos 7-9 ou 10+.
+
+---
+
+### 63. Pocket 2d6World (Newton Nitro / NitroGames)
+- **Descrição:** Variante ultra-minimalista, portátil e micro-narrativista do 2d6World, projetada por Newton Nitro para one-shots imediatas, convenções, jogos improvisados e campanhas minimalistas de preparação zero (*zero-prep*).
+- **Mecânicas:**
+  - **Ficha em Meia Página / Cartão:** Personagens definidos por apenas 3 ou 4 Atributos principais (ex: Físico, Raciocínio, Vontade) com modificadores que variam tipicamente entre `-1` e `+3`, acrescidos de 1 Façanha/Especialidade e 3 Itens Marcantes.
+  - **Resolução Rápida 2d6:** Mantém o gradiente `10+` (Sucesso), `7-9` (Custo), `6-` (Reviravolta/Problema), eliminando tabelas de consulta pesadas em favor do bom senso ficcional e do consenso da mesa.
+  - **Trilha de Resistência Minimalista:** 3 a 5 Caixas de Dano/Stress. Cada ferimento absorvido marca uma caixa; quando todas estão marcadas, o personagem cai inconsciente, é retirado de cena ou sofre uma debilidade permanente.
+  - **Regra de Conversão Instantânea:** Permite rodar qualquer aventura tradicional de D&D, OSR ou PbtA convertendo desafios em dificuldades de teste direto no ato.
+- **Site Oficial:** [Pocket 2d6World no Nitroblog](https://newtonrocha.wordpress.com/pocket-2d6world-sistema-de-regras-de-rpg-minimalista-narrativista-e-customizavel/)
+- **Jogos Derivados:** Micro-cenários de bolso, *Pocket NitroDungeon*, one-shots de eventos escolares e oficinas de RPG.
+- **Implementação no Foundry VTT:**
+  - `Sheet Ultra-Compacta em ApplicationV2`: Ficha de Ator responsiva com altura reduzida (formato cartão de bolso), checkboxes reativos para as caixas de estresse e macro de 1-clique para qualquer rolagem de atributo.
+
+---
+
+### 64. Sistema 2d10Solo (Newton Nitro / NitroGames)
+- **Descrição:** Motor pioneiro e versátil de regras customizáveis para jogos de RPG sem Mestre (Solo RPG) ou cooperativos sem mestre, criado por Newton Nitro. Focado na filosofia do "Jogador-Mestre" e na narrativa emergente instantânea ("A História Acontece Agora").
+- **Mecânicas:**
+  - **Oráculo Probabilístico 2d10 (Sim / Não com Nuances):**
+    - Perguntas fechadas formuladas à ficção são resolvidas rolando `2d10` (gerando resultados de 2 a 20) contra probabilidades escalonadas (Improvável, 50/50, Provável, Quase Certo).
+    - **Leitura dos Dois d10:**
+      - **Sim, e...** (Sucesso espetacular com bônus).
+      - **Sim.** (Confirmação padrão).
+      - **Sim, mas...** (Confirmação com complicação ou custo).
+      - **Não, mas...** (Negação aliviada por um detalhe favorável).
+      - **Não.** (Negação padrão).
+      - **Não, e além disso...** (Negação com agravamento grave ou perigo novo).
+  - **Oráculo de Dados Iguais (Duplos / Match):** Se ambos os dados caírem no mesmo valor (ex: `3 e 3`, `7 e 7`), uma **Reviravolta Inesperada (Plot Twist)** é disparada imediatamente, consultando a Tabela de Foco de Evento.
+  - **Tabelas Geradoras de Estímulo Semântico (Verbo + Substantivo):** Matrizes percentuais ou 2d10 para gerar faíscas de criatividade imediata quando a cena precisa de descrição sensorial, intenção de NPC, pistas ou desfechos de mistério.
+  - **Geradores de NPCs e Complicações:** Tabelas de arquétipos, motivações e reações imediatas (Hostil, Neutro, Curioso, Amigável, Enganador).
+- **Site Oficial:** [2d10Solo no Nitroblog](https://newtonrocha.wordpress.com/sistema-2d10solo-2d10solo-regras-customizaveis-para-jogos-de-rpg-sem-mestre-download-gratuito-nitrogames-rpgsolo-sistemaderpg/)
+- **Jogos Derivados:** Ferramenta padrão para campanhas solo em múltiplos sistemas (*Old-School Essentials*, *Tormenta20*, *Call of Cthulhu*, *Vampiro: A Máscara*).
+- **Implementação no Foundry VTT:**
+  - `Journal / RollTable Automation`: Pacote de compêndio de `RollTable` com a tabela mestre de probabilidades 2d10 e tabelas semânticas (Verbos/Substantivos).
+  - `Macro Oracular`: Macro com diálogo pop-up que pergunta "Qual a probabilidade?" (Muito Improvável até Quase Certo), rola `2d10`, detecta duplos automaticamente e publica no chat a resposta interpretada com botão para sortear reviravolta se houver empate.
+
+---
+
+### 65. Sistema 2d6Solo (Newton Nitro / NitroGames)
+- **Descrição:** Adaptação e condensação minimalista do motor 2d10Solo calibrada exclusivamente para o uso de dados de seis faces (`2d6`). Ideal para ser utilizado em conjunto com o *Pocket 2d6World*, *Traveller*, jogos PbtA ou qualquer sistema que opere nativamente com d6s.
+- **Mecânicas:**
+  - **Oráculo Central 2d6:**
+    - Pergunta formulada -> Ajusta-se o modificador de probabilidade (+1, 0, -1, etc.).
+    - **10+:** *Sim, e...*
+    - **8–9:** *Sim.*
+    - **7:** *Sim, mas...* (ponto de inflexão dramática neutro/equilibrado).
+    - **5–6:** *Não, mas...*
+    - **3–4:** *Não.*
+    - **2:** *Não, e além disso...*
+  - **Gatilho de Empate (Duplos no 2d6):** Qualquer resultado com dados gêmeos (1-1, 2-2, 3-3, 4-4, 5-5, 6-6) ativa o *Oráculo de Evento Aleatório*, introduzindo novos personagens, mudanças repentinas de clima, ou revelações sobre a cena atual.
+  - **Tabelas D66 / 2d6 para Ação e Tema:** Lista condensada de 36 verbos e 36 temas/substantivos lidos combinando o primeiro dado como dezena e o segundo como unidade (D66) para direcionamento temático instantâneo.
+- **Site Oficial:** [2d6Solo no Nitroblog](https://newtonrocha.wordpress.com/2d6solo/)
+- **Jogos Derivados:** Campanhas solo de *Pocket 2d6World*, sessões de bolso em viagens, aventuras coop sem mestre.
+- **Implementação no Foundry VTT:**
+  - `Compendium Pack de RollTables D66`: Tabelas configuradas no Foundry para consulta de 1d6*10 + 1d6.
+  - `HUD Flutuante de Oráculo`: Widget em tela que permite ao jogador solo clicar na probabilidade e receber a interpretação sem abrir janelas extras.
+
