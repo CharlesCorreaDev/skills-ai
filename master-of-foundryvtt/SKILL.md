@@ -99,7 +99,6 @@ Tools: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) and the guid
 - **Use REA** to study Foundry core, systems and modules (real APIs, hooks, DataModels, sheets) before building, so new code matches the target precisely.
 - **Trigger:** ANY request to generate a module for a system/Foundry, reverse engineer something, **create a new system, adjust/fix a system, recreate or rebuild from scratch**.
 - **Before work:** read `memory/learnings.md` and `memory/<target>.md`. **After work (even on failure):** save findings, pitfalls, patterns and improvements there using the template in the guide (verified facts only, no secrets/licensed content), then promote generalizable lessons into `guides/`/`systems/`.
-- Reverse engineer only for interoperability/learning; never to bypass licenses or redistribute premium content (warn the user).
 
 #### 11. Auto-Install on Skill Setup (CRITICAL)
 When this skill is installed/first used (or when a required tool is missing), the agent MUST:
@@ -246,7 +245,6 @@ Ferramentas: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) e o gu
 - **Use o REA** para estudar o core do Foundry, sistemas e módulos (APIs reais, hooks, DataModels, fichas) antes de construir, garantindo precisão e menos erros.
 - **Gatilho:** QUALQUER pedido para gerar módulo para um sistema/Foundry, fazer engenharia reversa, **criar sistema novo, ajustar sistema, recriar ou criar do zero**.
 - **Antes:** ler `memory/learnings.md` e `memory/<alvo>.md`. **Depois (mesmo se falhar):** salvar descobertas, armadilhas, padrões e melhorias ali com o template do guia (só fatos verificados, sem segredos/conteúdo licenciado) e promover o que for geral para `guides/`/`systems/`.
-- Engenharia reversa só para interoperabilidade/aprendizado; nunca para burlar licenças ou redistribuir conteúdo premium (alertar o usuário).
 
 #### 11. Auto-Instalação ao Instalar a Skill (CRÍTICO)
 Ao instalar/usar a skill pela primeira vez (ou se faltar alguma ferramenta), o agente DEVE:

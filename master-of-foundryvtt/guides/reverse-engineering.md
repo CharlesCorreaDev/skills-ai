@@ -13,7 +13,6 @@ Static JS analysis needs no Ghidra/Hopper/IDA; native analysis does (optional, a
 ## Targets & how
 - **Foundry core** (`<install>/resources/app` – `client/`, `common/`, `public/`): `rea analyze-javascript-application "<path>" --json`. Use to confirm real API signatures, hooks, DataModel schemas, deprecations of the user's exact version.
 - **Systems/Modules**: prefer source (git) via Gitingest/Repomix/DeepWiki (SKILL.md §8). If only a packaged/minified copy exists (`Data/systems/<id>`, `Data/modules/<id>`), run REA on that folder.
-- Never reverse engineer to bypass licensing/paywalls or redistribute proprietary content (see `policies/license.md`). Study for interoperability and learning only; warn the user if the target is premium.
 
 ## Mandatory workflow (every reverse-engineering / create / adjust / recreate task)
 1. **Recall**: read `memory/learnings.md` (+ `memory/<system-or-module>.md` if present).
