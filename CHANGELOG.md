@@ -7,6 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.7.0] - 2026-10-24
+
+### Added / Adicionado
+- **master-of-foundryvtt (v0.10.0-beta):**
+  - **Protocolo Obrigatório 13: Code Mode & Sandbox Orchestration (CodeAct):**
+    - Adotado o paradigma estrito de Code-as-Action para Foundry VTT, economizando tokens contextuais através de filtragem e processamento em memória via scripts em sandbox (Node.js/Python).
+    - Validação sintática e de lógica antes da entrega de qualquer macro, função ou patch.
+    - Operações programáticas em lote via MCP (`master-of-foundryvtt-mcp`, `ninjos-foundry-mcp`).
+    - Consulta contínua à documentação oficial (`kb/`, `versions/`) e inspeção em tempo real com ferramentas de engenharia reversa do REA (`rea-agents`).
+  - **Guia Operacional Bilíngue:**
+    - Adicionado [guides/code-mode-sandbox-orchestration.md](master-of-foundryvtt/guides/code-mode-sandbox-orchestration.md).
+  - **Verificação Semanal de Atualizações & Auto-Update:**
+    - Script [`scripts/check_skill_updates.py`](master-of-foundryvtt/scripts/check_skill_updates.py) e Mandato 12 atualizado para checar novas versões semanalmente, notificar o desenvolvedor e executar a atualização automaticamente.
+
+---
+
 ## [1.6.0] - 2026-10-23
 
 ### Added / Adicionado

@@ -115,15 +115,45 @@ When the user asks to install, update, or reinstall this skill (or when a requir
    - Ask for authorization once. If confirmed, install and configure everything (`python scripts/setup_dev_env.py --yes`, MCP registrations, `npx rea-agents setup`, `fvtt configure`), self-correcting failures.
    - If denied, continue with limited capabilities and explicitly state what is missing.
 
-#### 12. Semantic Versioning, VERSION File & Update Notification Protocol (CRITICAL)
+#### 12. Semantic Versioning, VERSION File & Weekly Auto-Update Protocol (CRITICAL)
 - **Every Skill MUST have a `VERSION` file** in its root directory containing its exact version string adhering to [Semantic Versioning (SemVer)](https://semver.org/spec/v2.0.0.html) (e.g., `0.9.0-beta`).
 - **Check & Notify Active Version:** Whenever the Agent invokes or references this skill, it **MUST read the `VERSION` file** to determine the current skill version and inform/alert the user or calling agent of the active version.
+- **Weekly Auto-Update Check & Autonomous Notification:**
+  - The Agent **MUST proactively check for updates weekly** (e.g., via `node scripts/check_skill_updates.js` or `python scripts/check_skill_updates.py`).
+  - **If a newer or different version is detected:** The Agent **MUST explicitly announce the skill name and version to the developer BEFORE performing the update**:
+    > 📢 **Atualização de Skill:** A skill `master-of-foundryvtt` possui uma nova versão disponível (Versão atual: `vX.Y.Z` ➔ Nova versão: `vA.B.C`). Iniciando a atualização automática agora...
+  - Then, automatically execute the update while safeguarding all local memories in `memory/`.
 - **Dedicated Changelog:** All notable changes to this skill **MUST be documented in its own [`CHANGELOG.md`](CHANGELOG.md)** and mirrored in the repository's root [`CHANGELOG.md`](../CHANGELOG.md).
 - **SemVer Rule on Updates:** Whenever updating or modifying this skill, the Agent **MUST bump the version in `VERSION`** according to SemVer rules:
   - `PATCH` (`0.9.x`): Backwards-compatible bug fixes, minor documentation updates.
   - `MINOR` (`0.x.0`): Backwards-compatible new features, new guides, new RPG systems, new scripts.
   - `MAJOR` (`x.0.0`): Breaking changes, major architectural redesigns.
   - Pre-release suffixes (e.g. `-beta`) are preserved until the skill achieves full production stability.
+
+#### 13. CODE MODE & SANDBOX ORCHESTRATION (CODEACT) (MANDATORY PROTOCOL)
+You operate under the strict paradigm of **Code Mode (Code-as-Action)**. Every request, analysis, development task, integration, or data manipulation **MUST prioritize writing and executing real scripts in a sandbox environment** rather than relying on atomic JSON tool calls or purely descriptive text. Always verify official documentation and utilize REA tools (`rea-agents`) whenever convenient or necessary to inspect internals and achieve zero-defect executions:
+
+1. **Primary Reasoning Directive (Code-First):**
+   - **Automation via Code:** If the task involves data analysis, parsing files (JSON, JS, HBS, YML, CSV), refactoring, mathematical/mechanical calculations, or API consumption, write and execute a script in sandbox (Node.js/JavaScript or Python).
+   - **In-Memory Filtering (Token Efficiency):** Never dump massive raw data or compendiums directly into the LLM context window. Filter, aggregate, process, and normalize data inside script execution and return only synthesized outputs (`stdout`).
+   - **Testability Before Delivery:** No macro, function, module, or code patch may be delivered without having its logic previously instantiated, syntax-validated, or mocked within the sandbox.
+   - **Official Documentation & REA Verification:** Always verify API methods against official documentation (`kb/`, `versions/`) and inspect live schemas using REA reverse engineering tools (`rea-agents`) before implementing.
+
+2. **MCP Integration & Connection:**
+   - **Programmatic Composition:** Do not chain individual JSON tool calls manually. Write scripts that import the MCP client/socket or batch bridge operations in a single round.
+   - **Active State Inspection:** Use MCP programmatically to inspect system state (active API versions, document integrity, data schemas) before applying changes.
+   - **Exception Handling:** Wrap all MCP endpoint interactions in defensive blocks (`try/catch` in JS, `try/except` in Python), capturing errors, invalid payloads, or timeouts and reporting root causes to `stderr`.
+
+3. **Sandbox Execution Workflow:**
+   - **1. Dependency & Requirement Analysis:** Identify necessary APIs, local libraries, and MCP methods.
+   - **2. Sandbox Script Development:** Write clean, modular, self-contained scripts to solve the problem or validate hypotheses.
+   - **3. Execution & Validation:** Run the script in the container/sandbox. If it fails, inspect `stderr`, correct, and re-execute. If deprecations appear, refactor to the modern standard.
+   - **4. Concrete Delivery:** Present final responses strictly based on verified outputs (`stdout` and processed data), providing tested, deployment-ready code.
+
+4. **Sandbox Safety & Constraints:**
+   - **Non-Interactive Execution:** Ensure scripts run autonomously without blocking stdin prompts.
+   - **Idempotence:** Scripts modifying data, compendiums, DBs, or files must prevent duplication or corruption on repeat execution.
+   - **Clean Output:** Avoid noisy logging; format final terminal outputs as concise structures (summarized JSON or key status lines).
 
 
 ### 📚 Structure & Fast-Path Navigation
@@ -158,6 +188,7 @@ When the user asks to install, update, or reinstall this skill (or when a requir
   - [Core Reverse Engineering & v14 API Architecture](kb/08-core-reverse-engineering-v14.md)
   - [RPG Engines, Game Design & Mechanics Directory](kb/09-rpg-engines-and-mechanics.md)
 - [Development Guides](guides/)
+  - [Code Mode & Sandbox Orchestration (CodeAct)](guides/code-mode-sandbox-orchestration.md)
   - [CLI Tools & Compendium Automation (`@foundryvtt/foundryvtt-cli` & `fvtt-world-cli`)](guides/cli-tools.md)
   - [Creating Game Systems](guides/creating-systems.md)
   - [Creating Modules](guides/creating-modules.md)
@@ -284,15 +315,47 @@ Sempre que o usuário solicitar a instalação, reinstalação ou atualização 
    - **Se o dev responder sim**, o agente tem permissão para instalar e configurar tudo da melhor forma para o desenvolvimento Foundry (winget/npm/pip/git, `python scripts/setup_dev_env.py --yes`, registro dos MCPs, `npx rea-agents setup`, `fvtt configure`), auto-corrigindo falhas. Credenciais/caminhos continuam sendo perguntados, nunca chutados. Reiniciar o agente depois.
    - **Se não**, seguir com recursos limitados informando o que ficará indisponível.
 
-#### 12. Protocolo de Versionamento Semântico, Arquivo VERSION e Alerta ao Usuário (CRÍTICO)
+#### 12. Protocolo de Versionamento Semântico, Arquivo VERSION e Auto-Atualização Semanal (CRÍTICO)
 - **Toda Skill DEVE ter um arquivo `VERSION`** em sua pasta raiz contendo exatamente a string de versão segundo as regras do [Versionamento Semântico (SemVer)](https://semver.org/spec/v2.0.0.html) (ex: `0.9.0-beta`).
 - **Consultar e Avisar Versão Ativa:** Sempre que o Agente for acionado ou referenciar esta skill, ele **DEVE ler o arquivo `VERSION`** para identificar a versão instalada/ativa e avisar/alertar o desenvolvedor ou agente solicitante sobre a versão corrente.
+- **Checagem de Atualizações Semanal e Atualização Automática:**
+  - O Agente **DEVE buscar atualizações da skill semanalmente** (executando `node scripts/check_skill_updates.js` ou `python scripts/check_skill_updates.py`).
+  - **Caso identifique uma versão mais recente ou diferente:** O Agente **DEVE OBRIGATORIAMENTE comunicar o desenvolvedor dizendo o nome da skill e a versão ANTES de atualizar**:
+    > 📢 **Atualização de Skill:** A skill `master-of-foundryvtt` possui uma nova versão disponível (Versão atual: `vX.Y.Z` ➔ Nova versão: `vA.B.C`). Iniciando a atualização automática agora...
+  - Em seguida, **executar a atualização automaticamente**, preservando memórias locais (`memory/`).
 - **Changelog Dedicado:** Todas as alterações notáveis nesta skill **DEVEM ser registradas em seu [`CHANGELOG.md`](CHANGELOG.md)** próprio e espelhadas no [`CHANGELOG.md`](../CHANGELOG.md) geral na raiz do repositório.
 - **Regra de Atualização SemVer:** Sempre que atualizar ou estender esta skill, o Agente **DEVE incrementar a versão no arquivo `VERSION`**:
   - `PATCH` (`0.9.x`): Correções de bugs retrocompatíveis, melhorias menores em documentação.
   - `MINOR` (`0.x.0`): Adição de novas funcionalidades retrocompatíveis, novos guias, novos sistemas de RPG, novos scripts.
   - `MAJOR` (`x.0.0`): Mudanças que quebram compatibilidade ou reestruturações arquiteturais drásticas.
   - O sufixo de pré-lançamento (ex: `-beta`) deve ser mantido enquanto a skill estiver em fase de validação/beta.
+
+#### 13. PROTOCOLO OBRIGATÓRIO: CODE MODE & SANDBOX ORCHESTRATION (CODEACT)
+Você opera sob o paradigma estrito de **Code Mode (Code-as-Action)**. Toda e qualquer solicitação, análise, tarefa de desenvolvimento, integração ou manipulação de dados deve priorizar a escrita e execução de scripts reais em ambiente sandbox, em vez de depender de tool calls baseados em JSON atômico ou respostas textuais puramente descritivas. O Agente **NUNCA DEVE esquecer de verificar a documentação oficial** (`kb/`, `versions/`) e, sempre que necessário ou conveniente, **usar as ferramentas de REA (`rea-agents`)** para inspecionar o core/módulos e melhor entender como realizar a tarefa solicitada com precisão cirúrgica:
+
+1. **Diretriz Primária de Raciocínio (Code-First):**
+   - **Automação por Código:** Se a tarefa envolve análise de dados, parsing de arquivos (JSON, JS, HBS, YML, CSV), refatoração, cálculos mecânicos ou consumo de APIs, escreva e execute um script no sandbox (Node.js/JavaScript ou Python).
+   - **Filtro em Memória (Token Efficiency):** Nunca despeje grandes volumes de dados ou compêndios diretamente na janela de contexto. Filtre, agregue, processe e normalize os dados dentro da execução do script e retorne apenas o resultado sintetizado (`stdout`).
+   - **Testabilidade Antes da Entrega:** Nenhuma macro, função, módulo ou patch de código deve ser entregue sem que sua lógica seja previamente instanciada, validada sintaticamente ou mockada dentro do ambiente de sandbox.
+   - **Verificação Documental & REA:** Sempre consulte a documentação oficial da API e execute inspeção reversa com REA (`rea-agents` / `rea-engenharia-reversa`) para garantir conformidade e zero suposições antes de consolidar soluções.
+
+2. **Integração e Conexão via MCP (Model Context Protocol):**
+   - **Composição Programática:** Não encadeie ferramentas JSON individuais manualmente. Escreva scripts que importem o cliente/socket MCP e executem operações em lote (*batch operations*), manipulação de coleções e pipelines de chamadas em uma única rodada.
+   - **Inspeção Ativa de Estado:** Use o MCP programativamente para inspecionar o estado do sistema (verificar versões de API ativas, checar integridade de documentos, ler esquemas de dados) antes de aplicar qualquer alteração.
+   - **Tratamento de Exceções:** Todas as chamadas para endpoints MCP devem conter blocos de tratamento (`try/catch` em JS ou `try/except` em Python), capturando erros de conexão, payloads inválidos ou timeouts e reportando a causa raiz em `stderr`.
+
+3. **Workflow de Execução em Sandbox:**
+   - **1. Análise de Requisitos e Dependências:** Identifique quais APIs, bibliotecas locais ou métodos MCP são necessários.
+   - **2. Desenvolvimento do Script de Sandbox:** Escreva código limpo, modular e autossuficiente para resolver a demanda ou validar a hipótese.
+   - **3. Execução e Validação:** Execute o script no container/sandbox.
+     - Se o script falhar ou lançar erro: analise o `stderr`, corrija o código e reexecute até obter sucesso.
+     - Se o script retornar warnings de depreciação ou incompatibilidade: refatore a implementação para o padrão atual do ecossistema.
+   - **4. Entrega Concreta:** Apresente a resposta baseando-se estritamente nas saídas verificadas (`stdout` e dados processados), fornecendo o código final testado e pronto para implantação.
+
+4. **Restrições e Segurança do Sandbox:**
+   - **Execução Não-Interativa:** Garanta que todos os scripts rodem de forma autônoma (sem requisições bloqueantes de input de usuário no terminal).
+   - **Idempotência:** Scripts que alteram dados, compêndios, bancos de dados ou arquivos do sistema devem ser projetados para evitar duplicações ou corrupção caso executados repetidamente.
+   - **Tratamento Limpo de Saída:** Evite logs verborrágicos desnecessários. Formate a saída final do terminal em estruturas concisas (JSON resumido ou linhas-chave de status).
 
 
 ---
@@ -329,9 +392,11 @@ Sempre que o usuário solicitar a instalação, reinstalação ou atualização 
   - [Engenharia Reversa do Core & Arquitetura da API v14](kb/08-core-reverse-engineering-v14.md)
   - [Motores de Regras, Game Design & Mecânicas de RPG](kb/09-rpg-engines-and-mechanics.md)
 - [Guias de Desenvolvimento](guides/)
+  - [Code Mode & Orquestração em Sandbox (CodeAct)](guides/code-mode-sandbox-orchestration.md)
   - [Ferramentas CLI & Automação de Compêndios (`@foundryvtt/foundryvtt-cli` e `fvtt-world-cli`)](guides/cli-tools.md)
   - [Criando Sistemas de Jogo](guides/creating-systems.md)
   - [Criando Módulos](guides/creating-modules.md)
+  - [Engenharia Reversa no Foundry (REA)](guides/reverse-engineering.md)
   - [Integração de IA & LLMs (Integrate AI, Phil's Assistant, AI Actors)](guides/ai-and-llm-integration.md)
   - [Matriz de Competências & Especializações de Desenvolvimento](guides/development-skills-matrix.md)
   - [Sockets e Comunicação Cliente-Servidor (Nativo e socketlib)](guides/sockets.md)

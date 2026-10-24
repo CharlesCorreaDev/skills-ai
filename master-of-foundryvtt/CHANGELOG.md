@@ -7,6 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.10.0-beta] - 2026-10-24
+
+### Added / Adicionado
+- **Protocolo Obrigatório 13: Code Mode & Sandbox Orchestration (CodeAct):**
+  - Implementado o paradigma estrito de Code-as-Action: tarefas de desenvolvimento, manipulação de compêndios, cálculos mecânicos e consumo de dados devem priorizar a execução de scripts reais no sandbox (Node.js/Python), reduzindo drasticamente o consumo de tokens na janela de contexto através de filtragem em memória.
+  - Testabilidade antes da entrega (validação sintática de macros, funções e patches antes de fornecer a resposta).
+  - Execução programática e em lote com servidores MCP (`master-of-foundryvtt-mcp`, `ninjos-foundry-mcp`, etc.).
+  - Mandato explícito de sempre consultar a documentação oficial (`kb/`, `versions/`) e acionar ferramentas de REA (`rea-agents`) para inspeção de esquemas e código em engenharia reversa.
+- **Guia Operacional Dedicado (`guides/code-mode-sandbox-orchestration.md`):**
+  - Documentação bilíngue completa com diretrizes, anti-padrões e boas práticas de orquestração de scripts sandbox no Foundry VTT.
+- **Auto-Atualizador Semanal & Alerta Autônomo ao Desenvolvedor (Mandato 12 & `scripts/check_skill_updates.py`):**
+  - Script autônomo para verificação periódica de atualizações da skill.
+  - Diretriz mandatória no Mandato 12 para checar semanalmente por novas versões da skill e, em caso de versão divergente/mais recente, comunicar o desenvolvedor e executar a atualização automaticamente com preservação de memórias (`memory/`).
+
+---
+
 ## [0.9.0-beta] - 2026-10-23
 
 ### Added / Adicionado
