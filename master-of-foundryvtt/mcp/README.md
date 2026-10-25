@@ -18,15 +18,14 @@ O **Model Context Protocol (MCP)** é o padrão aberto que permite a agentes de 
 
 ---
 
-## 🛠️ Servidores MCP Recomendados para Foundry VTT
+## 🛠️ Servidor MCP Oficial Unificado: `master-of-foundryvtt-mcp`
 
-| Repositório / Servidor MCP | Autor | Foco Principal & Recursos | Tipo de Conexão |
-| :--- | :--- | :--- | :--- |
-| [**master-of-foundryvtt-mcp**](foundry_mcp_server.py) | **Nativo (GM Charles Corrêa)** | Servidor MCP autônomo sem dependências externas. Inspeção de ambiente, busca oficial com paginação, validação de manifestos e gerador de boilerplate. | Python stdio (JSON-RPC 2.0) |
-| [**ninjos-foundry-mcp**](https://github.com/Niclasp1501/ninjos-foundry-mcp) | Niclasp1501 | Consulta e modificação de documentos do mundo, busca semântica em compêndios, execução de comandos e macros. | Conexão HTTP/WebSocket ao Foundry ativo |
-| [**foundryvtt-mcp**](https://github.com/laurigates/foundryvtt-mcp) | laurigates | Integração profunda para desenvolvedores de módulos/sistemas, inspeção de pacotes e depuração. | Sistema de Arquivos / API REST |
-| [**foundry-vtt-mcp**](https://github.com/adambdooley/foundry-vtt-mcp) | adambdooley | Leitura de pacotes LevelDB/ClassicLevel locais, validação estática de schemas e execução rápida. | Local CLI / Node.js stdio |
-| [**foundry-vtt-bridge / GM Puppeteer**](https://mcpmarket.com/server/foundry-vtt-bridge) | Comunidade MCPMarket | Ponte de automação para controle de cenas, combate e diários do mestre via MCP. | HTTP / WebSocket Bridge |
+O **`master-of-foundryvtt-mcp`** é o servidor MCP nativo e unificado da suite. Ele incorpora todas as capacidades necessárias em um único runtime independente (Node.js nativo), **dispensando a necessidade de instalar múltiplos servidores MCP externos** (`ninjos-foundry-mcp`, `foundryvtt-mcp`, `foundry-vtt-mcp`):
+
+| Servidor MCP | Arquitetura | Status & Capacidades Integradas |
+| :--- | :--- | :--- |
+| **`master-of-foundryvtt-mcp`** *(Nativo & Oficial)* | Node.js stdio (JSON-RPC 2.0) | **Servidor Único Oficial.** Gerenciamento completo de atores, itens, cenas, tabelas, macros, compêndios, journals/handouts, playlists, baralhos de cartas, verificação de ícones HTTP 200, ownership estrito para GM, inspeção de SO e Nuvem/Docker, e engenharia reversa estática e remota via Git. |
+| *Módulos Externos Terceiros (`ninjos`, `laurigates`, `adambdooley`)* | Módulos e Bridges Heterogêneos | **Descontinuados/Opcionais:** Não são mais necessários. O MCP nativo da skill cobre todas as operações sem dependências externas ou quebras de conexão. |
 
 ---
 
@@ -78,39 +77,15 @@ O agente deve solicitar ao desenvolvedor as informações necessárias que não 
         "FOUNDRY_ADMIN_KEY": "<SENHA_MASTER_ADMIN>",
         "FOUNDRY_DATA_PATH": "C:/Users/<SEU_USUARIO>/AppData/Local/FoundryVTT/Data"
       }
-    },
-    "ninjos-foundry-mcp": {
-      "command": "npx",
-      "args": ["-y", "ninjos-foundry-mcp"],
-      "env": {
-        "FOUNDRY_URL": "http://localhost:30000",
-        "FOUNDRY_API_KEY": "<INSERIR_API_KEY_SE_APLICAVEL>",
-        "FOUNDRY_WORLD": "<NOME_DO_MUNDO>"
-      }
-    },
-    "foundryvtt-mcp": {
-      "command": "npx",
-      "args": ["-y", "foundryvtt-mcp"],
-      "env": {
-        "FOUNDRY_DATA_PATH": "C:/Users/<SEU_USUARIO>/AppData/Local/FoundryVTT/Data"
-      }
-    },
-    "adambdooley-foundry-mcp": {
-      "command": "node",
-      "args": ["C:/caminho/para/adambdooley-foundry-mcp/dist/index.js"],
-      "env": {
-        "FOUNDRY_DATA_DIR": "C:/Users/<SEU_USUARIO>/AppData/Local/FoundryVTT/Data"
-      }
     }
   }
 }
 ```
 
-### 2. Configuração para Claude Code CLI
+### 2. Configuração Simplificada para Claude Code CLI
 
 ```bash
-claude mcp add ninjos-foundry-mcp npx -y ninjos-foundry-mcp -- --url http://localhost:30000
-claude mcp add foundryvtt-mcp npx -y foundryvtt-mcp -- --data-path "C:/Users/<SEU_USUARIO>/AppData/Local/FoundryVTT/Data"
+claude mcp add master-of-foundryvtt node e:/Projetos_Docker/skills-ai/master-of-foundryvtt/mcp/foundry_mcp_server.js
 ```
 
 ---

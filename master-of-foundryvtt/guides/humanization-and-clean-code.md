@@ -97,7 +97,12 @@ ui.notifications.info(`${token.name} sofreu ${damage} de dano.`);
 ### Regras de Ouro no Código:
 1. **Early Return:** Elimine aninhamentos profundos de `if/else`.
 2. **Optional Chaining (`?.`):** Use encadeamento seguro em vez de múltiplos `if`.
-3. **Comentários de Decisão, Não de Sintaxe:** Comente apenas decisões arquiteturais estranhas ou workarounds de bugs do core. Nunca comente o que o código já expressa.
+3. **Comentários Estritamente Necessários e Bilíngues (EN + PT-BR):** Comente apenas decisões arquiteturais não óbvias ou workarounds de bugs do core. Nunca comente o que o código já expressa. **Quando necessários, os comentários DEVEM ser formulados sempre em Inglês e Português**:
+   ```javascript
+   // EN: Ensure default ownership is 0 (concealed from players) unless explicit
+   // PT-BR: Garante ownership padrão 0 (oculto dos jogadores) salvo se explícito
+   const ownership = options.ownership ?? { default: 0 };
+   ```
 4. **Sem Cabeçalhos de IA:** Nunca inclua cabeçalhos como `// Macro created by Assistant`.
 
 ---

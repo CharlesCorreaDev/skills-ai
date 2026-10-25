@@ -65,6 +65,12 @@ export class YzeActorSheet extends ActorSheetV2 {
 
 ### Boas Práticas JS:
 - **Zero AI Watermarks & Slop:** Código conciso, limpo e idiomático (sem comentários óbvios redundantes).
+- **Comentários Obrigatórios em Inglês e Português:** Sempre que for estritamente necessário inserir comentários de código (como decisões arquiteturais complexas, workarounds do core ou lógicas de regras não óbvias), **os comentários DEVEM ser escritos em Inglês e Português** no formato bilíngue:
+  ```javascript
+  // EN: Core workaround: prevent initiative reset when rerolling push dice
+  // PT-BR: Workaround do core: evita reset de iniciativa ao rerolar dados de push
+  if (isPush) return rollResult;
+  ```
 - **Early Returns:** `if (!actor) return;` ao invés de aninhamento excessivo de `if/else`.
 - **Hooks e Eventos:** Sempre registre hooks com callbacks bem estruturados: `Hooks.on("ready", () => {})`.
 
