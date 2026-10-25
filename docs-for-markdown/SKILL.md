@@ -71,6 +71,16 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 - **Version Awareness:** The Agent must read `VERSION` to notify the operator/caller of the active skill version.
 - **Update Protocol:** Always bump `VERSION` following [SemVer](https://semver.org/spec/v2.0.0.html), register updates in [`CHANGELOG.md`](CHANGELOG.md), and create a git release tag (`docs-for-markdown-v<version>`).
 
+### 🚨 Proactive Developer Feedback & Autonomous GitHub Issue Protocol
+Whenever the AI Agent identifies a bug from developer programming, missing features/tools preventing action completion, lack of required MCP resources, or clear opportunities for enhancement:
+1. **Notify the User:** Promptly inform the operator of the problem, root cause, and suggested fix.
+2. **Generate Bilingual Report:** Produce a structured summary in both English and Portuguese with title, problem description, technical cause, environment context, and recommended resolution.
+3. **Open GitHub Issue via CLI:**
+   ```bash
+   gh issue create --repo CharlesCorreaDev/skills-ai --title "[docs-for-markdown] <Issue Title>" --body "<Bilingual text in English and Portuguese>"
+   ```
+   Provide the generated issue URL to the user for tracking.
+
 ---
 
 ## 🇧🇷 Português (Brasil)
@@ -134,4 +144,14 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 - **Arquivo `VERSION`:** Contém a versão semântica da skill (ex: `0.1.0-beta`).
 - **Alerta de Versão:** O Agente deve consultar `VERSION` para informar a versão ativa ao usuário/agente solicitante.
 - **Atualizações:** Sempre incremente `VERSION` com base no [SemVer](https://semver.org/spec/v2.0.0.html), registre em [`CHANGELOG.md`](CHANGELOG.md) e associe a uma tag git (`docs-for-markdown-v<versao>`).
+
+### 🚨 Protocolo de Feedback Proativo & Abertura de Issues no GitHub
+Sempre que o Agente de IA identificar problemas por má programação do desenvolvedor, recursos/scripts faltantes para completar uma ação, limitações de MCPs ou oportunidades de melhoria:
+1. **Comunicar o Usuário:** Informe imediatamente o ocorrido, o impacto técnico e a solução recomendada.
+2. **Gerar Relatório Bilíngue:** Crie um documento técnico estruturado em Português e Inglês com título, resumo do problema, causa raiz, contexto e solução proposta.
+3. **Submeter Issue via GitHub CLI:**
+   ```bash
+   gh issue create --repo CharlesCorreaDev/skills-ai --title "[docs-for-markdown] <Título da Issue>" --body "<Texto explicativo bilíngue em PT-BR e EN>"
+   ```
+   Apresente o link direto da issue criada ao usuário para acompanhamento.
 

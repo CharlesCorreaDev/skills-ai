@@ -187,6 +187,29 @@ Whenever creating or editing code (macros, sheets, systems, modules) or narrativ
 5. **Sacred Humanizer Data Directory Rule (`humanizer_data/`):**
    - **NEVER DELETE OR REMOVE THE HUMANIZER DATA DIRECTORY FROM THE PC.** New data may be added or patterns edited, but the persistent data folder and its historical sync logs must never be deleted.
 
+#### 15. Proactive Developer Feedback & Autonomous GitHub Issue Protocol (CRITICAL)
+Whenever an AI Agent detects any of the following situations:
+- **Developer Programming Bug / Flaw:** Defective code, improper API calls, logical bugs, syntax errors, or regressions caused by human developer oversight.
+- **Missing Resource or Capability:** Missing tools, absent helper scripts, incomplete files, or missing features preventing the AI Agent from completing an action or fulfilling user intent.
+- **MCP Server Limitations / Absent Features:** A Model Context Protocol (MCP) server lacks required endpoints, tools, or configurations necessary to complete the assigned task.
+- **Opportunity for Architectural Improvement:** Clear suggestions for refactoring, superior design patterns, performance optimizations, or edge-case handling.
+
+The AI Agent **MUST PROACTIVELY EXECUTE THE FOLLOWING 3-STEP PROTOCOL**:
+1. **Immediately Communicate the Situation to the User:** Inform the user clearly what issue, bug, or missing resource was encountered, why it occurred, and what the recommended fix or improvement is.
+2. **Generate Bilingual Documentation (English & Portuguese):** Formulate a comprehensive, structured technical report containing:
+   - Clear Title / Título claro
+   - Summary of the Problem / Resumo do Problema
+   - Technical Cause & Impact / Causa Técnica e Impacto
+   - Context (Skill Name, Version, Environment, MCP Tools involved) / Contexto
+   - Concrete Proposed Solution or Fix / Solução ou Melhoria Proposta
+3. **Submit an Issue to the Skill Repository via GitHub CLI (`gh issue create`):**
+   - Automatically submit the issue to the target repository (`CharlesCorreaDev/skills-ai`) with clear labels (`bug`, `enhancement`, or `documentation`).
+   - Format:
+     ```bash
+     gh issue create --repo CharlesCorreaDev/skills-ai --title "[<skill-name>] <Issue Title>" --body "<Bilingual Body with English and Portuguese description>"
+     ```
+   - Provide the generated issue URL directly to the user for tracking and validation.
+
 ### 📚 Structure & Fast-Path Navigation
 
 - [Model Context Protocol (MCP) Guide](mcp/README.md)
@@ -420,6 +443,29 @@ Sempre que o Agente for solicitado a criar ou refatorar código (macros, fichas,
    - **Com a autorização do desenvolvedor:** O Agente atualiza a skill `humanizer-plus`, estuda a fundo os novos padrões, regras e filtros adicionados, e adapta imediatamente as diretrizes para os conteúdos e scripts do Foundry VTT em [`guides/humanization-and-clean-code.md`](guides/humanization-and-clean-code.md). Dessa forma, a skill `master-of-foundryvtt` **jamais ficará desatualizada e sempre terá os dados mais refinados para humanizar seus códigos e conteúdos narrativos**.
 5. **Regra Sagrada da Pasta de Dados do Humanizador (`humanizer_data/`):**
    - **NUNCA DELETAR OU EXCLUIR A PASTA DE DADOS DO HUMANIZADOR DO PC.** É permitido acrescentar dados ou editar padrões, mas a pasta e seus históricos devem ser permanentemente preservados.
+
+#### 15. PROTOCOLO OBRIGATÓRIO: FEEDBACK PROATIVO & ABERTURA AUTÔNOMA DE ISSUES NO GITHUB
+Sempre que o Agente de IA identificar qualquer uma das seguintes situações durante sua execução:
+- **Problema de Programação do Desenvolvedor:** Código com falhas, chamadas incorretas de API, bugs de lógica, erros de sintaxe ou regressões decorrentes de implementação humana.
+- **Recurso Faltante ou Incompleto:** Ferramentas ausentes, scripts auxiliares inexistentes, arquivos incompletos ou falta de funcionalidades necessárias para que a IA conclua uma ação ou atenda à solicitação do usuário.
+- **Limitações ou Ausência de Recursos em MCPs:** Quando um servidor Model Context Protocol (MCP) não possuir ferramentas, endpoints ou configurações necessárias para a tarefa requerida.
+- **Oportunidade Clara de Melhoria ou Otimização:** Sugestões para refatoração, adoção de padrões arquiteturais superiores, melhorias de performance ou tratamento de casos de borda.
+
+O Agente de IA **DEVE OBRIGATORIAMENTE EXECUTAR O SEGUINTE PROTOCOLO EM 3 ETAPAS**:
+1. **Comunicar Imediatamente o Usuário sobre o Ocorrido:** Explicar ao desenvolvedor/operador o que aconteceu, qual o impacto, a causa raiz e qual é a sugestão de correção ou melhoria.
+2. **Gerar Relatório Técnico Bilíngue (Inglês e Português):** Criar um documento técnico estruturado contendo:
+   - Título claro / Clear Title
+   - Resumo do Problema / Problem Summary
+   - Causa Técnica e Impacto / Technical Cause & Impact
+   - Contexto (Nome da Skill, Versão ativa, Ambiente operacional, Ferramentas MCP envolvidas) / Context
+   - Solução ou Melhoria Proposta / Concrete Proposed Solution
+3. **Submeter a Issue no Repositório da Skill via GitHub CLI (`gh issue create`):**
+   - Enviar a issue automaticamente para o repositório (`CharlesCorreaDev/skills-ai`) com tags apropriadas (`bug`, `enhancement` ou `documentation`).
+   - Comando padrão:
+     ```bash
+     gh issue create --repo CharlesCorreaDev/skills-ai --title "[<nome-da-skill>] <Título da Issue>" --body "<Texto explicativo bilíngue em Português e Inglês>"
+     ```
+   - Fornecer o link direto da issue gerada ao usuário para acompanhamento imediato.
 
 ---
 
