@@ -157,9 +157,17 @@ Whenever ANY code, script, schema, asset, macro, document, tool, or configuratio
    - **Self-Correction Loop:** If any test fails, review the exact error (`stderr`), correct the code immediately, and re-run verification before reporting back to the user.
 
 #### 10. Reverse Engineering (REA) & Persistent Memory Protocol (CRITICAL)
-Tools: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) and the guide [`rea-engenharia-reversa`](https://github.com/inematds/rea-engenharia-reversa). Full workflow: [guides/reverse-engineering.md](guides/reverse-engineering.md).
-- **Use REA** to study Foundry core, systems and modules (real APIs, hooks, DataModels, sheets) before building, so new code matches the target precisely.
-- **Trigger:** ANY request to generate a module for a system/Foundry, reverse engineer something, **create a new system, adjust/fix a system, recreate or rebuild from scratch**.
+Tools: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI), guide [`rea-engenharia-reversa`](https://github.com/inematds/rea-engenharia-reversa) e ferramenta MCP `reverse_engineer_target`. Full workflow: [guides/reverse-engineering.md](guides/reverse-engineering.md).
+- **Use REA e MCP** para estudar o core do Foundry, sistemas e módulos (APIs reais, hooks, DataModels, sheets) antes de construir, garantindo que o código novo se integre com máxima fidelidade.
+- **Engenharia Reversa de Módulos e Sistemas NÃO Instalados:**
+  - Quando a tarefa do usuário envolver integração com módulos ou sistemas de terceiros não instalados localmente (ex: **JB2A**, **Sequencer**, **Item Piles**, **Midi-QOL**, **Automated Animations** ou sistemas de regras específicos):
+    1. **Inspeção de Repositório Remoto:** O Agente **NÃO deve inventar APIs ou chutar chamadas**. Deve acessar o repositório oficial no GitHub/GitLab (usando `git clone --depth 1`, `git_repo` no MCP `reverse_engineer_target` ou buscas web).
+    2. **Estudo de Arquitetura e Ativos:**
+       - **Armazenamento de Ativos:** Identificar onde o módulo armazena arquivos e mídias (ex: estrutura de pastas de WebP/WebM do JB2A: `modules/jb2a_patreon/...`).
+       - **Chamadas de API & Hooks:** Identificar como o módulo expõe seus métodos globais (ex: `Sequencer.Effect()`, `Hooks.callAll(...)`, DataModels, sockets).
+       - **Dependências & Requisitos:** Checar `module.json` para flags de compatibilidade, dependências obrigatórias (`relationships.requires`) e scripts ESModule.
+    3. **Desenvolvimento Orientado ao Estudo:** Construir o módulo de integração, scripts de armadilhas ou macros rigorosamente de acordo com os padrões e métodos descobertos na engenharia reversa.
+- **Trigger:** QUALQUER pedido para gerar módulos, integrar animações/armadilhas, reverse engineer, **criar novo sistema, ajustar/corrigir sistema, ou recriar do zero**.
 - **Before work:** read `memory/learnings.md` and `memory/<target>.md`. **After work (even on failure):** save findings, pitfalls, patterns and improvements there using the template in the guide (verified facts only, no secrets/licensed content), then promote generalizable lessons into `guides/`/`systems/`.
 
 #### 11. Auto-Install, Reinstallation & Update Protocol (CRITICAL)

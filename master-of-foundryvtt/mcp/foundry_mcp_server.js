@@ -398,16 +398,20 @@ function handleListTools() {
         properties: {
           target_type: {
             type: "string",
-            enum: ["core", "system", "module", "custom_path"],
-            description: "Target category to reverse engineer: 'core' (Foundry source), 'system' (e.g. dnd5e, swade), 'module' (e.g. item-piles), or 'custom_path'."
+            enum: ["core", "system", "module", "git_repo", "custom_path"],
+            description: "Target category to reverse engineer: 'core' (Foundry source), 'system' (e.g. dnd5e, swade), 'module' (e.g. jb2a, sequencer, item-piles), 'git_repo' (remote uninstalled repository), or 'custom_path'."
           },
           target_id: {
             type: "string",
-            description: "System or Module ID (e.g. 'dnd5e', 'swade', 'year-zero-engine-fvtt') or relative subpath if target_type is core."
+            description: "System or Module ID (e.g. 'dnd5e', 'swade', 'jb2a_patreon', 'sequencer') or relative subpath if target_type is core."
+          },
+          git_repo: {
+            type: "string",
+            description: "Remote Git URL or GitHub repo (e.g. 'https://github.com/fantasycalendar/FoundryVTT-Sequencer.git' or 'owner/repo') for uninstalled modules/systems."
           },
           search_term: {
             type: "string",
-            description: "Keyword, class name, Hook, or DataModel schema to search for (e.g. 'TypeDataModel', 'ItemSheet', 'Hooks.on')."
+            description: "Keyword, class name, Hook, or DataModel schema to search for (e.g. 'Sequencer.Effect', 'TypeDataModel', 'ItemSheet', 'Hooks.on')."
           },
           target_path: {
             type: "string",
@@ -1208,6 +1212,31 @@ function toolReverseEngineerTarget(args) {
     resolvedPath = path.join(dataPath, 'systems', targetId);
   } else if (targetType === "module") {
     resolvedPath = path.join(dataPath, 'modules', targetId);
+  } else if (targetType === "git_repo") {
+    // Clone remote repository temporarily for reverse engineering uninstalled packages
+    const gitRepoUrl = args.git_repo || (args.target_id && args.target_id.includes('/') ? `https://github.com/${args.target_id}.git` : null);
+    if (!gitRepoUrl) {
+      return JSON.stringify({
+        status: "error",
+        message: "Para 'git_repo', forneça 'git_repo' (URL do Git ou 'owner/repo')."
+      }, null, 2);
+    }
+
+    const tempDir = path.join(os.tmpdir(), "fvtt_reverse_cache", (args.target_id || "repo").replace(/[^a-zA-Z0-9_-]/g, "_"));
+    if (!fs.existsSync(tempDir)) {
+      try {
+        fs.mkdirSync(tempDir, { recursive: true });
+        const { execSync } = require('child_process');
+        execSync(`git clone --depth 1 "${gitRepoUrl}" "${tempDir}"`, { timeout: 30000, stdio: 'ignore' });
+      } catch (err) {
+        return JSON.stringify({
+          status: "git_clone_failed",
+          git_repo: gitRepoUrl,
+          message: `Falha ao clonar repositório remoto para engenharia reversa: ${err.message}`
+        }, null, 2);
+      }
+    }
+    resolvedPath = tempDir;
   } else if (targetType === "custom_path") {
     resolvedPath = customPath || "";
   }
@@ -1218,8 +1247,8 @@ function toolReverseEngineerTarget(args) {
       target_type: targetType,
       target_id: targetId,
       resolved_path: resolvedPath,
-      message: `Target path does not exist on this machine: ${resolvedPath}. If running in Docker or Cloud, provide local copy or use git source repository.`,
-      guidance: "Para engenharia reversa quando o Foundry está em Docker ou Nuvem, baixe o repositório git do sistema/módulo ou informe o caminho montado de volumes (ex: FOUNDRY_DATA_PATH ou target_path)."
+      message: `Target path does not exist on this machine: ${resolvedPath}. Se o módulo ou sistema não estiver instalado, utilize target_type='git_repo' e informe o link do GitHub (ex: 'https://github.com/fantasycalendar/FoundryVTT-Sequencer.git' ou 'owner/repo').`,
+      guidance: "A skill pode clonar e inspecionar qualquer repositório de módulo ou sistema do GitHub automaticamente para estudar seus hooks, métodos e chamadas de animação."
     }, null, 2);
   }
 

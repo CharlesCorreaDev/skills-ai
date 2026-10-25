@@ -12,7 +12,13 @@ Static JS analysis needs no Ghidra/Hopper/IDA; native analysis does (optional, a
 
 ## Targets & how
 - **Foundry core** (`<install>/resources/app` – `client/`, `common/`, `public/`): `rea analyze-javascript-application "<path>" --json`. Use to confirm real API signatures, hooks, DataModel schemas, deprecations of the user's exact version.
-- **Systems/Modules**: prefer source (git) via Gitingest/Repomix/DeepWiki (SKILL.md §8). If only a packaged/minified copy exists (`Data/systems/<id>`, `Data/modules/<id>`), run REA on that folder.
+- **Installed Systems/Modules**: prefer source (git) via Gitingest/Repomix/DeepWiki (SKILL.md §8). If only a packaged/minified copy exists (`Data/systems/<id>`, `Data/modules/<id>`), run REA on that folder or use MCP `reverse_engineer_target`.
+- **Uninstalled Remote Systems/Modules (JB2A, Sequencer, Item Piles, Automated Animations, etc.)**:
+  - Quando a tarefa solicitar integração com módulos ou sistemas de terceiros não instalados:
+    1. Clone temporariamente via MCP `reverse_engineer_target` com `target_type='git_repo'` ou `git clone --depth 1 <repo_url>`.
+    2. Analise a estrutura de arquivos e diretórios de assets (ex: onde o JB2A guarda `.webm`/`.webp`, convenções de caminhos).
+    3. Mapeie as chamadas de API públicas expostas no escopo global (ex: `Sequencer.Effect()`, `Hooks.on('ready')`, `game.modules.get(...)`).
+    4. Implemente o módulo de integração ou armadilhas consumindo os métodos e caminhos reais mapeados.
 
 ## Mandatory workflow (every reverse-engineering / create / adjust / recreate task)
 1. **Recall**: read `memory/learnings.md` (+ `memory/<system-or-module>.md` if present).
