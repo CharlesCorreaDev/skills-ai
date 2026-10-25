@@ -162,12 +162,17 @@ Whenever building or styling user interfaces, actor sheets, item sheets, dialogs
    - Foundry VTT injects multiple modules and system styles into a single global DOM.
    - **NEVER use bare Bootstrap classes** (`.btn`, `.btn-primary`, `.card`, `.modal`, `.row`, `.col-12`). This breaks Foundry core and creates collisions.
    - **EVERY SINGLE BOOTSTRAP CLASS MUST BE PREFIXED** with the system or module ID/acronym (e.g., Year Zero Engine: `.yze-btn-primary`, `.yze-card`, `.yze-row`, `.yze-col-md-6`, `.yze-table`; custom module: `.dt-btn-danger`, `.dt-badge`).
-2. **MANDATORY COLOR PALETTE GATE (ASK THE USER):**
-   - Before designing or implementing sheets/dialogs, the Agent **MUST ASK THE USER for:**
-     - **3 main colors:** Primary, Secondary, and Background/Surface.
-     - **3 accent colors:** Highlight, Danger/Alert, and Positive/Success (in matching or contrasting tones as desired).
-   - Map these colors into custom Sass (`$prefix`, `$primary`, etc.) and scoped CSS custom properties (`--yze-primary`, `--yze-accent-1`).
-3. **Full Stack Excellence (JS, CSS/Sass, Node.js):**
+2. **DEFAULT 9-COLOR COLD-BLUE PALETTE & CUSTOMIZATION GATE:**
+   - **Official Default Palette (9 Tones - Cold / Deep Blue):**
+     - `#F3F6FA` (L1: Light Background/Text contrast), `#DAE1EF` (L2: Surface Hover/Borders), `#869DCC` (L3: Soft Accent/Tags), `#5772AC` (L4: Mid Tone/Tooltips), `#3B5998` (L5: Primary Brand/Headers/Rolls), `#224389` (L6: Dark Primary/Active Tabs), `#14306B` (L7: Deep Shade/Toolbar), `#102655` (L8: Surface Dark/Window frame), `#091633` (L9: Midnight Base/Dark background).
+   - **Customization Gate:** The Agent asks the user if they wish to use this standard 9-tone cold palette or define custom colors (3 main colors + 3 accents).
+3. **APPROVED ICON & FONT LIBRARIES:**
+   - **Game-Icons.net** (`game-icons.net`): Primary source for weapons, spells, armor, status and items. Must download/save clean SVGs locally in `icons/` and verify HTTP 200.
+   - **RPG Awesome** (`nagoshiashumari/Rpg-Awesome`): Fantasy & RPG icon font (`ra ra-*`).
+   - **Font Awesome** (`fontawesome.com`): Navigation, media controls, gears, GM tools.
+   - **Bootstrap Icons** (`icons.getbootstrap.com`): Clean UI icons (`bi bi-*`).
+   - **Get Social Font** (`HaeckDesign/Get-Social`): Social, Discord, Patreon and community link icons.
+4. **Full Stack Excellence (JS, CSS/Sass, Node.js):**
    - Follow [`guides/bootstrap-prefixed-ui.md`](guides/bootstrap-prefixed-ui.md) and [`guides/fullstack-foundry-dev.md`](guides/fullstack-foundry-dev.md).
    - Utilize verified ergonomic plugins when beneficial (`jquery-match-height`, `use-bootstrap-dialog`, `jquery-bs-circle-progress`, `bootstrap-form-wizard`, `bootstrap5-toast`, `dselect`, `bootstrap-5-vertical-tabs`, `bootstrap-table`, `bs5treeview`, `bootstrap-avatar`).
    - Use Sass/SCSS with `$prefix` configuration to maintain clean, responsive, multi-resolution themes without breaking Foundry VTT layouts.
