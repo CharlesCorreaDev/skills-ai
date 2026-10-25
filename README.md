@@ -176,6 +176,20 @@ python master-of-foundryvtt/scripts/version_advisor.py 12
 ```
 👉 *Detailed instructions:* [master-of-foundryvtt README](master-of-foundryvtt/README.md) & [MCP Installation Guide](master-of-foundryvtt/mcp/INSTALLATION.md)
 
+#### 7. Universal AI De-Watermarking, Code Cleanup & Humanization (Humanizer Plus)
+Sanitize zero-width Unicode characters, curly smart quotes, AI generator watermarks, obvious line-by-line comments, and LLM slop from any file or codebase:
+```bash
+# Sanitize a specific file:
+node humanizer-plus/scripts/sanitize.js "path/to/file.md"
+
+# Dry-run inspect an entire directory:
+node humanizer-plus/scripts/sanitize.js "path/to/project" --dry-run
+
+# Check upstream rules synchronization:
+node humanizer-plus/scripts/check_upstream_humanizer.js
+```
+👉 *Detailed instructions:* [humanizer-plus README](humanizer-plus/README.md)
+
 ---
 
 ## 📜 Changelog
@@ -330,6 +344,20 @@ python master-of-foundryvtt/scripts/scaffold_package.py --id "meu-sistema" --tit
 python master-of-foundryvtt/scripts/version_advisor.py 12
 ```
 👉 *Consulte o guia completo:* [README do master-of-foundryvtt](master-of-foundryvtt/README.md) & [Manual de Instalação do MCP](master-of-foundryvtt/mcp/INSTALLATION.md)
+
+#### 7. Desmarcação de IA Universal, Limpeza de Código e Humanização (Humanizer Plus)
+Higienize caracteres Unicode invisíveis, aspas curvas tipográficas, marcas d'água de ferramentas de IA, comentários óbvios linha a linha e vícios narrativos (*slop*) de qualquer arquivo ou código:
+```bash
+# Higienizar um arquivo específico:
+node humanizer-plus/scripts/sanitize.js "caminho/do/arquivo.md"
+
+# Inspeção em lote sem aplicar alterações (--dry-run):
+node humanizer-plus/scripts/sanitize.js "pasta/do/projeto" --dry-run
+
+# Verificar sincronização com o repositório upstream:
+node humanizer-plus/scripts/check_upstream_humanizer.js
+```
+👉 *Consulte o guia completo:* [README do humanizer-plus](humanizer-plus/README.md)
 
 ---
 
