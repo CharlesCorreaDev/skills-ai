@@ -34,7 +34,7 @@ const SERVER_VERSION = "2.0.0";
 
 // Environment-based default credentials
 const DEFAULT_FOUNDRY_URL = process.env.FOUNDRY_URL || "http://localhost:30000";
-const DEFAULT_FOUNDRY_USER = process.env.FOUNDRY_USER || "mcp-api";
+const DEFAULT_FOUNDRY_USER = process.env.FOUNDRY_USER || "master-of-foundry";
 const DEFAULT_FOUNDRY_PASSWORD = process.env.FOUNDRY_PASSWORD || "1234";
 const DEFAULT_FOUNDRY_ADMIN_KEY = process.env.FOUNDRY_ADMIN_KEY || "";
 const DEFAULT_FOUNDRY_WORLD = process.env.FOUNDRY_WORLD || "";
@@ -109,10 +109,14 @@ function handleListTools() {
   return [
     {
       name: "inspect_foundry_environment",
-      description: "Inspects local Foundry VTT installation directory, Data folder, installed systems, active worlds and modules.",
+      description: "Detects the user operating system (Windows, Linux, macOS), determines if Foundry VTT is hosted locally or in the cloud (The Forge, Molten, VPS), and inspects the Data folder or live endpoint.",
       inputSchema: {
         type: "object",
         properties: {
+          url: {
+            type: "string",
+            description: "Optional URL of the Foundry VTT instance (e.g. http://localhost:30000 or https://mygame.forge-vtt.com). Defaults to FOUNDRY_URL or localhost:30000."
+          },
           data_path: {
             type: "string",
             description: "Optional path to User Data folder. Defaults to OS standard location or FOUNDRY_DATA_PATH."
@@ -389,29 +393,95 @@ function handleListTools() {
   ];
 }
 
+// Helper: Detect hosting architecture (local vs cloud)
+function detectFoundryHosting(urlStr) {
+  try {
+    const parsed = new URL(urlStr || DEFAULT_FOUNDRY_URL);
+    const host = parsed.hostname.toLowerCase();
+    
+    const isLocalHost = (
+      host === "localhost" ||
+      host === "127.0.0.1" ||
+      host === "0.0.0.0" ||
+      host === "::1" ||
+      host.endsWith(".local") ||
+      host.startsWith("192.168.") ||
+      host.startsWith("10.") ||
+      (host.startsWith("172.") && parseInt(host.split(".")[1], 10) >= 16 && parseInt(host.split(".")[1], 10) <= 31)
+    );
+
+    let provider = isLocalHost ? "local_self_hosted" : "cloud_hosted";
+    if (host.includes("forge-vtt.com") || host.includes("theforge")) {
+      provider = "cloud_the_forge";
+    } else if (host.includes("moltenhosting.com")) {
+      provider = "cloud_molten";
+    } else if (host.includes("ngrok") || host.includes("loca.lt") || host.includes("playit.gg")) {
+      provider = "tunnel_to_local";
+    } else if (host.includes("oracle") || host.includes("aws") || host.includes("azure") || host.includes("digitalocean") || host.includes("linode") || host.includes("ovh")) {
+      provider = "cloud_vps";
+    }
+
+    return {
+      is_cloud: !isLocalHost,
+      is_local: isLocalHost,
+      provider: provider,
+      hostname: host,
+      protocol: parsed.protocol,
+      port: parsed.port || (parsed.protocol === "https:" ? "443" : "80")
+    };
+  } catch (err) {
+    return {
+      is_cloud: false,
+      is_local: true,
+      provider: "undetermined",
+      error: err.message
+    };
+  }
+}
+
 // Tool Implementation Handlers
 function toolInspectEnvironment(args) {
+  const osType = process.platform === "win32" ? "windows" : process.platform === "darwin" ? "macos" : "linux";
+  const hosting = detectFoundryHosting(args.url || DEFAULT_FOUNDRY_URL);
   const dataPath = getLocalDataPath(args.data_path);
+  const dataPathExists = fs.existsSync(dataPath);
 
-  if (!fs.existsSync(dataPath)) {
-    return JSON.stringify({
-      status: "warning",
-      data_path: dataPath,
-      message: `Foundry Data directory not found at: ${dataPath}. Provide a custom 'data_path' or configure FOUNDRY_DATA_PATH.`
-    }, null, 2);
+  let systems = [];
+  let modules = [];
+  let worlds = [];
+
+  if (dataPathExists) {
+    const systemsPath = path.join(dataPath, 'systems');
+    const modulesPath = path.join(dataPath, 'modules');
+    const worldsPath = path.join(dataPath, 'worlds');
+
+    systems = fs.existsSync(systemsPath) ? fs.readdirSync(systemsPath) : [];
+    modules = fs.existsSync(modulesPath) ? fs.readdirSync(modulesPath) : [];
+    worlds = fs.existsSync(worldsPath) ? fs.readdirSync(worldsPath) : [];
   }
 
-  const systemsPath = path.join(dataPath, 'systems');
-  const modulesPath = path.join(dataPath, 'modules');
-  const worldsPath = path.join(dataPath, 'worlds');
-
-  const systems = fs.existsSync(systemsPath) ? fs.readdirSync(systemsPath) : [];
-  const modules = fs.existsSync(modulesPath) ? fs.readdirSync(modulesPath) : [];
-  const worlds = fs.existsSync(worldsPath) ? fs.readdirSync(worldsPath) : [];
+  const promptUserGuidance = (!dataPathExists && hosting.is_local) 
+    ? "O diretório local de dados do Foundry não foi localizado nos caminhos padrão. Por favor, pergunte ao usuário onde o Foundry VTT está instalado ou qual é o caminho da pasta Data (FOUNDRY_DATA_PATH), ou se a instância está rodando em nuvem/Docker."
+    : null;
 
   return JSON.stringify({
-    status: "success",
+    status: dataPathExists ? "success" : (hosting.is_cloud ? "success_cloud" : "warning"),
+    operating_system: {
+      platform: osType,
+      node_platform: process.platform,
+      arch: process.arch,
+      homedir: os.homedir()
+    },
+    hosting_environment: {
+      deployment_type: hosting.is_cloud ? "cloud" : "local",
+      provider: hosting.provider,
+      url: args.url || DEFAULT_FOUNDRY_URL,
+      is_cloud: hosting.is_cloud,
+      is_local: hosting.is_local,
+      details: hosting
+    },
     data_path: dataPath,
+    data_path_exists: dataPathExists,
     summary: {
       total_systems: systems.length,
       total_modules: modules.length,
@@ -419,7 +489,9 @@ function toolInspectEnvironment(args) {
     },
     worlds: worlds,
     systems_sample: systems.slice(0, 30),
-    modules_sample: modules.slice(0, 30)
+    modules_sample: modules.slice(0, 30),
+    user_prompt_needed: !dataPathExists && hosting.is_local,
+    guidance: promptUserGuidance
   }, null, 2);
 }
 

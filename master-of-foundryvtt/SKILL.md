@@ -123,6 +123,23 @@ Whenever creating or instantiating ANY entity in Foundry VTT (Actors, NPCs, Mons
      ```
      ensuring that player clients receive no data or permissions over unrevealed assets.
 
+#### 17. Operating System & Hosting Environment Detection Protocol (CRITICAL)
+Whenever interacting with Foundry VTT installations, directories, or MCP endpoints:
+1. **Operating System Auto-Detection:**
+   - The Agent and MCP tools **MUST determine the active Operating System** (Windows, Linux, or macOS) using `process.platform` or environment variables without assuming or hardcoding fixed machine drive paths.
+   - Standard default user data directory paths per OS:
+     - **Windows:** `%localappdata%/FoundryVTT/Data` (e.g. `C:/Users/<User>/AppData/Local/FoundryVTT/Data`)
+     - **Linux:** `~/.local/share/FoundryVTT/Data`
+     - **macOS:** `~/Library/Application Support/FoundryVTT/Data`
+2. **Hosting Environment Detection (Local vs. Cloud):**
+   - The Agent **MUST identify whether Foundry VTT is hosted locally or in the cloud**:
+     - **Local / Self-Hosted:** URLs targeting `localhost`, `127.0.0.1`, LAN IPs (`192.168.x.x`, `10.x.x.x`), or mDNS `.local`.
+     - **Cloud Hosted / Managed Services:** URLs pointing to `*.forge-vtt.com` (The Forge), `*.moltenhosting.com`, AWS, Azure, Google Cloud, Oracle Cloud, Linode, DigitalOcean, or reverse tunnels (`ngrok`, `loca.lt`).
+3. **Mandatory User Clarification Fallback:**
+   - If the local Data folder is not located at standard OS paths and cannot be automatically verified from environment variables, **the Agent MUST ASK THE USER**:
+     - *"Qual é o caminho da sua pasta de dados (`Data`) do Foundry VTT ou sua instalação está rodando em nuvem (The Forge, Molten, VPS/Docker)?"*
+   - Never assume paths blindly or invent fake local paths.
+
 #### 10. Reverse Engineering (REA) & Persistent Memory Protocol (CRITICAL)
 Tools: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) and the guide [`rea-engenharia-reversa`](https://github.com/inematds/rea-engenharia-reversa). Full workflow: [guides/reverse-engineering.md](guides/reverse-engineering.md).
 - **Use REA** to study Foundry core, systems and modules (real APIs, hooks, DataModels, sheets) before building, so new code matches the target precisely.
