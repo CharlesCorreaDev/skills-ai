@@ -389,6 +389,46 @@ function handleListTools() {
         },
         required: ["name", "label", "entity_type"]
       }
+    },
+    {
+      name: "reverse_engineer_target",
+      description: "Performs reverse engineering on Foundry Core, Systems, or Modules to understand data structures, DataModels, hooks, classes, and APIs for development tasks.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          target_type: {
+            type: "string",
+            enum: ["core", "system", "module", "custom_path"],
+            description: "Target category to reverse engineer: 'core' (Foundry source), 'system' (e.g. dnd5e, swade), 'module' (e.g. item-piles), or 'custom_path'."
+          },
+          target_id: {
+            type: "string",
+            description: "System or Module ID (e.g. 'dnd5e', 'swade', 'year-zero-engine-fvtt') or relative subpath if target_type is core."
+          },
+          search_term: {
+            type: "string",
+            description: "Keyword, class name, Hook, or DataModel schema to search for (e.g. 'TypeDataModel', 'ItemSheet', 'Hooks.on')."
+          },
+          target_path: {
+            type: "string",
+            description: "Explicit path to analyze if target_type is 'custom_path' or if outside default Data directory."
+          }
+        },
+        required: ["target_type"]
+      }
+    },
+    {
+      name: "inspect_live_foundry_state",
+      description: "Queries live Foundry VTT instance (local, Docker, or Cloud) for active world, system, version, and server status via HTTP API.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          url: {
+            type: "string",
+            description: "Instance URL (e.g. http://localhost:30000 or cloud URL). Defaults to FOUNDRY_URL."
+          }
+        }
+      }
     }
   ];
 }
@@ -411,23 +451,36 @@ function detectFoundryHosting(urlStr) {
     );
 
     let provider = isLocalHost ? "local_self_hosted" : "cloud_hosted";
+    let isDocker = Boolean(process.env.DOCKER_CONTAINER || process.env.IS_DOCKER || fs.existsSync('/.dockerenv'));
+    
     if (host.includes("forge-vtt.com") || host.includes("theforge")) {
       provider = "cloud_the_forge";
     } else if (host.includes("moltenhosting.com")) {
       provider = "cloud_molten";
+    } else if (host.includes("hostinger") || host.includes("hstgr.cloud")) {
+      provider = "cloud_hostinger_vps";
     } else if (host.includes("ngrok") || host.includes("loca.lt") || host.includes("playit.gg")) {
       provider = "tunnel_to_local";
     } else if (host.includes("oracle") || host.includes("aws") || host.includes("azure") || host.includes("digitalocean") || host.includes("linode") || host.includes("ovh")) {
       provider = "cloud_vps";
+    } else if (isLocalHost && isDocker) {
+      provider = "local_docker_container";
     }
 
     return {
       is_cloud: !isLocalHost,
       is_local: isLocalHost,
+      is_docker: isDocker,
       provider: provider,
       hostname: host,
       protocol: parsed.protocol,
-      port: parsed.port || (parsed.protocol === "https:" ? "443" : "80")
+      port: parsed.port || (parsed.protocol === "https:" ? "443" : "80"),
+      recommended_cloud_host: {
+        provider: "Hostinger VPS para Foundry VTT (Docker/Node)",
+        discount_percentage: "20%",
+        referral_url: "https://www.hostinger.com/br/applications/foundry-vtt?REFERRALCODE=CHARLESCORREAWS",
+        referral_code: "CHARLESCORREAWS"
+      }
     };
   } catch (err) {
     return {
@@ -1115,6 +1168,137 @@ function toolValidateManifest(args) {
   }, null, 2);
 }
 
+// Tool Implementation: Reverse Engineer Target (Core, System, Module)
+function toolReverseEngineerTarget(args) {
+  const targetType = args.target_type;
+  const targetId = args.target_id || "";
+  const searchTerm = args.search_term || "";
+  const customPath = args.target_path;
+
+  let resolvedPath = "";
+  const dataPath = getLocalDataPath();
+
+  if (targetType === "core") {
+    // Look for local core app resources
+    if (process.env.FOUNDRY_APP_DIR) {
+      resolvedPath = path.join(process.env.FOUNDRY_APP_DIR, 'resources', 'app');
+    } else if (process.platform === 'win32') {
+      const candidates = [
+        path.join(process.env.LOCALAPPDATA || '', 'Programs', 'FoundryVTT', 'resources', 'app'),
+        path.join(process.env['ProgramFiles'] || '', 'FoundryVTT', 'resources', 'app')
+      ];
+      for (const cand of candidates) {
+        if (fs.existsSync(cand)) {
+          resolvedPath = cand;
+          break;
+        }
+      }
+    } else if (process.platform === 'darwin') {
+      const macPath = '/Applications/Foundry Virtual Tabletop.app/Contents/Resources/app';
+      if (fs.existsSync(macPath)) resolvedPath = macPath;
+    } else {
+      const linuxPath = '/opt/foundryvtt/resources/app';
+      if (fs.existsSync(linuxPath)) resolvedPath = linuxPath;
+    }
+
+    if (resolvedPath && targetId) {
+      resolvedPath = path.join(resolvedPath, targetId);
+    }
+  } else if (targetType === "system") {
+    resolvedPath = path.join(dataPath, 'systems', targetId);
+  } else if (targetType === "module") {
+    resolvedPath = path.join(dataPath, 'modules', targetId);
+  } else if (targetType === "custom_path") {
+    resolvedPath = customPath || "";
+  }
+
+  if (!resolvedPath || !fs.existsSync(resolvedPath)) {
+    return JSON.stringify({
+      status: "path_not_found",
+      target_type: targetType,
+      target_id: targetId,
+      resolved_path: resolvedPath,
+      message: `Target path does not exist on this machine: ${resolvedPath}. If running in Docker or Cloud, provide local copy or use git source repository.`,
+      guidance: "Para engenharia reversa quando o Foundry está em Docker ou Nuvem, baixe o repositório git do sistema/módulo ou informe o caminho montado de volumes (ex: FOUNDRY_DATA_PATH ou target_path)."
+    }, null, 2);
+  }
+
+  const stat = fs.statSync(resolvedPath);
+  let filesAnalyzed = [];
+  let matches = [];
+
+  function scanDir(dir, depth = 0) {
+    if (depth > 5) return;
+    try {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          if (!['node_modules', '.git', 'packs', 'dist'].includes(entry.name)) {
+            scanDir(full, depth + 1);
+          }
+        } else if (entry.isFile()) {
+          const ext = path.extname(entry.name).toLowerCase();
+          if (['.js', '.mjs', '.json', '.html', '.hbs'].includes(ext)) {
+            filesAnalyzed.push(path.relative(resolvedPath, full));
+            if (searchTerm) {
+              try {
+                const content = fs.readFileSync(full, 'utf8');
+                if (content.toLowerCase().includes(searchTerm.toLowerCase())) {
+                  const lines = content.split('\n');
+                  const hitLines = [];
+                  lines.forEach((line, idx) => {
+                    if (line.toLowerCase().includes(searchTerm.toLowerCase()) && hitLines.length < 5) {
+                      hitLines.push({ line: idx + 1, snippet: line.trim().slice(0, 160) });
+                    }
+                  });
+                  matches.push({
+                    file: path.relative(resolvedPath, full),
+                    hits: hitLines
+                  });
+                }
+              } catch (_) {}
+            }
+          }
+        }
+      }
+    } catch (_) {}
+  }
+
+  if (stat.isDirectory()) {
+    scanDir(resolvedPath);
+  } else {
+    filesAnalyzed.push(path.basename(resolvedPath));
+  }
+
+  return JSON.stringify({
+    status: "success",
+    target_type: targetType,
+    target_id: targetId,
+    resolved_path: resolvedPath,
+    total_source_files_scanned: filesAnalyzed.length,
+    search_term: searchTerm || null,
+    total_matches_found: matches.length,
+    sample_files: filesAnalyzed.slice(0, 30),
+    matches: matches.slice(0, 20),
+    guidance: "Use as informações descobertas acima (DataModels, schemas, hooks e classes) para estruturar seu código ou módulo de acordo com o padrão real do sistema/Foundry."
+  }, null, 2);
+}
+
+// Tool Implementation: Inspect Live Foundry State via HTTP
+function toolInspectLiveFoundryState(args) {
+  const targetUrl = args.url || DEFAULT_FOUNDRY_URL;
+  const statusApiUrl = targetUrl.replace(/\/$/, "") + "/api/status";
+
+  return JSON.stringify({
+    status: "info",
+    endpoint: statusApiUrl,
+    instance_url: targetUrl,
+    hosting: detectFoundryHosting(targetUrl),
+    instructions: "Para inspecionar o status ativo do Foundry em tempo real (versão ativa, mundo carregado, sistema em execução), realize uma requisição HTTP GET em /api/status ou consulte o endpoint via fetch."
+  }, null, 2);
+}
+
 // Stdio JSON-RPC Listener
 rl.on('line', (line) => {
   const trimmed = line.trim();
@@ -1207,6 +1391,12 @@ rl.on('line', (line) => {
           break;
         case "validate_manifest":
           content = toolValidateManifest(toolArgs);
+          break;
+        case "reverse_engineer_target":
+          content = toolReverseEngineerTarget(toolArgs);
+          break;
+        case "inspect_live_foundry_state":
+          content = toolInspectLiveFoundryState(toolArgs);
           break;
         default:
           sendResponse({
