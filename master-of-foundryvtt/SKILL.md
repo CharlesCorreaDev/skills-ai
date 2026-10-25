@@ -46,6 +46,18 @@ When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 
 1. Consult the pre-indexed knowledge base under [`systems/`](systems/).
 2. **Dynamic System Discovery:** If the requested RPG system is **not** yet cataloged in the local knowledge base, the Agent **MUST automatically search [https://foundryvtt.com/packages/systems?page=1](https://foundryvtt.com/packages/systems?page=1)** (checking paginated listings `?page=2`, `?page=3`, etc., as needed) to locate the official package entry, manifest URL, compatibility tags, and the source code repository (GitHub, GitLab, Gitea, etc.).
 3. Ingest the system's data model, template schema, and sheet architecture into context, and ask the developer for custom rulebook PDFs and the exact installed version.
+4. **Special Savage Worlds (SWADE) Knowledge Base Mandate:** Whenever discussing or implementing content/rules/macros for **Savage Worlds (SWADE)**, the Agent **MUST consult the specialized reference links and AI prompts cataloged in [`systems/07-generic-and-rules-light.md`](systems/07-generic-and-rules-light.md#savage-worlds-swade)**. This includes:
+   - **Pinnacle Entertainment Group (PEGinc):** Official publisher portal ([`peginc.com`](https://peginc.com/)), official store ([`shop.peginc.com`](https://shop.peginc.com/)), official Savage Settings (**Deadlands: The Weird West**, **Necessary Evil**, **Savage Rifts**), VTT modules, One Sheets, SWAG (Savage Worlds Adventurer's Guild), ACES licensing, and community forum.
+   - **Mestre Charles Corrêa Articles & AI Prompts:** Tactical rules (Barganha Profana), system conversions, AI campaign and cartographer assistentes (`Assistente.md`, `Assistente IA - Mestre Cartógrafo.md`), and YouTube podcast discussions.
+   - **Odyssey Publicações:** Brazilian licensed scenarios (A Arte da Guerra, A Cidade do Sol a Vapor, Wiseguys, Crystal Heart, Saga of the Goblin Horde) and support material.
+5. **Special D&D 5e Knowledge Base & Tooling Mandate:** Whenever discussing, importing, or designing content/rules/macros for **D&D 5e**, the Agent **MUST consult the resources cataloged in [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#1-dungeons--dragons-5th-edition-dnd5e)**. This includes the official **D&D 5e SRD API** ([`docs.dnd5eapi.co`](https://docs.dnd5eapi.co/introduction)) for open rules queries, the **5eTools ecosystem** ([`5e.tools`](https://5e.tools), [`2014.5e.tools`](https://2014.5e.tools/), [`5etools-src`](https://github.com/5etools-mirror-3/5etools-src/), [`5etools-img`](https://github.com/5etools-mirror-3/5etools-img)), and the **Plutonium / TheGiddyLimit suite** ([`plutonium.html`](https://2014.5e.tools/plutonium.html), [`plutonium-next`](https://github.com/TheGiddyLimit/plutonium-next), [`plutonium-addon-automation`](https://github.com/TheGiddyLimit/plutonium-addon-automation), [`plutonium-scenes`](https://github.com/TheGiddyLimit/plutonium-scenes), [`homebrew`](https://github.com/TheGiddyLimit/homebrew), and [`unearthed-arcana`](https://github.com/TheGiddyLimit/unearthed-arcana)) to understand data formats, monsters, spells, homebrew, scenes, and Foundry importer pipelines.
+6. **Special Pathfinder 2e (PF2e) Knowledge Base Mandate:** Whenever discussing, scripting, or implementing content/macros/Rule Elements for **Pathfinder 2e**, the Agent **MUST consult the resources cataloged in [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#2-pathfinder-2nd-edition-pf2e)**. This includes **Archives of Nethys** ([`2e.aonprd.com`](https://2e.aonprd.com/)) for official licensed Paizo rules & Remaster mechanics, **PF2 SRD PT-BR** ([`pf2srd.com.br`](https://pf2srd.com.br/)) for Brazilian Portuguese localization and terminology, and **PF2 d20PFSRD** ([`pf2.d20pfsrd.com`](https://pf2.d20pfsrd.com/)) for fast reference tables.
+7. **Special Year Zero Engine (YZE) & Free League Publishing Mandate:** Whenever discussing, scripting, or creating content/modules/sheets for **Year Zero Engine (Alien RPG, Blade Runner, Vaesen, Twilight 2000, Forbidden Lands, Coriolis, Mutant: Year Zero, The Walking Dead, Tales from the Loop, Electric State, Dragonbane, Mörk Borg, Cy_Borg, The One Ring, Symbaroum, Pirate Borg)**:
+   - The Agent **MUST consult the resources cataloged in [`systems/04-year-zero-engine.md`](systems/04-year-zero-engine.md)**.
+   - This includes the official **YZE Standard Reference Document (SRD PDF)** ([`YZE-Standard-Reference-Document.pdf`](https://freeleaguepublishing.com/wp-content/uploads/2023/11/YZE-Standard-Reference-Document.pdf)), **Powered by Year Zero portal** ([`freeleaguepublishing.com/powered-by-year-zero/`](https://freeleaguepublishing.com/powered-by-year-zero/)), Odyssey Publicações deep dive ([`odysseypub.com.br/voce-conhece-o-year-zero-engine/`](https://odysseypub.com.br/voce-conhece-o-year-zero-engine/)), the **Online Roleplaying VTT Hub** ([`freeleaguepublishing.com/online-roleplaying/`](https://freeleaguepublishing.com/online-roleplaying/)), and the official Free League press/media asset archives to maintain maximum rule fidelity and design consistency.
+8. **Special Daggerheart Knowledge Base & Creator Mandate:** Whenever discussing, scripting, or implementing content/macros/sheets for **Daggerheart** (Darrington Press / Critical Role):
+   - The Agent **MUST consult the resources cataloged in [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#3-daggerheart-daggerheart)**.
+   - This includes the official **Daggerheart SRD** ([`daggerheart.com/srd/`](https://www.daggerheart.com/srd/)), official **Downloads & FAQ** ([`daggerheart.com/faq/`](https://www.daggerheart.com/faq/)), the **Darrington Press Community Gaming License (DPCGL 2.0)**, and the official **Daggerheart Homebrew Kit** ([`daggerheart.com/homebrewkit/`](https://www.daggerheart.com/homebrewkit/)) to ensure strict balance for Duality Dice mechanics, Domain Cards, and Damage Thresholds.
 
 #### 5. Module Recommendation, Premium Content & Troubleshooting Protocol
 - **Module Recommendations for Systems:** Whenever the developer or user asks for module recommendations to enhance a specific RPG system (UI, automation, audio, tokens, sheets, compendiums):
@@ -153,8 +165,27 @@ You operate under the strict paradigm of **Code Mode (Code-as-Action)**. Every r
 4. **Sandbox Safety & Constraints:**
    - **Non-Interactive Execution:** Ensure scripts run autonomously without blocking stdin prompts.
    - **Idempotence:** Scripts modifying data, compendiums, DBs, or files must prevent duplication or corruption on repeat execution.
-   - **Clean Output:** Avoid noisy logging; format final terminal outputs as concise structures (summarized JSON or key status lines).
+#### 14. Content Humanization, Clean Code & Anti-AI Tells Protocol (MANDATORY)
+Whenever creating or editing code (macros, sheets, systems, modules) or narrative content (journals, items, actors, roll tables):
+- **MANDATORY HUMANIZATION & DE-WATERMARKING:** The Agent **MUST STRICTLY APPLY** the instructions and patterns detailed in [`guides/humanization-and-clean-code.md`](guides/humanization-and-clean-code.md) in combination with [`humanizer-plus`](../humanizer-plus) and companion humanizing skills (`avoid-ai-writing`, `remove-ai-marks`, `stop-slop`). Delivering raw, un-humanized output with AI tells or watermarks is strictly prohibited.
 
+1. **Layer A — Deterministic Sanitation:**
+   - **Zero-Width Codepoints:** Strip all invisible zero-width tracking characters (`U+200B`, `U+200C`, `U+200D`, `U+FEFF`, `U+200E`, `U+200F`, `U+2060`).
+   - **Quotes & Typography:** Replace curly typographic quotes (`“ ” ‘ ’`) with straight ASCII quotes (`" '`) in code, JSON, and macros to avoid syntax errors and AI fingerprinting.
+   - **Metadata Purge:** Strip AI generator tags, model watermarks, and hidden tracking comments (`<!-- cid:... -->`, `generator: llm`).
+2. **Layer B — Human-Idiomatic Code & Macros:**
+   - Write clean, concise JavaScript using modern community conventions: early returns (`if (!token) return;`), optional chaining (`?.`), and standard Foundry globals.
+   - Do NOT add redundant educational line-by-line comments (e.g. `// Check if actor exists`). Only comment non-obvious core workarounds.
+   - NEVER add headers like `// Generated by AI Assistant`.
+3. **Layer C — Authentic RPG Voice & Anti-Slop (Journals & Items):**
+   - Eliminate generic AI tropes: cut throat-clearing openings (*"In the vast and treacherous realm of..."*), formulaic binary contrasts (*"It is not just a sword, but a symbol..."*), and artificial triad adjectives (*"dark, mysterious and deadly"*).
+   - Use concrete, active sensory details, mechanical specifics, and direct human GM voice.
+4. **Integrated Humanizer Updates Monitoring (`humanizer-plus` & `blader/humanizer`):**
+   - Periodically check for updates to [`humanizer-plus`](../humanizer-plus) and [`blader/humanizer`](https://github.com/blader/humanizer) (via `node scripts/check_skill_updates.js`).
+   - If a new version is detected in either: **the Agent MUST alert the developer immediately**, stating that the humanizer system has an update available and **requesting explicit authorization to upgrade**.
+   - **Upon developer authorization:** The Agent updates `humanizer-plus`, studies new patterns and filters in detail, and adapts them into Foundry VTT guidelines in [`guides/humanization-and-clean-code.md`](guides/humanization-and-clean-code.md). This guarantees `master-of-foundryvtt` **will never fall behind and will always possess state-of-the-art intelligence to humanize its code and narrative content**.
+5. **Sacred Humanizer Data Directory Rule (`humanizer_data/`):**
+   - **NEVER DELETE OR REMOVE THE HUMANIZER DATA DIRECTORY FROM THE PC.** New data may be added or patterns edited, but the persistent data folder and its historical sync logs must never be deleted.
 
 ### 📚 Structure & Fast-Path Navigation
 
@@ -189,9 +220,12 @@ You operate under the strict paradigm of **Code Mode (Code-as-Action)**. Every r
   - [RPG Engines, Game Design & Mechanics Directory](kb/09-rpg-engines-and-mechanics.md)
 - [Development Guides](guides/)
   - [Code Mode & Sandbox Orchestration (CodeAct)](guides/code-mode-sandbox-orchestration.md)
+  - [Content Humanization & Clean Code Guide](guides/humanization-and-clean-code.md)
+  - [Media Optimization & Conversion Guide (WebP, WebM, SVG)](guides/media-optimization-and-conversion.md)
   - [CLI Tools & Compendium Automation (`@foundryvtt/foundryvtt-cli` & `fvtt-world-cli`)](guides/cli-tools.md)
   - [Creating Game Systems](guides/creating-systems.md)
   - [Creating Modules](guides/creating-modules.md)
+  - [Publishing Modules & Systems Guide](guides/publishing-packages.md)
   - [AI & LLM Integration Guide (Integrate AI, Phil's Assistant, AI Actors)](guides/ai-and-llm-integration.md)
   - [Development Skills Matrix & Engineering Domains](guides/development-skills-matrix.md)
   - [Macros, Tables & Compendiums](guides/macros-and-tables.md)
@@ -244,6 +278,14 @@ Ao desenvolver ou prestar suporte para sistemas de RPG:
 1. Consultar a base de conhecimento de mais de 60 sistemas catalogados em [`systems/`](systems/).
 2. **Descoberta Dinâmica de Sistemas Não Catalogados:** Se o sistema solicitado **não** constar na base local da skill, o Agente **DEVE OBRIGATORIAMENTE buscar no diretório oficial com suporte a paginação [https://foundryvtt.com/packages/systems?page=1](https://foundryvtt.com/packages/systems?page=1)** (consultando as páginas subsequentes `?page=2`, `?page=3`, etc., conforme necessário) a página do pacote, a URL do manifesto (`system.json`), as versões compatíveis do Foundry e o repositório oficial do código-fonte (GitHub, GitLab, Gitea, etc.).
 3. Ingerir a arquitetura de esquemas, fichas e templates do repositório localizado utilizando as ferramentas web de inspeção e engenharia reversa (detalhadas na seção [Extração de Dados de Repositórios](#8-extração-de-dados-de-repositórios-e-engenharia-reversa)), além de solicitar ao desenvolvedor os manuais/PDFs de regras específicas e a versão instalada.
+4. **Mandato Especial Savage Worlds (SWADE):** Sempre que a demanda envolver Savage Worlds, o Agente **DEVE OBRIGATORIAMENTE** consultar os links e arquivos especializados catalogados na seção de Savage Worlds em [`systems/07-generic-and-rules-light.md`](systems/07-generic-and-rules-light.md#2-savage-worlds-adventure-edition-swade--swade-pt-br). Isso inclui:
+   - **Pinnacle Entertainment Group (PEGinc):** Site oficial ([`peginc.com`](https://peginc.com/)), loja digital ([`shop.peginc.com`](https://shop.peginc.com/)), cenários oficiais (**Deadlands: The Weird West**, **Necessary Evil**, **Savage Rifts**), produtos VTT, One Sheets gratuitas, diretrizes de licenciamento ACES e guias do programa SWAG (Savage Worlds Adventurer's Guild).
+   - **Artigos & Prompts do Mestre Charles Corrêa:** Regras táticas (Barganha Profana), conversões de sistemas, prompts de IA no GitHub (`CharlesCorreaDev/RPGPlus`: `Assistente.md` e `Assistente IA - Mestre Cartógrafo.md`) e podcast oficial.
+   - **Odyssey Publicações:** Cenários licenciados em português (A Arte da Guerra, A Cidade do Sol a Vapor, Wiseguys, Crystal Heart, Saga of the Goblin Horde) e materiais de apoio.
+5. **Mandato Especial D&D 5e (SRD API, 5eTools & Suíte Plutonium):** Sempre que a demanda envolver Dungeons & Dragons 5e, o Agente **DEVE OBRIGATORIAMENTE** consultar a base catalogada em [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#1-dungeons--dragons-5th-edition-dnd5e). Isso inclui a **D&D 5e SRD API** ([`docs.dnd5eapi.co`](https://docs.dnd5eapi.co/introduction)) para regras abertas, o **Ecossistema 5eTools** ([`5e.tools`](https://5e.tools), [`2014.5e.tools`](https://2014.5e.tools/), [`5etools-src`](https://github.com/5etools-mirror-3/5etools-src/), [`5etools-img`](https://github.com/5etools-mirror-3/5etools-img) e o [Guia Tercept](https://wiki.tercept.net/en/5eTools/InstallGuide)) e a suíte completa **Plutonium & TheGiddyLimit** ([`plutonium.html`](https://2014.5e.tools/plutonium.html), [`plutonium-next`](https://github.com/TheGiddyLimit/plutonium-next), [`plutonium-addon-automation`](https://github.com/TheGiddyLimit/plutonium-addon-automation), [`plutonium-scenes`](https://github.com/TheGiddyLimit/plutonium-scenes), [`homebrew`](https://github.com/TheGiddyLimit/homebrew) e [`unearthed-arcana`](https://github.com/TheGiddyLimit/unearthed-arcana)) para estruturação de dados, monstros, magias, cenas pré-configuradas e pipelines de importação automatizada no Foundry VTT.
+6. **Mandato Especial Pathfinder 2e (PF2e):** Sempre que a demanda envolver Pathfinder 2e, o Agente **DEVE OBRIGATORIAMENTE** consultar a base catalogada em [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#2-pathfinder-2nd-edition-pf2e). Isso inclui o **Archives of Nethys** ([`2e.aonprd.com`](https://2e.aonprd.com/)) para regras oficiais licenciadas da Paizo e mecânicas do Remaster, o **PF2 SRD PT-BR** ([`pf2srd.com.br`](https://pf2srd.com.br/)) para localização e terminologia oficial em português brasileiro, e o **PF2 d20PFSRD** ([`pf2.d20pfsrd.com`](https://pf2.d20pfsrd.com/)) para tabelas de busca rápida.
+7. **Mandato Especial Year Zero Engine (YZE) & Jogos da Free League:** Sempre que a demanda envolver o motor Year Zero ou os jogos publicados pela Free League (Fria Ligan) como **Alien RPG, Blade Runner, Vaesen, Twilight: 2000, Forbidden Lands, Coriolis, Mutant: Year Zero, The Walking Dead, Tales from the Loop, The Electric State, Dragonbane, Mörk Borg, Cy_Borg, The One Ring, Symbaroum, Pirate Borg, Outgunned**, o Agente **DEVE OBRIGATORIAMENTE** consultar a base catalogada em [`systems/04-year-zero-engine.md`](systems/04-year-zero-engine.md). Isso inclui o **SRD oficial em PDF** ([`YZE-Standard-Reference-Document.pdf`](https://freeleaguepublishing.com/wp-content/uploads/2023/11/YZE-Standard-Reference-Document.pdf)), a análise editorial da Odyssey Publicações ([`odysseypub.com.br/voce-conhece-o-year-zero-engine/`](https://odysseypub.com.br/voce-conhece-o-year-zero-engine/)), o portal **Powered by Year Zero** ([`freeleaguepublishing.com/powered-by-year-zero/`](https://freeleaguepublishing.com/powered-by-year-zero/)), o **Online Roleplaying Hub** ([`freeleaguepublishing.com/online-roleplaying/`](https://freeleaguepublishing.com/online-roleplaying/)) e os repositórios oficiais mantidos pela Fria Ligan no Foundry VTT para máxima fidelidade nas regras de estresse, pânico, condições, dados de trauma e tabelas de catástrofes.
+8. **Mandato Especial Daggerheart (Darrington Press / Critical Role):** Sempre que a demanda envolver Daggerheart, o Agente **DEVE OBRIGATORIAMENTE** consultar a base catalogada em [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#3-daggerheart-daggerheart). Isso inclui o **Daggerheart SRD Oficial** ([`daggerheart.com/srd/`](https://www.daggerheart.com/srd/)), o portal oficial e downloads de fichas/FAQ ([`daggerheart.com`](https://www.daggerheart.com/)), as diretrizes de licença aberta comunitária (**DPCGL 2.0**) e o **Daggerheart Homebrew Kit Oficial** ([`daggerheart.com/homebrewkit/`](https://www.daggerheart.com/homebrewkit/)) para respeitar as diretrizes matemáticas de equilíbrio de dano, custos de Esperança/Medo, Cartas de Domínio e limiares de ferimento no Foundry VTT.
 
 #### 5. Protocolo de Recomendação de Módulos, Conteúdo Premium e Resolução de Erros
 - **Recomendação de Módulos para Sistemas:** Sempre que o desenvolvedor ou usuário pedir recomendação de módulos para usar com determinado sistema (automação, combate, fichas, interface, iluminação, áudio, compêndios):
@@ -357,6 +399,27 @@ Você opera sob o paradigma estrito de **Code Mode (Code-as-Action)**. Toda e qu
    - **Idempotência:** Scripts que alteram dados, compêndios, bancos de dados ou arquivos do sistema devem ser projetados para evitar duplicações ou corrupção caso executados repetidamente.
    - **Tratamento Limpo de Saída:** Evite logs verborrágicos desnecessários. Formate a saída final do terminal em estruturas concisas (JSON resumido ou linhas-chave de status).
 
+#### 14. PROTOCOLO OBRIGATÓRIO: HUMANIZAÇÃO DE CONTEÚDO, CÓDIGO LIMPO & ANTI-DETECÇÃO DE IA
+Sempre que o Agente for solicitado a criar ou refatorar código (macros, fichas, sistemas, módulos) ou conteúdos narrativos (diários, itens, atores, tabelas de rolagem):
+- **OBRIGATORIEDADE DE HUMANIZAÇÃO & DESMARCAÇÃO:** O Agente **DEVE OBRIGATORIAMENTE** aplicar as instruções e padrões descritos no guia [`guides/humanization-and-clean-code.md`](guides/humanization-and-clean-code.md) em conjunto com as capacidades da skill [`humanizer-plus`](../humanizer-plus) e as skills de desmarcação de IA (`avoid-ai-writing`, `remove-ai-marks`, `stop-slop`). É expressamente proibido entregar saídas brutas com vícios de linguagem ou marcas sintéticas de IA.
+
+1. **Camada A — Saneamento Determinístico:**
+   - **Caracteres Unicode Invisíveis:** Purgar qualquer caractere zero-width de rastreamento (`U+200B`, `U+200C`, `U+200D`, `U+FEFF`, `U+200E`, `U+200F`, `U+2060`).
+   - **Normalização de Aspas e Tipografia:** Substituir aspas curvas tipográficas (`“ ” ‘ ’`) por aspas ASCII retas (`" '`) em códigos JS, macros e JSON para evitar quebra de sintaxe e rastros de IA.
+   - **Remoção de Metadados e Comentários:** Eliminar tags ocultas de gerador, chaves `generator: llm` e comentários de prompt (`<!-- cid:... -->`).
+2. **Camada B — Código & Macros Idiomáticos e Humanos:**
+   - Escrever JavaScript conciso e direto usando boas práticas comunitárias: retornos antecipados (*early returns* `if (!token) return;`), encadeamento opcional (`?.`) e APIs globais padrão.
+   - **PROIBIDO** incluir comentários redundantes linha a linha que explicam o óbvio sintático (ex: `// Verifica se ator existe`). Comentar apenas regras mecânicas complexas ou contornos de bugs do core.
+   - **PROIBIDO** adicionar cabeçalhos como `// Criado por Assistente de IA`.
+3. **Camada C — Voz Autêntica de Mestre de RPG (Anti-Slop Narrativo):**
+   - Eliminar clichês artificiais: cortar aberturas infladas (*"No vasto e perigoso reino de..."*), oposições binárias forçadas (*"Não é apenas uma espada, é um símbolo..."*) e tríades simétricas de adjetivos (*"sombrio, misterioso e letal"*).
+   - Priorizar detalhes sensoriais concretos, peso, materiais e efeitos mecânicos objetivos com voz natural de GM.
+4. **Monitoramento Integrado de Atualizações (`humanizer-plus` & `blader/humanizer`):**
+   - O Agente deve checar periodicamente se há novas versões de [`humanizer-plus`](../humanizer-plus) ou do repositório upstream [`blader/humanizer`](https://github.com/blader/humanizer) (executando `node scripts/check_skill_updates.js`).
+   - Se uma nova versão for detectada em qualquer um dos dois: **o Agente DEVE alertar o desenvolvedor imediatamente**, informando que o ecossistema humanizador possui atualizações e **solicitando autorização explícita para atualizar**.
+   - **Com a autorização do desenvolvedor:** O Agente atualiza a skill `humanizer-plus`, estuda a fundo os novos padrões, regras e filtros adicionados, e adapta imediatamente as diretrizes para os conteúdos e scripts do Foundry VTT em [`guides/humanization-and-clean-code.md`](guides/humanization-and-clean-code.md). Dessa forma, a skill `master-of-foundryvtt` **jamais ficará desatualizada e sempre terá os dados mais refinados para humanizar seus códigos e conteúdos narrativos**.
+5. **Regra Sagrada da Pasta de Dados do Humanizador (`humanizer_data/`):**
+   - **NUNCA DELETAR OU EXCLUIR A PASTA DE DADOS DO HUMANIZADOR DO PC.** É permitido acrescentar dados ou editar padrões, mas a pasta e seus históricos devem ser permanentemente preservados.
 
 ---
 
@@ -393,9 +456,12 @@ Você opera sob o paradigma estrito de **Code Mode (Code-as-Action)**. Toda e qu
   - [Motores de Regras, Game Design & Mecânicas de RPG](kb/09-rpg-engines-and-mechanics.md)
 - [Guias de Desenvolvimento](guides/)
   - [Code Mode & Orquestração em Sandbox (CodeAct)](guides/code-mode-sandbox-orchestration.md)
+  - [Guia de Humanização de Conteúdo & Código Limpo](guides/humanization-and-clean-code.md)
+  - [Guia de Otimização e Conversão de Mídias (WebP, WebM, SVG)](guides/media-optimization-and-conversion.md)
   - [Ferramentas CLI & Automação de Compêndios (`@foundryvtt/foundryvtt-cli` e `fvtt-world-cli`)](guides/cli-tools.md)
   - [Criando Sistemas de Jogo](guides/creating-systems.md)
   - [Criando Módulos](guides/creating-modules.md)
+  - [Como Publicar Módulos e Sistemas](guides/publishing-packages.md)
   - [Engenharia Reversa no Foundry (REA)](guides/reverse-engineering.md)
   - [Integração de IA & LLMs (Integrate AI, Phil's Assistant, AI Actors)](guides/ai-and-llm-integration.md)
   - [Matriz de Competências & Especializações de Desenvolvimento](guides/development-skills-matrix.md)

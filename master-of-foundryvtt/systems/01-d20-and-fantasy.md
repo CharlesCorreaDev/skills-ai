@@ -4,9 +4,44 @@
 ---
 
 ## 1. Dungeons & Dragons 5th Edition (dnd5e)
-- **Repositórios:**
+- **Repositórios & Fontes Oficiais:**
   - Sistema Oficial: [https://github.com/foundryvtt/dnd5e](https://github.com/foundryvtt/dnd5e)
   - Módulo de Tradução PT-BR (FVTT Brasil): [https://gitlab.com/fvtt-brasil/dnd5e/-/tree/master](https://gitlab.com/fvtt-brasil/dnd5e/-/tree/master)
+- **APIs de Consulta & Base de Dados Aberta (SRD):**
+  - **D&D 5e SRD API (REST / GraphQL):** [https://docs.dnd5eapi.co/introduction](https://docs.dnd5eapi.co/introduction)
+    - Base de dados estruturada para consultas rápidas de magias, monstros, classes, subclasses, condições, itens e equipamentos baseados no SRD 5.1 oficial.
+    - Útil para scripts de importação, autocomplete, busca em tempo real e verificação de regras oficiais SRD.
+- **Ecossistema 5eTools (Consulta de Regras, Imagens e Importadores para Foundry):**
+  - **Portais Web:**
+    - 5eTools (Versão Atual / 2024 & Expansões): [https://5e.tools](https://5e.tools)
+    - 5eTools 2014 (Regras Clássicas 5e): [https://2014.5e.tools/](https://2014.5e.tools/) e [http://2014.5e.tools](http://2014.5e.tools)
+    - Download & Utilitários: [https://get.5e.tools/](https://get.5e.tools/)
+  - **Repositórios de Código-Fonte & Imagens (5etools-mirror-3):**
+    - Repositório Principal de Dados & Código: [https://github.com/5etools-mirror-3/5etools-src/](https://github.com/5etools-mirror-3/5etools-src/)
+    - Releases Oficiais: [https://github.com/5etools-mirror-3/5etools-src/releases](https://github.com/5etools-mirror-3/5etools-src/releases)
+    - Guia de Contribuição: [https://github.com/5etools-mirror-3/5etools-src/blob/main/CONTRIBUTING.md](https://github.com/5etools-mirror-3/5etools-src/blob/main/CONTRIBUTING.md)
+    - Repositório de Regras Clássicas 2014: [https://github.com/5etools-mirror-3/5etools-2014-src/](https://github.com/5etools-mirror-3/5etools-2014-src/)
+    - Repositório de Imagens, Tokens e Artes: [https://github.com/5etools-mirror-3/5etools-img](https://github.com/5etools-mirror-3/5etools-img)
+  - **Guias de Instalação, Integração & Importadores no Foundry VTT:**
+    - Guia de Instalação e Configuração: [https://wiki.tercept.net/en/5eTools/InstallGuide](https://wiki.tercept.net/en/5eTools/InstallGuide)
+    - Módulos de Importação para Foundry (ex.: Plutonium / 5eTools Importer): permitem importar monstros com tokens prontos, magias com efeitos configurados, classes, raças, itens e aventuras inteiras direto do schema JSON do 5eTools para o Foundry VTT.
+- **Ecossistema Plutonium & Repositórios TheGiddyLimit (Integração Total com Foundry VTT):**
+  - **Página Oficial do Plutonium:** [https://2014.5e.tools/plutonium.html](https://2014.5e.tools/plutonium.html)
+  - **Wiki & Documentação Oficial:** [https://wiki.tercept.net/en/Plutonium](https://wiki.tercept.net/en/Plutonium)
+  - **Módulos & Pacotes do Plutonium:**
+    - **Plutonium Next (Módulo Foundry VTT):** [https://github.com/TheGiddyLimit/plutonium-next](https://github.com/TheGiddyLimit/plutonium-next)
+      - O módulo principal para Foundry VTT que provê interface completa de busca e importação direta de conteúdo 5eTools para compêndios e mundos.
+    - **Plutonium Addon Automation:** [https://github.com/TheGiddyLimit/plutonium-addon-automation](https://github.com/TheGiddyLimit/plutonium-addon-automation)
+      - Addon complementar para automação integrada de magias, ataques, efeitos e itens importados via Plutonium (usando Midi-QOL/DAE quando configurado).
+    - **Plutonium Scenes:** [https://github.com/TheGiddyLimit/plutonium-scenes](https://github.com/TheGiddyLimit/plutonium-scenes)
+      - Pacotes e utilitários de cenas pré-configuradas (com iluminação, paredes e grids ajustados).
+    - **Plutonium Utils:** [https://github.com/TheGiddyLimit/plutonium-utils](https://github.com/TheGiddyLimit/plutonium-utils)
+      - Scripts utilitários, conversores de dados e ferramentas auxiliares de manutenção do Plutonium.
+  - **Repositórios de Conteúdo Adicional & Homebrew:**
+    - **Homebrew 5eTools:** [https://github.com/TheGiddyLimit/homebrew](https://github.com/TheGiddyLimit/homebrew)
+      - Repositório oficial comunitário de conteúdos caseiros (Homebrew) formatados no schema do 5eTools para importação no Foundry VTT.
+    - **Unearthed Arcana:** [https://github.com/TheGiddyLimit/unearthed-arcana](https://github.com/TheGiddyLimit/unearthed-arcana)
+      - Repositório com todo o material oficial de playtest (Unearthed Arcana) mantido e formatado para consulta e importação.
 - **Arquitetura & Especificidades:**
   - Utiliza arquitetura orientada a `TypeDataModel` (v3.0+) e `Activity` system para itens e magias.
   - Implementa pipelines ricos de `dnd5e.preRollAbilityTest`, `dnd5e.rollAttack`, `dnd5e.rollDamage` e `dnd5e.useItem`.
@@ -14,11 +49,21 @@
 - **Armadilhas Comuns:**
   - A partir da versão 3.0+, métodos legados como `item.roll()` foram refatorados para o sistema de Activities (`item.system.activities`). Tentar disparar consumo direto de spell slots pelo método antigo causará erro.
   - Modificações em dados de atores devem usar `system.abilities.<hab>.value` e não schemas antigos da v1/v2.
+  - Ao importar dados do 5eTools ou da API D&D 5e para o Foundry v3.0+, certifique-se de compatibilizar o schema para o modelo de `activities` e converter imagens para `.webp`.
 
 ---
 
 ## 2. Pathfinder 2nd Edition (pf2e)
-- **Repositório:** [https://github.com/foundryvtt/pf2e](https://github.com/foundryvtt/pf2e)
+- **Repositório Oficial do Sistema:** [https://github.com/foundryvtt/pf2e](https://github.com/foundryvtt/pf2e)
+- **Bases de Regras, SRDs & Portais Oficiais de Consulta:**
+  - **Archives of Nethys (AoN) — Referência Oficial Licenciada da Paizo:** [https://2e.aonprd.com/](https://2e.aonprd.com/)
+    - Fonte primária oficial e irrestrita de todas as regras, arquétipos, ancestralidades, magias, itens, monstros, perícias e erratas (inclusive Remaster Core).
+    - Essencial para conferência da nomenclatura oficial em inglês e IDs de regras correspondentes aos compêndios do sistema no Foundry VTT.
+  - **PF2 SRD PT-BR (Base Traduzida em Português):** [https://pf2srd.com.br/](https://pf2srd.com.br/)
+    - Portal em português brasileiro com regras, magias, classes, itens e monstros traduzidos no padrão da comunidade brasileira e de módulos de tradução (ex: Módulo de Tradução PT-BR da New Order / FVTT Brasil).
+    - Essencial para garantir tradução coerente de termos de regras ao criar campanhas, diários ou fichas em português.
+  - **PF2 d20PFSRD:** [https://pf2.d20pfsrd.com/](https://pf2.d20pfsrd.com/)
+    - Base de dados aberta e de busca rápida com tabelas, índices de consulta ágil e resumos de regras abertas sob a OGL / ORC License.
 - **Arquitetura & Especificidades:**
   - Considerado o sistema com maior grau de automação e fidelidade no Foundry VTT.
   - Utiliza **Rule Elements (REs)** extensivos armazenados nos dados dos itens em vez de Active Effects tradicionais.
@@ -26,11 +71,27 @@
 - **Armadilhas Comuns:**
   - **Não utilize Active Effects tradicionais** para alterar atributos como AC, Saves ou Ataques. Use Rule Elements (`FlatModifier`, `RollOption`, `AdjustModifier`).
   - O pipeline de cálculo estatístico de atores é recalculado deterministicamente através do `ActorPF2e#prepareDerivedData` e `RuleElements`.
+  - Ao criar itens, magias ou efeitos customizados, consulte sempre os Rule Elements oficiais nos compêndios nativos do sistema (`pf2e.spells-srd`, `pf2e.actionspf2e`, `pf2e.equipment-srd`), conferindo o texto de regra no Archives of Nethys ou no PF2 SRD PT-BR.
 
 ---
 
 ## 3. Daggerheart (daggerheart)
-- **Repositório:** [https://github.com/Foundryborne/daggerheart](https://github.com/Foundryborne/daggerheart)
+- **Repositório Oficial Foundry:** [https://github.com/Foundryborne/daggerheart](https://github.com/Foundryborne/daggerheart)
+- **Bases de Regras Oficiais, SRDs & Portais Web:**
+  - **Daggerheart SRD Oficial:** [https://www.daggerheart.com/srd/](https://www.daggerheart.com/srd/) e [https://daggerheart.com/srd](https://daggerheart.com/srd)
+    - Especificação aberta oficial com todas as regras de personagens, classes, cartas de domínio, adversários, combate e mecânicas da Darrington Press.
+  - **Portal Oficial Daggerheart:** [https://www.daggerheart.com/](https://www.daggerheart.com/)
+  - **Downloads Oficiais:** [https://www.daggerheart.com/downloads/](https://www.daggerheart.com/downloads/)
+  - **Perguntas Frequentes (FAQ):** [https://www.daggerheart.com/faq/](https://www.daggerheart.com/faq/)
+  - **Portais Comunitários & SRDs Espelhados:**
+    - Daggerheart SRD Community: [https://daggerheartsrd.com/](https://daggerheartsrd.com/)
+    - Daggerheart.org Portal: [https://daggerheart.org/](https://daggerheart.org/)
+- **Licenciamento Aberto, Kits para Criadores & Homebrew:**
+  - **Licença de Conteúdo Comunitário Darrington Press (DPCGL):** [https://darringtonpress.com/license/](https://darringtonpress.com/license/)
+  - **Diretrizes Oficiais DPCGL 2.0 (PDF):** [https://darringtonpress.com/wp-content/uploads/2026/08/DPCGL_2.0_AUG_26_2026.pdf](https://darringtonpress.com/wp-content/uploads/2026/08/DPCGL_2.0_AUG_26_2026.pdf)
+  - **Logotipos Oficiais para Conteúdo Comunitário (ZIP):** [Darrington Press Community Content Logos](https://darringtonpress.com/wp-content/uploads/2025/05/Darrington-Press-Community-Content-Logos.zip)
+  - **Daggerheart Homebrew Kit Portal:** [https://www.daggerheart.com/homebrewkit/](https://www.daggerheart.com/homebrewkit/)
+  - **Homebrew Kit Oficial v1.0 (PDF):** [https://www.daggerheart.com/wp-content/uploads/2025/07/Daggerheart-Homebrew-Kit-v1.0-July-31-2025.pdf](https://www.daggerheart.com/wp-content/uploads/2025/07/Daggerheart-Homebrew-Kit-v1.0-July-31-2025.pdf)
 - **Arquitetura & Mecânica Central (Duality Dice System):**
   - Desenvolvido pela Darrington Press (Critical Role / Spenser Starke).
   - **Não é PbtA**, mas um sistema de fantasia heroica com motor de **2d12 Duality Dice**:
@@ -43,6 +104,7 @@
       - **Falha com Medo (*Failure with Fear*):** Falha no teste e o Mestre ganha 1 Ponto de Medo ou faz um movimento de Mestre forte.
       - **Acerto Crítico (*Critical Success*):** Quando ambos os dados d12 caem no mesmo número (pares), gerando sucesso automático crítico e recuperando Esperança/Stress.
   - Utiliza arquitetura de Cartas de Domínio (*Domain Cards*), Slots de Armadura e Fichas de Personagem divididas em Classes/Subclasses.
+  - Ao criar itens, cartas de domínio ou monstros caseiros, siga as diretrizes matemáticas do **Homebrew Kit Oficial** para preservar o equilíbrio de dano, custos de Esperança e limiares de Ferimento (*Damage Thresholds*).
 
 ---
 

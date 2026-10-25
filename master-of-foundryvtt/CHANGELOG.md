@@ -7,6 +7,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.11.0-beta] - 2026-10-25
+
+### Added / Adicionado
+- **Mandato Obrigatório 14: Humanização de Conteúdo, Código Limpo & Anti-Detecção de IA (`SKILL.md`):**
+  - **Camada A (Saneamento Determinístico):** Purga de caracteres zero-width (`U+200B`, `U+FEFF`, `U+200C`, etc.), substituição de aspas tipográficas curvas por aspas retas ASCII em código/JSON e eliminação de metadados de ferramentas geradoras em arquivos de manifesto.
+  - **Camada B (Código Limpo & Macros Idiomáticas):** Padrões comunitários concisos de JavaScript (*early returns*, encadeamento opcional `?.`, ausência de comentários óbvios linha a linha e remoção de cabeçalhos de IA).
+  - **Camada C (Narrativa & Anti-Slop de RPG):** Eliminação de clichês e vícios de modelos de linguagem (aberturas infladas, oposições binárias forçadas e tríades simétricas de adjetivos) em diários, itens e fichas, injetando tom natural de mestre e detalhes concretos.
+- **Guia Técnico de Humanização (`guides/humanization-and-clean-code.md`):**
+  - Guia de referência com exemplos práticos "Antes vs Depois" de macros e diários, tabela de substituições de vícios de linguagem e instruções para purga de metadados em mídias.
+- **Script Utilitário de Saneamento (`scripts/sanitize_content.py`):**
+  - Script em Python para inspeção e remoção em lote de caracteres invisíveis, aspas tipográficas e cabeçalhos de IA em arquivos do Foundry VTT (`.js`, `.mjs`, `.json`, `.md`, `.hbs`).
+- **Base de Conhecimento Especializada Savage Worlds (SWADE):**
+  - Integração do ecossistema oficial da **Pinnacle Entertainment Group (PEGinc)** ([`peginc.com`](https://peginc.com/), loja oficial, cenários como Deadlands, Necessary Evil e Savage Rifts, VTT products, One Sheets gratuitas, ACES e SWAG), acervo de artigos e guias táticos/regras do Mestre Charles Corrêa (`rpg.charlescorrea.com.br`), prompts de IA para Savage Worlds (`RPGPlus`), acervo editorial da Odyssey Publicações (`odysseypub.com.br`) e podcast oficial em [`systems/07-generic-and-rules-light.md`](systems/07-generic-and-rules-light.md#savage-worlds-swade).
+- **Base de Dados e Ferramentas D&D 5e (SRD API, 5eTools & Suíte Plutonium):**
+  - Inclusão da **D&D 5e SRD API** ([`docs.dnd5eapi.co`](https://docs.dnd5eapi.co/introduction)), ecossistema **5eTools** ([`5e.tools`](https://5e.tools), [`2014.5e.tools`](https://2014.5e.tools/), repositórios `5etools-src`, `5etools-img`) e a suíte completa **Plutonium / TheGiddyLimit** ([`plutonium-next`](https://github.com/TheGiddyLimit/plutonium-next), [`plutonium-addon-automation`](https://github.com/TheGiddyLimit/plutonium-addon-automation), [`plutonium-scenes`](https://github.com/TheGiddyLimit/plutonium-scenes), [`homebrew`](https://github.com/TheGiddyLimit/homebrew), [`unearthed-arcana`](https://github.com/TheGiddyLimit/unearthed-arcana)) em [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#1-dungeons--dragons-5th-edition-dnd5e).
+- **Bases de Regras e SRDs de Pathfinder 2e (PF2e):**
+  - Inclusão do **Archives of Nethys** ([`2e.aonprd.com`](https://2e.aonprd.com/)), **PF2 SRD PT-BR** ([`pf2srd.com.br`](https://pf2srd.com.br/)) e **d20PFSRD** ([`pf2.d20pfsrd.com`](https://pf2.d20pfsrd.com/)) em [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#2-pathfinder-2nd-edition-pf2e).
+- **Base de Conhecimento Year Zero Engine (YZE) & Portfólio Free League:**
+  - Inclusão do **SRD Oficial YZE** ([`YZE-Standard-Reference-Document.pdf`](https://freeleaguepublishing.com/wp-content/uploads/2023/11/YZE-Standard-Reference-Document.pdf)), artigo da Odyssey Publicações, hubs de VTT e catálogo completo de jogos (Alien, Blade Runner, Vaesen, Twilight: 2000, Forbidden Lands, Coriolis, Mutant, The Walking Dead, Tales from the Loop, Electric State, The One Ring, Symbaroum, Pirate Borg, Outgunned, Dragonbane, Mörk Borg, Cy_Borg) em [`systems/04-year-zero-engine.md`](systems/04-year-zero-engine.md).
+- **Base de Dados, SRD Oficial & Homebrew Kit de Daggerheart:**
+  - Inclusão do **Daggerheart SRD Oficial** ([`daggerheart.com/srd/`](https://www.daggerheart.com/srd/)), portal oficial, downloads de fichas, licença comunitária **DPCGL 2.0** e o **Homebrew Kit Oficial v1.0** em [`systems/01-d20-and-fantasy.md`](systems/01-d20-and-fantasy.md#3-daggerheart-daggerheart).
+- **Mandatos de Ingestão no `SKILL.md`:** Diretriz 4 atualizada em inglês e português para consulta obrigatória destas bases especializadas de SWADE, D&D 5e / Plutonium, Pathfinder 2e, YZE / Free League e Daggerheart.
+
+---
+
 ## [0.10.0-beta] - 2026-10-24
 
 ### Added / Adicionado

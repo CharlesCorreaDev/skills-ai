@@ -7,6 +7,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.8.0] - 2026-10-25
+
+### Added / Adicionado
+- **Nova Skill: `humanizer-plus` (v1.0.0):**
+  - Skill universal de humanização e desmarcação de IA para qualquer arquivo ou código (purga de ZWSP, normalização tipográfica, remoção de comentários óbvios, purga de metadados em mídias com ExifTool, e reescrita natural sem vícios de LLM).
+  - Vigilância contínua com atualização de regras a partir do upstream `blader/humanizer`.
+- **master-of-foundryvtt (v0.11.0-beta):**
+  - **Mandato Obrigatório 14 (Humanização, Código Limpo & Anti-Detecção):**
+    - Protocolo de saneamento de marcas determinísticas (remoção de zero-width codepoints `U+200B`, `U+FEFF`, normalização de aspas tipográficas e limpeza de metadados geradores).
+    - Diretrizes de código JavaScript idiomático e conciso para macros e módulos (early returns, sem comentários didáticos óbvios, sem cabeçalhos de IA).
+    - Eliminação de vícios narrativos de IA (slop de RPG) em diários e compêndios de itens/atores com injeção de voz natural de narrador.
+  - **Otimização e Conversão de Mídias (Mandato 15 & Guia Técnico):**
+    - Conversão automática para `.webp` (95% de qualidade, preservando SVG) e `.webm` (VP9/Opus, 95% de qualidade para animações e áudio).
+    - Guia técnico completo em `guides/media-optimization-and-conversion.md` e script `scripts/convert_media.js`.
+  - **Guia Completo de Publicação de Pacotes no Foundry VTT:**
+    - Documentação completa em `guides/publishing-packages.md` cobrindo empacotamento, GitHub Actions / CI-CD, submissão ao diretório oficial e boas práticas de distribuição.
+  - **Bases de Conhecimento Especializadas Ingeridas:**
+    - **Savage Worlds (SWADE):** Artigos do Mestre Charles Corrêa (`rpg.charlescorrea.com.br`), prompts de IA (`RPGPlus`), cenários da Odyssey Publicações e catálogo oficial Pinnacle Entertainment Group (PEGinc).
+    - **D&D 5e:** D&D 5e SRD API (`docs.dnd5eapi.co`), ecossistema 5eTools e suíte Plutonium / TheGiddyLimit.
+    - **Pathfinder 2e:** Archives of Nethys (`2e.aonprd.com`), PF2 SRD PT-BR e d20PFSRD.
+    - **Year Zero Engine & Free League:** YZE SRD oficial, análise editorial Odyssey Pub, VTT hub e catálogo completo de jogos (Alien, Blade Runner, Vaesen, Twilight: 2000, Forbidden Lands, Coriolis, Mutant, The Walking Dead, Tales from the Loop, Electric State, The One Ring, Symbaroum, Pirate Borg, Outgunned, Dragonbane, Mörk Borg, Cy_Borg).
+    - **Daggerheart:** SRD oficial, licença DPCGL 2.0 e Homebrew Kit oficial da Darrington Press.
+  - **Scripts Utilitários Adicionados:**
+    - `scripts/sanitize_content.py` e `scripts/sanitize_content.js` para saneamento e humanização em lote.
+    - `scripts/convert_media.js` para otimização de mídias com 95% de qualidade.
+
+---
+
 ## [1.7.0] - 2026-10-24
 
 ### Added / Adicionado
