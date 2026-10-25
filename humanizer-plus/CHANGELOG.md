@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.1.0] - 2026-10-25
+
+### Added / Adicionado
+- **Protocolo de Feedback Proativo e Abertura Autônoma de Issues no GitHub:** Geração de relatório bilíngue e submissão automática de issues com `gh issue create`.
+- **Protocolo Obrigatório de Verificação e Revisão:** Testes e validação antes da entrega.
+- **Comentários de Código Bilíngues (EN e PT-BR).**
+
+---
+
 ## [1.0.0] - 2026-10-25
 
 ### Added / Adicionado

@@ -7,6 +7,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.9.0] - 2026-10-25
+
+### Added / Adicionado
+- **master-of-foundryvtt (v0.12.0-beta):**
+  - **Servidor MCP Nativo Oficial Unificado (`master-of-foundryvtt-mcp`):** Controle completo e auto-suficiente de Foundry VTT em Node.js (atores, itens, cenas, tabelas, macros, compêndios, baralhos de cartas, playlists e journals/handouts). Módulos de terceiros (`ninjos`, `laurigates`, `adambdooley`) foram descontinuados/removidos.
+  - **Engenharia Reversa Estática & Remota (Git):** Ferramenta `reverse_engineer_target` com clonagem e análise de código de módulos e sistemas desinstalados do GitHub (ex: JB2A, Sequencer, Item Piles) e inspeção do Core.
+  - **Inspeção de Topologia (SO, Nuvem e Docker):** Detecção de Windows/macOS/Linux, instâncias locais, The Forge, Molten, containers Docker e recomendação oficial de VPS Hostinger especializada com 20% de desconto.
+  - **Mandatos de Qualidade:**
+    - Mandato 18: Verificação, teste de sintaxe (`node -c`) e revisão obrigatória antes de qualquer entrega.
+    - Mandato 19: UI com Bootstrap prefixado (`.yze-btn-primary`, `.yze-card`), paleta padrão de 9 tons e bibliotecas de ícones aprovadas (Game-Icons.net, RPG Awesome, Font Awesome, Bootstrap Icons, Get Social).
+    - Mandato 20: Modelagem estatística e probabilidade de dados com AnyDice antes da conversão para a classe `Roll`.
+    - Comentários de código estritamente bilíngues (Inglês e Português).
+- **Atualização de Versão das Skills (v0.2.0-beta & v1.1.0):**
+  - Atualizadas para `v0.2.0-beta`: `docker-master`, `docs-for-markdown`, `docs-for-skill`, `image-to-prompt`, `php-dev-expert`, `python-dev-expert`, `website-for-markdown`, `website-for-skill`.
+  - Atualizada para `v1.1.0`: `humanizer-plus`.
+  - Adicionado a todas as skills o Protocolo de Feedback Proativo com abertura autônoma de Issues no GitHub (`gh issue create`), protocolo de verificação e revisão mandatória, e comentários de código bilíngues.
+
+---
+
 ## [1.8.0] - 2026-10-25
 
 ### Added / Adicionado

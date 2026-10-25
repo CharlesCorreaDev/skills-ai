@@ -7,6 +7,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.12.0-beta] - 2026-10-25
+
+### Added / Adicionado
+- **Servidor MCP Nativo Oficial Unificado (`master-of-foundryvtt-mcp`):**
+  - Servidor MCP completo em Node.js sem dependências externas, unificando todo o controle de Foundry VTT e dispensando módulos MCP terceiros (`ninjos`, `laurigates`, `adambdooley`).
+  - Novas ferramentas implementadas: `reverse_engineer_target` (suporte a código do core, sistemas, módulos locais e repositórios remotos git desinstalados) e `inspect_live_foundry_state` (checagem de status em tempo real via `/api/status`).
+  - Suporte a detecção de Sistema Operacional (Windows, Linux, macOS) e topologia de hospedagem (Local, Nuvem, The Forge, Molten, Docker Containers, e Hostinger VPS com 20% OFF).
+  - Gate estrito de verificação de ícones HTTP 200 com fallback automático para SVGs do core e exclusividade de permissões do GM (`ownership: { default: 0 }`).
+- **Mandato Obrigatório 18 (Verificação e Revisão Sistemática):**
+  - Diretiva de testar, compilar (`node -c`) e revisar todo e qualquer código, ficha, script ou schema antes da entrega.
+- **Mandato Obrigatório 19 & Guia de UI/UX Responsiva com Bootstrap Prefixado (`guides/bootstrap-prefixed-ui.md`):**
+  - Obrigação de prefixar todas as classes do Bootstrap com o ID do sistema/módulo (ex: `.yze-btn-primary`, `.yze-card`) para evitar colisão com o DOM do Foundry VTT.
+  - Paleta padrão oficial de 9 tons frios/azuis profundos (`#F3F6FA` até `#091633`) e gate de customização para paletas de 3 cores + 3 destaques.
+  - Catálogo de bibliotecas de ícones aprovadas: **Game-Icons.net**, **RPG Awesome**, **Font Awesome**, **Bootstrap Icons** e **Get Social Font**.
+- **Mandato Obrigatório 20 & Guia de Modelagem AnyDice (`guides/anydice-dice-mechanics.md`):**
+  - Modelagem estatística e validação matemática de probabilidades de dados e balanceamento de regras com AnyDice antes da conversão para fórmulas `Roll` do Foundry.
+- **Mandato de Comentários Bilíngues de Código (Inglês e Português):**
+  - Regra em `guides/humanization-and-clean-code.md` e `guides/fullstack-foundry-dev.md` exigindo que qualquer comentário de código necessário seja escrito simultaneamente em Inglês e Português.
+
+---
+
 ## [0.11.0-beta] - 2026-10-25
 
 ### Added / Adicionado
