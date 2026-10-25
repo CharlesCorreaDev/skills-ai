@@ -11,7 +11,7 @@ const macroDoc = {
   author: "mcp-api",
   img: "icons/svg/dice-target.svg",
   ownership: {
-    default: 3 // 3 = Owner (todos podem ver e editar)
+    default: 0 // 0 = None (Private/GM only), ensuring secure access control
   },
   command: `// Macro gerada pelo Master of Foundry VTT MCP
 (async () => {
@@ -28,7 +28,7 @@ const macroDoc = {
       const resp = await fetch(doc.file);
       if (!resp.ok) continue;
       const data = await resp.json();
-      data.ownership = { default: 3 }; // Permissão pública máxima para todos os jogadores e mestre
+      data.ownership = { default: 0 }; // Acesso restrito ao Mestre (GM-only) por segurança
       
       const collection = game.collections.get(doc.type);
       const existing = collection.getName(data.name);
@@ -37,8 +37,8 @@ const macroDoc = {
         ui.notifications.info(\`Documento [\${doc.type}] "\${data.name}" criado com sucesso!\`);
         loaded++;
       } else {
-        await existing.update({ ownership: { default: 3 } });
-        ui.notifications.info(\`Documento "\${data.name}" já existia - Permissões atualizadas para público!\`);
+        await existing.update({ ownership: { default: 0 } });
+        ui.notifications.info(\`Documento "\${data.name}" já existia - Permissões mantidas para GM!\`);
         loaded++;
       }
     } catch (e) {

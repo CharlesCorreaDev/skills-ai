@@ -25,6 +25,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const readline = require('readline');
 const http = require('http');
 const https = require('https');
@@ -32,10 +33,10 @@ const https = require('https');
 const SERVER_NAME = "master-of-foundryvtt-mcp";
 const SERVER_VERSION = "2.0.0";
 
-// Environment-based default credentials
+// Environment-based default credentials (password defaults to empty if none set)
 const DEFAULT_FOUNDRY_URL = process.env.FOUNDRY_URL || "http://localhost:30000";
 const DEFAULT_FOUNDRY_USER = process.env.FOUNDRY_USER || "master-of-foundry";
-const DEFAULT_FOUNDRY_PASSWORD = process.env.FOUNDRY_PASSWORD || "1234";
+const DEFAULT_FOUNDRY_PASSWORD = process.env.FOUNDRY_PASSWORD || "";
 const DEFAULT_FOUNDRY_ADMIN_KEY = process.env.FOUNDRY_ADMIN_KEY || "";
 const DEFAULT_FOUNDRY_WORLD = process.env.FOUNDRY_WORLD || "";
 
@@ -103,6 +104,13 @@ function resolveVerifiedIcon(requestedIcon, fallback = "icons/svg/mystery-man.sv
   }
   
   return fallback;
+}
+
+// Security: Prevent path traversal in user-supplied IDs and filenames
+function sanitizeSafeId(input, fallback = "default") {
+  if (!input || typeof input !== 'string') return fallback;
+  const sanitized = path.basename(input).replace(/[^a-zA-Z0-9_-]/g, "_").trim();
+  return sanitized || fallback;
 }
 
 function handleListTools() {
@@ -608,14 +616,15 @@ function toolCreateActor(args) {
 
   // If local world path exists, we can write directly or return payload
   let savedPath = null;
-  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const rawWorldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const worldId = sanitizeSafeId(rawWorldId, "swade-dev");
   if (worldId) {
     const dataPath = getLocalDataPath();
     const worldDir = path.join(dataPath, "worlds", worldId);
     if (fs.existsSync(worldDir)) {
       const exportDir = path.join(worldDir, "mcp_generated");
       fs.mkdirSync(exportDir, { recursive: true });
-      const safeName = args.name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      const safeName = sanitizeSafeId(args.name, "actor");
       savedPath = path.join(exportDir, `actor_${safeName}.json`);
       fs.writeFileSync(savedPath, JSON.stringify(actorDoc, null, 2), "utf8");
     }
@@ -655,14 +664,15 @@ function toolCreateItem(args) {
   };
 
   let savedPath = null;
-  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const rawWorldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const worldId = sanitizeSafeId(rawWorldId, "swade-dev");
   if (worldId) {
     const dataPath = getLocalDataPath();
     const worldDir = path.join(dataPath, "worlds", worldId);
     if (fs.existsSync(worldDir)) {
       const exportDir = path.join(worldDir, "mcp_generated");
       fs.mkdirSync(exportDir, { recursive: true });
-      const safeName = args.name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      const safeName = sanitizeSafeId(args.name, "item");
       savedPath = path.join(exportDir, `item_${safeName}.json`);
       fs.writeFileSync(savedPath, JSON.stringify(itemDoc, null, 2), "utf8");
     }
@@ -702,14 +712,15 @@ function toolCreateJournalHandout(args) {
   };
 
   let savedPath = null;
-  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const rawWorldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const worldId = sanitizeSafeId(rawWorldId, "swade-dev");
   if (worldId) {
     const dataPath = getLocalDataPath();
     const worldDir = path.join(dataPath, "worlds", worldId);
     if (fs.existsSync(worldDir)) {
       const exportDir = path.join(worldDir, "mcp_generated");
       fs.mkdirSync(exportDir, { recursive: true });
-      const safeName = args.title.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      const safeName = sanitizeSafeId(args.title, "journal");
       savedPath = path.join(exportDir, `journal_${safeName}.json`);
       fs.writeFileSync(savedPath, JSON.stringify(journalDoc, null, 2), "utf8");
     }
@@ -753,14 +764,15 @@ function toolCreateRollableTable(args) {
   };
 
   let savedPath = null;
-  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const rawWorldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  const worldId = sanitizeSafeId(rawWorldId, "swade-dev");
   if (worldId) {
     const dataPath = getLocalDataPath();
     const worldDir = path.join(dataPath, "worlds", worldId);
     if (fs.existsSync(worldDir)) {
       const exportDir = path.join(worldDir, "mcp_generated");
       fs.mkdirSync(exportDir, { recursive: true });
-      const safeName = args.name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      const safeName = sanitizeSafeId(args.name, "table");
       savedPath = path.join(exportDir, `table_${safeName}.json`);
       fs.writeFileSync(savedPath, JSON.stringify(tableDoc, null, 2), "utf8");
     }
@@ -1052,11 +1064,11 @@ function toolCreateCompendiumPack(args) {
 }
 
 function toolScaffoldPackage(args) {
-  const pkgId = args.id;
-  const title = args.title;
-  const pkgType = args.type || "module";
-  const baseDir = args.dest_dir || process.cwd();
-  const pkgPath = path.join(baseDir, pkgId);
+  const pkgId = sanitizeSafeId(args.id, "my-module");
+  const title = (args.title || "My Package").replace(/["\\]/g, "");
+  const pkgType = args.type === "system" ? "system" : "module";
+  const requestedBaseDir = args.dest_dir ? path.resolve(args.dest_dir) : process.cwd();
+  const pkgPath = path.join(requestedBaseDir, pkgId);
 
   fs.mkdirSync(path.join(pkgPath, "scripts"), { recursive: true });
   fs.mkdirSync(path.join(pkgPath, "templates"), { recursive: true });
