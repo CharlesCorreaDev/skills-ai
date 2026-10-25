@@ -156,6 +156,32 @@ Whenever ANY code, script, schema, asset, macro, document, tool, or configuratio
    - **Clean Code & Humanization Review:** Ensure compliance with humanization standards (no AI tells, no markdown watermarks, clean idiomatic formatting).
    - **Self-Correction Loop:** If any test fails, review the exact error (`stderr`), correct the code immediately, and re-run verification before reporting back to the user.
 
+#### 19. Prefixed Bootstrap UI/UX & Responsive Engineering Protocol (CRITICAL)
+Whenever building or styling user interfaces, actor sheets, item sheets, dialogs, menus, or HUDs for Foundry VTT:
+1. **MANDATORY CLASS PREFIXING IN ALL BOOTSTRAP CLASSES:**
+   - Foundry VTT injects multiple modules and system styles into a single global DOM.
+   - **NEVER use bare Bootstrap classes** (`.btn`, `.btn-primary`, `.card`, `.modal`, `.row`, `.col-12`). This breaks Foundry core and creates collisions.
+   - **EVERY SINGLE BOOTSTRAP CLASS MUST BE PREFIXED** with the system or module ID/acronym (e.g., Year Zero Engine: `.yze-btn-primary`, `.yze-card`, `.yze-row`, `.yze-col-md-6`, `.yze-table`; custom module: `.dt-btn-danger`, `.dt-badge`).
+2. **MANDATORY COLOR PALETTE GATE (ASK THE USER):**
+   - Before designing or implementing sheets/dialogs, the Agent **MUST ASK THE USER for:**
+     - **3 main colors:** Primary, Secondary, and Background/Surface.
+     - **3 accent colors:** Highlight, Danger/Alert, and Positive/Success (in matching or contrasting tones as desired).
+   - Map these colors into custom Sass (`$prefix`, `$primary`, etc.) and scoped CSS custom properties (`--yze-primary`, `--yze-accent-1`).
+3. **Full Stack Excellence (JS, CSS/Sass, Node.js):**
+   - Follow [`guides/bootstrap-prefixed-ui.md`](guides/bootstrap-prefixed-ui.md) and [`guides/fullstack-foundry-dev.md`](guides/fullstack-foundry-dev.md).
+   - Utilize verified ergonomic plugins when beneficial (`jquery-match-height`, `use-bootstrap-dialog`, `jquery-bs-circle-progress`, `bootstrap-form-wizard`, `bootstrap5-toast`, `dselect`, `bootstrap-5-vertical-tabs`, `bootstrap-table`, `bs5treeview`, `bootstrap-avatar`).
+   - Use Sass/SCSS with `$prefix` configuration to maintain clean, responsive, multi-resolution themes without breaking Foundry VTT layouts.
+
+#### 20. AnyDice Statistical Modeling & Dice Probability Protocol (CRITICAL)
+Whenever developing new RPG systems, custom dice mechanics, weapon balance, or critical hit/fumble tables:
+1. **Mathematical Validation via AnyDice:**
+   - Follow [`guides/anydice-dice-mechanics.md`](guides/anydice-dice-mechanics.md).
+   - Consult [anydice.com](https://anydice.com/), [anydice.com/docs/](https://anydice.com/docs/) e [anydice.com/docs/function-library/](https://anydice.com/docs/function-library/).
+   - Model the exact dice mechanics (exploding dice, success pools, push-the-roll, bounded curves) in AnyDice syntax to test probabilities, averages, and standard deviation before writing code.
+2. **Translation to Foundry VTT `Roll` Engine:**
+   - Convert validated mathematical distributions accurately into Foundry's `Roll` formulas (e.g. `1d8x`, `6d6cs>=6`, `2d20kh`, `3d6`) or custom `DiceTerm` evaluators.
+   - Present probability analysis clearly to the Game Master when tuning game balance.
+
 #### 10. Reverse Engineering (REA) & Persistent Memory Protocol (CRITICAL)
 Tools: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI), guide [`rea-engenharia-reversa`](https://github.com/inematds/rea-engenharia-reversa) e ferramenta MCP `reverse_engineer_target`. Full workflow: [guides/reverse-engineering.md](guides/reverse-engineering.md).
 - **Use REA e MCP** para estudar o core do Foundry, sistemas e módulos (APIs reais, hooks, DataModels, sheets) antes de construir, garantindo que o código novo se integre com máxima fidelidade.
@@ -312,6 +338,9 @@ The AI Agent **MUST PROACTIVELY EXECUTE THE FOLLOWING 3-STEP PROTOCOL**:
   - [Macros, Tables & Compendiums](guides/macros-and-tables.md)
   - [Automated Traps & Triggers (Sequencer & Monk's Active Tile Triggers)](guides/automated-traps-and-triggers.md)
   - [Active Effects & Statuses](guides/active-effects.md)
+  - [Prefixed Bootstrap UI & Responsive Design](guides/bootstrap-prefixed-ui.md)
+  - [Full Stack Engineering Guide (JS, CSS, Sass, Node.js)](guides/fullstack-foundry-dev.md)
+  - [AnyDice Statistical Modeling & Probabilities](guides/anydice-dice-mechanics.md)
   - [Troubleshooting & Conflict Isolation](guides/troubleshooting.md)
 - [Policies & Governance](policies/)
   - [Limited License Agreement](policies/license.md)
