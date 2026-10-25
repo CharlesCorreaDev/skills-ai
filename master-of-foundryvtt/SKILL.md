@@ -97,14 +97,31 @@ Whenever the user or Game Master asks to create or configure ANY game asset or d
 
 #### 9. Mandatory Icon & Asset Selection Protocol for Items, Abilities & Powers (CRITICAL)
 Whenever asked to create or configure any **Item**, **Ability / Talent**, **Power / Spell**, **Weapon**, **Armor**, **Shield**, **Natural Weapon** (claws, bites, horns, tentacles, etc.), **Accessory** (boots, gloves, rings, cloaks), **Consumable** (potions, medicines, remedies, scrolls), or any other game document:
-1. **First Priority — Core Foundry VTT Standard Icons:**
-   - Search and prioritize using the official default Foundry VTT icons located at:
-     `%url-foundry-vtt%/App/resources/app/public/icons/` (serving web paths like `icons/...`, e.g., `icons/weapons/...`, `icons/equipment/...`, `icons/magic/...`, `icons/consumables/...`, `icons/commodities/...`, `icons/tools/...`, `icons/skills/...`).
-2. **Second Priority — System Specific Icons Directory:**
-   - If a suitable core icon is not found, verify and explore the active game system folder for custom icons (e.g., `systems/<system-id>/icons/` or system assets directory).
-3. **Third Priority / Fallback — Generic Core SVG Icons:**
-   - If no specific icon exists in core or the system directory, use a generic fallback SVG icon from:
-     `%url-foundry-vtt%/App/resources/app/public/icons/svg/` (serving web paths like `icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/d20-black.svg`, `icons/svg/mystery-man.svg`).
+1. **Mandatory Icon Assignment:**
+   - Every created item, talent, spell, weapon, and feature **MUST ALWAYS have an icon assigned**. Leaving assets with broken or blank image references is strictly prohibited.
+2. **Mandatory HTTP 200 Verification Gate:**
+   - Before finalizing any document creation, the Agent **MUST test and verify that the assigned icon path responds with HTTP 200 OK** (e.g. via HTTP HEAD/GET request against `http://<foundry-host>:<port>/<icon-path>` or by confirming file existence in `App/resources/app/public/` or active system/module folder).
+   - If the icon request fails (404 Not Found, 403, or invalid path), the Agent **MUST IMMEDIATELY SELF-CORRECT** by choosing a valid path from the core SVG directory (e.g. `icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/mystery-man.svg`) and confirming HTTP 200 response before delivery.
+3. **Hierarchy of Icon Resolution:**
+   - **First Priority — Core Foundry VTT Standard Icons:** `%url-foundry-vtt%/App/resources/app/public/icons/` (`icons/weapons/...`, `icons/equipment/...`, `icons/magic/...`, `icons/consumables/...`, `icons/commodities/...`, `icons/tools/...`, `icons/skills/...`).
+   - **Second Priority — Active Game System Directory:** Custom system icons (e.g., `systems/<system-id>/icons/`).
+   - **Third Priority / Fallback — Core SVG Icons:** `%url-foundry-vtt%/App/resources/app/public/icons/svg/` (`icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/d20-black.svg`, `icons/svg/mystery-man.svg`).
+
+#### 16. Gamemaster Exclusive Ownership & Player Concealment Protocol (CRITICAL)
+Whenever creating or instantiating ANY entity in Foundry VTT (Actors, NPCs, Monsters, Items, Scenes, Journals, Handouts, RollTables, Decks, Macros, or Folders):
+1. **Default Ownership Rule (GM Exclusive Access):**
+   - **The Gamemaster (GM) MUST ALWAYS have Full Ownership (`OWNER` / level 3)** over all created assets.
+   - **Players MUST NOT have access by default (`default: 0 / NONE`)**: all created documents, journals, handouts, scenes, NPCs, monsters, and items must remain strictly hidden and inaccessible to players.
+2. **Explicit User / GM Exception Gate:**
+   - Players are **NEVER** granted access (`LIMITED`, `OBSERVER`, or `OWNER`) **unless the GM/user explicitly requests or commands player visibility/ownership in the prompt** (e.g., *"give player X ownership of this sheet"*, *"create a public handout visible to all players"*).
+3. **Data Schema Enforcement:**
+   - All generated documents must explicitly include the ownership dictionary:
+     ```json
+     "ownership": {
+       "default": 0
+     }
+     ```
+     ensuring that player clients receive no data or permissions over unrevealed assets.
 
 #### 10. Reverse Engineering (REA) & Persistent Memory Protocol (CRITICAL)
 Tools: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) and the guide [`rea-engenharia-reversa`](https://github.com/inematds/rea-engenharia-reversa). Full workflow: [guides/reverse-engineering.md](guides/reverse-engineering.md).
@@ -348,14 +365,31 @@ Sempre que o usuário ou Mestre solicitar a criação ou configuração de QUALQ
 
 #### 9. Protocolo Obrigatório de Seleção de Ícones e Assets para Itens, Habilidades e Poderes (CRÍTICO)
 Sempre que for solicitado criar ou configurar qualquer **Item**, **Habilidade**, **Poder**, **Magia**, **Arma**, **Armadura**, **Escudo**, **Arma Natural** (garras, presas, mordidas, chifres, caudas, tentáculos), **Acessório** (botas, luvas, anéis, capas), **Consumível** (poções, remédios, elixires, pergaminhos) ou qualquer outro documento de jogo:
-1. **Primeira Prioridade — Ícones Padrão do Core do Foundry VTT:**
-   - Busque e priorize sempre os ícones padrão oficiais do Foundry VTT localizados em:
-     `%url-foundry-vtt%/App/resources/app/public/icons/` (servidos em caminhos web relativos como `icons/...`, ex: `icons/weapons/...`, `icons/equipment/...`, `icons/magic/...`, `icons/consumables/...`, `icons/commodities/...`, `icons/tools/...`, `icons/skills/...`).
-2. **Segunda Prioridade — Pasta de Ícones do Sistema de Jogo (System):**
-   - Caso não encontre um ícone correspondente no core, verifique e vasculhe a pasta do próprio sistema de jogo ativo por ícones dedicados (ex: `systems/<id-do-sistema>/icons/` ou diretório de assets do sistema).
-3. **Terceira Prioridade / Fallback — Ícones Genéricos SVG do Core:**
-   - Se ainda assim não houver um ícone específico nem no core nem no sistema, utilize obrigatoriamente um ícone SVG genérico de fallback de:
-     `%url-foundry-vtt%/App/resources/app/public/icons/svg/` (servidos em caminhos como `icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/d20-black.svg`, `icons/svg/mystery-man.svg`).
+1. **Obrigatoriedade de Ícone Definido:**
+   - Todo item, habilidade, poder ou feitiço criado **DEVE OBRIGATORIAMENTE possuir um ícone atribuído**. Nunca deixe documentos com referências vazias ou quebradas.
+2. **Portão Obrigatório de Verificação HTTP 200:**
+   - Antes de concluir a criação do recurso, o Agente **DEVE testar e verificar se a URL/caminho do ícone responde com HTTP 200 OK** (ex: via chamada HTTP HEAD/GET em `http://<host>:<porta>/<caminho-do-icone>` ou confirmando a existência do arquivo na pasta de assets `App/resources/app/public/` ou no sistema ativo).
+   - Se a requisição falhar (404 Not Found, 403 ou caminho inválido), o Agente **DEVE REALIZAR A CORREÇÃO IMEDIATA**, selecionando um ícone válido da pasta SVG do core (`icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/mystery-man.svg`) e confirmando o retorno HTTP 200 antes de entregar a tarefa.
+3. **Hierarquia de Resolução de Ícones:**
+   - **Primeira Prioridade — Ícones Padrão do Core do Foundry VTT:** `%url-foundry-vtt%/App/resources/app/public/icons/` (`icons/weapons/...`, `icons/equipment/...`, `icons/magic/...`, `icons/consumables/...`, `icons/commodities/...`, `icons/tools/...`, `icons/skills/...`).
+   - **Segunda Prioridade — Pasta de Ícones do Sistema de Jogo (System):** Ícones customizados do sistema (ex: `systems/<id-do-sistema>/icons/`).
+   - **Terceira Prioridade / Fallback — Ícones Genéricos SVG do Core:** `%url-foundry-vtt%/App/resources/app/public/icons/svg/` (`icons/svg/item-bag.svg`, `icons/svg/sword.svg`, `icons/svg/shield.svg`, `icons/svg/aura.svg`, `icons/svg/d20-black.svg`, `icons/svg/mystery-man.svg`).
+
+#### 16. Protocolo de Acesso Exclusivo do Mestre (GM) e Ocultação de Jogadores (CRÍTICO)
+Sempre que o Agente criar ou instanciar QUALQUER documento ou recurso no Foundry VTT (Atores, NPCs, Monstros, Itens, Cenas, Diários, Handouts, Tabelas Roláveis, Baralhos, Macros ou Pastas):
+1. **Regra de Propriedade Padrão (Acesso Total ao GM):**
+   - **O Mestre (GM) DEVE SEMPRE ter Acesso Total (`OWNER` / nível 3)** sobre todos os recursos criados.
+   - **Os Jogadores NÃO DEVEM ter acesso (`default: 0 / NONE`)**: todos os documentos, fichas, itens, cenas e handouts devem nascer estritamente ocultos e inacessíveis para os jogadores.
+2. **Portão de Exceção Explícita do Mestre:**
+   - Jogadores **NUNCA** recebem permissões (`LIMITED`, `OBSERVER` ou `OWNER`) **a não ser que o GM/usuário peça isso expressamente na tarefa** (ex: *"dê permissão de dono deste personagem ao jogador X"*, *"crie este handout visível para todos os jogadores"*).
+3. **Imposição Estrutural no Schema de Dados:**
+   - Todo documento gerado deve declarar explicitamente o dicionário de ownership:
+     ```json
+     "ownership": {
+       "default": 0
+     }
+     ```
+     garantindo que os clientes dos jogadores não recebam dados de elementos ainda não revelados.
 
 #### 10. Protocolo de Engenharia Reversa (REA) e Memória Persistente (CRÍTICO)
 Ferramentas: [`rea-agents`](https://github.com/morluto/rea) (REA MCP/CLI) e o guia [`rea-engenharia-reversa`](https://github.com/inematds/rea-engenharia-reversa). Fluxo completo: [guides/reverse-engineering.md](guides/reverse-engineering.md).

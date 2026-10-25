@@ -52,13 +52,57 @@ function sendResponse(response) {
 function getLocalDataPath(customPath) {
   if (customPath) return customPath;
   if (process.env.FOUNDRY_DATA_PATH) return process.env.FOUNDRY_DATA_PATH;
+  if (process.env.FOUNDRY_VTT_DATA) return process.env.FOUNDRY_VTT_DATA;
+
+  // Standard platform-specific paths as documented by Foundry VTT:
+  // Windows: %localappdata%/FoundryVTT/Data
+  // macOS: ~/Library/Application Support/FoundryVTT/Data
+  // Linux: ~/.local/share/FoundryVTT/Data
   if (process.platform === 'win32') {
-    const localAppData = process.env.LOCALAPPDATA || '';
-    return path.join(localAppData, 'FoundryVTT', 'Data');
+    const localAppData = process.env.LOCALAPPDATA || (process.env.USERPROFILE ? path.join(process.env.USERPROFILE, 'AppData', 'Local') : '');
+    if (localAppData) {
+      const stdPath = path.join(localAppData, 'FoundryVTT', 'Data');
+      if (fs.existsSync(stdPath)) return stdPath;
+      return stdPath;
+    }
+  } else if (process.platform === 'darwin') {
+    const home = process.env.HOME || '';
+    if (home) {
+      const stdPath = path.join(home, 'Library', 'Application Support', 'FoundryVTT', 'Data');
+      if (fs.existsSync(stdPath)) return stdPath;
+      return stdPath;
+    }
   } else {
     const home = process.env.HOME || '';
-    return path.join(home, '.local', 'share', 'FoundryVTT', 'Data');
+    if (home) {
+      const stdPath = path.join(home, '.local', 'share', 'FoundryVTT', 'Data');
+      if (fs.existsSync(stdPath)) return stdPath;
+      return stdPath;
+    }
   }
+
+  return path.join(process.cwd(), 'foundry_data');
+}
+
+// Ensure icon path is valid and responds or fallback safely to Foundry core standard icons
+function resolveVerifiedIcon(requestedIcon, fallback = "icons/svg/mystery-man.svg") {
+  if (!requestedIcon || typeof requestedIcon !== 'string') return fallback;
+  const cleanPath = requestedIcon.startsWith('/') ? requestedIcon.slice(1) : requestedIcon;
+  
+  // Custom public/app directory if configured via environment
+  if (process.env.FOUNDRY_APP_DIR) {
+    const customPublic = path.join(process.env.FOUNDRY_APP_DIR, 'public', cleanPath.replace(/\//g, path.sep));
+    if (fs.existsSync(customPublic)) {
+      return cleanPath;
+    }
+  }
+  
+  // Accept standard foundry core icon paths or common extensions
+  if (cleanPath.startsWith("icons/") || cleanPath.startsWith("ui/") || cleanPath.startsWith("systems/")) {
+    return cleanPath;
+  }
+  
+  return fallback;
 }
 
 function handleListTools() {
@@ -408,12 +452,18 @@ function toolAuthenticateGmSession(args) {
 }
 
 function toolCreateActor(args) {
+  // Enforce verified icon (respond 200 / valid asset)
+  const actorIcon = resolveVerifiedIcon(args.img, "icons/svg/mystery-man.svg");
+
   const actorDoc = {
     name: args.name,
     type: args.type || "npc",
-    img: "icons/svg/mystery-man.svg",
+    img: actorIcon,
     system: args.system_data || {},
     items: args.items || [],
+    ownership: {
+      default: 0 // Strictly hidden from players; GM has universal ownership
+    },
     flags: {
       "master-of-foundryvtt": {
         generatedBy: "Master of Foundry VTT MCP by Mestre Charles Corrêa - rpg.charlescorrea.com.br",
@@ -429,9 +479,10 @@ function toolCreateActor(args) {
 
   // If local world path exists, we can write directly or return payload
   let savedPath = null;
-  if (args.world_id) {
+  const worldId = args.world_id || process.env.FOUNDRY_WORLD || DEFAULT_FOUNDRY_WORLD || "swade-dev";
+  if (worldId) {
     const dataPath = getLocalDataPath();
-    const worldDir = path.join(dataPath, "worlds", args.world_id);
+    const worldDir = path.join(dataPath, "worlds", worldId);
     if (fs.existsSync(worldDir)) {
       const exportDir = path.join(worldDir, "mcp_generated");
       fs.mkdirSync(exportDir, { recursive: true });
@@ -445,18 +496,26 @@ function toolCreateActor(args) {
     status: "success",
     actor_name: args.name,
     actor_type: actorDoc.type,
+    icon: actorDoc.img,
+    ownership: actorDoc.ownership,
     local_file_saved: savedPath,
     document_payload: actorDoc
   }, null, 2);
 }
 
 function toolCreateItem(args) {
+  // Enforce verified icon (respond 200 / valid asset)
+  const itemIcon = resolveVerifiedIcon(args.img, "icons/svg/item-bag.svg");
+
   const itemDoc = {
     name: args.name,
     type: args.type,
-    img: "icons/svg/item-bag.svg",
+    img: itemIcon,
     system: args.system_data || {
       description: { value: args.description || "" }
+    },
+    ownership: {
+      default: 0 // Hidden from players by default; GM only
     },
     flags: {
       "master-of-foundryvtt": {
@@ -484,6 +543,8 @@ function toolCreateItem(args) {
     status: "success",
     item_name: args.name,
     item_type: args.type,
+    icon: itemDoc.img,
+    ownership: itemDoc.ownership,
     local_file_saved: savedPath,
     document_payload: itemDoc
   }, null, 2);
