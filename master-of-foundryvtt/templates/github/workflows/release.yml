@@ -83,10 +83,10 @@ jobs:
 
       - name: Publish to Foundry VTT Package Release API
         env:
-          FOUNDRY_API_TOKEN: ${{ secrets.FOUNDRY_API_TOKEN }}
+          FOUNDRY_RELEASE_TOKEN: ${{ secrets.FOUNDRY_RELEASE_TOKEN || secrets.FOUNDRY_API_TOKEN }}
         run: |
-          if [ -z "$FOUNDRY_API_TOKEN" ]; then
-            echo "::warning::FOUNDRY_API_TOKEN secret is not defined. Skipping automated Foundry Directory release."
+          if [ -z "$FOUNDRY_RELEASE_TOKEN" ]; then
+            echo "::warning::Nenhum token FOUNDRY_RELEASE_TOKEN ou FOUNDRY_API_TOKEN configurado nos Secrets. Pulando publicação automática no diretório oficial do Foundry VTT."
             exit 0
           fi
           node -e "
@@ -113,7 +113,7 @@ jobs:
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': process.env.FOUNDRY_API_TOKEN,
+              'Authorization': process.env.FOUNDRY_RELEASE_TOKEN,
               'Content-Length': Buffer.byteLength(payload)
             }
           }, (res) => {
@@ -123,14 +123,14 @@ jobs:
               if (res.statusCode >= 200 && res.statusCode < 300) {
                 console.log('Successfully published release to Foundry VTT Directory! Response:', data);
               } else {
-                console.error('Foundry VTT API Error (' + res.statusCode + '):', data);
+                console.error('::error::Foundry VTT API Error (HTTP ' + res.statusCode + '):', data);
                 process.exit(1);
               }
             });
           });
 
           req.on('error', err => {
-            console.error('Network request failed:', err);
+            console.error('::error::Network request to Foundry VTT API failed:', err.message);
             process.exit(1);
           });
 

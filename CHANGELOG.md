@@ -7,6 +7,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.11.0] - 2026-10-27
+
+### Added / Adicionado
+- **master-of-foundryvtt (v0.15.0-beta):**
+  - **Diagnóstico & Resiliência na Foundry Package Release API (`guides/publishing-packages.md`):**
+    - Protocolo de captura explícita de status HTTP e resposta do servidor para a API oficial do Foundry VTT (`https://foundryvtt.com/_api/packages/release_version/`).
+    - Proibição do uso de `curl -s` isolado para eliminar falsos positivos (exit code 0 em HTTP 400, 401 e 429).
+    - Exemplos com `curl -w "\nHTTP_STATUS:%{http_code}" -s -S` e verificação estrita de HTTP 200.
+    - Notificação com `::warning::` em vez de skip silencioso caso `FOUNDRY_RELEASE_TOKEN_*` ou `FOUNDRY_API_TOKEN` estejam ausentes nos Secrets.
+  - **Atualização do Workflow Template (`templates/github/workflows/release.yml`):**
+    - Suporte padronizado para secrets de release com tratamento de erro e status HTTP transparente.
+
+---
+
 ## [1.10.0] - 2026-10-27
 
 ### Added / Adicionado

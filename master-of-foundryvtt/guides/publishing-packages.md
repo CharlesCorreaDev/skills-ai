@@ -395,6 +395,74 @@ jobs:
 
 ---
 
+### 🛡️ Boas Práticas e Tratamento de Erros na Foundry Package Release API
+
+Ao integrar a Package Release API (`https://foundryvtt.com/_api/packages/release_version/`) em seus workflows do GitHub Actions ou scripts:
+
+1. **Nunca use `curl -s` isolado (Armadilha do Exit Code 0)**:
+   - O argumento `-s` silencia o output e oculta erros de transporte e aplicação. Se a API recusar a requisição (status 400 por payload inválido ou URL inacessível, 401 por token ausente ou inválido, ou 429 por rate limit de 60s), o `curl` ainda finaliza com exit code 0 no runner, mascarando a falha e dando a falsa impressão de release bem-sucedida.
+   - Use sempre `-s -S -w "\nHTTP_STATUS:%{http_code}"` capturando a resposta e o código de status HTTP retornado pelo servidor:
+     ```bash
+     RESPONSE=$(curl -w "\nHTTP_STATUS:%{http_code}" -s -S -X POST "https://foundryvtt.com/_api/packages/release_version/" \
+       -H "Content-Type: application/json" \
+       -H "Authorization: ${{ secrets.FOUNDRY_RELEASE_TOKEN }}" \
+       -d '{
+         "id": "meu-modulo-id",
+         "dry-run": false,
+         "release": {
+           "version": "1.0.0.1",
+           "manifest": "https://raw.githubusercontent.com/usuario/meu-modulo/v1.0.0.1/module.json",
+           "notes": "https://github.com/usuario/meu-modulo/releases/tag/v1.0.0.1",
+           "compatibility": {
+             "minimum": "11",
+             "verified": "12"
+           }
+         }
+       }')
+
+     echo "Resposta da API do Foundry VTT:"
+     echo "$RESPONSE"
+
+     HTTP_STATUS=$(echo "$RESPONSE" | grep "HTTP_STATUS" | cut -d: -f2)
+
+     if [ "$HTTP_STATUS" -ne 200 ]; then
+       echo "::error::Falha ao publicar versão na API do Foundry VTT (HTTP $HTTP_STATUS)"
+       exit 1
+     fi
+     ```
+   - Em scripts **Node.js**, utilize validação estrita do `res.statusCode >= 200 && res.statusCode < 300` com `process.exit(1)` caso a resposta não seja de sucesso.
+
+2. **Tratamento de Segredo/Token Ausente (Alerta Visível em vez de Skip Silencioso)**:
+   - Se a variável de token (`FOUNDRY_RELEASE_TOKEN` ou `FOUNDRY_API_TOKEN`) não estiver cadastrada nos Secrets do repositório, o step não deve ser ignorado sem aviso.
+   - Emita um alerta visível nos logs do workflow (`echo "::warning::Token FOUNDRY_RELEASE_TOKEN não configurado..."`) para orientar o desenvolvedor sobre o motivo do skip, ou configure o step para falhar caso a publicação no diretório seja mandatória.
+
+3. **Formato Obrigatório do Payload JSON**:
+   ```json
+   {
+     "id": "seu-modulo-id",
+     "dry-run": false,
+     "release": {
+       "version": "1.0.0.1",
+       "manifest": "https://.../module.json",
+       "notes": "https://github.com/.../releases/tag/v1.0.0.1",
+       "compatibility": {
+         "minimum": "10",
+         "verified": "14"
+       }
+     }
+   }
+   ```
+   - O header de autorização deve ser `Authorization: fvttp_...` (o prefixo `fvttp_` faz parte do token gerado no painel do pacote).
+   - O `manifest` deve ser uma URL pública e acessível (retornando HTTP 200). A API do Foundry valida o manifesto antes de aceitar a versão. Se o manifesto retornar 404 ou formato inválido, a API responderá com HTTP 400.
+   - O campo `notes` aceita URL direta da release do GitHub ou do CHANGELOG.
+   - Especificação oficial completa disponível em: [foundryvtt.com/article/package-release-api/](https://foundryvtt.com/article/package-release-api/).
+
+4. **Rate Limiting (HTTP 429)**:
+   - A API do Foundry possui limitação de 1 release a cada 60 segundos por pacote.
+   - Se disparar releases consecutivas rapidamente, o servidor responderá com `429 Too Many Requests` e o header `Retry-After`. Em automações, aguarde o tempo indicado antes de tentar nova chamada.
+
+---
+
 ### 📦 Alternativas Externas da Comunidade (Para Referência Histórica):
 - 🛠️ **[Varriount/fvtt-autopublish](https://github.com/Varriount/fvtt-autopublish)**: Publica na API do Foundry VTT via GitHub Actions.
 - 📦 **[fvtt-release-packager](https://github.com/marketplace/actions/fvtt-release-packager)**: Constrói o zip no formato correto de pastas.

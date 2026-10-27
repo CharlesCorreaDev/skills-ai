@@ -7,6 +7,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.15.0-beta] - 2026-10-27
+
+### Added / Adicionado
+- **Diagnóstico & Resiliência na Foundry Package Release API (`guides/publishing-packages.md`):**
+  - Adicionado protocolo de captura explícita de status HTTP e corpo da resposta para chamadas à Package Release API do Foundry VTT.
+  - Proibição de uso de `curl -s` desacompanhado de validação de HTTP code em pipelines de CI/CD para evitar falhas silenciosas (exit code 0 em HTTP 400/401/429).
+  - Alerta explícito (`::warning::`) para secrets de tokens (`FOUNDRY_RELEASE_TOKEN_*` ou `FOUNDRY_API_TOKEN`) ausentes, evitando skips silenciosos nos workflows.
+  - Exemplo prático de automação com `curl -w "\nHTTP_STATUS:%{http_code}" -s -S` e verificação no runner.
+  - Documentação sobre tratamento de rate-limit (HTTP 429 - 60s) e erros de validação de dados/manifesto (HTTP 400).
+- **Templates de CI/CD Atualizados (`templates/github/workflows/release.yml`):**
+  - Tratamento resiliente de secrets com suporte a `FOUNDRY_RELEASE_TOKEN` e `FOUNDRY_API_TOKEN`.
+  - Exibição de avisos estruturados e abortagem controlada com logs detalhados de erros de API.
+
+---
+
 ## [0.14.0-beta] - 2026-10-27
 
 ### Added / Adicionado
