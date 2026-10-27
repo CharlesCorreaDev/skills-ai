@@ -1,0 +1,55 @@
+name: CI Quality & Validation Checks
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  validate-and-lint:
+    name: Lint & Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Foundry VTT CLI
+        run: npm install -g @foundryvtt/foundryvtt-cli
+
+      - name: Validate Skills SKILL.md Files
+        run: |
+          echo "Validating SKILL.md files..."
+          find . -name "SKILL.md" | while read skill; do
+            echo "Checking $skill"
+            head -n 5 "$skill" | grep -q "^name:" || (echo "Missing name in frontmatter of $skill" && exit 1)
+          done
+
+      - name: Check JSON Syntax
+        run: |
+          find . -name "*.json" -not -path "*/node_modules/*" -not -path "*/.git/*" | while read json_file; do
+            node -e "JSON.parse(fs.readFileSync(process.argv[1], 'utf8'))" "$json_file"
+          done
+          echo "All JSON files have valid syntax."
+
+      - name: Check JavaScript & ESModules Syntax
+        run: |
+          find . -name "*.mjs" -o -name "*.js" -not -path "*/node_modules/*" -not -path "*/.git/*" | while read js_file; do
+            node -c "$js_file"
+          done
+          echo "All JavaScript/Node scripts passed syntax verification."
+
+      - name: Check Python Scripts Syntax
+        run: |
+          python3 -m py_compile $(find . -name "*.py" -not -path "*/.git/*")
+          echo "All Python scripts passed syntax compilation."

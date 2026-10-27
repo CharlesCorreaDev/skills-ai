@@ -7,6 +7,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.14.0-beta] - 2026-10-27
+
+### Added / Adicionado
+- **Mandato Obrigatório 22: Protocolo Interativo de Release, Versionamento & Publicação (`SKILL.md`):**
+  - Gatilho automático ao concluir e aprovar o desenvolvimento de qualquer módulo ou sistema do Foundry VTT.
+  - O Agente agora obrigatoriamente questiona o desenvolvedor sobre: (1) geração de nova versão semântica (Patch, Minor ou Major); (2) criação de commit, tag Git e publicação de release com assets (`module.zip`/`system.zip`); (3) disparo da atualização para o diretório oficial do Foundry VTT via API de Release com `FOUNDRY_API_TOKEN`.
+- **Mandato Obrigatório 23: Protocolo de Wiki Técnica & Documentação Minuciosa (`SKILL.md`):**
+  - Exigência inegociável de criação ou atualização da Wiki do pacote (`WIKI.md` ou pasta `wiki/`), cobrindo guia completo para Mestres e Jogadores, referência minuciosa de APIs, namespaces e métodos (com tipos JSDoc e macros de exemplo), catálogo de hooks customizados e tratados, arquitetura de DataModels (`TypeDataModel`) e troubleshooting.
+- **Novo Guia Técnico Dedicado (`guides/wiki-and-release-lifecycle.md`):**
+  - Manual estruturado sobre padronização de Wikis explicativas e fluxo de aprovação e publicação de pacotes Foundry VTT.
+
+---
+
+## [0.13.0-beta] - 2026-10-26
+
+### Added / Adicionado
+- **Mandato Obrigatório 14 Atualizado: Protocolo Zero Emojis & Alinhamento blader/humanizer (`SKILL.md`):**
+  - Remoção obrigatória e total de emojis por padrão em todos os textos, códigos, documentações e diários do Foundry VTT gerados, eliminando um dos principais gatilhos sintéticos de detecção de IA. O uso de emojis torna-se estritamente restrito a pedidos explícitos do usuário.
+  - Alinhamento mandatório e contínuo com os 26 padrões canônicos da especificação [blader/humanizer](https://github.com/blader/humanizer) e da skill [`humanizer-plus`](../humanizer-plus) em qualquer entrega de código ou narrativa.
+  - Atualização dos scripts [`scripts/sanitize_content.js`](scripts/sanitize_content.js) e [`scripts/sanitize_content.py`](scripts/sanitize_content.py) com regex Unicode abrangente e remoção de emojis por padrão (com flag opcional `--keep-emojis`).
+- **Ferramenta Nativa de Publicação & Auditoria (`scripts/foundry_package_publisher.mjs`):**
+  - Script autônomo completo para validação prévia de código (anti-alucinações de IA), conferência de arquivos obrigatórios (`VERSION` no formato `1.0.0.0`, `README.md`, `CHANGELOG.md`), validação via Foundry CLI, empacotamento seguro em `.zip` e disparo direto na API oficial (`https://foundryvtt.com/_api/packages/release_version/`).
+  - Suporte a notificações instantâneas por E-mail (via Resend/SendGrid) e SMS (via Twilio) pós-publicação.
+- **Manual de Publicação e Marketplace Atualizado (`guides/publishing-packages.md`):**
+  - Distinção clara entre o formulário comunitário (`NEW PACKAGE SUBMISSION`) e o formulário de pacotes aprovados (`EDIT PACKAGE FORM`).
+  - Guia completo de conformidade legal, AI Content Policy, regras de precificação da loja oficial ([fvtt.store](https://fvtt.store/)) e processo para se tornar um Fornecedor de Conteúdo (Content Provider) com a MetaMorphic Digital Studio.
+  - Regra de ouro absoluta de segurança: proibição de credenciais no código e obrigatoriedade de uso do GitHub Secrets.
+
+---
+
 ## [0.12.0-beta] - 2026-10-25
 
 ### Added / Adicionado

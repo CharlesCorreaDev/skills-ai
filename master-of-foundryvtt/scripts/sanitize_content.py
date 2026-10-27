@@ -36,7 +36,13 @@ CURLY_QUOTES = {
     '\u00a0': ' ',  # Non-breaking space to regular space
 }
 
-def sanitize_content(text: str, is_code: bool = True) -> tuple[str, int]:
+# Comprehensive regex for all Unicode emojis and pictographic symbols
+ALL_EMOJIS_REGEX = re.compile(
+    r'[\U00010000-\U0010ffff\u2600-\u26FF\u2700-\u27BF\uFE0F\u200D]',
+    flags=re.UNICODE
+)
+
+def sanitize_content(text: str, is_code: bool = True, keep_emojis: bool = False) -> tuple[str, int]:
     count_cleaned = 0
     
     # 1. Strip zero-width chars
@@ -61,12 +67,21 @@ def sanitize_content(text: str, is_code: bool = True) -> tuple[str, int]:
                 count_cleaned += matches
                 text = re.sub(pat, '', text, flags=re.MULTILINE)
                 
+    # 4. Strip all emojis by default unless keep_emojis is explicitly requested
+    if not keep_emojis:
+        emoji_matches = len(re.findall(ALL_EMOJIS_REGEX, text))
+        if emoji_matches:
+            count_cleaned += emoji_matches
+            text = re.sub(ALL_EMOJIS_REGEX, '', text)
+            text = re.sub(r'[ \t]{2,}', ' ', text)
+                
     return text, count_cleaned
 
 def main():
     parser = argparse.ArgumentParser(description="Sanitize and humanize Foundry VTT files.")
     parser.add_argument("path", help="File or directory path to sanitize")
     parser.add_argument("--dry-run", action="store_true", help="Report issues without modifying files")
+    parser.add_argument("--keep-emojis", action="store_true", help="Keep emojis in text instead of stripping them")
     args = parser.parse_args()
 
     target = args.path
@@ -94,7 +109,7 @@ def main():
             continue
 
         is_code = file_path.endswith(('.js', '.mjs', '.json'))
-        clean_content, changes = sanitize_content(content, is_code=is_code)
+        clean_content, changes = sanitize_content(content, is_code=is_code, keep_emojis=args.keep_emojis)
 
         if changes > 0:
             modified_files += 1

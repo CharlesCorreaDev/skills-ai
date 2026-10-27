@@ -35,7 +35,10 @@ const CURLY_QUOTES = [
   [/\u00a0/g, ' '] // Non-breaking space to regular space
 ];
 
-export function sanitizeText(text, isCode = false) {
+// Regex abrangente para todos os emojis Unicode (Extended Pictographic, Symbols, Dingbats, Modifiers, Flags, etc.)
+const ALL_EMOJIS_REGEX = /(?:\p{Extended_Pictographic}|\p{Emoji_Presentation}|\p{Emoji_Modifier_Base}|\p{Emoji_Modifier}|\p{Regional_Indicator}|\uFE0F|\u200D|[\u2600-\u26FF\u2700-\u27BF])/gu;
+
+export function sanitizeText(text, isCode = false, options = {}) {
   let countCleaned = 0;
 
   for (const regex of ZERO_WIDTH_CHARS) {
@@ -64,10 +67,20 @@ export function sanitizeText(text, isCode = false) {
     }
   }
 
+  // Remoção padrão de todo e qualquer emoji, SALVO se o usuário solicitar explicitamente mantê-los (options.keepEmojis = true)
+  if (!options.keepEmojis) {
+    const emojiMatches = text.match(ALL_EMOJIS_REGEX);
+    if (emojiMatches) {
+      countCleaned += emojiMatches.length;
+      // Remove todos os emojis e normaliza múltiplos espaços residuais
+      text = text.replace(ALL_EMOJIS_REGEX, '').replace(/[ \t]{2,}/g, ' ');
+    }
+  }
+
   return { text, countCleaned };
 }
 
-function processPath(targetPath, dryRun = false) {
+function processPath(targetPath, dryRun = false, options = {}) {
   if (!fs.existsSync(targetPath)) {
     console.error(`Error: Target path '${targetPath}' not found.`);
     process.exit(1);
@@ -101,7 +114,7 @@ function processPath(targetPath, dryRun = false) {
     try {
       const original = fs.readFileSync(file, 'utf8');
       const isCode = /\.(js|mjs|cjs|ts|jsx|tsx|json|py|php)$/i.test(file);
-      const { text, countCleaned } = sanitizeText(original, isCode);
+      const { text, countCleaned } = sanitizeText(original, isCode, options);
 
       if (countCleaned > 0) {
         modifiedFiles++;
@@ -119,13 +132,21 @@ function processPath(targetPath, dryRun = false) {
   console.log(`\nHumanizer Plus Sanitizer: Processed ${files.length} files. Modified: ${modifiedFiles}. Total marks cleaned: ${totalChanges}.`);
 }
 
-const args = process.argv.slice(2);
-const dryRun = args.includes('--dry-run');
-const target = args.find(a => !a.startsWith('--'));
+import { fileURLToPath } from 'url';
 
-if (!target) {
-  console.log("Usage: node scripts/sanitize.js <path-to-file-or-dir> [--dry-run]");
-  process.exit(0);
+const isDirectRun = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+
+if (isDirectRun) {
+  const args = process.argv.slice(2);
+  const dryRun = args.includes('--dry-run');
+  const keepEmojis = args.includes('--keep-emojis');
+  const target = args.find(a => !a.startsWith('--'));
+
+  if (!target) {
+    console.log("Usage: node scripts/sanitize.js <path-to-file-or-dir> [--dry-run] [--keep-emojis]");
+    console.log("Note: All emojis are stripped by default unless --keep-emojis is explicitly specified.");
+    process.exit(0);
+  }
+
+  processPath(target, dryRun, { keepEmojis });
 }
-
-processPath(target, dryRun);

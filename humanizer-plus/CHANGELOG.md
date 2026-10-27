@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.2.0] - 2026-10-26
+
+### Added / Adicionado
+- **Protocolo de Purga Total de Emojis por Padrão (`scripts/sanitize.js`):**
+  - Implementação de regex abrangente para cobertura total de emojis Unicode (Extended Pictographic, Emoji Presentation, Modifiers, Flags, Dingbats e variações ZWJ).
+  - Remoção de todo e qualquer emoji por padrão de qualquer texto ou código limpo pelo humanizador, eliminando o tell sintético mais comum de IAs geradoras.
+  - Flag de escape `--keep-emojis` adicionada para casos em que o usuário expressamente solicitar a manutenção dos emojis.
+- **Mandato de Alinhamento com `blader/humanizer`:**
+  - Garantia de acionamento obrigatório dos 26 padrões canônicos em conjunto com as capacidades da skill `master-of-foundryvtt` e demais fluxos.
+
+---
+
 ## [1.1.0] - 2026-10-25
 
 ### Added / Adicionado

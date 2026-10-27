@@ -9,44 +9,40 @@
 ## 🇺🇸 English
 
 ### 📌 Overview & Practical Authority
-**Master of Foundry VTT** is an end-to-end development, scripting, and rule ingestion suite designed for developers, module creators, and Game Masters running **Foundry Virtual Tabletop**.
+**Master of Foundry VTT** is an end-to-end development, scripting, automation, and rule ingestion suite designed for developers, module creators, and Game Masters running **Foundry Virtual Tabletop**.
 
 > [!IMPORTANT]
 > **Source Material & Real-World Experience:**  
 > All information, architectural patterns, and troubleshooting guides in this repository are rigorously based on **official Foundry VTT documentation, official release notes, policies, and API references**, combined directly with **first-hand, battle-tested practical experience in developing custom modules and systems for Foundry VTT (including the latest v14 architecture, ApplicationV2, and TypeDataModels)**.
 
-This suite encapsulates official documentation, knowledge base articles, policies, API references from **Version 8 through Version 14**, Model Context Protocol (MCP) integrations, modern web exploration tools for module repositories, and architecture guides for over 60 famous RPG systems.
+This suite encapsulates official documentation, knowledge base articles, policies, API references from **Version 8 through Version 14 (v14.369 Stable)**, native Model Context Protocol (MCP) integrations, CI/CD package publication automation, modern web exploration tools for module repositories, and architecture guides for over 60 famous RPG systems.
 
 ---
 
-### 🌐 Knowledge Sources & Documentation
+### 🌐 Knowledge Sources, Guides & Development Standards
 
-| Category | Reference / Guides |
-|---|---|
-| **Model Context Protocol (MCP)** | [`mcp/README.md`](mcp/README.md) & [Manual de Instalação (`mcp/INSTALLATION.md`)](mcp/INSTALLATION.md) (Nativo `foundry_mcp_server.py`, ninjos-foundry-mcp, foundryvtt-mcp) |
-| **CLI Tools & Automation** | [`guides/cli-tools.md`](guides/cli-tools.md) (`@foundryvtt/foundryvtt-cli` & `fvtt-world-cli`) |
-| **Sockets & Client-Server RPC** | [`guides/sockets.md`](guides/sockets.md) (Native `game.socket` & `socketlib`) |
-| **Combat Tracker & Automation** | [`guides/combat.md`](guides/combat.md) (`Combat`, `Combatant`, `CombatTracker`) |
-| **AI & LLM Integration** | [`guides/ai-and-llm-integration.md`](guides/ai-and-llm-integration.md) (Integrate AI, Phil's Assistant, AI Actors) |
-| **Development Skills Matrix** | [`guides/development-skills-matrix.md`](guides/development-skills-matrix.md) (14 Engineering Domains & Standards) |
-| **Famous Systems Knowledge Base** | [`systems/README.md`](systems/README.md) (D&D, PF2e, WoD, SWADE, Tormenta20, YZE, GURPS, CoC7, etc.) |
-| **Official Systems Directory** | [https://foundryvtt.com/packages/systems?page=1](https://foundryvtt.com/packages/systems?page=1) (com paginação `?page=N`) |
-| **Official Modules Directory** | [https://foundryvtt.com/packages/modules?page=1](https://foundryvtt.com/packages/modules?page=1) (com paginação `?page=N`) |
-| **Official Foundry VTT Store** | [https://www.foundryvtt.store/search?q=Savage+Worlds](https://www.foundryvtt.store/search?q=Savage+Worlds) (busca por sistema: `?q=<termo>`) |
-| **Knowledge Base (Official & Guides)** | [`kb/`](kb/) & [https://foundryvtt.com/kb/](https://foundryvtt.com/kb/) |
-| **SSL, HTTPS & Let's Encrypt (v14+)** | [`kb/07-ssl-and-https.md`](kb/07-ssl-and-https.md) (Native SSL in v14.369 vs Reverse Proxy) |
-| **Releases & Changelogs** | [https://foundryvtt.com/releases/](https://foundryvtt.com/releases/) |
-| **Limited License Agreement** | [`policies/license.md`](policies/license.md) |
-| **AI Policy** | [`policies/ai-policy.md`](policies/ai-policy.md) |
-| **Branding Guidelines** | [`policies/branding.md`](policies/branding.md) |
-| **Privacy Policy** | [`policies/privacy-policy.md`](policies/privacy-policy.md) |
-| **API Version 14 (Latest)** | [`versions/v14-api-guide.md`](versions/v14-api-guide.md) |
-| **API Version 13** | [`versions/v13-api-guide.md`](versions/v13-api-guide.md) |
-| **API Version 12** | [`versions/v12-api-guide.md`](versions/v12-api-guide.md) |
-| **API Version 11** | [`versions/v11-api-guide.md`](versions/v11-api-guide.md) |
-| **API Version 10** | [`versions/v10-api-guide.md`](versions/v10-api-guide.md) |
-| **API Version 9** | [`versions/v09-api-guide.md`](versions/v09-api-guide.md) |
-| **API Version 8** | [`versions/v08-api-guide.md`](versions/v08-api-guide.md) |
+| Category | Reference / Guides | Description |
+|---|---|---|
+| **Release & Packaging Pipeline** | [`scripts/foundry_package_publisher.mjs`](scripts/foundry_package_publisher.mjs) & [`guides/publishing-packages.md`](guides/publishing-packages.md) | Quality gate, HTTP 200 icon checks, safe zip packaging & official Foundry API release |
+| **Technical Wiki & Lifecycle** | [`guides/wiki-and-release-lifecycle.md`](guides/wiki-and-release-lifecycle.md) | Exhaustive Wiki generation, interactive release gate and versioning protocol |
+| **CI/CD & Scaffolding Templates** | [`templates/github/`](templates/github/) & [`scripts/scaffold_package.py`](scripts/scaffold_package.py) | Production-ready `checks.yml`, `release.yml`, `dependabot.yml` and Issue Templates |
+| **Model Context Protocol (MCP)** | [`mcp/README.md`](mcp/README.md) & [`mcp/INSTALLATION.md`](mcp/INSTALLATION.md) | Native unified MCP server (`master-of-foundryvtt-mcp`), live state and reverse engineering |
+| **CLI Tools & Automation** | [`guides/cli-tools.md`](guides/cli-tools.md) | Official `@foundryvtt/foundryvtt-cli` and `fvtt-world-cli` compendium packing |
+| **Clean Code & Humanization** | [`guides/humanization-and-clean-code.md`](guides/humanization-and-clean-code.md) | Zero-emoji default, anti-AI tells and bilingual JSDoc/TSDoc code comments |
+| **Bootstrap Prefixed UI/UX** | [`guides/bootstrap-prefixed-ui.md`](guides/bootstrap-prefixed-ui.md) | Mandatory CSS class prefixing, official 9-tone cold blue palette and approved icons |
+| **AnyDice Mathematical Modeling** | [`guides/anydice-dice-mechanics.md`](guides/anydice-dice-mechanics.md) | Dice mechanics probability modeling and conversion to Foundry `Roll` engine |
+| **Sockets & Client-Server RPC** | [`guides/sockets.md`](guides/sockets.md) | Native `game.socket` & `socketlib` communication |
+| **Combat Tracker & Automation** | [`guides/combat.md`](guides/combat.md) | `Combat`, `Combatant`, and `CombatTracker` mechanics |
+| **AI & LLM Integration** | [`guides/ai-and-llm-integration.md`](guides/ai-and-llm-integration.md) | Integrate AI, Phil's Assistant, and AI Actors workflows |
+| **Development Skills Matrix** | [`guides/development-skills-matrix.md`](guides/development-skills-matrix.md) | 14 Engineering Domains & professional developer standards |
+| **Famous Systems Knowledge Base** | [`systems/README.md`](systems/README.md) | Architecture for 60+ systems (D&D 5e, PF2e, WoD, SWADE, Tormenta20, YZE, GURPS) |
+| **Official Systems Directory** | [foundryvtt.com/packages/systems](https://foundryvtt.com/packages/systems?page=1) | Official paginated package catalog |
+| **Official Modules Directory** | [foundryvtt.com/packages/modules](https://foundryvtt.com/packages/modules?page=1) | Official paginated module catalog |
+| **Official Foundry VTT Store** | [foundryvtt.store](https://www.foundryvtt.store/search?q=Savage+Worlds) | Search commercial and official content packages |
+| **Knowledge Base (Official & Guides)** | [`kb/`](kb/) & [foundryvtt.com/kb](https://foundryvtt.com/kb/) | Core operations, scenes, actors, compendiums and reverse engineering |
+| **SSL, HTTPS & Let's Encrypt (v14+)** | [`kb/07-ssl-and-https.md`](kb/07-ssl-and-https.md) | Native SSL in v14.369 vs Reverse Proxy setups |
+| **Policies & Governance** | [`policies/`](policies/) | Limited License, AI Content Policy, Branding and Privacy Guidelines |
+| **API Version Guides (v8 to v14)** | [`versions/`](versions/) | Dedicated API migration guides from v8 through v14.369 Stable |
 
 ---
 
@@ -112,43 +108,35 @@ my-foundry-system/
 Once loaded, the AI Agent automatically detects `SKILL.md`. You can invoke it naturally or explicitly:
 
 - **Developing a New System (v14):**
-  > *"Create a new Foundry VTT v14 system using ApplicationV2 and TypeDataModel for a d20-based modern horror game."*
+  > *"Create a new Foundry VTT v14 system using ApplicationV2 and TypeDataModel for a d20-based modern horror game with full CI/CD templates."*
 - **Migrating Modules from v11/v12 to v14:**
   > *"Analyze this module's sheet code and migrate it from legacy Application to ApplicationV2 following the Master of Foundry VTT v14 standards."*
+- **Finalizing and Publishing a Package:**
+  > *"The module features are completed and tested. Prepare the comprehensive WIKI.md, bump the version to v1.1.0, and guide me through the release process."*
 - **Connecting via MCP:**
-  > *"Connect to my local Foundry VTT server using the ninjos-foundry-mcp server and inspect the active actors in the world."*
-- **Investigating System Rules & Compendiums:**
-  > *"Using the master-of-foundryvtt knowledge base, show me how to register custom roll formulas and active effects for Savage Worlds Adventure Edition (SWADE)."*
+  > *"Inspect active actors and scenes in my live local Foundry VTT server using the native master-of-foundryvtt MCP server."*
 
----
-
-### 🛡️ Autonomous Error Recovery & Self-Healing Protocol (For AI Agents)
-
-When an AI Agent encounters errors during skill installation, execution, or environment setup:
-1. **Root Cause Diagnosis & Self-Correction:** The agent MUST analyze the underlying cause of failure (missing packages, permissions, OS binary gaps, charset issues) and iteratively attempt self-correction until the skill performs its intended purpose.
-2. **Permission Gate for Extra / System Software:** If resolving an issue requires installing system binaries (`pandoc`, `libreoffice`, `tesseract`), elevated global packages, or configuring API keys, the agent MUST explicitly explain the situation to the developer/operator and request authorization before proceeding.
-3. **Configuration Report & Verification:** Upon approval, the agent must clearly state what was installed and configured, then immediately execute an end-to-end test or ask the operator for sample inputs to validate that the skill is 100% operational.
-
----
 ---
 
 ## 🇧🇷 Português (Brasil)
 
 ### 📌 Visão Geral e Experiência Prática
-O **Master of Foundry VTT** é uma suíte completa de desenvolvimento, automação, ingestão de regras e arquitetura desenvolvida para desenvolvedores de sistemas, criadores de módulos e Mestres de RPG que utilizam o **Foundry Virtual Tabletop**.
+O **Master of Foundry VTT** é uma suíte completa de desenvolvimento, automação, ingestão de regras, CI/CD e arquitetura desenvolvida para desenvolvedores de sistemas, criadores de módulos e Mestres de RPG que utilizam o **Foundry Virtual Tabletop**.
 
 > [!IMPORTANT]
 > **Base Oficial e Experiência Prática Real:**  
 > Todas as informações, arquiteturas, padrões de código e diretrizes contidas neste repositório são rigorosamente fundamentadas na **documentação oficial do Foundry VTT, notas oficiais de lançamento, diretrizes/políticas e referências de API**, somadas diretamente à **experiência prática acumulada no desenvolvimento ativo de módulos e sistemas para o Foundry VTT v14** (incluindo o novo paradigma `ApplicationV2`, `TypeDataModel`, arquitetura de canvas e ESM nativo).
 
-Ela consolida a base de conhecimento oficial, artigos, termos de licença, integrações MCP e referências de API da **Versão 8 até a Versão 14 (v14.369 Stable)**, oferecendo suporte para:
-- Integração com **Servidores MCP** ([`mcp/README.md`](mcp/README.md)) para inspeção em tempo real e teste de macros.
-- **Ferramentas de Linha de Comando (CLI)** ([`guides/cli-tools.md`](guides/cli-tools.md)) com `@foundryvtt/foundryvtt-cli` e `fvtt-world-cli` para compilação e automação de compêndios e mundos.
-- Base de conhecimento arquitetural para **mais de 60 sistemas de RPG** ([`systems/README.md`](systems/README.md)).
-- Criação e migração de **Sistemas de RPG** (`system.json`, `TypeDataModel`, Fichas Customizadas em `ApplicationV2`).
-- Criação de **Módulos Adicionais** (`module.json`, Configurações, Sockets, libWrapper, Hooks).
-- Guia nativo de **SSL, HTTPS e Let's Encrypt** ([`kb/07-ssl-and-https.md`](kb/07-ssl-and-https.md)) introduzido na v14.369.
-- Ferramentas web para inspeção e estudo reverso de código de repositórios do ecossistema.
+Ela consolida a base de conhecimento oficial, artigos, termos de licença, governança de release, integrações MCP e referências de API da **Versão 8 até a Versão 14 (v14.369 Stable)**, oferecendo suporte para:
+
+- **Automação de Releases & Publicação Oficial** ([`scripts/foundry_package_publisher.mjs`](scripts/foundry_package_publisher.mjs)): Validação pré-voo, auditoria de código, verificação de ícones HTTP 200, empacotamento zip seguro e disparo direto na API oficial de release do Foundry VTT.
+- **Protocolo de Wiki Técnica Minuciosa** ([`guides/wiki-and-release-lifecycle.md`](guides/wiki-and-release-lifecycle.md)): Geração obrigatória de documentação profunda para Mestres, Jogadores, referência de APIs, hooks e esquemas DataModel.
+- **Templates de CI/CD, Dependabot & Issues** ([`templates/github/`](templates/github/)): Workflows prontos de validação contínua (`checks.yml`), publicação (`release.yml`), Dependabot e issue templates.
+- **Servidor MCP Nativo Oficial** ([`mcp/README.md`](mcp/README.md)): Controle unificado de atores, itens, cenas, macros, playlists, compêndios e engenharia reversa estática/remota.
+- **Design de Interface Responsiva com Bootstrap Prefixado** ([`guides/bootstrap-prefixed-ui.md`](guides/bootstrap-prefixed-ui.md)): Classes prefixadas obrigatórias, paleta de 9 tons frios e ícones RPG homologados.
+- **Modelagem Estatística com AnyDice** ([`guides/anydice-dice-mechanics.md`](guides/anydice-dice-mechanics.md)): Validação matemática de dados antes da conversão para fórmulas do Foundry.
+- **Humanização & Código Limpo** ([`guides/humanization-and-clean-code.md`](guides/humanization-and-clean-code.md)): Protocolo zero emojis por padrão e comentários estritamente bilíngues (Português/Inglês).
+- **Base Arquitetural de 60+ Sistemas de RPG** ([`systems/README.md`](systems/README.md)): SWADE, D&D 5e, PF2e, Tormenta20, Year Zero Engine, Storyteller/WoD, Call of Cthulhu e mais.
 
 ---
 
@@ -200,36 +188,13 @@ meu-modulo-foundry/
 Com a skill ativa, seu agente reconhece automaticamente as diretrizes do `SKILL.md`. Experimente prompts como:
 
 - **Desenvolvimento de Novo Sistema (v14):**
-  > *"Crie a base de um novo sistema para Foundry VTT v14 utilizando ApplicationV2 e TypeDataModel para um RPG de investigação cósmica."*
-- **Migração de Fichas Legadas:**
-  > *"Migre esta ficha de ator feita no Application antigo do v11 para ApplicationV2 com template Handlebars limpo no padrão v14."*
+  > *"Crie a base de um novo sistema para Foundry VTT v14 utilizando ApplicationV2 e TypeDataModel para um RPG de fantasia heroica com templates de CI/CD inclusos."*
+- **Finalização e Release de Módulo:**
+  > *"Concluímos o desenvolvimento do módulo de combate tático. Gere a Wiki explicativa completa (WIKI.md), incremente a versão e execute o pipeline de publicação."*
 - **Inspeção de Mundo em Tempo Real via MCP:**
-  > *"Conecte ao meu servidor Foundry local usando o ninjos-foundry-mcp e liste todos os atores e itens do compêndio."*
-- **Desenvolvimento de Módulos e Hooks:**
-  > *"Crie um módulo com um hook de 'renderActorSheet' que injete um botão de rolagem rápida e envie notificações sonoras."*
-
----
-
-### 🔍 Ferramentas Web para Análise de Repositórios e Módulos
-Ferramentas úteis para estudar a arquitetura de sistemas e módulos existentes diretamente no navegador:
-
-| Ferramenta | Template de URL | Exemplo de Uso (D&D 5e / SWADE Tools) |
-|---|---|---|
-| **Gitingest** | `https://gitingest.com/{{owner}}/{{repo}}` | `https://gitingest.com/foundryvtt/dnd5e` |
-| **GitDiagram** | `https://gitdiagram.com/{{owner}}/{{repo}}` | `https://gitdiagram.com/foundryvtt/dnd5e` |
-| **Repomix** | `https://repomix.com/?repo={{owner}}/{{repo}}` | `https://repomix.com/?repo=lipefl/swade-tools` |
-| **Uithub** | `https://uithub.com/{{owner}}/{{repo}}?maxTokens=500000` | `https://uithub.com/lipefl/swade-tools?maxTokens=500000` |
-| **DeepWiki** | `https://deepwiki.com/{{owner}}/{{repo}}` | `https://deepwiki.com/lipefl/swade-tools` |
-| **Star History** | `https://www.star-history.com/?type=date&repos={{owner}}/{{repo}}` | `https://www.star-history.com/?type=date&repos=foundryvtt/dnd5e` |
-
----
-
-### 🛡️ Protocolo de Auto-Correção e Recuperação de Erros (Para Agentes de IA)
-
-Sempre que o Agente de IA encontrar falhas na instalação, execução ou configuração de ambiente da skill:
-1. **Diagnóstico de Causa Raiz e Auto-Correção:** O agente DEVE analisar a causa exata do erro e tentar se auto-corrigir iterativamente até que a skill esteja funcionando perfeitamente.
-2. **Solicitação de Permissão para Instalações Extras:** Se a correção exigir pacotes extras (`pandoc`, `libreoffice`, `tesseract`, pacotes globais ou chaves de API), o agente DEVE solicitar permissão explícita ao desenvolvedor antes de instalar.
-3. **Relatório de Configuração e Validação:** Após a confirmação, o agente deve informar o que foi instalado e configurado e executar um teste de validação.
+  > *"Conecte ao meu servidor Foundry local usando o MCP nativo do master-of-foundryvtt e inspecione o status e atores ativos."*
+- **Modelagem de Dados e Probabilidades:**
+  > *"Modele uma mecânica de dados explosivos no AnyDice e converta em um avaliador customizado de DiceTerm para o meu sistema."*
 
 ---
 
@@ -241,4 +206,3 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 - 📷 **Instagram:** [@mestrecharlescorrea](https://www.instagram.com/mestrecharlescorrea)  
 - 🐙 **GitHub:** [CharlesCorreaDev](https://github.com/CharlesCorreaDev)  
 - ⚡ **Skills de IA By Charles Corrêa Repo:** [https://github.com/CharlesCorreaDev/skills-ai](https://github.com/CharlesCorreaDev/skills-ai)
-

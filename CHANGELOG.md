@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.10.0] - 2026-10-27
+
+### Added / Adicionado
+- **master-of-foundryvtt (v0.14.0-beta):**
+  - **Mandato 22 (Protocolo Interativo de Release, Versionamento & Publicação):** Sempre que o desenvolvimento de um módulo ou sistema do Foundry VTT for concluído e aprovado pelo desenvolvedor, o agente obrigatoriamente questiona de forma interativa sobre o incremento de versão semântica (Patch, Minor ou Major), geração de commit e tag Git, publicação da GitHub Release com assets compactados (`module.zip`/`system.zip`) e disparo de atualização oficial no diretório do Foundry VTT via API de Release.
+  - **Mandato 23 (Protocolo de Wiki Técnica & Documentação Minuciosa):** Mandato inegociável de criar ou atualizar `WIKI.md` (ou diretório `wiki/`) com manuais minuciosos de uso para Mestres e Jogadores, referência completa de APIs/métodos expostos com JSDoc e exemplos de macro, catálogo de hooks, arquitetura de DataModels (`TypeDataModel`) e troubleshooting.
+  - **Novo Guia Técnico:** Adicionado [`master-of-foundryvtt/guides/wiki-and-release-lifecycle.md`](master-of-foundryvtt/guides/wiki-and-release-lifecycle.md).
+
+---
+
 ## [1.9.0] - 2026-10-25
 
 ### Added / Adicionado
