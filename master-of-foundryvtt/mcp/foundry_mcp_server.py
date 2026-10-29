@@ -24,7 +24,15 @@ import urllib.parse
 from typing import Dict, Any, List
 
 SERVER_NAME = "master-of-foundryvtt-mcp"
-SERVER_VERSION = "1.0.0"
+SERVER_VERSION = "2.1.0"
+
+# EN: Import Hardware Governor from scripts directory for CPU, RAM, and GPU/VRAM budget calculation
+# PT-BR: Importa o Governador de Hardware do diretorio scripts para calculo de CPU, RAM e GPU/VRAM
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "scripts")))
+try:
+    from hardware_governor import calculate_safe_budget
+except Exception:
+    calculate_safe_budget = None
 
 def send_response(response: Dict[str, Any]):
     """Write JSON-RPC response to stdout."""
@@ -34,6 +42,19 @@ def send_response(response: Dict[str, Any]):
 
 def handle_list_tools() -> List[Dict[str, Any]]:
     return [
+        {
+            "name": "inspect_hardware_budget",
+            "description": "Detects host PC processor (CPU model and logical cores), physical RAM (total, free, used %), and GPU/VRAM (total, free, integrated vs dedicated), calculating safe anti-freeze execution limits and Foundry WebGL/PixiJS canvas budgets.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "requested_workers": {
+                        "type": "integer",
+                        "description": "Optional upper bound of workers requested by the task."
+                    }
+                }
+            }
+        },
         {
             "name": "inspect_foundry_environment",
             "description": "Inspects local Foundry VTT installation directory, Data folder, installed systems and active modules.",
@@ -167,7 +188,18 @@ def tool_inspect_foundry_environment(args: Dict[str, Any]) -> str:
         },
         "systems": installed_systems[:30],
         "worlds": installed_worlds,
-        "modules_sample": installed_modules[:30]
+        "modules_sample": installed_modules[:30],
+        "hardware_budget": calculate_safe_budget() if calculate_safe_budget else None
+    }, indent=2)
+
+def tool_inspect_hardware_budget(args: Dict[str, Any]) -> str:
+    # EN: Returns CPU, RAM, GPU/VRAM, and safe execution budget
+    # PT-BR: Retorna CPU, RAM, GPU/VRAM e orcamento seguro de execucao
+    req_workers = args.get("requested_workers") if args else None
+    budget = calculate_safe_budget(requested_workers=req_workers) if calculate_safe_budget else {}
+    return json.dumps({
+        "status": "success",
+        "hardware_budget": budget
     }, indent=2)
 
 def tool_query_official_systems(args: Dict[str, Any]) -> str:
@@ -393,7 +425,9 @@ def main():
             tool_args = params.get("arguments", {})
 
             try:
-                if tool_name == "inspect_foundry_environment":
+                if tool_name == "inspect_hardware_budget":
+                    content = tool_inspect_hardware_budget(tool_args)
+                elif tool_name == "inspect_foundry_environment":
                     content = tool_inspect_foundry_environment(tool_args)
                 elif tool_name == "query_official_systems":
                     content = tool_query_official_systems(tool_args)

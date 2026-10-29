@@ -7,6 +7,7 @@ O padrão tradicional adotado pela maioria dos frameworks (Laravel, Symfony).
 - **Model**: Lida com lógica de negócios e estado (banco de dados).
 - **View**: Apresentação (geralmente gerada via Twig, Blade ou JSON).
 - **Controller**: Coordena o input do usuário e a resposta, mas não deve conter regras de negócio complexas ("Fat Model, Skinny Controller").
+- **Guia Completo e Modular de MVC**: Consulte a documentação detalhada em [`MVC/README.md`](MVC/README.md) cobrindo Front Controller, Router PSR, Container DI, DTOs, Services, Repositories com PDO, Views seguras (anti-XSS/CSRF) e comparativo do PHP 7.4 ao 8.5.
 
 ### 2. Action-Domain-Responder (ADR)
 Refinamento do MVC projetado especificamente para requisições web.

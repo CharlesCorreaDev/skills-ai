@@ -8,3 +8,7 @@ node_modules/
 dist/
 scratch/
 master-of-foundryvtt/memory/
+__pycache__/
+*.pyc
+.vscode/
+php-dev-expert/php-docs/php-bigxhtml.html

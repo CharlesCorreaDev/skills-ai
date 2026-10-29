@@ -31,7 +31,179 @@ const http = require('http');
 const https = require('https');
 
 const SERVER_NAME = "master-of-foundryvtt-mcp";
-const SERVER_VERSION = "2.0.0";
+const { execSync } = require('child_process');
+const SERVER_VERSION = "2.1.0";
+
+// EN: Lower MCP server OS priority so background tasks never freeze the host machine
+// PT-BR: Reduz a prioridade do servidor MCP no SO para que tarefas em background nunca travem a maquina
+try {
+  const prio = os.constants && os.constants.priority && os.constants.priority.PRIORITY_BELOW_NORMAL !== undefined
+    ? os.constants.priority.PRIORITY_BELOW_NORMAL
+    : 10;
+  os.setPriority(process.pid, prio);
+} catch (_) {
+  // Ignore if unsupported by platform / Ignora se nao suportado pela plataforma
+}
+
+/**
+ * EN: Detects GPU model, total/free VRAM (MB), and calculates safe CPU/RAM/VRAM execution budget.
+ * PT-BR: Detecta modelo da GPU, VRAM total/livre (MB) e calcula o orcamento seguro de CPU/RAM/VRAM.
+ */
+function calculateHardwareBudget(requestedWorkers = null) {
+  const cpus = os.cpus() || [];
+  const cpuModel = cpus.length > 0 ? cpus[0].model.trim() : "Unknown CPU";
+  const logicalCores = Math.max(1, cpus.length);
+  const totalRamGb = Number((os.totalmem() / (1024 ** 3)).toFixed(2));
+  const freeRamGb = Number((os.freemem() / (1024 ** 3)).toFixed(2));
+  const usedRamPercent = totalRamGb > 0 ? Number((((totalRamGb - freeRamGb) / totalRamGb) * 100).toFixed(1)) : 50.0;
+
+  let gpuName = "Unknown / Integrated GPU";
+  let vramTotalMb = 0;
+  let vramFreeMb = 0;
+  let detectionMethod = "fallback-heuristic";
+  let isIntegrated = false;
+
+  // 1. Try nvidia-smi / Tenta nvidia-smi
+  try {
+    const nvOut = execSync("nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv,noheader,nounits", {
+      encoding: "utf8",
+      timeout: 2500,
+      stdio: ["ignore", "pipe", "ignore"]
+    }).trim();
+    if (nvOut) {
+      const firstLine = nvOut.split(/\r?\n/)[0];
+      const parts = firstLine.split(",").map(s => s.trim());
+      if (parts.length >= 3) {
+        gpuName = parts[0];
+        vramTotalMb = parseInt(parts[1], 10) || 0;
+        vramFreeMb = parseInt(parts[2], 10) || 0;
+        detectionMethod = "nvidia-smi";
+      }
+    }
+  } catch (_) {}
+
+  // 2. Windows Registry fallback / Fallback via Registro do Windows
+  if (vramTotalMb === 0 && process.platform === "win32") {
+    try {
+      const psCmd = `powershell -NoProfile -Command "Get-ItemProperty 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}\\0*' -ErrorAction SilentlyContinue | Select-Object DriverDesc, 'HardwareInformation.qwMemorySize', 'HardwareInformation.MemorySize' | ConvertTo-Json -Compress"`;
+      const regOut = execSync(psCmd, {
+        encoding: "utf8",
+        timeout: 4000,
+        stdio: ["ignore", "pipe", "ignore"]
+      }).trim();
+      if (regOut) {
+        const parsed = JSON.parse(regOut);
+        const list = Array.isArray(parsed) ? parsed : [parsed];
+        for (const item of list) {
+          if (!item || !item.DriverDesc) continue;
+          const desc = String(item.DriverDesc).trim();
+          const lower = desc.toLowerCase();
+          if (lower.includes("basic") || lower.includes("remote") || lower.includes("virtual")) continue;
+          let memBytes = Number(item["HardwareInformation.qwMemorySize"]) || 0;
+          if (!memBytes && Array.isArray(item["HardwareInformation.MemorySize"]) && item["HardwareInformation.MemorySize"].length === 4) {
+            const arr = item["HardwareInformation.MemorySize"];
+            memBytes = (arr[0] | (arr[1] << 8) | (arr[2] << 16) | (arr[3] * 0x1000000)) >>> 0;
+          } else if (!memBytes && typeof item["HardwareInformation.MemorySize"] === "number") {
+            memBytes = item["HardwareInformation.MemorySize"];
+          }
+          const memMb = memBytes > 0 ? Math.round(memBytes / (1024 * 1024)) : 1024;
+          if (memMb >= vramTotalMb) {
+            gpuName = desc;
+            vramTotalMb = memMb;
+            vramFreeMb = Math.floor(memMb * 0.75);
+            detectionMethod = "winreg-display-class";
+          }
+        }
+      }
+    } catch (_) {}
+  }
+
+  if (vramTotalMb === 0) {
+    vramTotalMb = 1024;
+    vramFreeMb = 768;
+  }
+
+  const lowerGpu = gpuName.toLowerCase();
+  if (lowerGpu.includes("intel") || lowerGpu.includes("uhd") || lowerGpu.includes("iris") || lowerGpu.includes("integrated") || vramTotalMb <= 2048) {
+    isIntegrated = true;
+  }
+
+  const safetyReserveGb = isIntegrated ? 4.0 : 2.5;
+  const usableRamGb = Math.max(0.4, Number(((freeRamGb - safetyReserveGb) * 0.55).toFixed(2)));
+  const safeVramBudgetMb = Math.max(256, Math.floor(vramFreeMb * 0.60));
+
+  let maxWorkers = 1;
+  let profile = "ULTRA-SAFE";
+  let batchSize = 10;
+  let batchDelayMs = 80;
+
+  if (freeRamGb < 3.0 || usedRamPercent >= 85.0 || logicalCores <= 2) {
+    maxWorkers = 1;
+    profile = "ULTRA-ECO (Low Memory Protection)";
+    batchSize = 10;
+    batchDelayMs = 80;
+  } else if (freeRamGb < 6.0 || isIntegrated || logicalCores <= 4) {
+    maxWorkers = Math.min(2, Math.max(1, Math.floor(logicalCores / 4)));
+    profile = "ECO-BALANCED (Anti-Freeze Mode)";
+    batchSize = 25;
+    batchDelayMs = 45;
+  } else if (freeRamGb < 12.0 || logicalCores <= 8) {
+    maxWorkers = Math.min(3, Math.max(2, Math.floor(logicalCores / 3)));
+    profile = "BALANCED-SAFE";
+    batchSize = 40;
+    batchDelayMs = 25;
+  } else {
+    maxWorkers = Math.min(4, Math.max(2, Math.floor(logicalCores / 3)));
+    profile = "HIGH-THROUGHPUT-GOVERNED";
+    batchSize = 60;
+    batchDelayMs = 15;
+  }
+
+  if (requestedWorkers && requestedWorkers > 0) {
+    maxWorkers = Math.max(1, Math.min(Number(requestedWorkers), maxWorkers));
+  }
+
+  const maxSceneDimension = vramTotalMb <= 2048 ? 4096 : (vramTotalMb <= 4096 ? 8192 : 16384);
+  const maxAnimatedWebmTiles = vramTotalMb <= 2048 ? 3 : (vramTotalMb <= 4096 ? 8 : 20);
+  const recommendedWebpQuality = vramTotalMb <= 2048 ? 75 : 82;
+
+  return {
+    profile,
+    cpu: {
+      model: cpuModel,
+      logical_cores: logicalCores,
+      safe_workers_limit: maxWorkers
+    },
+    ram: {
+      total_gb: totalRamGb,
+      free_gb: freeRamGb,
+      used_percent: usedRamPercent,
+      safe_skill_budget_gb: usableRamGb,
+      safety_reserve_gb: safetyReserveGb
+    },
+    gpu_vram: {
+      model: gpuName,
+      vram_total_mb: vramTotalMb,
+      vram_free_estimated_mb: vramFreeMb,
+      safe_vram_budget_mb: safeVramBudgetMb,
+      is_integrated_shared_ram: isIntegrated,
+      detection_method: detectionMethod
+    },
+    execution_limits: {
+      max_workers: maxWorkers,
+      ffmpeg_threads: maxWorkers,
+      sharp_concurrency: maxWorkers,
+      batch_size: batchSize,
+      batch_delay_ms: batchDelayMs,
+      node_max_old_space_size_mb: Math.max(512, Math.min(4096, Math.floor(usableRamGb * 1024)))
+    },
+    foundry_vram_canvas_budget: {
+      max_recommended_scene_px: `${maxSceneDimension}x${maxSceneDimension}`,
+      max_concurrent_webm_animated_tiles: maxAnimatedWebmTiles,
+      recommended_webp_quality: recommendedWebpQuality
+    }
+  };
+}
 
 // Environment-based default credentials (password defaults to empty if none set)
 const DEFAULT_FOUNDRY_URL = process.env.FOUNDRY_URL || "http://localhost:30000";
@@ -430,6 +602,19 @@ function handleListTools() {
       }
     },
     {
+      name: "inspect_hardware_budget",
+      description: "Detects the host PC processor (CPU model and cores), physical RAM (total, free, used %), and GPU/VRAM (total, free, integrated vs dedicated), calculating safe anti-freeze execution limits and Foundry WebGL/PixiJS canvas budgets.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          requested_workers: {
+            type: "integer",
+            description: "Optional upper bound of workers requested by the task."
+          }
+        }
+      }
+    },
+    {
       name: "inspect_live_foundry_state",
       description: "Queries live Foundry VTT instance (local, Docker, or Cloud) for active world, system, version, and server status via HTTP API.",
       inputSchema: {
@@ -556,7 +741,18 @@ function toolInspectEnvironment(args) {
     systems_sample: systems.slice(0, 30),
     modules_sample: modules.slice(0, 30),
     user_prompt_needed: !dataPathExists && hosting.is_local,
-    guidance: promptUserGuidance
+    guidance: promptUserGuidance,
+    hardware_budget: calculateHardwareBudget()
+  }, null, 2);
+}
+
+// EN: Dedicated tool handler for CPU, RAM, and GPU/VRAM budget inspection
+// PT-BR: Handler dedicado para inspecao de orcamento de CPU, RAM e GPU/VRAM
+function toolInspectHardwareBudget(args) {
+  const budget = calculateHardwareBudget(args && args.requested_workers ? args.requested_workers : null);
+  return JSON.stringify({
+    status: "success",
+    hardware_budget: budget
   }, null, 2);
 }
 
@@ -1435,6 +1631,9 @@ rl.on('line', (line) => {
           break;
         case "reverse_engineer_target":
           content = toolReverseEngineerTarget(toolArgs);
+          break;
+        case "inspect_hardware_budget":
+          content = toolInspectHardwareBudget(toolArgs);
           break;
         case "inspect_live_foundry_state":
           content = toolInspectLiveFoundryState(toolArgs);

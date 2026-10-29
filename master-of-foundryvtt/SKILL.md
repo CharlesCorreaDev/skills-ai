@@ -333,6 +333,26 @@ Whenever a module or system development, feature implementation, or refactoring 
    - **Troubleshooting:** Conflict isolation with other modules, debug logging flags, and issue reporting guidelines.
    - Follow details in [`guides/wiki-and-release-lifecycle.md`](guides/wiki-and-release-lifecycle.md).
 
+#### 24. Mandatory Hardware Profiling (CPU, RAM & GPU/VRAM) & Adaptive Anti-Freeze Resource Governance (CRITICAL)
+Before running heavy tasks (media conversion via `sharp`/`ffmpeg`, compendium LevelDB batching, repository crawling, headless Chromium/Playwright validation, or generating high-resolution Foundry scenes/animations):
+1. **Mandatory Pre-Flight Hardware Inspection:**
+   - The Agent **MUST** inspect the host machine's processor (`CPU model` and `logical cores`), physical memory (`Total RAM`, `Free RAM`, `Used %`), and graphics adapter (`GPU model`, `Total VRAM`, `Free VRAM`, and whether it is an **integrated GPU sharing system RAM** or a **dedicated GPU**).
+   - Execute `python scripts/hardware_governor.py` or `node scripts/hardware_governor.mjs` (or call the MCP tool `inspect_hardware_budget` / `python scripts/check_env.py`).
+2. **Dynamic Resource Calculation & Anti-Freeze Enforcement:**
+   - **OS Process Priority Lowering:** All skill background scripts and MCP servers **MUST** run under `BELOW_NORMAL_PRIORITY_CLASS` (`0x00004000` on Windows) or `os.nice(10)` (POSIX) so the host OS, IDE, and Foundry VTT server never stutter or freeze.
+   - **RAM Safety Reserve:** Always reserve at least `2.5 GB` of physical RAM for the OS/IDE, or `4.0 GB` when an integrated GPU (`Intel UHD/Iris`, `AMD Radeon Vega`) is detected (since iGPUs dynamically allocate system RAM as shared video memory).
+   - **Adaptive Concurrency & Micro-Batching:** Never spawn `os.cpus().length` workers blindly:
+     - `ULTRA-ECO` (`< 3.0 GB` free RAM or `>= 85%` RAM usage): `1` worker, `ffmpeg -threads 1`, `batch_size = 10`, `80ms` cooldown delay.
+     - `ECO-BALANCED` (`< 6.0 GB` free RAM or integrated GPU `<= 2 GB` VRAM): max `2` workers, `ffmpeg -threads 2`, `batch_size = 25`, `45ms` cooldown delay.
+     - `BALANCED-SAFE` (`6–12 GB` free RAM + dedicated GPU): max `3` workers, `batch_size = 40`, `25ms` cooldown delay.
+     - `HIGH-THROUGHPUT-GOVERNED` (`>= 12 GB` free RAM + dedicated GPU): max `4` workers, `batch_size = 60`, `15ms` cooldown delay.
+   - **Live Memory Guard:** During batch loops, check live RAM usage (`guard_memory_pressure` / `sleepAndGuardMemory`). If RAM usage reaches `>= 85%` or free RAM drops below `1.5 GB`, force garbage collection (`gc.collect()`) and pause execution until memory pressure subsides.
+3. **Foundry VTT WebGL / PixiJS Canvas VRAM Budget:**
+   - Tailor scene and asset recommendations to detected VRAM (`foundry_vram_canvas_budget`):
+     - `<= 2048 MB VRAM` (or integrated GPU): Max scene resolution `4096x4096 px`, max `3` concurrent animated WebM tiles, WebP quality `75`.
+     - `2049–4096 MB VRAM`: Max scene resolution `8192x8192 px`, max `8` concurrent animated WebM tiles, WebP quality `82`.
+     - `> 4096 MB VRAM`: Max scene resolution `16384x16384 px`, max `20` concurrent animated WebM tiles, WebP quality `82`.
+
 ### 📚 Structure & Fast-Path Navigation
 
 - [Model Context Protocol (MCP) Guide](mcp/README.md)
@@ -698,6 +718,26 @@ Sempre que um módulo ou sistema tiver seu desenvolvimento concluído ou refator
    - **Modelos de Dados (DataModels & Schemas):** Esquemas de Atores e Itens (`TypeDataModel`), campos (`foundry.data.fields`) e migração de versões legadas.
    - **Diagnóstico e Resolução de Problemas (Troubleshooting):** Conflitos comuns, flags de depuração e abertura de issues com templates.
    - Siga as diretrizes de [`guides/wiki-and-release-lifecycle.md`](guides/wiki-and-release-lifecycle.md).
+
+#### 24. Mandato Obrigatório: Perfilamento de Hardware (CPU, RAM e GPU/VRAM) e Governança Adaptativa Anti-Travamento (CRÍTICO)
+Antes de executar qualquer tarefa intensiva (conversão em lote de mídia com `sharp`/`ffmpeg`, empacotamento LevelDB de compêndios, varredura de repositórios, testes headless ou criação de cenas/mapas pesados no Foundry VTT):
+1. **Verificação Obrigatória de Hardware da Máquina Operante:**
+   - O Agente **DEVE** verificar qual é o processador (`modelo da CPU` e `núcleos lógicos`), quanto existe de memória física (`RAM Total`, `RAM Livre` e `% em uso`) e de memória de vídeo (`modelo da GPU`, `VRAM Total`, `VRAM Livre` e se a placa é **integrada compartilhando RAM do sistema** ou **dedicada**).
+   - Execute `python scripts/hardware_governor.py` ou `node scripts/hardware_governor.mjs` (ou utilize a ferramenta MCP `inspect_hardware_budget` / `python scripts/check_env.py`).
+2. **Cálculo de Orçamento Seguro e Prevenção Absoluta contra Travamentos:**
+   - **Redução Automática de Prioridade no SO:** Todos os scripts e servidores MCP da skill operam em `BELOW_NORMAL_PRIORITY_CLASS` (`0x00004000` no Windows) ou `os.nice(10)` (Linux/macOS), garantindo que o sistema operacional, a IDE e o Foundry VTT nunca congelem.
+   - **Reserva de Segurança de RAM e VRAM Compartilhada:** Reserve obrigatoriamente `2.5 GB` de RAM livre para o SO/IDE, ou `4.0 GB` quando a GPU for integrada (`Intel UHD/Iris`, `Radeon Vega`), pois GPUs integradas consomem a própria RAM principal como VRAM para o canvas WebGL/PixiJS.
+   - **Limites Adaptativos de Workers, Threads e Micro-Lotes:** Nunca aloque todos os núcleos da CPU cegamente:
+     - `ULTRA-ECO` (`< 3.0 GB` de RAM livre ou `>= 85%` de uso): `1` worker, `ffmpeg -threads 1`, `batch_size = 10`, pausa de `80ms`.
+     - `ECO-BALANCED` (`< 6.0 GB` de RAM livre ou GPU integrada `<= 2 GB` VRAM): máx `2` workers, `ffmpeg -threads 2`, `batch_size = 25`, pausa de `45ms`.
+     - `BALANCED-SAFE` (`6–12 GB` de RAM livre + GPU dedicada): máx `3` workers, `batch_size = 40`, pausa de `25ms`.
+     - `HIGH-THROUGHPUT-GOVERNED` (`>= 12 GB` de RAM livre + GPU dedicada): máx `4` workers, `batch_size = 60`, pausa de `15ms`.
+   - **Guardião de Memória em Tempo Real:** Durante loops longos (`guard_memory_pressure` / `sleepAndGuardMemory`), se o uso de RAM atingir `>= 85%` ou a RAM livre cair abaixo de `1.5 GB`, force a coleta de lixo (`gc.collect()`) e pause o lote até a memória estabilizar.
+3. **Orçamento de VRAM para o Canvas WebGL / PixiJS do Foundry VTT:**
+   - Ajuste automaticamente a resolução de mapas, texturas WebP e animações WebM conforme a VRAM detectada (`foundry_vram_canvas_budget`):
+     - `<= 2048 MB VRAM` (ou GPU integrada): Resolução máxima recomendada de cena `4096x4096 px`, máx `3` tiles animados WebM simultâneos, qualidade WebP `75`.
+     - `2049–4096 MB VRAM`: Resolução máxima recomendada de cena `8192x8192 px`, máx `8` tiles animados WebM simultâneos, qualidade WebP `82`.
+     - `> 4096 MB VRAM`: Resolução máxima recomendada de cena `16384x16384 px`, máx `20` tiles animados WebM simultâneos, qualidade WebP `82`.
 
 ---
 
