@@ -36,7 +36,19 @@ The methodology follows a strict pipeline: **Analyze → Extract → Translate �
 python scripts/check_env.py
 pip install markitdown markitdown-ocr pdfminer.six pdfplumber pypdf pypdfium2 Pillow pytesseract \
             python-docx mammoth openpyxl pandas xlrd odfpy ebooklib beautifulsoup4 html2text striprtf
+
+# Motores SOTA de IA para PDFs complexos de RPG:
+pip install docling marker-pdf unstructured nougat-ocr
 ```
+
+### 🧠 Motores Avançados de Layout & Utilitários (Docling, Marker, Stirling-PDF, Nougat)
+Para livros de RPG com diagramações densas (colunas múltiplas, tabelas de monstros/magias e caixas laterais), a skill integra:
+- **Docling (IBM/DS4SD):** Análise multimodal de layout e reconstrução de tabelas com `TableFormer`.
+- **Marker (Datalab):** Extração ultrarrápida para Markdown preservando fórmulas e cabeçalhos.
+- **Unstructured:** Particionamento inteligente de documentos para tradução em lotes.
+- **Nougat (Meta AI):** OCR neural visual-to-text para scans antigos e fontes góticas.
+- **Stirling-PDF:** Canivete suíço para dividir capítulos, extrair imagens em alta resolução e reparar PDFs.
+- **Nano-PDF & PDFtoGPT:** Edição cirúrgica preservando background e auditoria RAG anti-alucinação.
 
 ### 🛠️ Usage
 

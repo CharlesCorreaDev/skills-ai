@@ -53,7 +53,7 @@ def check_system_tool(tool_name, os_install_hints):
 def main():
     os_name, mgr_info = get_os_info()
     print("=========================================================")
-    print(f"🔍 Verificação de Ambiente: Book Formatter")
+    print(f"🔍 Verificação de Ambiente: Book Formatter (v0.11.0-beta)")
     print(f"💻 Sistema Operacional : {os_name} ({platform.platform()})")
     print(f"🐍 Python              : {sys.version.split()[0]} ({sys.executable})")
     print("=========================================================\n")
@@ -65,20 +65,20 @@ def main():
     else:
         print(f"✅ Versão do Python compatível ({sys.version_info.major}.{sys.version_info.minor})")
 
-    # 2. Dependências Python
-    print("\n📦 Verificando Pacotes Python:")
+    # 2. Dependências Python Básicas & Motores de Extração
+    print("\n📦 Verificando Motores de Leitura & Extração (Básicos):")
     pip_cmd = "pip" if os_name == "Windows" else "python3 -m pip"
 
     missing_pkgs = []
 
     pkgs = [
-        ("markitdown", "markitdown (Motor principal de leitura)", f"{pip_cmd} install markitdown"),
+        ("markitdown", "markitdown (Motor principal leve)", f"{pip_cmd} install markitdown"),
         ("markitdown_ocr", "markitdown-ocr (OCR avançado - Opcional)", f"{pip_cmd} install markitdown-ocr"),
         ("pdfminer", "pdfminer.six (Suporte PDF)", f"{pip_cmd} install pdfminer.six"),
-        ("pdfplumber", "pdfplumber (Extração avançada de tabelas PDF)", f"{pip_cmd} install pdfplumber"),
-        ("pypdf", "pypdf (Suporte PDF)", f"{pip_cmd} install pypdf"),
-        ("pypdfium2", "pypdfium2 (Renderização/conversão PDF)", f"{pip_cmd} install pypdfium2"),
-        ("PIL", "Pillow (Imagens e OCR)", f"{pip_cmd} install Pillow"),
+        ("pdfplumber", "pdfplumber (Extração de tabelas PDF)", f"{pip_cmd} install pdfplumber"),
+        ("pypdf", "pypdf (Inspeção e manipulação PDF)", f"{pip_cmd} install pypdf"),
+        ("pypdfium2", "pypdfium2 (Renderização de páginas PDF)", f"{pip_cmd} install pypdfium2"),
+        ("PIL", "Pillow (Imagens e manipulação visual)", f"{pip_cmd} install Pillow"),
         ("pytesseract", "pytesseract (Integração Tesseract Python)", f"{pip_cmd} install pytesseract"),
         ("docx", "python-docx (Suporte Word .docx)", f"{pip_cmd} install python-docx"),
         ("mammoth", "mammoth (Fallback Word .docx)", f"{pip_cmd} install mammoth"),
@@ -94,11 +94,22 @@ def main():
 
     for pkg_import, name, install_cmd in pkgs:
         if not check_package(pkg_import, name):
-            if pkg_import != "markitdown_ocr":  # markitdown_ocr é opcional
+            if pkg_import != "markitdown_ocr":
                 missing_pkgs.append(install_cmd)
 
-    # 3. Ferramentas do Sistema (OCR / PDF / Documentos)
-    print("\n🛠️ Verificando Ferramentas de Sistema (Opcionais / Fallback):")
+    # 3. Motores de IA SOTA para PDFs de RPG Complexos
+    print("\n🧠 Verificando Motores Avançados de Layout & IA (Docling, Marker, Unstructured, Nougat):")
+    ai_pkgs = [
+        ("docling", "Docling (DS4SD / IBM - Extração multimodal de layout e tabelas)", f"{pip_cmd} install docling"),
+        ("marker", "Marker (Datalab - Conversão ultra-rápida de PDF para Markdown)", f"{pip_cmd} install marker-pdf"),
+        ("unstructured", "Unstructured (Particionamento e chunking de PDFs complexos)", f"{pip_cmd} install unstructured"),
+        ("nougat", "Nougat (Meta AI - Leitura visual-to-text de páginas escaneadas/fórmulas)", f"{pip_cmd} install nougat-ocr"),
+    ]
+    for pkg_import, name, install_cmd in ai_pkgs:
+        check_package(pkg_import, name)
+
+    # 4. Ferramentas do Sistema (OCR / PDF / Stirling-PDF / Documentos)
+    print("\n🛠️ Verificando Ferramentas de Sistema & Utilitários de PDF:")
 
     tesseract_hints = {
         "Windows": "winget install UB-Mannheim.TesseractOCR  ou  choco install tesseract",
@@ -122,24 +133,35 @@ def main():
     }
 
     poppler_hints = {
-        "Windows": "Instale o Poppler para Windows (pdftotext / pdftoppm).",
+        "Windows": "Instale o Poppler para Windows (pdftotext / pdftoppm / pdfimages).",
         "Darwin": "brew install poppler",
         "Linux": "sudo apt-get install poppler-utils  (Ubuntu/Debian) | sudo dnf install poppler-utils (Fedora)",
         "default": "Instale o Poppler para o seu sistema.",
+    }
+
+    stirling_hints = {
+        "Windows": "Docker: docker run -d -p 8080:8080 frooodle/s-pdf:latest  ou  baixar Stirling-PDF Desktop",
+        "Darwin": "Docker ou Stirling-PDF Desktop (https://github.com/Stirling-Tools/Stirling-PDF)",
+        "Linux": "docker run -d -p 8080:8080 frooodle/s-pdf:latest",
+        "default": "Disponível via Docker ou Desktop em https://github.com/Stirling-Tools/Stirling-PDF",
     }
 
     check_system_tool("tesseract", tesseract_hints)
     check_system_tool("pandoc", pandoc_hints)
     check_system_tool("soffice", libreoffice_hints)
     check_system_tool("pdftotext", poppler_hints)
+    check_system_tool("stirling-pdf", stirling_hints)
 
-    # 4. Resumo e Instruções
+    # 5. Resumo e Instruções
     print("\n---------------------------------------------------------")
     if missing_pkgs:
-        print("⚠️ Para instalar todos os pacotes Python recomendados de uma vez:")
+        print("⚠️ Para instalar todos os pacotes Python básicos de uma vez:")
         print(f"👉 {pip_cmd} install markitdown pdfplumber pdfminer.six pypdf pypdfium2 Pillow pytesseract python-docx mammoth openpyxl pandas xlrd odfpy ebooklib beautifulsoup4 html2text striprtf")
     else:
         print("🎉 Todas as bibliotecas Python essenciais estão instaladas e prontas!")
+    print("\n💡 Dica de IA para RPGs complexos:")
+    print("   Para máxima precisão em colunas e tabelas góticas, instale Docling e Marker:")
+    print(f"   👉 {pip_cmd} install docling marker-pdf")
     print("---------------------------------------------------------")
 
 if __name__ == "__main__":

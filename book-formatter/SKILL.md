@@ -30,19 +30,44 @@ The flagship use case is **RPG books** (especially old materials from the **Worl
 
 | Format | Extensions | Primary Engine | Fallback Engine | Dependencies / Binaries |
 |---|---|---|---|---|
-| **PDF (Digital)** | `.pdf` | `markitdown` / `pdfminer.six` | `pdfplumber` (tables) | `markitdown`, `pdfminer.six`, `pdfplumber`, `pypdf`, `pypdfium2` |
-| **PDF (Scanned / OCR)** | `.pdf` | `markitdown_ocr` | `tesseract` OCR | `markitdown-ocr`, `tesseract-ocr`, `Pillow`, `pypdfium2`, `pytesseract` |
+| **PDF (Digital)** | `.pdf` | `docling` / `markitdown` | `marker-pdf`, `pdfminer.six`, `pdfplumber` | `docling`, `marker-pdf`, `markitdown`, `pdfminer.six`, `pdfplumber`, `pypdf`, `pypdfium2` |
+| **PDF (Scanned / Complex Layout)** | `.pdf` | `docling` / `nougat` | `marker-pdf`, `markitdown_ocr` | `docling`, `nougat-ocr`, `marker-pdf`, `unstructured`, `tesseract-ocr`, `Pillow`, `pypdfium2` |
+| **PDF (Manipulation & Sanitization)** | `.pdf` | `stirling-pdf` / `pypdf` | `pdfcpu` / `pdftoppm` | `stirling-pdf`, `pypdf`, `pdfplumber`, `poppler-utils` |
 | **Plain Text** | `.txt` | built-in / `markitdown` | - | - |
-| **Markdown** | `.md` | `markitdown` | - | - |
+| **Markdown** | `.md` | `marker-pdf` / `docling` | `markitdown` | `marker-pdf`, `docling`, `markitdown` |
 | **CSV / TSV** | `.csv`, `.tsv` | `markitdown` / `pandas` | - | `markitdown`, `pandas` |
-| **Microsoft Word** | `.docx` | `markitdown` / `python-docx` | `pandoc` / `mammoth` | `markitdown`, `python-docx`, `mammoth` |
+| **Microsoft Word** | `.docx` | `docling` / `python-docx` | `pandoc` / `mammoth` | `docling`, `markitdown`, `python-docx`, `mammoth` |
 | **Legacy Word** | `.doc` | `pandoc` / LibreOffice CLI | `antiword` / `catdoc` | `pandoc`, `soffice` (LibreOffice) |
-| **Microsoft Excel** | `.xlsx` | `markitdown` / `openpyxl` | `pandas` | `markitdown`, `openpyxl`, `pandas` |
+| **Microsoft Excel** | `.xlsx` | `docling` / `openpyxl` | `pandas` | `docling`, `markitdown`, `openpyxl`, `pandas` |
 | **Legacy Excel** | `.xls` | `markitdown` / `pandas` / `xlrd` | LibreOffice CLI | `markitdown`, `pandas`, `xlrd` |
 | **LibreOffice Writer** | `.odt` | `pandoc` | `odfpy` / `soffice` CLI | `pandoc`, `odfpy`, `soffice` |
 | **LibreOffice Calc** | `.ods` | `pandas` (`odf` engine) | `soffice` CLI | `pandas`, `odfpy` |
 | **Rich Text** | `.rtf` | `pandoc` / `striprtf` | `soffice` CLI | `pandoc`, `striprtf` |
-| **Web Pages / E-books** | `.html`, `.htm`, `.epub` | `markitdown` | `pandoc` / `ebooklib` | `markitdown`, `pandoc`, `ebooklib` |
+| **Web Pages / E-books** | `.html`, `.htm`, `.epub` | `docling` / `markitdown` | `pandoc` / `ebooklib` | `docling`, `markitdown`, `pandoc`, `ebooklib` |
+
+### 🧠 SOTA AI Engines & PDF Utilities Matrix
+
+For high-complexity RPG book layouts (multi-column text flow, medieval borders, statblocks, spell tables, background watermarks), the skill supports and orchestrates specialized state-of-the-art tools:
+
+1. **[Docling](https://github.com/docling-project/docling) (DS4SD / IBM):**
+   - *Core specialty:* SOTA multimodal layout analysis and table reconstruction via `TableFormer`. Parses multi-column RPG text flow without mixing column lines.
+   - *Install:* `pip install docling`
+2. **[Marker](https://github.com/datalab-to/marker) (Datalab):**
+   - *Core specialty:* Ultra-fast PDF-to-Markdown extraction with native formula support, table parsing, header level detection and artifact cleaning.
+   - *Install:* `pip install marker-pdf`
+3. **[Unstructured](https://github.com/Unstructured-IO/unstructured):**
+   - *Core specialty:* Granular layout chunking preserving metadata (titles, tables, sidebars, narratives) for phased batch translation.
+   - *Install:* `pip install unstructured`
+4. **[Nougat](https://github.com/facebookresearch/nougat) (Meta AI):**
+   - *Core specialty:* Visual-to-text neural OCR for scanned vintage RPG books, gothic fonts, formulas and damaged documents without traditional character segmentation.
+   - *Install:* `pip install nougat-ocr`
+5. **[Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF):**
+   - *Core specialty:* Swiss-army knife for PDF pre-processing: OCR, page split/merge, image extraction at native DPI, PDF repair, flattening and page re-ordering.
+   - *Usage:* Docker (`docker run -d -p 8080:8080 frooodle/s-pdf:latest`) or Stirling-PDF Desktop.
+6. **[Nano-PDF](https://github.com/gavrielc/Nano-PDF):**
+   - *Core specialty:* Natural language visual PDF editing using Poppler rendering and vision models to modify pages without destroying underlying artwork.
+7. **[PDFtoGPT](https://github.com/ferrarimarlon/PDFtoGPT) & [AI-powered-PDF-agent](https://github.com/pyr0mind/AI-powered-PDF-agent-project):**
+   - *Core specialty:* Anti-hallucination RAG auditing to cross-reference translated mechanical values (dice, AC, bonuses) against the source book.
 
 ### 🛠️ Tool Installation Protocol (Install Any Tool Needed)
 
@@ -245,18 +270,43 @@ O caso de uso principal é **livros de RPG** (especialmente materiais antigos do
 
 | Formato | Extensões | Motor Principal | Mecanismo de Fallback | Pacotes Python / Ferramentas |
 |---|---|---|---|---|
-| **PDF (Digital)** | `.pdf` | `markitdown` / `pdfminer.six` | `pdfplumber` (tabelas) | `markitdown`, `pdfminer.six`, `pdfplumber`, `pypdf`, `pypdfium2` |
-| **PDF (Escaneado/OCR)** | `.pdf` | `markitdown_ocr` | `tesseract` OCR | `markitdown-ocr`, `tesseract-ocr`, `Pillow`, `pypdfium2`, `pytesseract` |
+| **PDF (Digital)** | `.pdf` | `docling` / `markitdown` | `marker-pdf`, `pdfminer.six`, `pdfplumber` | `docling`, `marker-pdf`, `markitdown`, `pdfminer.six`, `pdfplumber`, `pypdf`, `pypdfium2` |
+| **PDF (Escaneado / Layout Complexo)** | `.pdf` | `docling` / `nougat` | `marker-pdf`, `markitdown_ocr` | `docling`, `nougat-ocr`, `marker-pdf`, `unstructured`, `tesseract-ocr`, `Pillow`, `pypdfium2` |
+| **PDF (Manipulação & Limpeza)** | `.pdf` | `stirling-pdf` / `pypdf` | `pdfcpu` / `pdftoppm` | `stirling-pdf`, `pypdf`, `pdfplumber`, `poppler-utils` |
 | **Texto Puro** | `.txt` | nativo / `markitdown` | - | - |
-| **Markdown** | `.md` | `markitdown` | - | - |
+| **Markdown** | `.md` | `marker-pdf` / `docling` | `markitdown` | `marker-pdf`, `docling`, `markitdown` |
 | **CSV / TSV** | `.csv`, `.tsv` | `markitdown` / `pandas` | - | `markitdown`, `pandas` |
-| **Microsoft Word** | `.docx` | `markitdown` / `python-docx` | `pandoc` / `mammoth` | `markitdown`, `python-docx`, `mammoth` |
+| **Microsoft Word** | `.docx` | `docling` / `python-docx` | `pandoc` / `mammoth` | `docling`, `markitdown`, `python-docx`, `mammoth` |
 | **Word Legado** | `.doc` | `pandoc` / LibreOffice CLI | `antiword` / `catdoc` | `pandoc`, `soffice` |
-| **Microsoft Excel** | `.xlsx` | `markitdown` / `openpyxl` | `pandas` | `markitdown`, `openpyxl`, `pandas` |
+| **Microsoft Excel** | `.xlsx` | `docling` / `openpyxl` | `pandas` | `docling`, `markitdown`, `openpyxl`, `pandas` |
 | **Excel Legado** | `.xls` | `markitdown` / `pandas` / `xlrd` | LibreOffice CLI | `markitdown`, `pandas`, `xlrd` |
 | **LibreOffice** | `.odt`, `.ods` | `pandoc` | `odfpy` / `soffice` | `pandoc`, `odfpy`, `soffice` |
 | **Texto Rico** | `.rtf` | `pandoc` / `striprtf` | `soffice` CLI | `pandoc`, `striprtf` |
-| **Web / E-books** | `.html`, `.htm`, `.epub` | `markitdown` | `pandoc` / `ebooklib` | `markitdown`, `pandoc`, `ebooklib` |
+| **Web / E-books** | `.html`, `.htm`, `.epub` | `docling` / `markitdown` | `pandoc` / `ebooklib` | `docling`, `markitdown`, `pandoc`, `ebooklib` |
+
+### 🧠 Motores de IA SOTA & Utilitários Especialistas para RPG
+
+Para layouts de livros de RPG de alta complexidade (fluxo de texto em duas/três colunas, molduras góticas, statblocks de monstros, tabelas de magias, caixas laterais e ilustrações vazadas), a skill incorpora e orquestra ferramentas de ponta:
+
+1. **[Docling](https://github.com/docling-project/docling) (DS4SD / IBM):**
+   - *Especialidade:* Líder mundial em análise multimodal de layout e reconstrução de tabelas com `TableFormer`. Entende a ordem natural de leitura em colunas sem misturar o texto.
+   - *Instalação:* `pip install docling`
+2. **[Marker](https://github.com/datalab-to/marker) (Datalab):**
+   - *Especialidade:* Conversão de altíssima fidelidade de PDF para Markdown, preservando fórmulas, blocos de títulos, tabelas e removendo ruídos de cabeçalhos/rodapés.
+   - *Instalação:* `pip install marker-pdf`
+3. **[Unstructured](https://github.com/Unstructured-IO/unstructured):**
+   - *Especialidade:* Particionamento granular de documentos preservando metadados de estrutura para a tradução cirúrgica em lotes (Fase 5).
+   - *Instalação:* `pip install unstructured`
+4. **[Nougat](https://github.com/facebookresearch/nougat) (Meta AI):**
+   - *Especialidade:* Leitura visual-to-text neural para livros de RPG escaneados antigos, fontes góticas ou trechos danificados sem depender de segmentação OCR tradicional.
+   - *Instalação:* `pip install nougat-ocr`
+5. **[Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF):**
+   - *Especialidade:* O canivete suíço definitivo de PDF (local/Docker/desktop): OCR, divisão por capítulos, mesclagem, extração de artes em resolução nativa e reparo de PDFs corrompidos.
+   - *Uso:* Docker (`docker run -d -p 8080:8080 frooodle/s-pdf:latest`) ou Stirling-PDF Desktop.
+6. **[Nano-PDF](https://github.com/gavrielc/Nano-PDF):**
+   - *Especialidade:* Edição cirúrgica de PDFs via linguagem natural, combinando visão computacional (Poppler/Gemini) e preservação visual de elementos gráficos.
+7. **[PDFtoGPT](https://github.com/ferrarimarlon/PDFtoGPT) & [AI-powered-PDF-agent](https://github.com/pyr0mind/AI-powered-PDF-agent-project):**
+   - *Especialidade:* Auditoria RAG anti-alucinação comparando parágrafo a parágrafo o texto original e o traduzido para blindar mecânicas de RPG (dados, bônus, CDs, salvamentos).
 
 ### 🛠️ Protocolo de Instalação de Ferramentas (Instalar Qualquer Ferramenta Necessária)
 

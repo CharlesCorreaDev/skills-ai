@@ -7,6 +7,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.11.0-beta] - 2026-11-03
+
+### Added / Adicionado
+- **Integração de Motores SOTA de IA e Utilitários de PDF:**
+  - *Docling (IBM / DS4SD):* Motor primário avançado de análise multimodal de layout e extração de tabelas com `TableFormer` para colunas complexas de RPG.
+  - *Marker (Datalab):* Extração de alta velocidade de PDF para Markdown preservando fórmulas e tabelas.
+  - *Unstructured:* Particionamento inteligente e chunking de documentos para tradução em pequenos lotes.
+  - *Nougat (Meta AI):* OCR neural visual-to-text para scans antigos, fontes góticas e trechos danificados.
+  - *Stirling-PDF:* Suíte de pré-processamento, divisão/mesclagem, extração de imagens nativas e reparo de PDFs.
+  - *Nano-PDF:* Edição cirúrgica em linguagem natural preservando camadas visuais da página original.
+  - *PDFtoGPT & AI-powered-PDF-agent:* Metodologia de auditoria RAG anti-alucinação para confrontar e blindar mecânicas de regras.
+  - Atualização do script [`check_env.py`](scripts/check_env.py) com verificação de dependências SOTA de IA e utilitários.
+
+---
+
 ## [0.10.0-beta] - 2026-11-03
 
 ### Added / Adicionado
