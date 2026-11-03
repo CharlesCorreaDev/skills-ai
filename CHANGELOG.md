@@ -14,7 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Expansão multiplataforma: YouTube, Vimeo (oEmbed + v2 API) e Twitch (VODs e Clipes via `yt-dlp`).
   - Fallback por Áudio via IA (`--fallback-audio`) com suporte a Whisper e WhisperX (`--whisper-model`).
   - Ajuste de `--delay-ms` para 15.000 ms (15s) padrão para mitigar bloqueios de rate limit do YouTube.
-- **book-formatter (v0.11.0-beta):**
+- **book-formatter (v0.12.0-beta):**
+  - **Aprendizado Contínuo & Criação Automática de Glossários:** Ao ler qualquer livro de sistema de RPG, o vocabulário mecânico é extraído e gravado na pasta `glossarys/` e na memória, comunicando o usuário e sugerindo envio ao repositório oficial.
+  - **Monitor de Versão e Atualização Automática:** Script `scripts/check_update.py` para detecção de novas versões publicadas no repositório remoto e atualização automática (`--upgrade`).
   - **Integração de Motores SOTA de IA e Utilitários de PDF:** Inclusão de Docling (IBM/DS4SD), Marker (Datalab), Unstructured, Nougat (Meta AI), Stirling-PDF, Nano-PDF e auditoria RAG inspirada em PDFtoGPT e AI-powered-PDF-agent.
   - **Diretrizes Rigorosas do Tradutor Profissional de Livros de RPG:** 5 mandamentos obrigatórios de fidelidade de tradução, preservação estrita da página original (sem recriar do zero), inviolabilidade numérica (`1d8` e `+2`), checklist de controle de qualidade e formato de entrega.
   - **Protocolo Code Mode, Grill-Me & Andrej Karpathy Skills:** Obrigatório executar tarefas de diagramação em etapas via Code Mode; instalação e uso compulsório das skills `mattpocock/grill-me` (entrevista profunda com o autor antes de executar) e `multica-ai/andrej-karpathy-skills` (engenharia mínima, sem suposições e com validação contínua).

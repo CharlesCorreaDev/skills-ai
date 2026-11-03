@@ -231,6 +231,25 @@ Consult it during **Phase 4 (RPG vocabulary teaching)** to keep translations con
 
 > **Upcoming:** other dictionaries for the skill will be created soon (generic horror, specific RPG systems, etc.).
 
+### 📖 Continuous Learning & Automatic RPG Glossary Generation
+Whenever processing an RPG system book (e.g., Tormenta20, D&D 5e, Call of Cthulhu, Cyberpunk RED, GURPS):
+1. **Compile Mechanics:** Extract core terms (Attributes, Skills, Feats, Spells, Classes, Conditions, Combat Rules, Setting Lingo).
+2. **Save to Memory & Disk:** Save the bilingual glossary under [`glossarys/glossary-<system>.md`](glossarys/) and keep it in working memory.
+3. **Notify User:** Inform the user that the glossary was generated to ensure consistent translation and rule interpretation.
+4. **Offer Contribution:** Prompt the user to submit the new glossary via GitHub CLI (`gh issue create --repo CharlesCorreaDev/skills-ai`) so it can be added to the next official skill release.
+
+---
+
+### 🔄 Version Monitoring & Automatic Skill Update
+The skill monitors its local version ([`VERSION`](VERSION)) against the latest release published on GitHub:
+- **Checker Script:** [`scripts/check_update.py`](scripts/check_update.py)
+- **Check Remote:** Compares against `https://raw.githubusercontent.com/CharlesCorreaDev/skills-ai/main/book-formatter/VERSION`.
+- **User Alert:** If an update is detected, the agent alerts the user:
+  > *"🚀 New version of `book-formatter` available (Local: `v<local>` -> Remote: `v<remote>`). Would you like to update now?"*
+- **Auto-Update Execution:** Run `python scripts/check_update.py --upgrade` to pull updates automatically via Git.
+
+---
+
 ### 🛡️ Mandatory Protocols
 
 - **Semantic Versioning:** read [`VERSION`](VERSION); bump on changes; register in [`CHANGELOG.md`](CHANGELOG.md); tag releases as `book-formatter-v<version>`.
@@ -509,6 +528,37 @@ Antes de finalizar e entregar qualquer página:
 | **Extração** | `.txt` / `.md` / `.docx` | Texto organizado por página física. |
 | **Tradução** | `.txt` / `.md` / `.docx` | Tradução para o português brasileiro (lotes pequenos). |
 | **Diagramação** | `.txt` / `.md` / `.pdf` | Entregas: textos, Markdown e PDF diagramado. |
+
+### 📖 Aprendizado Contínuo & Criação Automática de Glossários de RPG
+
+> 💡 **DIRETRIZ DE ENRIQUECIMENTO AUTOMÁTICO DO SISTEMA:**  
+> Sempre que o agente ler e processar um livro de um sistema de RPG (ex.: Tormenta20, D&D 5e, Call of Cthulhu, Cyberpunk RED, GURPS, etc.):
+> 1. **Extrair e Compilar o Vocabulário:** Mapear termos mecânicos essenciais (Atributos, Perícias, Feats/Talentos, Magias, Classes, Condições, Regras de Combate e Termos de Cenário).
+> 2. **Salvar em Memória e em Disco:** Criar e salvar o glossário bilíngue em arquivo na pasta [`glossarys/`](glossarys/) (ex.: `glossarys/glossary-<sistema>.md`), além de mantê-lo ativo em memória durante a sessão.
+> 3. **Comunicar o Usuário:** Informar explicitamente ao operador:
+>    > *"📖 Novo glossário criado para o sistema `<Nome do Sistema>` e salvo em `book-formatter/glossarys/glossary-<sistema>.md`. Isso aprimora a consistência terminológica e a interpretação das regras durante toda a tradução."*
+> 4. **Proposta de Contribuição ao Desenvolvedor da Skill:** Perguntar ao usuário se deseja enviar o novo glossário ao repositório oficial (`https://github.com/CharlesCorreaDev/skills-ai`) para que seja incorporado na próxima versão oficial da skill:
+>    ```bash
+>    gh issue create --repo CharlesCorreaDev/skills-ai --title "[book-formatter] Novo Glossário de RPG: <Sistema>" --body "Envio de glossário extraído e compilado para <Sistema>."
+>    ```
+
+---
+
+### 🔄 Monitor de Versão e Atualização Automática da Skill
+
+A skill conta com monitoramento ativo entre a versão local instalada ([`VERSION`](VERSION)) e a versão publicada no repositório remoto oficial:
+
+- **Script:** [`scripts/check_update.py`](scripts/check_update.py)
+- **Consulta:** Verifica automaticamente o repositório `https://raw.githubusercontent.com/CharlesCorreaDev/skills-ai/main/book-formatter/VERSION`.
+- **Alerta ao Usuário:** Se houver versão mais recente no GitHub, o agente avisa o operador:
+  > *"🚀 Nova versão da skill `book-formatter` disponível (Local: `v<local>` -> Remota: `v<remoto>`). Deseja atualizar agora?"*
+- **Atualização Automática:** Se o usuário concordar, o agente executa:
+  ```bash
+  python scripts/check_update.py --upgrade
+  ```
+  O script executa a atualização automática via Git puxando os novos glossários, melhorias de motores e correções sem intervenção manual.
+
+---
 
 ### 🛡️ Protocolos Obrigatórios
 

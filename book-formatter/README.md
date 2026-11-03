@@ -56,9 +56,23 @@ Para livros de RPG com diagramações densas (colunas múltiplas, tabelas de mon
 # Check environment
 python scripts/check_env.py
 
+# Check for skill updates (and optionally auto-upgrade)
+python scripts/check_update.py
+python scripts/check_update.py --upgrade
+
 # Convert document to TXT / Markdown
 python scripts/convert_to_txt_md.py "caminho/do/documento.pdf" "saida"
 ```
+
+### 📖 Aprendizado Contínuo & Criação Automática de Glossários
+Sempre que um livro de RPG for processado:
+1. O agente compila termos de regras, magias, atributos e cenários.
+2. Salva em memória e no diretório `glossarys/glossary-<sistema>.md`.
+3. Comunica o usuário sobre a criação do glossário e oferece a opção de enviar a contribuição para o repositório oficial (`CharlesCorreaDev/skills-ai`).
+
+### 🔄 Monitor de Versão e Atualização Automática
+- Executando `python scripts/check_update.py`, a skill compara a versão instalada com a versão publicada no GitHub.
+- Com `python scripts/check_update.py --upgrade`, ela executa a atualização automática via Git.
 
 ### 📖 RPG & Gamers Glossary
 

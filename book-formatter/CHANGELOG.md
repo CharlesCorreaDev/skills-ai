@@ -7,6 +7,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.12.0-beta] - 2026-11-03
+
+### Added / Adicionado
+- **Aprendizado Contínuo & Criação Automática de Glossários:**
+  - Extração e compilação automática de regras, mecânicas, termos de combate, magias e cenário ao ler livros de novos sistemas de RPG.
+  - Salvamento automático em memória e na pasta [`glossarys/`](glossarys/) com nomenclatura padronizada (`glossary-<sistema>.md`).
+  - Alerta ao usuário informando a criação do glossário e oferecendo envio ao repositório oficial (`CharlesCorreaDev/skills-ai`) para inclusão na próxima versão.
+- **Monitor de Versão e Atualização Automática:**
+  - Adicionado script [`scripts/check_update.py`](scripts/check_update.py) para comparar versão instalada e versão remota no GitHub.
+  - Suporte ao argumento `--upgrade` para atualização automática sem intervenção manual via Git pull.
+
+---
+
 ## [0.11.0-beta] - 2026-11-03
 
 ### Added / Adicionado
