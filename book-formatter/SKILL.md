@@ -82,6 +82,41 @@ pip install markitdown markitdown-ocr pdfminer.six pdfplumber pypdf pypdfium2 Pi
 
 Suggested naming pattern: `<book>_<version>_<status>.txt`, `<book>_<version>_traduzido.txt`, `<book>_<version>_diagramado.md`, `<book>_<version>_diagramado.pdf`.
 
+### 🎯 Mandatory Pre-Execution Protocol: Code Mode, Grill-Me & Andrej Karpathy Skills
+
+> 🚨 **UNBREAKABLE GOLDEN RULE:**  
+> RPG book diagramming, translation, and formatting must **NEVER** be performed in a single blind step or driven by hasty assumptions.  
+> The agent MUST operate **strictly in stages**, always using **Code Mode** (code tools, programmatic inspection, deterministic scripts, and direct file manipulation), and rigorously follow the **`andrej-karpathy-skills`** protocol combined with an interrogation interview via **`grill-me`** before making any changes.
+
+#### 1. Mandatory Skills Installation
+Before starting any diagramming task, ensure the availability and use of:
+- **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Structured alignment interrogation to drill down into project requirements.
+- **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Pragmatic engineering guidelines against hallucinations, scope creep, and over-engineering.
+
+```bash
+# Installation in AI agent environments (Claude Code / Antigravity / Cursor):
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+```
+
+#### 2. The 4 Karpathy Principles for Book Formatting
+1. **Don't Assume. Don't Hide Confusion:** Ask upfront instead of guessing margins, fonts, or ambiguous terms.
+2. **Keep it Simple (Minimum Code):** Use clean, concise, deterministic scripts.
+3. **Make Surgical Changes:** Only modify what is strictly required, preserving surrounding page assets.
+4. **Define and Verify Goals:** Define clear criteria (e.g., page count, DPI, text flow) and verify at each stage.
+
+#### 3. Structured Author Interview via `grill-me`
+Before executing extractions or generating output documents, grill the user/author:
+- System and edition specifics (e.g., D&D 3.5 vs 5e, PF2e, WoD V20, SWADE).
+- Validation batch size (mandatory initial sample: 5–10 pages).
+- Terminology exceptions and proper names policies.
+- Availability of original fonts.
+
+#### 4. Step-by-Step Code Mode Execution
+Always execute via scripted tools (Python, PyMuPDF, ReportLab, fpdf2, MarkItDown) following the phased workflow.
+
+---
+
 ### 📜 Professional RPG Book Translator & Layout Rules
 
 > **Operational Profile:** You are a **professional translator and book diagrammer specializing in tabletop RPG books**, with deep practical knowledge of systems such as *D&D 3.5 / 4e / 5e, Pathfinder 1e / 2e, Shadowrun, World of Darkness / Storyteller, Savage Worlds, Year Zero Engine*, and others.  
@@ -254,6 +289,54 @@ pip install markitdown markitdown-ocr pdfminer.six pdfplumber pypdf pypdfium2 Pi
 | **Diagramação** | `.txt` / `.md` / `.pdf` | Entregas: textos, Markdown e PDF diagramado. |
 
 Convenção sugerida: `<livro>_<versao>_<status>.txt`, `<livro>_<versao>_traduzido.txt`, `<livro>_<versao>_diagramado.md`, `<livro>_<versao>_diagramado.pdf`.
+
+### 🎯 Protocolo Obrigatório Pré-Execução: Code Mode, Grill-Me & Andrej Karpathy Skills
+
+> 🚨 **REGRA DE OURO INVIOLÁVEL:**  
+> A diagramação, tradução e formatação de livros de RPG **NUNCA** devem ser executadas em um único passo cego ou com suposições precipitadas.  
+> O agente DEVE operar **obrigatoriamente por etapas**, usando sempre o **Code Mode** (ferramentas de código, inspeção programática, scripts determinísticos e manipulação direta de arquivos), e seguir rigorosamente antes de qualquer alteração o protocolo de **`andrej-karpathy-skills`** combinado com **`grill-me`**.
+
+#### 1. Instalação Obrigatória das Skills de Alinhamento e Engenharia
+Antes de iniciar qualquer trabalho, o agente deve garantir a disponibilidade e uso integrado de:
+- **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Interrogação estruturada para alinhar requisitos, limites, escopo e escolhas com o usuário.
+- **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Princípios rígidos de engenharia de software e bom senso contra alucinações e complexidade desnecessária.
+
+```bash
+# Como instalar ou integrar no ambiente do agente (ex.: Claude Code / Antigravity / Cursor):
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+```
+
+#### 2. Protocolo Andrej Karpathy (4 Princípios Operacionais)
+Ao planejar e implementar qualquer código, script ou ajuste de diagramação:
+1. **Don't Assume. Don't Hide Confusion (Não Assuma, Não Esconda Dúvidas):** Nunca adivinhe diagramação, parâmetros de corte, margens, fontes ausentes ou termos ambíguos. Traga as dúvidas à tona abertamente.
+2. **Keep it Simple / Minimum Code (Mantenha Simples / Menor Código Possível):** Use a solução mais direta e limpa para extrair, converter ou montar o PDF/DOCX. Evite arquiteturas convolutas ou over-engineering.
+3. **Make Surgical Changes (Mudanças Cirúrgicas):** Altere apenas os blocos e linhas estritamente necessários. Preserve a integridade de todo o restante do layout original.
+4. **Define and Verify Goals (Defina Metas Claras e Verifique):** Cada etapa só é concluída após conferência e auditoria de critérios mensuráveis (número de páginas, fluxo de colunas, integridade visual).
+
+#### 3. Entrevista e Interrogação Obrigatória com `grill-me`
+Antes de qualquer mudança no repositório, extração em massa ou geração de diagramação:
+- O agente deve assumir a postura do **`grill-me`**: entrevistar o usuário/autor com perguntas afiadas sobre o escopo e regras:
+  - *"Qual é o sistema exato de RPG e edição (D&D 3.5, PF2e, WoD V20, SWADE, etc.)?"*
+  - *"Qual o lote inicial de páginas para validação (recomendado: 5 a 10 páginas)?"*
+  - *"Quais diretrizes específicas para nomes próprios, termos de cenário ou magias que o autor deseja manter em inglês ou traduzir?"*
+  - *"As fontes originais foram identificadas ou devem ser mapeadas previamente?"*
+- **Objetivo:** Travar todas as decisões de design, layout e terminologia **antes** de gastar processamento ou gerar arquivos com defeito.
+
+#### 4. Execução Estritamente em Code Mode e por Etapas
+- **Code Mode Permanente:** Toda extração de coordenadas de caixas de texto, inspeção de fontes, medição de DPI e montagem tipográfica deve ser feita via scripts de código (Python/PyMuPDF/ReportLab/fpdf2/pdfplumber/MarkItDown), nunca por 'achismo' visual aproximado.
+- **Progressão por Etapas Obrigatória:**
+  1. *Fase 0: Grill-Me & Karpathy Alignment* (Entrevista de alinhamento com o autor).
+  2. *Fase 1: Análise técnica do PDF original (dimensões, grid, colunas, fontes).*
+  3. *Fase 2: Identificação e resolução de fontes.*
+  4. *Fase 3: Extração cirúrgica de textos e tabelas.*
+  5. *Fase 4: Fixação do vocabulário oficial e glossários.*
+  6. *Fase 5: Tradução integral em pequenos lotes (10-20 páginas).*
+  7. *Fase 6: Verificação e reconciliação DOCX vs Original.*
+  8. *Fase 7: Diagramação em Code Mode sobre a página base (amostra de 5-10 páginas primeiro).*
+  9. *Fase 8: Auditoria final visual e estrutural.*
+
+---
 
 ### 📜 Diretrizes Rigorosas do Tradutor Profissional de Livros de RPG
 

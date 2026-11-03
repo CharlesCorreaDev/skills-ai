@@ -66,6 +66,17 @@ O **Book Formatter** (Diagramador de Livros) é uma suíte de ferramentas para A
 
 O caso de uso principal é **livros de RPG** — especialmente materiais antigos do **Mundo das Trevas** (ex.: *Vampiro: A Idade das Trevas*) — onde o objetivo final é uma tradução em português com a diagramação do original o mais fiel possível.
 
+### 🎯 Protocolo Obrigatório Pré-Execução: Code Mode, Grill-Me & Karpathy
+Antes de qualquer alteração, extração ou diagramação:
+1. **Instalação Obrigatória das Skills:** Instalar e usar `grill-me` (interrogação e alinhamento do autor) e `andrej-karpathy-skills` (engenharia limpa e sem suposições).
+   ```bash
+   npx skills@latest add mattpocock/skills --skill=grill-me
+   npx skills@latest add multica-ai/andrej-karpathy-skills
+   ```
+2. **Entrevista Obrigatória com Grill-Me:** Interrogar o autor sobre sistema de RPG, lote inicial de teste (5-10 páginas), termos consagrados e fontes.
+3. **Protocolo Andrej Karpathy:** Não assumir nada, mudanças cirúrgicas, manter o código mínimo e simples, definir metas e verificar.
+4. **Code Mode & Etapas:** Executar toda tarefa em Code Mode por etapas determinísticas, nunca em um único passo cego.
+
 ### 📜 Regras Rigorosas do Tradutor & Diagramador de RPG
 A skill segue 5 mandamentos obrigatórios de tradução e diagramação profissional de RPG:
 1. **Fidelidade Integral:** Tradução completa de 100% dos textos; proibido resumir, simplificar, omitir ou inventar dados.

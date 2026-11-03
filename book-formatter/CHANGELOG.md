@@ -7,6 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.10.0-beta] - 2026-11-03
+
+### Added / Adicionado
+- **Protocolo Obrigatório Pré-Execução: Code Mode, Grill-Me & Andrej Karpathy Skills:**
+  - *Code Mode Permanente:* Execução obrigatória por etapas e via ferramentas de código/scripts determinísticos, proibindo passos únicos cegos.
+  - *Instalação e Uso Obrigatório de Skills de Alinhamento:* Integração formal de [`mattpocock/skills/productivity/grill-me`](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me) e [`multica-ai/andrej-karpathy-skills`](https://github.com/multica-ai/andrej-karpathy-skills).
+  - *Entrevista Inicial com Grill-Me:* Questionamento e interrogação obrigatória do usuário/autor antes de qualquer extração ou mudança de layout, travando regras, fontes e amostras de teste (5-10 páginas).
+  - *Diretrizes de Andrej Karpathy:* Aplicação dos 4 princípios fundamentais (Don't assume, Keep it simple, Surgical changes, Define & verify goals) a todo o pipeline de diagramação de livros de RPG.
+
+---
+
 ## [0.9.0-beta] - 2026-11-03
 
 ### Added / Adicionado
