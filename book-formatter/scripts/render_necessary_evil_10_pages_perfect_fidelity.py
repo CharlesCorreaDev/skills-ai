@@ -8,7 +8,7 @@ máscara cirúrgica de linha por linha e entrelinha (leading) idêntica à ediç
 """
 
 import sys
-import fitz
+import pymupdf as fitz
 from pathlib import Path
 
 # Configurar UTF-8
@@ -352,3 +352,5 @@ def build_perfect_fidelity_pdf():
 
 if __name__ == "__main__":
     build_perfect_fidelity_pdf()
+
+

@@ -8,7 +8,7 @@ substituindo os textos em inglês por português brasileiro nos boxes exatos.
 """
 
 import sys
-import fitz
+import pymupdf as fitz
 from pathlib import Path
 
 # Configurar UTF-8
@@ -602,4 +602,5 @@ def build_translated_pdf():
 
 if __name__ == "__main__":
     build_translated_pdf()
+
 
