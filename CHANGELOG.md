@@ -22,6 +22,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Expansão multiplataforma: YouTube, Vimeo (oEmbed + v2 API) e Twitch (VODs e Clipes via `yt-dlp`).
   - Fallback por Áudio via IA (`--fallback-audio`) com suporte a Whisper e WhisperX (`--whisper-model`).
   - Ajuste de `--delay-ms` para 15.000 ms (15s) padrão para mitigar bloqueios de rate limit do YouTube.
+- **book-formatter (v0.14.0-beta):**
+  - **Protocolo de Testes e Amostragem em Lotes de 5 Páginas:** Fixado o padrão de **5 páginas** (`--max-pages 5`) para todas as rodadas de teste e validação de diagramação e tradução antes da execução de lotes maiores.
+  - **Comparativos Visuais Lado a Lado Obrigatórios:** Geração obrigatória de imagens lado a lado comparando original em inglês vs traduzido em português para checagem de entrelinhas (*leading* de 12.0 pt) e fontes originais (`PopulationZeroBB`, `Palatino Linotype`).
+  - **Deduplicação de Camadas e Des-hifenização:** Remoção automática de textos duplicados por *drop-shadow* de PDF e reunião de palavras translineadas em margens de coluna.
+  - **Motor Universal de Conversão (`batch_convert_to_md_jsonl.py`):** Suporte genérico para qualquer pasta ou arquivo PDF com saída em `.md`, `.txt` e `.jsonl` para IA.
 - **book-formatter (v0.13.0-beta):**
   - **Segmentação de Regras para IA, RAG e MCP:** Script `scripts/export_rules_for_ai.py` que fragmenta livros em datasets JSONL para RAG, datasets para fine-tuning e arquivos por categorias (`combat.md`, `spells.md`, etc.) para uso em ferramentas de MCP servers.
   - **Comunicação de Novos Glossários Formalizada via GitHub Issue:** Notificação ao usuário e proposta de inclusão no repositório oficial obrigatoriamente submetidas via issue.

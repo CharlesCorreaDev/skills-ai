@@ -602,3 +602,4 @@ def build_translated_pdf():
 
 if __name__ == "__main__":
     build_translated_pdf()
+

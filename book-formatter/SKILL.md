@@ -96,6 +96,15 @@ pip install markitdown markitdown-ocr pdfminer.six pdfplumber pypdf pypdfium2 Pi
 
 3. **OCR language packs:** install Tesseract language packs for the source language(s), e.g. `eng`, `por`, `deu`, `fra` (or instruct the operator to install them).
 
+### 🧪 Protocolo de Testes e Amostragem: Lotes Padrão de 5 Páginas
+
+> 📌 **REGRA DE OURO PARA TESTES DE DIAGRAMAÇÃO E TRADUÇÃO:**  
+> Em qualquer rodada de teste, validação tipográfica, amostragem visual ou prototipagem de novos livros e cenários:
+> 1. **Tamanho do Lote de Teste:** O lote de teste deve conter rigorosamente **5 páginas** (`--max-pages 5`).
+> 2. **Validação Lado a Lado Obrigatória:** Todo teste de 5 páginas deve gerar um **comparativo lado a lado** (Original em Inglês à esquerda vs Traduzido em Português à direita) das páginas mais densas ou com cabeçalhos complexos.
+> 3. **Fidelidade Total de Tipografia:** Preservar a grade de entrelinhas (*leading* exato em pt) e as fontes originais embutidas extraídas do PDF (ex: `PopulationZeroBB`, `Palatino Linotype`).
+> 4. **Aprovação em Fases:** Somente após o usuário validar e aprovar o lote de 5 páginas é que a diagramação do lote estendido ou do livro completo é iniciada.
+
 ### 📤 Delivery Artifacts & Naming Convention
 
 | Artifact | Format | Purpose |
