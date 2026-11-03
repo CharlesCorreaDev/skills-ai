@@ -1,0 +1,84 @@
+# Changelog - Book Formatter / Diagramador de Livros
+
+All notable changes to the `book-formatter` skill will be documented in this file.  
+*Todas as alterações notáveis na skill `book-formatter` serão documentadas neste arquivo.*
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [0.9.0-beta] - 2026-11-03
+
+### Added / Adicionado
+- **Diretrizes Rigorosas do Tradutor Profissional de Livros de RPG:** Adicionadas regras essenciais de tradução e diagramação junto ao autor:
+  - *Fidelidade Absoluta da Tradução:* tradução integral de 100% dos textos sem resumos, omissões ou simplificações.
+  - *Preservação da Página Original:* utilização da página original como base direta, mantendo intactas ilustrações, bordas, molduras, texturas e ornamentos (sem recriação de páginas em branco do zero).
+  - *Tradução Rígida de Regras e Mecânicas:* proteção estrita a valores numéricos, dados, fórmulas de dano (`1d8`), modificadores (`+2`), tipos de ação, salvamentos e condições.
+  - *Checklist de Controle de Qualidade Pré-Entrega:* conferência lado a lado, verificação de sobreposição de elementos visuais e alerta formal de trechos ilegíveis sem adivinhação.
+  - *Formato de Entrega Fiel:* entrega visual e tecnicamente fiel ao livro original em português brasileiro.
+
+---
+
+## [0.8.0-beta] - 2026-10-29
+
+### Added / Adicionado
+- **Sétimo Dicionário da Skill (`book-formatter`):** Adicionado [`glossary-pathfinder-2e.md`](glossarys/glossary-pathfinder-2e.md) com glossário de **Pathfinder 2ª Edição (PF2e)** (Classes, Feats/Dotações, Salvamentos, Ações, Condições, Mecânicas), com fontes (`pf2srd.com.br`, `2e.aonprd.com`, `pf2.d20pfsrd.com`).
+
+---
+
+## [0.7.0-beta] - 2026-10-29
+
+### Added / Adicionado
+- **Nova Capacidade da Skill (`book-formatter`):** Criação de **Formulários e Fichas de RPG em PDF preenchíveis** — geração de fichas (character sheets) como PDF editável com campos de formulário (texto, números, checkboxes), com toolchain (`fpdf2`, `reportlab`, `pdfcpu`, `pypdf`, `pdfplumber`) e alternativas (LibreOffice/Word via UNO/COM/mail merge).
+
+---
+
+## [0.6.0-beta] - 2026-10-29
+
+### Added / Adicionado
+- **Sexto Dicionário da Skill (`book-formatter`):** Adicionado [`glossary-world-of-darkness.md`](glossarys/glossary-world-of-darkness.md) com glossário exclusivo do **Mundo das Trevas (World of Darkness)**, cobrindo **todas as suas franquias** (Vampire, Werewolf, Mage, Wraith, Changeling, Hunter, Demon, Orpheus, Geist e Mummy).
+
+---
+
+## [0.5.0-beta] - 2026-10-29
+
+### Added / Adicionado
+- **Quinto Dicionário da Skill (`book-formatter`):** Adicionado [`glossary-year-zero.md`](glossarys/glossary-year-zero.md) com termos do **Year Zero Engine (YZE)** (Forbidden Lands, Vaesen, Alien, Blade Runner, Twilight 2000, Mutant, The Walking Dead, Tales from the Loop, Electric State, Coriolis, Mutant: Year Zero, Dragonbane, Mörk Borg, Cy_Borg, The One Ring, Symbaroum, Pirate Borg, Outgunned, Death in Space, Mothership, Starforged).
+
+---
+
+## [0.4.0-beta] - 2026-10-29
+
+### Added / Adicionado
+- **Quarto Dicionário da Skill (`book-formatter`):** Adicionado [`glossary-savage-worlds.md`](glossarys/glossary-savage-worlds.md) com termos do **Savage Worlds Adventure Edition (SWADE)** (conceitos, traits, perícias, combate, edges e cenários).
+
+---
+
+## [0.3.0-beta] - 2026-10-29
+
+### Added / Adicionado
+- **Terceiro Dicionário da Skill (`book-formatter`):** Adicionado [`glossary-horror.md`](glossarys/glossary-horror.md) com termos de Terror Cósmico, Cthulhu Mythos, Survival Horror, Gothic Horror, Psionics e mecânicas de sanidade/terror.
+
+---
+
+## [0.2.0-beta] - 2026-10-29
+
+### Added / Adicionado
+- **Segundo Dicionário da Skill (`book-formatter`):** Adicionado [`glossary-scifi.md`](glossarys/glossary-scifi.md) com termos de Ficção Científica, Ciberpunk, Space Opera, Militar, Science Fantasy e Psionics, ampliando o dicionário de RPG e gamers da skill.
+
+---
+
+## [0.1.0-beta] - 2026-10-29
+
+### Added / Adicionado
+- **Initial Release of the `book-formatter` skill (Beta):**
+  - **Book Formatting & RPG Book Diagramming Suite:** installs any required document-reading toolchain (PDF with or without OCR, TXT, DOCX, DOC, CSV/TSV, XLSX/XLS, HTML, EPUB, images OCR) and orchestrates book diagramming delivering a TXT with the texts, a Markdown and a duly diagramed PDF.
+  - **Supported Format Matrix & Extraction Engines:** digital/scanned PDF, plain text, markdown, CSV/TSV, Word (current/legacy), Excel (current/legacy), LibreOffice, Rich Text, Web/E-book.
+  - **Tool Installation Protocol:** Python packages (`markitdown`, `markitdown-ocr`, `pdfminer.six`, `pdfplumber`, `pypdf`, `pypdfium2`, `Pillow`, `pytesseract`, `python-docx`, `mammoth`, `openpyxl`, `pandas`, `xlrd`, `odfpy`, `ebooklib`, `beautifulsoup4`, `html2text`, `striprtf`), system binaries (`tesseract`, `pandoc`, `libreoffice`, `poppler`) and OCR language packs.
+  - **Delivery Artifacts & Naming Convention:** original, extraction, translation and diagramation outputs in TXT/Markdown/PDF.
+  - **8-Phase Book Diagramming Workflow:** Analyze PDF → Discover/Use Fonts → Extract Text → Teach RPG Vocabulary → Translate in Small Batches → Verify Translation → Diagram → Final Audit (based on the paid AI methodology for RPG book translation/diagraming).
+  - **`scripts/check_env.py`:** multi-platform environment checker.
+  - **`scripts/convert_to_txt_md.py`:** document-to-TXT/Markdown converter.
+  - **RPG & Gamers Glossary:** initial term dictionary for the skill (`glossarys/glossary.md`) sourced from community RPG/gamer glossaries.
+
+---

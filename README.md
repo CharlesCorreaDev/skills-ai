@@ -121,6 +121,7 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 | **`php-dev-expert`** | Senior Software Engineer skill focused on PHP (7.4 to 8.5), modern patterns, debugging, and frameworks. | [`0.5.0-beta`](php-dev-expert/VERSION) | Beta | [Skill](php-dev-expert/SKILL.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
 | **`python-dev-expert`** | Python expert skill covering Web (Django/FastAPI), CLI, Data Science, and modern type hinting. | [`0.2.0-beta`](python-dev-expert/VERSION) | Beta | [Skill](python-dev-expert/SKILL.md) • [Changelog](python-dev-expert/CHANGELOG.md) |
 | **`docker-master`** | DevOps specialist for Docker optimization, security, local environments, and smart OS detection. | [`0.2.0-beta`](docker-master/VERSION) | Beta | [Skill](docker-master/SKILL.md) • [Changelog](docker-master/CHANGELOG.md) |
+| **`book-formatter`** | Book formatting and RPG book diagramming suite: installs document-reading tools (PDF with/without OCR, TXT, DOCX, DOC, CSV/TSV, XLSX/XLS, HTML, EPUB) and delivers TXT with texts, Markdown and diagramed PDF. | [`0.8.0-beta`](book-formatter/VERSION) | Beta | [Skill](book-formatter/SKILL.md) • [Changelog](book-formatter/CHANGELOG.md) • [Glossary](book-formatter/glossarys/glossary.md) |
 
 > ℹ️ *Note: All skills in this repository are currently in **Beta** and adhere to [Semantic Versioning (SemVer)](https://semver.org/spec/v2.0.0.html). Each skill contains a dedicated `VERSION` file and `CHANGELOG.md`. See also the global [**CHANGELOG.md**](CHANGELOG.md).*
 
@@ -291,6 +292,7 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 | **`php-dev-expert`** | Skill de Engenheiro de Software Sênior focada em PHP (7.4 a 8.5), arquitetura moderna, debugging e frameworks. | [`0.5.0-beta`](php-dev-expert/VERSION) | Beta | [Skill](php-dev-expert/SKILL.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
 | **`python-dev-expert`** | Especialista Python abordando Web (Django/FastAPI), Automações, Data Science e tipagem avançada. | [`0.2.0-beta`](python-dev-expert/VERSION) | Beta | [Skill](python-dev-expert/SKILL.md) • [Changelog](python-dev-expert/CHANGELOG.md) |
 | **`docker-master`** | Especialista DevOps para otimização de imagens Docker, segurança, Compose e detecção inteligente de SO. | [`0.2.0-beta`](docker-master/VERSION) | Beta | [Skill](docker-master/SKILL.md) • [Changelog](docker-master/CHANGELOG.md) |
+| **`book-formatter`** | Suíte de formatação de livros e diagramação de livros de RPG: instala ferramentas de leitura (PDF com/sem OCR, TXT, DOCX, DOC, CSV/TSV, XLSX/XLS, HTML, EPUB) e entrega TXT com os textos, Markdown e PDF diagramado. | [`0.8.0-beta`](book-formatter/VERSION) | Beta | [Skill](book-formatter/SKILL.md) • [Changelog](book-formatter/CHANGELOG.md) • [Glossário](book-formatter/glossarys/glossary.md) |
 
 > ℹ️ *Nota: Todas as skills deste repositório encontram-se em estágio **Beta** e aderem ao [Versionamento Semântico (SemVer)](https://semver.org/spec/v2.0.0.html). Cada skill conta com seu arquivo individual `VERSION` e `CHANGELOG.md`. Veja também o histórico global no [**CHANGELOG.md**](CHANGELOG.md).*
 

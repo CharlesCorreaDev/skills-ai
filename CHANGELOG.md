@@ -7,6 +7,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.13.0] - 2026-10-29
+
+### Added / Adicionado
+- **book-formatter (v0.8.0-beta):** nova skill de formatação e diagramação de livros de RPG.
+  - **Instalação de ferramentas de leitura:** PDF com/sem OCR, TXT, DOCX, DOC, CSV/TSV, XLSX/XLS, HTML, EPUB e imagens com OCR, com matriz de formatos e engines de extração.
+  - **Artefatos de entrega:** arquivo `.txt` com os textos, `.md` (Markdown) e `.pdf` devidamente diagramado/formatado (fiel ao original: imagens, colunas, fontes, títulos, recuos, parágrafos e número de páginas).
+  - **Fluxo de diagramação:** 8 fases (Analisar PDF → Descobrir/Usar Fontes → Extrair Texto → Ensinar Vocabulário RPG → Traduzir em Lotes → Verificar Tradução → Diagramar → Auditar Final) baseado na metodologia de tradução/diagramação com IA paga (ChatGPT + plugin Adobe WORK).
+  - **Scripts:** `scripts/check_env.py` (verificação de ambiente multiplataforma) e `scripts/convert_to_txt_md.py` (conversão para TXT/Markdown).
+  - **Glossário:** `glossarys/glossary.md` com dicionário inicial de termos de RPG e gamers (futuros dicionários em breve).
+  - **Glossário Sci-Fi (v0.2.0-beta):** Adicionado `glossarys/glossary-scifi.md` com termos de ficção científica, ciberpunk, space opera, militar, science fantasy e psionics, ampliando o dicionário de RPG e gamers da skill.
+  - **Glossário de Terror (v0.3.0-beta):** Adicionado `glossarys/glossary-horror.md` com termos de terror cósmico, Lovecraft, survival horror, gothic horror e psionics, ampliando a coleção de dicionários da skill.
+  - **Glossário Savage Worlds (v0.4.0-beta):** Adicionado `glossarys/glossary-savage-worlds.md` com termos do **Savage Worlds Adventure Edition (SWADE)** (conceitos, traits, perícias, combate, edges e cenários).
+  - **Glossário Year Zero (v0.5.0-beta):** Adicionado `glossarys/glossary-year-zero.md` com termos do **Year Zero Engine (YZE)** (Forbidden Lands, Vaesen, Alien, Blade Runner, Twilight 2000, Mutant, The Walking Dead, Tales from the Loop, Electric State, etc.).
+  - **Glossário do Mundo das Trevas (v0.6.0-beta):** Adicionado `glossarys/glossary-world-of-darkness.md` com glossário exclusivo do **Mundo das Trevas (World of Darkness)**, cobrindo **todas as suas franquias**.
+  - **Nova Capacidade (v0.7.0-beta):** Criação de **Formulários e Fichas de RPG em PDF preenchíveis** (toolchain `fpdf2`/`reportlab`/`pdfcpu` e inspeção `pypdf`/`pdfplumber`).
+  - **Glossário Pathfinder 2e (v0.8.0-beta):** Adicionado `glossarys/glossary-pathfinder-2e.md` com glossário de **Pathfinder 2ª Edição (PF2e)** (Classes, Feats/Dotações, Salvamentos, Ações, Condições, Mecânicas).
+
+---
+
 ## [1.12.0] - 2026-10-28
 
 ### Added / Adicionado
