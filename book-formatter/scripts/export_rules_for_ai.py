@@ -78,6 +78,19 @@ def classify_section(title: str, content: str) -> str:
             return cat_name
     return "general_rules"
 
+
+def run_humanizer_sanitize(file_path: Path):
+    """Higieniza JSONL e Markdown gerados para expurgar vicios de IA."""
+    current_dir = Path(__file__).resolve().parent
+    repo_root = current_dir.parent.parent
+    humanizer_script = repo_root / "humanizer-plus" / "scripts" / "sanitize.js"
+    if humanizer_script.exists():
+        try:
+            import subprocess
+            subprocess.run(["node", str(humanizer_script), str(file_path)], check=True, capture_output=True)
+        except Exception:
+            pass
+
 def export_rules_for_ai(input_file: Path, output_dir: Path, system_name: str = "rpg_system"):
     """
     Gera arquivos segmentados em:
@@ -155,6 +168,12 @@ def export_rules_for_ai(input_file: Path, output_dir: Path, system_name: str = "
         "categories_dir": "categories/"
     }
     (output_dir / "manifest_ai.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Sanitização com humanizer-plus para remover marcas de IA
+    run_humanizer_sanitize(rag_file)
+    run_humanizer_sanitize(tuning_file)
+    for cat_f in (output_dir / "categories").glob("*.md"):
+        run_humanizer_sanitize(cat_f)
 
     print(f"✅ Segmentação para IA e RAG concluída com sucesso:")
     print(f"   📂 Diretório: {output_dir}")

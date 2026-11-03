@@ -3,10 +3,13 @@
 """
 Script de conversão de documentos para TXT / Markdown multiplataforma (Windows, Linux, macOS)
 usando Microsoft MarkItDown — motor principal da Skill 'book-formatter'.
+Integrado com a skill 'humanizer-plus' para purga automática de marcas d'água de IA,
+caracteres invisíveis (ZWSP, BOM) e vícios de escrita robótica de LLMs.
 """
 
 import sys
 import os
+import subprocess
 from pathlib import Path
 from markitdown import MarkItDown
 
@@ -14,6 +17,41 @@ from markitdown import MarkItDown
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
     sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
+
+def run_humanizer_sanitize(file_path: Path):
+    """Executa a higienização do humanizer-plus para remover marcas d'água de IA."""
+    # Localizar scripts/sanitize.js relativo à raiz do repositório
+    current_dir = Path(__file__).resolve().parent
+    repo_root = current_dir.parent.parent
+    humanizer_script = repo_root / "humanizer-plus" / "scripts" / "sanitize.js"
+
+    if humanizer_script.exists():
+        try:
+            print(f"🧠 [Humanizer Plus] Higienizando marcas de IA em: {file_path.name}")
+            subprocess.run(
+                ["node", str(humanizer_script), str(file_path)],
+                check=True,
+                capture_output=True,
+                text=True,
+                encoding="utf-8"
+            )
+            print(f"✨ [Humanizer Plus] Texto desmarcado e humanizado com sucesso!")
+        except Exception as e:
+            print(f"⚠️ [Humanizer Plus] Aviso: Não foi possível executar sanitize.js ({e})")
+    else:
+        # Fallback Python básico se Node.js ou sanitize.js não estiver disponível
+        try:
+            content = file_path.read_text(encoding="utf-8")
+            # Purga de ZWSP, ZWNJ, BOM e aspas curvas
+            cleaned = content.replace("\ufeff", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "")
+            cleaned = cleaned.replace("“", '"').replace("”", '"').replace("‘", "'").replace("’", "'")
+            if cleaned != content:
+                file_path.write_text(cleaned, encoding="utf-8", newline="\n")
+                print(f"✨ [Humanizer Fallback] Caracteres invisíveis e aspas sanitizados!")
+        except Exception as e:
+            pass
+
 
 def convert_document(input_path: str, output_base_path: str = None) -> bool:
     input_file = Path(input_path).resolve()
@@ -29,7 +67,7 @@ def convert_document(input_path: str, output_base_path: str = None) -> bool:
         result = md.convert(str(input_file))
         markdown_content = result.text_content if hasattr(result, 'text_content') else getattr(result, 'markdown', str(result))
 
-        # Salvar Markdown
+        # Salvar Markdown e TXT
         if output_base_path:
             base = Path(output_base_path).resolve()
             base.parent.mkdir(parents=True, exist_ok=True)
@@ -37,8 +75,13 @@ def convert_document(input_path: str, output_base_path: str = None) -> bool:
             md_file.write_text(markdown_content, encoding='utf-8', newline='\n')
             txt_file = base.with_suffix('.txt')
             txt_file.write_text(markdown_content, encoding='utf-8', newline='\n')
-            print(f"✅ Conversão concluída com sucesso!")
-            print(f"📄 Arquivos salvos em: {md_file} e {txt_file}")
+
+            # Higienizar com humanizer-plus
+            run_humanizer_sanitize(md_file)
+            run_humanizer_sanitize(txt_file)
+
+            print(f"✅ Conversão e humanização concluídas com sucesso!")
+            print(f"📄 Arquivos limpos salvos em: {md_file} e {txt_file}")
         else:
             print("\n--- Conteúdo Markdown Gerado ---")
             print(markdown_content)
@@ -49,6 +92,7 @@ def convert_document(input_path: str, output_base_path: str = None) -> bool:
         print(f"❌ Erro durante a conversão: {e}")
         print("💡 Dica: Execute 'python scripts/check_env.py' para diagnosticar dependências ausentes.")
         return False
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

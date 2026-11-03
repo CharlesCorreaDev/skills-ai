@@ -108,6 +108,11 @@ def main():
         ("bs4", "beautifulsoup4 (Suporte HTML)", f"{pip_cmd} install beautifulsoup4"),
         ("html2text", "html2text (Fallback HTML)", f"{pip_cmd} install html2text"),
         ("striprtf", "striprtf (Fallback RTF)", f"{pip_cmd} install striprtf"),
+        ("pymupdf", "PyMuPDF (Diagramação vetorial e manipulação de fontes)", f"{pip_cmd} install pymupdf"),
+        ("reportlab", "ReportLab (Motor programático de PDF)", f"{pip_cmd} install reportlab"),
+        ("fpdf", "fpdf2 (Formulários e diagramação de PDFs)", f"{pip_cmd} install fpdf2"),
+        ("fontTools", "fonttools (Inspeção de fontes OpenType / CFF)", f"{pip_cmd} install fonttools"),
+        ("yaml", "PyYAML (Leitura e manipulação de metadados CFF / YAML)", f"{pip_cmd} install pyyaml"),
     ]
 
     for pkg_import, name, install_cmd in pkgs:

@@ -107,7 +107,11 @@ pip install markitdown markitdown-ocr pdfminer.six pdfplumber pypdf pypdfium2 Pi
 
 Suggested naming pattern: `<book>_<version>_<status>.txt`, `<book>_<version>_traduzido.txt`, `<book>_<version>_diagramado.md`, `<book>_<version>_diagramado.pdf`.
 
-### 🎯 Mandatory Pre-Execution Protocol: Code Mode, Grill-Me, Karpathy & AI Hero Code Review
+### 🎯 Mandatory Pre-Execution Protocol: Code Mode, Grill-Me, Karpathy, AI Hero & Humanizer Plus
+
+> 🚨 **UNBREAKABLE GOLDEN RULE & AI-DE-WATERMARKING:**  
+> RPG book diagramming, translation, and formatting must **NEVER** be performed in a single blind step or driven by hasty assumptions.  
+> The agent MUST operate **strictly in stages**, always using **Code Mode**, and sanitize all generated texts, Markdown, TXT, and JSONL chunks using the companion **`humanizer-plus`** skill (`humanizer-plus/scripts/sanitize.js`) to permanently purge robotic AI habits, ZWSP/BOM watermarks, and LLM slop.
 
 > 🚨 **UNBREAKABLE GOLDEN RULE:**  
 > RPG book diagramming, translation, and formatting must **NEVER** be performed in a single blind step or driven by hasty assumptions.  
@@ -161,7 +165,13 @@ Always execute via scripted tools (Python, PyMuPDF, ReportLab, fpdf2, MarkItDown
 
 The workflow follows the **Analyze → Extract → Translate → Review → Diagram → Audit** pipeline. Never skip stages.
 
-#### Phase 1 — ANALYZE THE ORIGINAL PDF WITH AI
+#### Phase 1 — ANALYZE THE ORIGINAL PDF WITH AI & GENERATE TYPOGRAPHY REPORT
+> 🔬 **MANDATORY AUTOMATED TYPOGRAPHY & LAYOUT AUDIT:**  
+> The agent MUST run `scripts/inspect_typography.py` to extract every embedded font (`.cff`/`.ttf`), exact point sizes, hex colors, page dimensions, and double-stroke outlines before diagramming. It outputs a comprehensive Markdown report (`relatorio-tipografia-<book>.md`) to ensure 100% faithful replication of headers, body fonts, and margins.
+> ```bash
+> python scripts/inspect_typography.py "path/to/source_book.pdf"
+> ```
+
 **Command to be used with the AI (paid version with file access, e.g., ChatGPT WORK / Claude / Gemini paid):**
 > "Analyze fully this PDF before making any alteration. Identify the number of pages, paper size, margins, amount and width of columns, spacing, paragraph indents, text alignments, footers, headers, images, ornaments, borders and fonts used. Identify font sizes for body, titles and subtitles. Verify which excerpts use bold, italic or other typographic variations. Present a technical report so the Portuguese diagramming can reproduce the original layout. The AI can inspect internal PDF properties and analyze visually. Depending on the file, it is possible to identify the exact fonts used."
 
@@ -374,7 +384,11 @@ pip install markitdown markitdown-ocr pdfminer.six pdfplumber pypdf pypdfium2 Pi
 
 Convenção sugerida: `<livro>_<versao>_<status>.txt`, `<livro>_<versao>_traduzido.txt`, `<livro>_<versao>_diagramado.md`, `<livro>_<versao>_diagramado.pdf`.
 
-### 🎯 Protocolo Obrigatório Pré-Execução: Code Mode, Grill-Me, Karpathy & AI Hero Code Review
+### 🎯 Protocolo Obrigatório Pré-Execução: Code Mode, Grill-Me, Karpathy, AI Hero & Humanizer Plus
+
+> 🚨 **REGRA DE OURO INVIOLÁVEL & DESMARCAÇÃO DE IA:**  
+> A diagramação, tradução e formatação de livros de RPG **NUNCA** devem ser executadas em um único passo cego ou com suposições precipitadas.  
+> O agente DEVE operar **obrigatoriamente por etapas** em **Code Mode**, e higienizar todo o texto extraído, Markdown, TXT e datasets JSONL através da skill integrada **`humanizer-plus`** (`humanizer-plus/scripts/sanitize.js`) para expurgar vícios narrativos de IA, caracteres Unicode invisíveis (ZWSP, BOM), citações artificiais e slop robótico de LLMs.
 
 > 🚨 **REGRA DE OURO INVIOLÁVEL:**  
 > A diagramação, tradução e formatação de livros de RPG **NUNCA** devem ser executadas em um único passo cego ou com suposições precipitadas.  
@@ -485,7 +499,13 @@ Antes de finalizar e entregar qualquer página:
 
 ### 🔄 Fluxo de Diagramação de Livros (Fases Obrigatórias — 8 Fases)
 
-1. **FAÇA A IA ANALISAR O PDF ORIGINAL**
+1. **FAÇA A IA ANALISAR O PDF ORIGINAL & GERAR RELATÓRIO DE TIPOGRAFIA (OBRIGATÓRIO)**
+   - 🔬 **Auditoria Automatizada de Tipografia e Layout:** O agente DEVE obrigatoriamente executar o script `scripts/inspect_typography.py` para extrair todas as fontes incorporadas (`.cff`/`.ttf`), tamanhos exatos em pontos, códigos de cor hexadecimais, dimensões de página e contornos de títulos com dupla camada antes de diagramar.
+   - Gera um relatório técnico estruturado (`relatorio-tipografia-<livro>.md`) para blindar a diagramação contra caixas opacas ou fontes genéricas:
+     ```bash
+     python scripts/inspect_typography.py "caminho/do/livro_original.pdf"
+     ```
+
    - Analise integralmente o PDF antes de qualquer alteração. Identifique número de páginas, tamanho das folhas, margens, quantidade e largura das colunas, espaçamentos, recuos de parágrafo, alinhamento, rodapés, cabeçalhos, imagens, ornamentos, molduras e fontes.
    - Identifique também o tamanho das fontes do corpo, dos títulos e dos subtítulos. Verifique quais trechos usam negrito, itálico ou outras variações tipográficas.
    - Apresente um relatório técnico para que a diagramação em português possa reproduzir o layout original.

@@ -88,6 +88,9 @@ python scripts/check_env.py --upgrade
 python scripts/check_update.py
 python scripts/check_update.py --upgrade
 
+# Inspect and generate exhaustive typography and color report
+python scripts/inspect_typography.py "path/to/document.pdf"
+
 # Convert document to TXT / Markdown
 python scripts/convert_to_txt_md.py "path/to/document.pdf" "output_dir"
 
@@ -196,6 +199,9 @@ python scripts/check_env.py --upgrade
 # Verificar atualizações da skill (e opcionalmente atualizar via Git)
 python scripts/check_update.py
 python scripts/check_update.py --upgrade
+
+# Inspecionar tipografia, cores e fontes originais (relatório técnico)
+python scripts/inspect_typography.py "caminho/do/documento.pdf"
 
 # Converter documento para TXT / Markdown
 python scripts/convert_to_txt_md.py "caminho/do/documento.pdf" "saida"
