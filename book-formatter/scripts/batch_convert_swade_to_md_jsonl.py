@@ -78,10 +78,35 @@ TARGET_BOOKS = [
 ]
 
 
+def dehyphenate_text(text: str) -> str:
+    """Reconecta palavras quebradas por translineação de final de linha ou borda de coluna em PDFs.
+    Ex: 'aumen-\n\ntam' -> 'aumentam'
+        'po-\npularidade' -> 'popularidade'
+        'Com-\nplicações' -> 'Complicações'
+    """
+    # Caso 1: Palavra hifenizada quebrada terminando em minúscula (caso mais frequente)
+    # Ex: 'aumen-\n\ntam' -> 'aumentam'
+    text = re.sub(r'([a-zA-Z\u00C0-\u017F]{2,})[-–—]\s*\n+\s*([a-z\u00E0-\u017F]+)', r'\1\2', text)
+
+    # Caso 2: Segunda parte iniciando com maiúscula em palavras quebradas no meio do parágrafo
+    # Ex: 'Com-\nplicações' -> 'Complicações'
+    prefixes = {'sul', 'norte', 'pré', 'pre', 'pós', 'pos', 'recém', 'recem', 'super', 'anti', 'auto', 'sub', 'macro', 'micro'}
+    def merge_capitalized_hyphen(m):
+        p1, p2 = m.group(1), m.group(2)
+        if p1.lower() in prefixes:
+            return f"{p1}-{p2}"
+        return f"{p1}{p2.lower()}"
+
+    text = re.sub(r'([a-zA-Z\u00C0-\u017F]{2,})[-–—]\s*\n+\s*([A-Z\u00C0-\u017F][a-z\u00E0-\u017F]{2,})', merge_capitalized_hyphen, text)
+    return text
+
+
 def sanitize_text(text: str) -> str:
-    """Higieniza caracteres Unicode invisíveis, BOM e aspas curvas."""
+    """Higieniza caracteres Unicode invisíveis, BOM, aspas curvas e une palavras hifenizadas."""
     cleaned = text.replace("\ufeff", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "")
     cleaned = cleaned.replace("“", '"').replace("”", '"').replace("‘", "'").replace("’", "'")
+    # Reconectar translineações
+    cleaned = dehyphenate_text(cleaned)
     # normalizar quebras de linha excessivas
     cleaned = re.sub(r"\n{3,}", "\n\n", cleaned)
     return cleaned

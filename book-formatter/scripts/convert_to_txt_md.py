@@ -53,6 +53,24 @@ def run_humanizer_sanitize(file_path: Path):
             pass
 
 
+def dehyphenate_text(text: str) -> str:
+    """Reconecta palavras partidas por quebra de linha ou coluna em documentos e PDFs."""
+    import re
+    # Caso 1: Palavra hifenizada com continuação em minúscula
+    text = re.sub(r'([a-zA-Z\u00C0-\u017F]{2,})[-–—]\s*\n+\s*([a-z\u00E0-\u017F]+)', r'\1\2', text)
+
+    # Caso 2: Segunda parte iniciando com maiúscula em palavras quebradas no meio do parágrafo
+    prefixes = {'sul', 'norte', 'pré', 'pre', 'pós', 'pos', 'recém', 'recem', 'super', 'anti', 'auto', 'sub', 'macro', 'micro'}
+    def merge_capitalized_hyphen(m):
+        p1, p2 = m.group(1), m.group(2)
+        if p1.lower() in prefixes:
+            return f"{p1}-{p2}"
+        return f"{p1}{p2.lower()}"
+
+    text = re.sub(r'([a-zA-Z\u00C0-\u017F]{2,})[-–—]\s*\n+\s*([A-Z\u00C0-\u017F][a-z\u00E0-\u017F]{2,})', merge_capitalized_hyphen, text)
+    return text
+
+
 def deduplicate_text_lines(text: str) -> str:
     """Elimina linhas consecutivas repetidas geradas por efeitos gráficos
     de drop-shadow e contorno duplo em PDFs."""
@@ -82,6 +100,9 @@ def convert_document(input_path: str, output_base_path: str = None) -> bool:
 
         # Deduplicar linhas repetidas por efeitos de camada de sombra/contorno
         markdown_content = deduplicate_text_lines(markdown_content)
+
+        # Desfazer hifenização quebrada em quebras de linha/coluna
+        markdown_content = dehyphenate_text(markdown_content)
 
         # Salvar Markdown e TXT
         if output_base_path:
