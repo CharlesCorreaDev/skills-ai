@@ -7,6 +7,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.13.0-beta] - 2026-11-03
+
+### Added / Adicionado
+- **Segmentação de Regras para IA, RAG e Servidores MCP:**
+  - Adicionado script [`scripts/export_rules_for_ai.py`](scripts/export_rules_for_ai.py) para quebrar o livro em fragmentos atômicos estruturados.
+  - Gera dataset de chunks para RAG/embeddings (`<sistema>_rag_chunks.jsonl`).
+  - Gera dataset de fine-tuning (`<sistema>_training_dataset.jsonl`) no formato padrão de instrução (system/user/assistant).
+  - Gera arquivos modulares em `categories/` (`combat.md`, `spells.md`, `classes.md`, etc.) para integração em ferramentas de Servidores MCP.
+- **Comunicação de Novos Glossários Formalizada via GitHub Issue:**
+  - A notificação de criação de novos glossários de sistemas de RPG e a submissão para contribuição oficial devem ser formalizadas via GitHub Issue (`gh issue create --repo CharlesCorreaDev/skills-ai`).
+- **Manutenção e Atualização Contínua de Dependências:**
+  - Suporte ao argumento `--upgrade` em [`scripts/check_env.py`](scripts/check_env.py) para manter todas as bibliotecas de IA e leitura de documentos na última versão estável via `pip install --upgrade`.
+
+---
+
 ## [0.12.0-beta] - 2026-11-03
 
 ### Added / Adicionado

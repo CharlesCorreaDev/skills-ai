@@ -53,26 +53,36 @@ Para livros de RPG com diagramações densas (colunas múltiplas, tabelas de mon
 ### 🛠️ Usage
 
 ```bash
-# Check environment
+# Check environment & update dependencies
 python scripts/check_env.py
+python scripts/check_env.py --upgrade
 
-# Check for skill updates (and optionally auto-upgrade)
+# Check for skill updates (and optionally auto-upgrade via Git)
 python scripts/check_update.py
 python scripts/check_update.py --upgrade
 
 # Convert document to TXT / Markdown
 python scripts/convert_to_txt_md.py "caminho/do/documento.pdf" "saida"
+
+# Segment rulebook into atomic rules for AI, RAG & MCP
+python scripts/export_rules_for_ai.py "caminho/do/livro_traduzido.md" "saida_rag" "nome_sistema"
 ```
+
+### 🧠 Segmentação de Regras para IA, RAG e MCP
+A skill gera automaticamente:
+- `<sistema>_rag_chunks.jsonl` com metadados para bancos vetoriais (ChromaDB, Pinecone, FAISS).
+- `<sistema>_training_dataset.jsonl` para fine-tuning de modelos LLM.
+- `categories/<topico>.md` para servir regras modulares sob demanda via Servidores MCP.
 
 ### 📖 Aprendizado Contínuo & Criação Automática de Glossários
 Sempre que um livro de RPG for processado:
 1. O agente compila termos de regras, magias, atributos e cenários.
 2. Salva em memória e no diretório `glossarys/glossary-<sistema>.md`.
-3. Comunica o usuário sobre a criação do glossário e oferece a opção de enviar a contribuição para o repositório oficial (`CharlesCorreaDev/skills-ai`).
+3. A comunicação ao usuário e o envio da contribuição ao desenvolvedor são **formalizados obrigatoriamente via GitHub Issue** (`gh issue create --repo CharlesCorreaDev/skills-ai`).
 
-### 🔄 Monitor de Versão e Atualização Automática
-- Executando `python scripts/check_update.py`, a skill compara a versão instalada com a versão publicada no GitHub.
-- Com `python scripts/check_update.py --upgrade`, ela executa a atualização automática via Git.
+### 🔄 Monitor de Versão e Manutenção de Dependências
+- `python scripts/check_update.py --upgrade`: atualiza a skill e glossários para a versão mais recente do GitHub.
+- `python scripts/check_env.py --upgrade`: mantém todos os pacotes Python de IA e PDF na última versão estável.
 
 ### 📖 RPG & Gamers Glossary
 

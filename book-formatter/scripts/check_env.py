@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script de verificação de ambiente multiplataforma (Windows, Linux, macOS)
+Script de verificação de ambiente e atualização de dependências
 para a Skill 'book-formatter'.
 """
 
@@ -9,6 +9,7 @@ import sys
 import os
 import platform
 import shutil
+import subprocess
 import importlib.util
 
 # Garantir saída UTF-8 em todos os sistemas operacionais e consoles
@@ -50,10 +51,22 @@ def check_system_tool(tool_name, os_install_hints):
             print(f"     -> Sugestão de instalação ({current_os}): {hint}")
         return False
 
+def upgrade_python_packages(packages_list):
+    """Atualiza as dependências Python da skill via pip --upgrade."""
+    print("\n📦 Atualizando dependências Python da skill (pip install --upgrade)...")
+    cmd = [sys.executable, "-m", "pip", "install", "--upgrade"] + packages_list
+    res = subprocess.run(cmd)
+    if res.returncode == 0:
+        print("✅ Todas as dependências Python foram atualizadas com sucesso!")
+    else:
+        print("⚠️ Algumas dependências falharam ao atualizar via pip.")
+
 def main():
     os_name, mgr_info = get_os_info()
+    auto_upgrade = "--upgrade" in sys.argv or "-u" in sys.argv
+
     print("=========================================================")
-    print(f"🔍 Verificação de Ambiente: Book Formatter (v0.11.0-beta)")
+    print(f"🔍 Verificação de Ambiente & Dependências: Book Formatter")
     print(f"💻 Sistema Operacional : {os_name} ({platform.platform()})")
     print(f"🐍 Python              : {sys.version.split()[0]} ({sys.executable})")
     print("=========================================================\n")
@@ -70,6 +83,11 @@ def main():
     pip_cmd = "pip" if os_name == "Windows" else "python3 -m pip"
 
     missing_pkgs = []
+    all_python_pkgs = [
+        "markitdown", "pdfminer.six", "pdfplumber", "pypdf", "pypdfium2",
+        "Pillow", "pytesseract", "python-docx", "mammoth", "openpyxl",
+        "pandas", "xlrd", "odfpy", "ebooklib", "beautifulsoup4", "html2text", "striprtf"
+    ]
 
     pkgs = [
         ("markitdown", "markitdown (Motor principal leve)", f"{pip_cmd} install markitdown"),
@@ -152,16 +170,20 @@ def main():
     check_system_tool("pdftotext", poppler_hints)
     check_system_tool("stirling-pdf", stirling_hints)
 
-    # 5. Resumo e Instruções
+    # 5. Execução de Atualização se solicitado
+    if auto_upgrade:
+        upgrade_python_packages(all_python_pkgs)
+
+    # 6. Resumo e Instruções
     print("\n---------------------------------------------------------")
     if missing_pkgs:
         print("⚠️ Para instalar todos os pacotes Python básicos de uma vez:")
         print(f"👉 {pip_cmd} install markitdown pdfplumber pdfminer.six pypdf pypdfium2 Pillow pytesseract python-docx mammoth openpyxl pandas xlrd odfpy ebooklib beautifulsoup4 html2text striprtf")
     else:
         print("🎉 Todas as bibliotecas Python essenciais estão instaladas e prontas!")
-    print("\n💡 Dica de IA para RPGs complexos:")
-    print("   Para máxima precisão em colunas e tabelas góticas, instale Docling e Marker:")
-    print(f"   👉 {pip_cmd} install docling marker-pdf")
+    print("\n💡 Dica de manutenção:")
+    print(f"   Para atualizar todas as dependências da skill para a última versão:")
+    print(f"   👉 python scripts/check_env.py --upgrade")
     print("---------------------------------------------------------")
 
 if __name__ == "__main__":

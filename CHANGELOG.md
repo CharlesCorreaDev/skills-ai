@@ -14,8 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Expansão multiplataforma: YouTube, Vimeo (oEmbed + v2 API) e Twitch (VODs e Clipes via `yt-dlp`).
   - Fallback por Áudio via IA (`--fallback-audio`) com suporte a Whisper e WhisperX (`--whisper-model`).
   - Ajuste de `--delay-ms` para 15.000 ms (15s) padrão para mitigar bloqueios de rate limit do YouTube.
-- **book-formatter (v0.12.0-beta):**
-  - **Aprendizado Contínuo & Criação Automática de Glossários:** Ao ler qualquer livro de sistema de RPG, o vocabulário mecânico é extraído e gravado na pasta `glossarys/` e na memória, comunicando o usuário e sugerindo envio ao repositório oficial.
+- **book-formatter (v0.13.0-beta):**
+  - **Segmentação de Regras para IA, RAG e MCP:** Script `scripts/export_rules_for_ai.py` que fragmenta livros em datasets JSONL para RAG, datasets para fine-tuning e arquivos por categorias (`combat.md`, `spells.md`, etc.) para uso em ferramentas de MCP servers.
+  - **Comunicação de Novos Glossários Formalizada via GitHub Issue:** Notificação ao usuário e proposta de inclusão no repositório oficial obrigatoriamente submetidas via issue.
+  - **Manutenção e Atualização Contínua de Dependências:** `scripts/check_env.py --upgrade` para atualização automática de pacotes Python da skill.
+  - **Aprendizado Contínuo & Criação Automática de Glossários:** Ao ler qualquer livro de sistema de RPG, o vocabulário mecânico é extraído e gravado na pasta `glossarys/` e na memória.
   - **Monitor de Versão e Atualização Automática:** Script `scripts/check_update.py` para detecção de novas versões publicadas no repositório remoto e atualização automática (`--upgrade`).
   - **Integração de Motores SOTA de IA e Utilitários de PDF:** Inclusão de Docling (IBM/DS4SD), Marker (Datalab), Unstructured, Nougat (Meta AI), Stirling-PDF, Nano-PDF e auditoria RAG inspirada em PDFtoGPT e AI-powered-PDF-agent.
   - **Diretrizes Rigorosas do Tradutor Profissional de Livros de RPG:** 5 mandamentos obrigatórios de fidelidade de tradução, preservação estrita da página original (sem recriar do zero), inviolabilidade numérica (`1d8` e `+2`), checklist de controle de qualidade e formato de entrega.

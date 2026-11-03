@@ -235,18 +235,31 @@ Consult it during **Phase 4 (RPG vocabulary teaching)** to keep translations con
 Whenever processing an RPG system book (e.g., Tormenta20, D&D 5e, Call of Cthulhu, Cyberpunk RED, GURPS):
 1. **Compile Mechanics:** Extract core terms (Attributes, Skills, Feats, Spells, Classes, Conditions, Combat Rules, Setting Lingo).
 2. **Save to Memory & Disk:** Save the bilingual glossary under [`glossarys/glossary-<system>.md`](glossarys/) and keep it in working memory.
-3. **Notify User:** Inform the user that the glossary was generated to ensure consistent translation and rule interpretation.
-4. **Offer Contribution:** Prompt the user to submit the new glossary via GitHub CLI (`gh issue create --repo CharlesCorreaDev/skills-ai`) so it can be added to the next official skill release.
+3. **Mandatory Communication & Submission via GitHub Issue:** Notify the user that the glossary was generated and formally submit it via GitHub Issue (`gh issue create --repo CharlesCorreaDev/skills-ai`) so the developer can review and include it in the next official skill version.
 
 ---
 
-### 🔄 Version Monitoring & Automatic Skill Update
-The skill monitors its local version ([`VERSION`](VERSION)) against the latest release published on GitHub:
-- **Checker Script:** [`scripts/check_update.py`](scripts/check_update.py)
-- **Check Remote:** Compares against `https://raw.githubusercontent.com/CharlesCorreaDev/skills-ai/main/book-formatter/VERSION`.
-- **User Alert:** If an update is detected, the agent alerts the user:
-  > *"🚀 New version of `book-formatter` available (Local: `v<local>` -> Remote: `v<remote>`). Would you like to update now?"*
-- **Auto-Update Execution:** Run `python scripts/check_update.py --upgrade` to pull updates automatically via Git.
+### 🧠 Rules Segmentation for AI, RAG & MCP Servers (New Capability)
+The skill can split RPG rulebooks into atomic, machine-readable datasets for:
+- **Vector Databases & RAG:** ChromaDB, Pinecone, FAISS, Qdrant.
+- **MCP Servers (Model Context Protocol):** Serving segmented RPG rules on-demand without context window exhaustion.
+- **Fine-Tuning:** Instruction/response datasets in JSONL format.
+
+**Script:** [`scripts/export_rules_for_ai.py`](scripts/export_rules_for_ai.py)
+```bash
+python scripts/export_rules_for_ai.py "path/to/rulebook.md" "output_rag_dir" "system_name"
+```
+**Outputs:** `<system>_rag_chunks.jsonl`, `<system>_training_dataset.jsonl`, `categories/<rule_category>.md`, and `manifest_ai.json`.
+
+---
+
+### 🔄 Version Monitoring & Automatic Skill & Dependency Updates
+The skill monitors its local version ([`VERSION`](VERSION)) against the latest release published on GitHub, and keeps all Python packages updated:
+- **Skill Version Monitor:** [`scripts/check_update.py`](scripts/check_update.py)
+  - Checks remote version at `https://raw.githubusercontent.com/CharlesCorreaDev/skills-ai/main/book-formatter/VERSION`.
+  - Alerts user and supports `--upgrade` to pull updates via Git.
+- **Dependency Upgrades:** [`scripts/check_env.py`](scripts/check_env.py)
+  - Run `python scripts/check_env.py --upgrade` to ensure SOTA AI and PDF libraries (`docling`, `marker-pdf`, `pypdf`, `pdfplumber`, `markitdown`) are at the latest stable version.
 
 ---
 
@@ -535,28 +548,62 @@ Antes de finalizar e entregar qualquer página:
 > Sempre que o agente ler e processar um livro de um sistema de RPG (ex.: Tormenta20, D&D 5e, Call of Cthulhu, Cyberpunk RED, GURPS, etc.):
 > 1. **Extrair e Compilar o Vocabulário:** Mapear termos mecânicos essenciais (Atributos, Perícias, Feats/Talentos, Magias, Classes, Condições, Regras de Combate e Termos de Cenário).
 > 2. **Salvar em Memória e em Disco:** Criar e salvar o glossário bilíngue em arquivo na pasta [`glossarys/`](glossarys/) (ex.: `glossarys/glossary-<sistema>.md`), além de mantê-lo ativo em memória durante a sessão.
-> 3. **Comunicar o Usuário:** Informar explicitamente ao operador:
->    > *"📖 Novo glossário criado para o sistema `<Nome do Sistema>` e salvo em `book-formatter/glossarys/glossary-<sistema>.md`. Isso aprimora a consistência terminológica e a interpretação das regras durante toda a tradução."*
-> 4. **Proposta de Contribuição ao Desenvolvedor da Skill:** Perguntar ao usuário se deseja enviar o novo glossário ao repositório oficial (`https://github.com/CharlesCorreaDev/skills-ai`) para que seja incorporado na próxima versão oficial da skill:
+> 3. **Comunicação e Envio Obrigatório via GitHub Issue:**  
+>    A comunicação da criação do glossário e sua submissão para contribuição **deve ser formalizada via GitHub Issue** no repositório oficial (`CharlesCorreaDev/skills-ai`). O agente deve comunicar o usuário e, mediante confirmação, submeter a issue bilíngue contendo os termos compilados:
 >    ```bash
->    gh issue create --repo CharlesCorreaDev/skills-ai --title "[book-formatter] Novo Glossário de RPG: <Sistema>" --body "Envio de glossário extraído e compilado para <Sistema>."
+>    gh issue create --repo CharlesCorreaDev/skills-ai --title "[book-formatter] Novo Glossário de RPG: <Sistema>" --body "### 📖 Novo Glossário Extraído - <Sistema>
+> 
+> Um novo livro do sistema de RPG **<Sistema>** foi processado pelo `book-formatter`. O vocabulário oficial foi compilado e salvo localmente em `glossarys/glossary-<sistema>.md`.
+> 
+> Solicita-se a incorporação deste glossário na próxima versão oficial da skill para aprimorar a interpretação e padronização da comunidade.
+> 
+> ---
+> 
+> ### 📖 New Extracted Glossary - <System>
+> A new book for the RPG system **<System>** was processed by `book-formatter`. The official vocabulary has been compiled and saved locally. Requesting integration into the next release."
 >    ```
+
+---
+
+### 🧠 Segmentação de Regras para IA, RAG e Servidores MCP (Nova Capacidade)
+
+A skill possui a capacidade de **fragmentar e segmentar o livro processado em arquivos de regras atômicos e especializados**, ideais para:
+- **Bancos Vetoriais & RAG:** Ingestão direta em ChromaDB, Pinecone, FAISS, Qdrant e Milvus.
+- **Servidores de Contexto MCP (Model Context Protocol):** Disponibilização de regras sob demanda para agentes de IA sem poluir a janela de contexto.
+- **Fine-Tuning & Treinamento:** Pares de instrução/resposta estruturados em JSONL para especialização de LLMs no sistema de RPG.
+
+**Script oficial:** [`scripts/export_rules_for_ai.py`](scripts/export_rules_for_ai.py)
+
+**Execução:**
+```bash
+python scripts/export_rules_for_ai.py "caminho/do/livro_traduzido.md" "saida_rag" "nome_sistema"
+```
+
+**Artefatos gerados na pasta de saída:**
+1. `<sistema>_rag_chunks.jsonl` — fragmentos com metadados estruturados (título, categoria, contagem de tokens aproximada) prontos para embeddings.
+2. `<sistema>_training_dataset.jsonl` — dataset formatado no padrão OpenAI/Claude (system/user/assistant) para fine-tuning.
+3. `categories/` — arquivos Markdown isolados por tópicos (`combat.md`, `spells.md`, `classes.md`, `monsters_bestiary.md`, `conditions_hazards.md`, etc.) para uso em ferramentas e recursos MCP.
+4. `manifest_ai.json` — manifesto da extração.
 
 ---
 
 ### 🔄 Monitor de Versão e Atualização Automática da Skill
 
-A skill conta com monitoramento ativo entre a versão local instalada ([`VERSION`](VERSION)) e a versão publicada no repositório remoto oficial:
+A skill conta com monitoramento ativo entre a versão local instalada ([`VERSION`](VERSION)) e a versão publicada no repositório remoto oficial, além de manter suas dependências sempre atualizadas:
 
-- **Script:** [`scripts/check_update.py`](scripts/check_update.py)
-- **Consulta:** Verifica automaticamente o repositório `https://raw.githubusercontent.com/CharlesCorreaDev/skills-ai/main/book-formatter/VERSION`.
-- **Alerta ao Usuário:** Se houver versão mais recente no GitHub, o agente avisa o operador:
-  > *"🚀 Nova versão da skill `book-formatter` disponível (Local: `v<local>` -> Remota: `v<remoto>`). Deseja atualizar agora?"*
-- **Atualização Automática:** Se o usuário concordar, o agente executa:
-  ```bash
-  python scripts/check_update.py --upgrade
-  ```
-  O script executa a atualização automática via Git puxando os novos glossários, melhorias de motores e correções sem intervenção manual.
+- **Monitor de Versão da Skill:** [`scripts/check_update.py`](scripts/check_update.py)
+  - Verifica atualizações no GitHub (`https://raw.githubusercontent.com/CharlesCorreaDev/skills-ai/main/book-formatter/VERSION`).
+  - Alerta o usuário proativamente caso uma nova versão esteja disponível.
+  - Atualização automática com:
+    ```bash
+    python scripts/check_update.py --upgrade
+    ```
+- **Manutenção e Atualização de Dependências:** [`scripts/check_env.py`](scripts/check_env.py)
+  - Sempre que for necessário manter as bibliotecas de leitura, IA e PDF na versão mais recente, o agente executa:
+    ```bash
+    python scripts/check_env.py --upgrade
+    ```
+  - Isso garante que pacotes como `docling`, `marker-pdf`, `pypdf`, `pdfplumber`, `markitdown` e ferramentas de OCR estejam sempre com correções e desempenho atualizados.
 
 ---
 
