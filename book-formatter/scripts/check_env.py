@@ -164,11 +164,34 @@ def main():
         "default": "Disponível via Docker ou Desktop em https://github.com/Stirling-Tools/Stirling-PDF",
     }
 
+    gh_hints = {
+        "Windows": "winget install GitHub.cli  ou  choco install gh",
+        "Darwin": "brew install gh",
+        "Linux": "sudo apt install gh",
+        "default": "Instale o GitHub CLI (`gh`) via gerenciador de pacotes do sistema.",
+    }
+
     check_system_tool("tesseract", tesseract_hints)
     check_system_tool("pandoc", pandoc_hints)
     check_system_tool("soffice", libreoffice_hints)
     check_system_tool("pdftotext", poppler_hints)
     check_system_tool("stirling-pdf", stirling_hints)
+    gh_installed = check_system_tool("gh", gh_hints)
+
+    # 5. Verificação Obrigatória de Autenticação do GitHub CLI
+    print("\n🔐 Verificando Autenticação do GitHub CLI:")
+    if gh_installed:
+        try:
+            gh_auth_res = subprocess.run(["gh", "auth", "status"], capture_output=True, text=True, encoding="utf-8")
+            if gh_auth_res.returncode == 0:
+                print("  ✅ Conta do GitHub conectada com sucesso via `gh`!")
+            else:
+                print("  ⚠️ GitHub CLI está instalado, mas NÃO está autenticado.")
+                print("     👉 Ação necessária: execute `gh auth login` para conectar sua conta.")
+        except Exception as e:
+            print(f"  ⚠️ Erro ao checar status do gh: {e}")
+    else:
+        print("  ❌ GitHub CLI ausente. Instale o `gh` e execute `gh auth login` para conectar sua conta.")
 
     # 5. Execução de Atualização se solicitado
     if auto_upgrade:

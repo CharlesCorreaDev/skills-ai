@@ -77,9 +77,21 @@ def main():
     node = shutil.which("node")
     npx = shutil.which("npx")
     git = shutil.which("git")
-    print(f"   - Node.js: {'Encontrado (' + node + ')' if node else 'Nao encontrado no PATH'}")
-    print(f"   - NPX    : {'Encontrado (' + npx + ')' if npx else 'Nao encontrado no PATH'}")
-    print(f"   - Git    : {'Encontrado (' + git + ')' if git else 'Nao encontrado no PATH'}")
+    gh = shutil.which("gh")
+    print(f"   - Node.js    : {'Encontrado (' + node + ')' if node else 'Nao encontrado no PATH'}")
+    print(f"   - NPX        : {'Encontrado (' + npx + ')' if npx else 'Nao encontrado no PATH'}")
+    print(f"   - Git        : {'Encontrado (' + git + ')' if git else 'Nao encontrado no PATH'}")
+    print(f"   - GitHub CLI : {'Encontrado (' + gh + ')' if gh else 'Nao encontrado no PATH (winget install GitHub.cli / brew install gh)'}")
+    if gh:
+        import subprocess
+        try:
+            gh_res = subprocess.run(["gh", "auth", "status"], capture_output=True, text=True, encoding="utf-8")
+            if gh_res.returncode == 0:
+                print("   - GitHub Auth: Conectado e autenticado.")
+            else:
+                print("   - GitHub Auth: Nao autenticado -> Execute `gh auth login` para conectar sua conta.")
+        except Exception:
+            pass
 
     print("\n3. Deteccao de Pastas de Dados do Foundry VTT:")
     data_paths = check_foundry_data_paths()

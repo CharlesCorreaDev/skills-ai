@@ -49,6 +49,24 @@ def main():
     }
     check_tool("tree", tree_hints)
     
+    gh_hints = {
+        "Windows": "winget install GitHub.cli  ou  choco install gh",
+        "Darwin": "brew install gh",
+        "Linux": "sudo apt install gh",
+        "default": "Instale o GitHub CLI (`gh`)."
+    }
+    gh_found = check_tool("gh", gh_hints)
+    if gh_found:
+        import subprocess
+        try:
+            res = subprocess.run(["gh", "auth", "status"], capture_output=True, text=True, encoding="utf-8")
+            if res.returncode == 0:
+                print("  ✅ Conta do GitHub conectada com sucesso via `gh`!")
+            else:
+                print("  ⚠️ GitHub CLI instalado, mas NÃO autenticado. Execute `gh auth login` para conectar.")
+        except Exception:
+            pass
+    
     print("\n✅ Verificação concluída. O ambiente está pronto para estruturar skills.")
 
 if __name__ == "__main__":

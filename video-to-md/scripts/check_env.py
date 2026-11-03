@@ -2,6 +2,7 @@
 """Verifica o ambiente da skill video-to-md / Environment check for video-to-md."""
 import importlib.util
 import shutil
+import subprocess
 import sys
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -10,6 +11,29 @@ if hasattr(sys.stdout, "reconfigure"):
 
 def has(pkg: str) -> bool:
     return importlib.util.find_spec(pkg) is not None
+
+
+def check_github_cli():
+    print("\n── Ferramenta Obrigatória: GitHub CLI (`gh`) ──")
+    gh_bin = shutil.which("gh")
+    if not gh_bin:
+        print("  ❌ GitHub CLI (`gh`) NÃO encontrado no PATH.")
+        print("     Instalação: winget install GitHub.cli (Windows) | brew install gh (macOS) | sudo apt install gh (Linux)")
+        return False
+
+    print("  ✅ GitHub CLI (`gh`) encontrado.")
+    try:
+        res = subprocess.run(["gh", "auth", "status"], capture_output=True, text=True, encoding="utf-8")
+        if res.returncode == 0:
+            print("  ✅ Conta do GitHub conectada e autenticada via `gh`.")
+            return True
+        else:
+            print("  ⚠️ GitHub CLI instalado, porém NÃO autenticado.")
+            print("     👉 Execute agora: gh auth login (para conectar sua conta)")
+            return False
+    except Exception as e:
+        print(f"  ⚠️ Erro ao verificar autenticação do gh: {e}")
+        return False
 
 
 def main() -> int:
@@ -38,6 +62,11 @@ def main() -> int:
         ok = False
         missing.append("yt-dlp")
 
+    # GitHub CLI obrigatório para todas as skills
+    gh_ok = check_github_cli()
+    if not gh_ok:
+        ok = False
+
     # --- Opcionais (fallback por áudio) ---
     print("\n── Opcionais (fallback por áudio) ──")
 
@@ -57,16 +86,19 @@ def main() -> int:
     # --- Resumo ---
     print("\n── Resumo ──")
     if ok:
-        print("✅ Todas as dependências obrigatórias estão instaladas.")
+        print("✅ Todas as dependências obrigatórias estão instaladas e GitHub CLI conectado.")
         if whisper_ok and ffmpeg:
             print("✅ Fallback por áudio (Whisper) disponível.")
         else:
             print("⚪ Fallback por áudio indisponível (whisperx/whisper ou ffmpeg ausentes).")
         print("\n🎉 Tudo pronto para transcrição!")
     else:
-        print(f"❌ Dependências ausentes: {', '.join(missing)}")
-        print(f"\n   Para instalar: pip install {' '.join(missing)}")
-        print("\n⚠️  Instale as dependências acima antes de usar a skill.")
+        if missing:
+            print(f"❌ Dependências Python ausentes: {', '.join(missing)}")
+            print(f"   Para instalar: pip install {' '.join(missing)}")
+        if not gh_ok:
+            print("⚠️ GitHub CLI ausente ou não autenticado. Execute `gh auth login` para conectar sua conta.")
+        print("\n⚠️ Resolva as pendências acima antes de usar a skill.")
 
     return 0 if ok else 1
 

@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [1.14.0] - 2026-11-03
 
 ### Added / Adicionado
+- **Requisito Obrigatório do Ecossistema: GitHub CLI (`gh`) & Autenticação:**
+  - Padronização em todas as skills para exigir e forçar a verificação do `gh` instalado e autenticado (`gh auth login`).
+  - Atualização dos scripts `check_env.py` em `book-formatter`, `video-to-md`, `master-of-foundryvtt`, `docs-for-markdown`, `docs-for-skill`, `image-to-prompt`, `website-for-markdown` e `website-for-skill` para verificar o status de conexão da conta do usuário.
+  - Facilita clonagem contínua, atualização de forks e envio formal de sugestões, issues e novos glossários para `CharlesCorreaDev/skills-ai`.
 - **video-to-md (v0.2.0-beta):**
   - Expansão multiplataforma: YouTube, Vimeo (oEmbed + v2 API) e Twitch (VODs e Clipes via `yt-dlp`).
   - Fallback por Áudio via IA (`--fallback-audio`) com suporte a Whisper e WhisperX (`--whisper-model`).

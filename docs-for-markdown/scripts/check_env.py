@@ -104,8 +104,26 @@ def main():
         "default": "Instale o binário do Pandoc para o seu sistema."
     }
 
+    gh_hints = {
+        "Windows": "winget install GitHub.cli  ou  choco install gh",
+        "Darwin": "brew install gh",
+        "Linux": "sudo apt install gh",
+        "default": "Instale o GitHub CLI (`gh`)."
+    }
+
     check_system_tool("tesseract", tesseract_hints)
     check_system_tool("pandoc", pandoc_hints)
+    gh_ok = check_system_tool("gh", gh_hints)
+    if gh_ok:
+        import subprocess
+        try:
+            res = subprocess.run(["gh", "auth", "status"], capture_output=True, text=True, encoding="utf-8")
+            if res.returncode == 0:
+                print("  ✅ Conta do GitHub conectada com sucesso via `gh`!")
+            else:
+                print("  ⚠️ GitHub CLI instalado, mas NÃO autenticado. Execute `gh auth login` para conectar.")
+        except Exception:
+            pass
 
     # 4. Resumo e Instruções
     print("\n---------------------------------------------------------")

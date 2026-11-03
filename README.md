@@ -24,6 +24,20 @@ Modern Large Language Models (LLMs) and Autonomous AI Agents (like Antigravity, 
 
 ### 📦 Installation & Setup
 
+#### 0. Pré-requisito Obrigatório: GitHub CLI (`gh`) e Autenticação
+> 🚨 **REGRA DE OURO PARA TODAS AS SKILLS:**  
+> A instalação e operação de qualquer skill do ecossistema **exige a presença e conexão ativa do GitHub CLI (`gh`)**. Isso viabiliza a clonagem fluida de repositórios, recebimento de atualizações automáticas e a abertura imediata de issues para envio de sugestões, correções de bugs ou contribuição de novos glossários/conhecimentos.
+>
+> 1. **Instalar o GitHub CLI:**
+>    - **Windows:** `winget install GitHub.cli` ou `choco install gh`
+>    - **macOS:** `brew install gh`
+>    - **Linux:** `sudo apt install gh` ou via gerenciador de pacotes da distribuição.
+> 2. **Autenticar no GitHub (Obrigatório):**
+>    ```bash
+>    gh auth login
+>    ```
+>    *(Siga as instruções interativas para autenticar via navegador ou token web).*
+
 #### 1. Clone the Repository
 ```bash
 git clone https://github.com/CharlesCorreaDev/skills-ai.git
@@ -218,6 +232,20 @@ As **Skills** transformam dados brutos em **unidades modulares de conhecimento s
 ---
 
 ### 📦 Instalação e Configuração
+
+#### 0. Pré-requisito Mandatório: GitHub CLI (`gh`) e Conexão de Conta
+> 🚨 **REGRA DE OURO PARA TODAS AS SKILLS:**  
+> A instalação e operação de qualquer skill do ecossistema **exige a presença e conexão ativa do GitHub CLI (`gh`)**. Isso viabiliza a clonagem fluida de repositórios, recebimento de atualizações automáticas e a abertura imediata de issues para envio de sugestões, correções de bugs ou contribuição de novos glossários/conhecimentos.
+>
+> 1. **Instalar o GitHub CLI:**
+>    - **Windows:** `winget install GitHub.cli` ou `choco install gh`
+>    - **macOS:** `brew install gh`
+>    - **Linux:** `sudo apt install gh` ou via gerenciador de pacotes da distribuição.
+> 2. **Autenticar no GitHub (Obrigatório):**
+>    ```bash
+>    gh auth login
+>    ```
+>    *(Siga as instruções interativas para autenticar via navegador ou token web).*
 
 #### 1. Clonar o Repositório
 ```bash

@@ -79,7 +79,27 @@ def main():
         if not check_package(pkg_import, name):
             missing_pkgs.append(install_cmd)
 
-    # 3. Resumo e Instruções
+    # 3. Ferramenta de Sistema Obrigatória: GitHub CLI
+    print("\n🛠️ Verificando GitHub CLI (`gh`):")
+    gh_hints = {
+        "Windows": "winget install GitHub.cli  ou  choco install gh",
+        "Darwin": "brew install gh",
+        "Linux": "sudo apt install gh",
+        "default": "Instale o GitHub CLI (`gh`)."
+    }
+    gh_ok = check_system_tool("gh", gh_hints)
+    if gh_ok:
+        import subprocess
+        try:
+            res = subprocess.run(["gh", "auth", "status"], capture_output=True, text=True, encoding="utf-8")
+            if res.returncode == 0:
+                print("  ✅ Conta do GitHub conectada com sucesso via `gh`!")
+            else:
+                print("  ⚠️ GitHub CLI instalado, mas NÃO autenticado. Execute `gh auth login` para conectar.")
+        except Exception:
+            pass
+
+    # 4. Resumo e Instruções
     print("\n---------------------------------------------------------")
     if missing_pkgs:
         print("⚠️ Para instalar os pacotes necessários:")

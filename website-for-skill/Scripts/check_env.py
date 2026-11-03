@@ -67,6 +67,22 @@ def main():
         except Exception:
             pass
 
+    print("\n🛠️ GitHub CLI (`gh`) Obrigatório:")
+    import shutil, subprocess
+    gh_bin = shutil.which("gh")
+    if gh_bin:
+        print("  ✅ GitHub CLI (`gh`) encontrado no PATH.")
+        try:
+            res = subprocess.run(["gh", "auth", "status"], capture_output=True, text=True, encoding="utf-8")
+            if res.returncode == 0:
+                print("  ✅ Conta do GitHub conectada com sucesso via `gh`!")
+            else:
+                print("  ⚠️ GitHub CLI instalado, mas NÃO autenticado. Execute `gh auth login` para conectar sua conta.")
+        except Exception:
+            pass
+    else:
+        print("  ❌ GitHub CLI ausente. Instale (winget install GitHub.cli / brew install gh) e conecte com `gh auth login`.")
+
     print("\n-----------------------------------------------------------------")
     if docs_md_ok and website_md_ok:
         print("🎉 Todas as skills dependentes estão instaladas e prontas!")
