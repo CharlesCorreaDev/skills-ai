@@ -53,6 +53,19 @@ def run_humanizer_sanitize(file_path: Path):
             pass
 
 
+def deduplicate_text_lines(text: str) -> str:
+    """Elimina linhas consecutivas repetidas geradas por efeitos gráficos
+    de drop-shadow e contorno duplo em PDFs."""
+    lines = text.splitlines()
+    deduped = []
+    for line in lines:
+        stripped = line.strip()
+        if stripped and deduped and deduped[-1].strip() == stripped:
+            continue
+        deduped.append(line)
+    return "\n".join(deduped)
+
+
 def convert_document(input_path: str, output_base_path: str = None) -> bool:
     input_file = Path(input_path).resolve()
 
@@ -66,6 +79,9 @@ def convert_document(input_path: str, output_base_path: str = None) -> bool:
         md = MarkItDown()
         result = md.convert(str(input_file))
         markdown_content = result.text_content if hasattr(result, 'text_content') else getattr(result, 'markdown', str(result))
+
+        # Deduplicar linhas repetidas por efeitos de camada de sombra/contorno
+        markdown_content = deduplicate_text_lines(markdown_content)
 
         # Salvar Markdown e TXT
         if output_base_path:

@@ -88,7 +88,8 @@ def sanitize_text(text: str) -> str:
 
 
 def extract_pdf_to_markdown(pdf_path: Path, title: str) -> str:
-    """Extrai o texto preservando títulos, colunas e numeração de páginas."""
+    """Extrai o texto preservando títulos, colunas e numeração de páginas,
+    eliminando duplicações provenientes de drop-shadows e contornos gráficos."""
     doc = pymupdf.open(str(pdf_path))
     md_lines = [
         f"# {title}\n",
@@ -103,15 +104,47 @@ def extract_pdf_to_markdown(pdf_path: Path, title: str) -> str:
         page_num = pno + 1
         blocks = page.get_text("blocks")
 
-        # Ordenar blocos em ordem natural de leitura (topo para base, esquerda para direita)
-        # Blocos: (x0, y0, x1, y1, text, block_no, block_type)
+        # Filtrar blocos de texto reais (tipo 0)
         text_blocks = [b for b in blocks if b[6] == 0 and b[4].strip()]
         if not text_blocks:
             continue
 
         md_lines.append(f"\n## 📄 Página {page_num}\n")
 
-        # Classificar blocos de duas colunas se a página for dividida ao meio (~240 pt)
+        # Deduplicar linhas e blocos repetidos (camadas de sombra/contorno idênticas)
+        cleaned_blocks = []
+        for b in text_blocks:
+            x0, y0, x1, y1, text, bno, btype = b
+            lines = text.splitlines()
+            deduped_lines = []
+            for l in lines:
+                s = l.strip()
+                if not s:
+                    continue
+                # Se for idêntico à linha imediatamente anterior (drop-shadow na mesma caixa)
+                if deduped_lines and deduped_lines[-1] == s:
+                    continue
+                deduped_lines.append(s)
+
+            if deduped_lines:
+                clean_text = "\n".join(deduped_lines)
+                cleaned_blocks.append((x0, y0, x1, y1, clean_text))
+
+        # Filtrar blocos duplicados que ocupem a mesma área física com o mesmo texto
+        deduped_page_blocks = []
+        for b in cleaned_blocks:
+            x0, y0, x1, y1, text = b
+            # Checar se já existe bloco com o mesmo texto a uma distância vertical < 3pt
+            is_dup = False
+            for prev in deduped_page_blocks:
+                px0, py0, px1, py1, ptext = prev
+                if ptext == text and abs(py0 - y0) < 3.0 and abs(px0 - x0) < 3.0:
+                    is_dup = True
+                    break
+            if not is_dup:
+                deduped_page_blocks.append(b)
+
+        # Classificar blocos de duas colunas se a página for dividida ao meio
         col1 = []
         col2 = []
         full_width = []
@@ -119,19 +152,16 @@ def extract_pdf_to_markdown(pdf_path: Path, title: str) -> str:
         page_width = page.rect.width
         mid_point = page_width / 2.0
 
-        for b in text_blocks:
-            x0, y0, x1, y1, text, bno, btype = b
-            clean_b = text.strip()
-            if not clean_b:
-                continue
+        for b in deduped_page_blocks:
+            x0, y0, x1, y1, text = b
 
             # Se for cabeçalho largo ou central
             if (x1 - x0) > (page_width * 0.65) or y0 < 100:
-                full_width.append((y0, clean_b))
+                full_width.append((y0, text))
             elif x1 <= mid_point + 20:
-                col1.append((y0, clean_b))
+                col1.append((y0, text))
             else:
-                col2.append((y0, clean_b))
+                col2.append((y0, text))
 
         # Adicionar blocos de largura total primeiro
         for _, text in sorted(full_width, key=lambda x: x[0]):
@@ -297,3 +327,4 @@ def process_all_books():
 
 if __name__ == "__main__":
     process_all_books()
+
