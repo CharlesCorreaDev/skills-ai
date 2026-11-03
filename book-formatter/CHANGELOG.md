@@ -7,6 +7,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.14.0-beta] - 2026-11-03
+
+### Added / Adicionado
+- **Motor Universal de Tradução e Diagramação de PDFs (`universal_pdf_layout_translator.py`):**
+  - Motor cross-platform (Windows, Linux, macOS) para diagramação de qualquer arquivo PDF mantendo fidelidade absoluta ao layout original.
+  - Extração de mapa de geometria e topologia de blocos em JSON (`extract_layout_map`).
+  - Função de inserção com auto-fit (`insert_fitted_text`) que ajusta tamanho e entrelinha sem invadir colunas vizinhas.
+- **Salvamento Resiliente e Multiplataforma (`patch_save.py`):**
+  - Utilitário em Python universal `safe_save_pdf(doc, target_path)` com tratamento de bloqueio por visualizadores externos (fallback sem erro de I/O).
+
+### Fixed / Corrigido
+- **Eliminação de Sobreposições e Desformatação em Colunas:**
+  - Calibração do grid de duas colunas, evitando invasão da coluna adjacente.
+  - Implementação de pontilhamento dinâmico (`format_toc_line`) no Sumário (TOC) mantendo a numeração estritamente alinhada à margem direita.
+  - Alinhamento justificado nativo em blocos de texto corrido.
+- **Modernização de API e Limpeza Vetorial:**
+  - Migração completa de `import fitz` para o padrão moderno `import pymupdf as fitz`.
+  - Remoção vetorial de operadores de texto (`BT...ET`), garantindo 100% de preservação de relâmpagos, degradês e fundos sem máscaras opacas.
+
+---
+
 ## [0.13.0-beta] - 2026-11-03
 
 ### Added / Adicionado

@@ -45,3 +45,4 @@ def safe_save_pdf(doc, target_path: Path, alt_name: str = None, garbage: int = 4
 
 if __name__ == "__main__":
     print("Módulo safe_save_pdf pronto para importação universal em qualquer OS.")
+

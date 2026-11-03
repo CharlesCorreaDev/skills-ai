@@ -7,6 +7,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.15.0] - 2026-11-03
+
+### Added / Adicionado
+- **Motor Universal de Layout e Tradução de PDFs (`book-formatter`):**
+  - Adicionado script multiplataforma `universal_pdf_layout_translator.py` para processar e traduzir qualquer PDF em alta fidelidade.
+  - Adicionado utilitário multiplataforma `patch_save.py` para salvamento seguro e resiliente de PDFs contra bloqueios de arquivos.
+- **Documentação Offline PHP Completa (`php-dev-expert`):**
+  - Adicionada documentação oficial completa em arquivo único `php-bigxhtml.html` (~68 MB) para consulta local de alta velocidade offline.
+
+### Fixed / Corrigido
+- **Fidelidade Tipográfica e Grid de Colunas (`book-formatter`):**
+  - Correção de sobreposição de textos e invasão de colunas no lote de teste de Savage Worlds: Necessary Evil Invasão.
+  - Migração de todas as rotinas para o padrão moderno `import pymupdf as fitz`.
+  - Remoção de fluxos de texto `BT...ET` diretamente do content stream vetorial para 100% de preservação de texturas e relâmpagos.
+
+---
+
 ## [1.14.0] - 2026-11-03
 
 ### Added / Adicionado
