@@ -124,3 +124,4 @@ pix = page.get_pixmap(dpi=150)
 img_preview = "D:/tmp/rrppgg/swade/preview_page5_alta_fidelidade.jpg"
 pix.save(img_preview)
 print("Saved preview image to:", img_preview)
+
