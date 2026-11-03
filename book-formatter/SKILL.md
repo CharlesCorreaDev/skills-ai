@@ -107,22 +107,24 @@ pip install markitdown markitdown-ocr pdfminer.six pdfplumber pypdf pypdfium2 Pi
 
 Suggested naming pattern: `<book>_<version>_<status>.txt`, `<book>_<version>_traduzido.txt`, `<book>_<version>_diagramado.md`, `<book>_<version>_diagramado.pdf`.
 
-### 🎯 Mandatory Pre-Execution Protocol: Code Mode, Grill-Me & Andrej Karpathy Skills
+### 🎯 Mandatory Pre-Execution Protocol: Code Mode, Grill-Me, Karpathy & AI Hero Code Review
 
 > 🚨 **UNBREAKABLE GOLDEN RULE:**  
 > RPG book diagramming, translation, and formatting must **NEVER** be performed in a single blind step or driven by hasty assumptions.  
-> The agent MUST operate **strictly in stages**, always using **Code Mode** (code tools, programmatic inspection, deterministic scripts, and direct file manipulation), and rigorously follow the **`andrej-karpathy-skills`** protocol combined with an interrogation interview via **`grill-me`** before making any changes.
+> The agent MUST operate **strictly in stages**, always using **Code Mode** (code tools, programmatic inspection, deterministic scripts, and direct file manipulation), and rigorously follow the **ndrej-karpathy-skills** protocol combined with an interrogation interview via **grill-me** and code review via **skills-code-review** before making or finalizing any changes.
 
-#### 1. Mandatory Skills Installation
-Before starting any diagramming task, ensure the availability and use of:
-- **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Structured alignment interrogation to drill down into project requirements.
-- **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Pragmatic engineering guidelines against hallucinations, scope creep, and over-engineering.
+#### 1. Mandatory Skills Installation & Global/Local Availability
+Every task must ensure that the companion skill trinity is installed and accessible both **globally** (~/.gemini/config/skills/, ~/.claude/skills/) and in the **user's local project** (.agents/skills/, .claude/skills/):
+- **ndrej-karpathy-skills** (https://github.com/multica-ai/andrej-karpathy-skills): Pragmatic engineering discipline against hallucinations, scope creep, and over-engineering.
+- **grill-me** (https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me): Structured alignment interrogation to drill down into project requirements and eliminate ambiguities.
+- **skills-code-review** (https://www.aihero.dev/skills-code-review): Automated code review, quality gating, and rigorous pre-delivery validation.
 
-```bash
-# Installation in AI agent environments (Claude Code / Antigravity / Cursor):
-npx skills@latest add mattpocock/skills --skill=grill-me
+`ash
+# Add companion skills to local project / global environment:
 npx skills@latest add multica-ai/andrej-karpathy-skills
-```
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add aihero-dev/skills-code-review
+`
 
 #### 2. The 4 Karpathy Principles for Book Formatting
 1. **Don't Assume. Don't Hide Confusion:** Ask upfront instead of guessing margins, fonts, or ambiguous terms.
@@ -159,37 +161,37 @@ Always execute via scripted tools (Python, PyMuPDF, ReportLab, fpdf2, MarkItDown
 
 The workflow follows the **Analyze → Extract → Translate → Review → Diagram → Audit** pipeline. Never skip stages.
 
-#### Phase 1 — FAÇA A IA ANALISAR O PDF ORIGINAL
+#### Phase 1 — ANALYZE THE ORIGINAL PDF WITH AI
 **Command to be used with the AI (paid version with file access, e.g., ChatGPT WORK / Claude / Gemini paid):**
 > "Analyze fully this PDF before making any alteration. Identify the number of pages, paper size, margins, amount and width of columns, spacing, paragraph indents, text alignments, footers, headers, images, ornaments, borders and fonts used. Identify font sizes for body, titles and subtitles. Verify which excerpts use bold, italic or other typographic variations. Present a technical report so the Portuguese diagramming can reproduce the original layout. The AI can inspect internal PDF properties and analyze visually. Depending on the file, it is possible to identify the exact fonts used."
 
 **Agent mandate:** The AI MUST present the technical report before any diagramming begins.
 
-#### Phase 2 — DESCUBRA E UTILIZE AS FONTES CORRETAS
+#### Phase 2 — DISCOVER AND UTILIZE THE CORRECT FONTS
 **Command:**
 > "Identify all fonts used in the PDF, including names, sizes and variations. Verify whether they are embedded in the file and whether they can be used directly in the diagramming. If any font is unavailable, inform its name and seek a typographically compatible alternative. Do not substitute fonts without first consulting me. If the font is not available, you may provide it directly in chat. Just look it up on the internet by the name it gave you — usually fonts are found on free sites. You may also request creation of original-like characters or a custom typographic solution when the tool allows. Do not assume the AI can automatically recreate an identical functional font."
 
-#### Phase 3 — EXTRAIA O TEXTO ANTES DE TRADUZIR
+#### Phase 3 — EXTRACT TEXT BEFORE TRANSLATING
 **Command:**
 > "Extract all text from the original PDF, respecting the correct reading order of columns, paragraphs, titles, lists, tables and character sheets. Do not summarize, omit or invent words. When finding texts embedded in images, gothic fonts or excerpts that cannot be extracted automatically, examine the page visually and transcribe the content. Organize the result by physical page of the original and generate an editable DOCX."
 
-#### Phase 4 — ENSINE A IA SOBRE O VOCABULÁRIO DO RPG
+#### Phase 4 — TEACH THE AI THE RPG VOCABULARY
 **Command:**
 > "Study the official terminology used in the Brazilian RPG editions you have. Identify the established translations for clans, Disciplines, Attributes, Abilities, Backgrounds, Virtues, rules, powers and other concepts. Build a bilingual glossary and use those terms consistently during the whole translation. When there is divergence between Brazilian editions, present the alternatives for my decision. Do not translate proper names or specific terms arbitrarily. Note: providing reference books does not mean the AI will memorize everything perfectly. Ask it to consult the glossary at each new batch."
 
-#### Phase 5 — TRADUZA EM PEQUENOS LOTES
+#### Phase 5 — TRANSLATE IN SMALL BATCHES
 **Command:**
 > "Translate fully the physical pages X to Y of the original PDF to Brazilian Portuguese. Preserve all content, including titles, subtitles, quotes, dialogues, character sheets, notes, tables and rules. Do not make summaries or free adaptations. The translation should be natural in Portuguese but faithful to the original. Preserve paragraph organization and do not create artificial breaks. Use the RPG glossary previously established. When finished, generate a DOCX with the translation and check whether there is any omission. When all batches are finished, ask to merge them into a single document."
 
-#### Phase 6 — VERIFIQUE A TRADUÇÃO ANTES DE DIAGRAMAR
+#### Phase 6 — VERIFY TRANSLATION BEFORE DIAGRAMMING
 **Command:**
 > "Compare the translated DOCX with the original PDF, page by page and paragraph by paragraph. Identify missing, duplicated, mis-translated or out-of-sequence excerpts. Pay special attention to character sheets, numeric values, rules and paragraph continuity between pages and columns. Correct the identified problems without altering approved text. Present a report indicating what was checked, what was corrected and what still needs human review."
 
-#### Phase 7 — AGORA SIM, COMECE A DIAGRAMAÇÃO!
+#### Phase 7 — NOW START DIAGRAMMING!
 **Command:**
 > "Use the original PDF as the absolute layout reference and the translated DOCX as the source of the translated content. Reproduce the paper size, margins, columns, spacing, fonts, indents, alignments, titles, subtitles, footers, images, borders and ornaments of the original. Preserve the total page count of the book. The text should flow naturally inside the columns, respecting the paragraph structure. Do not stretch or compress fonts to force fit. Do not overlay new texts on old ones nor rasterize pages. Preserve all original images and make the text flow around them in the same locations. When fitting difficulty is caused by language length differences, adjust the typographic composition carefully without suppressing content. Work in small batches and generate a PDF for my approval before continuing. The ideal is to start with five to ten test pages. Once the result is good, approve the pattern and ask to apply it to the remaining pages."
 
-#### Phase 8 — EXIJA UMA AUDITORIA FINAL
+#### Phase 8 — DEMAND A FINAL AUDIT
 **Final audit command:**
 > "Compare visually and structurally each Portuguese page with its original counterpart. Check whether: all text was preserved; paragraphs are correctly separated and aligned; fonts and sizes are adequate; titles occupy the corresponding positions; columns have the correct flow; there are no overlapping or cut texts; no image or ornament disappeared; footers and page numbers are correct; the page count matches. Correct problems before delivering."
 
@@ -372,22 +374,24 @@ pip install markitdown markitdown-ocr pdfminer.six pdfplumber pypdf pypdfium2 Pi
 
 Convenção sugerida: `<livro>_<versao>_<status>.txt`, `<livro>_<versao>_traduzido.txt`, `<livro>_<versao>_diagramado.md`, `<livro>_<versao>_diagramado.pdf`.
 
-### 🎯 Protocolo Obrigatório Pré-Execução: Code Mode, Grill-Me & Andrej Karpathy Skills
+### 🎯 Protocolo Obrigatório Pré-Execução: Code Mode, Grill-Me, Karpathy & AI Hero Code Review
 
 > 🚨 **REGRA DE OURO INVIOLÁVEL:**  
 > A diagramação, tradução e formatação de livros de RPG **NUNCA** devem ser executadas em um único passo cego ou com suposições precipitadas.  
-> O agente DEVE operar **obrigatoriamente por etapas**, usando sempre o **Code Mode** (ferramentas de código, inspeção programática, scripts determinísticos e manipulação direta de arquivos), e seguir rigorosamente antes de qualquer alteração o protocolo de **`andrej-karpathy-skills`** combinado com **`grill-me`**.
+> O agente DEVE operar **obrigatoriamente por etapas**, usando sempre o **Code Mode** (ferramentas de código, inspeção programática, scripts determinísticos e manipulação direta de arquivos), e seguir rigorosamente antes de qualquer alteração o protocolo de **ndrej-karpathy-skills** combinado com **grill-me** e validação contínua via **skills-code-review**.
 
-#### 1. Instalação Obrigatória das Skills de Alinhamento e Engenharia
-Antes de iniciar qualquer trabalho, o agente deve garantir a disponibilidade e uso integrado de:
-- **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Interrogação estruturada para alinhar requisitos, limites, escopo e escolhas com o usuário.
-- **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Princípios rígidos de engenharia de software e bom senso contra alucinações e complexidade desnecessária.
+#### 1. Instalação Obrigatória das Skills e Disponibilidade Global / Local
+Antes de iniciar qualquer trabalho, o agente deve garantir a presença das skills essenciais disponíveis **globalmente** (~/.gemini/config/skills/, ~/.claude/skills/) e no **projeto do usuário** (.agents/skills/, .claude/skills/):
+- **ndrej-karpathy-skills** (https://github.com/multica-ai/andrej-karpathy-skills): Princípios rígidos de engenharia de software, código mínimo e ausência de suposições cegas.
+- **grill-me** (https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me): Interrogação estruturada para alinhar requisitos, limites, escopo e escolhas antes de executar.
+- **skills-code-review** (https://www.aihero.dev/skills-code-review): Revisão automatizada de código e validação rigorosa pré-entrega.
 
-```bash
+`ash
 # Como instalar ou integrar no ambiente do agente (ex.: Claude Code / Antigravity / Cursor):
-npx skills@latest add mattpocock/skills --skill=grill-me
 npx skills@latest add multica-ai/andrej-karpathy-skills
-```
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add aihero-dev/skills-code-review
+`
 
 #### 2. Protocolo Andrej Karpathy (4 Princípios Operacionais)
 Ao planejar e implementar qualquer código, script ou ajuste de diagramação:
@@ -532,15 +536,6 @@ Antes de finalizar e entregar qualquer página:
 3. Entregar o PDF preenchível (`.pdf`) e, opcionalmente, uma versão achatada.
 
 **Artefatos de entrega:** PDF preenchível (`.pdf`) com campos de formulário (editáveis).
-
-### 📤 Artefatos de Entrega & Convenção de Nomenclatura (PT)
-
-| Artefato | Formato | Finalidade |
-|---|---|---|
-| **Original** | `.pdf` | Referência absoluta de diagramação (nunca modificado). |
-| **Extração** | `.txt` / `.md` / `.docx` | Texto organizado por página física. |
-| **Tradução** | `.txt` / `.md` / `.docx` | Tradução para o português brasileiro (lotes pequenos). |
-| **Diagramação** | `.txt` / `.md` / `.pdf` | Entregas: textos, Markdown e PDF diagramado. |
 
 ### 📖 Aprendizado Contínuo & Criação Automática de Glossários de RPG
 

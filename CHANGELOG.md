@@ -10,10 +10,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [1.14.0] - 2026-11-03
 
 ### Added / Adicionado
-- **Requisito Obrigatório do Ecossistema: GitHub CLI (`gh`) & Autenticação:**
-  - Padronização em todas as skills para exigir e forçar a verificação do `gh` instalado e autenticado (`gh auth login`).
-  - Atualização dos scripts `check_env.py` em `book-formatter`, `video-to-md`, `master-of-foundryvtt`, `docs-for-markdown`, `docs-for-skill`, `image-to-prompt`, `website-for-markdown` e `website-for-skill` para verificar o status de conexão da conta do usuário.
-  - Facilita clonagem contínua, atualização de forks e envio formal de sugestões, issues e novos glossários para `CharlesCorreaDev/skills-ai`.
+- **Requisitos Mandatórios Globais e Locais do Ecossistema: GitHub CLI (`gh`) & Tríade de Skills:**
+  - **GitHub CLI (`gh`) & Autenticação Obrigatória:** Padronização em todas as skills para exigir e forçar a verificação do `gh` instalado e conectado (`gh auth login`), facilitando clonagem fluida, atualização de forks e submissão formal de issues e novos glossários via CLI.
+  - **Tríade Obrigatória de Skills Companheiras (Disponíveis Globalmente e no Projeto do Usuário):**
+    - Todas as skills criadas no repositório operam em conjunto com:
+      1. **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Engenharia de software enxuta, código cirúrgico e ausência de suposições cegas.
+      2. **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Entrevista profunda com o usuário/autor para travar requisitos e eliminar ambiguidades antes da execução.
+      3. **`skills-code-review`** (`https://www.aihero.dev/skills-code-review`): Revisão automatizada de código e auditoria rigorosa de qualidade antes de qualquer entrega.
+    - Disponibilidade obrigatória em escopo global (`~/.gemini/config/skills/`, `~/.claude/skills/`) e no projeto local (`.agents/skills/`, `.claude/skills/`).
 - **video-to-md (v0.2.0-beta):**
   - Expansão multiplataforma: YouTube, Vimeo (oEmbed + v2 API) e Twitch (VODs e Clipes via `yt-dlp`).
   - Fallback por Áudio via IA (`--fallback-audio`) com suporte a Whisper e WhisperX (`--whisper-model`).
