@@ -170,3 +170,4 @@ rl.on("line", (line: string) => {{
             "args": ["-y", "tsx", server_path],
             "env": env_vars or {}
         }
+
