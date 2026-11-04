@@ -97,5 +97,8 @@
 | **PHP** | **PHP 8.4+** | `stdio` nativo (`php://stdin`, `php://stdout`) | FlightPHP v3 / PDO |
 | **Python** | **Python 3.12+** | `stdio` nativo (`sys.stdin`, `sys.stdout`) | FastMCP / Starlette |
 | **Node.js** | **Node.js 22+** | `stdio` nativo (`readline`, `process.stdout`) | ESM nativo puro |
+| **TypeScript** | **TypeScript 5+** | `stdio` nativo (interfaces estritas) | tsx / ts-node / bun |
+| **Go** | **Go 1.22+** | `stdio` nativo (`bufio.Scanner`, `encoding/json`) | Stdlib pura (sem dependências) |
+| **Rust** | **Rust Edition 2021+** | `stdio` nativo (`io::stdin`, `io::stdout`) | `serde_json` |
 | **JavaScript** | **Deno / Bun / Node** | `stdio` | Vanilla JS |
 

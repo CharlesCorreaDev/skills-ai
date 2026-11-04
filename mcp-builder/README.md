@@ -9,7 +9,7 @@
 ## 🇧🇷 Português
 
 ### 📌 Visão Geral
-O **MCP Builder** é uma suíte de engenharia de software e inteligência artificial criada para projetar, gerar, blindar e configurar servidores **Model Context Protocol (MCP)** nativos e seguros em **PHP (8.4+)**, **Python (3.12+)** e **Node.js (22+) / JavaScript**.
+O **MCP Builder** é uma suíte de engenharia de software e inteligência artificial criada para projetar, gerar, blindar e configurar servidores **Model Context Protocol (MCP)** nativos e seguros em **PHP (8.4+)**, **Python (3.12+)**, **Node.js (22+) / JavaScript**, **TypeScript (5+)**, **Go (1.22+)** e **Rust (2021+)**.
 
 Ela resolve os principais gargalos no ecossistema de MCPs:
 1. **Geração Automatizada Sem Dependências Inchadas:** Converte qualquer documentação de API, código legado ou especificação OpenAPI em servidores MCP ultraleves via protocolo padrão `stdio` JSON-RPC 2.0.
@@ -32,6 +32,9 @@ Ela resolve os principais gargalos no ecossistema de MCPs:
 | **Adapter PHP 8.4+** | [`adapters/Php84Adapter.php`](adapters/Php84Adapter.php) | Gerador nativo PHP 8.4+ com tipagem estrita |
 | **Adapter Python 3.12+** | [`adapters/python_adapter.py`](adapters/python_adapter.py) | Gerador nativo Python async-first |
 | **Adapter Node.js 22+** | [`adapters/node_adapter.mjs`](adapters/node_adapter.mjs) | Gerador nativo Node.js ESM |
+| **Adapter TypeScript 5+**| [`adapters/typescript_adapter.py`](adapters/typescript_adapter.py) | Gerador nativo TypeScript 5+ fortemente tipado |
+| **Adapter Go 1.22+** | [`adapters/go_adapter.py`](adapters/go_adapter.py) | Gerador nativo Go com standard library pura |
+| **Adapter Rust 2021+** | [`adapters/rust_adapter.py`](adapters/rust_adapter.py) | Gerador nativo Rust com `serde_json` |
 | **Cheatsheet Rápido** | [`cheatsheet.md`](cheatsheet.md) | Tabela de métodos e mensagens JSON-RPC |
 | **Padrões & Boas Práticas**| [`patterns.md`](patterns.md) | Padrões arquiteturais e blindagem |
 | **Glossário** | [`glossary.md`](glossary.md) | Definições e vocabulário técnico do MCP |
@@ -43,7 +46,7 @@ Ela resolve os principais gargalos no ecossistema de MCPs:
 ## 🇺🇸 English
 
 ### 📌 Overview
-**MCP Builder** is a comprehensive software engineering suite for designing, generating, and securing native **Model Context Protocol (MCP)** servers in **PHP (8.4+)**, **Python (3.12+)**, and **Node.js (22+) / JavaScript**.
+**MCP Builder** is a comprehensive software engineering suite for designing, generating, and securing native **Model Context Protocol (MCP)** servers in **PHP (8.4+)**, **Python (3.12+)**, **Node.js (22+) / JavaScript**, **TypeScript (5+)**, **Go (1.22+)**, and **Rust (2021+)**.
 
 ### 🚀 Key Features
 - **Prompt Injection Defense:** Active heuristic detection and quarantine of prompt injection attempts in input documentation.

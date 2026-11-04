@@ -20,6 +20,9 @@ O formato é baseado no [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.
   - **PHP 8.4+ Adapter**: Suporte a tipagem estrita, classes `readonly`, enums, FlightPHP v3 e JSON-RPC 2.0 via `stdio`.
   - **Python 3.12+ Adapter**: Async-first, suporte a stdio puro e FastMCP.
   - **Node.js 22+ Adapter**: Padrão ECMAScript Modules (ESM) nativo sem dependências inchadas.
+  - **TypeScript 5+ Adapter** (`adapters/typescript_adapter.py`): Geração com interfaces estritas para schemas, requisições e respostas JSON-RPC 2.0.
+  - **Go 1.22+ Adapter** (`adapters/go_adapter.py`): Standard library pura (`bufio`, `encoding/json`), buffer de 10MB para payloads grandes e concorrência nativa.
+  - **Rust 2021+ Adapter** (`adapters/rust_adapter.py`): Segurança estrita de tipos e memória com `serde` e `serde_json`, locking de I/O em stdout e compilação de binário de alta performance.
 - **Fail-Safe & Auto Issue Reporter (`scripts/issue_reporter.py`):**
   - Monitoramento de falhas em tempo de compilação ou teste de handshake do servidor MCP.
   - Comunicação transparente ao usuário no chat com abertura automática em segundo plano de Issue no repositório GitHub oficial (`CharlesCorreaDev/skills-ai`) com diagnóstico estruturado e proposta de solução.
