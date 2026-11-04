@@ -7,6 +7,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.16.0] - 2026-11-04
+
+### Added / Adicionado
+- **Nova Skill Oficial: `sms-legal` (v1.0.0):**
+  - **Servidor MCP Nativo Unificado (`sms-legal/mcp/`):**
+    - Implementação nativa em Node.js (`sms_legal_mcp_server.js`) via JSON-RPC 2.0 stdio (sem dependências externas).
+    - Implementação nativa alternativa em Python 3 (`sms_legal_mcp_server.py`) com módulo nativo `urllib`.
+    - 9 ferramentas MCP nativas: `sms_enviar_texto`, `sms_enviar_lote`, `sms_agendar`, `sms_consultar_status`, `sms_consultar_creditos`, `sms_consultar_respostas`, `sms_consultar_numero`, `sms_enviar_voz` e `sms_enviar_audio`.
+    - Manual completo de integração (`mcp/README.md`) para Antigravity IDE, Claude Desktop, Cursor e outros clientes MCP.
+  - **SDKs Multilinguagem Nativos (`sms-legal/integrations/`):**
+    - SDK em **PHP** (`SmsLegalClient.php`): compatível com PHP 7.4 a 8.5+, cURL nativo e tipagem estrita.
+    - SDK em **Python** (`sms_legal_client.py`): compatível com Python 3.8+, sem bibliotecas externas.
+    - SDK em **Node.js** (`sms_legal_client.js`): cliente assíncrono modular com Promises.
+  - **Documentação Arquitetural e de Integração:**
+    - `cheatsheet.md`: Tabela rápida de endpoints, parâmetros e códigos de erro de `000` a `011`.
+    - `patterns.md`: Padrões de arquitetura (BFF, filas de mensageria assíncronas, proteção contra bloqueio por links e particionamento de lotes).
+    - `glossary.md`: Glossário técnico com termos e definições do SMS Gateway.
+    - `README.md`, `VERSION` (1.0.0) e `CHANGELOG.md` dedicados.
+
+---
+
 ## [1.15.0] - 2026-11-03
 
 ### Added / Adicionado
