@@ -10,6 +10,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [1.16.0] - 2026-11-04
 
 ### Added / Adicionado
+- **Nova Skill Oficial: `mcp-builder` (v0.1.0-beta):**
+  - **Arquiteto & Gerador Universal de Servidores MCP:**
+    - Suporte nativo a **PHP 8.4+** (`adapters/Php84Adapter.php`), **Python 3.12+** (`adapters/python_adapter.py`) e **Node.js 22+ ESM** (`adapters/node_adapter.mjs`) operando via JSON-RPC 2.0 stdio com zero dependências externas.
+  - **Security Shield (Blindagem Contra Ataques & Anti-Prompt Injection):**
+    - Módulo `security/prompt_shield.py` com detecção heurística de jailbreaks, quarentena de credenciais/segredos e análise estática SAST (proteção contra SQLi, XSS, Path Traversal, SSRF e Command Injection).
+  - **Resiliência Fail-Safe & Auto Issue Reporter:**
+    - Módulo `scripts/issue_reporter.py` para reporte amigável de falhas ao usuário e abertura automática de Issues estruturadas com diagnóstico higienizado no repositório GitHub (`CharlesCorreaDev/skills-ai`).
+  - **Self-Updater & Monitor de Atualizações:**
+    - Módulo `scripts/check_updates.py` para consulta de novas versões no GitHub Releases.
+  - **Configurador de MCPs Externos:**
+    - Módulo `scripts/configure_external_mcp.py` para injeção automática de configurações no Antigravity IDE, Claude Desktop e Cursor.
+  - **Documentação e Guias Técnicos:**
+    - `SKILL.md`, `README.md`, `VERSION` (0.1.0-beta), `CHANGELOG.md`, `cheatsheet.md`, `patterns.md` e `glossary.md`.
 - **Nova Skill Oficial: `sms-legal` (v1.0.0):**
   - **Servidor MCP Nativo Unificado (`sms-legal/mcp/`):**
     - Implementação nativa em Node.js (`sms_legal_mcp_server.js`) via JSON-RPC 2.0 stdio (sem dependências externas).
