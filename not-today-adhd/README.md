@@ -62,14 +62,14 @@ python scripts/install_ecosystem.py
 ### 2. Comandos no Chat com a IA
 Você pode invocar modos específicos a qualquer momento:
 
-| Comando | Descrição |
-| :--- | :--- |
-| `/tdah` ou `/adhd` | Ativa a reformatação cognitiva completa. |
-| `/tdah micro` | Modo de micro-passo extremo: exibe 1 ação e espera confirmação. |
-| `/tdah resume` | Resume qualquer texto ou código em 3 pontos essenciais. |
-| `/tdah foco` | Corta ramificações e foca estritamente na tarefa atual. |
-| `/tdah pausa` | Salva um checkpoint seguro para retomar depois sem perder contexto. |
-| `/tdah sync` | Atualiza os repositórios locais do ecossistema. |
+| Comando Principal (UI Auto-complete) | Atalho Rápido / Texto | Descrição |
+| :--- | :--- | :--- |
+| `/not-today-adhd` | `/tdah` ou `/adhd` | Ativa a reformatação cognitiva completa. |
+| `/not-today-adhd micro` | `/tdah micro` | Modo de micro-passo extremo: exibe 1 ação e espera confirmação. |
+| `/not-today-adhd resume` | `/tdah resume` | Resume qualquer texto ou código em 3 pontos essenciais. |
+| `/not-today-adhd foco` | `/tdah foco` | Corta ramificações e foca estritamente na tarefa atual. |
+| `/not-today-adhd pausa` | `/tdah pausa` | Salva um checkpoint seguro para retomar depois sem perder contexto. |
+| `/not-today-adhd sync` | `/tdah sync` | Atualiza os repositórios locais do ecossistema. |
 
 ---
 

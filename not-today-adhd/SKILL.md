@@ -81,14 +81,14 @@ Toda resposta sob a influência da skill **Not today, ADHD!** deve seguir rigoro
 
 ## 🕹️ Comandos Rápidos
 
-| Comando | Efeito Prático |
-| :--- | :--- |
-| `/tdah` | Ativa a reformatação cognitiva completa. |
-| `/tdah micro` | Modo 1 micro-passo por vez (espera confirmação antes do próximo). |
-| `/tdah resume` | Transforma qualquer código/texto em 3 bullets fáceis. |
-| `/tdah foco` | Corta ramificações e trava na tarefa atual. |
-| `/tdah pausa` | Salva um checkpoint do progresso e encerra a sobrecarga. |
-| `/tdah sync` | Roda `scripts/install_ecosystem.py` e sincroniza todas as referências. |
+| Comando Principal (UI Auto-complete) | Atalho Rápido / Texto | Efeito Prático |
+| :--- | :--- | :--- |
+| `/not-today-adhd` | `/tdah` ou `/adhd` | Ativa a reformatação cognitiva completa. |
+| `/not-today-adhd micro` | `/tdah micro` | Modo 1 micro-passo por vez (espera confirmação antes do próximo). |
+| `/not-today-adhd resume` | `/tdah resume` | Transforma qualquer código/texto em 3 bullets fáceis. |
+| `/not-today-adhd foco` | `/tdah foco` | Corta ramificações e trava na tarefa atual. |
+| `/not-today-adhd pausa` | `/tdah pausa` | Salva um checkpoint do progresso e encerra a sobrecarga. |
+| `/not-today-adhd sync` | `/tdah sync` | Roda `scripts/install_ecosystem.py` e sincroniza todas as referências. |
 
 ---
 
