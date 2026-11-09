@@ -5,7 +5,10 @@ Para criar sistemas administrativos, portais corporativos e dashboards de nível
 1. 🌟 **Mazer** ([github.com/zuramai/mazer](https://github.com/zuramai/mazer) • [docs](https://zuramai.github.io/mazer/docs/index.html) • [demo](https://zuramai.github.io/mazer/demo/index.html))
 2. ⚡ **AdminKit** ([github.com/adminkit/adminkit](https://github.com/adminkit/adminkit) • [demo/site](https://adminkit.io/))
 
-Ambos são **100% livres de jQuery**, utilizam **Vanilla ES6 modular**, possuem suporte nativo a **Modo Escuro (Dark Mode)** e aderem estritamente a padrões de alta usabilidade e acessibilidade WCAG 2.2 AA.
+Ambos são **100% livres de jQuery**, utilizam **Vanilla ES6 modular**, possuem foco em alta usabilidade, acessibilidade WCAG 2.2 AA e **utilizam estritamente o tema claro (Light Theme) como padrão**. O tema escuro/noturno só é ativado se expressamente solicitado pelo usuário.
+
+> [!IMPORTANT]
+> **DIRETRIZ DE TEMA:** Tanto o Mazer quanto o AdminKit e qualquer layout gerado por esta skill devem sempre ser inicializados com `data-bs-theme="light"` e classes de fundo claro (`bg-light`, `bg-body-tertiary`). O tema noturno (`data-bs-theme="dark"`) é estritamente opcional sob demanda explícita do usuário.
 
 ---
 

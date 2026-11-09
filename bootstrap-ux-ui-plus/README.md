@@ -17,14 +17,19 @@ Whether building corporate administrative panels, SaaS dashboards, or high-conve
 - **The 18 Essential Laws of UX:** Concrete implementation of all 18 laws (Hick, Fitts, Jakob, Proximity, Similarity, Common Region, Uniform Connectedness, Miller, Doherty Threshold, Von Restorff, Serial Position, Peak-End, Zeigarnik, Prägnanz, Tesler, Postel, Parkinson, Occam's Razor & Pareto).
 - **Nielsen's 10 Heuristics:** Actionable guidance for system feedback, user freedom (Undo), error recovery, and clean typography.
 - **AccessLint & WCAG 2.2 AA:** Zero-compromise accessibility with keyboard focus rings (`.focus-ring`), ARIA labels, and touch targets (44px+).
-- **Mazer & AdminKit Architectures:** Production-ready dashboard structures modeled directly after [zuramai/mazer](https://github.com/zuramai/mazer) and [adminkit/adminkit](https://github.com/adminkit/adminkit).
-- **Dark Mode Ready:** Built-in dynamic theme management using Bootstrap 5.3+ `data-bs-theme="auto"`.
+- **Mazer & AdminKit Architectures:** Production-ready dashboard structures modeled directly after [zuramai/mazer](https://github.com/zuramai/mazer) and [adminkit/adminkit](https://github.com/adminkit/adminkit) with **Light Theme as mandatory default** (Night theme is strictly opt-in).
+- **Visual Accessibility & Colorblindness:** Built-in safeguards for Protanopia, Deuteranopia, Tritanopia, and Achromatopsia. Adheres to Brazilian Inclusion Law (LBI Lei 13.146/2015 Art. 63) and ABNT NBR 17225. Color is never the sole communicator.
+- **Default Corporate Palette & Typography:** Standard palette `#90271` (`#869dcc`, `#5772ac`, `#3b5998`, `#224389`, `#14306b`) and Google Sans typography (`Google Sans Flex` for titles, `Google Sans` for text, `Google Sans Code` for mono).
 - **Integrated Audit Engine:** Run `node scripts/audit_ux_bootstrap.mjs <file>` to automatically lint and detect accessibility/UX violations.
+- **Continuous Update & Version Guard:** Automated dual check (`scripts/check_updates.mjs`) tracking upstream Bootstrap releases (NPM) and comparing local vs GitHub repository skill versions with mandatory user permission before sync.
 
 ### 🚀 Quick Start
 ```bash
-# Run UX & Accessibility linter on any HTML/PHP/JSX file:
+# 1. Run UX & Accessibility linter on any HTML/PHP/JSX file:
 node bootstrap-ux-ui-plus/scripts/audit_ux_bootstrap.mjs path/to/your-page.html
+
+# 2. Check for new Bootstrap upstream versions & skill repository updates:
+node bootstrap-ux-ui-plus/scripts/check_updates.mjs
 ```
 
 ---
@@ -40,14 +45,19 @@ Projetada para desenvolvedores e arquitetos de software criarem interfaces elega
 - **As 18 Leis Canônicas do UX:** Aplicação prática de todas as 18 leis (Hick, Fitts, Jakob, Proximidade, Semelhança, Região Comum, Conectividade Uniforme, Miller, Limiar de Doherty <400ms, Von Restorff, Posição Serial, Pico-Fim, Zeigarnik, Prägnanz, Tesler, Postel, Parkinson, Navalha de Occam e Pareto 80/20).
 - **10 Heurísticas de Nielsen:** Componentes com feedback imediato de status, proteção contra erros destrutivos com modais de confirmação e linguagem humana.
 - **Acessibilidade WCAG 2.2 Nível AA:** Navegação completa por teclado com `.focus-ring`, rótulos ARIA em botões de ação e contraste de cores aprimorado com tokens sutis (`.bg-*-subtle`).
-- **Arquiteturas de Referência Mazer & AdminKit:** Estruturas canônicas completas para painéis e administrações espelhadas em [zuramai/mazer](https://github.com/zuramai/mazer) e [adminkit/adminkit](https://github.com/adminkit/adminkit).
-- **Suporte Nativo a Modo Escuro:** Gerenciamento dinâmico de tema com o seletor `data-bs-theme`.
+- **Arquiteturas de Referência Mazer & AdminKit:** Estruturas canônicas completas para painéis e administrações espelhadas em [zuramai/mazer](https://github.com/zuramai/mazer) e [adminkit/adminkit](https://github.com/adminkit/adminkit), com **Tema Claro (Light Theme) obrigatório por padrão** (o modo noturno só é ativado se expressamente solicitado pelo usuário).
+- **Acessibilidade Visual & Daltonismo:** Proteção técnica para Protanopia, Deuteranopia, Tritanopia e Acromatopsia. Em total conformidade com a LBI (Lei 13.146/2015 Art. 63), eMAG e ABNT NBR 17225. A cor nunca é o único comunicador.
+- **Paleta Padrão Calibrada & Tipografia Oficial:** Aplicação automática da paleta `#90271` (`#869dcc`, `#5772ac`, `#3b5998`, `#224389`, `#14306b`) e fontes Google Sans (`Google Sans Flex` para títulos, `Google Sans` para texto e `Google Sans Code` para código).
 - **Auditor de Qualidade Integrado:** Script CLI nativo para validar templates e páginas antes da entrega.
+- **Verificador de Versão & Atualização com Portão de Permissão:** Sistema duplo de atualização (`scripts/check_updates.mjs`) que checa novas versões do Bootstrap (NPM) e sincroniza a skill com o repositório remoto apenas com autorização explícita do usuário.
 
-### 🚀 Exemplo de Uso do Auditor CLI
+### 🚀 Exemplos de Uso dos Scripts CLI
 ```bash
-# Executar a auditoria de UX e Acessibilidade em um template:
+# 1. Executar a auditoria de UX e Acessibilidade em um template:
 node bootstrap-ux-ui-plus/scripts/audit_ux_bootstrap.mjs bootstrap-ux-ui-plus/templates/admin-dashboard-template.html
+
+# 2. Verificar lançamentos do Bootstrap e atualizações da skill:
+node bootstrap-ux-ui-plus/scripts/check_updates.mjs
 ```
 
 ---
@@ -68,7 +78,8 @@ bootstrap-ux-ui-plus/
 ├── heuristics/
 │   └── nielsen-heuristics-bootstrap.md # 10 Heurísticas de Nielsen aplicadas
 ├── accessibility/
-│   └── a11y-wcag-guidelines.md       # Diretrizes WCAG 2.2 AA & AccessLint
+│   ├── a11y-wcag-guidelines.md       # Diretrizes WCAG 2.2 AA & AccessLint
+│   └── visual-accessibility-colorblindness.md # Manual de Daltonismo, Baixa Visão e Paletas
 ├── templates/
 │   └── admin-dashboard-template.html # Dashboard administrativo completo responsivo
 └── scripts/

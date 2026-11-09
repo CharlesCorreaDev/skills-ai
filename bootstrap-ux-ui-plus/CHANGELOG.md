@@ -23,6 +23,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
     - Estruturação baseada em [zuramai/mazer](https://github.com/zuramai/mazer) (`#app > #sidebar + #main`) e [adminkit/adminkit](https://github.com/adminkit/adminkit) (`.wrapper > .sidebar + .main`) com zero dependência de jQuery e Vanilla JS nativo.
   - **Motor CLI de Auditoria e Validação (`scripts/audit_ux_bootstrap.mjs`):**
     - Linter automatizado para verificar inconformidades de acessibilidade e usabilidade em arquivos HTML, PHP, JSX e templates.
+  - **Verificador de Atualizações & Sincronização de Versão (`scripts/check_updates.mjs`):**
+    - Monitoramento duplo: checagem de releases upstream do Bootstrap (NPM) e comparação de versão local com repositório remoto GitHub, com portão mandatória de autorização do usuário antes de qualquer sincronização de arquivos.
+  - **Manual Técnico de Acessibilidade Visual e Daltonismo (`accessibility/visual-accessibility-colorblindness.md`):**
+    - Guia completo para Protanopia, Deuteranopia, Tritanopia e Acromatopsia, proibição da cor como comunicador único, conformidade com LBI (Lei 13.146/2015 Art. 63), eMAG e ABNT NBR 17225.
+  - **Definição de Paleta Corporativa Padrão (#90271) & Tipografia Oficial:**
+    - Paleta oficial: `#869dcc`, `#5772ac`, `#3b5998`, `#224389`, `#14306b` (com pergunta ativa de paleta caso o usuário queira customizar).
+    - Tipografia oficial: `Google Sans Flex` (títulos), `Google Sans` (texto) e `Google Sans Code` (mono).
+  - **Diretriz Mandatória de Temas (Light Theme Default):**
+    - Padrão estrito de Tema Claro (`data-bs-theme="light"`) para Mazer, AdminKit e interfaces geradas; tema escuro / noturno estritamente opt-in sob pedido explícito do usuário.
+  - **Revisão Integral de Acessibilidade e Paleta no Template de Dashboard:**
+    - `templates/admin-dashboard-template.html` atualizado com fontes Google Sans, paleta #90271, tema light por padrão, badges de status com ícones + texto para daltônicos e botões de filtro de contraste/daltonismo.
   - **Documentação Arquitetural e de Consulta:**
     - `cheatsheet.md`: Tabela rápida relacionando Leis de UX a classes do Bootstrap.
     - `glossary.md`: Glossário técnico com termos de HCI, psicologia cognitiva e Bootstrap.

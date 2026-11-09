@@ -21,10 +21,25 @@ description: Master UX/UI design, usability engineering, and responsive interfac
    - *Cognitive Load & Performance:* Miller's Law (Chunking 7±2), Doherty Threshold (<400ms feedback & skeletons).
    - *Memory, Retention & Simplicity:* Von Restorff Effect, Serial Position Effect, Peak-End Rule, Zeigarnik Effect, Law of Prägnanz, Tesler's Law, Postel's Law, Parkinson's Law, Occam's Razor & Pareto Principle (80/20).
 2. **Nielsen's 10 Usability Heuristics:** Actionable system feedback, error prevention, flexible workflows, and minimalist visual rhythm.
-3. **WCAG 2.2 AA Accessibility & AccessLint:** Mandatory ARIA labeling, keyboard focus management (`.focus-ring`), touch targets (44px+), and high-contrast subtle color tokens.
-4. **Multi-Language Architecture:** Production patterns and templates for vanilla HTML, PHP (Blade/Twig/MVC), Node.js, React/Next.js, Python (Django/FastAPI/Jinja2), and Java.
-5. **Canonical Dashboard Standards (Mazer & AdminKit):** Mandatory adoption of established architectures from [zuramai/mazer](https://github.com/zuramai/mazer) and [adminkit/adminkit](https://github.com/adminkit/adminkit) (Zero jQuery, Vanilla ES6, multi-level sidebars, dark mode, responsive cards).
-6. **Built-in Quality & Linter Engine:** Automated static auditor (`scripts/audit_ux_bootstrap.mjs`) to detect UX flaws and missing ARIA properties before release.
+3. **WCAG 2.2 AA Accessibility, AccessLint & Colorblindness Inclusivity:**
+   - Strict color contrast standards (>4.5:1 text, >3:1 components) adhering to WCAG 2.2 AA, LBI (Lei 13.146/2015) and ABNT NBR 17225.
+   - Comprehensive dyschromatopsia handling (Protanopia, Deuteranopia, Tritanopia, Monochromacy). **Color is never the sole communicator of status or feedback** (always pair with icons + text labels).
+   - High-contrast keyboard focus indicators (`outline: 3px solid #f5a623; box-shadow: 0 0 0 2px #14306b;`).
+4. **Default Color Palette & Typography System:**
+   - **Default Palette:** If the user hasn't specified colors, strictly apply palette `#90271`: `#869dcc`, `#5772ac`, `#3b5998`, `#224389`, `#14306b`. If the user wishes to customize, proactively ask for their preferred palette.
+   - **Default Typography:**
+     - Headings: `Google Sans Flex`
+     - Body Text: `Google Sans`
+     - Monospace / Code: `Google Sans Code`
+5. **Theme Protocol: LIGHT THEME BY DEFAULT:**
+   - Both Mazer and AdminKit (and all generated dashboards/pages) **MUST ALWAYS default to Light Theme (`data-bs-theme="light"` / `bg-light text-dark`)**.
+   - Dark/Night Theme (`data-bs-theme="dark"`) is **strictly opt-in** and only used if explicitly requested by the user.
+6. **Multi-Language Architecture:** Production patterns and templates for vanilla HTML, PHP (Blade/Twig/MVC), Node.js, React/Next.js, Python (Django/FastAPI/Jinja2), and Java.
+7. **Canonical Dashboard Standards (Mazer & AdminKit):** Mandatory adoption of established architectures from [zuramai/mazer](https://github.com/zuramai/mazer) and [adminkit/adminkit](https://github.com/adminkit/adminkit) (Zero jQuery, Vanilla ES6, multi-level sidebars, light theme default, responsive cards).
+8. **Built-in Quality & Linter Engine:** Automated static auditor (`scripts/audit_ux_bootstrap.mjs`) to detect UX flaws, missing ARIA properties, and colorblindness risks before release.
+9. **Continuous Bootstrap & Skill Update Protocol:**
+   - **Upstream Release Monitoring:** Checks NPM/GitHub registry for newer Bootstrap versions (e.g. Bootstrap 5.3.8+, 6.0 preview). When a newer version is available, the agent dynamically upgrades recommendations, CSS variables, and utility classes.
+   - **Skill Version Verification & Permission Gate:** Compares local skill files with the remote repository (`CharlesCorreaDev/skills-ai`). If a new version exists, the agent **MUST inform the user and request explicit confirmation** before updating or overwriting local skill files. Use `scripts/check_updates.mjs`.
 
 ---
 
@@ -38,11 +53,31 @@ A skill **Bootstrap UX/UI Plus** é uma suíte completa de engenharia de usabili
    - *Percepção Visual (Gestalt):* Lei da Proximidade, Lei da Semelhança, Lei da Região Comum, Conectividade Uniforme.
    - *Carga Cognitiva & Desempenho:* Lei de Miller (Chunking em blocos 7±2), Limiar de Doherty (resposta e feedback <400ms com skeletons).
    - *Memória, Retenção & Simplicidade:* Efeito Von Restorff (isolamento), Posição Serial, Regra do Pico-Fim, Efeito Zeigarnik (barras de progresso), Lei de Prägnanz (simetria), Lei de Tesler (absorção de complexidade), Lei de Postel (robustez e tolerância), Lei de Parkinson, Navalha de Occam e Princípio de Pareto (80/20).
-2. **10 Heurísticas de Usabilidade de Jakob Nielsen:** Feedback contínuo de status, prevenção rigorosa de erros, flexibilidade para usuários avançados e design minimalista sem excesso visual.
-3. **Acessibilidade WCAG 2.2 Nível AA & AccessLint:** Rótulos ARIA obrigatórios em botões de ícone, preservação de anéis de foco para navegação por teclado (`.focus-ring`), alvos de toque mobile mínimos (44px+) e paleta com contraste seguro.
-4. **Modelos Prontos Multi-Framework:** Templates completos para HTML puro, PHP/Blade, React/Next.js, Python/Jinja2 e dashboards administrativos responsivos prontos para produção.
-5. **Padrões Canônicos de Administração (Mazer & AdminKit):** Adoção mandatória das arquiteturas de referência consagradas [zuramai/mazer](https://github.com/zuramai/mazer) e [adminkit/adminkit](https://github.com/adminkit/adminkit) (Zero jQuery, Vanilla ES6, sidebars sanfonadas, modo escuro e cards ergonômicos).
-6. **Auditor Automático de Qualidade:** Script CLI integrado (`scripts/audit_ux_bootstrap.mjs`) para inspeção de código e identificação preventiva de inconsistências de usabilidade e acessibilidade.
+2. **Aplicação Prática das 18 Leis Canônicas do UX:**
+   - *Decisão & Interação:* Lei de Hick (redução da paralisia), Lei de Fitts (alvos grandes e próximos), Lei de Jakob (convenções consagradas).
+   - *Percepção Visual (Gestalt):* Lei da Proximidade, Lei da Semelhança, Lei da Região Comum, Conectividade Uniforme.
+   - *Carga Cognitiva & Desempenho:* Lei de Miller (Chunking em blocos 7±2), Limiar de Doherty (resposta e feedback <400ms com skeletons).
+   - *Memória, Retenção & Simplicidade:* Efeito Von Restorff (isolamento), Posição Serial, Regra do Pico-Fim, Efeito Zeigarnik (barras de progresso), Lei de Prägnanz (simetria), Lei de Tesler (absorção de complexidade), Lei de Postel (robustez e tolerância), Lei de Parkinson, Navalha de Occam e Princípio de Pareto (80/20).
+3. **10 Heurísticas de Usabilidade de Jakob Nielsen:** Feedback contínuo de status, prevenção rigorosa de erros, flexibilidade para usuários avançados e design minimalista sem excesso visual.
+4. **Acessibilidade WCAG 2.2 Nível AA, AccessLint e Inclusão Visual para Daltonismo:**
+   - Cumprimento rigoroso da LBI (Lei 13.146/2015 Art. 63), Decreto 5.296/2004, eMAG e ABNT NBR 17225.
+   - Tratamento abrangente de discromatopsia (Protanopia, Deuteranopia, Tritanopia, Acromatopsia). **A cor nunca deve ser o único comunicador** de status ou validação (sempre acompanhada de ícones + texto explícito).
+   - Foco por teclado de alto contraste (`outline: 3px solid #f5a623; box-shadow: 0 0 0 2px #14306b;`) e alvos táteis mínimos de 44px (Lei de Fitts).
+5. **Paleta Padrão Calibrada & Sistema Tipográfico Oficial:**
+   - **Paleta Padrão (#90271):** Se o usuário não informar cores, aplicar estritamente a paleta: `#869dcc`, `#5772ac`, `#3b5998`, `#224389`, `#14306b`. Caso queira personalizar, solicitar a paleta desejada.
+   - **Tipografia Oficial:**
+     - Títulos / Headings: `Google Sans Flex`
+     - Textos / Body: `Google Sans`
+     - Código / Monospace: `Google Sans Code`
+6. **Diretriz Mandatória de Temas: TEMA CLARO COMO PADRÃO (Light Theme Default):**
+   - Tanto o Mazer quanto o AdminKit (e quaisquer páginas criadas) **DEVEM SEMPRE USAR O TEMA CLARO (`data-bs-theme="light"` / `bg-light text-dark`)**.
+   - O tema noturno (`data-bs-theme="dark"`) **SÓ PODE SER USADO SE O USUÁRIO PEDIR EXPLICITAMENTE**.
+7. **Modelos Prontos Multi-Framework:** Templates completos para HTML puro, PHP/Blade, React/Next.js, Python/Jinja2 e dashboards administrativos responsivos prontos para produção.
+8. **Padrões Canônicos de Administração (Mazer & AdminKit):** Adoção mandatória das arquiteturas de referência consagradas [zuramai/mazer](https://github.com/zuramai/mazer) e [adminkit/adminkit](https://github.com/adminkit/adminkit) (Zero jQuery, Vanilla ES6, sidebars sanfonadas, modo claro padrão e cards ergonômicos).
+9. **Auditor Automático de Qualidade:** Script CLI integrado (`scripts/audit_ux_bootstrap.mjs`) para inspeção de código e identificação preventiva de inconsistências de usabilidade e acessibilidade.
+10. **Protocolo de Monitoramento e Atualização Contínua:**
+    - **Monitoramento Upstream do Bootstrap:** Verifica via registro NPM/GitHub novas versões do Bootstrap (ex.: Bootstrap 5.3.8+, 6.0 preview). Ao detectar lançamento, adapta instantaneamente recomendações, tokens de CSS e classes utilitárias às novas capacidades.
+    - **Verificação da Skill com Portão de Permissão:** Compara os arquivos locais da skill com o repositório remoto (`CharlesCorreaDev/skills-ai`). Se houver discrepância ou atualização, o agente **OBRIGATORIAMENTE notifica o usuário e solicita autorização expressa** antes de sobrescrever ou atualizar os arquivos. Executável via `scripts/check_updates.mjs`.
 
 ---
 
@@ -51,9 +86,11 @@ A skill **Bootstrap UX/UI Plus** é uma suíte completa de engenharia de usabili
 - [Leis do UX para Bootstrap](laws/laws-of-ux-bootstrap.md)
 - [10 Heurísticas de Nielsen no Bootstrap](heuristics/nielsen-heuristics-bootstrap.md)
 - [Guia de Acessibilidade & WCAG 2.2 AA](accessibility/a11y-wcag-guidelines.md)
+- [Manual de Acessibilidade Visual e Daltonismo](accessibility/visual-accessibility-colorblindness.md)
 - [Padrões Canônicos de Dashboards (Mazer & AdminKit)](patterns/mazer-and-adminkit-standards.md)
 - [Template Completo de Dashboard Administrativo](templates/admin-dashboard-template.html)
 - [Padrões de Arquitetura Multi-Linguagem](patterns.md)
 - [Cheatsheet de Consulta Rápida](cheatsheet.md)
 - [Glossário Técnico de UX e Bootstrap](glossary.md)
 - [Auditor Automatizado de Código](scripts/audit_ux_bootstrap.mjs)
+- [Verificador de Atualizações & Sincronização](scripts/check_updates.mjs)
