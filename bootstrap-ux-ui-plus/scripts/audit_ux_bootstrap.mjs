@@ -133,3 +133,4 @@ function runAudit(targetPath) {
 
 const target = process.argv[2] || path.join(process.cwd(), 'bootstrap-ux-ui-plus', 'templates', 'admin-dashboard-template.html');
 runAudit(target);
+

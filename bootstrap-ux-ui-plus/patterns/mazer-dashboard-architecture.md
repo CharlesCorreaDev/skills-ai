@@ -93,3 +93,4 @@ O Mazer organiza a tela em dois pilares fundamentais:
 
 ### C. Alternador de Tema Claro / Escuro (Dark Mode)
 O Mazer utiliza o seletor `data-bs-theme="dark"` integrado ao Bootstrap 5.3+ com persistência via `localStorage`.
+

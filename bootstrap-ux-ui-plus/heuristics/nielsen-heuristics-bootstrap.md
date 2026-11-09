@@ -95,3 +95,4 @@ Mensagens de erro devem ser expressas em linguagem clara, indicar com precisão 
 Mesmo que o sistema possa ser usado sem documentação, pode ser necessário fornecer ajuda e documentação fácil de pesquisar e focada na tarefa do usuário.
 - Seções de FAQ colapsáveis com `.accordion`.
 - Links de ajuda com ícone flutuante ou modais de onboarding.
+

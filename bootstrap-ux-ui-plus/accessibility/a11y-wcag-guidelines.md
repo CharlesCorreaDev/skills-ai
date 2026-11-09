@@ -41,3 +41,4 @@ Orientações práticas de acessibilidade baseadas no [AccessLint](https://githu
 - Todo `<input>`, `<select>` ou `<textarea>` deve ter um `<label>` correspondente com atributo `for` apontando para o `id` do campo.
 - Para textos de ajuda, utilize `aria-describedby="idDoTextoDeAjuda"`.
 - Em campos com erro, inclua `aria-invalid="true"` e vincule o erro com `aria-errormessage`.
+

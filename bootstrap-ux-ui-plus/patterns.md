@@ -88,3 +88,4 @@ export const StatCard: React.FC<StatCardProps> = ({ label, value, trend, icon })
 1. **Agrupamento Lógico de Campos:** Divida dados cadastrais, informações de cobrança e credenciais em seções numeradas ou abas.
 2. **Autofoco & Tabulação Natural:** Garanta que a navegação com `Tab` siga rigorosamente a leitura ocidental (esquerda para a direita, cima para baixo).
 3. **Validação em Tempo Real (Inline Feedback):** Utilize eventos de perda de foco (`blur`) para exibir feedback de sucesso (`.is-valid`) ou instruções claras de correção (`.is-invalid` + `.invalid-feedback`).
+

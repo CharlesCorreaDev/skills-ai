@@ -1,122 +1,164 @@
-# Leis Fundamentais do UX para Bootstrap / Fundamental Laws of UX for Bootstrap 🧠📐
-
-Este guia traduz as leis clássicas e psicológicas do UX (Laws of UX, Hick, Fitts, Jakob, Zeigarnik, Miller, etc.) em padrões acionáveis de componentes, grids e utilitários do **Bootstrap (v5.3 e v6.0)**.
-
----
-
-## 1. Lei de Hick (Hick's Law) ⏳
-> *O tempo que leva para tomar uma decisão aumenta logaritmicamente com o número e a complexidade das escolhas.*  
-> *The time it takes to make a decision increases with the number and complexity of choices: $T = b \cdot \log_2(n + 1)$*
-
-### 🎯 Aplicação no Bootstrap:
-- **Redução de Carga Cognitiva:**
-  - Em vez de um formulário longo com 20 campos visíveis, use **Progressive Disclosure** (acordeões `accordion`, abas `nav-tabs` ou wizards passo-a-passo).
-  - Em menus dropdown (`dropdown-menu`), limite a 5 a 7 opções principais. Se houver mais, agrupe com `dropdown-header` e `dropdown-divider`.
-  - Destaque a **Ação Primária** com `.btn-primary` e utilize `.btn-outline-secondary` ou `.btn-link` para ações secundárias ou de cancelamento.
-
-### 💻 Exemplo Bootstrap:
-```html
-<!-- Ruim: 4 botões com o mesmo peso visual gerando paralisia de escolha -->
-<!-- Bom: Ação primária destacada e opções secundárias agrupadas -->
-<div class="d-flex align-items-center gap-2">
-  <button type="submit" class="btn btn-primary px-4 fw-semibold">
-    Salvar e Continuar
-  </button>
-  <button type="button" class="btn btn-outline-secondary">
-    Salvar Rascunho
-  </button>
-  <button type="button" class="btn btn-link text-muted ms-auto">
-    Cancelar
-  </button>
-</div>
-```
+# As 18 Leis Canônicas do UX para Interfaces Bootstrap / The 18 Laws of UX for Bootstrap 🧠📐
+> *Compêndio Definitivo das 18 Leis do UX (Laws of UX por Jon Yablonski & Referência Thulio Bittencourt) traduzidas cirurgicamente para componentes, utilitários e padrões do Bootstrap (v5.3 e v6.0)*
 
 ---
 
-## 2. Lei de Fitts (Fitts's Law) 🎯
-> *O tempo necessário para alcançar um alvo é uma função da distância até o alvo e do tamanho dele.*  
+## 🎯 Índice dos 4 Grupos Cognitivos das 18 Leis do UX:
+
+| Grupo Cognitivo | Leis Inclusas | Foco Humano |
+|---|---|---|
+| **1. Decisão & Interação** | Lei de Hick, Lei de Fitts, Lei de Jakob | Velocidade de escolha, tamanho e distância dos botões, padrões já conhecidos |
+| **2. Percepção Visual (Gestalt)** | Lei da Proximidade, Lei da Semelhança, Lei da Região Comum, Lei da Conectividade Uniforme | Como os olhos agrupam campos de formulários, cards e blocos |
+| **3. Carga Cognitiva & Desempenho** | Lei de Miller, Limiar de Doherty | Capacidade de memória de trabalho (7±2) e resposta em menos de 400ms |
+| **4. Memória, Retenção & Simplicidade** | Von Restorff, Posição Serial, Pico-Fim, Zeigarnik, Prägnanz, Tesler, Postel, Parkinson, Occam, Pareto | O que o cérebro lembra e como simplificar fluxos e interfaces |
+
+---
+
+## 📌 Grupo 1: Decisão & Interação Rápida
+
+### 1. Lei de Hick (Hick's Law) ⏳
+> *Menos opções geram decisões mais rápidas: $T = b \cdot \log_2(n + 1)$.*  
+> *The time it takes to make a decision increases with the number and complexity of choices.*
+
+- **No Bootstrap:**
+  - Em telas de ação, destaque apenas **uma ação primária** usando `.btn-primary`.
+  - Ações secundárias devem usar `.btn-outline-secondary` ou `.btn-link`.
+  - Formulários com muitos campos devem ser particionados com **Progressive Disclosure** (acordeões `.accordion`, abas `.nav-tabs` ou wizards passo-a-passo).
+  - Limite menus suspensos (`.dropdown-menu`) a no máximo 5 a 7 opções visíveis.
+
+### 2. Lei de Fitts (Fitts's Law) 🎯
+> *Botão importante deve ser grande e estar perto do alcance.*  
 > *The time to acquire a target is a function of the distance to and size of the target.*
 
-### 🎯 Aplicação no Bootstrap:
-- **Área de Toque Confortável (Touch Targets):**
-  - Alvos interativos em mobile devem ter no mínimo **44x44px** ou **48x48px**.
-  - No Bootstrap, use botões maiores para ações chave: `.btn-lg`, padding vertical `.py-2` ou `.py-3`, e utilitários de clique expandido `.stretched-link` em cards inteiros.
-- **Posicionamento Próximo ao Cursor / Polegar:**
-  - Em interfaces mobile, coloque botões críticos na zona inferior (bottom bar fixa com `.fixed-bottom`).
-  - Em formulários, use rótulos clicáveis associados ao `id` do input (`<label for="...">`) e `.form-check-label` com área de clique ampla.
+- **No Bootstrap:**
+  - **Alvos de toque mínimos:** 44x44px ou 48x48px para mobile (`.btn-lg`, padding `.py-2` ou `.py-3`).
+  - **Área de clique expandida:** Use a classe `.stretched-link` em cards inteiros (`.card .position-relative`) para que qualquer ponto do card seja clicável.
+  - **Posicionamento ergonômico:** Em mobile, fixe ações de conversão principais no rodapé da viewport com `.fixed-bottom .p-3 .bg-body`.
 
-### 💻 Exemplo Bootstrap:
-```html
-<!-- Card inteiro clicável através de .stretched-link -->
-<div class="card shadow-sm h-100 position-relative border-0 rounded-3">
-  <div class="card-body p-4">
-    <div class="badge bg-primary-subtle text-primary mb-2">Relatório</div>
-    <h5 class="card-title fw-bold">Performance de Vendas</h5>
-    <p class="card-text text-secondary">Acesse o comparativo mensal completo.</p>
-    <a href="/relatorios/vendas" class="stretched-link text-decoration-none fw-medium">
-      Ver detalhes &rarr;
-    </a>
-  </div>
-</div>
-```
+### 3. Lei de Jakob (Jakob's Law) 🔄
+> *Seu sistema deve funcionar como os outros sites que o usuário já conhece.*  
+> *Users spend most of their time on other sites. They expect your site to work the same way.*
+
+- **No Bootstrap:**
+  - Logotipo sempre no canto superior esquerdo (`.navbar-brand`) levando para a página inicial.
+  - Barra de busca centralizada ou no topo com atalho `Ctrl+K`.
+  - Avatar de perfil, configurações e botão de sair alinhados na extremidade direita do cabeçalho (`.ms-auto`).
+  - Ícones convencionais: lupa para pesquisar (`bi bi-search`), sino para notificações (`bi bi-bell`), engrenagem para ajustes (`bi bi-gear`), lixeira para excluir (`bi bi-trash`).
+  - Não invente seletores exóticos: use `.form-select`, `.breadcrumb` e `.pagination`.
 
 ---
 
-## 3. Lei de Jakob (Jakob's Law) 🔄
-> *Os usuários passam a maior parte do tempo em outros sites. Isso significa que eles preferem que seu site funcione da mesma maneira que todos os outros que já conhecem.*  
-> *Users spend most of their time on other sites. This means they prefer your site to work the same way as all the other sites they already know.*
+## 📌 Grupo 2: Percepção Visual & Agrupamento (Gestalt)
 
-### 🎯 Aplicação no Bootstrap:
-- **Convenções Familiares:**
-  - O logotipo da marca fica no canto superior esquerdo da barra de navegação (`.navbar-brand`) e leva para a Home.
-  - A busca fica no topo central ou à direita.
-  - O avatar do perfil/usuário fica na extremidade direita do cabeçalho.
-  - Ícones padronizados: lupa para pesquisa, sino para notificações, engrenagem para configurações, lixeira para exclusão.
-  - Não tente reinventar controles nativos (como caixas de seleção, dropdowns e paginação). Utilize `.navbar`, `.form-select`, `.pagination` e `.breadcrumb`.
+### 4. Lei da Proximidade (Law of Proximity) 🧲
+> *Objetos que estão visualmente próximos tendem a ser percebidos como um único grupo.*
 
----
+- **No Bootstrap:**
+  - Mantenha o `<label>` colado ao `<input>` (`.form-label .mb-1`).
+  - Separe campos diferentes com espaçamento maior (`.mb-3` ou `.mb-4`).
+  - Agrupe botões inter-relacionados usando `.btn-group` ou flexbox `.d-flex .gap-2`.
 
-## 4. Efeito Zeigarnik (Zeigarnik Effect) ⏳
-> *As pessoas se lembram de tarefas incompletas ou interrompidas com mais facilidade do que de tarefas concluídas.*  
-> *People remember uncompleted or interrupted tasks better than completed tasks.*
+### 5. Lei da Semelhança (Law of Similarity) 👥
+> *Elementos que compartilham características visuais (mesma cor, tamanho, formato ou estilo) são percebidos como tendo a mesma função.*
 
-### 🎯 Aplicação no Bootstrap:
-- **Barras de Progresso e Indicadores de Conclusão:**
-  - Em dashboards e fluxos de onboarding, utilize barras de progresso do Bootstrap (`.progress` e `.progress-bar`) com indicação de porcentagem (ex: "Perfil 70% completo").
-  - Em wizards, use etapas numeradas para instigar o usuário a concluir a jornada.
+- **No Bootstrap:**
+  - Mantenha consistência rigorosa nos botões: todos os botões de ação destrutiva devem ser `.btn-danger` ou `.btn-outline-danger`.
+  - Links de navegação secundária devem compartilhar a mesma tipografia e cor (`.nav-link`).
 
-### 💻 Exemplo Bootstrap:
-```html
-<div class="card border-0 shadow-sm p-4 rounded-3">
-  <div class="d-flex justify-content-between align-items-center mb-2">
-    <span class="fw-semibold">Configuração da Conta</span>
-    <span class="badge bg-success-subtle text-success">3 de 4 etapas</span>
-  </div>
-  <div class="progress" style="height: 8px;">
-    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
-  <small class="text-muted mt-2">Falta apenas confirmar seu número de telefone!</small>
-</div>
-```
+### 6. Lei da Região Comum (Law of Common Region) 📦
+> *Elementos são percebidos como agrupados se compartilham uma área com um limite claramente definido.*
+
+- **No Bootstrap:**
+  - Utilize `.card .border-0 .shadow-sm .rounded-3` para isolar seções contextuais distintas (ex: card "Dados do Pagador" separado do card "Endereço de Cobrança").
+  - Use fundos sutis de contraste como `.bg-body-tertiary` ou `.bg-light` para agrupar filtros de listagem.
+
+### 7. Lei da Conectividade Uniforme (Law of Uniform Connectedness) 🔗
+> *Elementos que estão visualmente conectados (por linhas, setas ou barras) são percebidos como mais fortemente relacionados.*
+
+- **No Bootstrap:**
+  - Trilhas de navegação com `.breadcrumb` conectadas por barras ou divisores.
+  - Formulários tipo Wizard com indicadores de etapas numeradas conectadas por linhas de progresso.
 
 ---
 
-## 5. Lei de Miller (Miller's Law) 🔢
-> *A pessoa média consegue manter apenas cerca de 7 (mais ou menos 2) itens em sua memória de trabalho.*  
-> *The average person can only keep 7 (plus or minus 2) items in their working memory.*
+## 📌 Grupo 3: Carga Cognitiva & Desempenho
 
-### 🎯 Aplicação no Bootstrap:
-- **Chunking (Agrupamento de Dados):**
-  - Divida tabelas longas em grupos claros ou use `.card` particionados com títulos descritivos.
-  - Formatação de dados: números de telefone, CPF, cartões de crédito divididos visualmente em blocos legíveis.
-  - Filtros de busca: agrupar filtros relacionados em seções recolhíveis (`collapse`).
+### 8. Lei de Miller (Miller's Law) 🔢
+> *A pessoa média só consegue reter por volta de 7 (mais ou menos 2) itens na memória de trabalho. Divida sempre em blocos (chunking).*
+
+- **No Bootstrap:**
+  - Em painéis e dashboards, apresente no máximo de 3 a 5 cards de métricas em destaque (`.row .g-3 > .col-md-3`).
+  - Formatação visual com máscaras: divida números de cartões de crédito em blocos de 4 dígitos, CPF em `000.000.000-00` e telefones com DDD.
+
+### 9. Limiar de Doherty (Doherty Threshold) ⚡
+> *A produtividade humana dispara quando o computador e o usuário interagem em um ritmo inferior a 400 milissegundos (<400ms).*
+
+- **No Bootstrap:**
+  - **Feedback visual imediato:** No momento do clique em um botão de ação, desative-o e adicione o spinner instantâneo (`.spinner-border .spinner-border-sm`).
+  - **Skeletons de carregamento:** Em vez de telas brancas, exiba placeholders animados com `.placeholder-glow` e `.placeholder col-6` enquanto as requisições API são processadas.
 
 ---
 
-## 6. Efeito da Posição Serial (Serial Position Effect) 📊
-> *Os usuários têm uma propensão a se lembrar melhor do primeiro e do último item em uma série.*  
-> *Users have a penchant to best remember the first and last items in a series.*
+## 📌 Grupo 4: Memória, Retenção & Simplicidade
 
-### 🎯 Aplicação no Bootstrap:
-- Na navegação (`.nav` ou `.navbar`), posicione o item mais crítico no início (primeiro item) e a ação de conversão principal no final (extrema direita).
-- Em tabelas de planos e preços (`pricing cards`), posicione o plano mais popular no centro ou com destaque visual (`scale` ou borda destacada `.border-primary .shadow`).
+### 10. Efeito Von Restorff / Isolamento (Isolation Effect) 🌟
+> *O elemento visual que se destaca e difere do restante é o que as pessoas mais lembram.*
+
+- **No Bootstrap:**
+  - Em tabelas de planos (`pricing tables`), o plano mais vantajoso/recomendado deve ter elevação `.shadow`, borda contrastante `.border-primary .border-2` e badge "Mais Vendido".
+  - O Call to Action (CTA) principal de conversão deve ser a cor com maior saturação da tela.
+
+### 11. Efeito da Posição Serial (Serial Position Effect) 📑
+> *As pessoas se lembram melhor do primeiro (primazia) e do último (recência) item de uma lista.*
+
+- **No Bootstrap:**
+  - Posicione o item mais estratégico no início da barra de navegação e o botão de ação/conversão principal na extremidade final (à direita).
+  - Em listagens de recursos ou diferenciais de produto, coloque o maior atrativo em primeiro e a garantia final no último item.
+
+### 12. Regra do Pico-Fim (Peak-End Rule) 🏔️🏁
+> *A experiência é avaliada pelo momento mais intenso (pico) e pelo desfecho (fim).*
+
+- **No Bootstrap:**
+  - Telas de conclusão (pedido finalizado, formulário enviado) devem ter feedback positivo marcante com alertas elegantes `.alert-success`, ícones grandes e mensagens de boas-vindas.
+  - Telas de erro (404/500) devem oferecer botões claros para "Voltar ao Início" ou "Falar com Suporte" sem jargões frios.
+
+### 13. Efeito Zeigarnik (Zeigarnik Effect) ⏳
+> *As pessoas se lembram com mais intensidade de tarefas incompletas ou interrompidas.*
+
+- **No Bootstrap:**
+  - Use barras de progresso `.progress` com percentual visível (ex: "Perfil 65% completo").
+  - Em cadastros, instigue a conclusão mostrando tarefas pendentes com badges sutis (`.badge bg-warning-subtle text-warning-emphasis`).
+
+### 14. Lei de Prägnanz / Simplicidade (Gestalt) 🔷
+> *O cérebro interpreta figuras complexas na sua forma geométrica mais simples e ordenada.*
+
+- **No Bootstrap:**
+  - Utilize o grid de 12 colunas de forma simétrica (`.col-12 .col-md-6 .col-lg-4`).
+  - Equalize a altura de cards de uma mesma linha aplicando a classe utilitária `.h-100`.
+
+### 15. Lei de Tesler / Conservação da Complexidade ⚖️
+> *Existe uma complexidade inerente em todo processo que não pode ser eliminada; ela deve ser absorvida pela interface/sistema ou pelo usuário.*
+
+- **No Bootstrap:**
+  - Ao digitar o CEP, o sistema preenche rua, bairro e cidade automaticamente.
+  - Use inputs com busca assistida (autocompletes) em vez de obrigar o usuário a preencher códigos manuais e IDs internos do banco.
+
+### 16. Lei de Postel / Princípio da Robustez 🛡️
+> *Seja liberal no que você aceita e rigoroso no que você entrega.*
+
+- **No Bootstrap:**
+  - Formulários tolerantes que aceitam telefones com ou sem código do país, máscaras com espaços ou traços, e realizam higienização automática.
+  - Mensagens de erro construtivas com `.invalid-feedback` explicando como corrigir o dado.
+
+### 17. Lei de Parkinson ⏰
+> *Qualquer tarefa se expandirá para preencher todo o tempo alocado para a sua conclusão.*
+
+- **No Bootstrap:**
+  - Em fluxos de checkout e preenchimento de formulários, utilize formulários de uma única página (Single Page Checkout) ou cronômetros visíveis com badges de expiração para incentivar a tomada de decisão ágil.
+
+### 18. Navalha de Occam & Princípio de Pareto (Occam's Razor & Pareto 80/20) ✂️📊
+> *A melhor solução é aquela com o menor número de pressupostos. 80% do valor vem de 20% das funções.*
+
+- **No Bootstrap:**
+  - Remova enfeites desnecessários, modais intrusivos e botões duplicados.
+  - Destaque em posição de honra no Dashboard as 3 a 5 ações que cobrem 80% do uso diário do cliente (como visto na arquitetura Mazer e AdminKit).

@@ -14,7 +14,7 @@
 Whether building corporate administrative panels, SaaS dashboards, or high-conversion landing pages, this skill provides production-grade components, layouts, and automation tools across **HTML, PHP, Node.js, React, Python/Django, and Java**.
 
 ### 🌟 Core Highlights
-- **Laws of UX:** Concrete patterns applying Hick's Law, Fitts's Law, Jakob's Law, Miller's Law, and the Zeigarnik Effect.
+- **The 18 Essential Laws of UX:** Concrete implementation of all 18 laws (Hick, Fitts, Jakob, Proximity, Similarity, Common Region, Uniform Connectedness, Miller, Doherty Threshold, Von Restorff, Serial Position, Peak-End, Zeigarnik, Prägnanz, Tesler, Postel, Parkinson, Occam's Razor & Pareto).
 - **Nielsen's 10 Heuristics:** Actionable guidance for system feedback, user freedom (Undo), error recovery, and clean typography.
 - **AccessLint & WCAG 2.2 AA:** Zero-compromise accessibility with keyboard focus rings (`.focus-ring`), ARIA labels, and touch targets (44px+).
 - **Mazer & AdminKit Architectures:** Production-ready dashboard structures modeled directly after [zuramai/mazer](https://github.com/zuramai/mazer) and [adminkit/adminkit](https://github.com/adminkit/adminkit).
@@ -37,9 +37,10 @@ O **Bootstrap UX/UI Plus** une as leis da psicologia cognitiva (Laws of UX), as 
 Projetada para desenvolvedores e arquitetos de software criarem interfaces elegantes, intuitivas e acessíveis para portais, dashboards analíticos e sistemas de gestão em **HTML, PHP, Node.js, React, Python/Django e Java**.
 
 ### 🌟 Destaques Principais
-- **Leis do UX:** Aplicação prática da Lei de Hick (eliminação da paralisia de escolha), Lei de Fitts (alvos de clique amplos), Lei de Jakob (convenções consagradas), Lei de Miller (agrupamento de métricas) e Efeito Zeigarnik (barras de progresso).
+- **As 18 Leis Canônicas do UX:** Aplicação prática de todas as 18 leis (Hick, Fitts, Jakob, Proximidade, Semelhança, Região Comum, Conectividade Uniforme, Miller, Limiar de Doherty <400ms, Von Restorff, Posição Serial, Pico-Fim, Zeigarnik, Prägnanz, Tesler, Postel, Parkinson, Navalha de Occam e Pareto 80/20).
 - **10 Heurísticas de Nielsen:** Componentes com feedback imediato de status, proteção contra erros destrutivos com modais de confirmação e linguagem humana.
 - **Acessibilidade WCAG 2.2 Nível AA:** Navegação completa por teclado com `.focus-ring`, rótulos ARIA em botões de ação e contraste de cores aprimorado com tokens sutis (`.bg-*-subtle`).
+- **Arquiteturas de Referência Mazer & AdminKit:** Estruturas canônicas completas para painéis e administrações espelhadas em [zuramai/mazer](https://github.com/zuramai/mazer) e [adminkit/adminkit](https://github.com/adminkit/adminkit).
 - **Suporte Nativo a Modo Escuro:** Gerenciamento dinâmico de tema com o seletor `data-bs-theme`.
 - **Auditor de Qualidade Integrado:** Script CLI nativo para validar templates e páginas antes da entrega.
 

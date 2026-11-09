@@ -11,8 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added / Adicionado
 - **Lançamento Inicial da Skill (`bootstrap-ux-ui-plus` v0.1.0-beta):**
-  - **Mapeamento Prático das Leis do UX (`laws/laws-of-ux-bootstrap.md`):**
-    - Tradução das Leis de Hick, Fitts, Jakob, Miller, Zeigarnik e Posição Serial em componentes e utilitários do Bootstrap (v5.3 & v6.0).
+  - **Mapeamento Prático das 18 Leis do UX (`laws/laws-of-ux-bootstrap.md`):**
+    - Tradução detalhada de todas as 18 Leis Canônicas do UX (Hick, Fitts, Jakob, Proximidade, Semelhança, Região Comum, Conectividade Uniforme, Miller, Doherty, Von Restorff, Posição Serial, Pico-Fim, Zeigarnik, Prägnanz, Tesler, Postel, Parkinson, Occam & Pareto) em componentes e utilitários do Bootstrap (v5.3 & v6.0).
   - **10 Heurísticas de Usabilidade de Jakob Nielsen (`heuristics/nielsen-heuristics-bootstrap.md`):**
     - Aplicação prática de visibilidade de status, prevenção de erros, saídas de emergência (Undo) e design minimalista no framework.
   - **Diretrizes de Acessibilidade & WCAG 2.2 AA (`accessibility/a11y-wcag-guidelines.md`):**

@@ -103,3 +103,4 @@ Sempre que a skill **Bootstrap-UX-UI-Plus** for solicitada para gerar uma nova t
 2. **Zero Dependência de jQuery:** O colapso de menus, alternador de temas e modais devem usar estritamente o JavaScript nativo do Bootstrap 5.3+ (`data-bs-toggle="collapse"`, `data-bs-toggle="dropdown"`, etc.).
 3. **Chunking & Hierarquia (Leis de Miller e Hick):** Agrupe informações correlatas em `.card.border-0.shadow-sm.rounded-3` ou `rounded-4`, com tipografia clara e sem superlotação visual.
 4. **Alvos de Toque & Acessibilidade (Fitts & WCAG):** Alvos clicáveis mínimos de 44px, botões com `aria-label`, foco visível preservado e suporte a tema claro e escuro.
+
