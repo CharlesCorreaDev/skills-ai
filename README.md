@@ -216,6 +216,17 @@ node humanizer-plus/scripts/check_upstream_humanizer.js
 ```
 👉 *Detailed instructions:* [humanizer-plus README](humanizer-plus/README.md)
 
+#### 8. Bootstrap UX/UI Plus (Design Cognitivo, Leis de UX, Acessibilidade e Dashboards)
+Build production-ready, human-centered web portals, administrative systems, and dashboards with Bootstrap 5.3 & 6.0 following the 18 Laws of UX, Jakob Nielsen's 10 Usability Heuristics, and full visual accessibility (WCAG 2.2 AA, Dyschromatopsia/Colorblindness):
+```bash
+# Run UX & Accessibility audit on any HTML, PHP or JSX template:
+node bootstrap-ux-ui-plus/scripts/audit_ux_bootstrap.mjs path/to/page.html
+
+# Check for Bootstrap upstream updates & repository sync with user permission gate:
+node bootstrap-ux-ui-plus/scripts/check_updates.mjs
+```
+👉 *Detailed instructions:* [bootstrap-ux-ui-plus README](bootstrap-ux-ui-plus/README.md)
+
 ---
 
 ## 📜 Changelog
@@ -410,6 +421,17 @@ node humanizer-plus/scripts/sanitize.js "pasta/do/projeto" --dry-run
 node humanizer-plus/scripts/check_upstream_humanizer.js
 ```
 👉 *Consulte o guia completo:* [README do humanizer-plus](humanizer-plus/README.md)
+
+#### 8. Bootstrap UX/UI Plus (Design Cognitivo, Leis de UX, Acessibilidade e Dashboards)
+Construa portais web, sistemas administrativos e dashboards com Bootstrap 5.3 e 6.0 aplicando as 18 Leis do UX, as 10 Heurísticas de Nielsen e acessibilidade visual completa (WCAG 2.2 AA, daltonismo e baixa visão):
+```bash
+# Executar auditoria de UX e Acessibilidade em templates HTML, PHP ou JSX:
+node bootstrap-ux-ui-plus/scripts/audit_ux_bootstrap.mjs caminho/do/template.html
+
+# Verificar novas versões do Bootstrap e da skill com confirmação do usuário:
+node bootstrap-ux-ui-plus/scripts/check_updates.mjs
+```
+👉 *Consulte o guia completo:* [README do bootstrap-ux-ui-plus](bootstrap-ux-ui-plus/README.md)
 
 ---
 

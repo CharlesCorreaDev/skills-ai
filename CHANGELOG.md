@@ -11,16 +11,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added / Adicionado
 - **Nova Skill Oficial: `bootstrap-ux-ui-plus` (v0.1.0-beta):**
-  - **Engenharia Cognitiva de Usabilidade & Leis do UX:**
-    - Mapeamento direto das Leis de Hick, Fitts, Jakob, Miller, Zeigarnik e Posição Serial em classes e componentes do Bootstrap (v5.3 & v6.0).
+  - **Engenharia Cognitiva de Usabilidade & 18 Leis do UX:**
+    - Mapeamento direto de todas as 18 Leis Canônicas do UX (Hick, Fitts, Jakob, Proximidade, Semelhança, Região Comum, Conectividade Uniforme, Miller, Doherty <400ms, Von Restorff, Posição Serial, Pico-Fim, Zeigarnik, Prägnanz, Tesler, Postel, Parkinson, Navalha de Occam & Pareto 80/20) em classes e componentes do Bootstrap (v5.3 & v6.0).
   - **10 Heurísticas de Jakob Nielsen:**
     - Diretrizes de visibilidade de status, saídas de emergência (Undo), consistência semântica e prevenção ativa de erros.
-  - **Acessibilidade WCAG 2.2 AA & AccessLint:**
-    - Atributos ARIA obrigatórios, anéis de foco para teclado (`.focus-ring`), contraste refinado com tokens sutis e alvos de toque confortáveis (44px+).
-  - **Template Responsivo de Dashboard Administrativo:**
-    - Painel corporativo completo em HTML5 com Sidebar, Topbar, cards de métricas, tabela acessível e alternador dinâmico de tema claro/escuro.
+  - **Acessibilidade WCAG 2.2 AA, AccessLint e Inclusão para Daltonismo:**
+    - Manual técnico completo (`accessibility/visual-accessibility-colorblindness.md`) com suporte a Protanopia, Deuteranopia, Tritanopia e Acromatopsia. Proibição da cor como único comunicador de status, contraste legal conforme a LBI (Lei 13.146/2015 Art. 63), eMAG e ABNT NBR 17225.
+  - **Paleta Padrão Calibrada (#90271) & Tipografia Oficial Google Sans:**
+    - Paleta padrão de azuis corporativos de alto contraste (`#869dcc`, `#5772ac`, `#3b5998`, `#224389`, `#14306b`) com consulta proativa ao usuário caso deseje customizar. Tipografia oficial com `Google Sans Flex` (títulos), `Google Sans` (texto) e `Google Sans Code` (monospace).
+  - **Mandato de Temas: TEMA CLARO PADRÃO (Light Theme Default):**
+    - Padrão estrito de Tema Claro (`data-bs-theme="light"`) para arquiteturas Mazer, AdminKit e interfaces geradas; tema escuro / noturno estritamente opt-in sob pedido explícito do usuário com calibração refinada de luminância.
+  - **Verificador de Atualizações & Sincronização com Portão de Permissão (`scripts/check_updates.mjs`):**
+    - Monitoramento contínuo de versões upstream do Bootstrap (NPM registry) e comparação de versão do repositório remoto GitHub com a instalação local do computador do usuário, exigindo autorização expressa antes de sobrescrever arquivos.
+  - **Template Responsivo de Dashboard Administrativo (`templates/admin-dashboard-template.html`):**
+    - Painel corporativo completo em HTML5 com Sidebar sanfonada, Topbar com busca e ações táteis (44px+), cards de métricas (Chunking), tabela com status inclusivo para daltônicos (cor + ícone + texto) e alternador de tema claro/noturno e filtros de acessibilidade visual.
   - **Motor CLI de Auditoria (`scripts/audit_ux_bootstrap.mjs`):**
     - Linter automatizado para validar acessibilidade e UX em arquivos HTML, PHP, JSX e templates.
+  - **Padrões Canônicos de Dashboards Mazer & AdminKit:**
+    - Arquitetura de referência espelhada em [zuramai/mazer](https://github.com/zuramai/mazer) e [adminkit/adminkit](https://github.com/adminkit/adminkit) com Vanilla ES6 e zero dependência de jQuery.
   - **Padrões Multi-Framework:**
     - Arquitetura de componentes para HTML, PHP (Blade/Twig), Node.js, React (Next.js/TSX), Python (Django/Jinja2) e Java.
   - **Documentação Bilíngue Completa:**
