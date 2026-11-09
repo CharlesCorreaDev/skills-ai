@@ -7,6 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.12.0] - 2026-11-08
+
+### Added / Adicionado
+- **master-of-foundryvtt (v0.16.0-beta):**
+  - **Engenharia Reversa SDD com Reversa (Sandeco):** Integração do framework Reversa ([sandeco.github.io/reversa/pt/](https://sandeco.github.io/reversa/pt/)) para dissecação e especificação formal de sistemas legados de Foundry VTT para migrações v14.
+  - **GitLab & Git Repository Diagrammer (scripts/generate_repo_diagram.mjs):** Ferramenta CLI híbrida com suporte a GitLab REST API e shallow clone fallback para mapear e gerar diagramas Mermaid.js e relatórios de camadas arquiteturais de repositórios remotos (testado com peginc/swade).
+  - **GitLab MCP Server Integration:** Documentação de integração com o servidor MCP oficial do GitLab ([docs.gitlab.com/user/model_context_protocol/mcp_server/](https://docs.gitlab.com/user/model_context_protocol/mcp_server/)).
+  - **README Bilíngue Completo:** Guia estruturado em Inglês e Português da skill.
+
+---
+
 ## [1.11.0] - 2026-10-27
 
 ### Added / Adicionado

@@ -7,6 +7,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.16.0-beta] - 2026-11-08
+
+### Added / Adicionado
+- **Engenharia Reversa SDD com Framework Reversa de Sandeco (guides/reverse-engineering.md):**
+  - Ingestão do framework Reversa ([sandeco.github.io/reversa/pt/](https://sandeco.github.io/reversa/pt/)) para dissecação de código legado do Foundry VTT.
+  - Fluxo de extração de contratos operacionais, PRD e especificações executáveis (Spec-Driven Development) em _reversa_docs/ para migração segura de módulos para v14 (ApplicationV2 e TypeDataModel).
+- **Visualizador e Gerador de Diagramas de Repositórios GitLab / Git (scripts/generate_repo_diagram.mjs):**
+  - Nova ferramenta nativa CLI que disseca repositórios do GitLab (e GitHub) gerando diagramas visuais em Mermaid.js e relatórios arquiteturais detalhados por camadas (DataModels, ApplicationV2, Documents, Sheets, Canvas, i18n, Compêndios).
+  - Suporte resiliente a taxa de limite (HTTP 429) via fallback automático para shallow git clone (--depth 1).
+  - Validado e testado com o repositório oficial de Savage Worlds (https://gitlab.com/peginc/swade).
+- **Mapeamento do GitLab Model Context Protocol (MCP) Server (README.md):**
+  - Documentada configuração e integração com o servidor MCP oficial do GitLab ([docs.gitlab.com/user/model_context_protocol/mcp_server/](https://docs.gitlab.com/user/model_context_protocol/mcp_server/)) via @modelcontextprotocol/server-gitlab e Docker.
+- **README Bilíngue Completo e Atualizado (README.md):**
+  - Documentação completa em Inglês e Português integrando as novas ferramentas de inspeção, diagramação e engenharia reversa.
+
+---
+
 ## [0.15.0-beta] - 2026-10-27
 
 ### Added / Adicionado
