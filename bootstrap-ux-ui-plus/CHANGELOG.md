@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
     - Padrões de conformidade baseados em AccessLint com atributos ARIA mandatórios, preservação de anéis de foco (`.focus-ring`), contraste sutil e alvos de toque mobile.
   - **Template Completo de Dashboard Administrativo (`templates/admin-dashboard-template.html`):**
     - Painel corporativo com navegação lateral (Sidebar), barra superior de busca, cards de métricas (Chunking), tabela responsiva e alternador dinâmico de tema claro/escuro.
+  - **Padrões Canônicos de Dashboards Mazer & AdminKit (`patterns/mazer-and-adminkit-standards.md`):**
+    - Estruturação baseada em [zuramai/mazer](https://github.com/zuramai/mazer) (`#app > #sidebar + #main`) e [adminkit/adminkit](https://github.com/adminkit/adminkit) (`.wrapper > .sidebar + .main`) com zero dependência de jQuery e Vanilla JS nativo.
   - **Motor CLI de Auditoria e Validação (`scripts/audit_ux_bootstrap.mjs`):**
     - Linter automatizado para verificar inconformidades de acessibilidade e usabilidade em arquivos HTML, PHP, JSX e templates.
   - **Documentação Arquitetural e de Consulta:**

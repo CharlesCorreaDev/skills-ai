@@ -19,7 +19,8 @@ description: Master UX/UI design, usability engineering, and responsive interfac
 2. **Nielsen's 10 Usability Heuristics:** Actionable system feedback, error prevention, flexible workflows, and minimalist visual rhythm.
 3. **WCAG 2.2 AA Accessibility & AccessLint:** Mandatory ARIA labeling, keyboard focus management (`.focus-ring`), touch targets (44px+), and high-contrast subtle color tokens.
 4. **Multi-Language Architecture:** Production patterns and templates for vanilla HTML, PHP (Blade/Twig/MVC), Node.js, React/Next.js, Python (Django/FastAPI/Jinja2), and Java.
-5. **Built-in Quality & Linter Engine:** Automated static auditor (`scripts/audit_ux_bootstrap.mjs`) to detect UX flaws and missing ARIA properties before release.
+5. **Canonical Dashboard Standards (Mazer & AdminKit):** Mandatory adoption of established architectures from [zuramai/mazer](https://github.com/zuramai/mazer) and [adminkit/adminkit](https://github.com/adminkit/adminkit) (Zero jQuery, Vanilla ES6, multi-level sidebars, dark mode, responsive cards).
+6. **Built-in Quality & Linter Engine:** Automated static auditor (`scripts/audit_ux_bootstrap.mjs`) to detect UX flaws and missing ARIA properties before release.
 
 ---
 
@@ -32,7 +33,8 @@ A skill **Bootstrap UX/UI Plus** é uma suíte completa de engenharia de usabili
 2. **10 Heurísticas de Usabilidade de Jakob Nielsen:** Feedback contínuo de status, prevenção rigorosa de erros, flexibilidade para usuários avançados e design minimalista sem excesso visual.
 3. **Acessibilidade WCAG 2.2 Nível AA & AccessLint:** Rótulos ARIA obrigatórios em botões de ícone, preservação de anéis de foco para navegação por teclado (`.focus-ring`), alvos de toque mobile mínimos (44px+) e paleta com contraste seguro.
 4. **Modelos Prontos Multi-Framework:** Templates completos para HTML puro, PHP/Blade, React/Next.js, Python/Jinja2 e dashboards administrativos responsivos prontos para produção.
-5. **Auditor Automático de Qualidade:** Script CLI integrado (`scripts/audit_ux_bootstrap.mjs`) para inspeção de código e identificação preventiva de inconsistências de usabilidade e acessibilidade.
+5. **Padrões Canônicos de Administração (Mazer & AdminKit):** Adoção mandatória das arquiteturas de referência consagradas [zuramai/mazer](https://github.com/zuramai/mazer) e [adminkit/adminkit](https://github.com/adminkit/adminkit) (Zero jQuery, Vanilla ES6, sidebars sanfonadas, modo escuro e cards ergonômicos).
+6. **Auditor Automático de Qualidade:** Script CLI integrado (`scripts/audit_ux_bootstrap.mjs`) para inspeção de código e identificação preventiva de inconsistências de usabilidade e acessibilidade.
 
 ---
 
@@ -41,6 +43,7 @@ A skill **Bootstrap UX/UI Plus** é uma suíte completa de engenharia de usabili
 - [Leis do UX para Bootstrap](laws/laws-of-ux-bootstrap.md)
 - [10 Heurísticas de Nielsen no Bootstrap](heuristics/nielsen-heuristics-bootstrap.md)
 - [Guia de Acessibilidade & WCAG 2.2 AA](accessibility/a11y-wcag-guidelines.md)
+- [Padrões Canônicos de Dashboards (Mazer & AdminKit)](patterns/mazer-and-adminkit-standards.md)
 - [Template Completo de Dashboard Administrativo](templates/admin-dashboard-template.html)
 - [Padrões de Arquitetura Multi-Linguagem](patterns.md)
 - [Cheatsheet de Consulta Rápida](cheatsheet.md)

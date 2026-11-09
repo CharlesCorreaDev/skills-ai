@@ -17,6 +17,7 @@ Whether building corporate administrative panels, SaaS dashboards, or high-conve
 - **Laws of UX:** Concrete patterns applying Hick's Law, Fitts's Law, Jakob's Law, Miller's Law, and the Zeigarnik Effect.
 - **Nielsen's 10 Heuristics:** Actionable guidance for system feedback, user freedom (Undo), error recovery, and clean typography.
 - **AccessLint & WCAG 2.2 AA:** Zero-compromise accessibility with keyboard focus rings (`.focus-ring`), ARIA labels, and touch targets (44px+).
+- **Mazer & AdminKit Architectures:** Production-ready dashboard structures modeled directly after [zuramai/mazer](https://github.com/zuramai/mazer) and [adminkit/adminkit](https://github.com/adminkit/adminkit).
 - **Dark Mode Ready:** Built-in dynamic theme management using Bootstrap 5.3+ `data-bs-theme="auto"`.
 - **Integrated Audit Engine:** Run `node scripts/audit_ux_bootstrap.mjs <file>` to automatically lint and detect accessibility/UX violations.
 
@@ -77,6 +78,6 @@ bootstrap-ux-ui-plus/
 
 ## 👨‍💻 Autor / Author
 **GM Charles Corrêa**  
-- 🌐 Website: [rpg.charlescorrea.com.br](https://rpg.charlescorrea.com.br)  
+- 🌐 Website: [charlescorrea.com.br](https://rpg.charlescorrea.com.br)  
 - 🐙 GitHub: [CharlesCorreaDev](https://github.com/CharlesCorreaDev)  
 - ⚡ Skills AI: [github.com/CharlesCorreaDev/skills-ai](https://github.com/CharlesCorreaDev/skills-ai)
