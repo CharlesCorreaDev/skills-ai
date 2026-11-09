@@ -7,6 +7,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.18.0] - 2026-11-08
+
+### Added / Adicionado
+- **Nova Skill Oficial: `bootstrap-ux-ui-plus` (v0.1.0-beta):**
+  - **Engenharia Cognitiva de Usabilidade & Leis do UX:**
+    - Mapeamento direto das Leis de Hick, Fitts, Jakob, Miller, Zeigarnik e Posição Serial em classes e componentes do Bootstrap (v5.3 & v6.0).
+  - **10 Heurísticas de Jakob Nielsen:**
+    - Diretrizes de visibilidade de status, saídas de emergência (Undo), consistência semântica e prevenção ativa de erros.
+  - **Acessibilidade WCAG 2.2 AA & AccessLint:**
+    - Atributos ARIA obrigatórios, anéis de foco para teclado (`.focus-ring`), contraste refinado com tokens sutis e alvos de toque confortáveis (44px+).
+  - **Template Responsivo de Dashboard Administrativo:**
+    - Painel corporativo completo em HTML5 com Sidebar, Topbar, cards de métricas, tabela acessível e alternador dinâmico de tema claro/escuro.
+  - **Motor CLI de Auditoria (`scripts/audit_ux_bootstrap.mjs`):**
+    - Linter automatizado para validar acessibilidade e UX em arquivos HTML, PHP, JSX e templates.
+  - **Padrões Multi-Framework:**
+    - Arquitetura de componentes para HTML, PHP (Blade/Twig), Node.js, React (Next.js/TSX), Python (Django/Jinja2) e Java.
+  - **Documentação Bilíngue Completa:**
+    - `SKILL.md`, `README.md`, `VERSION` (0.1.0-beta), `CHANGELOG.md`, `cheatsheet.md`, `patterns.md` e `glossary.md`.
+
+---
+
 ## [1.17.0] - 2026-11-08
 
 ### Added / Adicionado
