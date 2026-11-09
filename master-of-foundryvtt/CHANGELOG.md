@@ -7,20 +7,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
-## [0.16.0-beta] - 2026-11-08
+## [0.16.0-beta] - 2026-10-28
 
 ### Added / Adicionado
-- **Engenharia Reversa SDD com Framework Reversa de Sandeco (guides/reverse-engineering.md):**
-  - Ingestão do framework Reversa ([sandeco.github.io/reversa/pt/](https://sandeco.github.io/reversa/pt/)) para dissecação de código legado do Foundry VTT.
-  - Fluxo de extração de contratos operacionais, PRD e especificações executáveis (Spec-Driven Development) em _reversa_docs/ para migração segura de módulos para v14 (ApplicationV2 e TypeDataModel).
-- **Visualizador e Gerador de Diagramas de Repositórios GitLab / Git (scripts/generate_repo_diagram.mjs):**
-  - Nova ferramenta nativa CLI que disseca repositórios do GitLab (e GitHub) gerando diagramas visuais em Mermaid.js e relatórios arquiteturais detalhados por camadas (DataModels, ApplicationV2, Documents, Sheets, Canvas, i18n, Compêndios).
-  - Suporte resiliente a taxa de limite (HTTP 429) via fallback automático para shallow git clone (--depth 1).
-  - Validado e testado com o repositório oficial de Savage Worlds (https://gitlab.com/peginc/swade).
-- **Mapeamento do GitLab Model Context Protocol (MCP) Server (README.md):**
-  - Documentada configuração e integração com o servidor MCP oficial do GitLab ([docs.gitlab.com/user/model_context_protocol/mcp_server/](https://docs.gitlab.com/user/model_context_protocol/mcp_server/)) via @modelcontextprotocol/server-gitlab e Docker.
-- **README Bilíngue Completo e Atualizado (README.md):**
-  - Documentação completa em Inglês e Português integrando as novas ferramentas de inspeção, diagramação e engenharia reversa.
+- **Perfilador de Hardware (CPU, RAM e GPU/VRAM) & Governador Adaptativo Anti-Travamento (`scripts/hardware_governor.py` e `scripts/hardware_governor.mjs`):**
+  - Detecção automática do processador (`modelo da CPU` e `núcleos lógicos`), memória física (`RAM Total`, `RAM Livre` e `% em uso`) e placa de vídeo (`modelo da GPU`, `VRAM Total`, `VRAM Livre` e identificação de **GPU integrada com RAM compartilhada** vs **GPU dedicada** via `nvidia-smi`, Registro do Windows 64-bit `HardwareInformation.qwMemorySize` e `lspci`).
+  - Redução automática de prioridade do processo no SO (`BELOW_NORMAL_PRIORITY_CLASS` / `0x00004000` no Windows e `os.nice(10)` no Linux/macOS) para garantir que a máquina operante nunca trave.
+  - Cálculo de orçamento seguro de execução (`max_workers`, `ffmpeg_threads`, `sharp_concurrency`, `batch_size`, `batch_delay_ms`, `node_max_old_space_size_mb`) e reserva adicional de segurança de `4.0 GB` de RAM quando a GPU é integrada.
+  - Orçamento de VRAM para o Canvas WebGL/PixiJS do Foundry VTT (`foundry_vram_canvas_budget`), determinando a resolução máxima segura de cenas (`4096x4096`, `8192x8192` ou `16384x16384`), limite de tiles animados WebM simultâneos e qualidade WebP ideal.
+  - Guardião de memória em tempo real (`guard_memory_pressure` / `sleepAndGuardMemory`) com coleta de lixo (`gc.collect()`) e pausa automática caso o uso de RAM atinja `>= 85%`.
+- **Integração nos Scripts e Servidor MCP (`scripts/check_env.py`, `scripts/convert_media.js`, `mcp/foundry_mcp_server.js` e `mcp/foundry_mcp_server.py`):**
+  - Nova ferramenta MCP `inspect_hardware_budget` e inclusão automática do `hardware_budget` em `inspect_foundry_environment`.
+  - Limitação dinâmica de `sharp.concurrency(safeThreads)` e `ffmpeg -threads <safeThreads>` com pausas anti-congelamento em `scripts/convert_media.js`.
+- **Mandato Obrigatório 24 (`SKILL.md`):**
+  - Diretrizes bilíngues (EN e PT-BR) exigindo a verificação de CPU, RAM e VRAM antes de tarefas pesadas e o cumprimento estrito dos limites calculados.
 
 ---
 

@@ -24,6 +24,27 @@ Modern Large Language Models (LLMs) and Autonomous AI Agents (like Antigravity, 
 
 ### 📦 Installation & Setup
 
+#### 0. Mandatory Ecosystem Requirements: GitHub CLI (`gh`) & Mandatory Companion Skills
+> 🚨 **GOLDEN RULE FOR ALL SKILLS (GLOBAL & LOCAL ENFORCEMENT):**  
+> Every skill created and operated within this ecosystem strictly requires:
+> 1. **Active GitHub CLI (`gh`) & Authentication:** Enables seamless repository cloning, automatic updates, and instant GitHub issue submission (`gh issue create --repo CharlesCorreaDev/skills-ai`).
+>    - **Windows:** `winget install GitHub.cli` or `choco install gh`
+>    - **macOS:** `brew install gh`
+>    - **Linux:** `sudo apt install gh`
+>    - **Authenticate:** `gh auth login`
+>
+> 2. **Mandatory Companion Skills Trinity (Always Available Globally and in User Projects):**  
+>    All skills strictly carry and integrate the following three core skills:
+>    - **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Pragmatic software engineering discipline, minimal code, zero blind assumptions.
+>    - **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Structured alignment interview with the user/author before starting tasks to eliminate design ambiguities.
+>    - **`skills-code-review`** (`https://www.aihero.dev/skills-code-review`): Rigorous automated code review and quality gating before delivering any work.
+>    ```bash
+>    # Install globally and in local project
+>    npx skills@latest add multica-ai/andrej-karpathy-skills
+>    npx skills@latest add mattpocock/skills --skill=grill-me
+>    npx skills@latest add aihero-dev/skills-code-review
+>    ```
+
 #### 1. Clone the Repository
 ```bash
 git clone https://github.com/CharlesCorreaDev/skills-ai.git
@@ -112,14 +133,18 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 |---|---|---|---|---|
 | **`docs-for-markdown`** | Universal converter for multi-format documents (PDF, DOCX, XLSX, PPTX, ODT, HTML, RTF) into clean Markdown. | [`0.2.0-beta`](docs-for-markdown/VERSION) | Beta | [README](docs-for-markdown/README.md) • [Changelog](docs-for-markdown/CHANGELOG.md) |
 | **`docs-for-skill`** | Transforms document Markdown into high-performance, modular AI Skills. | [`0.2.0-beta`](docs-for-skill/VERSION) | Beta | [README](docs-for-skill/README.md) • [Changelog](docs-for-skill/CHANGELOG.md) |
-| **`website-for-markdown`** | Hybrid web scraping engine (Firecrawl + Playwright/Chromium) for clean Markdown extraction from web pages and SPAs. | [`0.2.0-beta`](website-for-markdown/VERSION) | Beta | [README](website-for-markdown/README.md) • [Changelog](website-for-markdown/CHANGELOG.md) |
-| **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | [`0.2.0-beta`](website-for-skill/VERSION) | Beta | [README](website-for-skill/README.md) • [Changelog](website-for-skill/CHANGELOG.md) |
+| **`website-for-markdown`** | Hybrid web scraping engine (Firecrawl + Playwright/Chromium) for clean Markdown extraction from web pages and SPAs. | [`0.3.0-beta`](website-for-markdown/VERSION) | Beta | [README](website-for-markdown/README.md) • [Changelog](website-for-markdown/CHANGELOG.md) |
+| **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | [`0.3.0-beta`](website-for-skill/VERSION) | Beta | [README](website-for-skill/README.md) • [Changelog](website-for-skill/CHANGELOG.md) |
+| **`video-to-md`** | Multi-platform video and playlist ingestion (YouTube, Vimeo, Twitch) into structured Markdown with timestamps and AI audio fallback (Whisper). | [`0.2.0-beta`](video-to-md/VERSION) | Beta | [README](video-to-md/README.md) • [Changelog](video-to-md/CHANGELOG.md) |
 | **`image-to-prompt`** | High-fidelity visual reverse engineering: extracts art styles, eras, clothing, lighting, camera angles, and facial physiognomy to create generative prompts (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | [`0.2.0-beta`](image-to-prompt/VERSION) | Beta | [README](image-to-prompt/README.md) • [Changelog](image-to-prompt/CHANGELOG.md) |
 | **`master-of-foundryvtt`** | Master development, architecture, scripting, rule ingestion suite (100+ RPG systems) and native MCP Server for Foundry VTT (v8–v14) by GM Charles Corrêa. | [`0.16.0-beta`](master-of-foundryvtt/VERSION) | Beta | [README](master-of-foundryvtt/README.md) • [Changelog](master-of-foundryvtt/CHANGELOG.md) |
 | **`humanizer-plus`** | Multi-layer AI de-watermarking, Unicode sanitization (ZWSP, BOM), and natural human text rewrite engine (PT-BR & EN). | [`1.2.0`](humanizer-plus/VERSION) | Stable | [README](humanizer-plus/README.md) • [Changelog](humanizer-plus/CHANGELOG.md) |
-| **`php-dev-expert`** | Senior Software Engineer skill focused on PHP (7.4 to 8.5), modern patterns, debugging, and frameworks. | [`0.2.0-beta`](php-dev-expert/VERSION) | Beta | [Skill](php-dev-expert/SKILL.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
+| **`php-dev-expert`** | Senior Software Engineer skill focused on PHP (7.4 to 8.5), modern patterns, debugging, and frameworks. | [`0.5.0-beta`](php-dev-expert/VERSION) | Beta | [Skill](php-dev-expert/SKILL.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
 | **`python-dev-expert`** | Python expert skill covering Web (Django/FastAPI), CLI, Data Science, and modern type hinting. | [`0.2.0-beta`](python-dev-expert/VERSION) | Beta | [Skill](python-dev-expert/SKILL.md) • [Changelog](python-dev-expert/CHANGELOG.md) |
 | **`docker-master`** | DevOps specialist for Docker optimization, security, local environments, and smart OS detection. | [`0.2.0-beta`](docker-master/VERSION) | Beta | [Skill](docker-master/SKILL.md) • [Changelog](docker-master/CHANGELOG.md) |
+| **`book-formatter`** | Book formatting and RPG book diagramming suite: SOTA layout engines (Docling, Marker, Unstructured, Nougat, Stirling-PDF), rules segmentation for AI/RAG/MCP, dynamic glossary extraction, dependency & version monitoring, Code Mode, and grill-me alignment. | [`0.13.0-beta`](book-formatter/VERSION) | Beta | [Skill](book-formatter/SKILL.md) • [Changelog](book-formatter/CHANGELOG.md) • [Glossary](book-formatter/glossarys/glossary.md) |
+| **`sms-legal`** | Complete integration suite and native MCP Server (Node.js & Python) for SMS Legal / SMS Gateway API. Multi-language SDKs (PHP, Python, JS), batch sending, scheduling, voice, audio, and bi-directional replies. | [`1.0.0`](sms-legal/VERSION) | Stable | [README](sms-legal/README.md) • [Changelog](sms-legal/CHANGELOG.md) |
+| **`mcp-builder`** | Universal MCP Server Generator, Security Hardener, and Orchestrator for PHP 8.4+, Python 3.12+, and Node.js 22+. Features prompt injection defense, static code analysis (SAST), fail-safe background GitHub issue reporting, and self-updating. | [`0.1.0-beta`](mcp-builder/VERSION) | Beta | [README](mcp-builder/README.md) • [Changelog](mcp-builder/CHANGELOG.md) |
 
 > ℹ️ *Note: All skills in this repository are currently in **Beta** and adhere to [Semantic Versioning (SemVer)](https://semver.org/spec/v2.0.0.html). Each skill contains a dedicated `VERSION` file and `CHANGELOG.md`. See also the global [**CHANGELOG.md**](CHANGELOG.md).*
 
@@ -217,6 +242,27 @@ As **Skills** transformam dados brutos em **unidades modulares de conhecimento s
 
 ### 📦 Instalação e Configuração
 
+#### 0. Requisitos Mandatórios do Ecossistema: GitHub CLI (`gh`) & Skills Companheiras Obrigatórias
+> 🚨 **REGRA DE OURO PARA TODAS AS SKILLS (GLOBAL E NO PROJETO):**  
+> Todas as skills criadas e operadas neste ecossistema levam consigo e exigem compulsoriamente:
+> 1. **GitHub CLI (`gh`) Conectado e Autenticado:** Viabiliza clonagem fluida, sincronização contínua e submissão formal de issues no repositório (`gh issue create --repo CharlesCorreaDev/skills-ai`).
+>    - **Windows:** `winget install GitHub.cli` ou `choco install gh`
+>    - **macOS:** `brew install gh`
+>    - **Linux:** `sudo apt install gh`
+>    - **Autenticar:** `gh auth login`
+>
+> 2. **Tríade Obrigatória de Skills Companheiras (Disponíveis Globalmente e no Projeto):**  
+>    Toda skill sempre operará em conjunto com:
+>    - **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Engenharia de software pragmática, código mínimo, validação contínua e ausência de suposições cegas.
+>    - **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Entrevista profunda e estruturada com o autor/usuário antes de iniciar tarefas para evitar retrabalho.
+>    - **`skills-code-review`** (`https://www.aihero.dev/skills-code-review`): Revisão rigorosa de código automatizada e portão de qualidade pré-entrega.
+>    ```bash
+>    # Instalar globalmente e no projeto local
+>    npx skills@latest add multica-ai/andrej-karpathy-skills
+>    npx skills@latest add mattpocock/skills --skill=grill-me
+>    npx skills@latest add aihero-dev/skills-code-review
+>    ```
+
 #### 1. Clonar o Repositório
 ```bash
 git clone https://github.com/CharlesCorreaDev/skills-ai.git
@@ -281,14 +327,18 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 |---|---|---|---|---|
 | **`docs-for-markdown`** | Conversor universal de documentos multiformato (PDF, DOCX, XLSX, PPTX, ODT, HTML, RTF) para Markdown limpo. | [`0.2.0-beta`](docs-for-markdown/VERSION) | Beta | [README](docs-for-markdown/README.md) • [Changelog](docs-for-markdown/CHANGELOG.md) |
 | **`docs-for-skill`** | Transforma Markdowns extraídos de documentos em Skills modulares de alto desempenho para IA. | [`0.2.0-beta`](docs-for-skill/VERSION) | Beta | [README](docs-for-skill/README.md) • [Changelog](docs-for-skill/CHANGELOG.md) |
-| **`website-for-markdown`** | Motor híbrido de raspagem web (Firecrawl + Playwright/Chromium) para extração de Markdown limpo a partir de sites e SPAs. | [`0.2.0-beta`](website-for-markdown/VERSION) | Beta | [README](website-for-markdown/README.md) • [Changelog](website-for-markdown/CHANGELOG.md) |
-| **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | [`0.2.0-beta`](website-for-skill/VERSION) | Beta | [README](website-for-skill/README.md) • [Changelog](website-for-skill/CHANGELOG.md) |
+| **`website-for-markdown`** | Motor híbrido de raspagem web (Firecrawl + Playwright/Chromium) para extração de Markdown limpo a partir de sites e SPAs. | [`0.3.0-beta`](website-for-markdown/VERSION) | Beta | [README](website-for-markdown/README.md) • [Changelog](website-for-markdown/CHANGELOG.md) |
+| **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | [`0.3.0-beta`](website-for-skill/VERSION) | Beta | [README](website-for-skill/README.md) • [Changelog](website-for-skill/CHANGELOG.md) |
+| **`video-to-md`** | Captura multiplataforma de vídeos e playlists (YouTube, Vimeo, Twitch) em Markdown estruturado com timestamps clicáveis e fallback por áudio via IA (Whisper). | [`0.2.0-beta`](video-to-md/VERSION) | Beta | [README](video-to-md/README.md) • [Changelog](video-to-md/CHANGELOG.md) |
 | **`image-to-prompt`** | Engenharia reversa visual de alta fidelidade: extrai traços artísticos, época, vestimentas, iluminação, fisionomia e câmeras para gerar prompts de imagem/vídeo (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | [`0.2.0-beta`](image-to-prompt/VERSION) | Beta | [README](image-to-prompt/README.md) • [Changelog](image-to-prompt/CHANGELOG.md) |
 | **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting, ingestão de regras (+100 sistemas de RPG) e Servidor MCP Nativo para Foundry VTT (v8–v14) por GM Charles Corrêa. | [`0.16.0-beta`](master-of-foundryvtt/VERSION) | Beta | [README](master-of-foundryvtt/README.md) • [Changelog](master-of-foundryvtt/CHANGELOG.md) |
 | **`humanizer-plus`** | Desmarcação de IA multicamada, purga de Unicode invisível (ZWSP, BOM), normalização de código e reescrita natural com voz humana real (PT-BR e EN). | [`1.2.0`](humanizer-plus/VERSION) | Estável | [README](humanizer-plus/README.md) • [Changelog](humanizer-plus/CHANGELOG.md) |
-| **`php-dev-expert`** | Skill de Engenheiro de Software Sênior focada em PHP (7.4 a 8.5), arquitetura moderna, debugging e frameworks. | [`0.2.0-beta`](php-dev-expert/VERSION) | Beta | [Skill](php-dev-expert/SKILL.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
+| **`php-dev-expert`** | Skill de Engenheiro de Software Sênior focada em PHP (7.4 a 8.5), arquitetura moderna, debugging e frameworks. | [`0.5.0-beta`](php-dev-expert/VERSION) | Beta | [Skill](php-dev-expert/SKILL.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
 | **`python-dev-expert`** | Especialista Python abordando Web (Django/FastAPI), Automações, Data Science e tipagem avançada. | [`0.2.0-beta`](python-dev-expert/VERSION) | Beta | [Skill](python-dev-expert/SKILL.md) • [Changelog](python-dev-expert/CHANGELOG.md) |
 | **`docker-master`** | Especialista DevOps para otimização de imagens Docker, segurança, Compose e detecção inteligente de SO. | [`0.2.0-beta`](docker-master/VERSION) | Beta | [Skill](docker-master/SKILL.md) • [Changelog](docker-master/CHANGELOG.md) |
+| **`book-formatter`** | Suíte de formatação de livros e diagramação de livros de RPG: motores SOTA de IA (Docling, Marker, Unstructured, Nougat, Stirling-PDF), segmentação de regras para IA/RAG/MCP, criação dinâmica de glossários via issue, monitor de versão e auto-update de dependências. | [`0.13.0-beta`](book-formatter/VERSION) | Beta | [Skill](book-formatter/SKILL.md) • [Changelog](book-formatter/CHANGELOG.md) • [Glossário](book-formatter/glossarys/glossary.md) |
+| **`sms-legal`** | Suíte completa de integração e Servidor MCP Nativo (Node.js & Python) para a API SMS Legal / SMS Gateway. SDKs multilinguagem (PHP, Python, JS), envio em lote, agendamento, voz, áudio e captura de respostas. | [`1.0.0`](sms-legal/VERSION) | Estável | [README](sms-legal/README.md) • [Changelog](sms-legal/CHANGELOG.md) |
+| **`mcp-builder`** | Gerador, blindador de segurança e configurador universal de servidores Model Context Protocol (MCP) para PHP 8.4+, Python 3.12+ e Node.js 22+. Defesa contra prompt injection, análise estática de código (SAST), fail-safe com abertura automática de issues no GitHub e auto-update. | [`0.1.0-beta`](mcp-builder/VERSION) | Beta | [README](mcp-builder/README.md) • [Changelog](mcp-builder/CHANGELOG.md) |
 
 > ℹ️ *Nota: Todas as skills deste repositório encontram-se em estágio **Beta** e aderem ao [Versionamento Semântico (SemVer)](https://semver.org/spec/v2.0.0.html). Cada skill conta com seu arquivo individual `VERSION` e `CHANGELOG.md`. Veja também o histórico global no [**CHANGELOG.md**](CHANGELOG.md).*
 

@@ -1,6 +1,6 @@
 ---
 name: website-for-markdown
-description: Web scraping and crawling engine that captures single web pages, developer documentation portals, and JavaScript/SPA applications into noise-free, LLM-ready Markdown using Firecrawl or local Playwright + MarkItDown. Use when the user wants to fetch web content, convert online articles, or scrape entire website domains into clean Markdown via Antigravity, Claude Code, Copilot CLI, Hermes Agent, Orca, Gemini, Kilo, NVIDIA, or Ollama.
+description: Web scraping and recursive crawling engine that captures single web pages, developer documentation portals, and JavaScript/SPA applications into noise-free, LLM-ready Markdown using local HTTP multi-thread crawler, Playwright Headless Chromium, or Firecrawl. Preserves and rewrites internal links (.php/.html to .md) and generates _INDEX.md and crawl_manifest.json.
 ---
 
 # Website for Markdown 🌐➡️📝
@@ -10,100 +10,65 @@ description: Web scraping and crawling engine that captures single web pages, de
 ## 🇺🇸 English
 
 ### 📌 Overview & Architecture
-**Website for Markdown** is a dual-engine web extraction skill designed to capture websites, SPAs (React, Vue, Angular), and developer documentation portals into clean, noise-free Markdown (`.md`).
+**Website for Markdown** (`v0.3.0-beta`) is a multi-engine web extraction and recursive crawling skill designed to capture websites, SPAs (React, Vue, Angular), and large developer documentation portals (such as `php.net/manual/pt_BR/`) into clean, noise-free Markdown (`.md`) with intact internal navigation links.
 
-It incorporates two complementary engines:
-1. **Firecrawl Cloud Engine (Premium / API):** Best for recursive domain-wide crawling (`--crawl`), handling anti-bot protections, parsing sitemaps, and extracting nested documentation trees.
-2. **Playwright Local Engine (Free / Built-in):** Headless Chromium instance that renders JavaScript and client-side hydrated SPAs locally without external API dependencies.
+It incorporates three complementary engines:
+1. **Local Fast HTTP Multi-Thread Crawler (`--crawl --fast` / `--engine http`):** High-speed parallel BFS crawler with automatic path-prefix scope locking, DOM noise removal (`#layout-content`, `article`, `main`), internal link rewriting (`.php`/`.html` $\rightarrow$ `.md`), resume cache, and automatic fallback to Playwright if JS rendering is needed.
+2. **Playwright Local Engine (`--engine playwright`):** Headless Chromium instance that reuses a persistent browser context across the crawl queue to render client-side hydrated SPAs locally without external API costs.
+3. **Firecrawl Cloud Engine (`--engine firecrawl`):** Optional cloud API integration when `FIRECRAWL_API_KEY` is configured.
 
-### 🚀 Capabilities
-- **Noise Elimination:** Filters navigation bars, cookie banners, advertisements, and footer menus.
-- **Client-Side Rendering:** Executes client-side scripts to capture fully hydrated content.
-- **Semantic Formatting:** Converts tables, code blocks, syntax highlights, and markdown headers accurately.
+### 🚀 Key Capabilities
+- **Automatic Hardware Profiler & Adaptive Eco Throttling (`detect_hardware_budget`):** Inspects the host CPU model, logical core count, total physical RAM, and real-time free RAM before starting. Automatically lowers OS process priority (`BELOW_NORMAL_PRIORITY_CLASS` on Windows / `nice(10)` on Linux/macOS), caps workers conservatively (~15–20% of CPU), streams archives from disk in tiny micro-batches (25–35 pages), runs `gc.collect()` between batches, and pauses automatically if system RAM usage exceeds `--max-ram-percent` (default 78%).
+- **Path-Prefix Scope Lock:** When crawling `https://www.php.net/manual/pt_BR/`, automatically restricts the crawler to URLs inside `/manual/pt_BR/`, preventing leaks into other languages or external sections.
+- **Internal Link Rewriting:** Converts internal `<a href="language.types.php#anchor">` links into local `[...](language.types.md#anchor)` references so agents can navigate across files offline.
+- **DOM Noise Elimination:** Isolates main documentation containers (`#layout-content`, `main`, `article`, `.markdown-body`) and strips navigation menus, sidebars, footers, and user comment sections.
+- **Resume Cache & Master Index:** Skips already-downloaded `.md` files on interrupted runs and generates `_INDEX.md` + `crawl_manifest.json`.
 
 ### 🛠️ CLI Usage
 ```bash
 # Verify environment
 python scripts/check_env.py
 
-# Scrape a single URL using local Playwright
-python scripts/scrape_to_md.py "https://docs.example.com/api" "output_dir"
+# Scrape a single URL
+python scripts/scrape_to_md.py "https://www.php.net/manual/pt_BR/security.php" "output_dir"
 
-# Recursive full-domain crawl using Firecrawl (requires FIRECRAWL_API_KEY)
-python scripts/scrape_to_md.py "https://docs.example.com" "output_dir" --crawl
+# Recursive local crawl (100 pages default, or --max-pages 0 for unlimited)
+python scripts/scrape_to_md.py "https://www.php.net/manual/pt_BR/" "output_dir" --crawl --fast --max-pages 200
+
+# Filter crawl by regex (--include / --exclude) and custom thread workers
+python scripts/scrape_to_md.py "https://www.php.net/manual/pt_BR/" "output_dir" --crawl --fast --include "security|language" --max-pages 0 --workers 8
 ```
 
 ---
 
-### 🛡️ Autonomous Error Recovery & Self-Healing Protocol (For AI Agents)
-
-When an AI Agent encounters errors during skill installation, execution, or environment setup:
-1. **Root Cause Diagnosis & Self-Correction:** The agent MUST analyze the underlying cause of failure (missing packages, permissions, OS binary gaps, charset issues) and iteratively attempt self-correction until the skill performs its intended purpose.
-2. **Permission Gate for Extra / System Software:** If resolving an issue requires installing system binaries (pandoc, libreoffice, tesseract), elevated global packages, or configuring API keys, the agent MUST explicitly explain the situation to the developer/operator and request authorization before proceeding.
-3. **Configuration Report & Verification:** Upon approval, the agent must clearly state what was installed and configured, then immediately execute an end-to-end test or ask the operator for sample inputs to validate that the skill is 100% operational.
-
 ### 🏷️ Semantic Versioning, VERSION File & Release Protocol
-- **`VERSION` File:** Contains the exact skill version string (e.g. `0.1.0-beta`).
+- **`VERSION` File:** Contains the exact skill version string (`0.3.0-beta`).
 - **Version Awareness:** The Agent must read `VERSION` to notify the operator/caller of the active skill version.
 - **Update Protocol:** Always bump `VERSION` following [SemVer](https://semver.org/spec/v2.0.0.html), register updates in [`CHANGELOG.md`](CHANGELOG.md), and create a git release tag (`website-for-markdown-v<version>`).
-
-### 🚨 Proactive Developer Feedback & Autonomous GitHub Issue Protocol
-Whenever the AI Agent detects an issue from developer programming, missing features or scripts preventing task completion, MCP resource deficiencies, or recommendations for optimization:
-1. **Communicate with the User:** Explain what happened, the root cause, and the proposed resolution.
-2. **Generate Bilingual Report:** Create structured technical documentation in English and Portuguese covering problem details, active skill version, context, and fix proposal.
-3. **Submit GitHub Issue via CLI:**
-   ```bash
-   gh issue create --repo CharlesCorreaDev/skills-ai --title "[website-for-markdown] <Issue Title>" --body "<Bilingual text in English and Portuguese>"
-   ```
-   Provide the generated issue URL to the user for tracking.
 
 ---
 
 ## 🇧🇷 Português (Brasil)
 
 ### 📌 Visão Geral & Arquitetura
-O **Website for Markdown** é uma skill de extração web com motor duplo projetada para capturar páginas da web, SPAs (React, Vue, Angular) e portais de documentação para desenvolvedores em Markdown (`.md`) limpo e livre de ruídos.
+O **Website for Markdown** (`v0.3.0-beta`) é uma skill de extração e rastreamento recursivo (crawler) com múltiplos motores, projetada para capturar páginas da web, SPAs e portais inteiros de documentação técnica (como `https://www.php.net/manual/pt_BR/`) em Markdown (`.md`) limpo, sem ruídos e com todos os links internos reescritos para navegação local.
 
-Ele integra dois motores complementares:
-1. **Motor Firecrawl (Nuvem / API):** Ideal para varredura recursiva de domínios inteiros (`--crawl`), contorno de proteções anti-bot, leitura de sitemaps e extração em árvore de documentações.
-2. **Motor Playwright Local (Gratuito / Embutido):** Instância Chromium headless que executa JavaScript e renderiza SPAs hidratadas localmente sem custo de API externa.
-
-### 🚀 Capacidades
-- **Eliminação de Ruído:** Filtra menus de navegação, banners de cookies, pop-ups e rodapés redundantes.
-- **Renderização Client-Side:** Executa scripts do lado do cliente para capturar o conteúdo dinâmico completo.
-- **Formatação Semântica:** Converte tabelas, blocos de código, destaques de sintaxe e títulos com fidelidade.
+Integra três motores complementares:
+1. **Crawler Local HTTP Multi-Thread (`--crawl --fast` / `--engine http`):** Rastreador recursivo em largura (BFS) de alta velocidade em paralelo, com trava automática de escopo por prefixo de URL, limpeza cirúrgica de DOM (`#layout-content`, `article`, `main`), reescrita de links internos (`.php`/`.html` $\rightarrow$ `.md`), retomada automática (*resume cache*) e fallback transparente para Playwright caso a página exija JS.
+2. **Motor Playwright Local (`--engine playwright`):** Instância Chromium headless que reutiliza o mesmo contexto de navegador durante toda a fila de crawling para renderizar SPAs locais sem custo de API externa.
+3. **Motor Firecrawl (`--engine firecrawl`):** Integração opcional em nuvem quando `FIRECRAWL_API_KEY` está definida.
 
 ### 🛠️ Uso via CLI
 ```bash
 # Verificar ambiente
 python scripts/check_env.py
 
-# Capturar uma única URL usando Playwright local
-python scripts/scrape_to_md.py "https://docs.exemplo.com/api" "pasta_saida"
+# Capturar uma única URL
+python scripts/scrape_to_md.py "https://www.php.net/manual/pt_BR/security.php" "pasta_saida"
 
-# Varredura recursiva de domínio inteiro via Firecrawl (requer FIRECRAWL_API_KEY)
-python scripts/scrape_to_md.py "https://docs.exemplo.com" "pasta_saida" --crawl
+# Varredura recursiva local rápida (padrão: 100 páginas, ou --max-pages 0 para ilimitado)
+python scripts/scrape_to_md.py "https://www.php.net/manual/pt_BR/" "pasta_saida" --crawl --fast --max-pages 200
+
+# Filtrar seções específicas por Regex (--include / --exclude) sem limite de páginas
+python scripts/scrape_to_md.py "https://www.php.net/manual/pt_BR/" "pasta_saida" --crawl --fast --include "security|language" --max-pages 0 --workers 8
 ```
-
-### 🛡️ Protocolo de Auto-Correção e Recuperação de Erros (Para Agentes de IA)
-
-Sempre que o Agente de IA encontrar falhas na instalação, execução ou configuração de ambiente da skill:
-1. **Diagnóstico de Causa Raiz e Auto-Correção:** O agente DEVE analisar a causa exata do erro (dependências ausentes, permissões, ferramentas de SO, encoding de caracteres) e tentar se auto-corrigir iterativamente até que a skill esteja funcionando perfeitamente conforme seu propósito.
-2. **Solicitação de Permissão para Instalações Extras:** Se a correção exigir a instalação de binários de sistema (pandoc, libreoffice, tesseract), pacotes globais ou configuração de chaves de API, o agente DEVE explicar o diagnóstico com clareza e solicitar a permissão explícita do desenvolvedor/operador antes de instalar.
-3. **Relatório de Configuração e Validação:** Após a confirmação, o agente deve informar detalhadamente o que foi instalado e configurado para resolver o problema e executar imediatamente um teste de validação (ou solicitar ao operador os dados/arquivos necessários para testar a skill).
-
-### 🏷️ Protocolo de Versionamento Semântico e Arquivo VERSION
-- **Arquivo `VERSION`:** Contém a versão semântica da skill (ex: `0.1.0-beta`).
-- **Alerta de Versão:** O Agente deve consultar `VERSION` para informar a versão ativa ao usuário/agente solicitante.
-- **Atualizações:** Sempre incremente `VERSION` com base no [SemVer](https://semver.org/spec/v2.0.0.html), registre em [`CHANGELOG.md`](CHANGELOG.md) e associe a uma tag git (`website-for-markdown-v<versao>`).
-
-### 🚨 Protocolo de Feedback Proativo & Abertura de Issues no GitHub
-Sempre que o Agente de IA identificar problemas por má programação do desenvolvedor, recursos/scripts faltantes para completar uma ação, limitações de MCPs ou oportunidades de melhoria:
-1. **Comunicar o Usuário:** Informe imediatamente o ocorrido, o impacto técnico e a solução recomendada.
-2. **Gerar Relatório Bilíngue:** Crie um documento técnico estruturado em Português e Inglês com título, resumo do problema, causa raiz, contexto e solução proposta.
-3. **Submeter Issue via GitHub CLI:**
-   ```bash
-   gh issue create --repo CharlesCorreaDev/skills-ai --title "[website-for-markdown] <Título da Issue>" --body "<Texto explicativo bilíngue em PT-BR e EN>"
-   ```
-   Apresente o link direto da issue criada ao usuário para acompanhamento.
-

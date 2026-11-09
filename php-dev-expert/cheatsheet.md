@@ -39,3 +39,7 @@ php -l arquivo.php
 2. **Sempre** use `htmlspecialchars()` ou equivalente do framework ao exibir dados (XSS).
 3. **Sempre** use `password_hash()` e `password_verify()`. Nunca MD5 ou SHA1.
 4. **Sempre** valide o CSRF token em mutações de estado (POST/PUT/DELETE).
+5. **Mitigação PHP2Shell (`CVE-2026-109618` & `CVE-2026-109619`)**:
+   - **PHP 8.2+**: Atualizar para `>= 8.2.35`, `>= 8.3.36`, `>= 8.4.27` ou `>= 8.5.12`.
+   - **Sem poder atualizar (PHP 8.2+ ou PHP <= 8.1)**: Desativar `session.upload_progress.enabled = 0` no `php.ini` **global** e `php_admin_flag[session.upload_progress.enabled] = off` no pool do PHP-FPM (nunca via `.htaccess`/`.user.ini`/`ini_set`), limitar `post_max_size` / `client_max_body_size` na borda, reduzir `pm.max_requests` no PHP-FPM e bloquear `PHP_SESSION_UPLOAD_PROGRESS` no WAF/Nginx.
+   - **Em Docker (`php:*-fpm` / `php:*-apache`)**: Atualizar imagem para as tags corrigidas (`8.2.35+`, `8.3.36+`, `8.4.27+`, `8.5.12+`) ou injetar `/usr/local/etc/php/conf.d/99-php2shell-mitigation.ini` e `/usr/local/etc/php-fpm.d/zz-php2shell-pool.conf` via `volumes` (`:ro`), `Dockerfile` ou hotfix em tempo real (`docker exec` + `docker kill --signal=USR2`). Veja detalhes completos em [`security-cves.md`](security-cves.md).

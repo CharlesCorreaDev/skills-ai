@@ -7,14 +7,147 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
-## [1.12.0] - 2026-11-08
+## [1.17.0] - 2026-11-08
 
 ### Added / Adicionado
 - **master-of-foundryvtt (v0.16.0-beta):**
   - **Engenharia Reversa SDD com Reversa (Sandeco):** Integração do framework Reversa ([sandeco.github.io/reversa/pt/](https://sandeco.github.io/reversa/pt/)) para dissecação e especificação formal de sistemas legados de Foundry VTT para migrações v14.
-  - **GitLab & Git Repository Diagrammer (scripts/generate_repo_diagram.mjs):** Ferramenta CLI híbrida com suporte a GitLab REST API e shallow clone fallback para mapear e gerar diagramas Mermaid.js e relatórios de camadas arquiteturais de repositórios remotos (testado com peginc/swade).
+  - **GitLab & Git Repository Diagrammer (`scripts/generate_repo_diagram.mjs`):** Ferramenta CLI híbrida com suporte a GitLab REST API e shallow clone fallback para mapear e gerar diagramas Mermaid.js e relatórios de camadas arquiteturais de repositórios remotos (testado com `peginc/swade`).
   - **GitLab MCP Server Integration:** Documentação de integração com o servidor MCP oficial do GitLab ([docs.gitlab.com/user/model_context_protocol/mcp_server/](https://docs.gitlab.com/user/model_context_protocol/mcp_server/)).
   - **README Bilíngue Completo:** Guia estruturado em Inglês e Português da skill.
+
+---
+
+## [1.16.0] - 2026-11-04
+
+### Added / Adicionado
+- **Nova Skill Oficial: `mcp-builder` (v0.1.0-beta):**
+  - **Arquiteto & Gerador Universal de Servidores MCP:**
+    - Suporte nativo a **PHP 8.4+** (`adapters/Php84Adapter.php`), **Python 3.12+** (`adapters/python_adapter.py`) e **Node.js 22+ ESM** (`adapters/node_adapter.mjs`) operando via JSON-RPC 2.0 stdio com zero dependências externas.
+  - **Security Shield (Blindagem Contra Ataques & Anti-Prompt Injection):**
+    - Módulo `security/prompt_shield.py` com detecção heurística de jailbreaks, quarentena de credenciais/segredos e análise estática SAST (proteção contra SQLi, XSS, Path Traversal, SSRF e Command Injection).
+  - **Resiliência Fail-Safe & Auto Issue Reporter:**
+    - Módulo `scripts/issue_reporter.py` para reporte amigável de falhas ao usuário e abertura automática de Issues estruturadas com diagnóstico higienizado no repositório GitHub (`CharlesCorreaDev/skills-ai`).
+  - **Self-Updater & Monitor de Atualizações:**
+    - Módulo `scripts/check_updates.py` para consulta de novas versões no GitHub Releases.
+  - **Configurador de MCPs Externos:**
+    - Módulo `scripts/configure_external_mcp.py` para injeção automática de configurações no Antigravity IDE, Claude Desktop e Cursor.
+  - **Documentação e Guias Técnicos:**
+    - `SKILL.md`, `README.md`, `VERSION` (0.1.0-beta), `CHANGELOG.md`, `cheatsheet.md`, `patterns.md` e `glossary.md`.
+- **Nova Skill Oficial: `sms-legal` (v1.0.0):**
+  - **Servidor MCP Nativo Unificado (`sms-legal/mcp/`):**
+    - Implementação nativa em Node.js (`sms_legal_mcp_server.js`) via JSON-RPC 2.0 stdio (sem dependências externas).
+    - Implementação nativa alternativa em Python 3 (`sms_legal_mcp_server.py`) com módulo nativo `urllib`.
+    - 9 ferramentas MCP nativas: `sms_enviar_texto`, `sms_enviar_lote`, `sms_agendar`, `sms_consultar_status`, `sms_consultar_creditos`, `sms_consultar_respostas`, `sms_consultar_numero`, `sms_enviar_voz` e `sms_enviar_audio`.
+    - Manual completo de integração (`mcp/README.md`) para Antigravity IDE, Claude Desktop, Cursor e outros clientes MCP.
+  - **SDKs Multilinguagem Nativos (`sms-legal/integrations/`):**
+    - SDK em **PHP** (`SmsLegalClient.php`): compatível com PHP 7.4 a 8.5+, cURL nativo e tipagem estrita.
+    - SDK em **Python** (`sms_legal_client.py`): compatível com Python 3.8+, sem bibliotecas externas.
+    - SDK em **Node.js** (`sms_legal_client.js`): cliente assíncrono modular com Promises.
+  - **Documentação Arquitetural e de Integração:**
+    - `cheatsheet.md`: Tabela rápida de endpoints, parâmetros e códigos de erro de `000` a `011`.
+    - `patterns.md`: Padrões de arquitetura (BFF, filas de mensageria assíncronas, proteção contra bloqueio por links e particionamento de lotes).
+    - `glossary.md`: Glossário técnico com termos e definições do SMS Gateway.
+    - `README.md`, `VERSION` (1.0.0) e `CHANGELOG.md` dedicados.
+
+---
+
+## [1.15.0] - 2026-11-03
+
+### Added / Adicionado
+- **Motor Universal de Layout e Tradução de PDFs (`book-formatter`):**
+  - Adicionado script multiplataforma `universal_pdf_layout_translator.py` para processar e traduzir qualquer PDF em alta fidelidade.
+  - Adicionado utilitário multiplataforma `patch_save.py` para salvamento seguro e resiliente de PDFs contra bloqueios de arquivos.
+- **Documentação Offline PHP Completa (`php-dev-expert`):**
+  - Adicionada documentação oficial completa em arquivo único `php-bigxhtml.html` (~68 MB) para consulta local de alta velocidade offline.
+
+### Fixed / Corrigido
+- **Fidelidade Tipográfica e Grid de Colunas (`book-formatter`):**
+  - Correção de sobreposição de textos e invasão de colunas no lote de teste de Savage Worlds: Necessary Evil Invasão.
+  - Migração de todas as rotinas para o padrão moderno `import pymupdf as fitz`.
+  - Remoção de fluxos de texto `BT...ET` diretamente do content stream vetorial para 100% de preservação de texturas e relâmpagos.
+
+---
+
+## [1.14.0] - 2026-11-03
+
+### Added / Adicionado
+- **Requisitos Mandatórios Globais e Locais do Ecossistema: GitHub CLI (`gh`) & Tríade de Skills:**
+  - **GitHub CLI (`gh`) & Autenticação Obrigatória:** Padronização em todas as skills para exigir e forçar a verificação do `gh` instalado e conectado (`gh auth login`), facilitando clonagem fluida, atualização de forks e submissão formal de issues e novos glossários via CLI.
+  - **Tríade Obrigatória de Skills Companheiras (Disponíveis Globalmente e no Projeto do Usuário):**
+    - Todas as skills criadas no repositório operam em conjunto com:
+      1. **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Engenharia de software enxuta, código cirúrgico e ausência de suposições cegas.
+      2. **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Entrevista profunda com o usuário/autor para travar requisitos e eliminar ambiguidades antes da execução.
+      3. **`skills-code-review`** (`https://www.aihero.dev/skills-code-review`): Revisão automatizada de código e auditoria rigorosa de qualidade antes de qualquer entrega.
+    - Disponibilidade obrigatória em escopo global (`~/.gemini/config/skills/`, `~/.claude/skills/`) e no projeto local (`.agents/skills/`, `.claude/skills/`).
+- **video-to-md (v0.2.0-beta):**
+  - Expansão multiplataforma: YouTube, Vimeo (oEmbed + v2 API) e Twitch (VODs e Clipes via `yt-dlp`).
+  - Fallback por Áudio via IA (`--fallback-audio`) com suporte a Whisper e WhisperX (`--whisper-model`).
+  - Ajuste de `--delay-ms` para 15.000 ms (15s) padrão para mitigar bloqueios de rate limit do YouTube.
+- **book-formatter (v0.14.0-beta):**
+  - **Protocolo de Testes e Amostragem em Lotes de 5 Páginas:** Fixado o padrão de **5 páginas** (`--max-pages 5`) para todas as rodadas de teste e validação de diagramação e tradução antes da execução de lotes maiores.
+  - **Comparativos Visuais Lado a Lado Obrigatórios:** Geração obrigatória de imagens lado a lado comparando original em inglês vs traduzido em português para checagem de entrelinhas (*leading* de 12.0 pt) e fontes originais (`PopulationZeroBB`, `Palatino Linotype`).
+  - **Deduplicação de Camadas e Des-hifenização:** Remoção automática de textos duplicados por *drop-shadow* de PDF e reunião de palavras translineadas em margens de coluna.
+  - **Motor Universal de Conversão (`batch_convert_to_md_jsonl.py`):** Suporte genérico para qualquer pasta ou arquivo PDF com saída em `.md`, `.txt` e `.jsonl` para IA.
+- **book-formatter (v0.13.0-beta):**
+  - **Segmentação de Regras para IA, RAG e MCP:** Script `scripts/export_rules_for_ai.py` que fragmenta livros em datasets JSONL para RAG, datasets para fine-tuning e arquivos por categorias (`combat.md`, `spells.md`, etc.) para uso em ferramentas de MCP servers.
+  - **Comunicação de Novos Glossários Formalizada via GitHub Issue:** Notificação ao usuário e proposta de inclusão no repositório oficial obrigatoriamente submetidas via issue.
+  - **Manutenção e Atualização Contínua de Dependências:** `scripts/check_env.py --upgrade` para atualização automática de pacotes Python da skill.
+  - **Aprendizado Contínuo & Criação Automática de Glossários:** Ao ler qualquer livro de sistema de RPG, o vocabulário mecânico é extraído e gravado na pasta `glossarys/` e na memória.
+  - **Monitor de Versão e Atualização Automática:** Script `scripts/check_update.py` para detecção de novas versões publicadas no repositório remoto e atualização automática (`--upgrade`).
+  - **Integração de Motores SOTA de IA e Utilitários de PDF:** Inclusão de Docling (IBM/DS4SD), Marker (Datalab), Unstructured, Nougat (Meta AI), Stirling-PDF, Nano-PDF e auditoria RAG inspirada em PDFtoGPT e AI-powered-PDF-agent.
+  - **Diretrizes Rigorosas do Tradutor Profissional de Livros de RPG:** 5 mandamentos obrigatórios de fidelidade de tradução, preservação estrita da página original (sem recriar do zero), inviolabilidade numérica (`1d8` e `+2`), checklist de controle de qualidade e formato de entrega.
+  - **Protocolo Code Mode, Grill-Me & Andrej Karpathy Skills:** Obrigatório executar tarefas de diagramação em etapas via Code Mode; instalação e uso compulsório das skills `mattpocock/grill-me` (entrevista profunda com o autor antes de executar) e `multica-ai/andrej-karpathy-skills` (engenharia mínima, sem suposições e com validação contínua).
+
+---
+
+## [1.13.0] - 2026-10-29
+
+### Added / Adicionado
+- **book-formatter (v0.8.0-beta):** nova skill de formatação e diagramação de livros de RPG.
+  - **Instalação de ferramentas de leitura:** PDF com/sem OCR, TXT, DOCX, DOC, CSV/TSV, XLSX/XLS, HTML, EPUB e imagens com OCR, com matriz de formatos e engines de extração.
+  - **Artefatos de entrega:** arquivo `.txt` com os textos, `.md` (Markdown) e `.pdf` devidamente diagramado/formatado (fiel ao original: imagens, colunas, fontes, títulos, recuos, parágrafos e número de páginas).
+  - **Fluxo de diagramação:** 8 fases (Analisar PDF → Descobrir/Usar Fontes → Extrair Texto → Ensinar Vocabulário RPG → Traduzir em Lotes → Verificar Tradução → Diagramar → Auditar Final) baseado na metodologia de tradução/diagramação com IA paga (ChatGPT + plugin Adobe WORK).
+  - **Scripts:** `scripts/check_env.py` (verificação de ambiente multiplataforma) e `scripts/convert_to_txt_md.py` (conversão para TXT/Markdown).
+  - **Glossário:** `glossarys/glossary.md` com dicionário inicial de termos de RPG e gamers (futuros dicionários em breve).
+  - **Glossário Sci-Fi (v0.2.0-beta):** Adicionado `glossarys/glossary-scifi.md` com termos de ficção científica, ciberpunk, space opera, militar, science fantasy e psionics, ampliando o dicionário de RPG e gamers da skill.
+  - **Glossário de Terror (v0.3.0-beta):** Adicionado `glossarys/glossary-horror.md` com termos de terror cósmico, Lovecraft, survival horror, gothic horror e psionics, ampliando a coleção de dicionários da skill.
+  - **Glossário Savage Worlds (v0.4.0-beta):** Adicionado `glossarys/glossary-savage-worlds.md` com termos do **Savage Worlds Adventure Edition (SWADE)** (conceitos, traits, perícias, combate, edges e cenários).
+  - **Glossário Year Zero (v0.5.0-beta):** Adicionado `glossarys/glossary-year-zero.md` com termos do **Year Zero Engine (YZE)** (Forbidden Lands, Vaesen, Alien, Blade Runner, Twilight 2000, Mutant, The Walking Dead, Tales from the Loop, Electric State, etc.).
+  - **Glossário do Mundo das Trevas (v0.6.0-beta):** Adicionado `glossarys/glossary-world-of-darkness.md` com glossário exclusivo do **Mundo das Trevas (World of Darkness)**, cobrindo **todas as suas franquias**.
+  - **Nova Capacidade (v0.7.0-beta):** Criação de **Formulários e Fichas de RPG em PDF preenchíveis** (toolchain `fpdf2`/`reportlab`/`pdfcpu` e inspeção `pypdf`/`pdfplumber`).
+  - **Glossário Pathfinder 2e (v0.8.0-beta):** Adicionado `glossarys/glossary-pathfinder-2e.md` com glossário de **Pathfinder 2ª Edição (PF2e)** (Classes, Feats/Dotações, Salvamentos, Ações, Condições, Mecânicas).
+
+---
+
+## [1.12.0] - 2026-10-28
+
+### Added / Adicionado
+- **youtube-to-md (v0.1.0-beta):** nova skill que converte vídeos soltos e playlists do YouTube em Markdown (metadados, descrição, capítulos e transcrição com timestamps clicáveis), com `_INDEX.md`, `manifest.json` e `_ALL.md` opcional. Ver [`youtube-to-md/SKILL.md`](youtube-to-md/SKILL.md).
+- **master-of-foundryvtt (v0.16.0-beta):**
+
+  - **Perfilador de Hardware (CPU, RAM e GPU/VRAM) & Governador Adaptativo Anti-Travamento (`scripts/hardware_governor.py`, `scripts/hardware_governor.mjs`, `scripts/check_env.py`, `scripts/convert_media.js`, `mcp/foundry_mcp_server.js`, `mcp/foundry_mcp_server.py` e Mandato 24 no `SKILL.md`):**
+    - Verifica automaticamente o processador (`modelo da CPU` e `núcleos lógicos`), memória RAM (`Total`, `Livre`, `% em uso`) e GPU/VRAM (`VRAM Total`, `VRAM Livre` e se a GPU é integrada compartilhando RAM do sistema ou dedicada via `nvidia-smi`, Registro do Windows `HardwareInformation.qwMemorySize` e `lspci`).
+    - Calcula o orçamento seguro (`max_workers`, `ffmpeg_threads`, `sharp_concurrency`, `batch_size`, `batch_delay_ms`) e aplica prioridade baixa no SO (`BELOW_NORMAL_PRIORITY_CLASS` / `nice(10)`) + guardião de RAM em tempo real para jamais travar a máquina operante.
+    - Calcula o orçamento de VRAM do Canvas WebGL/PixiJS do Foundry VTT (`foundry_vram_canvas_budget`: resolução máxima de mapa `4096x4096` / `8192x8192` / `16384x16384`, limite de tiles WebM animados e qualidade WebP).
+- **website-for-markdown (v0.3.0-beta):**
+  - **Motor Nativo de Crawling Recursivo Local (`scripts/scrape_to_md.py`):** Varredura recursiva em largura (BFS) sem depender de API externa, trava automática de escopo por prefixo de URL (`get_scope_prefix`), modo HTTP multi-thread rápido (`--fast` / `--workers`) com fallback Playwright, limpeza cirúrgica de DOM (`#layout-content`, `article`, `main`), reescrita de links internos (`.php`/`.html` para `.md`), filtros regex (`--include`/`--exclude`), *resume cache* e geração de `_INDEX.md` + `crawl_manifest.json`.
+  - **Perfilador Automático de Hardware & Controle Eco de CPU/RAM (`detect_hardware_budget`):** Detecta modelo do processador, núcleos lógicos, RAM total e RAM livre da máquina operante antes de iniciar, define prioridade baixa no SO (`BELOW_NORMAL_PRIORITY_CLASS` / `nice(10)`), limita threads de forma conservadora (~15-20% da CPU), faz streaming em micro-lotes a partir do disco e pausa com `gc.collect()` caso a RAM ultrapasse 78%.
+- **website-for-skill (v0.3.0-beta):**
+  - **Orquestração de Portais Multipágina e Preservação de Links (`Scripts/build_skill.py`):** Repasse completo de parâmetros de crawling (`--crawl`, `--fast`, `--max-pages`, `--max-depth`, `--include`, `--exclude`, `--from-dir`, `--delay-ms`, `--max-ram-percent`), preservação dos nomes semânticos em `chapters/` para manter links internos funcionais, geração de `chapters/_INDEX.md` em streaming de baixo uso de memória (evitando colisão com `index.md` no Windows) e agrupamento inteligente por categoria no `SKILL.md`.
+- **php-dev-expert (v0.6.0-beta):**
+  - **Documentação de POO em PHP em [`php-dev-expert/OOP/`](php-dev-expert/OOP/README.md)** (4 módulos + índice, cobrindo as aulas `#01` a `#15` da playlist, com extensão para PHP 8.x).
+  - **Acervo Completo de 31 Plataformas de CMS, LMS, E-Commerce, Helpdesk, Faturamento, Redes Sociais, Analytics e Ferramentas em PHP em [`php-dev-expert/cms/`](php-dev-expert/cms/README.md) (`2.501 páginas`):** [`wordpress`](php-dev-expert/cms/wordpress/_INDEX.md) (452 págs), [`joomla`](php-dev-expert/cms/joomla/_INDEX.md) (322 págs), [`craftcms`](php-dev-expert/cms/craftcms/_INDEX.md) (249 págs), [`octobercms`](php-dev-expert/cms/octobercms/_INDEX.md) (155 págs), [`blesta`](php-dev-expert/cms/blesta/_INDEX.md) (100 págs), [`matomo`](php-dev-expert/cms/matomo/_INDEX.md) (96 págs), [`opencart`](php-dev-expert/cms/opencart/_INDEX.md) (90 págs), [`ossn`](php-dev-expert/cms/ossn/_INDEX.md) (66 págs), [`invoiceninja`](php-dev-expert/cms/invoiceninja/_INDEX.md) (62 págs), [`invoiceplane`](php-dev-expert/cms/invoiceplane/_INDEX.md) (61 págs), [`livehelperchat`](php-dev-expert/cms/livehelperchat/_INDEX.md) (61 págs), [`zenbership`](php-dev-expert/cms/zenbership/_INDEX.md) (61 págs), [`elgg`](php-dev-expert/cms/elgg/_INDEX.md) (60 págs), [`formalms`](php-dev-expert/cms/formalms/_INDEX.md) (60 págs), [`moodle`](php-dev-expert/cms/moodle/_INDEX.md) (60 págs), [`humhub`](php-dev-expert/cms/humhub/_INDEX.md) (54 págs), [`mywebsql`](php-dev-expert/cms/mywebsql/_INDEX.md) (51 págs), [`htmlpurifier`](php-dev-expert/cms/htmlpurifier/_INDEX.md) (50 págs), [`openwebanalytics`](php-dev-expert/cms/openwebanalytics/_INDEX.md) (50 págs), [`oscommerce`](php-dev-expert/cms/oscommerce/_INDEX.md) (50 págs), [`freescout`](php-dev-expert/cms/freescout/_INDEX.md) (49 págs), [`phpmyadmin`](php-dev-expert/cms/phpmyadmin/_INDEX.md) (48 págs), [`eventschedule`](php-dev-expert/cms/eventschedule/_INDEX.md) (41 págs), [`maianmedia`](php-dev-expert/cms/maianmedia/_INDEX.md) (40 págs), [`roundcube`](php-dev-expert/cms/roundcube/_INDEX.md) (39 págs), [`subrion`](php-dev-expert/cms/subrion/_INDEX.md) (24 págs), [`jcow`](php-dev-expert/cms/jcow/_INDEX.md) (15 págs), [`afterlogic`](php-dev-expert/cms/afterlogic/_INDEX.md) (13 págs), [`mibew`](php-dev-expert/cms/mibew/_INDEX.md) (10 págs), [`kohana`](php-dev-expert/cms/kohana/_INDEX.md) (8 págs) e [`x2crm`](php-dev-expert/cms/x2crm/_INDEX.md) (4 págs).
+  - **Documentação Conceitual, Histórica e Comparativa de Frameworks PHP em [`php-dev-expert/frameworks/doc/`](php-dev-expert/frameworks/doc/README.md)** + **10 Frameworks PHP Documentados Localmente em Markdown** ([`laravel`](php-dev-expert/frameworks/laravel/_INDEX.md), [`symfony`](php-dev-expert/frameworks/symfony/_INDEX.md), [`yii`](php-dev-expert/frameworks/yii/_INDEX.md), [`spiral`](php-dev-expert/frameworks/spiral/SKILL.md), [`codeigniter`](php-dev-expert/frameworks/codeigniter/_INDEX.md), [`fuelphp`](php-dev-expert/frameworks/fuelphp/_INDEX.md), [`slim`](php-dev-expert/frameworks/slim/_INDEX.md), [`flightphp`](php-dev-expert/frameworks/flightphp/_INDEX.md), [`fatfree`](php-dev-expert/frameworks/fatfree/_INDEX.md) e [`web-framework`](php-dev-expert/frameworks/web-framework/_INDEX.md)).
+  - **Documentação Oficial Completa de 6 Servidores Web em [`php-dev-expert/servers/`](php-dev-expert/servers/):** [`caddy-web-server`](php-dev-expert/servers/caddy-web-server/_INDEX.md), [`apache-server/2.4`](php-dev-expert/servers/apache-server/2.4/_INDEX.md), [`apache-server/2.2`](php-dev-expert/servers/apache-server/2.2/_INDEX.md), [`lightspeed-server`](php-dev-expert/servers/lightspeed-server/_INDEX.md), [`nginx-server`](php-dev-expert/servers/nginx-server/_INDEX.md) e [`iis-server`](php-dev-expert/servers/iis-server/_INDEX.md).
+  - **Documentação Oficial do Bootstrap por Versão em [`php-dev-expert/bootstrap/`](php-dev-expert/bootstrap/README.md):** [`3.4`](php-dev-expert/bootstrap/3.4/_INDEX.md) (27 págs), [`4.6`](php-dev-expert/bootstrap/4.6/_INDEX.md) (106 págs), [`5.3`](php-dev-expert/bootstrap/5.3/_INDEX.md) (162 págs) e [`6.0`](php-dev-expert/bootstrap/6.0/_INDEX.md) (182 págs).
+  - **Documentação Modular Completa de Arquitetura PHP MVC em [`php-dev-expert/MVC/`](php-dev-expert/MVC/README.md):**
+    - 6 guias interligados cobrindo Front Controller (`public/index.php`), Nginx/Apache rewrite, Composer PSR-4, Container DI com Auto-Wiring, Router + Middlewares, Controllers enxutos, objetos `Request`/`Response`, DTOs, Single-Action Controllers (`__invoke` / ADR), camada Model dividida em Entidades/Enums + Services + Repositories com PDO seguro (anti-SQLi e transações), camada View com Layouts + anti-XSS + `CsrfMiddleware` + APIs JSON, evolução sintática do PHP 7.4 ao PHP 8.5 (`readonly class`, Property Hooks, Asymmetric Visibility, Pipe Operator `|>`), comparativo Laravel/Symfony/FlightPHP/Slim, Anti-Patterns e testes unitários com PHPUnit.
+  - **Segurança Crítica & Mitigação PHP2Shell (`CVE-2026-109618` e `CVE-2026-109619`) em [`php-dev-expert/security-cves.md`](php-dev-expert/security-cves.md):**
+    - Análise de causa raiz no Zend Engine: corrupção de memória por `longjmp()` (`zend_bailout`) em erros Out-Of-Memory com estruturas parcialmente inicializadas (`CVE-2026-109618`) e *Use-After-Free* (UAF) por estado global obsoleto (`session.upload_progress`) em workers persistentes (`CVE-2026-109619`).
+    - Contexto de descoberta (agosto de 2026) pelas equipes da Calif e Wiz em parceria com a OpenAI (*Patch the Planet*), utilizando auditoria assistida por IA.
+    - Diretrizes de prevenção para **PHP 8.2+** (`>= 8.2.35`, `>= 8.3.36`, `>= 8.4.27`, `>= 8.5.12` e contenção sem atualização imediata), blindagem em camadas para **PHP 8.1 ou menor** sem possibilidade de atualização de versão (backports LTS, `session.upload_progress.enabled = 0` no `php.ini` global, `php_admin_flag` no PHP-FPM, controle de limites multipart/memória e bloqueio no Nginx/WAF) e **protocolos específicos para servidores Docker com PHP** (`docker-compose.yml` sem rebuild, `Dockerfile`, cgroups e hotfix zero-downtime via `USR2`/`USR1`).
+  - **Base Completa do Manual Oficial do PHP (`pt_BR`) em [`php-dev-expert/php-docs/`](php-dev-expert/php-docs/_INDEX.md):** 11.838 páginas oficiais convertidas para Markdown com links internos preservados (`.md`), `_INDEX.md` categorizado e `crawl_manifest.json`.
 
 ---
 
