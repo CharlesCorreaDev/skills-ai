@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.24.0] - 2026-11-10
+
+### Added / Adicionado
+- **Servidor MCP Nativo & Skills para Git, SQLite e PostgreSQL no `master-of-gravewright` (`v0.2.0-beta`):**
+  - **Servidor MCP Nativo (`master-of-gravewright-mcp`):** Implementado servidor stdio JSON-RPC 2.0 em Python zero-dependency (`master-of-gravewright/mcp/gravewright_mcp_server.py`) expondo 6 ferramentas para o agente de IA interagir com projetos Gravewright em tempo real.
+  - **Skills de Banco de Dados (`microsoft/postgres-skills`):** Integração com SQLite local e PostgreSQL para ambientes de produção com Django ORM e WebSockets (`docs/database-guide.md`).
+  - **Skills de Controle de Versão (Git & GitHub):** Padronização de repositórios, `.gitignore`, tags SemVer e empacotamento de extensões para o Marketplace (`docs/git-guide.md`).
+
+---
+
 ## [1.23.0] - 2026-11-10
 
 ### Added / Adicionado

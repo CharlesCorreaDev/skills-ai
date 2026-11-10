@@ -45,7 +45,15 @@ Quando esta skill for ativada ou o usuário solicitar setup do ambiente:
 > 2. **`bootstrap-ux-ui-plus` (`v0.3.0-beta`):**
 >    - Para estilização e ergonomia de interfaces web e painéis do GM em Jinja2/HTML5 com acessibilidade WCAG 2.2 AA.
 >    - Comando: `npx skills@latest add CharlesCorreaDev/skills-ai --skill=bootstrap-ux-ui-plus`
-> 3. **`cloudflare/security-audit-skill` & `NVIDIA/auto-ontology`:**
+> 4. **`microsoft/postgres-skills` (PostgreSQL & Database Engineering):**
+   - Para modelagem relacional avançada, índices JSONB em itens/fichas, connection pooling e deploy de alta escala com PostgreSQL.
+   - Comando: `npx skills@latest add microsoft/postgres-skills`
+   - Consulte o guia completo em [Guia de Banco de Dados: SQLite e PostgreSQL](docs/database-guide.md).
+5. **Git Workflows & Version Control (`git-pr-workflows` / `github`):**
+   - Para governança de repositórios de módulos, tags de release e empacotamento para o Marketplace.
+   - Comando: `npx skills@latest add github`
+   - Consulte o guia completo em [Guia de Versionamento Git](docs/git-guide.md).
+5. **`cloudflare/security-audit-skill` & `NVIDIA/auto-ontology`:**
 >    - Auditoria de segurança de permissões do GM vs Jogadores e proibição absoluta de inventar métricas/regras inexistentes.
 >    - Comando: `npx skills@latest add cloudflare/security-audit-skill` e `npx skills@latest add NVIDIA/auto-ontology`
 
@@ -113,6 +121,7 @@ python master-of-gravewright/scripts/setup_dev_env.py --create-module "meu-siste
 ## 📚 Documentação Técnica Integrada (Offline em EN e pt-BR)
 
 A skill possui cópia integral offline dos manuais oficiais em [`docs/en/`](docs/en/) e [`docs/pt-BR/`](docs/pt-BR/):
+- **Guias de Engenharia:** [Guia de Banco de Dados: SQLite & PostgreSQL](docs/database-guide.md) • [Guia de Versionamento Git](docs/git-guide.md)
 - **Arquitetura & Código:** [Architecture](docs/pt-BR/architecture.md) • [Code Map](docs/pt-BR/code-map.md) • [API](docs/pt-BR/api.md) • [Development](docs/pt-BR/development.md)
 - **Módulos & Frontend:** [Modules Guide](docs/pt-BR/modules.md) • [Frontend](docs/pt-BR/frontend.md) • [Ethical Porting](docs/pt-BR/ethical-module-porting.md)
 - **Sistemas de Jogo & Recursos:** [Campaign Management](docs/pt-BR/campaign-management.md) • [Journals](docs/pt-BR/journals.md) • [Clocks](docs/pt-BR/clocks.md) • [Clues](docs/pt-BR/clues.md) • [Mindmaps](docs/pt-BR/mindmaps.md) • [Map Builder](docs/pt-BR/map-builder.md) • [PDF System](docs/pt-BR/pdf-system.md) • [Universal VTT (UVTT)](docs/pt-BR/universal-vtt.md)
@@ -144,8 +153,12 @@ master-of-gravewright/
 ├── CHANGELOG.md                      # Histórico detalhado de versões
 ├── scripts/
 │   └── setup_dev_env.py              # Diagnóstico de ferramentas e scaffolder de módulos
+├── mcp/                              # Servidor MCP Nativo Oficial (master-of-gravewright-mcp)
+│   ├── gravewright_mcp_server.py     # Core do Servidor MCP em Python (JSON-RPC 2.0 stdio)
+│   └── README.md                     # Guia de configuração e ferramentas MCP
 ├── docs/                             # Manuais oficiais offline do Gravewright
 │   ├── en/                           # 25 guias técnicos em inglês
 │   └── pt-BR/                        # 25 guias técnicos em português brasileiro
 └── templates/                        # Templates de módulos e extensões
 ```
+
