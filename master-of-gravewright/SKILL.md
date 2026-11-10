@@ -57,6 +57,23 @@ Quando esta skill for ativada ou o usuário solicitar setup do ambiente:
 >    - Auditoria de segurança de permissões do GM vs Jogadores e proibição absoluta de inventar métricas/regras inexistentes.
 >    - Comando: `npx skills@latest add cloudflare/security-audit-skill` e `npx skills@latest add NVIDIA/auto-ontology`
 
+### 3. Diretrizes Oficiais de Porte Ético de Módulos (Ethical Module Porting)
+> [!IMPORTANT]
+> **Sempre que portar, adaptar ou migrar módulos de outros VTTs (como Foundry VTT ou Roll20) para o Gravewright:**
+> O Agente **DEVE consultar e seguir o guia oficial em [`docs/pt-BR/ethical-module-porting.md`](docs/pt-BR/ethical-module-porting.md) (ou [`docs/en/ethical-module-porting.md`](docs/en/ethical-module-porting.md))**, respeitando:
+> 1. **Separação de Código e Conteúdo:** Código permissivo (MIT/BSD/GPL) NÃO libera automaticamente imagens, textos de lore, mapas, fontes ou áudios proprietários de terceiros.
+> 2. **Conversão de Formato NÃO Cria Permissão:** Converter JSON, extrair texto de PDF ou reescrever arquivos não elimina direitos autorais de livros ou marcas registradas.
+> 3. **Crédito NÃO Substitui Licença:** Preservar o nome do autor original é obrigatório por lei, mas não substitui a autorização expressa para redistribuição.
+> 4. **Mapeamento Canônico de Domínios:** Mapear funcionalidades do módulo diretamente para os domínios do Gravewright:
+>    - Fichas e personagens ➔ domínio `actors` (`actor.sheet`)
+>    - Tokens, posições e condições ➔ domínio `tokens` (`token.sheet`)
+>    - Equipamentos, magias e itens ➔ domínio `items` (`item.sheet`)
+>    - Aventuras e anotações ➔ domínio `journals`
+>    - Combate, turnos e iniciativa ➔ domínio `combat`
+>    - Baralhos de cartas ➔ domínio `cards`
+>    - Sons e playlists ➔ domínio `audio`
+>    - Bibliotecas e compêndios ➔ domínio `compendiums`
+
 ---
 
 ## 🏛️ Arquitetura e Engenharia Reversa do Gravewright
