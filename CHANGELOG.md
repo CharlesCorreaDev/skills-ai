@@ -7,6 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.23.0] - 2026-11-10
+
+### Added / Adicionado
+- **Nova Skill Oficial: `master-of-gravewright` (`v0.1.0-beta`):**
+  - Engenharia reversa completa do **[Gravewright VTT](https://gravewright.com/)** (`Gravewright/gravewright`), o Virtual Tabletop open-source brasileiro desenvolvido em Python 3.12+, Astral `uv`, Django 5.x/6.x, Jinja2 e Django Channels (WebSockets).
+  - **Diagnóstico de Ambiente & Scaffolder (`scripts/setup_dev_env.py`):** Script em Python com comentários e saídas bilíngues (EN e pt-BR) que avalia os requisitos do sistema (Python, uv, Git) e cria módulos de navegador (`browser-module`) ou extensões de servidor (`django-app-module`) com `manifest.json` canônico.
+  - **Acervo Offline Bilíngue Completo (`docs/en/` e `docs/pt-BR/`):** 50 guias técnicos cobrindo arquitetura, code map, APIs, módulos, frontend, campaign management, clocks, clues, mindmaps, map builder, PDF system, universal VTT (UVTT), runners e ethical porting.
+  - **Integração Mandatória com Skills Parceiras:** Pareamento obrigatório com `python-dev-expert` para o backend Django, `bootstrap-ux-ui-plus` para ergonomia e acessibilidade de UI, e a dupla `cloudflare/security-audit-skill` & `NVIDIA/auto-ontology`.
+
+---
+
 ## [1.22.0] - 2026-11-09
 
 ### Added / Adicionado
