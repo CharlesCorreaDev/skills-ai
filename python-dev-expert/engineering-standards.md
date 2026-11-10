@@ -94,3 +94,4 @@ Substitua `print()` por logs JSON estruturados com carimbo de data/hora ISO, ní
 ### 4. Auditoria de Segurança com Semgrep e CodeQL (Trail of Bits Standard)
 - Utilize regras estáticas do Semgrep para detectar vulnerabilidades OWASP Top 10 antes do commit.
 - Integre verificação com `pip-audit` e `bandit` em todo pipeline CI/CD.
+

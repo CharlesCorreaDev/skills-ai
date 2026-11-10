@@ -7,6 +7,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.2.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Motion Design & Animação de Interfaces (`patterns/claude-motion-guide.md`):**
+  - Integração oficial com `whaleyxbt/claude-motion` para animações táteis fluidas, aceleração por GPU (`transform`, `opacity`), auto-avaliação estética de quadros e respeito a `prefers-reduced-motion`.
+- **Tríade Canônica: Impeccable Design, Systematic Debugging & Trail of Bits Security:**
+  - Diretrizes Impeccable de Paul Bakaus eliminando generic AI slop (proibição de cards dentro de cards desnecessários, gradientes caóticos e quebras tipográficas).
+  - Depuração Sistemática em 4 etapas e segurança preventiva de sanitização de inputs.
+- **Padrões de Engenharia de IA SOTA:**
+  - Integração com Karpathy Guidelines, Superpowers, Claude Octopus e persistência de sessão com AgentMemory e Déjà Vu.
+
+---
+
 ## [0.1.0-beta] - 2026-11-08
 
 ### Added / Adicionado

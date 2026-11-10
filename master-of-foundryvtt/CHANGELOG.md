@@ -7,6 +7,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.17.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Prioridade Absoluta do PDF Oxide (`pdf-oxide-guide.md`):**
+  - Integração do `pdf-oxide` (Node.js via N-API / Python) em **1º Lugar Obrigatório** para ingestão de PDFs de regras, aventuras, monstros, magias e itens em compêndios do Foundry VTT sem travar o event loop e com extração em ~0.8ms.
+- **Motion Design para Sheets e Interfaces de Módulos (Claude-Motion):**
+  - Adoção das diretrizes de `whaleyxbt/claude-motion` para animações táteis fluidas em janelas ApplicationV2, lançadores de dados e HUD.
+- **Tríade Canônica: Impeccable Design, Systematic Debugging & Trail of Bits Security:**
+  - Padrões visuais Impeccable contra poluição de fichas e compêndios.
+  - Depuração sistemática em 4 etapas para isolar conflitos de hooks e módulos.
+  - Segurança Trail of Bits para sanitização de dados e proteção de macros.
+
+---
+
 ## [0.16.0-beta] - 2026-10-28
 
 ### Added / Adicionado

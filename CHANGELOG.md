@@ -7,6 +7,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.19.0] - 2026-11-09
+
+### Added / Adicionado
+- **Atualização SemVer em Lote das Skills do Ecossistema:**
+  - **`python-dev-expert` (`v0.3.0-beta`):** Documentação offline completa em Markdown do Python (pt-br 3.15, 550+ arquivos) e Django (6.1, 680+ arquivos) com índices mestres para economia extrema de tokens; blindagem contra CVEs recentes (2024–2026); mandato de `PDF Oxide` em 1º Lugar; integração oficial Django + `bootstrap-ux-ui-plus`; e padrões de engenharia SOTA (TDD, Systematic Debugging, `structlog`, `pydantic-settings`, Trail of Bits e novo `README.md`).
+  - **`php-dev-expert` (`v0.7.0-beta`):** Mandato de prioridade absoluta para `PDF Oxide` (`oxide/pdf-oxide` via FFI); mandato de instalação e uso da skill companheira `bootstrap-ux-ui-plus`; tríade Impeccable Design, Systematic Debugging e Trail of Bits Security; e novo `README.md` bilíngue oficial.
+  - **`bootstrap-ux-ui-plus` (`v0.2.0-beta`):** Integração com `whaleyxbt/claude-motion` para animações fluidas aceleradas por GPU; tríade Impeccable Design (anti-slop visual de Paul Bakaus), Systematic Debugging e segurança Trail of Bits; e compatibilidade multiplataforma.
+  - **`master-of-foundryvtt` (`v0.17.0-beta`):** Integração do `pdf-oxide` em 1º Lugar para ingestão de PDFs de RPG sem travar o event loop do Node.js; motion design para sheets com `Claude-Motion`; e tríade canônica Impeccable, Debugging e Trail of Bits.
+  - **`book-formatter` (`v0.15.0-beta`):** Elevação do `PDF Oxide` (`pdf_oxide`) ao topo da matriz como motor primário mandatório em 1º Lugar para diagramação e extração de layouts de PDFs (~0.8ms); diretrizes Impeccable contra quebras artificiais de layout; e protocolo de depuração sistemática.
+- **Tríade Canônica de Engenharia & Design (`docs-for-skill/impeccable-debugging-security-trinity.md`):**
+  - Módulo compartilhado para o ecossistema cobrindo Impeccable Design (anti-slop visual), Depuração Sistemática em 4 etapas e Padrões de Segurança Trail of Bits (SAST e OWASP Top 10).
+
+---
+
 ## [1.18.0] - 2026-11-08
 
 ### Added / Adicionado

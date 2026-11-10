@@ -51,3 +51,4 @@ Aplica-se a código backend, APIs, scripts e integrações em **PHP, Python e Ja
    - Python: `bandit`, `pip-audit`, regras personalizadas do `Semgrep`.
    - PHP: `psalm --taint-analysis`, `phpstan`, `composer audit`.
    - JS/Node: `npm audit`, `eslint-plugin-security`.
+

@@ -7,6 +7,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.3.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Documentação Offline Completa do Python (pt-br 3.15) e Django (6.1):**
+  - Mais de 1.200 arquivos `.md` integrados localmente (`python-docs/` e `django-docs/`) com índices mestres para eliminar consumo desnecessário de tokens e chamadas web.
+- **Blindagem Contra Vulnerabilidades Recentes (2024–2026) em `security-cves.md`:**
+  - Código defensivo contra `CVE-2026-19445` (SSL Use-After-Free), `CVE-2026-4519` (Injeção de comandos em `webbrowser`), `CVE-2024-9287` (RCE em `venv`), `CVE-2024-11168` (SSRF em `urllib`), `CVE-2024-6232` (ReDoS/Tar Slip) e Pillow RCE (`CVE-2026-112900`).
+- **Prioridade Absoluta do PDF Oxide (`pdf-oxide-guide.md`):**
+  - Mandato de uso do `PDF Oxide` (`pip install pdf-oxide`) como **1º Lugar Obrigatório** para leitura e metadados de PDFs em Python (~0.8ms).
+- **Integração com Bootstrap UX/UI Plus e Django (`django-bootstrap-guide.md`):**
+  - Instalação obrigatória da skill companheira `bootstrap-ux-ui-plus`, templates base Mazer/AdminKit, tema claro por padrão, paleta #90271 e formulários acessíveis para daltônicos com `crispy-bootstrap5`.
+- **Padrões Canônicos de Engenharia SOTA (`engineering-standards.md`):**
+  - Test-Driven Development (TDD) com ciclo Red-Green-Refactor, Systematic Debugging em 4 etapas, logging estruturado em JSON com `structlog`, gestão tipada de ambiente com `pydantic-settings` e auditoria Trail of Bits (Semgrep/CodeQL).
+- **Novo `README.md` Oficial da Skill:**
+  - Guia completo bilíngue documentando todos os pilares técnicos e módulos da skill.
+
+---
+
 ## [0.2.0-beta] - 2026-10-25
 
 ### Added / Adicionado

@@ -7,6 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.7.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Prioridade Absoluta do PDF Oxide (`php-docs/pdf-oxide-guide.md`):**
+  - Mandato de uso do `PDF Oxide` (`oxide/pdf-oxide` via Composer/FFI) como **1º Lugar Obrigatório** para leitura de PDFs, extração de texto/tabelas e metadados com performance de ~0.8ms. Bibliotecas legadas (`smalot/pdfparser`, `tcpdf`, `mpdf`) rebaixadas estritamente a fallback secundário.
+- **Instalação Mandatória da Skill Companheira `bootstrap-ux-ui-plus`:**
+  - Obrigatoriedade de instalação e uso de `bootstrap-ux-ui-plus` para desenvolvimento de interfaces, dashboards e sistemas web com Bootstrap em PHP.
+- **Tríade Canônica: Impeccable Design, Systematic Debugging & Trail of Bits Security:**
+  - Depuração Sistemática em 4 etapas contra erros e bugs em runtime.
+  - Padrões de segurança Trail of Bits com validação estrita de fronteiras e auditoria SAST (`psalm`, `phpstan`, `composer audit`).
+  - Motion design com `Claude-Motion` para interfaces web modernas.
+- **Novo `README.md` Oficial da Skill:**
+  - Documentação completa bilíngue (EN / PT-BR) cobrindo governança, frameworks e plataformas.
+
+---
+
 ## [0.6.0-beta] - 2026-10-28
 
 ### Added / Adicionado
