@@ -100,12 +100,21 @@ A comunicação deve ser uma **mistura equilibrada**:
    - Consulte o guia completo em [Guia de PDF Oxide para Python](pdf-oxide-guide.md).
 7. **Animações de Interface & Motion Design (Claude-Motion)**:
    - Para interfaces web geradas em Python (Django, Streamlit, Dash, Reflex), utilize [claude-motion](https://github.com/whaleyxbt/claude-motion) para animações refinadas, aceleração por GPU e autocorreção visual.
-8. **Engenharia de IA, Memória & Padrões SOTA**:
+9. **Padrões de Engenharia Pythonica & SOTA da Comunidade**:
+   - **TDD (Test-Driven Development):** Ciclo Red-Green-Refactor, Tracer Bullets e De-Sloppify com `pytest`.
+   - **Depuração Sistemática (Systematic Debugging):** Hipótese científica, isolamento de falhas e reprodução controlada.
+   - **Logging Estruturado (`structlog`):** Logs em JSON consultáveis e contextualizados em substituição a `print()` e logs texto simples.
+   - **Gestão Tipada de Configuração (`pydantic-settings`):** Validação estrita de variáveis de ambiente e segredos (`SecretStr`).
+   - **Segurança Avançada (Trail of Bits Standard):** Auditoria SAST com Semgrep, CodeQL e OWASP Top 10.
+   - **Manipulação Segura de Planilhas (`xlsx`):** Leitura de alta volumetria com `openpyxl` (modo read-only) e processamento com `pandas`.
+   - Consulte o guia completo em [Padrões Canônicos de Engenharia Pythonica](engineering-standards.md).
+10. **Engenharia de IA, Memória & Padrões SOTA**:
    - Incorporação de boas práticas de [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), orquestração [Claude Octopus](https://github.com/nyldn/claude-octopus), camadas de memória persistente [AgentMemory](https://github.com/rohitg00/agentmemory) e [Déjà Vu](https://github.com/vshulcz/deja-vu), e conceitos do Dicionário de AI Coding de Matt Pocock.
 
 ## 📁 Estrutura da Skill
 - [Documentação Oficial do Python (pt_BR 3.15)](python-docs/_INDEX.md) - Manual completo oficial do Python com mais de 550 arquivos `.md` interligados.
 - [Documentação Oficial do Django (6.1)](django-docs/_INDEX.md) - Documentação oficial completa do Django com mais de 680 arquivos `.md` organizados.
+- [Padrões Canônicos de Engenharia Pythonica (TDD, Structlog, Debugging, Trail of Bits)](engineering-standards.md) - Melhores práticas consolidadas da comunidade de IA e engenharia moderna.
 - [Django + Bootstrap UX/UI Plus](django-bootstrap-guide.md) - Padrões de integração com Bootstrap 5.3/6.0, Mazer, AdminKit e Crispy Forms.
 - [Segurança Crítica & Mitigações de CVEs Recentes](security-cves.md) - Blindagem contra CVE-2026-19445, CVE-2026-4519, CVE-2024-9287, CVE-2024-11168 e Pillow RCE.
 - [Leitura de PDF com PDF Oxide (1º Lugar Obrigatório)](pdf-oxide-guide.md) - Manual de extração e metadados ultrarrápido em Rust para Python.

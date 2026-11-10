@@ -41,6 +41,10 @@ description: Master UX/UI design, usability engineering, and responsive interfac
    - Whenever animated elements, micro-interactions, or state transitions are requested in Bootstrap or companion interfaces, strictly follow [claude-motion](https://github.com/whaleyxbt/claude-motion) guidelines (GPU acceleration via `transform`/`opacity`, physics-based easing, visual self-correction, and `prefers-reduced-motion` compliance). Detailed in [claude-motion-guide.md](patterns/claude-motion-guide.md).
 10. **SOTA AI Agent Standards & Ecosystem Trinity:**
     - Active integration with [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), [Claude Octopus](https://github.com/nyldn/claude-octopus), [AgentMemory](https://github.com/rohitg00/agentmemory), [Déjà Vu](https://github.com/vshulcz/deja-vu), and Matt Pocock's AI Coding Dictionary (Handoff, Filesystem, Context, MCP, Software Factory).
+    - **Impeccable Design (Paul Bakaus / Anti-Slop Visual):** Strict elimination of generic AI slop (cards inside cards, muddy gradients, inconsistent spacing), enforcing intentional visual rhythm.
+    - **Systematic Debugging:** 4-step scientific debugging process without trial-and-error guessing.
+    - **Trail of Bits Security:** SAST linting, strict boundary sanitization, and OWASP Top 10 defense.
+    - Documented in [impeccable-debugging-security-trinity.md](../docs-for-skill/impeccable-debugging-security-trinity.md).
 11. **Continuous Bootstrap & Skill Update Protocol:**
    - **Upstream Release Monitoring:** Checks NPM/GitHub registry for newer Bootstrap versions (e.g. Bootstrap 5.3.8+, 6.0 preview). When a newer version is available, the agent dynamically upgrades recommendations, CSS variables, and utility classes.
    - **Skill Version Verification & Permission Gate:** Compares local skill files with the remote repository (`CharlesCorreaDev/skills-ai`). If a new version exists, the agent **MUST inform the user and request explicit confirmation** before updating or overwriting local skill files. Use `scripts/check_updates.mjs`.

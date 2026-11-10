@@ -18,7 +18,8 @@ It incorporates modern Pythonic practices, rigorous type hinting (`typing`, `myp
 2. **Critical Security Shield (2024–2026 CVEs):** Comprehensive mitigations for CPython vulnerabilities (SSL use-after-free `CVE-2026-19445`, `webbrowser` CLI injection `CVE-2026-4519`, `venv` activation RCE `CVE-2024-9287`, `urllib` SSRF `CVE-2024-11168`, `tarfile` ReDoS/slip `CVE-2024-6232`) and ecosystem exploits (Pillow RCE `CVE-2026-112900`).
 3. **First-Choice PDF Engine (`PDF Oxide`):** Ultra-fast Rust-based extraction, metadata inspection, and layout-to-Markdown conversion (`pip install pdf-oxide`), relegating legacy libraries to fallback.
 3. **Advanced Web Development (Django 6.1, FastAPI & Bootstrap UX/UI Plus):** Asynchronous ORM, modern models, MVT patterns, and direct integration with [`bootstrap-ux-ui-plus`](../bootstrap-ux-ui-plus/README.md) for accessible, responsive dashboards using Mazer/AdminKit layouts, light theme by default, and `crispy-bootstrap5`.
-4. **Data Science & Scripting:** High-performance data pipelines with Pandas, NumPy, and modern packaging (Poetry, Pipenv).
+4. **Padrões de Engenharia Pythonica & SOTA:** Integração de TDD (Red-Green-Refactor, Tracer Bullets), Depuração Sistemática (Systematic Debugging), logging estruturado em JSON com `structlog`, gestão tipada de ambiente com `pydantic-settings`, e auditoria de segurança no padrão Trail of Bits (Semgrep/CodeQL).
+5. **Data Science & Scripting:** High-performance data pipelines with Pandas, NumPy, and modern packaging (Poetry, Pipenv).
 5. **UI Motion Design (Claude-Motion):** Smooth micro-interactions, GPU acceleration, and visual taste for Python-generated web interfaces.
 6. **Agent Memory & Consensus Standards:** Multi-model consensus and cross-session persistence via hybrid search and local transcript indexing.
 
@@ -53,6 +54,7 @@ python-dev-expert/
 ├── patterns.md                       # Padrões de arquitetura e design patterns
 ├── django.md                         # Guia específico de arquitetura e ORM Django 6.1
 ├── django-bootstrap-guide.md         # Integração Django com Bootstrap UX/UI Plus
+├── engineering-standards.md          # Padrões de engenharia SOTA (TDD, Structlog, Debugging, Trail of Bits)
 ├── security-cves.md                  # Blindagem contra CVEs recentes (2024–2026)
 ├── pdf-oxide-guide.md                # Guia oficial de leitura e metadados com PDF Oxide
 ├── python-docs/                      # Documentação Oficial Completa do Python (pt-br 3.15, 550+ .md)

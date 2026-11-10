@@ -78,7 +78,10 @@ When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 
 
 #### 8. Interface Animations, Motion Design & AI Engineering Standards
 - **Motion Design (Claude-Motion):** Whenever animating Foundry VTT sheets, dice rollers, HUD elements, or custom UI modules, adhere to the [claude-motion](https://github.com/whaleyxbt/claude-motion) guidelines (GPU-accelerated transforms, natural pacing, self-correction, and `prefers-reduced-motion` compliance).
-- **AI Agent Companions & Memory:** Follow [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), multi-model consensus with [Claude Octopus](https://github.com/nyldn/claude-octopus), cross-session persistence via [AgentMemory](https://github.com/rohitg00/agentmemory) / [Déjà Vu](https://github.com/vshulcz/deja-vu), and Matt Pocock's AI Coding concepts.
+- **Impeccable Design & Anti-Slop Visual:** Eliminate generic AI slop in sheet and journal designs (clean typographic scale, intentional color contrast, no cards-inside-cards clutter).
+- **Systematic Debugging:** Trace console exceptions and hook conflicts scientifically (isolate minimal reproduction, formulate causal hypotheses, verify with targeted fixes without trial-and-error).
+- **Trail of Bits Security Standards:** Sanitize all macro inputs, socket communications, and compendium data models against injection and unauthorized elevation.
+- **AI Agent Companions & Memory:** Follow [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), multi-model consensus with [Claude Octopus](https://github.com/nyldn/claude-octopus), cross-session persistence via [AgentMemory](https://github.com/rohitg00/agentmemory) / [Déjà Vu](https://github.com/vshulcz/deja-vu), and Matt Pocock's AI Coding concepts. Consulte [impeccable-debugging-security-trinity.md](../docs-for-skill/impeccable-debugging-security-trinity.md).
 
 #### 9. Interactive Clarification, Content Ingestion & Transparent Scoping Protocol (CRITICAL)
 Whenever the user or Game Master asks to create or configure ANY game asset or development unit, including:

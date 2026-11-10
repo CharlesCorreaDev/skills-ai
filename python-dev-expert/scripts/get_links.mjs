@@ -19,3 +19,4 @@ function check(url) {
 
 check('https://docs.python.org/pt-br/3.15/download.html');
 check('https://docs.python.org/3/download.html');
+

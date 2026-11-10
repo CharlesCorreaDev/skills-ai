@@ -49,6 +49,11 @@ The flagship use case is **RPG books** (especially old materials from the **Worl
 
 For high-complexity RPG book layouts (multi-column text flow, medieval borders, statblocks, spell tables, background watermarks), the skill supports and orchestrates specialized state-of-the-art tools:
 
+- **Impeccable Design Standard (Paul Bakaus):** Strict anti-slop visual guidelines for book diagramming, eliminating clashing fonts, bad margins, unnatural line breaks, or cluttered ornament stacking.
+- **Systematic Debugging Protocol:** Scientific isolation of PDF extraction exceptions, font encoding errors, and OCR failures via minimal reproducible test cases without random parameter guessing.
+- **Trail of Bits Security Standards:** Sanitization of uploaded PDFs, external assets, and automated script pipelines against malicious payload injection.
+- Detailed reference in [impeccable-debugging-security-trinity.md](../docs-for-skill/impeccable-debugging-security-trinity.md).
+
 0. **[PDF Oxide](https://github.com/yfedoseev/pdf_oxide) (`pdf_oxide` / `pdf-oxide`) ⭐ (MANDATÓRIO EM 1º LUGAR):**
    - *Core specialty:* Motor ultrarrápido em Rust com bindings nativos para Python, Node.js e Rust. Extração de texto em ~0.8ms, conversão para Markdown, extração de metadados, caixas delimitadoras (bounding boxes) e licença permissiva MIT/Apache-2.0. **Sempre utilizado como primeira opção antes de qualquer outra ferramenta.**
    - *Docs:* [Python](https://pdf.oxide.fyi/pt/python/docs/getting-started) • [Node.js](https://pdf.oxide.fyi/pt/javascript-node/docs/getting-started) • [Rust](https://pdf.oxide.fyi/pt/rust/docs/getting-started) • [NPM](https://www.npmjs.com/package/pdf-oxide)

@@ -40,3 +40,4 @@ console.log('Copiando e organizando documentação do Django (6.1 / main)...');
 copyAndConvert(djangoSrc, djangoDest, '.txt', '.md');
 
 console.log('Processo de cópia concluído com sucesso!');
+

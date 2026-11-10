@@ -48,3 +48,4 @@ function generateIndex(dir, title, outFile, relPrefix) {
 
 generateIndex(path.join(root, 'python-docs'), 'Documentação Oficial do Python (pt_BR 3.15)', path.join(root, 'python-docs', '_INDEX.md'), 'python-docs');
 generateIndex(path.join(root, 'django-docs'), 'Documentação Oficial do Django (6.1)', path.join(root, 'django-docs', '_INDEX.md'), 'django-docs');
+
