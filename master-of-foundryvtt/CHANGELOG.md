@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.19.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Foundry Next Factory (FNF) como Scaffolder Oficial Mandatório:**
+  - Integração do motor [Foundry Next Factory](https://github.com/CharlesCorreaDev/fvtt-modules-plus/tree/main/foundry-next-factory) (`CharlesCorreaDev/fvtt-modules-plus/foundry-next-factory`) para criação de novos módulos e sistemas do zero para Foundry VTT v13, v14.369 Stable e v15+.
+  - Suporte completo aos presets `vite-ts-appv2` (Vite 6+, TypeScript estrito, `ApplicationV2` e `TypeDataModel`) e `vanilla-esm` (Zero-build, ESModules direto).
+
+---
+
 ## [0.18.0-beta] - 2026-11-09
 
 ### Added / Adicionado

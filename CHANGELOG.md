@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.22.0] - 2026-11-09
+
+### Added / Adicionado
+- **Integração Mandatória do Foundry Next Factory (FNF) no `master-of-foundryvtt` (`v0.19.0-beta`):**
+  - Adoção oficial do [Foundry Next Factory](https://github.com/CharlesCorreaDev/fvtt-modules-plus/tree/main/foundry-next-factory) (`CharlesCorreaDev/fvtt-modules-plus/foundry-next-factory`) como motor de scaffolding e CLI para criação de novos módulos e sistemas de RPG do zero para Foundry VTT v13, v14.369 Stable e v15+.
+  - Suporte nativo aos presets `vite-ts-appv2` (Vite 6+, TypeScript estrito, `ApplicationV2`, `HandlebarsApplicationMixin` e `TypeDataModel`) e `vanilla-esm` (Zero-build, JavaScript ESModules direto com isolamento de CSS).
+
+---
+
 ## [1.21.0] - 2026-11-09
 
 ### Added / Adicionado
