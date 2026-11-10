@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.25.0] - 2026-11-10
+
+### Added / Adicionado
+- **Engenharia Reversa Cross-VTT & Adaptação de Módulos no `master-of-gravewright` (`v0.3.0-beta`):**
+  - Integração do protocolo de engenharia reversa via `rea-agents` para desconstruir sistemas, módulos e mecânicas do Foundry VTT, Roll20 e Fantasy Grounds e adaptá-los com precisão para os domínios nativos do Gravewright VTT (`actors`, `items`, `tokens`, `combat`, `services.py` e WebSockets).
+  - Criação do [Guia de Engenharia Reversa e Adaptação Cross-VTT](master-of-gravewright/docs/reverse-engineering-cross-vtt.md) com matriz de equivalência Foundry ➔ Gravewright e 4 fases de desconstrução ancoradas nas regras oficiais de Porte Ético.
+
+---
+
 ## [1.24.0] - 2026-11-10
 
 ### Added / Adicionado

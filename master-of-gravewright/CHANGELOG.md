@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.3.0-beta] - 2026-11-10
+
+### Added / Adicionado
+- **Engenharia Reversa Cross-VTT & Adaptação de Módulos (Foundry/Roll20 ➔ Gravewright):**
+  - Implementado protocolo de engenharia reversa via `rea-agents` para desconstruir sistemas, DataModels e regras de outros VTTs e adaptá-los para o ecossistema Django/WebSockets do Gravewright.
+  - Criado o [Guia de Engenharia Reversa e Adaptação Cross-VTT](docs/reverse-engineering-cross-vtt.md) com tabela comparativa completa de conceitos (Foundry vs Gravewright), desconstrução em 4 fases e integração com o Porte Ético.
+
+---
+
 ## [0.2.0-beta] - 2026-11-10
 
 ### Added / Adicionado

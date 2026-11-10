@@ -74,6 +74,19 @@ Quando esta skill for ativada ou o usuário solicitar setup do ambiente:
 >    - Sons e playlists ➔ domínio `audio`
 >    - Bibliotecas e compêndios ➔ domínio `compendiums`
 
+### 4. Engenharia Reversa (REA) & Adaptação Cross-VTT (Foundry / Roll20 ➔ Gravewright)
+> [!IMPORTANT]
+> **Sempre que for solicitado estudar, desconstruir ou adaptar módulos, fichas ou mecânicas de outros VTTs (Foundry VTT, Roll20, Fantasy Grounds) para o Gravewright:**
+> O Agente **DEVE aplicar o protocolo de engenharia reversa**:
+> 1. **Inspeção Técnica com REA / Git:** Clonar o repositório original (`git clone --depth 1`) ou inspecionar seus schemas via REA MCP ([`rea-agents`](https://github.com/morluto/rea)).
+> 2. **Desconstrução de Schemas:** Analisar `template.json`, `DataModel` ou scripts para isolar tipos de dados, modificadores e cálculos de regras.
+> 3. **Adaptação para a Arquitetura Gravewright:**
+>    - Transferir a lógica de validação de regras para o backend Django (`services.py`).
+>    - Mapear a interface para Jinja2 e eventos WebSocket (Django Channels).
+>    - Preservar o isolamento de CSS com namespace para não vazar estilos no canvas do Gravewright.
+> 4. **Respeito Irrestrito ao Porte Ético:** Adaptar o comportamento e as fórmulas, **NUNCA** copiando arte proprietária ou textos de livros protegidos sem licença.
+> - Consulte o guia completo em [Guia de Engenharia Reversa e Adaptação Cross-VTT](docs/reverse-engineering-cross-vtt.md).
+
 ---
 
 ## 🏛️ Arquitetura e Engenharia Reversa do Gravewright
@@ -138,7 +151,7 @@ python master-of-gravewright/scripts/setup_dev_env.py --create-module "meu-siste
 ## 📚 Documentação Técnica Integrada (Offline em EN e pt-BR)
 
 A skill possui cópia integral offline dos manuais oficiais em [`docs/en/`](docs/en/) e [`docs/pt-BR/`](docs/pt-BR/):
-- **Guias de Engenharia:** [Guia de Banco de Dados: SQLite & PostgreSQL](docs/database-guide.md) • [Guia de Versionamento Git](docs/git-guide.md)
+- **Guias de Engenharia:** [Guia de Engenharia Reversa Cross-VTT](docs/reverse-engineering-cross-vtt.md) • [Guia de Banco de Dados: SQLite & PostgreSQL](docs/database-guide.md) • [Guia de Versionamento Git](docs/git-guide.md)
 - **Arquitetura & Código:** [Architecture](docs/pt-BR/architecture.md) • [Code Map](docs/pt-BR/code-map.md) • [API](docs/pt-BR/api.md) • [Development](docs/pt-BR/development.md)
 - **Módulos & Frontend:** [Modules Guide](docs/pt-BR/modules.md) • [Frontend](docs/pt-BR/frontend.md) • [Ethical Porting](docs/pt-BR/ethical-module-porting.md)
 - **Sistemas de Jogo & Recursos:** [Campaign Management](docs/pt-BR/campaign-management.md) • [Journals](docs/pt-BR/journals.md) • [Clocks](docs/pt-BR/clocks.md) • [Clues](docs/pt-BR/clues.md) • [Mindmaps](docs/pt-BR/mindmaps.md) • [Map Builder](docs/pt-BR/map-builder.md) • [PDF System](docs/pt-BR/pdf-system.md) • [Universal VTT (UVTT)](docs/pt-BR/universal-vtt.md)
