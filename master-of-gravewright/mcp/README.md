@@ -42,3 +42,4 @@ Adicione a seguinte configuração no seu arquivo de configuração MCP (`mcpSer
   }
 }
 ```
+

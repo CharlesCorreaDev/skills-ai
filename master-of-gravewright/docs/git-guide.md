@@ -77,3 +77,4 @@ Thumbs.db
    ```bash
    git archive -o meu-modulo-v0.2.0.zip HEAD
    ```
+

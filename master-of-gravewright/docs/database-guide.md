@@ -67,3 +67,4 @@ uv add psycopg2-binary
 # ou
 uv add "psycopg[binary]"
 ```
+
