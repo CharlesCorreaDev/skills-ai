@@ -76,7 +76,11 @@ When developing or troubleshooting for specific RPG systems (e.g., **Pathfinder 
 #### 7. Monthly Knowledge Base Refresh Protocol
 - The Knowledge Base, release notes, and policies should be refreshed periodically (e.g., once a month) using the built-in update script `scripts/update_foundry_docs.py` or scheduled via `/schedule` to ensure API methods, deprecations, and system links stay 100% current.
 
-#### 8. Interactive Clarification, Content Ingestion & Transparent Scoping Protocol (CRITICAL)
+#### 8. Interface Animations, Motion Design & AI Engineering Standards
+- **Motion Design (Claude-Motion):** Whenever animating Foundry VTT sheets, dice rollers, HUD elements, or custom UI modules, adhere to the [claude-motion](https://github.com/whaleyxbt/claude-motion) guidelines (GPU-accelerated transforms, natural pacing, self-correction, and `prefers-reduced-motion` compliance).
+- **AI Agent Companions & Memory:** Follow [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), multi-model consensus with [Claude Octopus](https://github.com/nyldn/claude-octopus), cross-session persistence via [AgentMemory](https://github.com/rohitg00/agentmemory) / [Déjà Vu](https://github.com/vshulcz/deja-vu), and Matt Pocock's AI Coding concepts.
+
+#### 9. Interactive Clarification, Content Ingestion & Transparent Scoping Protocol (CRITICAL)
 Whenever the user or Game Master asks to create or configure ANY game asset or development unit, including:
 - **Scenes and Maps:** Dimensions, lighting, walls, doors, darkness levels, weather, and linked soundtracks.
 - **Walls and Lighting:** Occlusion types (sight, movement, sound), secret doors, light colors, and animations.
@@ -85,6 +89,14 @@ Whenever the user or Game Master asks to create or configure ANY game asset or d
 - **Journals, Handouts, and Notes:** Narrative content, mysteries, player permissions, images, and formatting.
 - **Rollable Tables, Decks, and Cards:** Dice formulas, weighted results, suits, faces, and draw/discard rules.
 - **Compendiums, Modules, and Systems:** Architectural scope, dependencies, target Foundry version, and rulebook alignment.
+
+> [!IMPORTANT]
+> **MANDATO DE LEITURA E INGESTÃO DE PDFS (PDF OXIDE EM 1º LUGAR):**
+> Sempre que a ingestão de regras, itens, monstros, tabelas ou aventuras exigir a leitura ou extração de um arquivo PDF:
+> 1. O **`PDF Oxide` (`pdf-oxide` via NPM ou `pdf_oxide` via Python/Rust)** **DEVE SER USADO EM PRIMEIRO LUGAR**.
+>    - Repositório: [github.com/yfedoseev/pdf_oxide](https://github.com/yfedoseev/pdf_oxide) • [NPM](https://www.npmjs.com/package/pdf-oxide) • [Node.js Docs](https://pdf.oxide.fyi/pt/javascript-node/docs/getting-started) • [Python Docs](https://pdf.oxide.fyi/pt/python/docs/getting-started) • [Rust Docs](https://pdf.oxide.fyi/pt/rust/docs/getting-started)
+> 2. Qualquer outra biblioteca ou ferramenta (`pdfjs-dist`, `pdfminer`, `pypdf`, `pdfplumber`) fica estritamente como **FALLBACK secundário**.
+> 3. Consulte as diretrizes detalhadas em [Guia de Ingestão com PDF Oxide](pdf-oxide-guide.md).
 
 **The Agent MUST STRICTLY follow these rules:**
 1. **Never Assume or Hallucinate Incomplete Data:** If the request lacks mechanics, specific book references, or aesthetic intent, **do NOT blindly guess or create half-empty placeholder assets**.

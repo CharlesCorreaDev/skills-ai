@@ -30,9 +30,9 @@ The flagship use case is **RPG books** (especially old materials from the **Worl
 
 | Format | Extensions | Primary Engine | Fallback Engine | Dependencies / Binaries |
 |---|---|---|---|---|
-| **PDF (Digital)** | `.pdf` | `docling` / `markitdown` | `marker-pdf`, `pdfminer.six`, `pdfplumber` | `docling`, `marker-pdf`, `markitdown`, `pdfminer.six`, `pdfplumber`, `pypdf`, `pypdfium2` |
-| **PDF (Scanned / Complex Layout)** | `.pdf` | `docling` / `nougat` | `marker-pdf`, `markitdown_ocr` | `docling`, `nougat-ocr`, `marker-pdf`, `unstructured`, `tesseract-ocr`, `Pillow`, `pypdfium2` |
-| **PDF (Manipulation & Sanitization)** | `.pdf` | `stirling-pdf` / `pypdf` | `pdfcpu` / `pdftoppm` | `stirling-pdf`, `pypdf`, `pdfplumber`, `poppler-utils` |
+| **PDF (Digital)** | `.pdf` | **`pdf_oxide`** (`pdf-oxide`) | `docling`, `marker-pdf`, `markitdown`, `pdfminer.six` | `pdf-oxide` (pip/npm), `docling`, `marker-pdf`, `markitdown`, `pypdf`, `pypdfium2` |
+| **PDF (Scanned / Complex Layout)** | `.pdf` | **`pdf_oxide`** / `docling` | `nougat`, `marker-pdf`, `markitdown_ocr` | `pdf-oxide`, `docling`, `nougat-ocr`, `marker-pdf`, `tesseract-ocr`, `Pillow` |
+| **PDF (Manipulation & Sanitization)** | `.pdf` | **`pdf_oxide`** / `stirling-pdf` | `pypdf`, `pdfcpu`, `pdftoppm` | `pdf-oxide`, `stirling-pdf`, `pypdf`, `pdfplumber`, `poppler-utils` |
 | **Plain Text** | `.txt` | built-in / `markitdown` | - | - |
 | **Markdown** | `.md` | `marker-pdf` / `docling` | `markitdown` | `marker-pdf`, `docling`, `markitdown` |
 | **CSV / TSV** | `.csv`, `.tsv` | `markitdown` / `pandas` | - | `markitdown`, `pandas` |
@@ -48,6 +48,12 @@ The flagship use case is **RPG books** (especially old materials from the **Worl
 ### 🧠 SOTA AI Engines & PDF Utilities Matrix
 
 For high-complexity RPG book layouts (multi-column text flow, medieval borders, statblocks, spell tables, background watermarks), the skill supports and orchestrates specialized state-of-the-art tools:
+
+0. **[PDF Oxide](https://github.com/yfedoseev/pdf_oxide) (`pdf_oxide` / `pdf-oxide`) ⭐ (MANDATÓRIO EM 1º LUGAR):**
+   - *Core specialty:* Motor ultrarrápido em Rust com bindings nativos para Python, Node.js e Rust. Extração de texto em ~0.8ms, conversão para Markdown, extração de metadados, caixas delimitadoras (bounding boxes) e licença permissiva MIT/Apache-2.0. **Sempre utilizado como primeira opção antes de qualquer outra ferramenta.**
+   - *Docs:* [Python](https://pdf.oxide.fyi/pt/python/docs/getting-started) • [Node.js](https://pdf.oxide.fyi/pt/javascript-node/docs/getting-started) • [Rust](https://pdf.oxide.fyi/pt/rust/docs/getting-started) • [NPM](https://www.npmjs.com/package/pdf-oxide)
+   - *Install:* `pip install pdf-oxide` ou `npm install pdf-oxide`
+   - *Guia:* [pdf-oxide-guide.md](pdf-oxide-guide.md)
 
 1. **[Docling](https://github.com/docling-project/docling) (DS4SD / IBM):**
    - *Core specialty:* SOTA multimodal layout analysis and table reconstruction via `TableFormer`. Parses multi-column RPG text flow without mixing column lines.

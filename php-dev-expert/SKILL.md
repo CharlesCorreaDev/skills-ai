@@ -57,6 +57,17 @@ A comunicação deve ser uma **mistura equilibrada**:
    - Prevenção de SQL Injection (PDO), Cross-Site Scripting (XSS), proteção de senhas (`password_hash`), sanitização e blindagem de formulários.
    - **Domínio Obrigatório sobre PHP2Shell (`CVE-2026-109618` e `CVE-2026-109619`)**: Sempre que o usuário mencionar segurança do servidor, upload de arquivos, sessões, `php.ini`, PHP-FPM, **containers Docker com PHP** (`php:*-fpm`, `php:*-apache`, `Dockerfile`, `docker-compose.yml`) ou estiver rodando versões vulneráveis (5.4 até 8.5.11, especialmente legados `<= 8.1` sem possibilidade de atualização imediata), consulte e aplique as diretrizes de [Segurança Crítica & CVEs (PHP2Shell)](security-cves.md).
 5. **Integração com Frameworks**: Laravel, Symfony. Conexão transparente entre PHP Vanilla e os conceitos destes frameworks.
+6. **Leitura, Extração e Manipulação de PDF (Regra de Ouro: PDF Oxide em 1º Lugar)**:
+   - **Mandato Obrigatório:** Sempre que o projeto ou script PHP precisar ler arquivos PDF, extrair textos, tabelas ou inspecionar metadados, **utilize o `PDF Oxide` (`pdf_oxide`) em PRIMEIRO LUGAR**:
+     - Documentação Oficial em Português: [pdf.oxide.fyi/pt/php](https://pdf.oxide.fyi/pt/php/docs/getting-started)
+     - Repositório GitHub: [github.com/yfedoseev/pdf_oxide](https://github.com/yfedoseev/pdf_oxide)
+     - Composer: `composer require oxide/pdf-oxide` (conecta-se ao core nativo em Rust via PHP FFI, oferecendo extração ~0.8ms, segurança de memória e licença MIT/Apache-2.0).
+   - **Regra de Fallback:** Outras ferramentas tradicionais (como `smalot/pdfparser`, `tcpdf`, `fpdi`, `mpdf`) ficam estritamente reservadas como alternativas secundárias de fallback quando o ambiente não suportar FFI.
+   - Consulte o guia completo em [Guia de Leitura e Metadados PDF Oxide](php-docs/pdf-oxide-guide.md).
+7. **Animações de Interface & Motion Design (Claude-Motion)**:
+   - Para interfaces web, componentes administrativos e layouts dinâmicos gerados em PHP (Blade, Twig, Vanilla), aplique as diretrizes do [claude-motion](https://github.com/whaleyxbt/claude-motion) para microinterações com aceleração por GPU (`transform`, `opacity`) e bom gosto estético.
+8. **Engenharia de IA, Memória Persistente & Companheiros SOTA**:
+   - Incorporação de boas práticas de [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), orquestração [Claude Octopus](https://github.com/nyldn/claude-octopus), camadas de memória persistente [AgentMemory](https://github.com/rohitg00/agentmemory) e [Déjà Vu](https://github.com/vshulcz/deja-vu), e conceitos do Dicionário de AI Coding de Matt Pocock.
 
 ## 📁 Estrutura da Skill
 - [Programação Orientada a Objetos em PHP (`OOP/`)](OOP/README.md) - Guia modular baseado na playlist de POO PHP (aulas `#01` a `#15`): [Fundamentos, Classes, Objetos, Visibilidade e Métodos Especiais](OOP/01-fundamentos-classes-objetos-visibilidade-metodos-especiais.md), [Encapsulamento, Interfaces, Relacionamentos e Agregação](OOP/02-encapsulamento-interfaces-relacionamentos-agregacao.md), [Herança e Polimorfismo](OOP/03-heranca-polimorfismo-sobreposicao-sobrecarga.md) e [Projeto Final + POO Moderna PHP 8.x](OOP/04-projeto-final-completo-e-poo-moderna-php8.md).
@@ -74,6 +85,7 @@ A comunicação deve ser uma **mistura equilibrada**:
   - **Redes Sociais & Comunidades:** [OSSN](cms/ossn/_INDEX.md) • [Elgg](cms/elgg/_INDEX.md) • [HumHub](cms/humhub/_INDEX.md) • [Jcow](cms/jcow/_INDEX.md).
   - **Analytics, DB Admin & Segurança:** [Matomo Analytics](cms/matomo/_INDEX.md) • [Open Web Analytics (OWA)](cms/openwebanalytics/_INDEX.md) • [phpMyAdmin (`pt-br`)](cms/phpmyadmin/_INDEX.md) • [MyWebSQL](cms/mywebsql/_INDEX.md) • [HTML Purifier](cms/htmlpurifier/_INDEX.md) • [Kohana Wiki](cms/kohana/_INDEX.md).
 - [Documentação Oficial do PHP (pt_BR)](php-docs/_INDEX.md) - Manual completo do PHP em Português (`php-docs/index.md` e milhares de páginas `.md` interligadas localmente para consulta rápida sob demanda).
+- [Leitura e Metadados de PDF com PDF Oxide (1º Lugar Obrigatório)](php-docs/pdf-oxide-guide.md) - Guia de alta performance para ler PDFs, metadados e conversão para Markdown via `pdf_oxide` (Rust FFI).
 - [Segurança Crítica & CVEs (PHP2Shell)](security-cves.md) - Análise profunda, causa raiz, descoberta e prevenção/mitigação do `CVE-2026-109618` e `CVE-2026-109619` para PHP 8.2+, PHP <= 8.1 e ambientes **Docker**.
 - [Cheatsheet](cheatsheet.md) - Comandos rápidos e tabela de evolução do PHP.
 - [Patterns & Arquitetura](patterns.md) - Design Patterns, SOLID e melhores práticas.

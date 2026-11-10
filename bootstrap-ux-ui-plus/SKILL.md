@@ -37,7 +37,11 @@ description: Master UX/UI design, usability engineering, and responsive interfac
 6. **Multi-Language Architecture:** Production patterns and templates for vanilla HTML, PHP (Blade/Twig/MVC), Node.js, React/Next.js, Python (Django/FastAPI/Jinja2), and Java.
 7. **Canonical Dashboard Standards (Mazer & AdminKit):** Mandatory adoption of established architectures from [zuramai/mazer](https://github.com/zuramai/mazer) and [adminkit/adminkit](https://github.com/adminkit/adminkit) (Zero jQuery, Vanilla ES6, multi-level sidebars, light theme default, responsive cards).
 8. **Built-in Quality & Linter Engine:** Automated static auditor (`scripts/audit_ux_bootstrap.mjs`) to detect UX flaws, missing ARIA properties, and colorblindness risks before release.
-9. **Continuous Bootstrap & Skill Update Protocol:**
+9. **Interface Motion Design & Taste (Claude-Motion Integration):**
+   - Whenever animated elements, micro-interactions, or state transitions are requested in Bootstrap or companion interfaces, strictly follow [claude-motion](https://github.com/whaleyxbt/claude-motion) guidelines (GPU acceleration via `transform`/`opacity`, physics-based easing, visual self-correction, and `prefers-reduced-motion` compliance). Detailed in [claude-motion-guide.md](patterns/claude-motion-guide.md).
+10. **SOTA AI Agent Standards & Ecosystem Trinity:**
+    - Active integration with [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), [Claude Octopus](https://github.com/nyldn/claude-octopus), [AgentMemory](https://github.com/rohitg00/agentmemory), [Déjà Vu](https://github.com/vshulcz/deja-vu), and Matt Pocock's AI Coding Dictionary (Handoff, Filesystem, Context, MCP, Software Factory).
+11. **Continuous Bootstrap & Skill Update Protocol:**
    - **Upstream Release Monitoring:** Checks NPM/GitHub registry for newer Bootstrap versions (e.g. Bootstrap 5.3.8+, 6.0 preview). When a newer version is available, the agent dynamically upgrades recommendations, CSS variables, and utility classes.
    - **Skill Version Verification & Permission Gate:** Compares local skill files with the remote repository (`CharlesCorreaDev/skills-ai`). If a new version exists, the agent **MUST inform the user and request explicit confirmation** before updating or overwriting local skill files. Use `scripts/check_updates.mjs`.
 
@@ -75,7 +79,11 @@ A skill **Bootstrap UX/UI Plus** é uma suíte completa de engenharia de usabili
 7. **Modelos Prontos Multi-Framework:** Templates completos para HTML puro, PHP/Blade, React/Next.js, Python/Jinja2 e dashboards administrativos responsivos prontos para produção.
 8. **Padrões Canônicos de Administração (Mazer & AdminKit):** Adoção mandatória das arquiteturas de referência consagradas [zuramai/mazer](https://github.com/zuramai/mazer) e [adminkit/adminkit](https://github.com/adminkit/adminkit) (Zero jQuery, Vanilla ES6, sidebars sanfonadas, modo claro padrão e cards ergonômicos).
 9. **Auditor Automático de Qualidade:** Script CLI integrado (`scripts/audit_ux_bootstrap.mjs`) para inspeção de código e identificação preventiva de inconsistências de usabilidade e acessibilidade.
-10. **Protocolo de Monitoramento e Atualização Contínua:**
+10. **Motion Design & Animações de Interface (Claude-Motion):**
+    - Sempre que for necessário animar a interface, adote o kit [claude-motion](https://github.com/whaleyxbt/claude-motion) para microinterações refinadas, aceleração por GPU (`transform`, `opacity`), curvas naturais e respeito mandatória a `prefers-reduced-motion`. Consulte [Guia Claude-Motion](patterns/claude-motion-guide.md).
+11. **Padrões de Engenharia de IA & Companheiros Oficiais:**
+    - Adoção das diretrizes do [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), orquestração [Claude Octopus](https://github.com/nyldn/claude-octopus), camadas de memória persistente [AgentMemory](https://github.com/rohitg00/agentmemory) e [Déjà Vu](https://github.com/vshulcz/deja-vu), e conceitos do Dicionário de AI Coding de Matt Pocock.
+12. **Protocolo de Monitoramento e Atualização Contínua:**
     - **Monitoramento Upstream do Bootstrap:** Verifica via registro NPM/GitHub novas versões do Bootstrap (ex.: Bootstrap 5.3.8+, 6.0 preview). Ao detectar lançamento, adapta instantaneamente recomendações, tokens de CSS e classes utilitárias às novas capacidades.
     - **Verificação da Skill com Portão de Permissão:** Compara os arquivos locais da skill com o repositório remoto (`CharlesCorreaDev/skills-ai`). Se houver discrepância ou atualização, o agente **OBRIGATORIAMENTE notifica o usuário e solicita autorização expressa** antes de sobrescrever ou atualizar os arquivos. Executável via `scripts/check_updates.mjs`.
 
