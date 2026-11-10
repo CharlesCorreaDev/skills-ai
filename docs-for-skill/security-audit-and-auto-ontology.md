@@ -47,3 +47,4 @@ pip install auto-ontology
 1. **Ground Truth Estrito:** O agente de IA **JAMAIS** deve inventar números, estatísticas, constantes matemáticas, portas de serviço, hashes, scores ou métricas inexistentes.
 2. **Ancoragem em Dicionários e Esquemas Reais:** Em tarefas com bancos de dados, APIs ou JSONs, os campos devem ser rigorosamente validados contra a ontologia real do sistema (tabelas reais, tipos de dados canônicos, relacionamentos de chave estrangeira existentes).
 3. **Declaração de Incerteza:** Se um dado numérico, estatística ou metadado não estiver explícito na documentação ou no código inspecionado, o agente deve **consultar o arquivo ou explicitar que o valor precisa ser fornecido pelo usuário/ambiente**, sem tentar adivinhar ou extrapolar valores aleatórios.
+

@@ -79,3 +79,4 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 ```
+
