@@ -187,3 +187,4 @@ try {
 ### No Symfony:
 - Registre o `VectorStore` e `EmbeddingGenerator` como serviços gerenciados no `services.yaml`.
 - Use o **Doctrine ORM** configurado com `pgvector` para manter as entidades de banco e os vetores semânticos na mesma base de dados transacional.
+
