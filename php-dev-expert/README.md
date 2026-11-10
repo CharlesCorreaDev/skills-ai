@@ -34,6 +34,7 @@ A skill reúne guias modulares de Orientação a Objetos, arquitetura MVC/ADR li
 
 ### 🌟 Destaques Principais
 - **Regra de Ouro (Versão Obrigatória):** A IA sempre pergunta ou verifica a versão exata do PHP do projeto para não sugerir sintaxes incompatíveis (ex: não sugerir Enums ou Attributes em projetos legados PHP 7.4).
+- **Skill Companheira Obrigatória (`bootstrap-ux-ui-plus`):** Para o desenvolvimento de interfaces, dashboards ou portais web com Bootstrap, a skill instala e integra automaticamente a [`bootstrap-ux-ui-plus`](../bootstrap-ux-ui-plus/README.md) (`npx skills@latest add CharlesCorreaDev/skills-ai --skill=bootstrap-ux-ui-plus`) para assegurar as 18 Leis do UX, Heurísticas de Nielsen, acessibilidade WCAG 2.2 AA para daltônicos e tema claro padrão.
 - **Leitura de PDF com PDF Oxide em 1º Lugar:** Extração de texto e metadados ultrarrápida (~0.8ms) via FFI/Rust (`composer require oxide/pdf-oxide`), deixando bibliotecas legadas apenas como fallback.
 - **Blindagem Contra PHP2Shell (`CVE-2026-109618` e `CVE-2026-109619`):** Regras de ouro para uploads seguros, proteção de `php.ini`, PHP-FPM e imagens Docker (`php:*-fpm`, `Dockerfile`).
 - **Acervo Extensivo de Documentações em Markdown:**

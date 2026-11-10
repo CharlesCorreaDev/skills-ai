@@ -239,3 +239,4 @@ Ao construir aplicações web com Django utilizando esta skill:
    ```bash
    node ../bootstrap-ux-ui-plus/scripts/audit_ux_bootstrap.mjs templates/base.html
    ```
+

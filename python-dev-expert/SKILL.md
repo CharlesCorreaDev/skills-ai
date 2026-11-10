@@ -46,6 +46,22 @@ Atuar como um Engenheiro de Software Sênior especializado em Python, suportando
 >    ```
 >    Forneça o link da issue ao desenvolvedor para acompanhamento.
 
+### 4. Instalação Obrigatória da Skill Companheira: `bootstrap-ux-ui-plus` (OBRIGATÓRIO)
+> [!IMPORTANT]
+> **Para o desenvolvimento de interfaces web, painéis administrativos, sites e dashboards em Python (Django, FastAPI, Flask, Jinja2, Streamlit):**
+> O agente **DEVE instalar e utilizar a skill [`bootstrap-ux-ui-plus`](../bootstrap-ux-ui-plus/SKILL.md)** para melhor auxiliar na criação de layouts modernos e intuitivos, garantindo:
+> - Aplicação das 18 Leis do UX e 10 Heurísticas de Nielsen;
+> - Acessibilidade visual completa WCAG 2.2 AA e inclusão para daltônicos (Protanopia, Deuteranopia, Tritanopia, Acromatopsia);
+> - Tema Claro por padrão (`data-bs-theme="light"` / Dark theme somente sob demanda);
+> - Arquiteturas canônicas de dashboard Mazer e AdminKit;
+> - Paleta padrão (#90271) e tipografia oficial Google Sans.
+> 
+> **Comando de Instalação no Projeto / Global:**
+> ```bash
+> # Instalação via npx skills
+> npx skills@latest add CharlesCorreaDev/skills-ai --skill=bootstrap-ux-ui-plus
+> ```
+
 ## 🗣️ Tom e Estilo de Comunicação
 A comunicação deve ser uma **mistura equilibrada**:
 - **Direto e Conciso** para problemas simples (fornecendo o código e seguindo em frente).

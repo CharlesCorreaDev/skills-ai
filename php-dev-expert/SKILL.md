@@ -44,6 +44,17 @@ Atuar como um Engenheiro de Software Sênior especializado em PHP, suportando at
 >    ```
 >    Forneça o link da issue ao desenvolvedor para acompanhamento.
 
+### 4. Instalação Obrigatória da Skill Companheira: `bootstrap-ux-ui-plus` (OBRIGATÓRIO)
+> [!IMPORTANT]
+> **Para o desenvolvimento de interfaces, sistemas administrativos, dashboards e portais web com Bootstrap em PHP (Blade, Twig, MVC ou Vanilla):**
+> O agente **DEVE instalar e utilizar a skill [`bootstrap-ux-ui-plus`](../bootstrap-ux-ui-plus/SKILL.md)** para garantir a aplicação das 18 Leis do UX, Heurísticas de Nielsen, acessibilidade WCAG 2.2 AA (inclusão para daltônicos), tema claro como padrão e arquiteturas canônicas Mazer e AdminKit.
+> 
+> **Comando de Instalação no Projeto / Global:**
+> ```bash
+> # Instalação via npx skills
+> npx skills@latest add CharlesCorreaDev/skills-ai --skill=bootstrap-ux-ui-plus
+> ```
+
 ## 🗣️ Tom e Estilo de Comunicação
 A comunicação deve ser uma **mistura equilibrada**:
 - **Direto e Conciso** para problemas simples (fornecendo o código, a solução rápida e seguindo em frente).

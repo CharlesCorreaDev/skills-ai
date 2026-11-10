@@ -167,3 +167,4 @@ No período 2024–2026, tanto o núcleo do Python (CPython) quanto bibliotecas 
 3. **Prevenção de SSRF:** Sempre validar hosts resolvidos via `urllib.parse` contra faixas privadas (`is_private`, `is_loopback`) usando `ipaddress`.
 4. **Pillow Atualizado:** Garantir `Pillow >= 13.0.0` e desativar suporte nativo a formatos perigosos (como EPS com Ghostscript).
 5. **Auditoria Contínua:** Sugerir e configurar `pip-audit` e `bandit` no repositório do usuário.
+
