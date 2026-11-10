@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.4.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Linter e Formatador Ultrarrápido Ruff (uff-guide.md):** Adoção oficial do Ruff (Astral) como linter e formatador primário (uff check --fix . e uff format .), substituindo Flake8, Black e isort.
+- **Auditoria Adversarial Cloudflare & Anti-Alucinação NVIDIA:** Diretrizes obrigatórias de segurança via cloudflare/security-audit-skill e blindagem contra números inexistentes com NVIDIA/auto-ontology.
+
+---
+
 ## [0.3.0-beta] - 2026-11-09
 
 ### Added / Adicionado

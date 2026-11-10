@@ -89,6 +89,19 @@ A comunicação deve ser uma **mistura equilibrada**:
    - **Trail of Bits Security Standards:** Blindagem estrita contra injeção SQL, XSS, SSRF e Path Traversal via DTOs tipados e análise SAST (`psalm`, `phpstan`, `composer audit`).
    - **Impeccable Design:** Interfaces administrativas e portais web sem anti-patterns visuais ou poluição de componentes. Consulte [impeccable-debugging-security-trinity.md](../docs-for-skill/impeccable-debugging-security-trinity.md).
 
+
+### 🛡️ Auditoria de Segurança Obrigatória (Cloudflare Security Audit) & Anti-Alucinação (NVIDIA Auto-Ontology)
+> [!IMPORTANT]
+> **Toda criação de código, arquitetura, automação, configuração ou resposta DEVE seguir as seguintes diretrizes:**
+> 1. **Cloudflare Security Audit (`cloudflare/security-audit-skill`):**
+>    - Instalação: `npx skills@latest add cloudflare/security-audit-skill`
+>    - Sempre que algo for desenvolvido, execute uma auditoria adversarial em 6 fases (Mapeamento de superfícies, Caça por cobertura, Validação cética de falso-positivo, Saída estruturada, Verificação de sinks e Relatório com correção imediata).
+>    - Se forem detectadas vulnerabilidades, falhas de autorização, injeções ou vazamentos de dados, **o agente DEVE realizar as correções imediatamente**.
+> 2. **NVIDIA Auto-Ontology (`NVIDIA/auto-ontology`):**
+>    - Instalação: `npx skills@latest add NVIDIA/auto-ontology` (ou `pip install auto-ontology`)
+>    - **PROIBIDO INVENTAR NÚMEROS INEXISTENTES:** O agente JAMAIS deve alucinar estatísticas, portas arbitrárias, contagens fictícias, colunas inexistentes ou esquemas falsos. Se um número ou parâmetro não for conhecido com certeza matemática ou documental, declare incerteza e consulte as fontes reais.
+> - Consulte o guia canônico completo em [`docs-for-skill/security-audit-and-auto-ontology.md`](../docs-for-skill/security-audit-and-auto-ontology.md).
+
 ## 📁 Estrutura da Skill
 - [Programação Orientada a Objetos em PHP (`OOP/`)](OOP/README.md) - Guia modular baseado na playlist de POO PHP (aulas `#01` a `#15`): [Fundamentos, Classes, Objetos, Visibilidade e Métodos Especiais](OOP/01-fundamentos-classes-objetos-visibilidade-metodos-especiais.md), [Encapsulamento, Interfaces, Relacionamentos e Agregação](OOP/02-encapsulamento-interfaces-relacionamentos-agregacao.md), [Herança e Polimorfismo](OOP/03-heranca-polimorfismo-sobreposicao-sobrecarga.md) e [Projeto Final + POO Moderna PHP 8.x](OOP/04-projeto-final-completo-e-poo-moderna-php8.md).
 - [Arquitetura PHP MVC Completa](MVC/README.md) - Guia modular completo de MVC em PHP (do 7.4 ao 8.5): [Front Controller, PSR-4, Container DI e Router](MVC/01-front-controller-routing-psr.md), [Controllers, Request/Response, DTOs e ADR](MVC/02-controllers-requests-validation.md), [Models, Entidades, Services, Repositories e PDO](MVC/03-models-services-repositories-pdo.md), [Views, Templates, XSS e CSRF](MVC/04-views-templates-security-xss-csrf.md) e [Evolução PHP 7.4–8.5, Frameworks, Anti-Patterns e Testes](MVC/05-evolution-php74-to-php85-and-frameworks.md).

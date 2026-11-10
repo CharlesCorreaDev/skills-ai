@@ -7,6 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.9.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Auditoria Adversarial Cloudflare & Anti-Alucinação NVIDIA:** Diretrizes obrigatórias de segurança via cloudflare/security-audit-skill em todo desenvolvimento e blindagem contra invenção de números com NVIDIA/auto-ontology.
+
+---
+
 ## [0.8.0-beta] - 2026-11-09
 
 ### Added / Adicionado

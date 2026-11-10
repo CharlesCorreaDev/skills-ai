@@ -108,14 +108,32 @@ A comunicação deve ser uma **mistura equilibrada**:
    - **Segurança Avançada (Trail of Bits Standard):** Auditoria SAST com Semgrep, CodeQL e OWASP Top 10.
    - **Manipulação Segura de Planilhas (`xlsx`):** Leitura de alta volumetria com `openpyxl` (modo read-only) e processamento com `pandas`.
    - Consulte o guia completo em [Padrões Canônicos de Engenharia Pythonica](engineering-standards.md).
-10. **Engenharia de IA, Memória & Padrões SOTA**:
+10. **Linter e Formatador Ultrarrápido Ruff (Astral)**:
+    - **Padrão Oficial de Código:** Em qualquer desenvolvimento Python, utilize o [Ruff](https://docs.astral.sh/ruff/) (`uv add --dev ruff` ou `pip install ruff`) como linter e formatador primário (substituindo Flake8, Black, isort e pyupgrade).
+    - Execução: `ruff check --fix .` e `ruff format .`.
+    - Consulte as diretrizes completas em [Guia Ruff (Astral)](ruff-guide.md).
+11. **Engenharia de IA, Memória & Padrões SOTA**:
    - Incorporação de boas práticas de [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), orquestração [Claude Octopus](https://github.com/nyldn/claude-octopus), camadas de memória persistente [AgentMemory](https://github.com/rohitg00/agentmemory) e [Déjà Vu](https://github.com/vshulcz/deja-vu), e conceitos do Dicionário de AI Coding de Matt Pocock.
+
+
+### 🛡️ Auditoria de Segurança Obrigatória (Cloudflare Security Audit) & Anti-Alucinação (NVIDIA Auto-Ontology)
+> [!IMPORTANT]
+> **Toda criação de código, arquitetura, automação, configuração ou resposta DEVE seguir as seguintes diretrizes:**
+> 1. **Cloudflare Security Audit (`cloudflare/security-audit-skill`):**
+>    - Instalação: `npx skills@latest add cloudflare/security-audit-skill`
+>    - Sempre que algo for desenvolvido, execute uma auditoria adversarial em 6 fases (Mapeamento de superfícies, Caça por cobertura, Validação cética de falso-positivo, Saída estruturada, Verificação de sinks e Relatório com correção imediata).
+>    - Se forem detectadas vulnerabilidades, falhas de autorização, injeções ou vazamentos de dados, **o agente DEVE realizar as correções imediatamente**.
+> 2. **NVIDIA Auto-Ontology (`NVIDIA/auto-ontology`):**
+>    - Instalação: `npx skills@latest add NVIDIA/auto-ontology` (ou `pip install auto-ontology`)
+>    - **PROIBIDO INVENTAR NÚMEROS INEXISTENTES:** O agente JAMAIS deve alucinar estatísticas, portas arbitrárias, contagens fictícias, colunas inexistentes ou esquemas falsos. Se um número ou parâmetro não for conhecido com certeza matemática ou documental, declare incerteza e consulte as fontes reais.
+> - Consulte o guia canônico completo em [`docs-for-skill/security-audit-and-auto-ontology.md`](../docs-for-skill/security-audit-and-auto-ontology.md).
 
 ## 📁 Estrutura da Skill
 - [Documentação Oficial do Python (pt_BR 3.15)](python-docs/_INDEX.md) - Manual completo oficial do Python com mais de 550 arquivos `.md` interligados.
 - [Documentação Oficial do Django (6.1)](django-docs/_INDEX.md) - Documentação oficial completa do Django com mais de 680 arquivos `.md` organizados.
 - [Padrões Canônicos de Engenharia Pythonica (TDD, Structlog, Debugging, Trail of Bits)](engineering-standards.md) - Melhores práticas consolidadas da comunidade de IA e engenharia moderna.
 - [Django + Bootstrap UX/UI Plus](django-bootstrap-guide.md) - Padrões de integração com Bootstrap 5.3/6.0, Mazer, AdminKit e Crispy Forms.
+- [Linter e Formatador Ruff (Astral)](ruff-guide.md) - Guia de configuração em pyproject.toml, regras e comandos de lint/format ultrarrápido. - Padrões de integração com Bootstrap 5.3/6.0, Mazer, AdminKit e Crispy Forms.
 - [Segurança Crítica & Mitigações de CVEs Recentes](security-cves.md) - Blindagem contra CVE-2026-19445, CVE-2026-4519, CVE-2024-9287, CVE-2024-11168 e Pillow RCE.
 - [Leitura de PDF com PDF Oxide (1º Lugar Obrigatório)](pdf-oxide-guide.md) - Manual de extração e metadados ultrarrápido em Rust para Python.
 - [Cheatsheet](cheatsheet.md) - Evolução das versões 3.x e comandos úteis.

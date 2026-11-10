@@ -5,6 +5,13 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) e [S
 
 ---
 
+## [0.3.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Auditoria Adversarial Cloudflare & Anti-Alucinação NVIDIA:** Diretrizes obrigatórias de segurança via cloudflare/security-audit-skill e timestamps/números verificados com NVIDIA/auto-ontology.
+
+---
+
 ## [0.2.0-beta] - 2026-11-03
 
 ### Added / Adicionado

@@ -7,6 +7,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.21.0] - 2026-11-09
+
+### Added / Adicionado
+- **Blindagem Universal de Segurança (Cloudflare Security Audit) & Anti-Alucinação Numérica (NVIDIA Auto-Ontology):**
+  - **Todas as 16 Skills:** Incorporadas diretrizes obrigatórias de auditoria em 6 fases com `cloudflare/security-audit-skill` e proibição absoluta de invenção de números inexistentes com `NVIDIA/auto-ontology` (`docs-for-skill/security-audit-and-auto-ontology.md`). Em skills de desenvolvimento, sempre que algo for criado ou alterado, a IA deve rodar análise e auto-reparar qualquer falha ou vazamento de dados.
+- **Python Developer Expert (`v0.4.0-beta`):**
+  - Adoção oficial do **Ruff (Astral)** como linter e formatador de código ultrarrápido em Rust (`docs.astral.sh/ruff`), substituindo Flake8, Black, isort e pyupgrade (`python-dev-expert/ruff-guide.md`).
+- **Master of Foundry VTT (`v0.18.0-beta`):**
+  - Guia mestre completo de Deploy e Instalação do Foundry VTT 24/7 em Nuvens e VPS (`master-of-foundryvtt/cloud-deployment-guide.md`): Oracle Cloud (Always Free ARM Ampere 24GB), AWS (EC2), Google Cloud (GCP via `github.com/google/skills`), Microsoft Azure e Hostinger VPS (KVM Linux), com reverse proxy Caddy (SSL automático HTTPS) e PM2.
+- **Atualização SemVer em Lote de Todas as Skills:**
+  - `book-formatter`: `0.16.0-beta`
+  - `bootstrap-ux-ui-plus`: `0.3.0-beta`
+  - `docker-master`: `0.3.0-beta`
+  - `docs-for-markdown`: `0.3.0-beta`
+  - `docs-for-skill`: `0.3.0-beta`
+  - `humanizer-plus`: `1.3.0`
+  - `image-to-prompt`: `0.3.0-beta`
+  - `master-of-foundryvtt`: `0.18.0-beta`
+  - `mcp-builder`: `0.2.0-beta`
+  - `not-today-adhd`: `0.2.0-beta`
+  - `php-dev-expert`: `0.9.0-beta`
+  - `python-dev-expert`: `0.4.0-beta`
+  - `sms-legal`: `1.1.0`
+  - `video-to-md`: `0.3.0-beta`
+  - `website-for-markdown`: `0.4.0-beta`
+  - `website-for-skill`: `0.4.0-beta`
+
+---
+
 ## [1.20.0] - 2026-11-09
 
 ### Added / Adicionado

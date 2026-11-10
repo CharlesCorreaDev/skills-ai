@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.18.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Instalação e Deploy do Foundry VTT em Nuvens e VPS (cloud-deployment-guide.md):** Guia mestre cobrindo Oracle Cloud (Always Free Tier - ARM Ampere 24GB), AWS (EC2), Google Cloud (GCP via github.com/google/skills), Microsoft Azure e Hostinger VPS (KVM Ubuntu), incluindo SSL automático via Caddy e UFW.
+- **Auditoria Adversarial Cloudflare & Anti-Alucinação NVIDIA:** Diretrizes obrigatórias de segurança via cloudflare/security-audit-skill e blindagem contra números/modificadores inexistentes com NVIDIA/auto-ontology.
+
+---
+
 ## [0.17.0-beta] - 2026-11-09
 
 ### Added / Adicionado
