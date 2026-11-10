@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.20.0] - 2026-11-09
+
+### Added / Adicionado
+- **Integração de IA Generativa, RAG & Agentes com LLPhant no `php-dev-expert` (`v0.8.0-beta`):**
+  - Incorporação do framework SOTA [LLPhant](https://github.com/theodo-group/LLPhant) (`theodo-group/llphant`) — o "LangChain do ecossistema PHP".
+  - **Pipelines RAG:** Leitura de arquivos (`FileDataReader`), chunking inteligente (`DocumentSplitter`), geração de embeddings vetoriais (OpenAI, Mistral, Ollama) e armazenamento vetorial com PostgreSQL (`pgvector` via Doctrine), Redis, Qdrant, Chroma, ElasticSearch e Memory.
+  - **Agentes com Function Calling (Tools):** Execução orientada a reflexão de métodos PHP nativos (`FunctionBuilder`) para acionar APIs e tarefas de negócio a partir do modelo de linguagem.
+  - **Guardrails & Segurança de Prompt:** Detecção e bloqueio de Prompt Injections com `ClassifierPromptInjectionQueryTransformer` e suporte a fluxos Human-in-the-Loop.
+  - **Guia Mestre & Documentação Offline:** Adicionados [`php-dev-expert/php-docs/llphant-framework-guide.md`](php-dev-expert/php-docs/llphant-framework-guide.md) e acervo de documentação offline oficial do LLPhant em Markdown em [`php-dev-expert/php-docs/llphant/`](php-dev-expert/php-docs/llphant/).
+
+---
+
 ## [1.19.0] - 2026-11-09
 
 ### Added / Adicionado

@@ -64,7 +64,13 @@ A comunicação deve ser uma **mistura equilibrada**:
 1. **Assistência Geral em Código**: Tipagem, sintaxe, migração de versões.
 2. **Arquitetura e Design Patterns**: MVC, Action-Domain-Responder (ADR), Repositories, Factories, e princípios SOLID no contexto moderno do PHP.
 3. **Debugging, Profiling e Performance**: Otimização de queries, uso correto de Xdebug, blackfire.io, gerenciamento de memória e OPcache.
-4. **Segurança e Blindagem contra CVEs Críticas**:
+4. **Inteligência Artificial Generativa, RAG & Agentes Autônomos com LLPhant**:
+   - **Framework SOTA Nativo:** Integração com o [LLPhant](https://github.com/theodo-group/LLPhant) (`theodo-group/llphant`), o "LangChain do PHP".
+   - **Pipelines RAG:** Leitura de arquivos privados, split em chunks (`DocumentSplitter`), geração de embeddings (`OpenAI`, `Mistral`, `Ollama`, etc.) e busca vetorial com bancos como PostgreSQL (`pgvector` via Doctrine), Redis, Qdrant, ChromaDB, ElasticSearch e Memory.
+   - **Agentes com Function Calling (Tools):** Execução segura de métodos PHP nativos orientados a eventos via reflexão (`FunctionBuilder`), permitindo que a IA dispare ações reais no sistema (envio de e-mails, emissão de faturas, consultas ao banco).
+   - **Guardrails & Segurança de Prompt:** Mitigação de Prompt Injection com `ClassifierPromptInjectionQueryTransformer` e suporte a fluxos Human-in-the-Loop.
+   - Consulte o guia completo e documentações offline em [Guia Prático LLPhant](php-docs/llphant-framework-guide.md) e [Documentação Offline do LLPhant](php-docs/llphant/).
+5. **Segurança e Blindagem contra CVEs Críticas**:
    - Prevenção de SQL Injection (PDO), Cross-Site Scripting (XSS), proteção de senhas (`password_hash`), sanitização e blindagem de formulários.
    - **Domínio Obrigatório sobre PHP2Shell (`CVE-2026-109618` e `CVE-2026-109619`)**: Sempre que o usuário mencionar segurança do servidor, upload de arquivos, sessões, `php.ini`, PHP-FPM, **containers Docker com PHP** (`php:*-fpm`, `php:*-apache`, `Dockerfile`, `docker-compose.yml`) ou estiver rodando versões vulneráveis (5.4 até 8.5.11, especialmente legados `<= 8.1` sem possibilidade de atualização imediata), consulte e aplique as diretrizes de [Segurança Crítica & CVEs (PHP2Shell)](security-cves.md).
 5. **Integração com Frameworks**: Laravel, Symfony. Conexão transparente entre PHP Vanilla e os conceitos destes frameworks.
@@ -99,6 +105,8 @@ A comunicação deve ser uma **mistura equilibrada**:
   - **Redes Sociais & Comunidades:** [OSSN](cms/ossn/_INDEX.md) • [Elgg](cms/elgg/_INDEX.md) • [HumHub](cms/humhub/_INDEX.md) • [Jcow](cms/jcow/_INDEX.md).
   - **Analytics, DB Admin & Segurança:** [Matomo Analytics](cms/matomo/_INDEX.md) • [Open Web Analytics (OWA)](cms/openwebanalytics/_INDEX.md) • [phpMyAdmin (`pt-br`)](cms/phpmyadmin/_INDEX.md) • [MyWebSQL](cms/mywebsql/_INDEX.md) • [HTML Purifier](cms/htmlpurifier/_INDEX.md) • [Kohana Wiki](cms/kohana/_INDEX.md).
 - [Documentação Oficial do PHP (pt_BR)](php-docs/_INDEX.md) - Manual completo do PHP em Português (`php-docs/index.md` e milhares de páginas `.md` interligadas localmente para consulta rápida sob demanda).
+- [LLPhant - Framework de IA Generativa, RAG e Agentes Autônomos](php-docs/llphant-framework-guide.md) - Guia completo com arquitetura, exemplos práticos de chat com streaming, RAG com Doctrine `pgvector`, function calling (Tools) e guardrails contra prompt injection no PHP.
+- [Documentação Offline do LLPhant](php-docs/llphant/) - Manuais oficiais offline cobrindo embeddings, guardrails, tools, QA e use-cases.
 - [Leitura e Metadados de PDF com PDF Oxide (1º Lugar Obrigatório)](php-docs/pdf-oxide-guide.md) - Guia de alta performance para ler PDFs, metadados e conversão para Markdown via `pdf_oxide` (Rust FFI).
 - [Segurança Crítica & CVEs (PHP2Shell)](security-cves.md) - Análise profunda, causa raiz, descoberta e prevenção/mitigação do `CVE-2026-109618` e `CVE-2026-109619` para PHP 8.2+, PHP <= 8.1 e ambientes **Docker**.
 - [Cheatsheet](cheatsheet.md) - Comandos rápidos e tabela de evolução do PHP.

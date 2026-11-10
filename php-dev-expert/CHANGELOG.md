@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.8.0-beta] - 2026-11-09
+
+### Added / Adicionado
+- **Integração com LLPhant (IA Generativa, RAG & Agentes Autônomos em PHP):**
+  - Incorporação do framework SOTA [LLPhant](https://github.com/theodo-group/LLPhant) (`theodo-group/llphant`), o "LangChain do PHP".
+  - **Pipelines RAG:** Leitura de arquivos (`FileDataReader`), divisão semântica (`DocumentSplitter`), geração de embeddings vetoriais (OpenAI, Mistral, Ollama) e armazenamento vetorial com PostgreSQL (`pgvector` via Doctrine), Redis, Qdrant, Chroma, ElasticSearch e Memory.
+  - **Agentes com Function Calling (Tools):** Execução orientada a reflexão de métodos PHP nativos (`FunctionBuilder`) para acionar APIs e tarefas de negócio a partir do modelo de linguagem.
+  - **Guardrails & Segurança de Prompt:** Detecção e bloqueio de Prompt Injections com `ClassifierPromptInjectionQueryTransformer` e suporte a fluxos Human-in-the-Loop.
+  - **Guia Mestre & Documentação Offline:** Adicionados [`php-docs/llphant-framework-guide.md`](php-docs/llphant-framework-guide.md) e acervo de manuais offline em Markdown em [`php-docs/llphant/`](php-docs/llphant/).
+
+---
+
 ## [0.7.0-beta] - 2026-11-09
 
 ### Added / Adicionado
