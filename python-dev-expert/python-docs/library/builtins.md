@@ -1,0 +1,48 @@
+"builtins" --- Objetos embutidos
+********************************
+
+======================================================================
+
+Este módulo fornece acesso direto a todos os identificadores embutidos
+do Python; Por exemplo, "builtins.open" é o nome completo para a
+função embutida "open()".
+
+Este módulo normalmente não é acessado explicitamente pela maioria dos
+aplicativos, mas pode ser útil em módulos que fornecem objetos com o
+mesmo nome como um valor embutido, mas em que o objeto embutido desse
+nome também é necessário. Por exemplo, em um módulo que deseja
+implementar uma função "open()" que envolve o embutido "open()", este
+módulo pode ser usado diretamente:
+
+   import builtins
+
+   def open(path):
+       f = builtins.open(path, 'r')
+       return UpperCaser(f)
+
+   class UpperCaser:
+       '''Envoltório em volta de um arquivo que converte saída para maiúsculo.'''
+
+       def __init__(self, f):
+           self._f = f
+
+       def read(self, count=-1):
+           return self._f.read(count).upper()
+
+       # ...
+
+Como um detalhe de implementação, a maioria dos módulos tem o nome
+"__builtins__" disponibilizados como parte de seus globais. O valor de
+"__builtins__" normalmente, este é o módulo ou o valor desse módulo
+"__dict__" atributo. Uma vez que este é um detalhe de implementação,
+ele não pode ser usado por implementações alternativas do Python.
+
+Ver também:
+
+  * Constantes embutidas
+
+  * Exceções embutidas
+
+  * Funções embutidas
+
+  * Tipos embutidos

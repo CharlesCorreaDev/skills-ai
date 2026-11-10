@@ -1,0 +1,21 @@
+Melhorar uma página da documentação
+***********************************
+
+Sempre estamos interessados em ouvir ideias sobre melhorias à
+documentação.
+
+Se o bug ou melhoria sugerida está relacionado a tradução desta
+documentação, abra um relatório de problema ou edite a página no
+repositório da tradução.
+
+Você tem alguma formas de fazer perguntas ou sugerir mudanças:
+
+* Você pode iniciar uma discussão sobre a página no fórum de discussão
+  do Python. Este link vai iniciar um tópico na categoria
+  Documentation: *New Documentation topic <https://discuss.python.org
+  /new-topic?category=documentation>`_* ("Novo tópico em
+  Documentation", em inglês).
+
+* Você pode registrar um "issue" no rastreador de problemas do Python
+  no GitHub. Este link vai criar um novo issue com o rótulo "docs":
+  New docs issue ("Novo problema de documentação", em inglês).

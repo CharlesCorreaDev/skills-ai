@@ -1,0 +1,83 @@
+=============================
+GeoDjango Management Commands
+=============================
+
+``inspectdb``
+=============
+
+.. describe:: django inspectdb
+
+When :mod:`django.contrib.gis` is in your :setting:`INSTALLED_APPS`, the
+:cli:`inspectdb` management command is overridden with one from GeoDjango.
+The overridden command is spatially-aware, and places geometry fields in the
+auto-generated model definition, where appropriate.
+
+``ogrinspect``
+==============
+
+.. cli:: ogrinspect data_source model_name
+
+The ``ogrinspect`` management command will inspect the given OGR-compatible
+:class:`~django.contrib.gis.gdal.DataSource` (e.g., a shapefile) and will
+output a GeoDjango model with the given model name. There's a detailed example
+of using ``ogrinspect`` :ref:`in the tutorial <ogrinspect-intro>`.
+
+.. cli-option:: --blank BLANK
+
+    Use a comma separated list of OGR field names to add the ``blank=True``
+    keyword option to the field definition. Set with ``true`` to apply
+    to all applicable fields.
+
+.. cli-option:: --decimal DECIMAL
+
+    Use a comma separated list of OGR float fields to generate
+    :class:`~django.db.models.DecimalField` instead of the default
+    :class:`~django.db.models.FloatField`. Set to ``true`` to apply to all
+    OGR float fields.
+
+.. cli-option:: --geom-name GEOM_NAME
+
+    Specifies the model attribute name to use for the geometry field.
+    Defaults to ``'geom'``.
+
+.. cli-option:: --layer LAYER_KEY
+
+    The key for specifying which layer in the OGR
+    :class:`~django.contrib.gis.gdal.DataSource` source to use.
+    Defaults to 0 (the first layer). May be an integer or a string identifier
+    for the :class:`~django.contrib.gis.gdal.Layer`. When inspecting databases,
+    ``layer`` is generally the table name you want to inspect.
+
+.. cli-option:: --mapping
+
+    Automatically generate a mapping dictionary for use with
+    :class:`~django.contrib.gis.utils.LayerMapping`.
+
+.. cli-option:: --multi-geom
+
+    When generating the geometry field, treat it as a geometry collection.
+    For example, if this setting is enabled then a
+    :class:`~django.contrib.gis.db.models.MultiPolygonField` will be placed
+    in the generated model rather than
+    :class:`~django.contrib.gis.db.models.PolygonField`.
+
+.. cli-option:: --name-field NAME_FIELD
+
+    Generates a ``__str__()`` method on the model that returns the given field
+    name.
+
+.. cli-option:: --no-imports
+
+    Suppresses the ``from django.contrib.gis.db import models`` import
+    statement.
+
+.. cli-option:: --null NULL
+
+    Use a comma separated list of OGR field names to add the ``null=True``
+    keyword option to the field definition. Set with ``true`` to apply to
+    all applicable fields.
+
+.. cli-option:: --srid SRID
+
+    The SRID to use for the geometry field. If not set, ``ogrinspect`` attempts
+    to automatically determine the SRID of the data source.

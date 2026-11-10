@@ -1,0 +1,79 @@
+Objetos MemoryView
+******************
+
+Um objeto "memoryview" expõe a interface de buffer a nível de C como
+um objeto Python que pode ser passado como qualquer outro objeto.
+
+PyTypeObject PyMemoryView_Type
+    * Parte da ABI Estável.*
+
+   Esta instância de "PyTypeObject" representa o tipo memoryview
+   Python. Este é o mesmo objeto que "memoryview" na camada Python.
+
+PyObject *PyMemoryView_FromObject(PyObject *obj)
+    *Retorna valor: Nova referência.** Parte da ABI Estável.*
+
+   Cria um objeto memoryview a partir de um objeto que fornece a
+   interface do buffer. Se *obj* tiver suporte a exportações de buffer
+   graváveis, o objeto memoryview será de leitura/gravação; caso
+   contrário, poderá ser somente leitura ou leitura/gravação, a
+   critério do exportador.
+
+PyBUF_READ
+    * Parte da ABI Estável desde a versão 3.11.*
+
+   Sinalizador para solicitar um buffer de somente leitura.
+
+PyBUF_WRITE
+    * Parte da ABI Estável desde a versão 3.11.*
+
+   Sinalizador para solicitar um buffer gravável.
+
+PyObject *PyMemoryView_FromMemory(char *mem, Py_ssize_t size, int flags)
+    *Retorna valor: Nova referência.** Parte da ABI Estável desde a
+   versão 3.7.*
+
+   Cria um objeto memoryview usando *mem* como o buffer subjacente.
+   *flags* pode ser um dos seguintes "PyBUF_READ" ou "PyBUF_WRITE".
+
+   Adicionado na versão 3.3.
+
+PyObject *PyMemoryView_FromBuffer(const Py_buffer *view)
+    *Retorna valor: Nova referência.** Parte da ABI Estável desde a
+   versão 3.11.*
+
+   Cria um objeto de memoryview envolvendo a estrutura de buffer
+   *view* fornecida. Para buffers de bytes simples,
+   "PyMemoryView_FromMemory()" é a função preferida.
+
+PyObject *PyMemoryView_GetContiguous(PyObject *obj, int buffertype, char order)
+    *Retorna valor: Nova referência.** Parte da ABI Estável.*
+
+   Cria um objeto memoryview para um pedaço *contíguo* de memória (na
+   ordem 'C' ou 'F'ortran, representada por *order*) a partir de um
+   objeto que define a interface do buffer. Se a memória for contígua,
+   o objeto memoryview apontará para a memória original. Caso
+   contrário, é feita uma cópia e a visualização da memória aponta
+   para um novo objeto bytes.
+
+   *buffertype* pode ser um entre "PyBUF_READ" ou "PyBUF_WRITE".
+
+int PyMemoryView_Check(PyObject *obj)
+
+   Retorna true se o objeto *obj* for um objeto memoryview.
+   Atualmente, não é permitido criar subclasses de "memoryview". Esta
+   função sempre tem sucesso.
+
+Py_buffer *PyMemoryView_GET_BUFFER(PyObject *mview)
+
+   Retorna um ponteiro para a cópia privada da memória do buffer do
+   exportador. *mview* **deve** ser uma instância de memoryview; Se
+   essa macro não verificar seu tipo, faça você mesmo ou corre o risco
+   de travar.
+
+PyObject *PyMemoryView_GET_BASE(PyObject *mview)
+
+   Retorna um ponteiro para o objeto de exportação no qual a memória é
+   baseada ou "NULL" se a memória tiver sido criada por uma das
+   funções "PyMemoryView_FromMemory()" ou "PyMemoryView_FromBuffer()".
+   *mview* **deve** ser uma instância de memoryview.

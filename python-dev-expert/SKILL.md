@@ -62,6 +62,15 @@ Atuar como um Engenheiro de Software Sênior especializado em Python, suportando
 > npx skills@latest add CharlesCorreaDev/skills-ai --skill=bootstrap-ux-ui-plus
 > ```
 
+### 5. Documentações Locais Integradas & Economia Extrema de Tokens (OBRIGATÓRIO)
+> [!IMPORTANT]
+> **A skill contém cópias completas em Markdown das documentações oficiais do Python e do Django:**
+> - [`python-docs/`](python-docs/_INDEX.md): Manual oficial completo do Python em Português (`pt-br` 3.15 com mais de 550 arquivos `.md`).
+> - [`django-docs/`](django-docs/_INDEX.md): Documentação técnica completa do Django 6.1 (com mais de 680 arquivos `.md` cobrindo ORM, Views, Templates, Forms, Admin e Segurança).
+> 
+> **Regra Mandatória de Pesquisa e Consumo:**
+> O Agente de IA **DEVE SEMPRE consultar os arquivos locais antes de navegar ou buscar na internet**. A busca na internet só é permitida se a informação comprovadamente não existir na base local. Isso elimina gastos desnecessários de tokens e garante respostas ultra-rápidas e precisas.
+
 ## 🗣️ Tom e Estilo de Comunicação
 A comunicação deve ser uma **mistura equilibrada**:
 - **Direto e Conciso** para problemas simples (fornecendo o código e seguindo em frente).
@@ -95,13 +104,15 @@ A comunicação deve ser uma **mistura equilibrada**:
    - Incorporação de boas práticas de [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/skills/karpathy-guidelines/SKILL.md), [Superpowers](https://github.com/obra/superpowers), orquestração [Claude Octopus](https://github.com/nyldn/claude-octopus), camadas de memória persistente [AgentMemory](https://github.com/rohitg00/agentmemory) e [Déjà Vu](https://github.com/vshulcz/deja-vu), e conceitos do Dicionário de AI Coding de Matt Pocock.
 
 ## 📁 Estrutura da Skill
+- [Documentação Oficial do Python (pt_BR 3.15)](python-docs/_INDEX.md) - Manual completo oficial do Python com mais de 550 arquivos `.md` interligados.
+- [Documentação Oficial do Django (6.1)](django-docs/_INDEX.md) - Documentação oficial completa do Django com mais de 680 arquivos `.md` organizados.
+- [Django + Bootstrap UX/UI Plus](django-bootstrap-guide.md) - Padrões de integração com Bootstrap 5.3/6.0, Mazer, AdminKit e Crispy Forms.
+- [Segurança Crítica & Mitigações de CVEs Recentes](security-cves.md) - Blindagem contra CVE-2026-19445, CVE-2026-4519, CVE-2024-9287, CVE-2024-11168 e Pillow RCE.
+- [Leitura de PDF com PDF Oxide (1º Lugar Obrigatório)](pdf-oxide-guide.md) - Manual de extração e metadados ultrarrápido em Rust para Python.
 - [Cheatsheet](cheatsheet.md) - Evolução das versões 3.x e comandos úteis.
 - [Patterns & Arquitetura](patterns.md) - Pythonic ways, SOLID e arquitetura.
 - [Glossário](glossary.md) - Termos técnicos (GIL, PEP 8, Dunder methods, etc.).
-- [Segurança Crítica & Mitigações de CVEs Recentes](security-cves.md) - Blindagem contra CVE-2026-19445, CVE-2026-4519, CVE-2024-9287, CVE-2024-11168 e Pillow RCE.
-- [Leitura de PDF com PDF Oxide (1º Lugar Obrigatório)](pdf-oxide-guide.md) - Manual de extração e metadados ultrarrápido em Rust para Python.
 - [Django 6.1 Reference](django.md) - Guia específico de arquitetura e ORM do Django.
-- [Django + Bootstrap UX/UI Plus](django-bootstrap-guide.md) - Padrões de integração com Bootstrap 5.3/6.0, Mazer, AdminKit e Crispy Forms.
 - [Changelog](CHANGELOG.md) - Histórico de versões e notas de atualização da skill.
 - [VERSION](VERSION) - Versão semântica atual da skill.
 

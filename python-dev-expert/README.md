@@ -52,7 +52,13 @@ python-dev-expert/
 ├── glossary.md                       # Dicionário de termos técnicos essenciais
 ├── patterns.md                       # Padrões de arquitetura e design patterns
 ├── django.md                         # Guia específico de arquitetura e ORM Django 6.1
-└── pdf-oxide-guide.md                # Guia oficial de leitura e metadados com PDF Oxide
+├── django-bootstrap-guide.md         # Integração Django com Bootstrap UX/UI Plus
+├── security-cves.md                  # Blindagem contra CVEs recentes (2024–2026)
+├── pdf-oxide-guide.md                # Guia oficial de leitura e metadados com PDF Oxide
+├── python-docs/                      # Documentação Oficial Completa do Python (pt-br 3.15, 550+ .md)
+│   └── _INDEX.md                     # Índice mestre de navegação offline
+└── django-docs/                      # Documentação Oficial Completa do Django 6.1 (680+ .md)
+    └── _INDEX.md                     # Índice mestre de navegação offline
 ```
 
 ---

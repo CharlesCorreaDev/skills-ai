@@ -1,0 +1,70 @@
+"pwd" --- A senha do banco de dados
+***********************************
+
+======================================================================
+
+Este módulo provê acesso ao banco de dados das contas de usuário do
+sistema e suas respectivas senhas. Isto está disponível para todas as
+versões do Unix.
+
+Disponibilidade: Unix, not WASI, not iOS.
+
+As entradas do banco de dados de senhas são reportadas como um objeto
+do tipo tupla, cujos atributos correspondem aos membros da estrutura
+"passwd" (Campos dos atributos abaixo, veja "<pwd.h>"):
+
++---------+-----------------+-------------------------------+
+| Índice  | Atributo        | Significado                   |
+|=========|=================|===============================|
+| 0       | "pw_name"       | Nome de login                 |
++---------+-----------------+-------------------------------+
+| 1       | "pw_passwd"     | Senha encriptada opcional     |
++---------+-----------------+-------------------------------+
+| 2       | "pw_uid"        | ID numérico do usuário        |
++---------+-----------------+-------------------------------+
+| 3       | "pw_gid"        | ID numérico do grupo          |
++---------+-----------------+-------------------------------+
+| 4       | "pw_gecos"      | Nome do usuário ou campo de   |
+|         |                 | comentário                    |
++---------+-----------------+-------------------------------+
+| 5       | "pw_dir"        | Diretório home do usuário     |
++---------+-----------------+-------------------------------+
+| 6       | "pw_shell"      | Interpretador de comandos do  |
+|         |                 | usuário                       |
++---------+-----------------+-------------------------------+
+
+O uid e o gid são números inteiros, e os outros são strings.
+"KeyError" é levando se o campo requerido não puder ser encontrado.
+
+Nota:
+
+  Em Unix tradicional, o campo "pw_passwd" geralmente contém uma senha
+  encriptada com um algoritmo derivado de DES. No entanto, a maioria
+  dos sistemas tipo Unix modernos usam o chamado sistema *shadow
+  password*. Nesses Unixes o campo *pw_passwd* só contém um asterisco
+  ("'*'") ou a letra "'x'" e a senha encriptada é guardada no arquivo
+  "/etc/shadow" o qual não é permitido o acesso irrestrito a leitura.
+  Se o campo *pw_passwd* contém alguma coisa útil dependerá do
+  sistema.
+
+Isto define os seguintes itens
+
+pwd.getpwuid(uid)
+
+   Retorna a entrada do banco de dados de senhas para um dado ID de
+   usuário
+
+pwd.getpwnam(name)
+
+   Retorna a entrada do banco de dados de senhas para um dado nome de
+   usuário
+
+pwd.getpwall()
+
+   Retorna uma lista de todos as entradas disponíveis no banco de
+   dados de senhas, em uma ordem arbitrária.
+
+Ver também:
+
+  Módulo "grp"
+     Uma interface para o banco de dados do grupo, similar a esta.
