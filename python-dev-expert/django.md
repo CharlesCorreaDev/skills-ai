@@ -38,3 +38,13 @@ python manage.py createsuperuser
 1. **Fat Models, Skinny Views**: Mova a lógica de negócio pesada para métodos customizados no `Model` ou para o `ModelManager`, mantendo as views concisas.
 2. **Class-Based Views (CBV)**: Use `ListView`, `DetailView`, etc., para padronizar e reduzir código repetitivo (Boilerplate).
 3. **App Modularity**: Mantenha os apps (pastas criadas com `startapp`) focados em um único domínio funcional e de preferência desacoplados (pluggable).
+
+---
+
+## 🎨 Integração com Bootstrap UX/UI Plus
+Para construir interfaces modernas, dashboards e painéis administrativos no Django:
+- **Referência Canônica da Skill:** Adote os padrões definidos na skill [`bootstrap-ux-ui-plus`](../bootstrap-ux-ui-plus/SKILL.md) (arquiteturas Mazer e AdminKit, 18 Leis do UX, WCAG 2.2 AA e inclusão para daltônicos).
+- **Tema Claro por Padrão:** Toda interface Django DEVE iniciar com `data-bs-theme="light"`. O tema escuro/noturno é estritamente opt-in sob pedido do usuário.
+- **Paleta Padrão (#90271) & Fontes Google Sans:** Títulos em `Google Sans Flex`, texto em `Google Sans` e código em `Google Sans Code`, combinados com a paleta corporativa azul calibrada.
+- **Crispy Forms com Bootstrap 5:** Use `crispy-bootstrap5` para renderizar formulários elegantes com mensagens de erro acessíveis (ícones + texto).
+- Consulte o guia completo e templates prontos em [Guia Django + Bootstrap UX/UI Plus](django-bootstrap-guide.md).

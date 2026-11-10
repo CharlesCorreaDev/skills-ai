@@ -52,3 +52,4 @@ Sempre que o usuário ou o projeto demandar animações de interface (transiçõ
 - **Adote as diretrizes do `claude-motion`:** Pacing suave, desaceleração natural (*ease-out*), ausência de movimentos bruscos ou trêmulos e feedback abaixo do limiar de 400ms (Limiar de Doherty).
 - **GPU Acceleration:** Sempre anime propriedades compostas pela GPU (`transform: translate3d`, `opacity`, `scale`). Nunca anime `top`, `left`, `width` ou `height` diretamente.
 - **Acessibilidade:** Garanta que todas as animações sejam suprimidas ou simplificadas quando `prefers-reduced-motion: reduce` estiver ativo no sistema operacional.
+

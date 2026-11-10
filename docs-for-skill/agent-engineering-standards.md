@@ -26,3 +26,4 @@
 3. **Multi-Model Consensus (Octopus Pattern):** Verify critical logic, security patterns, and migrations against multiple perspectives.
 4. **Persistent Memory Integration (AgentMemory / Déjà Vu):** Leverage past session decisions, learned preferences, and previous transcripts to avoid asking the user what was already solved.
 5. **Polished Motion (Claude-Motion):** When generating animations, use tasteful, physics-based easing with full accessibility fallbacks.
+

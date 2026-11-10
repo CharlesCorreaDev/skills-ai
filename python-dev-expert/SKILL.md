@@ -53,11 +53,20 @@ A comunicação deve ser uma **mistura equilibrada**:
 
 ## 🏗️ Áreas de Foco
 1. **Assistência Geral e Tipagem**: Type Hinting moderno (`typing`), checagem estática com `mypy`, migração e compatibilidade de sintaxe.
-2. **Desenvolvimento Web Avançado (Django 6.1)**: Domínio completo do framework Django (versão 6.1), arquitetura MVT, ORM assíncrono, middlewares, e validação de dados.
+2. **Desenvolvimento Web Avançado (Django 6.1 & Bootstrap UX/UI Plus)**: Domínio completo do framework Django (versão 6.1), arquitetura MVT, ORM assíncrono, middlewares, e validação de dados. Integração direta com a skill [`bootstrap-ux-ui-plus`](../bootstrap-ux-ui-plus/SKILL.md) para criação de dashboards corporativos, temas claros por padrão, paleta padrão (#90271), tipografia Google Sans e formulários com `crispy-bootstrap5` acessíveis para daltônicos (WCAG 2.2 AA). Consulte [Guia Django + Bootstrap](django-bootstrap-guide.md).
 3. **Data Science e Engenharia de Dados**: Uso eficiente de Pandas, NumPy, ambientes virtuais e reprodutibilidade (Poetry, Pipenv).
 4. **Scripting e CLI**: Automações, manipulação de arquivos, uso de `argparse` ou `click`.
 5. **Arquitetura e Design Patterns**: Aplicação do SOLID favorecendo funções de primeira classe, Composition over Inheritance, Clean Architecture, Dependency Injection.
-6. **Leitura, Extração e Manipulação de PDF (Regra de Ouro: PDF Oxide em 1º Lugar)**:
+6. **Segurança Crítica e Mitigação de Vulnerabilidades Recentes (2024–2026)**:
+   - **Blindagem Obrigatória:** O agente DEVE aplicar padrões defensivos rigorosos contra as recentes CVEs críticas do CPython e do ecossistema:
+     - **TLS/SSL Use-After-Free (`CVE-2026-19445` & `CVE-2026-19553`):** Prevenção de corrupção de memória ao manipular contextos SSL em servidores SNI.
+     - **Injeção de Comandos em URLs (`CVE-2026-4519`):** Rejeição estrita de URLs iniciadas por `--` ou esquemas não-HTTP antes de acionar `webbrowser.open()` ou `subprocess`.
+     - **Path Traversal e ReDoS em Arquivos (`CVE-2024-6232` & Tar Slip):** Mandato obrigatório de uso de `tarfile.extractall(..., filter='data')` (Python 3.12+) ou validação canônica de caminho de cada membro.
+     - **SSRF via `urllib.parse` (`CVE-2024-11168`):** Validação estrita de hosts com colchetes e bloqueio de IPs privados/loopback via `ipaddress`.
+     - **RCE em Ambientes Virtuais (`CVE-2024-9287`):** Sanitização de paths em `venv` e chamada direta ao executável (`./venv/bin/python`).
+     - **Heap Overflow e RCE no Pillow (`CVE-2026-112900`):** Exigência de `Pillow >= 13.0.0` e desativação de renderizadores não confiáveis como EPS/Ghostscript.
+   - Consulte o guia completo e mitigação detalhada em [Segurança Crítica & CVEs Python](security-cves.md).
+7. **Leitura, Extração e Manipulação de PDF (Regra de Ouro: PDF Oxide em 1º Lugar)**:
    - **Mandato Obrigatório:** Sempre que o projeto ou script Python precisar ler arquivos PDF, extrair textos, tabelas ou metadados, **utilize o `PDF Oxide` (`pdf_oxide`) em PRIMEIRO LUGAR**:
      - Documentação Oficial em Português: [pdf.oxide.fyi/pt/python](https://pdf.oxide.fyi/pt/python/docs/getting-started)
      - Repositório GitHub: [github.com/yfedoseev/pdf_oxide](https://github.com/yfedoseev/pdf_oxide)
@@ -73,8 +82,10 @@ A comunicação deve ser uma **mistura equilibrada**:
 - [Cheatsheet](cheatsheet.md) - Evolução das versões 3.x e comandos úteis.
 - [Patterns & Arquitetura](patterns.md) - Pythonic ways, SOLID e arquitetura.
 - [Glossário](glossary.md) - Termos técnicos (GIL, PEP 8, Dunder methods, etc.).
+- [Segurança Crítica & Mitigações de CVEs Recentes](security-cves.md) - Blindagem contra CVE-2026-19445, CVE-2026-4519, CVE-2024-9287, CVE-2024-11168 e Pillow RCE.
 - [Leitura de PDF com PDF Oxide (1º Lugar Obrigatório)](pdf-oxide-guide.md) - Manual de extração e metadados ultrarrápido em Rust para Python.
 - [Django 6.1 Reference](django.md) - Guia específico de arquitetura e ORM do Django.
+- [Django + Bootstrap UX/UI Plus](django-bootstrap-guide.md) - Padrões de integração com Bootstrap 5.3/6.0, Mazer, AdminKit e Crispy Forms.
 - [Changelog](CHANGELOG.md) - Histórico de versões e notas de atualização da skill.
 - [VERSION](VERSION) - Versão semântica atual da skill.
 

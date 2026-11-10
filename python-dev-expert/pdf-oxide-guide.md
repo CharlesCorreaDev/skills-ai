@@ -62,3 +62,4 @@ doc.close()
 > **Sempre que for trabalhar com PDF em Python:**
 > 1. Use o **`PDF Oxide` (`pdf_oxide`) em PRIMEIRO LUGAR**.
 > 2. Todas as demais bibliotecas de PDF no Python (`pypdf`, `pdfplumber`, `pdfminer`, `PyMuPDF`) ficam estritamente como **FALLBACK**.
+
