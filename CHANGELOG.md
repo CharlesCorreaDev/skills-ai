@@ -7,6 +7,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.27.0] - 2026-11-12
+
+### Added / Adicionado
+- **Lançamento do `bootstrap-ux-ui-plus` v0.5.0-beta:**
+  - **Clone do Mazer com Documentação Viva (`templates/admin-dashboard-template.html`):** Arquitetura `#app > #sidebar + #main` com exemplos práticos e documentação em HTML de grids, breakpoints, formulários acessíveis, floating labels, validação WCAG, botões semânticos, badges, modais com focus trapping, toasts e painel de inclusão TEA/TDAH.
+  - **Template Canônico do AdminKit (`templates/adminkit-dashboard-template.html`):** Estrutura `.wrapper > nav.sidebar + div.main` com design minimalista, topbar flexível e cards com elevação sutil.
+  - **Fundamentos Canônicos de UI Design (`fundamentals/ui-design-core-principles.md`):** Os 6 princípios canônicos do UI Design (Clareza, Consistência, Hierarquia Visual, Eficiência, Tolerância a Erros e Ritmo Base 4/8px) e regras contra AI slop visual.
+  - **Human Interface Guidelines (HIG) Comparadas (`standards/human-interface-guidelines-and-design-systems.md`):** Apple HIG (Deferência, Clareza, Profundidade, cantos orgânicos, vidro fosco), Microsoft Fluent UI, GNOME e KDE.
+  - **Repositórios de Inspiração e Ferramentas (`references/ui-inspiration-and-pattern-libraries.md`):** Mapeamento de UI Patterns, UI Design Daily, UI Skills, Figma UI Kits, Awwwards, Dribbble, Uizard, Pixso, Canva e Maze.
+  - **Bilinguismo Completo (PT-BR / EN):** Tradução e estruturação bilíngue em todos os guias mestres e templates.
+
+---
+
 ## [1.26.0] - 2026-11-12
 
 ### Added / Adicionado

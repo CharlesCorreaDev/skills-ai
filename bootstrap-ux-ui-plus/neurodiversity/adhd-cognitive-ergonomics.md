@@ -1,3 +1,38 @@
+# ADHD, Neurodiversity & Cognitive Ergonomics in UX/UI ⚡🧠
+# TDAH, Neurodiversidade & Ergonomia Cognitiva em UX/UI ⚡🧠
+
+> **Scientific Sources & Clinical References:**  
+> - *Revista Projética (UEL - 2024):* Editorial & Interface Guidelines for ADHD.  
+> - *Fast Company Brasil:* "The Secret of Good Design: Designing for ADHD".  
+> - *Homem Máquina:* Cognitive Ergonomics for Neurodiversity, ADHD, and Autism.  
+> - *DIO.me:* Behavioral Therapy Insights Applied to User Interface Design.  
+> - *r/UXDesign:* Field Experiences from Neurodivergent Designers.
+
+---
+
+## 🇺🇸 English
+
+### 1. ADHD Challenges in Digital Interfaces
+People with Attention Deficit Hyperactivity Disorder (ADHD) experience:
+1. **Executive Dysfunction & Task Paralysis:** Long, complex forms trigger immediate cognitive freeze.
+2. **Working Memory Constraints:** Difficulty retaining information across multi-screen flows.
+3. **Time Blindness:** Impaired perception of elapsed time, leading to anxiety around tasks without duration indicators.
+4. **Wall-of-Text Fatigue:** Dense, unbroken paragraphs cause visual drift and immediate drop-off.
+
+---
+
+### 2. Core Ergonomic Patterns for ADHD
+- **Atomic Progressive Disclosure:** Break multi-field forms into sequential, single-concept micro-steps.
+- **Time Blindness Anchors:** Explicit time estimates on forms ("Takes ~2 min").
+- **Dopamine-Driven Checklists:** Interactive checkboxes with strike-through text and subtle progress celebrations.
+- **Intelligent Defaults:** Eliminate decision fatigue by pre-selecting the safest, most common option.
+- **Bionic Reading Pattern:** Bold first few letters of key words to guide scanning without losing focus.
+- **Zen / Focus Mode:** Provide a toggle that hides navigation sidebars and secondary metrics during high-focus tasks.
+
+---
+
+## 🇧🇷 Português (Brasil)
+
 # TDAH, Neurodiversidade & Ergonomia Cognitiva em Interfaces Bootstrap 🧠⚡
 
 > **Objetivo:** Estabelecer o manual técnico e neuropsicológico sobre como o **TDAH (Transtorno do Déficit de Atenção e Hiperatividade)**, o espectro autista e a sobrecarga executiva afetam a interação do usuário com sistemas digitais, e como traduzir esses conhecimentos em **interfaces Bootstrap 5.3+ e 6.0** livres de fricção, limpas e que combatem a paralisia de tarefa.

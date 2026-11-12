@@ -1,12 +1,43 @@
-# Acessibilidade no Espectro Autista (TEA) & Ergonomia Sensorial em UX/UI
+# Autism Spectrum (ASD) Accessibility & Sensory Ergonomics in UX/UI 🧠🧩
+# Acessibilidade no Espectro Autista (TEA) & Ergonomia Sensorial em UX/UI 🧠🧩
 
-> **Fontes & Fundamentações Teóricas:**
-> - Dissertação de Mestrado PPGDesign/UFPE (2025): *Acessibilidade em UX/UI: diretrizes para a avaliação da experiência de aplicativos escolares destinados a crianças autistas* — Lucas Rafael Belmiro Firmino Silva.
-> - Relatos & Práticas de UX Autista (*Brasil UX Design* / *Ladies That UX BR*): *A comunicação importa: dicas de sobrevivência de uma UX designer autista* & *UX para a Neurodiversidade*.
-> - *Interference Journal* (Estudos de sobrecarga sensorial, ruído acústico e semiótica auditivo-visual).
-> - Comunidades especializadas e fóruns globais de UX e Autismo (*r/UXDesign*).
+> **Authoritative Sources & Theoretical Foundations:**  
+> - Master's Thesis PPGDesign/UFPE (2025): *UX/UI Accessibility Guidelines for Evaluating Educational Apps for Autistic Children* — Lucas Rafael Belmiro Firmino Silva.  
+> - Autistic UX Designer Field Reports (*Brasil UX Design* / *Ladies That UX BR*): *Communication Matters: Survival Tips from an Autistic UX Designer* & *UX for Neurodiversity*.  
+> - *Interference Journal* (Acoustic Noise, Sensory Overload & Auditory-Visual Semiotics in Interactive Systems).  
+> - Specialized Professional Communities (*r/UXDesign*).
 
 ---
+
+## 🇺🇸 English
+
+### 1. Overview: Autism Spectrum Disorder (ASD) & Sensory Processing
+Autism Spectrum Disorder involves neurodevelopmental variations in social communication, flexible thinking, and **sensory processing**. Autistic individuals often experience **hypersensitivity** (acute or painful responses to bright lights, loud noises, high frequencies) and **hyposensitivity** (seeking specific sensory inputs).
+
+In digital interfaces, unpredictable modal takeovers, aggressive animations, auto-playing sounds, and ambiguous metaphors induce cognitive exhaustion, sensory overload, and shutdowns.
+
+---
+
+### 2. The 7-Vector Accessibility Matrix (UFPE 2025)
+1. **Image:** Literal icons paired with explicit text. Never rely on abstract metaphors alone.
+2. **Text:** Concrete, literal language. Avoid sarcasm, idioms, or vague error messages.
+3. **Navigation:** Linear, predictable paths with explicit breadcrumbs and step indicators.
+4. **Customization:** Full user control over audio, animation reduction, and calming palettes.
+5. **Interaction:** Immediate clear feedback, forgiving error tolerance, no punitive countdown timers.
+6. **Sound:** Zero autoplay. Gentle frequencies (300Hz–800Hz) with independent volume toggles.
+7. **Interface:** Clean layout, generous whitespace, large touch targets, predictable element positioning.
+
+---
+
+### 3. Bootstrap 5.3+ Technical Guidelines
+- **Literal Controls:** Always pair icons with text (`<i class="bi bi-gear" aria-hidden="true"></i> <span>Settings</span>`).
+- **Sensory Control Panel:** Provide switches to mute sound effects, disable animations, and activate soft palettes.
+- **Microcopy:** Use straightforward error explanations ("Password must have at least 8 characters" instead of "Oops! Something is wrong").
+- **Motion Reduction:** Fully respect `@media (prefers-reduced-motion: reduce)` on all components.
+
+---
+
+## 🇧🇷 Português (Brasil)
 
 ## 1. Visão Geral: O Espectro Autista e o Processamento Sensorial
 

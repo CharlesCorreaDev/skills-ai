@@ -50,3 +50,66 @@
 | [Ladies That UX BR](https://medium.com/ladies-that-ux-br/ux-para-a-neurodiversidade-primeiros-passos-4f6f3bc0e217) | *UX para a Neurodiversidade: Primeiros Passos* | Pareamento constante de ícone + texto, controle de sensibilidade e flexibilidade de interfaces. | `neurodiversity/autism-and-sensory-design.md` |
 | [Repositório Institucional UFPE (2025)](https://repositorio.ufpe.br/handle/123456789/66900) | *Acessibilidade em UX/UI: diretrizes para avaliação de aplicativos escolares destinados a crianças autistas* (Lucas Silva) | Matriz canônica dos 7 vetores: Imagem, Texto, Navegação, Customização, Interação, Som e Interface. | `neurodiversity/autism-and-sensory-design.md` |
 
+
+
+---
+
+## 🖥️ 4. Fundamentos de UI Design, Princípios Visuais & Design Systems
+
+| Fonte / Link | Título / Tema Principal | Conceitos Chave Ingeridos na Skill | Arquivo de Destino na Skill |
+| :--- | :--- | :--- | :--- |
+| [IxDF - UI Design](https://ixdf.org/literature/topics/ui-design) | *User Interface (UI) Design* | Modelos mentais de interface, affordance, controle do usuário e elementos gráficos. | undamentals/ui-design-core-principles.md |
+| [Figma Resource Library](https://www.figma.com/resource-library/what-is-ui-design/) | *What is UI Design?* | Relação estética-função, sistemas de design escaláveis e colaboração dev-designer. | undamentals/ui-design-core-principles.md |
+| [Figma Princípios de UI](https://www.figma.com/pt-br/resource-library/principios-design-ui/) | *Princípios de Design de UI* | Clareza, consistência, hierarquia visual, contraste, proporção e espaço em branco. | undamentals/ui-design-core-principles.md |
+| [RD Station](https://www.rdstation.com/blog/marketing/ui-design/) | *UI Design: O que é, importância e aplicações* | Interface focada em conversão, consistência de marca e usabilidade comercial. | undamentals/ui-design-core-principles.md |
+| [Alura UI Design](https://www.alura.com.br/artigos/ui-design) | *UI Design: O que é e o que faz um UI Designer* | Design atômico, tipografia, contraste e componentes interativos. | undamentals/ui-design-core-principles.md |
+| [UX Design Institute](https://www.uxdesigninstitute.com/blog/what-is-ui-design/) | *What is User Interface (UI) Design?* | A anatomia visual das telas, affordances táteis e microinterações. | undamentals/ui-design-core-principles.md |
+| [Revista Letraset (Medium)](https://medium.com/revista-letraset/ui-design-um-guia-introdut%C3%B3rio-para-iniciantes-e-curiosos-25ece7d02be3) | *UI Design: Guia Introdutório* | Ritmo vertical, escala modular tipográfica e consistência de layouts. | undamentals/ui-design-core-principles.md |
+| [Gabriel Silvestri](https://gabrielsilvestri.com.br/o-que-e-ui-design-entenda-os-fundamentos-de-ui-e-ux-e-descubra-as-funcoes-essenciais-do-ui-designer-2025/) | *Fundamentos de UI e UX em 2025* | O papel do UI designer contemporâneo e transição entre design e código. | undamentals/ui-design-core-principles.md |
+| [Salesforce Blog](https://www.salesforce.com/br/blog/ux-ui-design-experiencia-do-cliente/) | *UX/UI Design e a Experiência do Cliente* | Design Systems corporativos, escalabilidade e produtividade operacional. | undamentals/ui-design-core-principles.md |
+| [Cronapp Blog](https://blog.cronapp.io/ui-design/) | *UI Design para Sistemas e Aplicações Web* | Padrões de interfaces ricas para aplicações corporativas e dashboards. | undamentals/ui-design-core-principles.md |
+| [EBAC Online UI](https://ebaconline.com.br/blog/ui-designer) | *O que faz um UI Designer* | Habilidades práticas de prototipagem, design de interação e composição. | undamentals/ui-design-core-principles.md |
+| [Academy of Art University](https://www.academyart.edu/news/what-is-ux-ui-design-a-guide-to-user-experience-user-interface-and-product-design/) | *Guide to UX, UI and Product Design* | Fundamentação acadêmica de design de produto e comunicação visual. | undamentals/ui-design-core-principles.md |
+| [Estácio](https://estacio.br/blog/carreiras/ui-ux) | *Carreiras em UI/UX e Mercado* | Aplicação mercadológica e boas práticas de interfaces digitais no Brasil. | undamentals/ui-design-core-principles.md |
+| [Chief of Design](https://chiefofdesign.com.br/ui-design/) | *O Guia Definitivo de UI Design* | Boas práticas de layout, alinhamentos e estética funcional. | undamentals/ui-design-core-principles.md |
+| [Wikipedia](https://en.wikipedia.org/wiki/User_interface_design) | *User Interface Design* | História, ergonomia de software e taxonomia de interfaces homem-computador. | undamentals/ui-design-core-principles.md |
+
+---
+
+## 🍏 5. Human Interface Guidelines (HIG) & Design Systems de Grandes Plataformas
+
+| Plataforma / Referência | Link Oficial | Diretrizes Ingeridas no Bootstrap | Arquivo de Destino |
+| :--- | :--- | :--- | :--- |
+| **Apple HIG** | [developer.apple.com/design/human-interface-guidelines](https://developer.apple.com/design/human-interface-guidelines/) | Os 3 Pilares (Deferência, Clareza, Profundidade), toque mínimo de 44px, cantos arredondados orgânicos (*squircle*) e vidro fosco (*frosted glass*). | standards/human-interface-guidelines-and-design-systems.md |
+| **Microsoft Fluent UI** | [developer.microsoft.com/en-us/fluentui](https://developer.microsoft.com/en-us/fluentui) | Sistema de elevação em 5 camadas, luz Mica/Acrylic, grids base 4/8px e foco acessível duplo. | standards/human-interface-guidelines-and-design-systems.md |
+| **GNOME HIG** | [developer.gnome.org/hig/](https://developer.gnome.org/hig/) | Foco na tarefa, cabeçalhos unificados (*HeaderBars*) e eliminação de menus aninhados confusos. | standards/human-interface-guidelines-and-design-systems.md |
+| **KDE HIG** | [develop.kde.org/hig/](https://develop.kde.org/hig/) | Densidade equilibrada de dados, barras de status funcionais e ergonomia de teclado. | standards/human-interface-guidelines-and-design-systems.md |
+| **Design Systems Surf & One** | [designsystems.surf](https://designsystems.surf/) • [designsystems.one](https://www.designsystems.one/) | Estrutura de design tokens, arquitetura de componentes globais e consistência de estados. | standards/human-interface-guidelines-and-design-systems.md |
+| **LogRocket & Eonist** | [LogRocket HIG Analysis](https://blog.logrocket.com/ux-design/human-interface-guidelines/) • [Eonist Gist](https://gist.github.com/eonist/b9c180a67980c6e18a5184f19bff68fa) | Transposição prática de HIG e tokens para código web moderno (CSS Variables / Bootstrap). | standards/human-interface-guidelines-and-design-systems.md |
+
+---
+
+## 🌟 6. Portais de Inspiração, UI Patterns & Ferramental Prático
+
+| Portal / Ferramenta | Link | Aplicação na Skill | Arquivo de Destino |
+| :--- | :--- | :--- | :--- |
+| **UI Patterns** | [ui-patterns.com](https://ui-patterns.com/patterns) | Catálogo de soluções consagradas para problemas de interação. | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **UI Design Daily** | [uidesigndaily.com](https://www.uidesigndaily.com/) | Componentes abertos modernos (Cards, Pricing, Modais). | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **Awwwards UI Design** | [awwwards.com](https://www.awwwards.com/websites/ui-design/) | Excelência visual, tipografia expressiva e motion. | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **Dribbble UI Design** | [dribbble.com](https://dribbble.com/tags/ui-design) | Benchmarking estético de dashboards SaaS e portais. | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **Figma UI Kits** | [figma.com/comunidade/ui-kits](https://www.figma.com/pt-br/comunidade/ui-kits) | Biblioteca de kits visuais e padrões de auto-layout. | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **Uizard** | [uizard.io](https://uizard.io/templates/) | Prototipagem rápida traduzível para código Bootstrap. | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **Pixso** | [pixso.net](https://pixso.net/) | Design Systems colaborativos e tokens CSS. | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **Canva Whiteboard** | [canva.com](https://www.canva.com/online-whiteboard/ui-design-tool/) | Wireframes conceituais e fluxos de telas. | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **Blush Design** | [blush.design](https://blush.design/blog/post/guide-ui-design) | Ilustrações vetoriais modulares e acessíveis. | 
+eferences/ui-inspiration-and-pattern-libraries.md |
+| **Maze** | [maze.co](https://maze.co/collections/ux-ui-design/ui-design/) | Validação de fluxos e testes quantitativos de usabilidade. | 
+eferences/ui-inspiration-and-pattern-libraries.md |

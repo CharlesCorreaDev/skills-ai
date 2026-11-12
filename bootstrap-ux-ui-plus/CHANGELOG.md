@@ -7,6 +7,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.5.0-beta] - 2026-11-12
+
+### Added / Adicionado
+- **Fundamentos Canônicos de UI Design & Princípios Visuais (undamentals/ui-design-core-principles.md):**
+  - Definição completa e taxonomia de UI Design em relação ao UX (IxDF, Figma, RD Station, Alura, EBAC, Gabriel Silvestri, Salesforce).
+  - Os 6 Princípios Canônicos do UI Design (Clareza, Consistência, Hierarquia Visual, Eficiência/Feedback, Tolerância a Erros e Ritmo Espacial Base 4/8px).
+  - Metodologia de Design Atômico aplicada ao Bootstrap (Átomos, Moléculas e Organismos).
+  - Diretrizes anti-slop visual para agentes de IA (proibição de cards dentro de cards, sombras pesadas e quebras de espaçamento).
+- **Human Interface Guidelines (HIG) & Design Systems Comparados (standards/human-interface-guidelines-and-design-systems.md):**
+  - Apple HIG: Os 3 Pilares (Deferência, Clareza, Profundidade), toque mínimo de 44px, raios de borda orgânicos (*squircle*) e efeito vidro fosco (*frosted glass* / ackdrop-filter).
+  - Microsoft Fluent UI: Sistema de elevação em 5 camadas, luz Mica/Acrylic e foco acessível duplo.
+  - GNOME & KDE HIG: Cabeçalhos unificados (*HeaderBars*), densidade de dados e ergonomia de teclado.
+  - Síntese de design tokens e arquitetura de componentes de designsystems.surf e designsystems.one.
+- **Catálogo de Inspiração, UI Patterns & Ferramental de Design (
+eferences/ui-inspiration-and-pattern-libraries.md):**
+  - Mapeamento analítico de UI Patterns, UI Design Daily, UI Skills, Figma UI Kits, Awwwards, Dribbble, Uizard, Pixso, Canva Whiteboard, Blush Design e Maze.
+- **Mapeamento Expandido de Fontes (
+eferences/ux-sources-and-inspirations.md):**
+  - Inclusão formal de mais de 30 fontes internacionais e nacionais de UI design, design systems e diretrizes de plataforma.
+
+---
+
 ## [0.4.0-beta] - 2026-11-12
 
 ### Added / Adicionado

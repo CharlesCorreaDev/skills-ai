@@ -2,7 +2,7 @@
 
 > **Cognitive UX Laws, Nielsen Usability Heuristics, WCAG 2.2 AA & Neurodiversity for Bootstrap (v5.3 & v6.0)**  
 > *Engenharia Cognitiva de Usabilidade, Leis de UX, Acessibilidade e Neurodiversidade para Bootstrap por GM Charles Corrêa*  
-> **Status: Beta (v0.4.0-beta)**
+> **Status: Beta (v0.5.0-beta)**
 
 ---
 
@@ -103,7 +103,8 @@ bootstrap-ux-ui-plus/
 ├── components/
 │   └── ui-components-catalog.md             # Catálogo de componentes acessíveis Bootstrap
 ├── templates/
-│   └── admin-dashboard-template.html        # Dashboard administrativo completo responsivo
+│   ├── admin-dashboard-template.html        # Dashboard administrativo canônico Mazer com docs vivas
+│   └── adminkit-dashboard-template.html     # Dashboard alternativo canônico AdminKit (.wrapper > .main)
 └── scripts/
     ├── audit_ux_bootstrap.mjs               # Motor CLI de auditoria e validação de código
     └── check_updates.mjs                    # Verificador de atualizações upstream e da skill

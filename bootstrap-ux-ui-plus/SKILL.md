@@ -5,7 +5,7 @@ description: Master UX/UI design, usability engineering, responsive interface ar
 
 # Bootstrap UX/UI Plus 🎨⚡
 > *by GM Charles Corrêa*  
-> **Status: Beta (v0.4.0-beta)**  
+> **Status: Beta (v0.5.0-beta)**  
 > **Target: Bootstrap v5.3.3 & v6.0 Alpha/Preview**
 
 ---
@@ -92,6 +92,9 @@ A skill **Bootstrap UX/UI Plus** é uma suíte completa de engenharia de usabili
 
 ## 📚 Navegação Rápida & Estrutura / Quick Navigation
 
+- [Fundamentos Canônicos de UI Design & Princípios Visuais](fundamentals/ui-design-core-principles.md)
+- [Human Interface Guidelines (HIG) & Design Systems Comparados](standards/human-interface-guidelines-and-design-systems.md)
+- [Repositórios de Inspiração, UI Patterns & Ferramental](references/ui-inspiration-and-pattern-libraries.md)
 - [Mapeamento Canônico de Fontes & Referências Ingeridas](references/ux-sources-and-inspirations.md)
 - [Fundamentos de UX Design & Negócios (Morville & CRO)](fundamentals/ux-design-fundamentals-and-business.md)
 - [Acessibilidade TEA & Ergonomia Sensorial (UFPE 2025)](neurodiversity/autism-and-sensory-design.md)
