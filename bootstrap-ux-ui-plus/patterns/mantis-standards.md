@@ -53,3 +53,4 @@ O **Mantis** destaca-se por seu visual inspirado no **Ant Design**:
    - Paleta corporativa `#90271` (`#224389`, `#3b5998`, `#5772ac`, `#869dcc`, `#14306b`).
    - Acessibilidade WCAG 2.2 AA com alvos de 44px e anéis de foco visíveis.
    - Painel de Conforto Sensorial para TEA/TDAH.
+
