@@ -7,6 +7,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.26.0] - 2026-11-12
+
+### Added / Adicionado
+- **Expansão de UX/UI, Psicologia das Cores & Ergonomia Sensorial em Todo o Ecossistema:**
+  - **ootstrap-ux-ui-plus (0.4.0-beta):**
+    - Integração dos Fundamentos Canônicos de UX Design & Negócios com a Colmeia de 7 Facetas de Peter Morville, Duplo Diamante e métricas de CRO com redução de atrito (Mandaê, Figma, EBAC, Alura, Adobe Express, Catarinas, Tuia).
+    - Módulo de Acessibilidade no Espectro Autista (TEA) com a Matriz dos 7 Vetores da Dissertação de Mestrado UFPE (2025) por Lucas Silva e mitigação de sobrecarga sensorial (*Interference Journal*, *Brasil UX Design*, *Ladies That UX BR*).
+    - Módulo de Ergonomia Cognitiva para TDAH (*Fast Company*, *Revista Projética / UEL*, *Homem Máquina*, *DIO.me*).
+    - Compêndio de Psicologia das Cores (Eva Heller, Goethe, Lüscher), Neuromarketing, Regra 60-30-10, Design Informado Culturalmente e modelos técnicos Hex, RGB, HSL, CMYK, XYZ, Yxy e LAB (*Muzli*, *Buzzvel*, *Toptal*, *ESPM*, *Supercharge*, *TerraLab*).
+    - Catálogo de componentes acessíveis, padrões de animação GPU em CSS3, e guia mestre de JavaScript Moderno, jQuery 3.7+ e jQuery UI 1.14+.
+  - **master-of-foundryvtt (0.20.0-beta):**
+    - Criação do Guia de Ergonomia Sensorial e Acessibilidade Cognitiva em Foundry VTT (guides/sensory-and-cognitive-accessibility.md) aplicando os 7 Vetores da UFPE para fichas e janelas ApplicationV2.
+    - Padrões de conforto sonoro (eliminação de autoplay, sons suaves de dados), modo de conforto sensorial em SCSS com fontes clinicamente testadas (Atkinson Hyperlegible, Lexend) e diálogo de confirmação em ações destrutivas.
+  - **
+ot-today-adhd (1.2.0-beta):**
+    - Ingestão das diretrizes de TEA e redução de sobrecarga sensorial, linguagem puramente literal (sem metáforas abstratas), pareamento obrigatório de ícone + texto e largura ergonômica de leitura de 45 a 65 caracteres por linha (
+eferences/cognitive-formatting.md).
+  - **ook-formatter (0.17.0-beta):**
+    - Diretrizes de diagramação editorial inclusiva para TDAH com leitura biônica e caixas de destaque (
+eurodiversity/adhd-editorial-layout-guide.md).
+    - Teoria das cores aplicada a livros de RPG por gênero e prevenção de halação visual (design-systems/color-theory-and-rpg-layouts.md).
+  - **docker-master (0.4.0-beta):**
+    - Suporte a múltiplos runtimes de contêineres: Docker Engine, Kiri (gerenciador Rust leve) e Podman rootless nativo.
+    - Otimização de performance com .wslconfig e tuning de I/O em Windows/Linux.
+    - Guia mestre de orquestração Kubernetes Multi-Cloud (AWS EKS, GCP GKE, Azure AKS, Oracle OKE e DigitalOcean DOKS).
+    - Ferramental companheiro expandido: Lazydocker, Trivy, Hadolint, SlimToolkit e Testcontainers.
+
+---
+
 ## [1.25.0] - 2026-11-10
 
 ### Added / Adicionado

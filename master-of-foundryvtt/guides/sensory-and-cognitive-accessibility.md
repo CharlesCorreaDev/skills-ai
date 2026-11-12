@@ -127,3 +127,4 @@ body.sensory-comfort-active {
 - [ ] **Independência de Cor:** Status de dano, sangramento ou fadiga usa ícone + texto (ex: `🩸 Sangrando (-2 HP/turno)`), nunca apenas uma bolinha vermelha.
 - [ ] **Zero Autoplay Hostil:** Sons de armadilhas ou magias respeitam o volume global e não disparam volumes extremos repentinos.
 - [ ] **Controle do Usuário:** O jogador pode escolher fontes maiores ou ativar o Modo Conforto Sensorial.
+
