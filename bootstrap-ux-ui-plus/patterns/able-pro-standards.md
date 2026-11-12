@@ -56,3 +56,4 @@ Diferente do Mazer (`#app > #sidebar + #main`) e do AdminKit (`.wrapper > nav.si
 - **Tema Claro Mandatório:** Carregamento padrão em `data-bs-theme="light"`.
 - **Prevenção de AI Slop:** Sem cards aninhados desnecessários, sem sombras pretas pesadas e sem gradientes agressivos.
 - **Tipografia Oficial:** Google Sans (`Google Sans Flex` para títulos e `Google Sans` para textos).
+

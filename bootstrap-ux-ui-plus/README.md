@@ -105,7 +105,8 @@ bootstrap-ux-ui-plus/
 ├── templates/
 │   ├── admin-dashboard-template.html        # Dashboard administrativo canônico Mazer com docs vivas
 │   ├── adminkit-dashboard-template.html     # Dashboard alternativo canônico AdminKit (.wrapper > .main)
-│   └── ablepro-dashboard-template.html      # Dashboard alternativo canônico Able Pro (.pc-sidebar + .pc-header + .pc-container)
+│   ├── ablepro-dashboard-template.html      # Dashboard alternativo canônico Able Pro (.pc-sidebar + .pc-header + .pc-container)
+│   └── mantis-dashboard-template.html       # Dashboard canônico Mantis (Ant Design style com bc_alert spec)
 └── scripts/
     ├── audit_ux_bootstrap.mjs               # Motor CLI de auditoria e validação de código
     └── check_updates.mjs                    # Verificador de atualizações upstream e da skill

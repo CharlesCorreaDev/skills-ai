@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mantis Enterprise Dashboard &mdash; Bootstrap UX/UI Plus Living System</title>
+  
+  <!-- Google Fonts: Google Sans Flex, Google Sans, Google Sans Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;600&family=Google+Sans+Flex:opsz,wght@9..144,400;500;600;700;800&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    /* ==========================================================================
+       Mantis Architecture Clone (.pc-sidebar, .pc-header, .pc-container)
+       Ant Design & Material Inspiration, Paleta Oficial (#90271) & Google Sans
+       ========================================================================== */
+    :root {
+      --ux-primary: #224389;
+      --ux-primary-hover: #14306b;
+      --ux-primary-light: #eef2fb;
+      --ux-border: #f0f0f0;
+      --ux-border-dark: #d9d9d9;
+      --ux-bg: #fafafb;
+      --ux-text: #262626;
+      --ux-muted: #8c8c8c;
+
+      --pc-sidebar-width: 260px;
+      --pc-header-height: 64px;
+    }
+
+    body {
+      background-color: var(--ux-bg);
+      font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ux-text);
+      line-height: 1.5715;
+      font-size: 0.875rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+      font-family: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 600;
+      color: #141414;
+      letter-spacing: -0.01em;
+    }
+
+    /* Acessibilidade de Foco (WCAG 2.2 AA) */
+    :focus-visible {
+      outline: 3px solid #f5a623 !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 0 2px #14306b !important;
+    }
+
+    /* 1. MANTIS PC-SIDEBAR */
+    .pc-sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: var(--pc-sidebar-width);
+      background-color: #ffffff;
+      border-right: 1px solid var(--ux-border);
+      z-index: 1030;
+      transition: all 0.25s ease-in-out;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar-wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .m-header {
+      height: var(--pc-header-height);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid var(--ux-border);
+    }
+
+    .b-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--ux-primary);
+    }
+
+    .navbar-content {
+      flex: 1;
+      padding: 1rem 0.875rem;
+      overflow-y: auto;
+    }
+
+    .pc-navbar {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pc-caption {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--ux-muted);
+      padding: 0.875rem 0.75rem 0.35rem;
+      text-transform: capitalize;
+    }
+
+    .pc-item {
+      margin-bottom: 0.15rem;
+    }
+
+    .pc-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #595959;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: all 0.15s ease;
+    }
+
+    .pc-micon {
+      font-size: 1.1rem;
+      color: #8c8c8c;
+      width: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pc-link:hover {
+      color: var(--ux-primary);
+      background-color: rgba(34, 67, 137, 0.04);
+    }
+    .pc-link:hover .pc-micon {
+      color: var(--ux-primary);
+    }
+
+    .pc-item.active > .pc-link {
+      color: var(--ux-primary);
+      background-color: var(--ux-primary-light);
+      font-weight: 600;
+    }
+    .pc-item.active > .pc-link .pc-micon {
+      color: var(--ux-primary);
+    }
+
+    .pc-submenu {
+      list-style: none;
+      padding-left: 2rem;
+      margin-top: 0.2rem;
+      display: none;
+    }
+    .pc-item.pc-hasmenu.open > .pc-submenu {
+      display: block;
+    }
+
+    /* 2. MANTIS PC-HEADER (TOPBAR) */
+    .pc-header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: var(--pc-sidebar-width);
+      height: var(--pc-header-height);
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--ux-border);
+      z-index: 1020;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      transition: all 0.25s ease-in-out;
+    }
+
+    .header-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* 3. MANTIS PC-CONTAINER */
+    .pc-container {
+      margin-left: var(--pc-sidebar-width);
+      padding-top: var(--pc-header-height);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease-in-out;
+    }
+
+    .pc-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .pc-sidebar {
+        left: calc(var(--pc-sidebar-width) * -1);
+      }
+      .pc-sidebar.mob-open {
+        left: 0;
+        box-shadow: 0 0 35px rgba(0,0,0,0.1);
+      }
+      .pc-header {
+        left: 0;
+      }
+      .pc-container {
+        margin-left: 0;
+      }
+    }
+
+    /* Cards Mantis Style */
+    .card {
+      border: 1px solid var(--ux-border);
+      border-radius: 0.5rem;
+      background-color: #ffffff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      margin-bottom: 1.25rem;
+    }
+    .card-header {
+      background-color: transparent;
+      border-bottom: 1px solid var(--ux-border);
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+    }
+    .card-body {
+      padding: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 1. MANTIS SIDEBAR (.pc-sidebar) -->
+<nav class="pc-sidebar" id="pcSidebar" aria-label="Menu Mantis">
+  <div class="navbar-wrapper">
+    <div class="m-header">
+      <a href="#" class="b-brand">
+        <div class="bg-primary text-white p-2 rounded-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+          <i class="bi bi-flower1 fs-5"></i>
+        </div>
+        <span>Mantis UX+</span>
+      </a>
+      <button type="button" class="btn btn-sm btn-light d-lg-none ms-auto" id="pcSidebarClose" aria-label="Fechar Menu">
+        <i class="bi bi-x fs-4"></i>
+      </button>
+    </div>
+
+    <div class="navbar-content">
+      <ul class="pc-navbar">
+        <li class="pc-caption">Navegação</li>
+        <li class="pc-item active">
+          <a href="#overview" class="pc-link">
+            <span class="pc-micon"><i class="bi bi-grid"></i></span>
+            <span class="pc-mtext">Dashboard Padrão</span>
+          </a>
+        </li>
+
+        <li class="pc-caption">Documentação Viva Bootstrap</li>
+        <li class="pc-item pc-hasmenu open">
+          <a href="#" class="pc-link">
+            <span class="pc-micon"><i class="bi bi-box-seam"></i></span>
+            <span class="pc-mtext">Componentes & Layout</span>
+            <i class="bi bi-chevron-down ms-auto small"></i>
+          </a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="#doc-alerts">Alertas & Feedback (bc_alert)</a></li>
+            <li class="pc-item"><a class="pc-link" href="#doc-grid">Grid & Breakpoints</a></li>
+            <li class="pc-item"><a class="pc-link" href="#doc-buttons">Botões & Badges</a></li>
+            <li class="pc-item"><a class="pc-link" href="#doc-forms">Formulários & Floating</a></li>
+            <li class="pc-item"><a class="pc-link" href="#doc-tables">Tabelas Responsivas</a></li>
+            <li class="pc-item"><a class="pc-link" href="#doc-modals">Modais, Toasts & Offcanvas</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-caption">Inclusão & Neurodiversidade</li>
+        <li class="pc-item">
+          <a href="#doc-neuro" class="pc-link">
+            <span class="pc-micon"><i class="bi bi-heart-pulse"></i></span>
+            <span class="pc-mtext">Ergonomia TEA / TDAH</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- 2. MANTIS HEADER (.pc-header) -->
+<header class="pc-header">
+  <div class="header-wrapper">
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-light d-lg-none border" id="pcSidebarToggle" aria-label="Abrir Menu">
+        <i class="bi bi-list fs-4"></i>
+      </button>
+
+      <div class="input-group d-none d-md-flex" style="max-width: 300px;">
+        <span class="input-group-text bg-light border-0"><i class="bi bi-search text-muted"></i></span>
+        <input type="search" class="form-control bg-light border-0" placeholder="Buscar Ctrl+K..." aria-label="Buscar">
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-outline-primary btn-sm rounded-pill px-3" id="sensoryBtn">
+        <i class="bi bi-eye-slash me-1"></i> Conforto TEA
+      </button>
+
+      <div class="dropdown">
+        <button class="btn btn-light rounded-circle p-2 border position-relative" type="button" data-bs-toggle="dropdown" aria-label="Notificações">
+          <i class="bi bi-bell"></i>
+          <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+          <li class="dropdown-header fw-bold small">Notificações Mantis</li>
+          <li><a class="dropdown-item small" href="#">Sistema atualizado para v5.3.3</a></li>
+          <li><a class="dropdown-item small" href="#">Auditoria A11y 100%</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-light border rounded-pill py-1 px-3 d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown">
+          <span class="fw-semibold small d-none d-md-inline">GM Charles</span>
+          <i class="bi bi-chevron-down small text-muted"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+          <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right me-2"></i> Sair</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 3. MANTIS CONTAINER (.pc-container) -->
+<div class="pc-container">
+  <main class="pc-content" id="overview">
+    <!-- Breadcrumb e Título -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
+      <div>
+        <h2 class="mb-0 fw-bold text-primary fs-4">Mantis Enterprise Dashboard</h2>
+        <small class="text-muted">Inspirado em Ant Design e Material Design com documentação viva completa do Bootstrap 5.3.</small>
+      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 bg-white p-2 px-3 rounded border small">
+          <li class="breadcrumb-item"><a href="#" class="text-decoration-none">Dashboard</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Padrão Mantis</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Metric Cards Mantis Style -->
+    <div class="row g-3 mb-4">
+      <div class="col-sm-6 col-xl-3">
+        <div class="card h-100 mb-0">
+          <div class="card-body">
+            <span class="text-muted small fw-semibold">Visualizações Totais</span>
+            <h3 class="mb-1 fw-bold mt-1">4.42.236</h3>
+            <small class="text-success fw-semibold"><i class="bi bi-arrow-up-right me-1"></i> +59.3% vs mês anterior</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-xl-3">
+        <div class="card h-100 mb-0">
+          <div class="card-body">
+            <span class="text-muted small fw-semibold">Usuários Cadastrados</span>
+            <h3 class="mb-1 fw-bold mt-1">78.250</h3>
+            <small class="text-success fw-semibold"><i class="bi bi-arrow-up-right me-1"></i> +70.5% este mês</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-xl-3">
+        <div class="card h-100 mb-0">
+          <div class="card-body">
+            <span class="text-muted small fw-semibold">Conformidade WCAG 2.2</span>
+            <h3 class="mb-1 fw-bold mt-1">100%</h3>
+            <small class="text-primary fw-semibold"><i class="bi bi-shield-check me-1"></i> Nível AA Homologado</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-xl-3">
+        <div class="card h-100 mb-0">
+          <div class="card-body">
+            <span class="text-muted small fw-semibold">Tempo de Resposta</span>
+            <h3 class="mb-1 fw-bold mt-1">130 ms</h3>
+            <small class="text-success fw-semibold"><i class="bi bi-lightning-charge me-1"></i> Limiar de Doherty</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOCUMENTAÇÃO VIVA 0: MANTIS BC_ALERT COMPONENT SPEC (mantisdashboard.com/elements/bc_alert.html) -->
+    <section id="doc-alerts" class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-bell-fill text-primary me-2"></i> Alertas Canônicos & Feedback (bc_alert.html Specification)</span>
+        <span class="badge bg-primary-subtle text-primary border">Mantis Elements</span>
+      </div>
+      <div class="card-body">
+        <p class="text-muted small mb-3">Especificação completa dos alertas do Mantis conforme <code>bc_alert.html</code>, unindo mensagens contextuais, ícones semânticos, botões de dispensa (<code>data-bs-dismiss="alert"</code>) e contraste sutil WCAG 2.2 AA:</p>
+
+        <!-- 1. Alertas Padrão com Ícones e Descarte -->
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <div class="alert alert-primary d-flex align-items-center justify-content-between alert-dismissible fade show mb-0" role="alert">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-info-circle-fill fs-5"></i>
+                <div><strong>Aviso Primário:</strong> Novo release do Bootstrap 5.3 disponível para atualização.</div>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert alert-success d-flex align-items-center justify-content-between alert-dismissible fade show mb-0" role="alert">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-check-circle-fill fs-5"></i>
+                <div><strong>Sucesso:</strong> Sincronização de dados completada com 100% de integridade.</div>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert alert-warning d-flex align-items-center justify-content-between alert-dismissible fade show mb-0" role="alert">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+                <div><strong>Atenção:</strong> Seu limite mensal de requisições atingiu 85%.</div>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="alert alert-danger d-flex align-items-center justify-content-between alert-dismissible fade show mb-0" role="alert">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-x-octagon-fill fs-5"></i>
+                <div><strong>Falha Crítica:</strong> Não foi possível conectar ao banco de réplica.</div>
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Alerta com Conteúdo Adicional (Heading + Divider) -->
+        <div class="alert alert-info border mb-0" role="alert">
+          <h5 class="alert-heading fw-bold d-flex align-items-center gap-2">
+            <i class="bi bi-lightbulb-fill"></i> Diretriz de Acessibilidade em Alertas (WCAG 3.3.1)
+          </h5>
+          <p class="mb-1">Alertas não devem utilizar apenas a cor para transmitir o estado. A inclusão obrigatória de um ícone vetorial e texto descritivo garante que usuários daltônicos (Protanopia e Deuteranopia) compreendam o status imediatamente.</p>
+          <hr class="my-2">
+          <p class="mb-0 small text-muted">Use a classe <code>.alert-dismissible</code> para permitir que o usuário feche mensagens após a leitura.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTAÇÃO VIVA 1: GRID & BREAKPOINTS -->
+    <section id="doc-grid" class="card mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-grid-3x3 text-primary me-2"></i> 1. Sistema de Grid & Breakpoints Responsivos</span>
+        <span class="badge bg-light text-dark border">Grid System</span>
+      </div>
+      <div class="card-body">
+        <p class="text-muted small mb-3">O grid de 12 colunas do Bootstrap permite criar layouts adaptáveis a telas mobile, tablets e desktops (<code>col-12</code>, <code>col-md-6</code>, <code>col-xl-3</code>):</p>
+        <div class="row g-2 text-center text-white small font-monospace">
+          <div class="col-12 col-md-8"><div class="p-2 bg-primary rounded">col-12 col-md-8</div></div>
+          <div class="col-12 col-md-4"><div class="p-2 bg-secondary rounded">col-12 col-md-4</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTAÇÃO VIVA 2: BOTÕES, BADGES & HIERARQUIA -->
+    <section id="doc-buttons" class="card mb-3">
+      <div class="card-header">
+        <span><i class="bi bi-collection text-primary me-2"></i> 2. Botões, Badges & Alvos Táteis (&ge;44px)</span>
+      </div>
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <button class="btn btn-primary" style="min-height: 44px;"><i class="bi bi-check2 me-1"></i> Primário</button>
+          <button class="btn btn-secondary" style="min-height: 44px;">Secundário</button>
+          <button class="btn btn-success" style="min-height: 44px;">Sucesso</button>
+          <button class="btn btn-danger" style="min-height: 44px;">Destrutivo</button>
+          <button class="btn btn-outline-primary" style="min-height: 44px;">Outline</button>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge bg-primary-subtle text-primary border">Ativo</span>
+          <span class="badge bg-success-subtle text-success border">Concluído</span>
+          <span class="badge bg-warning-subtle text-warning-emphasis border">Atenção</span>
+          <span class="badge bg-danger-subtle text-danger border">Erro</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTAÇÃO VIVA 3: FORMULÁRIOS & FLOATING LABELS -->
+    <section id="doc-forms" class="card mb-3">
+      <div class="card-header">
+        <span><i class="bi bi-input-cursor-text text-primary me-2"></i> 3. Formulários, Floating Labels & Validação Acessível</span>
+      </div>
+      <div class="card-body">
+        <form class="row g-3 needs-validation" novalidate>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="fName" placeholder="Nome" required>
+              <label for="fName">Nome Completo</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="email" class="form-control" id="fEmail" placeholder="E-mail" required>
+              <label for="fEmail">E-mail Corporativo</label>
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-end gap-2">
+            <button type="submit" class="btn btn-primary px-4">Salvar Registro</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- DOCUMENTAÇÃO VIVA 4: TABELA RESPONSIVA -->
+    <section id="doc-tables" class="card mb-3">
+      <div class="card-header">
+        <span><i class="bi bi-table text-primary me-2"></i> 4. Tabela de Dados Responsiva</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Módulo / Recurso</th>
+              <th>Versão</th>
+              <th>A11y Score</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#101</td>
+              <td class="fw-bold text-primary">master-of-foundryvtt</td>
+              <td><code>v0.20.0-beta</code></td>
+              <td><span class="text-success fw-bold">100%</span></td>
+              <td><span class="badge bg-success-subtle text-success border">Homologado</span></td>
+            </tr>
+            <tr>
+              <td>#102</td>
+              <td class="fw-bold text-primary">bootstrap-ux-ui-plus</td>
+              <td><code>v0.5.0-beta</code></td>
+              <td><span class="text-success fw-bold">99.8%</span></td>
+              <td><span class="badge bg-success-subtle text-success border">Homologado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DOCUMENTAÇÃO VIVA 5: MODAIS E TOASTS -->
+    <section id="doc-modals" class="card mb-3">
+      <div class="card-header">
+        <span><i class="bi bi-window-stack text-primary me-2"></i> 5. Modais, Toasts & Alertas Acessíveis</span>
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#mantisModal">
+          <i class="bi bi-window me-1"></i> Abrir Diálogo Modal
+        </button>
+        <button type="button" class="btn btn-outline-primary" id="toastBtn">
+          <i class="bi bi-bell me-1"></i> Disparar Toast
+        </button>
+      </div>
+    </section>
+
+    <!-- PAINEL DE CONFORTO SENSORIAL (TEA / TDAH) -->
+    <section id="doc-neuro" class="card mb-0 border-primary-subtle">
+      <div class="card-header bg-primary-subtle text-primary fw-bold">
+        <i class="bi bi-heart-pulse-fill me-2"></i> Ergonomia Sensorial e Cognitiva (UFPE 2025)
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded border">
+              <div class="form-check form-switch mb-1">
+                <input class="form-check-input" type="checkbox" role="switch" id="sw1" checked>
+                <label class="form-check-label fw-bold" for="sw1">Zero Autoplay</label>
+              </div>
+              <small class="text-muted">Sem áudios inesperados (Interference Journal).</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded border">
+              <div class="form-check form-switch mb-1">
+                <input class="form-check-input" type="checkbox" role="switch" id="sw2">
+                <label class="form-check-label fw-bold" for="sw2">Reduzir Animações</label>
+              </div>
+              <small class="text-muted">Respeita <code>prefers-reduced-motion</code>.</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded border">
+              <div class="form-check form-switch mb-1">
+                <input class="form-check-input" type="checkbox" role="switch" id="sw3">
+                <label class="form-check-label fw-bold" for="sw3">Modo Zen</label>
+              </div>
+              <small class="text-muted">Reduz ruídos visuais para combater a dispersão.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Mantis -->
+  <footer class="bg-white border-top py-3 px-4 text-center text-muted small mt-auto">
+    <span>Mantis Standard Architecture Clone &bull; GM Charles Corrêa &bull; <a href="https://github.com/CharlesCorreaDev/skills-ai" class="text-decoration-none">skills-ai</a></span>
+  </footer>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="mantisModal" tabindex="-1" aria-labelledby="mantisModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title fw-bold fs-6" id="mantisModalLabel">Diálogo Acessível Mantis</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body p-4">
+        <p class="mb-0">Este modal implementa foco acessível (WCAG 2.2 AA) e restauração de foco ao fechar.</p>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-primary text-white">
+      <strong class="me-auto">Mantis Notification</strong>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Fechar"></button>
+    </div>
+    <div class="toast-body bg-white">
+      Operação executada em menos de 130ms!
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const pcSidebar = document.getElementById('pcSidebar');
+  const pcToggle = document.getElementById('pcSidebarToggle');
+  const pcClose = document.getElementById('pcSidebarClose');
+
+  if (pcToggle && pcSidebar) {
+    pcToggle.addEventListener('click', () => pcSidebar.classList.toggle('mob-open'));
+  }
+  if (pcClose && pcSidebar) {
+    pcClose.addEventListener('click', () => pcSidebar.classList.remove('mob-open'));
+  }
+
+  document.querySelectorAll('.pc-item.pc-hasmenu > .pc-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      link.parentElement.classList.toggle('open');
+    });
+  });
+
+  const toastBtn = document.getElementById('toastBtn');
+  const liveToast = document.getElementById('liveToast');
+  if (toastBtn && liveToast) {
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToast);
+    toastBtn.addEventListener('click', () => toastBootstrap.show());
+  }
+
+  const sensoryBtn = document.getElementById('sensoryBtn');
+  let sActive = false;
+  if (sensoryBtn) {
+    sensoryBtn.addEventListener('click', () => {
+      sActive = !sActive;
+      sensoryBtn.classList.toggle('btn-primary', sActive);
+      sensoryBtn.classList.toggle('btn-outline-primary', !sActive);
+    });
+  }
+</script>
+
+</body>
+</html>
