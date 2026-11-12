@@ -7,6 +7,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.4.0-beta] - 2026-11-12
+
+### Added / Adicionado
+- **Fundamentos Canônicos de UX Design & Negócios (`fundamentals/ux-design-fundamentals-and-business.md`):**
+  - Integração da Colmeia de 7 Facetas do UX de Peter Morville (Útil, Usável, Desejável, Encontrável, Acessível, Confiável e Valioso).
+  - Conceitos de UX moderno e Design Thinking (Duplo Diamante) referenciados por Figma, EBAC Online, Alura, Adobe Express, Catarinas e Tuia Design.
+  - Alavancagem de vendas, retenção e CRO em e-commerce inspirado em dados e metodologias da Mandaê.
+- **Acessibilidade no Espectro Autista (TEA) & Ergonomia Sensorial (`neurodiversity/autism-and-sensory-design.md`):**
+  - Matriz dos 7 Vetores de Acessibilidade da Dissertação de Mestrado UFPE (2025) por Lucas Rafael Belmiro Firmino Silva (*Imagem, Texto, Navegação, Customização, Interação, Som e Interface*).
+  - Práticas de redução de sobrecarga sensorial (*Interference Journal*), eliminação de autoplay e sons abruptos.
+  - Princípios de comunicação literal, clareza e previsibilidade cognitiva baseados em relatos de UX designers autistas (*Brasil UX Design*, *Ladies That UX BR* e comunidade *Reddit r/UXDesign*).
+- **TDAH & Ergonomia Cognitiva (`neurodiversity/adhd-cognitive-ergonomics.md`):**
+  - Diretrizes para mitigação de paralisia de escolha, revelação progressiva atômica, combate a *time blindness* e checklists dopaminérgicos com micro-vitórias (*Fast Company*, *Projética/UEL*, *Homem Máquina*, *DIO.me* e *Medium*).
+- **Psicologia das Cores & Semiótica Visual Expandida (`psychology/color-psychology-and-semiotics.md`):**
+  - Síntese de teorias clássicas (Goethe, Eva Heller, Lüscher) e neuromarketing aplicado a UX/CRO (Regra 60-30-10, Culturally-Informed Design, modelos RGB/CMYK/HSL/LAB/XYZ, *Muzli*, *Buzzvel*, *Toptal*, *ESPM*, *Supercharge* e *TerraLab*).
+- **Mapeamento de Fontes e Referências Externas (`references/ux-sources-and-inspirations.md`):**
+  - Tabela canônica registrando todas as referências externas ingeridas na skill com links, conceitos-chave e correspondência com arquivos internos.
+- **Catálogo de Componentes, Padrões HTML5/CSS3 e JavaScript/jQuery (`components/`, `standards/`):**
+  - Documentação mestre de componentes acessíveis, padrões de animações CSS3 com aceleração por GPU, e manual mestre de JS Moderno, jQuery 3.7+ e jQuery UI 1.14+.
+- **Leis de UX Expandidas & Discovery de Nichos (`laws/advanced-ux-laws-and-principles.md`, `discovery/niche-and-discovery-interview.md`):**
+  - 8 Regras de Ouro de Shneiderman, Princípios de Don Norman, Thumb Zone de Hoober/Wroblewski e questionário socrático de discovery para agentes de IA.
+
+---
+
 ## [0.3.0-beta] - 2026-11-09
 
 ### Added / Adicionado
@@ -48,14 +72,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - **Manual Técnico de Acessibilidade Visual e Daltonismo (`accessibility/visual-accessibility-colorblindness.md`):**
     - Guia completo para Protanopia, Deuteranopia, Tritanopia e Acromatopsia, proibição da cor como comunicador único, conformidade com LBI (Lei 13.146/2015 Art. 63), eMAG e ABNT NBR 17225.
   - **Definição de Paleta Corporativa Padrão (#90271) & Tipografia Oficial:**
-    - Paleta oficial: `#869dcc`, `#5772ac`, `#3b5998`, `#224389`, `#14306b` (com pergunta ativa de paleta caso o usuário queira customizar).
-    - Tipografia oficial: `Google Sans Flex` (títulos), `Google Sans` (texto) e `Google Sans Code` (mono).
-  - **Diretriz Mandatória de Temas (Light Theme Default):**
-    - Padrão estrito de Tema Claro (`data-bs-theme="light"`) para Mazer, AdminKit e interfaces geradas; tema escuro / noturno estritamente opt-in sob pedido explícito do usuário.
-  - **Revisão Integral de Acessibilidade e Paleta no Template de Dashboard:**
-    - `templates/admin-dashboard-template.html` atualizado com fontes Google Sans, paleta #90271, tema light por padrão, badges de status com ícones + texto para daltônicos e botões de filtro de contraste/daltonismo.
-  - **Documentação Arquitetural e de Consulta:**
-    - `cheatsheet.md`: Tabela rápida relacionando Leis de UX a classes do Bootstrap.
-    - `glossary.md`: Glossário técnico com termos de HCI, psicologia cognitiva e Bootstrap.
-    - `patterns.md`: Padrões de implementação para PHP (Blade), React (Next.js/TSX), Python (Django/Jinja2) e Node.js.
-    - `README.md` e `SKILL.md` bilíngues (Inglês e Português).
+    - Paleta Padrão `#90271` (`#869dcc`, `#5772ac`, `#3b5998`, `#224389`, `#14306b`) e tipografia oficial Google Sans (`Google Sans Flex`, `Google Sans`, `Google Sans Code`).
