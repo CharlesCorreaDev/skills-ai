@@ -104,7 +104,8 @@ bootstrap-ux-ui-plus/
 │   └── ui-components-catalog.md             # Catálogo de componentes acessíveis Bootstrap
 ├── templates/
 │   ├── admin-dashboard-template.html        # Dashboard administrativo canônico Mazer com docs vivas
-│   └── adminkit-dashboard-template.html     # Dashboard alternativo canônico AdminKit (.wrapper > .main)
+│   ├── adminkit-dashboard-template.html     # Dashboard alternativo canônico AdminKit (.wrapper > .main)
+│   └── ablepro-dashboard-template.html      # Dashboard alternativo canônico Able Pro (.pc-sidebar + .pc-header + .pc-container)
 └── scripts/
     ├── audit_ux_bootstrap.mjs               # Motor CLI de auditoria e validação de código
     └── check_updates.mjs                    # Verificador de atualizações upstream e da skill
