@@ -160,3 +160,4 @@ Com base nas experiências e relatórios da comunidade de designers autistas (*B
 - [ ] **Contraste suave e sem vibração:** Textos principais com contraste $\ge 4.5:1$, evitando fundo `#000000` puro com texto `#00ff00` saturado.
 - [ ] **Ícone + Texto sempre juntos:** Nenhum botão crítico depende unicamente de um ícone abstrato.
 - [ ] **Previsibilidade espacial:** Botões principais mantêm a mesma posição em todas as telas e diálogos.
+

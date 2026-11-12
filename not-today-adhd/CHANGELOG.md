@@ -6,10 +6,14 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
-## [0.2.0-beta] - 2026-11-09
+## [1.2.0-beta] - 2026-11-12
 
 ### Added / Adicionado
-- **Auditoria Adversarial Cloudflare & Anti-Alucinação NVIDIA:** Diretrizes de segurança via cloudflare/security-audit-skill e coerência de dados com NVIDIA/auto-ontology.
+- **Integração de Ergonomia Sensorial e Autismo (TEA):**
+  - Incorporação dos achados da Dissertação de Mestrado UFPE (2025) por Lucas Silva e estudos do *Interference Journal*.
+  - Diretrizes para linguagem literal (eliminação de figuras ambíguas e metáforas confusas), pareamento constante de ícone + texto e mitigação de sobrecarga acústica.
+  - Padrão de largura de leitura de 45 a 65 caracteres por linha (*Revista Projética / UEL*).
+  - Atualização completa de `references/cognitive-formatting.md`.
 
 ---
 

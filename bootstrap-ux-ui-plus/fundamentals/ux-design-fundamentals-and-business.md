@@ -96,3 +96,4 @@ No desenvolvimento de interfaces com Bootstrap, o agente de IA e os desenvolvedo
 2. **Definir (Convergência):** Traçar a persona, o perfil de uso e a dor central a ser solucionada.
 3. **Desenvolver (Divergência):** Esboçar protótipos, testar variações de componentes no Bootstrap e experimentar fluxos.
 4. **Entregar (Convergência):** Implementar código HTML5/CSS3/JS limpo, validado por acessibilidade e testes de usabilidade.
+

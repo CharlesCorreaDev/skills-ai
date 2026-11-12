@@ -1,8 +1,8 @@
 ---
 name: not-today-adhd
-description: Not today, ADHD! (Hoje não TDAH!) - Formata, reestrutura e reescreve as respostas da IA com acessibilidade cognitiva máxima para pessoas com TDAH, autismo e neurodivergência. Detecta automaticamente sobrecarga cognitiva, paralisia de tarefa ou desvio de foco e aciona dinamicamente as heurísticas e ferramentas do ecossistema de referências integradas.
+description: Not today, ADHD! (Hoje não TDAH!) - Formata, reestrutura e reescreve as respostas da IA com acessibilidade cognitiva máxima para pessoas com TDAH, autismo e neurodivergência. Ingests 7-Vector Accessibility Matrix (UFPE 2025), literal non-ambiguous microcopy, acoustic overload avoidance, and 45-65 character line length optimization. Detecta automaticamente sobrecarga cognitiva, paralisia de tarefa ou desvio de foco e aciona dinamicamente as heurísticas e ferramentas do ecossistema de referências integradas.
 license: MIT
-version: 1.1.0-beta
+version: 1.2.0-beta
 tags: [adhd, tdah, neurodivergent, accessibility, focus, productivity, cognitive-load, body-doubling]
 ---
 
