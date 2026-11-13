@@ -41,6 +41,9 @@ The skill responds to human-friendly slash commands across IDEs and terminals:
 | **`/second-brain status`** | Displays vault health, note count, hash integrity, graph nodes, and cloud API connectivity. |
 | **`/second-brain git-status`** | Audits GitHub (`gh`) & GitLab (`glab`) remote sync, privacy (public/private), and proactive checks ("Needs anything else?"). |
 | **`/second-brain git-sync`** | Commits and pushes all second-brain changes to the configured Git remote. |
+| **`/second-brain task <title>`** | Schedules a task with target date/time, priority, and 4 atomic micro-steps (5-10 min each). |
+| **`/second-brain tasks`** | Displays a dashboard of all active, overdue, and scheduled tasks. |
+| **`/second-brain do <id>`** | Autonomously executes a task: runs micro-steps, validates DoD, marks completed, and logs session. |
 | **`/second-brain focus`** | Switches to ADHD / Neurodivergent Orbit OS single-task view (1 micro-task at a time). |
 | **`/second-brain tdah`** | Activates Portuguese TDAH mode with bionic bolding, short 45-65 character lines, and Body Doubling. |
 
@@ -203,6 +206,9 @@ A skill responde a comandos de barra amigáveis no chat da IDE e no terminal:
 | **`/second-brain status`** | Exibe painel de saúde: notas ativas, nós do grafo, integridade de hashes e conectividade com a API. |
 | **`/second-brain git-status`** | Audita a sincronização com GitHub (`gh`) e GitLab (`glab`), privacidade e verificações ("Precisa de algo a mais?"). |
 | **`/second-brain git-sync`** | Commita e envia (push) todas as alterações do segundo cérebro para o remote Git configurado. |
+| **`/second-brain task <título>`** | Agenda uma tarefa com data/horário, prioridade e 4 micro-passos atômicos (5-10 min cada). |
+| **`/second-brain tasks`** | Exibe painel com todas as tarefas ativas, agendadas e pendentes no cofre e Notion. |
+| **`/second-brain do <id>`** | Executa autonomamente uma tarefa: cumpre micro-passos, valida DoD, marca como concluída e arquiva log. |
 | **`/second-brain focus`** | Alterna para o painel de foco único do modo neurodivergente (Orbit OS / TDAH - 1 tarefa por vez). |
 | **`/second-brain tdah`** | Ativa o modo TDAH com formatação biônica, linhas curtas de 45-65 caracteres e Body Doubling contra paralisia. |
 

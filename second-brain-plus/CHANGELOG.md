@@ -16,6 +16,9 @@ O formato segue o padrão de [Keep a Changelog](https://keepachangelog.com/pt-BR
   - `/second-brain status`: Painel de saúde, notas ativas, métricas do grafo e conexão.
   - `/second-brain git-status`: Auditoria de sincronização remota Git (GitHub `gh` e GitLab `glab`), visibilidade (privado/público) e diagnóstico ("Precisa de algo a mais?").
   - `/second-brain git-sync`: Commit e push de alterações para o repositório remoto configurado.
+  - `/second-brain task <título>`: Cria e agenda uma tarefa com data/horário, prioridade e decomposição em 4 micro-passos atômicos (5-10 min).
+  - `/second-brain tasks`: Painel de visualização de tarefas ativas, agendadas e pendentes.
+  - `/second-brain do <id>`: Motor de execução autônoma de tarefas (decomposição, execução cirúrgica, validação DoD, baixa no Notion e arquivamento episódico).
   - `/second-brain tdah`: Ativação de foco atômico (1 micro-ação por vez, baixa carga e Body Doubling).
   - `/second-brain focus`: Exibição do painel de foco atômico neurodivergente (Orbit OS).
 - **Template Padrão Canônico do Notion:**

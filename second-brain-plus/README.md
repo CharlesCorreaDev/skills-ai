@@ -92,6 +92,9 @@ Second Brain Plus introduces dedicated slash commands natively recognized across
 | **`/second-brain status`** | Prints a visual telemetry dashboard showing note counts, API latency, hash integrity, and graph nodes. | Diagnostic check before starting work. |
 | **`/second-brain git-status`** | Audits GitHub (`gh`) & GitLab (`glab`) remote synchronization, privacy (public/private), and proactive checks ("Needs anything else?"). | Inspecting backup security & remote divergence. |
 | **`/second-brain git-sync`** | Commits and pushes all second-brain changes to the configured Git remote repository. | Offsite backup to GitHub or GitLab. |
+| **`/second-brain task <title>`** | Schedules a task with target date/time, priority, and 4 atomic micro-steps (5-10 min each). | `/second-brain task "Refactor Auth" --when "2026-11-16 14:00" --p1` |
+| **`/second-brain tasks`** | Displays a dashboard of all active, overdue, and scheduled tasks. | Reviewing today's schedule and sprint deliverables. |
+| **`/second-brain do <id>`** | Autonomously executes a task: runs micro-steps, validates DoD, marks completed, and logs session. | `/second-brain do "Refactor Auth"` |
 | **`/second-brain focus`** | Switches to ADHD / Neurodivergent Orbit OS single-task dashboard (1 micro-task at a time). | Countering cognitive overload and decision paralysis. |
 | **`/second-brain tdah`** | Activates Portuguese TDAH accessibility mode with bionic bolding, short 45-65 character lines, and Body Doubling. | Maximum cognitive comfort during complex sessions. |
 
@@ -258,6 +261,9 @@ O Second Brain Plus estabelece uma **Única Fonte da Verdade (SSOT)** sincroniza
 | **`/second-brain status`** | Exibe painel com contagem de notas, saúde da conexão, hashes de integridade e nós do grafo. |
 | **`/second-brain git-status`** | Audita a sincronização com GitHub (`gh`) e GitLab (`glab`), privacidade e verificações proativas ("Precisa de algo a mais?"). |
 | **`/second-brain git-sync`** | Commita e envia (push) todas as alterações do segundo cérebro para o remote Git configurado. |
+| **`/second-brain task <título>`** | Agenda uma tarefa com data/horário, prioridade e 4 micro-passos atômicos (5-10 min cada). |
+| **`/second-brain tasks`** | Exibe painel com todas as tarefas ativas, agendadas e pendentes no cofre e Notion. |
+| **`/second-brain do <id>`** | Executa autonomamente uma tarefa: cumpre micro-passos, valida DoD, marca como concluída e arquiva log. |
 | **`/second-brain focus`** | Ativa a visualização Orbit OS com apenas 1 micro-tarefa ativa de 5 a 10 minutos. |
 | **`/second-brain tdah`** | Ativa o modo neurodivergente com formatação biônica, linhas curtas e Body Doubling contra paralisia de tarefa. |
 

@@ -30,6 +30,7 @@ import notion_sync
 import memory_bridge
 import verify_brain
 import git_remote_sync
+import task_scheduler
 
 def get_vault_dir() -> Path:
     vault_str = os.environ.get("SECOND_BRAIN_DIR", "./.second-brain")
@@ -251,6 +252,19 @@ def main():
     p_git_sync = subparsers.add_parser("git-sync", help="Commit and push second brain changes to Git remote")
     p_git_sync.add_argument("--message", "-m", default="chore(brain): automated second-brain sync", help="Commit message")
 
+    # task scheduling & execution
+    p_task = subparsers.add_parser("task", help="Create and schedule a task with date and micro-steps")
+    p_task.add_argument("title", nargs="+", help="Title of the task")
+    p_task.add_argument("--when", "--date", "-d", default=None, help="Scheduled datetime (e.g. '2026-11-16 10:00')")
+    p_task.add_argument("--priority", choices=["P0 - Blocker", "P1 - High", "P2 - Medium", "P3 - Low"], default="P2 - Medium", help="Task priority")
+    p_task.add_argument("--p1", action="store_true", help="Set priority to P1 - High")
+    p_task.add_argument("--p0", action="store_true", help="Set priority to P0 - Blocker")
+
+    subparsers.add_parser("tasks", help="List all scheduled and backlog tasks")
+
+    p_do = subparsers.add_parser("do", help="Autonomously execute a task, run micro-steps, and mark completed")
+    p_do.add_argument("task_id", help="Task ID or search keyword")
+
     args = parser.parse_args()
 
     if args.command == "install":
@@ -269,6 +283,17 @@ def main():
         git_remote_sync.GitRemoteManager().print_audit_report()
     elif args.command == "git-sync":
         git_remote_sync.GitRemoteManager().sync_to_remote(args.message)
+    elif args.command == "task":
+        prio = "P0 - Blocker" if args.p0 else ("P1 - High" if args.p1 else args.priority)
+        task_scheduler.TaskScheduler(get_vault_dir()).create_task(
+            title=" ".join(args.title),
+            scheduled_date=args.when,
+            priority=prio
+        )
+    elif args.command == "tasks":
+        task_scheduler.TaskScheduler(get_vault_dir()).list_tasks()
+    elif args.command == "do":
+        task_scheduler.TaskScheduler(get_vault_dir()).execute_task(args.task_id)
     else:
         parser.print_help()
 
