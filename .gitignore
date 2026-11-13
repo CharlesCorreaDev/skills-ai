@@ -15,3 +15,6 @@ skills-lock.json
 .second-brain/
 second-brain-plus/.sync_state.json
 
+
+.agent/
+second-brain-plus/.agent/
