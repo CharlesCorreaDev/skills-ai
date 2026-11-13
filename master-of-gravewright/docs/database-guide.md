@@ -1,57 +1,80 @@
-# Guia de Banco de Dados do Gravewright VTT (Database Guide)
+# Guia de Banco de Dados e Gerenciamento SQLite para Gravewright VTT
 
-O **Gravewright VTT** utiliza intencionalmente o **SQLite 3** como seu mecanismo de banco de dados exclusivo (`data/gravewright.sqlite3`). 
+O **Gravewright VTT** utiliza o **SQLite 3** como seu motor de persistência exclusivo (`data/gravewright.sqlite3`).
 
-Diferente de sistemas web corporativos genéricos, o Gravewright foi desenhado para rodar localmente com baixa latência, simplicidade operacional e portabilidade total de campanhas, operando com transações `IMMEDIATE` controladas pelo Django ORM.
-
-> [!IMPORTANT]
-> **Atenção:** O Gravewright **não** utiliza PostgreSQL, `DATABASE_URL` nem `dj_database_url`. Todo o gerenciamento de persistência do core e de extensões é baseado em SQLite no caminho `data/gravewright.sqlite3`.
+Este guia absorve as melhores práticas da comunidade de engenharia de software e segurança em SQLite ([SecureSkills SQLite](https://github.com/SecureSkills-io/sqlite-skill), [Claude SQLite Database Expert](https://github.com/martinholovsky/claude-skills-generator/tree/main/skills/sqlite) e padrões de conformidade), estabelecendo os **mecanismos canônicos de leitura, consulta, backup e mutação de dados com autorização prévia e auditabilidade**.
 
 ---
 
-## 💾 1. Arquitetura de Persistência no SQLite
+## 🔒 1. Princípio Sagrado: Permissão do Usuário e Operações Atômicas
 
-- **Localização padrão:** `data/gravewright.sqlite3`.
-- **Modo de transação:** Operações transacionais são configuradas com `BEGIN IMMEDIATE` para evitar conflitos de gravação concorrente em ambiente assíncrono/WebSockets.
-- **Isolamento de Estado:**
-  - O estado do jogo, atores, cenas, itens e logs residem no SQLite.
-  - Dados customizados de módulos de navegador são armazenados via API de storage do cliente (`api.actors.saveSheet(...)` ou storage de tabela/usuário com controle de revisão optimista `expectedRevision`).
-  - Módulos de servidor (Django apps) podem definir seus próprios models e tabelas no SQLite.
+> [!CAUTION]
+> **Aviso de Integridade:** Modificações diretas no banco de dados SQLite (`data/gravewright.sqlite3`) ignorando o Django ORM ou serviços de aplicação podem corromper o estado das mesas, desconectar sessões ativas ou gerar conflitos de revisão.
+> 
+> **Regras Obrigatórias para Agentes de IA:**
+> 1. **Autorização Explícita Prévia:** O agente NUNCA deve executar comandos de alteração (`UPDATE`, `DELETE`, `DROP`, `INSERT`) no banco de dados sem antes:
+>    - Apresentar ao usuário o SQL exato que será executado e a justificativa clara da alteração.
+>    - Solicitar a aprovação expressa do usuário no chat.
+> 2. **Backup Automático Pré-Mutação:** Antes de aplicar qualquer `UPDATE` ou migração estrutural, crie uma cópia pontual do banco (ex: `data/gravewright.sqlite3.backup-<TIMESTAMP>`).
+> 3. **Modo Somente Leitura por Padrão:** Consultas de diagnóstico (`SELECT`, contagens, inspeção de tabelas, busca de schemas) podem ser executadas para responder a dúvidas e planejar soluções.
 
 ---
 
-## 📦 2. Migrações em Módulos e Extensões Django
+## 🗄️ 2. Topologia do Banco de Dados (`data/gravewright.sqlite3`)
 
-Quando você cria um módulo do tipo `django` (declarado no `manifest.json` sob o bloco `"django": { "apps": [...] }`), o Gravewright carrega o app dinamicamente.
+O banco do Gravewright gerencia 86+ tabelas integradas aos domínios da aplicação:
 
-### Estrutura de Diretórios Recomendada:
-```text
-meu-modulo/
-├── manifest.json
-├── LICENSE.txt
-└── meu_modulo_server/
-    ├── __init__.py
-    ├── apps.py
-    ├── models.py
-    ├── services.py
-    └── migrations/
-        └── __init__.py
+| Prefixo da Tabela | Domínio do Jogo / Aplicação | Exemplos de Dados Armazenados |
+|---|---|---|
+| `gravewright_actors_*` | **Atores & Fichas** | Personagens, NPCs, monstros, atributos, fichas JSON e pastas |
+| `gravewright_items_*` | **Itens & Equipamentos** | Armas, magias, talentos, armaduras e inventário |
+| `gravewright_campaigns_*` | **Campanhas** | Mesas ativas, permissões de jogadores e configurações |
+| `gravewright_maps_*` | **Mapas & Cenas** | Mapas UVTT (`.dd2vtt`), paredes, iluminação e grid |
+| `gravewright_tokens_*` | **Tokens** | Posições (x, y), elevação, visibilidade e condições |
+| `gravewright_combat_*` | **Combate** | Ordem de iniciativa, rodadas e turnos ativos |
+| `gravewright_journals_*` | **Diários** | Handouts, notas de sessão e diários do mestre |
+| `gravewright_administration_*` | **Administração** | Snapshots de backup, logs de auditoria e host settings |
+
+---
+
+## 🛠️ 3. Ferramentas Integradas na Skill (`scripts/manage_sqlite.py`)
+
+A skill `master-of-gravewright` fornece um utilitário seguro com saída JSON estruturada para leitura e administração:
+
+### A. Listar Tabelas do Banco:
+```bash
+python master-of-gravewright/scripts/manage_sqlite.py --tables --json
 ```
 
-### Regras para Migrações de Extensões:
-1. Toda pasta de app Django criada para extensões deve conter o subdiretório `migrations/` com um arquivo `__init__.py` vazio.
-2. Ao adicionar ou alterar models na extensão, execute a criação de migrações direcionada para o label do app:
-   ```bash
-   uv run python manage.py makemigrations meu_modulo_server
-   ```
-3. Para aplicar migrações:
-   ```bash
-   uv run python manage.py migrate
-   ```
+### B. Inspecionar o Schema de uma Tabela:
+```bash
+python master-of-gravewright/scripts/manage_sqlite.py --schema gravewright_actors_actor --json
+```
+
+### C. Executar Consulta Segura Somente-Leitura (SELECT):
+```bash
+python master-of-gravewright/scripts/manage_sqlite.py --query "SELECT id, name, type FROM gravewright_actors_actor LIMIT 10;" --json
+```
+
+### D. Criar Backup Instantâneo:
+```bash
+python master-of-gravewright/scripts/manage_sqlite.py --backup
+```
 
 ---
 
-## 🛡️ 3. Boas Práticas de Concorrência e Transações
+## 🛡️ 4. Padrões de Segurança e Robustez (SQLite Best Practices)
 
-- **Não bloqueie a thread assíncrona:** Operações de banco de dados devem ser delegadas aos serviços (`services.py`) e transacionadas de forma atômica (`transaction.atomic()`).
-- **Resolução de Conflitos:** Ao atualizar dados de atores e fichas pelo runtime do navegador, sempre capture possíveis conflitos (`conflict`), leia a revisão atual do documento (`expectedRevision`) e faça o merge antes de reenviar. Nunca sobrescreva cegamente dados de outros participantes da mesa.
+1. **Prevenção Total contra SQL Injection:**
+   - NUNCA concatene strings de inputs do usuário em queries (`f"WHERE name = '{user_input}'"`).
+   - Use SEMPRE queries parametrizadas com placeholders (`WHERE name = ?`, `(user_input,)`).
+
+2. **Concorrência e Modo WAL (Write-Ahead Logging):**
+   - O Gravewright opera com `PRAGMA journal_mode = WAL;` e `PRAGMA synchronous = NORMAL;`, permitindo que múltiplos leitores acessem o banco simultaneamente sem travar a escrita assíncrona dos WebSockets.
+   - Toda transação de escrita deve usar `BEGIN IMMEDIATE` para evitar deadlocks de gravação.
+
+3. **Chaves Estrangeiras (`Foreign Keys`):**
+   - Ao inspecionar ou executar rotinas SQL puras, assegure a integridade relacional com `PRAGMA foreign_keys = ON;`.
+
+4. **Manutenção e Desfragmentação Segura:**
+   - Execute `PRAGMA optimize;` e analise `PRAGMA freelist_count;` antes de sugerir `VACUUM`. O `VACUUM` só deve ser rodado com a instância parada ou em períodos de inatividade.
