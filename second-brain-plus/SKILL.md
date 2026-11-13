@@ -20,6 +20,7 @@ When AI agents switch sessions or reach context window boundaries, they forget p
 
 **Second Brain Plus** establishes a synchronized dual-layer infrastructure:
 - **Notion API Hub:** Collaborative, visual, and relational cloud dashboard.
+- **Canonical Default Template:** [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026) (Tiago Forte P.A.R.A. 2.0).
 - **Local Markdown Vault (`.second-brain/`):** Git-versioned, zero-latency, and offline-ready.
 
 ---
@@ -95,6 +96,7 @@ The skill responds to human-friendly slash commands:
 O **Second Brain Plus** estabelece dois pilares sincronizados:
 1. **Local Vault (`.second-brain/` ou `memory/`):** Repositório local versionado via Git, composto de notas Markdown puras com Frontmatter YAML padronizado.
 2. **Notion Central Hub:** Dashboard interativo com bancos de dados relacionais para visualização humana e consultas estruturadas via Notion API.
+3. **Template Padrão Canônico:** [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026) adotado como layout visual oficial no Notion.
 
 ---
 

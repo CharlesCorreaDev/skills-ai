@@ -14,7 +14,10 @@ O formato segue o padrão de [Keep a Changelog](https://keepachangelog.com/pt-BR
   - `/second-brain adr <título>`: Registra decisões arquiteturais (ADR) instantaneamente.
   - `/second-brain sync`: Sincronização sob demanda (Notion + claude-mem + graphify).
   - `/second-brain status`: Painel de saúde, notas ativas, métricas do grafo e conexão.
+  - `/second-brain tdah`: Ativação de foco atômico (1 micro-ação por vez, baixa carga e Body Doubling).
   - `/second-brain focus`: Exibição do painel de foco atômico neurodivergente (Orbit OS).
+- **Template Padrão Canônico do Notion:**
+  - Adoção oficial do **[Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026)** como layout visual padrão, documentado em `docs/recommended_notion_templates.md`.
 - **Motor de Sincronização Automática em Tempo Real (`auto_sync.py`):**
   - Suporte a modo `--now` (disparo pontual) e `--watch` (monitoramento contínuo em segundo plano).
 - **Lançamento Inicial em Versão Beta** com documentação e código 100% bilíngue (Português PT-BR e Inglês EN).

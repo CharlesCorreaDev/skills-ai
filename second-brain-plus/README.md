@@ -20,6 +20,14 @@
 
 ---
 
+## 🌟 Template Padrão Oficial do Notion / Canonical Notion Template
+
+> O ecossistema adota oficialmente como padrão canônico o modelo:  
+> 🔗 **[Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026)**  
+> *(Consulte também o catálogo completo com opções de TDAH e Zettelkasten em [docs/recommended_notion_templates.md](docs/recommended_notion_templates.md))*
+
+---
+
 ## 🇺🇸 English Summary
 
 Large Language Models (LLMs) and autonomous coding assistants excel at problem-solving, but suffer from critical shortcomings:
