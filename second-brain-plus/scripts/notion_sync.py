@@ -218,6 +218,129 @@ def parse_frontmatter(content: str) -> tuple[dict, str]:
                 fm[k.strip()] = clean_v
     return fm, body
 
+def normalize_notion_code_lang(lang: str) -> str:
+    """Normalize markdown code block language to Notion-accepted language enum."""
+    raw = (lang or "").lower().strip()
+    mapping = {
+        "text": "plain text",
+        "txt": "plain text",
+        "": "plain text",
+        "sh": "shell",
+        "zsh": "shell",
+        "py": "python",
+        "js": "javascript",
+        "ts": "typescript",
+        "yml": "yaml",
+        "rb": "ruby",
+        "rs": "rust",
+        "ps1": "powershell"
+    }
+    if raw in mapping:
+        return mapping[raw]
+    
+    valid_langs = {
+        "abap", "arduino", "bash", "basic", "c", "clojure", "coffeescript", "cpp", "c++", "c#",
+        "css", "dart", "diff", "docker", "elixir", "elm", "erlang", "flow", "fortran", "f#",
+        "gherkin", "glsl", "go", "graphql", "groovy", "haskell", "html", "java", "javascript",
+        "json", "julia", "kotlin", "latex", "less", "lisp", "livescript", "lua", "makefile",
+        "markdown", "markup", "matlab", "mermaid", "nix", "objective-c", "ocaml", "pascal", "perl",
+        "php", "plain text", "powershell", "prolog", "protobuf", "python", "r", "reason", "ruby",
+        "rust", "sass", "scala", "scheme", "scss", "shell", "sql", "swift", "toml", "typescript",
+        "vb.net", "verilog", "vhdl", "visual basic", "webassembly", "xml", "yaml"
+    }
+    return raw if raw in valid_langs else "plain text"
+
+def markdown_to_notion_blocks(md_text: str) -> list:
+    """
+    EN: Convert raw markdown text into Notion block objects.
+    PT-BR: Converte texto Markdown puro em objetos de blocos do Notion.
+    """
+    blocks = []
+    lines = md_text.splitlines()
+    in_code = False
+    code_lang = "plain text"
+    code_lines = []
+
+    for line in lines:
+        stripped = line.strip()
+        if not stripped and not in_code:
+            continue
+
+        if stripped.startswith("```"):
+            if in_code:
+                content = "\n".join(code_lines)[:2000]
+                blocks.append({
+                    "object": "block",
+                    "type": "code",
+                    "code": {
+                        "rich_text": [{"type": "text", "text": {"content": content}}],
+                        "language": normalize_notion_code_lang(code_lang)
+                    }
+                })
+                in_code = False
+                code_lines = []
+            else:
+                in_code = True
+                lang = stripped[3:].strip()
+                code_lang = normalize_notion_code_lang(lang)
+                code_lines = []
+            continue
+
+        if in_code:
+            code_lines.append(line)
+            continue
+
+        if stripped == "---":
+            blocks.append({"object": "block", "type": "divider", "divider": {}})
+        elif stripped.startswith("### "):
+            blocks.append({
+                "object": "block",
+                "type": "heading_3",
+                "heading_3": {"rich_text": [{"type": "text", "text": {"content": stripped[4:][:2000]}}]}
+            })
+        elif stripped.startswith("## "):
+            blocks.append({
+                "object": "block",
+                "type": "heading_2",
+                "heading_2": {"rich_text": [{"type": "text", "text": {"content": stripped[3:][:2000]}}]}
+            })
+        elif stripped.startswith("# "):
+            blocks.append({
+                "object": "block",
+                "type": "heading_1",
+                "heading_1": {"rich_text": [{"type": "text", "text": {"content": stripped[2:][:2000]}}]}
+            })
+        elif stripped.startswith("- [ ] ") or stripped.startswith("- [x] "):
+            checked = stripped.startswith("- [x] ")
+            blocks.append({
+                "object": "block",
+                "type": "to_do",
+                "to_do": {
+                    "rich_text": [{"type": "text", "text": {"content": stripped[6:][:2000]}}],
+                    "checked": checked
+                }
+            })
+        elif stripped.startswith("- ") or stripped.startswith("* "):
+            blocks.append({
+                "object": "block",
+                "type": "bulleted_list_item",
+                "bulleted_list_item": {"rich_text": [{"type": "text", "text": {"content": stripped[2:][:2000]}}]}
+            })
+        elif stripped.startswith("> "):
+            blocks.append({
+                "object": "block",
+                "type": "quote",
+                "quote": {"rich_text": [{"type": "text", "text": {"content": stripped[2:][:2000]}}]}
+            })
+        else:
+            blocks.append({
+                "object": "block",
+                "type": "paragraph",
+                "paragraph": {"rich_text": [{"type": "text", "text": {"content": stripped[:2000]}}]}
+            })
+
+    return blocks[:100]
+
 def push_note_to_notion(file_path: Path, api_key: str) -> bool:
     """
     EN: Push a local markdown note to its corresponding Notion database.
@@ -229,6 +352,21 @@ def push_note_to_notion(file_path: Path, api_key: str) -> bool:
     title = fm.get("title", file_path.stem)
     rel_path = str(file_path.name)
     checksum = calculate_checksum(file_path)
+
+    # Infer type from folder structure if missing in frontmatter
+    if not note_type:
+        parent_name = file_path.parent.name.lower()
+        grandparent_name = file_path.parent.parent.name.lower()
+        if "project" in parent_name or "project" in grandparent_name:
+            note_type = "project"
+        elif "adr" in parent_name or "adr" in grandparent_name:
+            note_type = "adr"
+        elif "session" in parent_name or "session" in grandparent_name:
+            note_type = "session-log"
+        elif "resource" in parent_name or "resource" in grandparent_name:
+            note_type = "resource"
+        else:
+            note_type = "resource"
 
     db_map = {
         "project": os.environ.get("NOTION_DB_PROJECTS"),
@@ -277,9 +415,13 @@ def push_note_to_notion(file_path: Path, api_key: str) -> bool:
             "LocalPath": {"rich_text": [{"text": {"content": rel_path}}]}
         }
 
+    # Convert markdown body into Notion block children
+    children_blocks = markdown_to_notion_blocks(body)
+
     payload = {
         "parent": {"database_id": target_db},
-        "properties": properties
+        "properties": properties,
+        "children": children_blocks
     }
 
     res = notion_request("/pages", api_key, method="POST", data=payload)

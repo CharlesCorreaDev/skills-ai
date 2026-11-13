@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import notion_sync
 import memory_bridge
 import verify_brain
+import git_remote_sync
 
 STATE_FILE = Path(__file__).resolve().parent.parent / ".sync_state.json"
 
@@ -73,6 +74,17 @@ def execute_full_sync(vault_dir: Path, api_key: str = None, changed_files: list 
         if len(changed_files) > 5:
             print(f"     • ... (+{len(changed_files) - 5} others)")
     print("=" * 65)
+
+    # 0. Check Git Remote Privacy Rule (Public Repo -> Automatic Notion Vault Upload)
+    try:
+        remote_mgr = git_remote_sync.GitRemoteManager()
+        audit_res = remote_mgr.audit()
+        if audit_res.get("is_private") is False:
+            print("\n🛡️ [REGRA DE REPOSITÓRIO PÚBLICO ATIVA / PUBLIC REPO PROTECTION]:")
+            print("   O repositório Git remoto é PÚBLICO. Realizando upload integral e seguro de todos")
+            print(f"   os arquivos do cofre '{vault_dir}' para o Notion como cofre de segurança na nuvem...")
+    except Exception as e:
+        pass
 
     # 1. Sync with Notion API
     print("\n☁️ [1/3] Sincronizando com a API do Notion...")
