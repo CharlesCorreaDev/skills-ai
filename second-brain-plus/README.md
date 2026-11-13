@@ -1,84 +1,265 @@
 # Second Brain Plus 🧠⚡💾
 
-> **Persistent Memory, Context Optimization & AI Second Brain Suite**  
-> **Suíte de Memória Persistente, Otimização de Contexto e Segundo Cérebro para Agentes de IA**  
-> *Automatic real-time synchronization across Notion API, Local Markdown Vault, claude-mem, and graphify with dedicated slash commands.*
+> **Comprehensive Persistent Memory, Context Optimization & AI Second Brain Suite**  
+> *Suíte Completa de Memória Persistente, Otimização de Contexto e Segundo Cérebro para Agentes de IA por GM Charles Corrêa*  
+> **Status:** Beta (`v0.1.0-beta`) | **Layout Padrão:** [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026) (P.A.R.A. 2.0)
 
 ---
 
-## ⌨️ Comandos de Barra Dedicados / Dedicated Slash Commands
+## 🇺🇸 English
 
-| Comando / Command | Finalidade / Purpose |
-|---|---|
-| **`/second-brain install`** | Instalação interativa e criação dos bancos no Notion / Setup & scaffolding |
-| **`/second-brain save memory <texto>`** | Salva fatos, aprendizados ou regras na memória persistente e auto-sincroniza |
-| **`/second-brain adr <título>`** | Registra uma decisão arquitetural formal anti-alucinação |
-| **`/second-brain sync`** | Dispara sincronização imediata (Notion + claude-mem + graphify) |
-| **`/second-brain status`** | Exibe painel de métricas do cofre e status da API |
-| **`/second-brain focus`** | Alterna para o painel de foco atômico para neurodivergentes (Orbit OS) |
-| **`/second-brain tdah`** | Ativa o modo TDAH com formatação biônica, 1 micro-ação por vez e Body Doubling |
+### 📌 What is Second Brain Plus? (The Problem vs. The Solution)
 
----
+Modern Large Language Models (LLMs) and autonomous coding agents (Antigravity, Claude Code, Cursor, Codex, Copilot CLI) are formidable at generating code, but suffer from three structural handicaps:
 
-## 🌟 Template Padrão Oficial do Notion / Canonical Notion Template
+1. **Context Window Amnesia:** When conversation turns expire, sessions restart, or context boundaries compress, the agent forgets previous architectural decisions, port numbers, bug workarounds, and project status.
+2. **Hallucination of Stale APIs:** Agents guess parameters based on stale pre-training data instead of consulting live, versioned documentation.
+3. **Cognitive Overload & Context Bloat:** Dumping massive monolithic files into prompts drains context tokens, increases cost, and degrades reasoning precision.
 
-> O ecossistema adota oficialmente como padrão canônico o modelo:  
-> 🔗 **[Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026)**  
-> *(Consulte também o catálogo completo com opções de TDAH e Zettelkasten em [docs/recommended_notion_templates.md](docs/recommended_notion_templates.md))*
+**Second Brain Plus** solves these systemic problems. It acts as an **autonomous operating system for AI memory and knowledge**, creating a synchronized dual-layer bridge between:
+- **Cloud Workspace (Notion API & Notion CLI):** Collaborative, visual, relational databases with Kanban boards and mobile accessibility.
+- **Local Git Repository (`.second-brain/`):** Zero-latency, Git-versioned, offline-ready Markdown files following Tiago Forte's **P.A.R.A. 2.0** methodology (Projects, Areas, Resources, Archives).
 
 ---
 
-## 🇺🇸 English Summary
+### 🏛️ The 5-Layer AI Memory Architecture
 
-Large Language Models (LLMs) and autonomous coding assistants excel at problem-solving, but suffer from critical shortcomings:
-1. **Context Window Amnesia:** Losing past architectural choices when sessions reset or turn limits are reached.
-2. **Hallucination of Stale APIs:** Confidently writing obsolete syntax for rapidly evolving libraries.
-3. **Conversational Fluff & Token Drain:** Inefficient prompts wasting context space and degrading attention.
+Second Brain Plus organizes memory into 5 distinct, hierarchical tiers so agents retrieve exactly what they need without saturating the prompt context:
 
-**Second Brain Plus** integrates a multi-tiered ecosystem that guarantees:
-- **Single Source of Truth (SSOT):** Synchronized between Notion and local Git-tracked Markdown vaults.
-- **Automatic Event-Driven Sync (`auto_sync.py`):** Automatically pushes changes to Notion, claude-mem, and graphify whenever files are modified.
-- **Dedicated Slash Commands (`cli.py`):** Save memories, register ADRs, and check health seamlessly.
-- **5-Layer Memory:** Working, Episodic, Semantic, Procedural, and Knowledge Graph.
-- **Pre-Decision Alignment:** Leveraging `grill-me` to surface hidden assumptions and `karpathy-guidelines` for engineering rigor.
-- **Token Efficiency:** Compressing payloads via `headroom` and enforcing ASD-STE100 controlled dialect with `caveman`.
-- **Live Versioned Docs:** Pulling fresh library documentation on-demand using Upstash `context7`.
-- **Neurodivergent Ergonomics:** Automatic cognitive accommodation via `not-today-adhd`.
-- **Design Craft:** Eliminating generic AI slop using Paul Bakaus' `impeccable` guidelines.
-
----
-
-## 🇧🇷 Sumário em Português
-
-O **Second Brain Plus** resolve esses gargalos integrando:
-- **Comandos de Barra Rápidos:** Salve memórias com `/second-brain save memory ...`, registre decisões com `/second-brain adr ...` ou verifique o sistema com `/second-brain status`.
-- **Sincronização Automática em Tempo Real (`auto_sync.py`):** Disparada automaticamente sempre que o agente ou o desenvolvedor altera um arquivo, mantendo Notion, claude-mem e graphify em uníssono.
-- **Única Fonte da Verdade (SSOT):** Notion (dashboard visual e colaborativo) + Repositório Local Git (`.second-brain/`).
-- **Memória em 5 Camadas:** Working (Trabalho), Episódica (Sessões), Semântica (ADRs e Regras), Procedural (Runbooks) e Grafo de Conhecimento.
-- **Alinhamento Pré-Decisão:** Uso do `grill-me` para inquérito dialético antes de assumir premissas e `karpathy-guidelines` para rigor e minimalismo.
-- **Otimização de Contexto:** `headroom` para compressão de JSON e tool outputs locais e `caveman` para comunicação concisa sem perda semântica.
-- **Documentação em Tempo Real:** Ingestão de bibliotecas atualizadas via Upstash `context7`.
-- **Ecossistema Oficial Notion Developer:** Suporte integrado a **Notion CLI (`ntn`)**, **Notion Workers (`@notionhq/workers`)**, **Notion MCP**, manipulação de árvores de blocos e APIs corporativas de Admin. *(Consulte [docs/notion_developer_suite.md](docs/notion_developer_suite.md))*.
-- **Ergonomia Neurodivergente:** Modo de baixa carga cognitiva via `not-today-adhd` (Orbit OS / Brain Reset OS).
-- **Design Craft:** Eliminação de "AI slop" visual com `impeccable`.
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                       5-LAYER AI MEMORY ARCHITECTURE                        │
+├──────────────────────────────┬──────────────────────────────┬───────────────┤
+│ Layer                        │ Purpose                      │ Persistence   │
+├──────────────────────────────┼──────────────────────────────┼───────────────┤
+│ 1. Working Memory (Short)    │ Active prompt turn state,    │ Session RAM   │
+│                              │ compressed via Caveman       │ (Headroom)    │
+├──────────────────────────────┼──────────────────────────────┼───────────────┤
+│ 2. Episodic Memory (Events)  │ Session logs, timeline, and  │ claude-mem /  │
+│                              │ observation histories        │ Notion Logs   │
+├──────────────────────────────┼──────────────────────────────┼───────────────┤
+│ 3. Semantic Memory (Facts)   │ ADRs, permanent project rules│ Notion ADRs / │
+│                              │ and learned technical truths │ PARA Markdown │
+├──────────────────────────────┼──────────────────────────────┼───────────────┤
+│ 4. Procedural Memory (Skills)│ Step-by-step playbooks, run- │ SKILL.md /    │
+│                              │ books and reusable workflows │ CI/CD scripts │
+├──────────────────────────────┼──────────────────────────────┼───────────────┤
+│ 5. Knowledge Graph (Edges)   │ Relational dependencies,     │ graphify /    │
+│                              │ AST links, cross-references  │ Notion Rel.   │
+└──────────────────────────────┴──────────────────────────────┴───────────────┘
+```
 
 ---
 
-## 📦 Exemplos de Uso via Linha de Comando
+### 🔄 The Automatic Synchronization Lifecycle
 
+Second Brain Plus enforces an **event-driven, zero-friction sync rule**:
+
+```
+[Agent or Developer Modifies Code / ADR / Notes]
+                       │
+                       ▼
+             [auto_sync.py --now]
+                       │
+       ┌───────────────┼───────────────┐
+       ▼               ▼               ▼
+ [Notion Cloud]  [claude-mem]     [graphify]
+ (API / ntn)    (Episodic Log)  (AST Graph Nodes)
+```
+
+1. **Non-Negotiable Auto-Sync:** Whenever a file, note, ADR, or session log changes, the agent triggers:
+   ```bash
+   python second-brain-plus/scripts/auto_sync.py --now
+   ```
+2. **Background Watcher:** For continuous real-time synchronization during development:
+   ```bash
+   python second-brain-plus/scripts/auto_sync.py --watch
+   ```
+
+---
+
+### ⌨️ Dedicated Slash Commands (`/second-brain`)
+
+Second Brain Plus introduces dedicated slash commands natively recognized across Antigravity IDE, Claude Code, Cursor, and terminal CLI:
+
+| Slash Command | What It Does | Example Use Case |
+| :--- | :--- | :--- |
+| **`/second-brain install`** | Interactive setup wizard; scaffolds `.second-brain/` PARA vault and builds all 4 Notion relational databases via official API. | Initializing memory for a new repo. |
+| **`/second-brain save memory <fact>`** | Instantly saves an atomic technical rule, port, or learning into persistent memory and auto-syncs. | `/second-brain save memory "Redis runs on port 6380 in docker-compose.prod"` |
+| **`/second-brain adr <title>`** | Interactively registers an immutable Architecture Decision Record (ADR) with rationale and consequences. | `/second-brain adr "Migrate Auth to Passkeys"` |
+| **`/second-brain sync`** | Forces an immediate bidirectional synchronization between local vault, Notion API, claude-mem, and graphify. | Running manual catch-up after offline git pull. |
+| **`/second-brain status`** | Prints a visual telemetry dashboard showing note counts, API latency, hash integrity, and graph nodes. | Diagnostic check before starting work. |
+| **`/second-brain focus`** | Switches to ADHD / Neurodivergent Orbit OS single-task dashboard (1 micro-task at a time). | Countering cognitive overload and decision paralysis. |
+| **`/second-brain tdah`** | Activates Portuguese TDAH accessibility mode with bionic bolding, short 45-65 character lines, and Body Doubling. | Maximum cognitive comfort during complex sessions. |
+
+---
+
+### 🌐 Official Notion 2026 Developer Stack Integration
+
+Second Brain Plus incorporates the complete official Notion Developer platform:
+
+| Component | Official Reference | Capabilities in Second Brain Plus |
+| :--- | :--- | :--- |
+| **Notion CLI (`ntn`)** | [ntn.dev](https://ntn.dev) & [CLI Docs](https://developers.notion.com/cli/get-started/overview) | Blazing-fast terminal access (`ntn whoami`, `ntn pages get`, `ntn databases query`, `ntn api`). |
+| **Notion Workers** | [Notion Workers](https://developers.notion.com/workers/get-started/overview) | Serverless edge functions (`@notionhq/workers`) that run `onPageCreated` and `onPropertyChanged` triggers. |
+| **Notion MCP Server** | [Notion MCP Guide](https://developers.notion.com/guides/mcp/get-started-with-mcp) | Native Model Context Protocol tools (`notion_search`, `notion_read_page`, `notion_append_block_children`). |
+| **Agent & Data APIs** | [Working with Page Content](https://developers.notion.com/guides/data-apis/working-with-page-content) | Manipulates atomic Block trees (paragraphs, callouts, toggles, headings, code, tables). |
+| **Admin API** | [Notion Admin API](https://developers.notion.com/reference/admin/intro) | Enterprise workspace audit logging (`/v1/admin/audit_logs`) and user provisioning (SCIM). |
+
+*(See full technical guide in [docs/notion_developer_suite.md](docs/notion_developer_suite.md))*
+
+---
+
+### 🧩 Synergistic Ecosystem Integrations
+
+Second Brain Plus does not reinvent existing best-of-breed tools — it orchestrates them into a unified cognitive stack:
+
+- **`claude-mem`:** Manages episodic event timelines and temporal observation streams.
+- **`graphify`:** Builds AST knowledge graph connections between notes, files, and architectural decisions (`.graphify/graph.json`).
+- **`caveman`:** Enforces ASD-STE100 Simplified English to eliminate conversational fluff and token wastage.
+- **`headroom`:** Intelligently compresses bulky tool outputs and JSON payloads before injection into context.
+- **`context7`:** Connects to Upstash Context7 to fetch real-time, versioned API documentation for evolving packages.
+- **`grill-me`:** Enforces the "Grill-then-Persist" cycle: conducts dialectical interviews to resolve ambiguities *before* coding, persisting conclusions as formal ADRs.
+- **`karpathy-guidelines`:** Ingests Andrej Karpathy's 4 Laws of Engineering: Think Before Coding, Simplicity First, Surgical Changes, and Goal-Driven Execution.
+- **`impeccable`:** Enforces Paul Bakaus' craft standards to eliminate generic AI design artifacts.
+- **`not-today-adhd`:** Cognitive accessibility engine ensuring neurodivergent individuals stay in flow state without paralysis.
+
+---
+
+### 📂 Directory Structure
+
+```
+second-brain-plus/
+├── SKILL.md                              # Main bilingual agent runbook & instructions
+├── README.md                             # Comprehensive documentation (this file)
+├── CHANGELOG.md                          # SemVer changelog
+├── VERSION                               # Current release (0.1.0-beta)
+├── docs/                                 # In-depth architectural references
+│   ├── architecture.md                   # 5-Layer memory specification & comparison
+│   ├── notion_schemas.md                 # 4 Relational Notion databases schema
+│   ├── notion_developer_suite.md         # Notion CLI, Workers, MCP & Block tree guide
+│   ├── recommended_notion_templates.md   # Canonical template gallery (Tiago Forte 2026)
+│   ├── adhd_neurodivergent_guide.md      # Orbit OS & Brain Reset OS principles
+│   ├── grill_me_integration.md           # "Grill-then-Persist" ADR workflow
+│   ├── karpathy_guidelines_integration.md# 4 Laws of Engineering
+│   ├── headroom_caveman_impeccable.md    # Context optimization & craft rules
+│   └── context7_live_docs.md             # Real-time versioned documentation fetching
+├── scripts/                              # Executable Python & CLI automation
+│   ├── cli.py                            # Unified CLI for slash commands (/second-brain)
+│   ├── auto_sync.py                      # Continuous watcher & one-shot sync engine
+│   ├── notion_sync.py                    # Zero-dependency Notion REST v2022-06-28 client
+│   ├── memory_bridge.py                  # claude-mem + graphify + caveman bridge
+│   ├── setup_and_sync.py                 # Interactive wizard & database builder
+│   ├── verify_brain.py                   # Integrity auditor for vaults and frontmatter
+│   └── distribute_to_all_agents.py       # Universal deployer for all 9 AI agent runtimes
+├── templates/                            # Ready-to-use schemas and markdown templates
+│   ├── notion/databases_schema.json      # Full JSON schemas for the 4 Notion databases
+│   ├── notion-workers/sync-worker/       # TypeScript template for serverless Notion Workers
+│   └── markdown/                         # Structured markdown notes (Project, ADR, Session, Orbit OS)
+└── workflows/                            # Workflow definitions for Antigravity & AI agents
+    ├── second-brain.md
+    ├── second-brain-plus.md
+    └── tdah.md
+```
+
+---
+
+### 🚀 Quickstart: 3 Steps to Master Second Brain Plus
+
+#### Step 1: Environment Setup
+Add your Notion API Token and Parent Page ID to your environment or `.env` file:
+```env
+NOTION_API_KEY=ntn_your_notion_api_token_here
+NOTION_PARENT_PAGE_ID=your_parent_page_id_here
+SECOND_BRAIN_DIR=./.second-brain
+```
+
+#### Step 2: Run Setup & Verification
 ```bash
-# Salvar memória persistente
-python second-brain-plus/scripts/cli.py save memory "PostgreSQL local porta 5433"
+# Via slash command inside your AI chat:
+/second-brain install
 
-# Registrar ADR
-python second-brain-plus/scripts/cli.py adr "Adoção de DuckDB" --rationale "Analytics local veloz"
+# Or directly in terminal:
+python second-brain-plus/scripts/setup_and_sync.py
+```
 
-# Disparar sincronização manual imediata
-python second-brain-plus/scripts/cli.py sync
-
-# Monitoramento contínuo em segundo plano
-python second-brain-plus/scripts/auto_sync.py --watch
-
-# Ver métricas e status
+#### Step 3: Work with Persistent Memory
+Save facts, create ADRs, and query vault status:
+```bash
+python second-brain-plus/scripts/cli.py save memory "Production DB uses PostgreSQL 16"
+python second-brain-plus/scripts/cli.py adr "Adopt DuckDB for Fast Analytics"
 python second-brain-plus/scripts/cli.py status
 ```
+
+---
+
+## 🇧🇷 Português (PT-BR)
+
+### 📌 O Que É o Second Brain Plus?
+
+O **Second Brain Plus** é uma suíte completa de **memória persistente, otimização de contexto e segundo cérebro** desenvolvida especificamente para agentes de inteligência artificial (Google Antigravity, Claude Code, Cursor, Codex, Copilot CLI, Hermes, Ollama).
+
+#### ❌ O Problema dos Agentes Tradicionais:
+1. **Amnésia de Contexto:** Cada reinício de sessão ou corte de janela de contexto apaga da memória do agente decisões anteriores, portas de serviços, bibliotecas adotadas e erros já superados.
+2. **Alucinação por Dados Obsoletos:** Agentes inventam parâmetros e métodos de APIs que mudaram.
+3. **Sobrecarga Cognitiva:** Prompts sobrecarregados de informações desnecessárias gastam tokens, encarecem a operação e diminuem a acurácia do raciocínio lógico.
+
+#### ✅ A Solução do Second Brain Plus:
+O Second Brain Plus estabelece uma **Única Fonte da Verdade (SSOT)** sincronizada em tempo real entre:
+- **Nuvem no Notion:** Bancos de dados relacionais com visualização em Kanban, tabelas e acesso móvel (adotando oficialmente o modelo canônico [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026)).
+- **Cofre Local em Markdown (`.second-brain/`):** Arquivos versionados no Git local, com latência zero e leitura imediata offline.
+
+---
+
+### 🏛️ As 5 Camadas de Memória
+
+1. **Memória de Trabalho (Working):** Estado do turno ativo, compactado via dialeto enxuto `caveman`.
+2. **Memória Episódica (Eventos):** Linha do tempo de sessões e observações registradas no `claude-mem` e no Notion.
+3. **Memória Semântica (Fatos e Regras):** Decisões Arquiteturais (ADRs), regras de negócio e verdades técnicas imutáveis.
+4. **Memória Procedural (Habilidades):** Runbooks, checklists passo a passo e scripts operacionais reutilizáveis.
+5. **Grafo de Conhecimento (Relações):** Conexões sintáticas e conceituais mapeadas pelo `graphify` em `.graphify/graph.json`.
+
+---
+
+### ⌨️ Comandos de Barra Dedicados (`/second-brain`)
+
+| Comando | O Que Faz na Prática |
+| :--- | :--- |
+| **`/second-brain install`** | Executa o assistente de instalação, cria o cofre local P.A.R.A. e constrói os 4 bancos relacionais no Notion via API. |
+| **`/second-brain save memory <texto>`** | Grava instantaneamente uma verdade técnica ou regra no cofre persistente e sincroniza com a nuvem. |
+| **`/second-brain adr <título>`** | Registra formalmente uma Decisão de Arquitetura (ADR) com justificativa e consequências, combatendo alucinações. |
+| **`/second-brain sync`** | Dispara sincronização bidirecional forçada entre Notion, cofre local, claude-mem e grafo de conhecimento. |
+| **`/second-brain status`** | Exibe painel com contagem de notas, saúde da conexão, hashes de integridade e nós do grafo. |
+| **`/second-brain focus`** | Ativa a visualização Orbit OS com apenas 1 micro-tarefa ativa de 5 a 10 minutos. |
+| **`/second-brain tdah`** | Ativa o modo neurodivergente com formatação biônica, linhas curtas e Body Doubling contra paralisia de tarefa. |
+
+---
+
+### 🌐 Ecossistema Oficial Notion Developer
+
+- **Notion CLI (`ntn`):** Utilitário de linha de comando oficial de alta velocidade para consulta e exportação de páginas em Markdown puro.
+- **Notion Workers (`@notionhq/workers`):** Automações serverless edge disparadas quando notas são criadas ou quando status são alterados.
+- **Notion MCP (Model Context Protocol):** Conexão universal de ferramentas para os agentes consultarem o Notion em tempo de execução.
+- **Manipulação de Blocos:** Edição e leitura direta da árvore de blocos (paragraphs, callouts, toggles, headings, code, tables).
+- **Notion Admin API:** Logs corporativos de auditoria e sincronização de identidade (SCIM).
+
+*(Consulte o guia técnico detalhado em [docs/notion_developer_suite.md](docs/notion_developer_suite.md))*.
+
+---
+
+### ⚡ Regra Inegociável de Auto-Sincronização
+
+> 🚨 **REGRA DE OURO:**  
+> Sempre que qualquer arquivo de projeto, nota ou ADR for modificado pelo agente ou pelo desenvolvedor, a sincronização automática em segundo plano é disparada:
+> ```bash
+> python second-brain-plus/scripts/auto_sync.py --now
+> ```
+> Opcionalmente, mantenha o observador contínuo aberto em um terminal:
+> ```bash
+> python second-brain-plus/scripts/auto_sync.py --watch
+> ```
+
+---
+
+## 📄 Licença / License
+Desenvolvido por **GM Charles Corrêa** no âmbito do **Ecossistema Skills AI**. Distribuído sob a licença MIT.
