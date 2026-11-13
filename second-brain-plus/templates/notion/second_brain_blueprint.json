@@ -1,0 +1,868 @@
+{
+  "version": "1.0.0",
+  "exported_at": "2026-11-13T17:35:00Z",
+  "root_page": {
+    "title": "Second Brain Plus | Hub de Produtividade & IA",
+    "icon": "🧠",
+    "cover": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80"
+  },
+  "databases": {
+    "projects": {
+      "title": "Project ",
+      "properties": {
+        "Status": {
+          "id": "CJGT",
+          "name": "Status",
+          "description": null,
+          "type": "status",
+          "status": {
+            "options": [
+              {
+                "id": ":dfQ",
+                "name": "Inbox",
+                "color": "yellow",
+                "description": null
+              },
+              {
+                "id": "51996357-4a71-491a-ae51-ae71c75f4ba2",
+                "name": "Planning",
+                "color": "default",
+                "description": null
+              },
+              {
+                "id": "626c181d-679e-4e62-9dfb-18b27f716248",
+                "name": "In progress",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "e5b00e1d-0501-4526-b6eb-1dd39e56e47c",
+                "name": "Completed",
+                "color": "green",
+                "description": null
+              }
+            ],
+            "groups": [
+              {
+                "id": "60bd7764-5a9c-4b4d-9c61-ec99476f3035",
+                "name": "To-do",
+                "color": "gray",
+                "option_ids": [
+                  ":dfQ",
+                  "51996357-4a71-491a-ae51-ae71c75f4ba2"
+                ]
+              },
+              {
+                "id": "2ca53a7e-f8dc-4a73-ab27-7943322d8bc0",
+                "name": "In progress",
+                "color": "blue",
+                "option_ids": [
+                  "626c181d-679e-4e62-9dfb-18b27f716248"
+                ]
+              },
+              {
+                "id": "a9e75bf5-9fac-4c91-92f5-065f75f09e90",
+                "name": "Complete",
+                "color": "green",
+                "option_ids": [
+                  "e5b00e1d-0501-4526-b6eb-1dd39e56e47c"
+                ]
+              }
+            ],
+            "default_option": "Planning"
+          }
+        },
+        "Notes": {
+          "id": "GBkV",
+          "name": "Notes",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "622ec870-8531-8354-881f-0139fadeeea0",
+            "data_source_id": "682ec870-8531-831e-b655-8762992e4881",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Project ",
+              "synced_property_id": "VOFY"
+            }
+          }
+        },
+        "Areas": {
+          "id": "G~t%60",
+          "name": "Areas",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "090ec870-8531-832d-a6f2-8107c51cafc1",
+            "data_source_id": "77bec870-8531-82a3-b216-07e331a523bc",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Project ",
+              "synced_property_id": "R%40GQ"
+            }
+          }
+        },
+        "Tasks  ": {
+          "id": "Utex",
+          "name": "Tasks  ",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "741ec870-8531-8318-8583-81f96fcab4cd",
+            "data_source_id": "277ec870-8531-825f-ae5d-871d10655cc7",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Project ",
+              "synced_property_id": "rmCs"
+            }
+          }
+        },
+        "Completed ": {
+          "id": "%5CI%3Dk",
+          "name": "Completed ",
+          "description": null,
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "Start / End Date ": {
+          "id": "h~B%7C",
+          "name": "Start / End Date ",
+          "description": null,
+          "type": "date",
+          "date": {}
+        },
+        "Progress ": {
+          "id": "jCmn",
+          "name": "Progress ",
+          "description": null,
+          "type": "rollup",
+          "rollup": {
+            "rollup_property_name": "Complete ",
+            "relation_property_name": "Tasks  ",
+            "rollup_property_id": "g=Wh",
+            "relation_property_id": "Utex",
+            "function": "percent_checked"
+          }
+        },
+        "Priority ": {
+          "id": "z%60f%40",
+          "name": "Priority ",
+          "description": null,
+          "type": "select",
+          "select": {
+            "options": [
+              {
+                "id": "rxu|",
+                "name": "Low Priority",
+                "color": "gray",
+                "description": null
+              },
+              {
+                "id": "wy]U",
+                "name": "Medium Priority",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": ";@F=",
+                "name": "High Priority",
+                "color": "yellow",
+                "description": null
+              }
+            ]
+          }
+        },
+        "Resources ": {
+          "id": "%7By%7DT",
+          "name": "Resources ",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "5f3ec870-8531-83b6-acd3-818f1b8e0675",
+            "data_source_id": "32dec870-8531-821a-9735-8741ace174c9",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Project ",
+              "synced_property_id": "V%7Bm%40"
+            }
+          }
+        },
+        "Name": {
+          "id": "title",
+          "name": "Name",
+          "description": null,
+          "type": "title",
+          "title": {}
+        }
+      }
+    },
+    "tasks": {
+      "title": "Tasks Manager ",
+      "properties": {
+        "Priority ": {
+          "id": "%40n%5Di",
+          "name": "Priority ",
+          "description": null,
+          "type": "select",
+          "select": {
+            "options": [
+              {
+                "id": "qKo}",
+                "name": "Low Priority",
+                "color": "gray",
+                "description": null
+              },
+              {
+                "id": ";tI`",
+                "name": "Medium Priority",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "K`e;",
+                "name": "High Priority",
+                "color": "yellow",
+                "description": null
+              }
+            ]
+          }
+        },
+        "Due Date ": {
+          "id": "PyqU",
+          "name": "Due Date ",
+          "description": null,
+          "type": "date",
+          "date": {}
+        },
+        "Status": {
+          "id": "dijb",
+          "name": "Status",
+          "description": null,
+          "type": "status",
+          "status": {
+            "options": [
+              {
+                "id": ">scg",
+                "name": "Inbox",
+                "color": "yellow",
+                "description": null
+              },
+              {
+                "id": "02303a66-cf29-4e52-b3fc-9aed09271806",
+                "name": "To-Do",
+                "color": "default",
+                "description": null
+              },
+              {
+                "id": "6be5763f-0538-4597-a2e3-1e143eacbc8f",
+                "name": "In progress",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "abe23228-6029-425a-8f37-cd441d658dc5",
+                "name": "Completed",
+                "color": "green",
+                "description": null
+              }
+            ],
+            "groups": [
+              {
+                "id": "1cb8b110-fa08-48f0-94f1-a19a1923de63",
+                "name": "To-do",
+                "color": "gray",
+                "option_ids": [
+                  ">scg",
+                  "02303a66-cf29-4e52-b3fc-9aed09271806"
+                ]
+              },
+              {
+                "id": "3f07960e-d27a-4dd2-a8d0-4fe8437feca4",
+                "name": "In progress",
+                "color": "blue",
+                "option_ids": [
+                  "6be5763f-0538-4597-a2e3-1e143eacbc8f"
+                ]
+              },
+              {
+                "id": "f78d31f4-15ba-4ca2-bcd6-10bbfdc09879",
+                "name": "Complete",
+                "color": "green",
+                "option_ids": [
+                  "abe23228-6029-425a-8f37-cd441d658dc5"
+                ]
+              }
+            ],
+            "default_option": "To-Do"
+          }
+        },
+        "Complete ": {
+          "id": "g%3DWh",
+          "name": "Complete ",
+          "description": null,
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "Project ": {
+          "id": "rmCs",
+          "name": "Project ",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "eb4ec870-8531-822f-be6c-018002a6a3ce",
+            "data_source_id": "443ec870-8531-8355-a19d-0753bc8612fa",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Tasks  ",
+              "synced_property_id": "Utex"
+            }
+          }
+        },
+        "Name": {
+          "id": "title",
+          "name": "Name",
+          "description": null,
+          "type": "title",
+          "title": {}
+        }
+      }
+    },
+    "notes": {
+      "title": "Notes",
+      "properties": {
+        "Tags": {
+          "id": "%3Du%60a",
+          "name": "Tags",
+          "description": null,
+          "type": "multi_select",
+          "multi_select": {
+            "options": [
+              {
+                "id": "919dd77d-b47a-45b2-8616-94857dae61be",
+                "name": "Finance",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "91ddee57-274b-47cc-9592-0fe500e532cb",
+                "name": "Project",
+                "color": "purple",
+                "description": null
+              },
+              {
+                "id": "ba6747f7-9a81-4c42-bbb7-d4e6c37371fd",
+                "name": "Meeting",
+                "color": "brown",
+                "description": null
+              },
+              {
+                "id": "376f0816-63ca-4c7b-9c1a-02a17d9aaf6d",
+                "name": "Team",
+                "color": "default",
+                "description": null
+              },
+              {
+                "id": "930f6c14-877b-4597-a0fc-20fb57dcd94c",
+                "name": "Client",
+                "color": "green",
+                "description": null
+              },
+              {
+                "id": "b235be54-20c2-45ef-b86a-337e5d4823ff",
+                "name": "Marketing",
+                "color": "pink",
+                "description": null
+              }
+            ]
+          }
+        },
+        "Status": {
+          "id": "%3EV%3Ba",
+          "name": "Status",
+          "description": null,
+          "type": "status",
+          "status": {
+            "options": [
+              {
+                "id": "|Xr=",
+                "name": "Pinned",
+                "color": "red",
+                "description": null
+              },
+              {
+                "id": "ddc444bc-a202-4445-815f-aafd38328ab4",
+                "name": "Inbox",
+                "color": "default",
+                "description": null
+              },
+              {
+                "id": "353fd0cc-03c6-4afc-816f-5698d9013423",
+                "name": "In reviewing",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "abc780e9-c5c0-44d6-82a9-f1ac983af380",
+                "name": "Save",
+                "color": "green",
+                "description": null
+              }
+            ],
+            "groups": [
+              {
+                "id": "6ee866f9-f771-46fe-8509-e682849ff34b",
+                "name": "To-do",
+                "color": "gray",
+                "option_ids": [
+                  "ddc444bc-a202-4445-815f-aafd38328ab4"
+                ]
+              },
+              {
+                "id": "2962ce23-3362-4006-b119-f8ec0d8f8a30",
+                "name": "In progress",
+                "color": "blue",
+                "option_ids": [
+                  "353fd0cc-03c6-4afc-816f-5698d9013423"
+                ]
+              },
+              {
+                "id": "523cb986-aaaa-46ff-8c47-0eab72f0447c",
+                "name": "Complete",
+                "color": "green",
+                "option_ids": [
+                  "|Xr=",
+                  "abc780e9-c5c0-44d6-82a9-f1ac983af380"
+                ]
+              }
+            ],
+            "default_option": "Inbox"
+          }
+        },
+        "Project ": {
+          "id": "VOFY",
+          "name": "Project ",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "eb4ec870-8531-822f-be6c-018002a6a3ce",
+            "data_source_id": "443ec870-8531-8355-a19d-0753bc8612fa",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Notes",
+              "synced_property_id": "GBkV"
+            }
+          }
+        },
+        "Name": {
+          "id": "title",
+          "name": "Name",
+          "description": null,
+          "type": "title",
+          "title": {}
+        }
+      }
+    },
+    "resources": {
+      "title": "Resources ",
+      "properties": {
+        "Type": {
+          "id": "%3Bqe%3A",
+          "name": "Type",
+          "description": null,
+          "type": "select",
+          "select": {
+            "options": [
+              {
+                "id": "d8dea81b-b961-4ae0-a500-8ab3072d6bd3",
+                "name": "Article",
+                "color": "green",
+                "description": null
+              },
+              {
+                "id": "7133c9f1-76fb-4e45-968e-c751f04ff98c",
+                "name": "Video Tutorial",
+                "color": "red",
+                "description": null
+              },
+              {
+                "id": "c084326b-687b-4e09-beb7-68417fd9015d",
+                "name": "Presentation Slides",
+                "color": "gray",
+                "description": null
+              },
+              {
+                "id": "ab51bbbb-c139-49f4-8797-fc948521024b",
+                "name": "Whitepaper",
+                "color": "orange",
+                "description": null
+              },
+              {
+                "id": "0396543e-0a44-4f0c-a121-7bb194fca44c",
+                "name": "API Documentation",
+                "color": "blue",
+                "description": null
+              }
+            ]
+          }
+        },
+        "Project ": {
+          "id": "V%7Bm%40",
+          "name": "Project ",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "eb4ec870-8531-822f-be6c-018002a6a3ce",
+            "data_source_id": "443ec870-8531-8355-a19d-0753bc8612fa",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Resources ",
+              "synced_property_id": "%7By%7DT"
+            }
+          }
+        },
+        "Date": {
+          "id": "WU%5Cy",
+          "name": "Date",
+          "description": null,
+          "type": "date",
+          "date": {}
+        },
+        "Status": {
+          "id": "Z%7BsO",
+          "name": "Status",
+          "description": null,
+          "type": "status",
+          "status": {
+            "options": [
+              {
+                "id": "^RP>",
+                "name": "Pinned",
+                "color": "red",
+                "description": null
+              },
+              {
+                "id": "UbD>",
+                "name": "Inbox",
+                "color": "yellow",
+                "description": null
+              },
+              {
+                "id": "e44d5ec8-46fd-484d-887a-c2f77f99a344",
+                "name": "Not reviewed",
+                "color": "default",
+                "description": null
+              },
+              {
+                "id": "20cef8a9-e788-4623-bc94-9941df0b51f4",
+                "name": "In reviewing",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "afed0d3c-e8ad-4c7b-a759-80b17628e4d7",
+                "name": "Reviewed",
+                "color": "green",
+                "description": null
+              }
+            ],
+            "groups": [
+              {
+                "id": "289c42cf-840c-4018-a111-20b6ce336491",
+                "name": "To-do",
+                "color": "gray",
+                "option_ids": [
+                  "UbD>",
+                  "e44d5ec8-46fd-484d-887a-c2f77f99a344"
+                ]
+              },
+              {
+                "id": "0b6d633d-ba78-45b0-9315-06918ca7cf28",
+                "name": "In progress",
+                "color": "blue",
+                "option_ids": [
+                  "20cef8a9-e788-4623-bc94-9941df0b51f4"
+                ]
+              },
+              {
+                "id": "e6473edb-4456-427d-806c-fd52321bedcc",
+                "name": "Complete",
+                "color": "green",
+                "option_ids": [
+                  "^RP>",
+                  "afed0d3c-e8ad-4c7b-a759-80b17628e4d7"
+                ]
+              }
+            ],
+            "default_option": "Not reviewed"
+          }
+        },
+        "Name": {
+          "id": "title",
+          "name": "Name",
+          "description": null,
+          "type": "title",
+          "title": {}
+        }
+      }
+    },
+    "areas": {
+      "title": "Areas",
+      "properties": {
+        "Project ": {
+          "id": "R%40GQ",
+          "name": "Project ",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "eb4ec870-8531-822f-be6c-018002a6a3ce",
+            "data_source_id": "443ec870-8531-8355-a19d-0753bc8612fa",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Areas",
+              "synced_property_id": "G~t%60"
+            }
+          }
+        },
+        "Progress ": {
+          "id": "VKvR",
+          "name": "Progress ",
+          "description": null,
+          "type": "rollup",
+          "rollup": {
+            "rollup_property_name": "Completed ",
+            "relation_property_name": "Project ",
+            "rollup_property_id": "\\I=k",
+            "relation_property_id": "R@GQ",
+            "function": "percent_checked"
+          }
+        },
+        "Daily Entries ": {
+          "id": "e%3DAO",
+          "name": "Daily Entries ",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "1efec870-8531-8284-8153-01d5be01e3df",
+            "data_source_id": "256ec870-8531-8260-8213-87663ea37ace",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Life Areas",
+              "synced_property_id": "M%3Cst"
+            }
+          }
+        },
+        "Name": {
+          "id": "title",
+          "name": "Name",
+          "description": null,
+          "type": "title",
+          "title": {}
+        }
+      }
+    },
+    "habits": {
+      "title": "Rotina Operacional Dev & IA",
+      "properties": {
+        "Foco Dev / Sprint Ativa": {
+          "id": "ChzM",
+          "name": "Foco Dev / Sprint Ativa",
+          "description": null,
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "Log de Sessão / Memória": {
+          "id": "H%5Cx%5C",
+          "name": "Log de Sessão / Memória",
+          "description": null,
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "Progress ": {
+          "id": "XQnh",
+          "name": "Progress ",
+          "description": null,
+          "type": "formula",
+          "formula": {
+            "expression": "ceil((100 * ((((((toNumber(prop(\"Foco Dev / Sprint Ativa\"))) + (toNumber(prop(\"Micro-Passos Orbit OS (TDAH)\") ))) + (toNumber(prop(\"Git Sync / Pull (.second-brain)\") ))) + (toNumber(prop(\"Auditoria de Skills (19/19)\")))) + (toNumber(prop(\"Revisão de ADRs & Docs\")))) + (toNumber(prop(\"Log de Sessão / Memória\") )))) / 6) / 100"
+          }
+        },
+        "Revisão de ADRs & Docs": {
+          "id": "hERl",
+          "name": "Revisão de ADRs & Docs",
+          "description": null,
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "Date": {
+          "id": "quSm",
+          "name": "Date",
+          "description": null,
+          "type": "date",
+          "date": {}
+        },
+        "Git Sync / Pull (.second-brain)": {
+          "id": "ttbj",
+          "name": "Git Sync / Pull (.second-brain)",
+          "description": null,
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "Auditoria de Skills (19/19)": {
+          "id": "y%7Ckl",
+          "name": "Auditoria de Skills (19/19)",
+          "description": null,
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "Micro-Passos Orbit OS (TDAH)": {
+          "id": "%7DIEK",
+          "name": "Micro-Passos Orbit OS (TDAH)",
+          "description": null,
+          "type": "checkbox",
+          "checkbox": {}
+        },
+        "day": {
+          "id": "title",
+          "name": "day",
+          "description": null,
+          "type": "title",
+          "title": {}
+        }
+      }
+    },
+    "journal": {
+      "title": "Sessões & Diário de Bordo de IA",
+      "properties": {
+        "Life Areas": {
+          "id": "M%3Cst",
+          "name": "Life Areas",
+          "description": null,
+          "type": "relation",
+          "relation": {
+            "database_id": "090ec870-8531-832d-a6f2-8107c51cafc1",
+            "data_source_id": "77bec870-8531-82a3-b216-07e331a523bc",
+            "limit": null,
+            "type": "dual_property",
+            "dual_property": {
+              "synced_property_name": "Daily Entries ",
+              "synced_property_id": "e%3DAO"
+            }
+          }
+        },
+        "Agente / Executor": {
+          "id": "WWwb",
+          "name": "Agente / Executor",
+          "description": null,
+          "type": "select",
+          "select": {
+            "options": [
+              {
+                "id": "d6bee91a-5e73-4a4f-a328-b8e7d0741d70",
+                "name": "Antigravity",
+                "color": "blue",
+                "description": null
+              },
+              {
+                "id": "15c705d1-90b0-4968-aa1d-3b156f5a23be",
+                "name": "Claude Code",
+                "color": "orange",
+                "description": null
+              },
+              {
+                "id": "2c28a077-11b3-4fc8-8a3c-8dbcf22c4178",
+                "name": "Hermes Agent",
+                "color": "purple",
+                "description": null
+              },
+              {
+                "id": "7085ce51-8794-4ff7-84c1-c10a65ef575a",
+                "name": "Dev Charles",
+                "color": "green",
+                "description": null
+              }
+            ]
+          }
+        },
+        "Status da Sessão": {
+          "id": "%5EtQM",
+          "name": "Status da Sessão",
+          "description": null,
+          "type": "select",
+          "select": {
+            "options": [
+              {
+                "id": "cd26d09a-4ce2-4895-ba6c-8c56186843e1",
+                "name": "Sucesso",
+                "color": "green",
+                "description": null
+              },
+              {
+                "id": "4d97cf14-9d90-4937-b016-843bd5f20a15",
+                "name": "Em Andamento",
+                "color": "yellow",
+                "description": null
+              },
+              {
+                "id": "08053aad-6bfd-4fdf-bac5-1a8f4e393e84",
+                "name": "Revisão Necessária",
+                "color": "red",
+                "description": null
+              }
+            ]
+          }
+        },
+        "Date": {
+          "id": "q~Ap",
+          "name": "Date",
+          "description": null,
+          "type": "date",
+          "date": {}
+        },
+        "Name": {
+          "id": "title",
+          "name": "Name",
+          "description": null,
+          "type": "title",
+          "title": {}
+        }
+      }
+    }
+  },
+  "subpages": {
+    "projects_tasks": {
+      "title": "Projetos & Tarefas",
+      "icon": "📁",
+      "cover": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1600&q=80"
+    },
+    "resources_notes": {
+      "title": "Recursos, ADRs & Notas",
+      "icon": "📚",
+      "cover": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1600&q=80"
+    },
+    "areas": {
+      "title": "Áreas de Foco (PARA)",
+      "icon": "🌐",
+      "cover": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600&q=80"
+    },
+    "habits": {
+      "title": "Hábitos Diários & Rotina",
+      "icon": "🔄",
+      "cover": ""
+    },
+    "journal": {
+      "title": "Diário de Bordo & Sessões",
+      "icon": "📖",
+      "cover": ""
+    }
+  },
+  "layout_blocks": []
+}
