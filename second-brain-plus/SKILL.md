@@ -131,7 +131,7 @@ Second Brain Plus integrates the entire official Notion Developer Platform:
    - Standard tool-calling bridge (`notion_search`, `notion_read_page`, `notion_append_block_children`).
 4. **Notion Agent & Data APIs:**
    - Atomic Block tree manipulation (paragraphs, headings, toggles, callouts, tables) and enterprise Admin APIs.
-   - See full architectural guide in [docs/notion_developer_suite.md](file:///e:/Projetos_Docker/skills-ai/second-brain-plus/docs/notion_developer_suite.md).
+   - See full architectural guide in [docs/notion_developer_suite.md](docs/notion_developer_suite.md).
 
 ---
 
@@ -147,7 +147,7 @@ Second Brain Plus enables cryptographic, immutable Git backup across **GitHub** 
    - Supports **Public Digital Gardens** for open-source knowledge bases and community ADRs.
 4. **Proactive Diagnostics ("Does It Need Anything Else?"):**
    - The engine audits `.gitignore` for secret leakage prevention, alerts on accidental public repo exposure, verifies commit sync (ahead/behind), and recommends automated CI/CD backup workflows.
-   - See full technical guide in [docs/git_remote_sync_guide.md](file:///e:/Projetos_Docker/skills-ai/second-brain-plus/docs/git_remote_sync_guide.md).
+   - See full technical guide in [docs/git_remote_sync_guide.md](docs/git_remote_sync_guide.md).
 
 ---
 
@@ -296,7 +296,7 @@ A skill integra toda a infraestrutura oficial da Notion para agentes de IA:
    - Protocolo universal para agentes de IA realizarem buscas híbridas e gravação atômica em páginas (`notion_search`, `notion_read_page`, `notion_append_block_children`).
 4. **Notion Agent & Data APIs:**
    - Manipulação nativa da árvore de blocos (parágrafos, cabeçalhos, toggles, callouts, tabelas) e APIs corporativas de Admin (Audit Logs e SCIM).
-   - Consulte o guia completo em [docs/notion_developer_suite.md](file:///e:/Projetos_Docker/skills-ai/second-brain-plus/docs/notion_developer_suite.md).
+   - Consulte o guia completo em [docs/notion_developer_suite.md](docs/notion_developer_suite.md).
 
 ---
 
@@ -312,7 +312,7 @@ O Second Brain Plus oferece backup criptográfico e imutável via Git no **GitHu
    - Suporte a **Jardins Digitais Públicos** para documentações abertas e bibliotecas comunitárias.
 4. **Diagnóstico Proativo ("Precisa de Algo a Mais?"):**
    - O motor audita o `.gitignore` contra vazamento de segredos, alerta sobre repositórios públicos acidentais, valida commits pendentes (*ahead/behind*) e recomenda workflows de CI/CD para backup automatizado.
-   - Consulte o guia técnico em [docs/git_remote_sync_guide.md](file:///e:/Projetos_Docker/skills-ai/second-brain-plus/docs/git_remote_sync_guide.md).
+   - Consulte o guia técnico em [docs/git_remote_sync_guide.md](docs/git_remote_sync_guide.md).
 
 ---
 
