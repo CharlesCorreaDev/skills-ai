@@ -30,10 +30,28 @@ def run_installation_and_setup(vault_dir: Path, api_key: str = None, neurodiverg
     print("=" * 70)
 
     # 1. Scaffolding P.A.R.A. 2.0 Vault
-    print("\n📁 [Passo 1/5] Inicializando estrutura local (.second-brain)...")
+    print("\n📁 [Passo 1/6] Inicializando estrutura local (.second-brain)...")
     verify_brain.scaffold_second_brain(vault_dir)
 
-    # 2. ADHD / Neurodivergent setup if requested
+    # 2. Installing Slash Commands & Workflows
+    print("\n⌨️ [Passo 2/6] Registrando Slash Commands (/second-brain e /tdah)...")
+    workflows_src = Path(__file__).resolve().parent.parent / "workflows"
+    if workflows_src.exists():
+        destinations = [
+            Path.home() / ".gemini" / "commands",
+            Path.home() / ".gemini" / "antigravity" / "commands",
+            Path.home() / ".gemini" / "config" / "workflows",
+            Path.cwd() / ".agents" / "workflows",
+            Path.cwd() / ".agents" / "commands"
+        ]
+        for dest in destinations:
+            dest.mkdir(parents=True, exist_ok=True)
+            for wf in workflows_src.glob("*.md"):
+                target_file = dest / wf.name
+                target_file.write_text(wf.read_text(encoding="utf-8"), encoding="utf-8")
+        print("  ✓ Comandos /second-brain e /tdah registrados com sucesso no IDE.")
+
+    # 3. ADHD / Neurodivergent setup if requested
     if neurodivergent_mode:
         print("\n⚡ [Acessibilidade] Ativando templates e visualização para Neurodivergentes (Orbit OS)...")
         adhd_panel = vault_dir / "1-Projects" / "ADHD-FOCUS-DASHBOARD.md"
