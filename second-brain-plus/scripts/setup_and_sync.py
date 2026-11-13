@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import verify_brain
 import memory_bridge
 import notion_sync
+import build_notion_dashboard
 
 def run_installation_and_setup(vault_dir: Path, api_key: str = None, neurodivergent_mode: bool = False):
     """
@@ -81,7 +82,9 @@ def run_installation_and_setup(vault_dir: Path, api_key: str = None, neurodiverg
         print("  🔑 Token NOTION_API_KEY detectado. Testando autenticação...")
         auth_ok = notion_sync.check_authentication(api_key)
         if auth_ok:
-            notion_sync.list_databases(api_key)
+            if os.environ.get("NOTION_PARENT_PAGE_ID"):
+                print("  🎨 Aplicando layout padrão oficial do Second Brain 2026...")
+                build_notion_dashboard.build_dashboard(api_key=api_key)
             notion_sync.sync_local_vault(vault_dir, api_key)
     else:
         print("  ⚠️ Nenhuma NOTION_API_KEY informada no momento.")

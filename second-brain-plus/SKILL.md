@@ -132,6 +132,10 @@ Second Brain Plus integrates the entire official Notion Developer Platform:
 4. **Notion Agent & Data APIs:**
    - Atomic Block tree manipulation (paragraphs, headings, toggles, callouts, tables) and enterprise Admin APIs.
    - See full architectural guide in [docs/notion_developer_suite.md](docs/notion_developer_suite.md).
+5. **Canonical 2026 Dev & AI Layout Blueprint:**
+   - Versioned natively in `templates/notion/second_brain_blueprint.json`.
+   - Features 7 Master Databases (Projects, Tasks, Notes/ADRs, Resources, Dev Areas, Daily Dev Routine, AI Session Logs).
+   - Instant deployment in any new project via `build_notion_dashboard.py` and auto-populated with that project's memories via `setup_and_sync.py`.
 
 ---
 
@@ -297,6 +301,10 @@ A skill integra toda a infraestrutura oficial da Notion para agentes de IA:
 4. **Notion Agent & Data APIs:**
    - Manipulação nativa da árvore de blocos (parágrafos, cabeçalhos, toggles, callouts, tabelas) e APIs corporativas de Admin (Audit Logs e SCIM).
    - Consulte o guia completo em [docs/notion_developer_suite.md](docs/notion_developer_suite.md).
+5. **Blueprint Padrão Oficial 2026 para Devs & IA:**
+   - Versionado nativamente em `templates/notion/second_brain_blueprint.json`.
+   - Inclui os 7 Bancos Mestres (Projetos, Tarefas, Notas/ADRs, Recursos, Áreas Dev, Rotina Operacional Dev, Diário de Sessões de IA).
+   - Provisionamento instantâneo em qualquer novo projeto via `build_notion_dashboard.py` e preenchimento automático das memórias daquele projeto via `setup_and_sync.py`.
 
 ---
 

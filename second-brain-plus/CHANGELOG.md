@@ -23,6 +23,7 @@ O formato segue o padrão de [Keep a Changelog](https://keepachangelog.com/pt-BR
   - `/second-brain focus`: Exibição do painel de foco atômico neurodivergente (Orbit OS).
 - **Template Padrão Canônico do Notion:**
   - Adoção oficial do **[Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026)** como layout visual padrão, documentado em `docs/recommended_notion_templates.md`.
+  - **Blueprint Exportável Nativo (`templates/notion/second_brain_blueprint.json`):** Estrutura completa dos 7 bancos mestres (Projetos, Tarefas, Notas/ADRs, Recursos, Áreas Dev, Rotina Operacional Dev, Diário de Sessões de IA), subpáginas, capas e ícones serializados para provisionamento e preenchimento automático em novos projetos.
 - **Motor de Sincronização Automática em Tempo Real (`auto_sync.py`):**
   - Suporte a modo `--now` (disparo pontual) e `--watch` (monitoramento contínuo em segundo plano).
 - **Lançamento Inicial em Versão Beta** com documentação e código 100% bilíngue (Português PT-BR e Inglês EN).
