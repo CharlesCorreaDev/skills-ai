@@ -5,6 +5,7 @@ from pathlib import Path
 skills = [
   'book-formatter',
   'bootstrap-ux-ui-plus',
+  'code-mode-builder',
   'docker-master',
   'docs-for-markdown',
   'docs-for-skill',

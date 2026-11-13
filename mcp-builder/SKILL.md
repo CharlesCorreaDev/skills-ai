@@ -57,7 +57,13 @@ A skill **`mcp-builder`** transforma o agente de IA em um especialista em protoc
   - Descrições de ferramentas e parâmetros devem ser puramente declarativas, sem instruções reflexivas ou comandos imperativos embutidos.
   - Toda entrada de caminho de arquivo DEVE ser sanitizada com resolução segura contra Path Traversal (`../`).
 
-### 5. Requisitos Mínimos por Linguagem
+### 5. Suporte a Code Mode (Programmatic Tool Calling)
+- Ao projetar servidores MCP para APIs extensas (com mais de 10 a 20 ferramentas), ofereça a arquitetura **Code Mode**:
+  - Em vez de registrar dezenas de ferramentas atômicas, exponha um Gateway com 2 a 3 ferramentas primárias: search (para descobrir métodos) e execute (para rodar scripts que orquestram os métodos em lote).
+  - Economiza de 80% a 95% dos tokens de contexto e permite agregação de dados na memória do sandbox.
+  - Para documentação e padrões de implementação completos, consulte a skill companion code-mode-builder.
+
+### 6. Requisitos Mínimos por Linguagem
 - **PHP**: Mínimo PHP 8.4. Exigir tipagem estrita (`declare(strict_types=1);`).
 - **Python**: Mínimo Python 3.12. Async-first.
 - **Node.js**: Mínimo Node.js 22. Padrão ESM puro (`node:readline`, `process.stdout`).

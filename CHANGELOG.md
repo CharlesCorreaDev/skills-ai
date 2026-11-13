@@ -7,6 +7,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.29.0] - 2026-11-13
+
+### Added / Adicionado
+- **Lançamento Oficial da Skill `code-mode-builder` (v0.1.0-beta):**
+  - Criação da suíte de arquitetura para **Code Mode** (*Programmatic Tool Calling & CodeAct*) baseada nos estudos de Anthropic, Cloudflare, UTCP, Apple e Thoughtworks.
+  - Implementação de padrões de Gateway MCP com apenas 2 ferramentas (`search` + `execute`), reduzindo o consumo de tokens de contexto em até 95%.
+  - Padrões de sandbox seguro em Node.js (V8 VM), Python, Rust (Rhai) e QuickJS WASM com isolamento estrito de credenciais via *The Gate Pattern*.
+  - Ferramental integrado: script de diagnóstico de ambiente de runtimes (`check_codemode_env.py`) e gerador de gateways (`scaffold_code_mode.py`).
+- **Melhorias em `mcp-builder` (v0.2.0-beta):**
+  - Inclusão do suporte e diretrizes arquiteturais para servidores MCP estilo **Code Mode** em grandes catálogos de APIs.
+
+---
+
 ## [1.28.0] - 2026-11-13
 
 ### Fixed / Corrigido
