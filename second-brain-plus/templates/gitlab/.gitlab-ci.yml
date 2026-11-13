@@ -1,0 +1,15 @@
+stages:
+  - test
+  - audit
+
+second_brain_audit:
+  stage: audit
+  image: python:3.12-slim
+  rules:
+    - changes:
+        - .second-brain/**/*
+        - second-brain-plus/**/*
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  script:
+    - python second-brain-plus/scripts/verify_brain.py
+    - python second-brain-plus/scripts/git_remote_sync.py --audit

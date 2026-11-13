@@ -29,6 +29,7 @@ import auto_sync
 import notion_sync
 import memory_bridge
 import verify_brain
+import git_remote_sync
 
 def get_vault_dir() -> Path:
     vault_str = os.environ.get("SECOND_BRAIN_DIR", "./.second-brain")
@@ -245,6 +246,11 @@ def main():
     subparsers.add_parser("tdah", help="Ativa modo TDAH com formatação biônica e foco atômico (Orbit OS)")
     subparsers.add_parser("adhd", help="Activate ADHD mode with bionic formatting and atomic focus (Orbit OS)")
 
+    # git-status / git-sync
+    subparsers.add_parser("git-status", help="Audit GitHub (gh) and GitLab (glab) remote synchronization status")
+    p_git_sync = subparsers.add_parser("git-sync", help="Commit and push second brain changes to Git remote")
+    p_git_sync.add_argument("--message", "-m", default="chore(brain): automated second-brain sync", help="Commit message")
+
     args = parser.parse_args()
 
     if args.command == "install":
@@ -259,6 +265,10 @@ def main():
         cmd_status()
     elif args.command in ["focus", "tdah", "adhd"]:
         cmd_tdah_focus()
+    elif args.command == "git-status":
+        git_remote_sync.GitRemoteManager().print_audit_report()
+    elif args.command == "git-sync":
+        git_remote_sync.GitRemoteManager().sync_to_remote(args.message)
     else:
         parser.print_help()
 

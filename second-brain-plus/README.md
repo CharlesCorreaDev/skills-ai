@@ -16,8 +16,9 @@ Modern Large Language Models (LLMs) and autonomous coding agents (Antigravity, C
 2. **Hallucination of Stale APIs:** Agents guess parameters based on stale pre-training data instead of consulting live, versioned documentation.
 3. **Cognitive Overload & Context Bloat:** Dumping massive monolithic files into prompts drains context tokens, increases cost, and degrades reasoning precision.
 
-**Second Brain Plus** solves these systemic problems. It acts as an **autonomous operating system for AI memory and knowledge**, creating a synchronized dual-layer bridge between:
+**Second Brain Plus** solves these systemic problems. It acts as an **autonomous operating system for AI memory and knowledge**, creating a synchronized tri-layer bridge between:
 - **Cloud Workspace (Notion API & Notion CLI):** Collaborative, visual, relational databases with Kanban boards and mobile accessibility.
+- **Remote Git Repositories (GitHub `gh` & GitLab `glab`):** Cryptographic, immutable, version-controlled backup with private or public visibility controls.
 - **Local Git Repository (`.second-brain/`):** Zero-latency, Git-versioned, offline-ready Markdown files following Tiago Forte's **P.A.R.A. 2.0** methodology (Projects, Areas, Resources, Archives).
 
 ---
@@ -61,10 +62,10 @@ Second Brain Plus enforces an **event-driven, zero-friction sync rule**:
                        ▼
              [auto_sync.py --now]
                        │
-       ┌───────────────┼───────────────┐
-       ▼               ▼               ▼
- [Notion Cloud]  [claude-mem]     [graphify]
- (API / ntn)    (Episodic Log)  (AST Graph Nodes)
+       ┌───────────────┼───────────────┬────────────────┐
+       ▼               ▼               ▼                ▼
+ [Notion Cloud]  [claude-mem]     [graphify]      [Git Remote]
+ (API / ntn)    (Episodic Log)  (AST Graph)     (GitHub/GitLab)
 ```
 
 1. **Non-Negotiable Auto-Sync:** Whenever a file, note, ADR, or session log changes, the agent triggers:
@@ -89,8 +90,26 @@ Second Brain Plus introduces dedicated slash commands natively recognized across
 | **`/second-brain adr <title>`** | Interactively registers an immutable Architecture Decision Record (ADR) with rationale and consequences. | `/second-brain adr "Migrate Auth to Passkeys"` |
 | **`/second-brain sync`** | Forces an immediate bidirectional synchronization between local vault, Notion API, claude-mem, and graphify. | Running manual catch-up after offline git pull. |
 | **`/second-brain status`** | Prints a visual telemetry dashboard showing note counts, API latency, hash integrity, and graph nodes. | Diagnostic check before starting work. |
+| **`/second-brain git-status`** | Audits GitHub (`gh`) & GitLab (`glab`) remote synchronization, privacy (public/private), and proactive checks ("Needs anything else?"). | Inspecting backup security & remote divergence. |
+| **`/second-brain git-sync`** | Commits and pushes all second-brain changes to the configured Git remote repository. | Offsite backup to GitHub or GitLab. |
 | **`/second-brain focus`** | Switches to ADHD / Neurodivergent Orbit OS single-task dashboard (1 micro-task at a time). | Countering cognitive overload and decision paralysis. |
 | **`/second-brain tdah`** | Activates Portuguese TDAH accessibility mode with bionic bolding, short 45-65 character lines, and Body Doubling. | Maximum cognitive comfort during complex sessions. |
+
+---
+
+### 🐙🦊 Multi-Platform Remote Git Sync (GitHub `gh` & GitLab `glab`)
+
+Second Brain Plus enables cryptographic, immutable Git backup across **GitHub** and **GitLab**:
+1. **GitHub CLI (`gh` / https://cli.github.com/):**
+   - Direct integration via `gh auth status`, `gh repo view`, and `gh repo create`.
+2. **GitLab CLI (`glab` / https://docs.gitlab.com/cli/):**
+   - Native integration via `glab auth status`, `glab repo view`, and `glab repo create`.
+3. **Visibility Management (Private vs. Public):**
+   - Defaults to **Private** repositories to safeguard sensitive decisions, internal notes, and proprietary architectures.
+   - Supports **Public Digital Gardens** for open-source knowledge bases and community ADRs.
+4. **Proactive Diagnostics ("Does It Need Anything Else?"):**
+   - The engine audits `.gitignore` for secret leakage prevention, alerts on accidental public repo exposure, verifies commit sync (ahead/behind), and recommends automated CI/CD backup workflows.
+   - See full technical guide in [docs/git_remote_sync_guide.md](docs/git_remote_sync_guide.md).
 
 ---
 
@@ -138,6 +157,7 @@ second-brain-plus/
 │   ├── architecture.md                   # 5-Layer memory specification & comparison
 │   ├── notion_schemas.md                 # 4 Relational Notion databases schema
 │   ├── notion_developer_suite.md         # Notion CLI, Workers, MCP & Block tree guide
+│   ├── git_remote_sync_guide.md          # GitHub (gh) & GitLab (glab) remote sync guide
 │   ├── recommended_notion_templates.md   # Canonical template gallery (Tiago Forte 2026)
 │   ├── adhd_neurodivergent_guide.md      # Orbit OS & Brain Reset OS principles
 │   ├── grill_me_integration.md           # "Grill-then-Persist" ADR workflow
@@ -147,12 +167,15 @@ second-brain-plus/
 ├── scripts/                              # Executable Python & CLI automation
 │   ├── cli.py                            # Unified CLI for slash commands (/second-brain)
 │   ├── auto_sync.py                      # Continuous watcher & one-shot sync engine
+│   ├── git_remote_sync.py                # GitHub CLI & GitLab CLI multi-platform engine
 │   ├── notion_sync.py                    # Zero-dependency Notion REST v2022-06-28 client
 │   ├── memory_bridge.py                  # claude-mem + graphify + caveman bridge
 │   ├── setup_and_sync.py                 # Interactive wizard & database builder
 │   ├── verify_brain.py                   # Integrity auditor for vaults and frontmatter
 │   └── distribute_to_all_agents.py       # Universal deployer for all 9 AI agent runtimes
 ├── templates/                            # Ready-to-use schemas and markdown templates
+│   ├── github/second-brain-sync.yml      # Automated GitHub Actions workflow template
+│   ├── gitlab/.gitlab-ci.yml             # GitLab CI pipeline template
 │   ├── notion/databases_schema.json      # Full JSON schemas for the 4 Notion databases
 │   ├── notion-workers/sync-worker/       # TypeScript template for serverless Notion Workers
 │   └── markdown/                         # Structured markdown notes (Project, ADR, Session, Orbit OS)
@@ -183,12 +206,14 @@ SECOND_BRAIN_DIR=./.second-brain
 python second-brain-plus/scripts/setup_and_sync.py
 ```
 
-#### Step 3: Work with Persistent Memory
-Save facts, create ADRs, and query vault status:
+#### Step 3: Work with Persistent Memory & Git Sync
+Save facts, create ADRs, query vault status, and sync to GitHub/GitLab:
 ```bash
 python second-brain-plus/scripts/cli.py save memory "Production DB uses PostgreSQL 16"
 python second-brain-plus/scripts/cli.py adr "Adopt DuckDB for Fast Analytics"
 python second-brain-plus/scripts/cli.py status
+python second-brain-plus/scripts/cli.py git-status
+python second-brain-plus/scripts/cli.py git-sync
 ```
 
 ---
@@ -207,6 +232,7 @@ O **Second Brain Plus** é uma suíte completa de **memória persistente, otimiz
 #### ✅ A Solução do Second Brain Plus:
 O Second Brain Plus estabelece uma **Única Fonte da Verdade (SSOT)** sincronizada em tempo real entre:
 - **Nuvem no Notion:** Bancos de dados relacionais com visualização em Kanban, tabelas e acesso móvel (adotando oficialmente o modelo canônico [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026)).
+- **Repositórios Remotos Git (GitHub / GitLab):** Backup criptográfico, versionado e auditado via GitHub CLI (`gh`) e GitLab CLI (`glab`) com opção de visibilidade pública ou privada.
 - **Cofre Local em Markdown (`.second-brain/`):** Arquivos versionados no Git local, com latência zero e leitura imediata offline.
 
 ---
@@ -230,8 +256,21 @@ O Second Brain Plus estabelece uma **Única Fonte da Verdade (SSOT)** sincroniza
 | **`/second-brain adr <título>`** | Registra formalmente uma Decisão de Arquitetura (ADR) com justificativa e consequências, combatendo alucinações. |
 | **`/second-brain sync`** | Dispara sincronização bidirecional forçada entre Notion, cofre local, claude-mem e grafo de conhecimento. |
 | **`/second-brain status`** | Exibe painel com contagem de notas, saúde da conexão, hashes de integridade e nós do grafo. |
+| **`/second-brain git-status`** | Audita a sincronização com GitHub (`gh`) e GitLab (`glab`), privacidade e verificações proativas ("Precisa de algo a mais?"). |
+| **`/second-brain git-sync`** | Commita e envia (push) todas as alterações do segundo cérebro para o remote Git configurado. |
 | **`/second-brain focus`** | Ativa a visualização Orbit OS com apenas 1 micro-tarefa ativa de 5 a 10 minutos. |
 | **`/second-brain tdah`** | Ativa o modo neurodivergente com formatação biônica, linhas curtas e Body Doubling contra paralisia de tarefa. |
+
+---
+
+### 🐙🦊 Sincronização Remota Git (GitHub `gh` & GitLab `glab`)
+
+- **Suporte Multi-Provedor:** Suporta nativamente repositórios no GitHub e no GitLab através de seus respectivos utilitários oficiais (`gh` e `glab`).
+- **Controle de Privacidade:**
+  - **Repositórios Privados (Padrão Recomendado):** Mantém decisões, anotações de equipe e planos proprietários sob sigilo absoluto.
+  - **Jardins Digitais Públicos:** Permite publicar wikis abertas, ADRs comunitários e guias públicos.
+- **Diagnóstico Proativo ("Precisa de Algo a Mais?"):**
+  - O comando `git-status` verifica vazamento de chaves no `.gitignore`, divergência de branches (*ahead/behind*), visibilidade do repositório e sugere templates de automação de CI/CD. *(Consulte [docs/git_remote_sync_guide.md](docs/git_remote_sync_guide.md))*.
 
 ---
 
@@ -242,8 +281,6 @@ O Second Brain Plus estabelece uma **Única Fonte da Verdade (SSOT)** sincroniza
 - **Notion MCP (Model Context Protocol):** Conexão universal de ferramentas para os agentes consultarem o Notion em tempo de execução.
 - **Manipulação de Blocos:** Edição e leitura direta da árvore de blocos (paragraphs, callouts, toggles, headings, code, tables).
 - **Notion Admin API:** Logs corporativos de auditoria e sincronização de identidade (SCIM).
-
-*(Consulte o guia técnico detalhado em [docs/notion_developer_suite.md](docs/notion_developer_suite.md))*.
 
 ---
 

@@ -1,0 +1,34 @@
+name: Second Brain CI & Auto-Audit
+
+on:
+  push:
+    paths:
+      - '.second-brain/**'
+      - 'second-brain-plus/**'
+  schedule:
+    - cron: '0 3 * * *' # Nightly execution at 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  verify-and-audit:
+    name: Verify Brain Integrity & Remote Sync
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify Second Brain Vault Structure
+        run: |
+          python second-brain-plus/scripts/verify_brain.py
+
+      - name: Run Git Remote Sync Audit
+        run: |
+          python second-brain-plus/scripts/git_remote_sync.py --audit
