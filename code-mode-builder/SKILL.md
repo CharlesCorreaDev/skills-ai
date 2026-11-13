@@ -104,6 +104,17 @@ python code-mode-builder/scripts/check_codemode_env.py
 
 ---
 
+## 🌐 WebMCP & Modern Web Guidance no Navegador
+
+Para implementar Code Mode diretamente no contexto de navegadores web e aplicações client-side, esta skill adota o padrão **[GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)**:
+- **Instalação:** `npx modern-web-guidance@latest install` ou globalmente `npm install -g modern-web-guidance`.
+- **Integração com WebMCP:**
+  - Utilize `agentic-javascript-tools` do Chrome para registrar funções do cliente que o agente pode chamar programaticamente sem carregar schemas volumosos.
+  - Exponha formulários via `agentic-forms` com anotações declarativas para preenchimento em lote por agentes de IA.
+  - Escaneie os artefatos web gerados com `modern-web-guidance legacy-scan <diretório>` para assegurar compatibilidade nativa com os motores modernos de IA dos navegadores.
+
+---
+
 ## 🇧🇷 Português (Brasil)
 
 ### 📌 Visão Geral & Filosofia

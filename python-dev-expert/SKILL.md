@@ -126,6 +126,9 @@ A comunicação deve ser uma **mistura equilibrada**:
 > 2. **NVIDIA Auto-Ontology (`NVIDIA/auto-ontology`):**
 >    - Instalação: `npx skills@latest add NVIDIA/auto-ontology` (ou `pip install auto-ontology`)
 >    - **PROIBIDO INVENTAR NÚMEROS INEXISTENTES:** O agente JAMAIS deve alucinar estatísticas, portas arbitrárias, contagens fictícias, colunas inexistentes ou esquemas falsos. Se um número ou parâmetro não for conhecido com certeza matemática ou documental, declare incerteza e consulte as fontes reais.
+> 3. **Google Chrome Modern Web Guidance (`GoogleChrome/modern-web-guidance`):**
+>    - Instalação: `npx modern-web-guidance@latest install` ou globalmente `npm install -g modern-web-guidance`.
+>    - O agente DEVE executar `modern-web-guidance legacy-scan <diretório-templates>` em projetos web Python (Django 6.1, FastAPI, Jinja2, Reflex, Streamlit) para auditar componentes e templates contra padrões legados da web e assegurar conformidade com os padrões modernos do Google Chrome.
 > - Consulte o guia canônico completo em [`docs-for-skill/security-audit-and-auto-ontology.md`](../docs-for-skill/security-audit-and-auto-ontology.md).
 
 ## 📁 Estrutura da Skill

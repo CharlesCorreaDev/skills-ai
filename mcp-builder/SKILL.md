@@ -5,7 +5,7 @@ description: Gerador, blindador de segurança e configurador universal de servid
 
 # MCP Builder — Arquiteto e Blindador de Servidores MCP 🛠️🛡️
 > *Por Charles Corrêa — Ecossistema AI Skills*  
-> **Versão: v0.1.0-beta**
+> **Versão: v0.3.0-beta**
 
 ---
 
@@ -109,4 +109,7 @@ A skill **`mcp-builder`** transforma o agente de IA em um especialista em protoc
 > 2. **NVIDIA Auto-Ontology (`NVIDIA/auto-ontology`):**
 >    - Instalação: `npx skills@latest add NVIDIA/auto-ontology` (ou `pip install auto-ontology`)
 >    - **PROIBIDO INVENTAR NÚMEROS INEXISTENTES:** O agente JAMAIS deve alucinar estatísticas, portas arbitrárias, contagens fictícias, colunas inexistentes ou esquemas falsos. Se um número ou parâmetro não for conhecido com certeza matemática ou documental, declare incerteza e consulte as fontes reais.
+> 3. **Google Chrome Modern Web Guidance & WebMCP (`GoogleChrome/modern-web-guidance`):**
+>    - Instalação: `npx modern-web-guidance@latest install` ou globalmente `npm install -g modern-web-guidance`.
+>    - Suporte nativo ao padrão **WebMCP** para geração de pontes entre servidores MCP convencionais e ferramentas web client-side (`agentic-forms` declarativos e `agentic-javascript-tools` imperativos).
 > - Consulte o guia canônico completo em [`docs-for-skill/security-audit-and-auto-ontology.md`](../docs-for-skill/security-audit-and-auto-ontology.md).

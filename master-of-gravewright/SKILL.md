@@ -177,6 +177,17 @@ python master-of-gravewright/scripts/setup_dev_env.py --create-module "charles.m
 
 ---
 
+## 🌐 Modern Web Guidance & WebMCP no Gravewright VTT
+
+O cliente do Gravewright VTT roda em navegadores modernos via ES Modules nativos, Datastar e PixiJS. O agente DEVE seguir o padrão **[GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)**:
+- **Instalação:** `npx modern-web-guidance@latest install` ou globalmente `npm install -g modern-web-guidance`.
+- **Auditoria de Superfícies (`actor.sheet`, `item.sheet`, `scene.overlay`):**
+  - Execute `modern-web-guidance legacy-scan <diretório-do-modulo>` para evitar seletores ou eventos DOM obsoletos.
+  - Utilize CSS Container Queries para fichas de atores responsivas que funcionam tanto em janelas desacopladas quanto em overlays de cena.
+  - Adote o padrão **WebMCP** (`agentic-javascript-tools` do Chrome) para registrar e expor ferramentas de automação do VTT diretamente aos agentes de IA no navegador.
+
+---
+
 ## 📚 Documentação Técnica Integrada (Offline em EN e pt-BR)
 
 - **Engenharia & Arquitetura:** [Guia de Engenharia Reversa Cross-VTT](docs/reverse-engineering-cross-vtt.md) • [Guia de Banco de Dados: SQLite](docs/database-guide.md) • [Guia de Versionamento Git e Empacotamento](docs/git-guide.md) • [Aviso Legal de Licença Upstream](docs/NOTICE.md)

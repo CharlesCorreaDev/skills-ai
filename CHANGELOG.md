@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - **Benchmarks de Bibliotecas de Animação e Motion:** Integração de referências canônicas para Anime.js, Motion.dev, PureCSS-Animations, CodePen Hover Collections (pens de Morgan Carbon Fourteen `mOxYjY` e Nathan Long `MwOpxj`) e Prismic CSS Hover Effects Guide.
   - **Acervos e Comunidades do Frontend Brasileiro:** Inclusão de **Recursos Frontend por Yuri Mutti** e **Guia do Frontend Brasil** como fontes canônicas de consulta e inspiração em `references/ui-inspiration-and-pattern-libraries.md`.
   - **Templates Mazer e AdminKit Enriquecidos:** Injeção das classes de microinterações táteis, efeito glow, elevação em hover e desativação em `prefers-reduced-motion` em `templates/admin-dashboard-template.html` e `templates/adminkit-dashboard-template.html`.
+- **Adoção Global de `GoogleChrome/modern-web-guidance` em 8 Skills do Ecossistema:**
+  - Instalação global do pacote CLI (`npm install -g modern-web-guidance`) e distribuição da skill oficial para todos os ambientes de agentes de IA (`~/.gemini/config/skills/`, `~/.claude/skills/`, `~/.codex/skills/`, `~/.cursor/skills/`, `~/.copilot/skills/`, `~/.opencode/skills/`, `~/.agents/skills/`).
+  - Integração mandatória em `master-of-foundryvtt`, `master-of-gravewright`, `bootstrap-ux-ui-plus`, `code-mode-builder`, `php-dev-expert`, `python-dev-expert`, `mcp-builder` e `book-formatter` para auditorias automatizadas com `modern-web-guidance legacy-scan <path>`, adoção de WebMCP (`agentic-forms` e `agentic-javascript-tools`) e erradicação de padrões web obsoletos.
 
 ---
 
