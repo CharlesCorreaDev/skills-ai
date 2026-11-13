@@ -15,8 +15,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Implementação de padrões de Gateway MCP com apenas 2 ferramentas (`search` + `execute`), reduzindo o consumo de tokens de contexto em até 95%.
   - Padrões de sandbox seguro em Node.js (V8 VM), Python, Rust (Rhai) e QuickJS WASM com isolamento estrito de credenciais via *The Gate Pattern*.
   - Ferramental integrado: script de diagnóstico de ambiente de runtimes (`check_codemode_env.py`) e gerador de gateways (`scaffold_code_mode.py`).
-- **Melhorias em `mcp-builder` (v0.2.0-beta):**
-  - Inclusão do suporte e diretrizes arquiteturais para servidores MCP estilo **Code Mode** em grandes catálogos de APIs.
+- **Suporte Nativo a Code Mode nos Servidores MCP do Ecossistema:**
+  - `master-of-foundryvtt` (v0.21.0-beta): adicionada a ferramenta `code_mode` no `foundry_mcp_server.js` permitindo a agentes de IA criar mundos, atores, itens e cenas em 1 único turno via script V8.
+  - `master-of-gravewright` (v0.4.0-beta): adicionada a ferramenta `code_mode` no `gravewright_mcp_server.py` com namespace `gw.*` em Python sandbox.
+  - `mcp-builder` (v0.3.0-beta): diretrizes e templates para criação de servidores MCP baseados em Code Mode e padronização de `isError: true`.
+- **Gestão Segura de Banco de Dados SQLite em `master-of-gravewright`:**
+  - Implementado o utilitário `scripts/manage_sqlite.py` para inspeção de esquemas das 85 tabelas do Gravewright, consultas somente-leitura e backups pontuais pré-mutação.
+  - Diretrizes obrigatórias de autorização expressa do usuário no chat antes de qualquer operação destrutiva ou alteração de dados.
+- **Blindagem Contra Tool Poisoning e Protocolo Agent Postmortem em `docs-for-skill` (v0.4.0-beta):**
+  - Incorporadas as recomendações do OWASP MCP Top 10 e do estudo da Snyk sobre ferramentas e descrições não confiáveis.
+  - Protocolo de postmortem em `memory/learnings.md` para evitar reincidência de erros.
 
 ---
 

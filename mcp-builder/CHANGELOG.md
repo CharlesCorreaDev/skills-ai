@@ -6,6 +6,16 @@ O formato é baseado no [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.
 
 ---
 
+## [0.3.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Suporte a Code Mode (Programmatic Tool Calling) e OWASP MCP Top 10:**
+  - Orientação e templates para gateways MCP de 2 ferramentas (`search` + `execute`) para grandes catálogos de APIs, economizando até 95% de tokens de contexto.
+  - Padronização de erros operacionais de ferramentas com `"isError": true` em `result.content` (em conformidade com a especificação JSON-RPC do MCP).
+  - Blindagem contra ataques de Tool Poisoning e injeções de prompt indiretas em descrições de ferramentas.
+
+---
+
 ## [0.2.0-beta] - 2026-11-09
 
 ### Added / Adicionado

@@ -41,6 +41,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **Guia de Engenharia Reversa Cross-VTT (`docs/reverse-engineering-cross-vtt.md`):**
   - Ajustada orientação: todo sistema e regra deve ser empacotado como extensão/sistema instalado sem alterar o core do Gravewright.
   - Mapeamento correto de `actor.sheet` (com substituição de interface e controle otimista de revisão `expectedRevision`), `system.combat` e `api.systems.register_api`.
+- **Suporte a Code Mode e Gestão de SQLite:**
+  - Adicionada a ferramenta `code_mode` no servidor MCP (`gravewright_mcp_server.py`) com execução em sandbox Python expondo o namespace `gw.*`.
+  - Criado o utilitário `scripts/manage_sqlite.py` para inspeção segura de esquemas, consultas JSON e backups pré-mutação.
+  - Atualizado `docs/database-guide.md` com protocolos de autorização obrigatória pré-mutação e concorrência SQLite em modo WAL.
 - **Stack Atualizada e Aviso Legal de Upstream:**
   - Stack atualizada para Python 3.14+, Django 6.1, Datastar e PixiJS em consonância com o Gravewright 0.3.4.
   - Criado [`docs/NOTICE.md`](docs/NOTICE.md) com atribuição explícita de direitos e cópia sob licença GPL-3.0-only do projeto Gravewright de Rodrigo Tristão Porfírio.

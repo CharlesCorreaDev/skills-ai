@@ -132,13 +132,13 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 | Skill | Purpose | Version | Status | Documentation & Changelog |
 |---|---|---|---|---|
 | **`docs-for-markdown`** | Universal converter for multi-format documents (PDF, DOCX, XLSX, PPTX, ODT, HTML, RTF) into clean Markdown. | [`0.3.0-beta`](docs-for-markdown/VERSION) | Beta | [README](docs-for-markdown/README.md) • [Changelog](docs-for-markdown/CHANGELOG.md) |
-| **`docs-for-skill`** | Transforms document Markdown into high-performance, modular AI Skills. | [`0.3.0-beta`](docs-for-skill/VERSION) | Beta | [README](docs-for-skill/README.md) • [Changelog](docs-for-skill/CHANGELOG.md) |
+| **`docs-for-skill`** | Transforms document Markdown into high-performance, modular AI Skills. | [`0.4.0-beta`](docs-for-skill/VERSION) | Beta | [README](docs-for-skill/README.md) • [Changelog](docs-for-skill/CHANGELOG.md) |
 | **`website-for-markdown`** | Hybrid web scraping engine (Firecrawl + Playwright/Chromium) for clean Markdown extraction from web pages and SPAs. | [`0.4.0-beta`](website-for-markdown/VERSION) | Beta | [README](website-for-markdown/README.md) • [Changelog](website-for-markdown/CHANGELOG.md) |
 | **`website-for-skill`** | End-to-end pipeline that crawls websites/APIs and builds structured AI Skills automatically. | [`0.4.0-beta`](website-for-skill/VERSION) | Beta | [README](website-for-skill/README.md) • [Changelog](website-for-skill/CHANGELOG.md) |
 | **`video-to-md`** | Multi-platform video and playlist ingestion (YouTube, Vimeo, Twitch) into structured Markdown with timestamps and AI audio fallback (Whisper). | [`0.3.0-beta`](video-to-md/VERSION) | Beta | [README](video-to-md/README.md) • [Changelog](video-to-md/CHANGELOG.md) |
 | **`image-to-prompt`** | High-fidelity visual reverse engineering: extracts art styles, eras, clothing, lighting, camera angles, and facial physiognomy to create generative prompts (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | [`0.3.0-beta`](image-to-prompt/VERSION) | Beta | [README](image-to-prompt/README.md) • [Changelog](image-to-prompt/CHANGELOG.md) |
-| **`master-of-foundryvtt`** | Master development, architecture, scripting, rule ingestion suite (100+ RPG systems), Foundry Next Factory (FNF), sensory & cognitive accessibility (TEA/ADHD), and native MCP Server for Foundry VTT (v8–v14) by GM Charles Corrêa. | [`0.20.0-beta`](master-of-foundryvtt/VERSION) | Beta | [README](master-of-foundryvtt/README.md) • [Changelog](master-of-foundryvtt/CHANGELOG.md) |
-| **`master-of-gravewright`** | Cross-VTT reverse engineering (Foundry/Roll20), system/module development, compendiums, rules ingestion, native MCP Server, and Git/PostgreSQL toolchain for the open-source Brazilian Gravewright VTT (Python/Django). | [`0.3.0-beta`](master-of-gravewright/VERSION) | Beta | [README](master-of-gravewright/README.md) • [Changelog](master-of-gravewright/CHANGELOG.md) |
+| **`master-of-foundryvtt`** | Master development, architecture, scripting, rule ingestion suite (100+ RPG systems), Foundry Next Factory (FNF), sensory & cognitive accessibility (TEA/ADHD), Code Mode and native MCP Server for Foundry VTT (v8–v14) by GM Charles Corrêa. | [`0.21.0-beta`](master-of-foundryvtt/VERSION) | Beta | [README](master-of-foundryvtt/README.md) • [Changelog](master-of-foundryvtt/CHANGELOG.md) |
+| **`master-of-gravewright`** | Cross-VTT reverse engineering (Foundry/Roll20), system/module development, compendiums, rules ingestion, Code Mode, SQLite management, native MCP Server, and Git/PostgreSQL toolchain for the open-source Brazilian Gravewright VTT (Python/Django). | [`0.4.0-beta`](master-of-gravewright/VERSION) | Beta | [README](master-of-gravewright/README.md) • [Changelog](master-of-gravewright/CHANGELOG.md) |
 | **`bootstrap-ux-ui-plus`** | Master cognitive UX laws, Nielsen heuristics, WCAG 2.2 AA, Peter Morville Honeycomb, Color Psychology (Eva Heller), and neurodiversity (ADHD & Autism TEA) with Bootstrap (v5.3 & v6.0) across HTML, PHP, React, Python and Java. | [`0.5.0-beta`](bootstrap-ux-ui-plus/VERSION) | Beta | [README](bootstrap-ux-ui-plus/README.md) • [Changelog](bootstrap-ux-ui-plus/CHANGELOG.md) |
 | **`humanizer-plus`** | Multi-layer AI de-watermarking, Unicode sanitization (ZWSP, BOM), and natural human text rewrite engine (PT-BR & EN). | [`1.3.0`](humanizer-plus/VERSION) | Stable | [README](humanizer-plus/README.md) • [Changelog](humanizer-plus/CHANGELOG.md) |
 | **`php-dev-expert`** | Senior Software Engineer skill focused on PHP (7.4 to 8.5), modern patterns, debugging, frameworks, and Generative AI with LLPhant. | [`0.9.0-beta`](php-dev-expert/VERSION) | Beta | [README](php-dev-expert/README.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
@@ -147,7 +147,8 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 | **`book-formatter`** | Book formatting and RPG book diagramming suite: SOTA layout engines (Docling, Marker, Unstructured, Nougat, Stirling-PDF), rules segmentation for AI/RAG/MCP, color theory for RPG layouts, ADHD/neurodiversity editorial guidelines, and grill-me alignment. | [`0.17.0-beta`](book-formatter/VERSION) | Beta | [Skill](book-formatter/SKILL.md) • [Changelog](book-formatter/CHANGELOG.md) • [Glossary](book-formatter/glossarys/glossary.md) |
 | **`not-today-adhd`** | Cognitive accessibility and productivity suite for neurodivergent developers and AI agents (ADHD & Autism TEA): micro-chunking, bionic reading, literal microcopy, and decision-fatigue shielding. | [`1.2.0-beta`](not-today-adhd/VERSION) | Beta | [README](not-today-adhd/README.md) • [Changelog](not-today-adhd/CHANGELOG.md) |
 | **`sms-legal`** | Complete integration suite and native MCP Server (Node.js & Python) for SMS Legal / SMS Gateway API. Multi-language SDKs (PHP, Python, JS), batch sending, scheduling, voice, audio, and bi-directional replies. | [`1.1.0`](sms-legal/VERSION) | Stable | [README](sms-legal/README.md) • [Changelog](sms-legal/CHANGELOG.md) |
-| **`mcp-builder`** | Universal MCP Server Generator, Security Hardener, and Orchestrator for PHP 8.4+, Python 3.12+, and Node.js 22+. Features prompt injection defense, static code analysis (SAST), fail-safe background GitHub issue reporting, and self-updating. | [`0.2.0-beta`](mcp-builder/VERSION) | Beta | [README](mcp-builder/README.md) • [Changelog](mcp-builder/CHANGELOG.md) |
+| **`mcp-builder`** | Universal MCP Server Generator, Security Hardener, and Orchestrator for PHP 8.4+, Python 3.12+, and Node.js 22+. Features Code Mode architecture guidance, prompt injection defense, static code analysis (SAST), fail-safe background GitHub issue reporting, and self-updating. | [`0.3.0-beta`](mcp-builder/VERSION) | Beta | [README](mcp-builder/README.md) • [Changelog](mcp-builder/CHANGELOG.md) |
+| **`code-mode-builder`** | Architects, converts, and benchmarks Code Mode (Programmatic Tool Calling & Sandbox Execution) for AI Agents as an alternative or evolution to traditional MCP. | [`0.1.0-beta`](code-mode-builder/VERSION) | Beta | [README](code-mode-builder/README.md) • [Changelog](code-mode-builder/CHANGELOG.md) |
 
 > ℹ️ *Note: All skills in this repository are currently in **Beta** and adhere to [Semantic Versioning (SemVer)](https://semver.org/spec/v2.0.0.html). Each skill contains a dedicated `VERSION` file and `CHANGELOG.md`. See also the global [**CHANGELOG.md**](CHANGELOG.md).*
 
@@ -228,6 +229,17 @@ node bootstrap-ux-ui-plus/scripts/audit_ux_bootstrap.mjs path/to/page.html
 node bootstrap-ux-ui-plus/scripts/check_updates.mjs
 ```
 👉 *Detailed instructions:* [bootstrap-ux-ui-plus README](bootstrap-ux-ui-plus/README.md)
+
+#### 9. Code Mode Architecture, Sandboxing & Tool Conversion (Code Mode Builder)
+Benchmark, scaffold, and transition high-volume MCP tool schemas into lightweight TypeScript/Python Code Mode gateways:
+```bash
+# Check runtime environment for Code Mode (Deno, Node, Python, Docker):
+python code-mode-builder/scripts/check_codemode_env.py
+
+# Scaffold a production-ready Code Mode Gateway with test suite:
+python code-mode-builder/scripts/scaffold_code_mode.py --name "my-codemode-service" --runtime node --sandbox vm2
+```
+👉 *Detailed instructions:* [code-mode-builder README](code-mode-builder/README.md)
 
 ---
 
@@ -340,13 +352,13 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 | Skill | Finalidade | Versão | Status | Documentação & Changelog |
 |---|---|---|---|---|
 | **`docs-for-markdown`** | Conversor universal de documentos multiformato (PDF, DOCX, XLSX, PPTX, ODT, HTML, RTF) para Markdown limpo. | [`0.3.0-beta`](docs-for-markdown/VERSION) | Beta | [README](docs-for-markdown/README.md) • [Changelog](docs-for-markdown/CHANGELOG.md) |
-| **`docs-for-skill`** | Transforma Markdowns extraídos de documentos em Skills modulares de alto desempenho para IA. | [`0.3.0-beta`](docs-for-skill/VERSION) | Beta | [README](docs-for-skill/README.md) • [Changelog](docs-for-skill/CHANGELOG.md) |
+| **`docs-for-skill`** | Transforma Markdowns extraídos de documentos em Skills modulares de alto desempenho para IA. | [`0.4.0-beta`](docs-for-skill/VERSION) | Beta | [README](docs-for-skill/README.md) • [Changelog](docs-for-skill/CHANGELOG.md) |
 | **`website-for-markdown`** | Motor híbrido de raspagem web (Firecrawl + Playwright/Chromium) para extração de Markdown limpo a partir de sites e SPAs. | [`0.4.0-beta`](website-for-markdown/VERSION) | Beta | [README](website-for-markdown/README.md) • [Changelog](website-for-markdown/CHANGELOG.md) |
 | **`website-for-skill`** | Pipeline completo que rastreia websites/APIs e compila Skills de IA estruturadas automaticamente. | [`0.4.0-beta`](website-for-skill/VERSION) | Beta | [README](website-for-skill/README.md) • [Changelog](website-for-skill/CHANGELOG.md) |
 | **`video-to-md`** | Captura multiplataforma de vídeos e playlists (YouTube, Vimeo, Twitch) em Markdown estruturado com timestamps clicáveis e fallback por áudio via IA (Whisper). | [`0.3.0-beta`](video-to-md/VERSION) | Beta | [README](video-to-md/README.md) • [Changelog](video-to-md/CHANGELOG.md) |
 | **`image-to-prompt`** | Engenharia reversa visual de alta fidelidade: extrai traços artísticos, época, vestimentas, iluminação, fisionomia e câmeras para gerar prompts de imagem/vídeo (Sora, Nano Banana, Midjourney, DALL-E 3, SDXL, Flux). | [`0.3.0-beta`](image-to-prompt/VERSION) | Beta | [README](image-to-prompt/README.md) • [Changelog](image-to-prompt/CHANGELOG.md) |
-| **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting, ingestão de regras (+100 sistemas de RPG), Foundry Next Factory (FNF), ergonomia sensorial e acessibilidade cognitiva (TEA/TDAH), e Servidor MCP Nativo para Foundry VTT (v8–v14) por GM Charles Corrêa. | [`0.20.0-beta`](master-of-foundryvtt/VERSION) | Beta | [README](master-of-foundryvtt/README.md) • [Changelog](master-of-foundryvtt/CHANGELOG.md) |
-| **`master-of-gravewright`** | Engenharia reversa Cross-VTT (Foundry/Roll20), desenvolvimento de sistemas e módulos, compêndios, regras, Servidor MCP Nativo e suporte a Git/PostgreSQL para o VTT open-source brasileiro Gravewright (Python/Django). | [`0.3.0-beta`](master-of-gravewright/VERSION) | Beta | [README](master-of-gravewright/README.md) • [Changelog](master-of-gravewright/CHANGELOG.md) |
+| **`master-of-foundryvtt`** | Suíte mestra de desenvolvimento, arquitetura, scripting, ingestão de regras (+100 sistemas de RPG), Foundry Next Factory (FNF), ergonomia sensorial e acessibilidade cognitiva (TEA/TDAH), Code Mode e Servidor MCP Nativo para Foundry VTT (v8–v14) por GM Charles Corrêa. | [`0.21.0-beta`](master-of-foundryvtt/VERSION) | Beta | [README](master-of-foundryvtt/README.md) • [Changelog](master-of-foundryvtt/CHANGELOG.md) |
+| **`master-of-gravewright`** | Engenharia reversa Cross-VTT (Foundry/Roll20), desenvolvimento de sistemas e módulos, compêndios, regras, Code Mode, gestão SQLite, Servidor MCP Nativo e suporte a Git/PostgreSQL para o VTT open-source brasileiro Gravewright (Python/Django). | [`0.4.0-beta`](master-of-gravewright/VERSION) | Beta | [README](master-of-gravewright/README.md) • [Changelog](master-of-gravewright/CHANGELOG.md) |
 | **`bootstrap-ux-ui-plus`** | Engenharia cognitiva de usabilidade (Leis de UX, Heurísticas de Nielsen), acessibilidade WCAG 2.2 AA, Colmeia de Morville, Psicologia das Cores (Eva Heller) e neurodiversidade (TDAH & Autismo TEA) com Bootstrap (v5.3 e v6.0) para HTML, PHP, React, Python e Java. | [`0.5.0-beta`](bootstrap-ux-ui-plus/VERSION) | Beta | [README](bootstrap-ux-ui-plus/README.md) • [Changelog](bootstrap-ux-ui-plus/CHANGELOG.md) |
 | **`humanizer-plus`** | Desmarcação de IA multicamada, purga de Unicode invisível (ZWSP, BOM), normalização de código e reescrita natural com voz humana real (PT-BR e EN). | [`1.3.0`](humanizer-plus/VERSION) | Estável | [README](humanizer-plus/README.md) • [Changelog](humanizer-plus/CHANGELOG.md) |
 | **`php-dev-expert`** | Skill de Engenheiro de Software Sênior focada em PHP (7.4 a 8.5), arquitetura moderna, debugging, frameworks e IA Generativa/RAG com LLPhant. | [`0.9.0-beta`](php-dev-expert/VERSION) | Beta | [README](php-dev-expert/README.md) • [Changelog](php-dev-expert/CHANGELOG.md) |
@@ -355,7 +367,8 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 | **`book-formatter`** | Suíte de formatação de livros e diagramação de livros de RPG: motores SOTA de IA (Docling, Marker, Unstructured, Nougat, Stirling-PDF), segmentação de regras para IA/RAG/MCP, teoria das cores para layouts de RPG, diretrizes editoriais para TDAH/neurodiversidade e alinhamento grill-me. | [`0.17.0-beta`](book-formatter/VERSION) | Beta | [Skill](book-formatter/SKILL.md) • [Changelog](book-formatter/CHANGELOG.md) • [Glossário](book-formatter/glossarys/glossary.md) |
 | **`not-today-adhd`** | Suíte de acessibilidade cognitiva e produtividade para desenvolvedores e agentes de IA neurodivergentes (TDAH & Autismo TEA): micro-chunking, leitura biônica, microcópia literal e blindagem contra fadiga de decisão. | [`1.2.0-beta`](not-today-adhd/VERSION) | Beta | [README](not-today-adhd/README.md) • [Changelog](not-today-adhd/CHANGELOG.md) |
 | **`sms-legal`** | Suíte completa de integração e Servidor MCP Nativo (Node.js & Python) para a API SMS Legal / SMS Gateway. SDKs multilinguagem (PHP, Python, JS), envio em lote, agendamento, voz, áudio e captura de respostas. | [`1.1.0`](sms-legal/VERSION) | Estável | [README](sms-legal/README.md) • [Changelog](sms-legal/CHANGELOG.md) |
-| **`mcp-builder`** | Gerador, blindador de segurança e configurador universal de servidores Model Context Protocol (MCP) para PHP 8.4+, Python 3.12+ e Node.js 22+. Defesa contra prompt injection, análise estática de código (SAST), fail-safe com abertura automática de issues no GitHub e auto-update. | [`0.2.0-beta`](mcp-builder/VERSION) | Beta | [README](mcp-builder/README.md) • [Changelog](mcp-builder/CHANGELOG.md) |
+| **`mcp-builder`** | Gerador, blindador de segurança e configurador universal de servidores Model Context Protocol (MCP) para PHP 8.4+, Python 3.12+ e Node.js 22+. Defesa contra prompt injection, arquitetura Code Mode, análise estática de código (SAST), fail-safe com abertura automática de issues no GitHub e auto-update. | [`0.3.0-beta`](mcp-builder/VERSION) | Beta | [README](mcp-builder/README.md) • [Changelog](mcp-builder/CHANGELOG.md) |
+| **`code-mode-builder`** | Arquiteta, converte e avalia Code Mode (Chamada Programática de Ferramentas e Execução Sandboxed) para Agentes de IA como alternativa ou evolução do MCP tradicional. | [`0.1.0-beta`](code-mode-builder/VERSION) | Beta | [README](code-mode-builder/README.md) • [Changelog](code-mode-builder/CHANGELOG.md) |
 
 > ℹ️ *Nota: Todas as skills deste repositório encontram-se em estágio **Beta** e aderem ao [Versionamento Semântico (SemVer)](https://semver.org/spec/v2.0.0.html). Cada skill conta com seu arquivo individual `VERSION` e `CHANGELOG.md`. Veja também o histórico global no [**CHANGELOG.md**](CHANGELOG.md).*
 
@@ -436,6 +449,17 @@ node bootstrap-ux-ui-plus/scripts/audit_ux_bootstrap.mjs caminho/do/template.htm
 node bootstrap-ux-ui-plus/scripts/check_updates.mjs
 ```
 👉 *Consulte o guia completo:* [README do bootstrap-ux-ui-plus](bootstrap-ux-ui-plus/README.md)
+
+#### 9. Arquitetura Code Mode, Sandboxing e Conversão de Ferramentas (Code Mode Builder)
+Avalie, gere scaffolds e faça a transição de dezenas de ferramentas MCP para gateways leves de Code Mode em TypeScript ou Python:
+```bash
+# Verificar ambiente de execução para Code Mode (Deno, Node, Python, Docker):
+python code-mode-builder/scripts/check_codemode_env.py
+
+# Gerar scaffold de Gateway Code Mode pronto para produção com suíte de testes:
+python code-mode-builder/scripts/scaffold_code_mode.py --name "meu-servico-codemode" --runtime node --sandbox vm2
+```
+👉 *Consulte o guia completo:* [README do code-mode-builder](code-mode-builder/README.md)
 
 ---
 

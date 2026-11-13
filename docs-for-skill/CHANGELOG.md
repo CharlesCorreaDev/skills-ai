@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.4.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Defesa Contra Tool Poisoning (OWASP MCP Top 10) & Protocolo Agent Postmortem:**
+  - Inclusão do princípio de não-confiança em descrições de ferramentas e inputs de APIs externas para prevenir ataques de *Confused Deputy* e injeções de prompt indiretas.
+  - Implementação do protocolo de aprendizado contínuo com registro obrigatório de postmortems em falhas de compilação ou de lógica (`memory/learnings.md`).
+
+---
+
 ## [0.3.0-beta] - 2026-11-09
 
 ### Added / Adicionado
