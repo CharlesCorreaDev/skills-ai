@@ -11,4 +11,5 @@ master-of-foundryvtt/memory/
 __pycache__/
 *.pyc
 .vscode/
+skills-lock.json
 
