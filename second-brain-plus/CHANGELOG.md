@@ -25,5 +25,10 @@ O formato segue o padrão de [Keep a Changelog](https://keepachangelog.com/pt-BR
   - *Working Memory*, *Episodic Memory*, *Semantic Memory*, *Procedural Memory*, *Knowledge Graph*.
 - **Integração com Notion API oficial (v2022-06-28):**
   - Criação automática dos 4 bancos relacionais via API e sincronização bidirecional.
+- **Suporte Oficial ao Ecossistema Notion Developer:**
+  - Suporte ao **Notion CLI (`ntn` / https://ntn.dev)** para inspeção de páginas e queries de terminal.
+  - Modelos e guias para **Notion Workers (`@notionhq/workers`)** serverless edge triggers.
+  - Integração com **Notion MCP (Model Context Protocol)** e Notion Skills para tool calling de agentes de IA.
+  - Documentação completa da arquitetura de blocos (árvores de conteúdo) e APIs corporativas de Admin em `docs/notion_developer_suite.md`.
 - **Ecossistema Integrado:**
   - `claude-mem`, `graphify`, `caveman`, `headroom`, `context7`, `grill-me`, `karpathy-guidelines`, `impeccable`, `not-today-adhd`.

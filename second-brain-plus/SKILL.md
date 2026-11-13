@@ -149,6 +149,22 @@ Quando ativado, oculta listas longas, exibe **somente 1 micro-tarefa ativa de 5 
 
 ---
 
+### 🌐 Ecossistema Oficial Notion Developer & AI Agents
+
+A skill integra e documenta toda a infraestrutura oficial da Notion para agentes de IA:
+1. **Notion CLI (`ntn` / https://ntn.dev):**
+   - Instalação via `winget install Notion.ntn`, `npm install -g --allow-scripts=ntn ntn` ou `curl -fsSL https://ntn.dev | bash`.
+   - Comandos de alta performance: `ntn whoami`, `ntn pages get <id>`, `ntn databases query <id>`, `ntn workers deploy`.
+2. **Notion Workers (`@notionhq/workers`):**
+   - Execução serverless edge com gatilhos de criação de página (`onPageCreated`), alteração de status e cron jobs de consolidação.
+3. **Notion MCP (Model Context Protocol) & Notion Skills:**
+   - Protocolo universal para agentes de IA executarem buscas híbridas, leitura de blocos e gravação atômica em páginas.
+4. **Notion Agent & Data APIs:**
+   - Manipulação nativa da árvore de blocos (paragraphs, headings, toggles, callouts, tables) e APIs corporativas de Admin (Audit Logs e SCIM).
+   - Consulte o guia completo em [docs/notion_developer_suite.md](file:///e:/Projetos_Docker/skills-ai/second-brain-plus/docs/notion_developer_suite.md).
+
+---
+
 ### ⚙️ Execução via CLI
 
 ```bash

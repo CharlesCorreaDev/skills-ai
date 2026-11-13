@@ -100,14 +100,21 @@ def deploy_to_all_agents():
             if ok1:
                 print(f"  ✓ Skills instaladas em: {s_base.relative_to(home)}")
 
-        # 2. Target commands & workflows folders
+        # 2. Target commands & workflows folders across all possible IDE search paths
         command_targets = [
             agent_dir / "commands",
             agent_dir / "workflows",
-            agent_dir / "config" / "workflows"
+            agent_dir / "config" / "workflows",
+            agent_dir / "global_workflows",
+            agent_dir / "config" / "global_workflows",
         ]
         if agent_dir_name == ".gemini":
-            command_targets.append(agent_dir / "antigravity" / "commands")
+            command_targets.extend([
+                agent_dir / "antigravity" / "commands",
+                agent_dir / "antigravity" / "global_workflows",
+                agent_dir / "antigravity-ide" / "commands",
+                agent_dir / "antigravity-ide" / "global_workflows",
+            ])
 
         for c_base in command_targets:
             c_base.mkdir(parents=True, exist_ok=True)
@@ -119,9 +126,9 @@ def deploy_to_all_agents():
         print(f"  ✓ Comandos (/second-brain e /tdah) sincronizados em '{agent_dir_name}'.")
         success_count += 1
 
-    # Also deploy to local project .agents if in a repo
-    cwd_agents = Path.cwd() / ".agents"
-    if cwd_agents.exists() or Path.cwd().name == "skills-ai":
+    # Also deploy to local project .agents and .agent if in a repo
+    for agent_folder_name in [".agents", ".agent"]:
+        cwd_agents = Path.cwd() / agent_folder_name
         cwd_agents.mkdir(parents=True, exist_ok=True)
         make_junction_or_copy(source_skill, cwd_agents / "skills" / "second-brain-plus")
         make_junction_or_copy(source_skill, cwd_agents / "skills" / "second-brain")
@@ -131,7 +138,17 @@ def deploy_to_all_agents():
         for wf in source_workflows.glob("*.md"):
             (cwd_agents / "commands" / wf.name).write_text(wf.read_text(encoding="utf-8"), encoding="utf-8")
             (cwd_agents / "workflows" / wf.name).write_text(wf.read_text(encoding="utf-8"), encoding="utf-8")
-        print("  ✓ Sincronizado no workspace local (.agents).")
+        print(f"  ✓ Sincronizado no workspace local ({agent_folder_name}).")
+
+    # If inside a workspace subfolder (e.g. second-brain-plus itself is opened in IDE), deploy there too
+    if (source_skill / ".agents").exists() or True:
+        for sub in [source_skill / ".agents", source_skill / ".agent"]:
+            sub.mkdir(parents=True, exist_ok=True)
+            (sub / "commands").mkdir(parents=True, exist_ok=True)
+            (sub / "workflows").mkdir(parents=True, exist_ok=True)
+            for wf in source_workflows.glob("*.md"):
+                (sub / "commands" / wf.name).write_text(wf.read_text(encoding="utf-8"), encoding="utf-8")
+                (sub / "workflows" / wf.name).write_text(wf.read_text(encoding="utf-8"), encoding="utf-8")
 
     print("\n" + "=" * 70)
     print(f"✅ SUCESSO! Distribuído para {success_count} agentes de IA instalados.")

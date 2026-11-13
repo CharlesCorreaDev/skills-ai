@@ -1,0 +1,12 @@
+{
+  "name": "second-brain-notion-worker",
+  "version": "0.1.0",
+  "description": "Serverless Notion Worker for Second Brain Plus autonomous memory synchronization",
+  "main": "worker.ts",
+  "scripts": {
+    "deploy": "ntn workers deploy"
+  },
+  "dependencies": {
+    "@notionhq/workers": "^0.1.0"
+  }
+}

@@ -58,6 +58,7 @@ O **Second Brain Plus** resolve esses gargalos integrando:
 - **Alinhamento Pré-Decisão:** Uso do `grill-me` para inquérito dialético antes de assumir premissas e `karpathy-guidelines` para rigor e minimalismo.
 - **Otimização de Contexto:** `headroom` para compressão de JSON e tool outputs locais e `caveman` para comunicação concisa sem perda semântica.
 - **Documentação em Tempo Real:** Ingestão de bibliotecas atualizadas via Upstash `context7`.
+- **Ecossistema Oficial Notion Developer:** Suporte integrado a **Notion CLI (`ntn`)**, **Notion Workers (`@notionhq/workers`)**, **Notion MCP**, manipulação de árvores de blocos e APIs corporativas de Admin. *(Consulte [docs/notion_developer_suite.md](docs/notion_developer_suite.md))*.
 - **Ergonomia Neurodivergente:** Modo de baixa carga cognitiva via `not-today-adhd` (Orbit OS / Brain Reset OS).
 - **Design Craft:** Eliminação de "AI slop" visual com `impeccable`.
 
