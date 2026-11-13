@@ -38,6 +38,7 @@ class TaskScheduler:
         self.tasks_dir.mkdir(parents=True, exist_ok=True)
         self.api_key = os.environ.get("NOTION_API_KEY")
         self.db_projects = os.environ.get("NOTION_DB_PROJECTS")
+        self.db_tasks = os.environ.get("NOTION_DB_TASKS") or self.db_projects
 
     def create_task(
         self,
@@ -69,7 +70,7 @@ class TaskScheduler:
         frontmatter = {
             "id": task_id,
             "title": title,
-            "type": "project",
+            "type": "task",
             "task_type": task_type,
             "status": "active" if scheduled_date else "backlog",
             "priority": priority,
@@ -82,7 +83,7 @@ class TaskScheduler:
         md_content = f"""---
 id: {task_id}
 title: "{title}"
-type: project
+type: task
 task_type: {task_type}
 status: {"active" if scheduled_date else "backlog"}
 priority: {priority}

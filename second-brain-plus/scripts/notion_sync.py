@@ -341,6 +341,129 @@ def markdown_to_notion_blocks(md_text: str) -> list:
 
     return blocks[:100]
 
+_DB_SCHEMA_CACHE = {}
+
+def get_db_schema(db_id: str, api_key: str) -> dict:
+    """
+    EN: Fetch and cache database schema to support dynamic field mapping.
+    PT-BR: Busca e armazena em cache o schema do banco para suportar mapeamento dinâmico.
+    """
+    if db_id in _DB_SCHEMA_CACHE:
+        return _DB_SCHEMA_CACHE[db_id]
+    res = notion_request(f"/databases/{db_id}", api_key, method="GET")
+    if not res.get("error"):
+        _DB_SCHEMA_CACHE[db_id] = res.get("properties", {})
+        return _DB_SCHEMA_CACHE[db_id]
+    return {}
+
+def build_dynamic_properties(db_id: str, note_type: str, title: str, fm: dict, body: str, checksum: str, rel_path: str, api_key: str) -> dict:
+    """
+    EN: Dynamically build properties mapping matching the exact target Notion database schema.
+    PT-BR: Constrói dinamicamente o mapeamento de propriedades de acordo com o schema exato do banco do Notion.
+    """
+    schema = get_db_schema(db_id, api_key)
+    props = {}
+
+    # 1. Title property (Name, Title, SessionTitle, ResourceName)
+    title_key = None
+    for k, v in schema.items():
+        if v.get("type") == "title":
+            title_key = k
+            break
+    if not title_key:
+        title_key = "Name"
+    props[title_key] = {"title": [{"text": {"content": str(title)}}]}
+
+    # 2. Status property (status or select)
+    status_val = fm.get("status", "in_progress" if note_type == "project" else "active")
+    for k, v in schema.items():
+        if k.strip().lower() == "status":
+            p_type = v.get("type")
+            if p_type == "status":
+                options = [o.get("name") for o in v.get("status", {}).get("options", [])]
+                if status_val == "completed" and "Completed" in options:
+                    props[k] = {"status": {"name": "Completed"}}
+                elif status_val in ["active", "in_progress", "in progress"] and "In progress" in options:
+                    props[k] = {"status": {"name": "In progress"}}
+                elif "To-Do" in options:
+                    props[k] = {"status": {"name": "To-Do"}}
+                elif "Planning" in options:
+                    props[k] = {"status": {"name": "Planning"}}
+                elif "Save" in options:
+                    props[k] = {"status": {"name": "Save"}}
+                elif "Reviewed" in options:
+                    props[k] = {"status": {"name": "Reviewed"}}
+                elif options:
+                    props[k] = {"status": {"name": options[0]}}
+            elif p_type == "select":
+                options = [o.get("name") for o in v.get("select", {}).get("options", [])]
+                chosen = options[0] if options else "Active"
+                for o in options:
+                    if status_val.lower() in o.lower():
+                        chosen = o
+                        break
+                props[k] = {"select": {"name": chosen}}
+            break
+
+    # 3. Priority property (select)
+    priority_val = fm.get("priority", "P2 - Medium")
+    for k, v in schema.items():
+        if "priority" in k.lower():
+            if v.get("type") == "select":
+                options = [o.get("name") for o in v.get("select", {}).get("options", [])]
+                if ("p0" in priority_val.lower() or "p1" in priority_val.lower() or "high" in priority_val.lower()) and any("high" in o.lower() for o in options):
+                    match_opt = next(o for o in options if "high" in o.lower())
+                    props[k] = {"select": {"name": match_opt}}
+                elif any("medium" in o.lower() for o in options):
+                    match_opt = next(o for o in options if "medium" in o.lower())
+                    props[k] = {"select": {"name": match_opt}}
+                elif options:
+                    props[k] = {"select": {"name": options[0]}}
+            break
+
+    # 4. Due Date / Start Date
+    date_val = fm.get("scheduled_date") or fm.get("date") or fm.get("due_date")
+    for k, v in schema.items():
+        if v.get("type") == "date" and ("date" in k.lower() or "due" in k.lower() or "timeline" in k.lower()):
+            if date_val:
+                clean_date = str(date_val).split(" ")[0].split("T")[0]
+                props[k] = {"date": {"start": clean_date}}
+            break
+
+    # 5. Completed checkbox
+    for k, v in schema.items():
+        if v.get("type") == "checkbox" and ("complete" in k.lower() or "done" in k.lower()):
+            props[k] = {"checkbox": bool(status_val == "completed")}
+            break
+
+    # 6. Tags (multi_select)
+    for k, v in schema.items():
+        if v.get("type") == "multi_select" and "tag" in k.lower():
+            options = [o.get("name") for o in v.get("multi_select", {}).get("options", [])]
+            default_tag = "Project" if "Project" in options else (options[0] if options else "General")
+            props[k] = {"multi_select": [{"name": default_tag}]}
+            break
+
+    # 7. Type (select)
+    for k, v in schema.items():
+        if v.get("type") == "select" and k.strip().lower() == "type":
+            options = [o.get("name") for o in v.get("select", {}).get("options", [])]
+            match_t = next((o for o in options if "doc" in o.lower() or "article" in o.lower()), options[0] if options else "Article")
+            props[k] = {"select": {"name": match_t}}
+            break
+
+    # 8. Extra metadata fields if explicitly present in database schema
+    for k, v in schema.items():
+        k_clean = k.strip()
+        if k_clean == "LocalPath" and v.get("type") == "rich_text":
+            props[k] = {"rich_text": [{"text": {"content": rel_path}}]}
+        elif k_clean == "LastSyncHash" and v.get("type") == "rich_text":
+            props[k] = {"rich_text": [{"text": {"content": checksum}}]}
+        elif k_clean == "FocusMode_ADHD" and v.get("type") == "checkbox":
+            props[k] = {"checkbox": bool(fm.get("adhd_mode_enabled", False))}
+
+    return props
+
 def push_note_to_notion(file_path: Path, api_key: str) -> bool:
     """
     EN: Push a local markdown note to its corresponding Notion database.
@@ -354,10 +477,12 @@ def push_note_to_notion(file_path: Path, api_key: str) -> bool:
     checksum = calculate_checksum(file_path)
 
     # Infer type from folder structure if missing in frontmatter
+    parent_name = file_path.parent.name.lower()
+    grandparent_name = file_path.parent.parent.name.lower()
     if not note_type:
-        parent_name = file_path.parent.name.lower()
-        grandparent_name = file_path.parent.parent.name.lower()
-        if "project" in parent_name or "project" in grandparent_name:
+        if "tasks" in parent_name:
+            note_type = "task"
+        elif "project" in parent_name or "project" in grandparent_name:
             note_type = "project"
         elif "adr" in parent_name or "adr" in grandparent_name:
             note_type = "adr"
@@ -367,11 +492,15 @@ def push_note_to_notion(file_path: Path, api_key: str) -> bool:
             note_type = "resource"
         else:
             note_type = "resource"
+    elif "tasks" in parent_name and note_type in ["project", ""]:
+        note_type = "task"
 
     db_map = {
         "project": os.environ.get("NOTION_DB_PROJECTS"),
-        "adr": os.environ.get("NOTION_DB_ADRS"),
-        "session-log": os.environ.get("NOTION_DB_MEMORIES"),
+        "task": os.environ.get("NOTION_DB_TASKS") or os.environ.get("NOTION_DB_PROJECTS"),
+        "adr": os.environ.get("NOTION_DB_ADRS") or os.environ.get("NOTION_DB_NOTES"),
+        "session-log": os.environ.get("NOTION_DB_MEMORIES") or os.environ.get("NOTION_DB_NOTES"),
+        "note": os.environ.get("NOTION_DB_NOTES"),
         "resource": os.environ.get("NOTION_DB_RESOURCES"),
         "adhd-focus": os.environ.get("NOTION_DB_PROJECTS")
     }
@@ -380,40 +509,16 @@ def push_note_to_notion(file_path: Path, api_key: str) -> bool:
     if not target_db:
         return False
 
-    # Build properties payload based on database schema
-    properties = {}
-    if note_type in ["project", "adhd-focus"]:
-        properties = {
-            "Name": {"title": [{"text": {"content": str(title)}}]},
-            "Status": {"select": {"name": "Active / Sprint" if fm.get("status") == "active" else "Backlog"}},
-            "Priority": {"select": {"name": "P1 - High" if fm.get("priority") == "P1" else "P2 - Medium"}},
-            "FocusMode_ADHD": {"checkbox": bool(fm.get("adhd_mode_enabled", False))},
-            "LastSyncHash": {"rich_text": [{"text": {"content": checksum}}]},
-            "LocalPath": {"rich_text": [{"text": {"content": rel_path}}]}
-        }
-    elif note_type == "adr":
-        properties = {
-            "Title": {"title": [{"text": {"content": str(title)}}]},
-            "ID": {"rich_text": [{"text": {"content": str(fm.get("id", "ADR-001"))}}]},
-            "Status": {"select": {"name": "Accepted" if fm.get("status") == "accepted" else "Proposed"}},
-            "DecidedBy": {"rich_text": [{"text": {"content": str(fm.get("decided_by", "AI & Dev"))}}]},
-            "Rationale": {"rich_text": [{"text": {"content": body[:200].strip()}}]},
-            "LocalPath": {"rich_text": [{"text": {"content": rel_path}}]}
-        }
-    elif note_type == "session-log":
-        properties = {
-            "SessionTitle": {"title": [{"text": {"content": str(title)}}]},
-            "Agent": {"select": {"name": "Antigravity"}},
-            "Summary": {"rich_text": [{"text": {"content": body[:200].strip()}}]},
-            "NeurodivergentMode": {"checkbox": bool(fm.get("neurodivergent_mode", False))},
-            "LocalPath": {"rich_text": [{"text": {"content": rel_path}}]}
-        }
-    elif note_type == "resource":
-        properties = {
-            "ResourceName": {"title": [{"text": {"content": str(title)}}]},
-            "Category": {"select": {"name": "Architecture"}},
-            "LocalPath": {"rich_text": [{"text": {"content": rel_path}}]}
-        }
+    properties = build_dynamic_properties(
+        db_id=target_db,
+        note_type=note_type,
+        title=title,
+        fm=fm,
+        body=body,
+        checksum=checksum,
+        rel_path=rel_path,
+        api_key=api_key
+    )
 
     # Convert markdown body into Notion block children
     children_blocks = markdown_to_notion_blocks(body)
