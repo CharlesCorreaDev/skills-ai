@@ -45,3 +45,4 @@ Este guia estabelece o protocolo técnico e prático para realizar **engenharia 
 4. **Fase 4 — Blindagem de Segurança & Anti-Alucinação:**
    - Execute a auditoria em 6 fases com `cloudflare/security-audit-skill`.
    - Garanta que regras, dados e constantes estejam ancorados na ontologia real com `NVIDIA/auto-ontology`.
+
