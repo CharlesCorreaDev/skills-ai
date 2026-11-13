@@ -24,7 +24,7 @@ When AI agents switch sessions or reach context window boundaries, they forget p
 1. **Local Markdown Vault (`.second-brain/`):** Git-versioned, zero-latency, and offline-ready structured files following Tiago Forte's P.A.R.A. 2.0 (Projects, Areas, Resources, Archives).
 2. **Notion Central Hub:** Collaborative, visual, and relational cloud dashboard for human review, Kanban tracking, and structured queries via Notion API.
 3. **Multi-Platform Remote Git Repositories (GitHub / GitLab):** Cryptographic, versioned, immutable code & decision backup with private/public visibility control.
-4. **Canonical Default Template:** [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026) adopted as the official visual workspace layout.
+4. **Canonical Default Template & Blueprint:** [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026) adopted and tailored for Software Engineering & AI Agents, versioned in `templates/notion/second_brain_blueprint.json` with 7 Master Databases (Projects, Tasks, Notes/ADRs, Resources, Dev Areas, Daily Dev Routine, AI Session Logs).
 
 ---
 
@@ -34,7 +34,7 @@ The skill responds to human-friendly slash commands across IDEs and terminals:
 
 | Slash Command | Execution & Purpose |
 | :--- | :--- |
-| **`/second-brain install`** | Runs interactive setup wizard, scaffolds PARA vault, and creates the 4 Notion relational databases via official API. |
+| **`/second-brain install`** | Runs interactive setup wizard, scaffolds PARA vault, deploys the 2026 Dev & AI blueprint, and creates the 7 Notion relational databases via official API. |
 | **`/second-brain save memory <fact>`** | Instantly saves rules, learnings, or facts into persistent memory & triggers immediate auto-sync. |
 | **`/second-brain adr <title>`** | Formally registers an immutable Architecture Decision Record (anti-hallucination guardrail). |
 | **`/second-brain sync`** | Triggers immediate bidirectional synchronization across Notion API, claude-mem, and graphify. |
@@ -193,7 +193,7 @@ O **Second Brain Plus** estabelece uma infraestrutura sincronizada de camada tri
 1. **Cofre Local em Markdown (`.second-brain/`):** Arquivos estruturados versionados no Git, com latência zero e leitura imediata offline, organizados segundo a metodologia P.A.R.A. 2.0 de Tiago Forte (Projetos, Áreas, Recursos, Arquivos).
 2. **Hub Central no Notion:** Dashboard interativo com bancos de dados relacionais para acompanhamento humano em Kanban, tabelas e consultas estruturadas via Notion API.
 3. **Repositórios Remotos Git Multi-Plataforma (GitHub / GitLab):** Backup criptográfico, versionado e imutável do código e decisões com controle de visibilidade privada ou pública.
-4. **Template Padrão Canônico:** [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026) adotado como layout visual oficial no Notion.
+4. **Template Padrão Canônico & Blueprint:** [Second Brain All-in-One Productivity System 2026](https://www.notion.com/pt/templates/second-brain-all-in-one-productivity-system-2026) adotado e adaptado para Engenharia de Software e Agentes de IA, versionado em `templates/notion/second_brain_blueprint.json` com 7 Bancos Mestres (Projetos, Tarefas, Notas/ADRs, Recursos, Áreas Dev, Rotina Operacional Dev, Diário de Sessões de IA).
 
 ---
 
@@ -203,7 +203,7 @@ A skill responde a comandos de barra amigáveis no chat da IDE e no terminal:
 
 | Comando de Barra | Ação & Papel no Sistema |
 | :--- | :--- |
-| **`/second-brain install`** | Executa o assistente guiado de instalação, cria as pastas PARA e os 4 bancos relacionais no Notion via API. |
+| **`/second-brain install`** | Executa o assistente guiado de instalação, cria as pastas PARA, aplica o blueprint Dev & IA 2026 e constrói os 7 bancos relacionais mestres no Notion via API. |
 | **`/second-brain save memory <fato>`** | Salva instantaneamente qualquer fato, regra ou aprendizado na memória persistente e auto-sincroniza. |
 | **`/second-brain adr <título>`** | Registra formalmente uma Decisão de Arquitetura (ADR) inviolável contra alucinações. |
 | **`/second-brain sync`** | Dispara a sincronização bidirecional imediata entre cofre local, Notion API, claude-mem e graphify. |

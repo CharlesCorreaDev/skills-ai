@@ -85,7 +85,7 @@ Second Brain Plus introduces dedicated slash commands natively recognized across
 
 | Slash Command | What It Does | Example Use Case |
 | :--- | :--- | :--- |
-| **`/second-brain install`** | Interactive setup wizard; scaffolds `.second-brain/` PARA vault and builds all 4 Notion relational databases via official API. | Initializing memory for a new repo. |
+| **`/second-brain install`** | Interactive setup wizard; scaffolds `.second-brain/` PARA vault, applies the 2026 Dev & AI blueprint, and builds all 7 Notion relational master databases via official API. | Initializing memory for a new repo. |
 | **`/second-brain save memory <fact>`** | Instantly saves an atomic technical rule, port, or learning into persistent memory and auto-syncs. | `/second-brain save memory "Redis runs on port 6380 in docker-compose.prod"` |
 | **`/second-brain adr <title>`** | Interactively registers an immutable Architecture Decision Record (ADR) with rationale and consequences. | `/second-brain adr "Migrate Auth to Passkeys"` |
 | **`/second-brain sync`** | Forces an immediate bidirectional synchronization between local vault, Notion API, claude-mem, and graphify. | Running manual catch-up after offline git pull. |
@@ -158,9 +158,10 @@ second-brain-plus/
 ├── VERSION                               # Current release (0.1.0-beta)
 ├── docs/                                 # In-depth architectural references
 │   ├── architecture.md                   # 5-Layer memory specification & comparison
-│   ├── notion_schemas.md                 # 4 Relational Notion databases schema
+│   ├── notion_schemas.md                 # 7 Relational Notion master databases schema
 │   ├── notion_developer_suite.md         # Notion CLI, Workers, MCP & Block tree guide
 │   ├── git_remote_sync_guide.md          # GitHub (gh) & GitLab (glab) remote sync guide
+│   ├── task_scheduling_and_execution.md  # Autonomous task scheduler & Orbit OS micro-steps
 │   ├── recommended_notion_templates.md   # Canonical template gallery (Tiago Forte 2026)
 │   ├── adhd_neurodivergent_guide.md      # Orbit OS & Brain Reset OS principles
 │   ├── grill_me_integration.md           # "Grill-then-Persist" ADR workflow
@@ -170,16 +171,19 @@ second-brain-plus/
 ├── scripts/                              # Executable Python & CLI automation
 │   ├── cli.py                            # Unified CLI for slash commands (/second-brain)
 │   ├── auto_sync.py                      # Continuous watcher & one-shot sync engine
+│   ├── task_scheduler.py                 # Autonomous task scheduling & execution engine
 │   ├── git_remote_sync.py                # GitHub CLI & GitLab CLI multi-platform engine
-│   ├── notion_sync.py                    # Zero-dependency Notion REST v2022-06-28 client
+│   ├── notion_sync.py                    # Zero-dependency Notion REST v2022-06-28 dynamic client
+│   ├── build_notion_dashboard.py         # Canonical 2026 Dev & AI layout builder
+│   ├── export_notion_blueprint.py        # Serializes live Notion dashboard into blueprint JSON
 │   ├── memory_bridge.py                  # claude-mem + graphify + caveman bridge
-│   ├── setup_and_sync.py                 # Interactive wizard & database builder
+│   ├── setup_and_sync.py                 # Interactive wizard, blueprint deployer & sync
 │   ├── verify_brain.py                   # Integrity auditor for vaults and frontmatter
 │   └── distribute_to_all_agents.py       # Universal deployer for all 9 AI agent runtimes
-├── templates/                            # Ready-to-use schemas and markdown templates
+├── templates/                            # Ready-to-use schemas, blueprints and templates
 │   ├── github/second-brain-sync.yml      # Automated GitHub Actions workflow template
 │   ├── gitlab/.gitlab-ci.yml             # GitLab CI pipeline template
-│   ├── notion/databases_schema.json      # Full JSON schemas for the 4 Notion databases
+│   ├── notion/second_brain_blueprint.json# Canonical 2026 Dev & AI Layout Blueprint (7 Master DBs)
 │   ├── notion-workers/sync-worker/       # TypeScript template for serverless Notion Workers
 │   └── markdown/                         # Structured markdown notes (Project, ADR, Session, Orbit OS)
 └── workflows/                            # Workflow definitions for Antigravity & AI agents
@@ -187,6 +191,28 @@ second-brain-plus/
     ├── second-brain-plus.md
     └── tdah.md
 ```
+
+---
+
+### 🏗️ Canonical 2026 Dev & AI Layout Blueprint (Cross-Project Ready)
+
+Second Brain Plus ships with a **locked, official 2026 Software Engineering & AI Agent Layout Blueprint** (`templates/notion/second_brain_blueprint.json`):
+
+1. **7 Master Databases (Encapsulated in `Backend`):**
+   - 📁 **`Project`:** Active sprints, deliverables, and progress rollups.
+   - ⚡ **`Tasks Manager`:** Scheduled tasks decomposed into 4 atomic micro-steps (5-10 min each).
+   - 📝 **`Notes`:** Persistent Architecture Decision Records (ADRs) and episodic AI memories.
+   - 📚 **`Resources`:** Technical references, API documentation, whitepapers, and runbooks.
+   - 🌐 **`Areas`:** 5 core software engineering domains (`Engenharia de Software & Skills IA`, `Foundry VTT & Gravewright`, `DevOps & Docker`, `Arquitetura & Clean Code`, `Gestão Cognitiva & Foco TDAH`).
+   - 🔄 **`Rotina Operacional Dev & IA`:** Daily operational checklist (`Git Sync`, `Auditoria 19/19`, `Micro-passos Orbit OS`, `Revisão de ADRs`, `Backup Remoto`).
+   - 📖 **`Sessões & Diário de Bordo de IA`:** Persistent session logs tracking AI agent runs (`Antigravity`, `Claude Code`, `Hermes`, `Dev Charles`).
+
+2. **Zero-Friction Cross-Project Deployment:**
+   - **Deploy in New Project:** When installing in any new repository, simply set `NOTION_PARENT_PAGE_ID` in `.env` and run:
+     ```bash
+     python second-brain-plus/scripts/setup_and_sync.py
+     ```
+   - **Auto-Population:** The engine instantiates the exact visual layout from the blueprint and immediately scans the new repository's `.second-brain/`, populating all databases with that project's specific memories, tasks, and ADRs.
 
 ---
 
@@ -254,7 +280,7 @@ O Second Brain Plus estabelece uma **Única Fonte da Verdade (SSOT)** sincroniza
 
 | Comando | O Que Faz na Prática |
 | :--- | :--- |
-| **`/second-brain install`** | Executa o assistente de instalação, cria o cofre local P.A.R.A. e constrói os 4 bancos relacionais no Notion via API. |
+| **`/second-brain install`** | Executa o assistente de instalação, cria o cofre local P.A.R.A., aplica o blueprint Dev & IA 2026 e constrói os 7 bancos relacionais mestres no Notion via API. |
 | **`/second-brain save memory <texto>`** | Grava instantaneamente uma verdade técnica ou regra no cofre persistente e sincroniza com a nuvem. |
 | **`/second-brain adr <título>`** | Registra formalmente uma Decisão de Arquitetura (ADR) com justificativa e consequências, combatendo alucinações. |
 | **`/second-brain sync`** | Dispara sincronização bidirecional forçada entre Notion, cofre local, claude-mem e grafo de conhecimento. |
@@ -287,6 +313,28 @@ O Second Brain Plus estabelece uma **Única Fonte da Verdade (SSOT)** sincroniza
 - **Notion MCP (Model Context Protocol):** Conexão universal de ferramentas para os agentes consultarem o Notion em tempo de execução.
 - **Manipulação de Blocos:** Edição e leitura direta da árvore de blocos (paragraphs, callouts, toggles, headings, code, tables).
 - **Notion Admin API:** Logs corporativos de auditoria e sincronização de identidade (SCIM).
+
+---
+
+### 🏗️ Blueprint Canônico Padrão 2026 para Dev & IA (Pronto para Novos Projetos)
+
+O Second Brain Plus inclui o **Blueprint Oficial de Engenharia de Software & Agentes de IA 2026** (`templates/notion/second_brain_blueprint.json`):
+
+1. **7 Bancos de Dados Mestres (Alojados em `Backend`):**
+   - 📁 **`Project`:** Projetos ativos, sprints, entregáveis e rollups de progresso.
+   - ⚡ **`Tasks Manager`:** Tarefas agendadas e decompostas em 4 micro-passos atômicos (5-10 min cada).
+   - 📝 **`Notes`:** Decisões Arquiteturais imutáveis (ADRs) e memórias episódicas de agentes de IA.
+   - 📚 **`Resources`:** Referências técnicas, documentações de APIs e manuais de runbook.
+   - 🌐 **`Areas`:** 5 áreas centrais de engenharia (`Engenharia de Software & Skills IA`, `Foundry VTT & Gravewright`, `DevOps & Docker`, `Arquitetura & Clean Code`, `Gestão Cognitiva & Foco TDAH`).
+   - 🔄 **`Rotina Operacional Dev & IA`:** Checklist operacional diário (`Git Sync`, `Auditoria 19/19`, `Micro-passos Orbit OS`, `Revisão de ADRs`, `Backup Remoto`).
+   - 📖 **`Sessões & Diário de Bordo de IA`:** Histórico persistente de execuções dos agentes (`Antigravity`, `Claude Code`, `Hermes`, `Dev Charles`).
+
+2. **Provisionamento e Preenchimento em Novos Projetos:**
+   - Ao iniciar qualquer novo repositório, basta definir `NOTION_PARENT_PAGE_ID` no `.env` e rodar:
+     ```bash
+     python second-brain-plus/scripts/setup_and_sync.py
+     ```
+   - O motor aplica automaticamente o layout padrão oficial idêntico e faz o auto-scout das notas, tarefas e memórias locais daquele novo projeto, preenchendo todos os cartões e tabelas na hora.
 
 ---
 
