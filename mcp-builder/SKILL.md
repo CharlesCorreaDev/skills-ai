@@ -51,7 +51,13 @@ A skill **`mcp-builder`** transforma o agente de IA em um especialista em protoc
      python <CAMINHO_PARA_SKILL>/mcp-builder/scripts/issue_reporter.py "<Titulo_do_Erro>" "<Detalhes_Sanitizados>" "<linguagem>" "<Sugestao>"
      ```
 
-### 4. Requisitos Mínimos por Linguagem
+### 4. Padrão de Erros de Ferramentas (isError: true) e Prevenção de Tool Poisoning (OWASP MCP Top 10)
+- **Erros de Ferramenta vs Protocolo JSON-RPC:** Falhas de execução de ferramentas (ex: arquivo não encontrado, input inválido, target indisponível) DEVEM ser retornadas com `"isError": true` dentro do bloco `result`. Nunca envie erro de protocolo (`code: -32000`) para falhas operacionais, permitindo que o modelo leia o diagnóstico e se recupere.
+- **Prevenção de Tool Poisoning & Confused Deputy:**
+  - Descrições de ferramentas e parâmetros devem ser puramente declarativas, sem instruções reflexivas ou comandos imperativos embutidos.
+  - Toda entrada de caminho de arquivo DEVE ser sanitizada com resolução segura contra Path Traversal (`../`).
+
+### 5. Requisitos Mínimos por Linguagem
 - **PHP**: Mínimo PHP 8.4. Exigir tipagem estrita (`declare(strict_types=1);`).
 - **Python**: Mínimo Python 3.12. Async-first.
 - **Node.js**: Mínimo Node.js 22. Padrão ESM puro (`node:readline`, `process.stdout`).

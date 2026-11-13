@@ -7,7 +7,13 @@ Este guia estabelece o protocolo técnico e prático para realizar **engenharia 
 
 ---
 
-## 🛠️ Ferramental de Engenharia Reversa (REA)
+## 🛠️ Ferramental de Engenharia Reversa (REA) & Web Runtime Reversing
+- **REA CLI & MCP:** Utilize ferramentas REA (`rea-agents`, Ghidra, Cutter) para inspecionar binários, scripts e pacotes de terceiros.
+- **Estratégia para Web SPAs e Bundles ("Fight the Delivery, Not the Runtime"):**
+  - Quando bundles JS forem minificados ou tiverem anti-debugging, intercepte no trânsito (`mitmproxy`) ou injete hooks pré-bootstrap via Playwright (`addInitScript`).
+  - Utilize desobfuscação por AST (`webcrack`, `ast-grep`) para recuperar a árvore sintática antes de analisar lógicas complexas.
+- **Inspecione Repositórios Oficiais:** Clone temporariamente o código-fonte original (`git clone --depth 1 <url>`) para inspecionar schemas de dados, hooks de eventos e lógica de cálculo.
+- **Porte Ético Obrigatório:** Aplique rigorosamente as diretrizes em [`docs/pt-BR/ethical-module-porting.md`](pt-BR/ethical-module-porting.md). Extraia a mecânica e a lógica funcional; **NÃO copie textos proprietários, imagens protegidas ou marcas registradas**.
 - **REA CLI & MCP:** Utilize ferramentas REA para inspecionar binários, scripts e pacotes de terceiros.
 - **Inspecione Repositórios Oficiais:** Clone temporariamente o código-fonte original (`git clone --depth 1 <url>`) para inspecionar schemas de dados, hooks de eventos e lógica de cálculo.
 - **Porte Ético Obrigatório:** Aplique rigorosamente as diretrizes em [`docs/pt-BR/ethical-module-porting.md`](pt-BR/ethical-module-porting.md). Extraia a mecânica e a lógica funcional; **NÃO copie textos proprietários, imagens protegidas ou marcas registradas**.

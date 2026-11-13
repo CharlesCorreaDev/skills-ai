@@ -93,3 +93,4 @@ for s in skills:
     if not issues and not warnings:
         print(f"   ✅ All frontmatter, SemVer and structural checks passed cleanly.")
     print()
+
