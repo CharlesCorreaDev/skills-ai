@@ -7,6 +7,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.31.0] - 2026-11-13
+
+### Changed / Alterado
+- **Atualização Semântica de Versões (SemVer Bumps) e Changelogs em 8 Skills:**
+  - `bootstrap-ux-ui-plus` bumped de `0.6.0-beta` para `0.7.0-beta` (integração mandatória de `modern-web-guidance legacy-scan` e WebMCP).
+  - `master-of-foundryvtt` bumped de `0.21.0-beta` para `0.22.0-beta` (auditoria automatizada web e WebMCP para interfaces Canvas e ApplicationV2).
+  - `master-of-gravewright` bumped de `0.4.0-beta` para `0.5.0-beta` (auditoria de runtime ES Module e WebMCP para superfícies reativas e formulários).
+  - `code-mode-builder` bumped de `0.1.0-beta` para `0.2.0-beta` (padrões de WebMCP no navegador acoplados a sandboxes Code Mode).
+  - `mcp-builder` bumped de `0.3.0-beta` para `0.4.0-beta` (arquitetura híbrida MCP + WebMCP com `agentic-forms` e `agentic-javascript-tools`).
+  - `php-dev-expert` bumped de `0.9.0-beta` para `0.10.0-beta` (varredura de views e templates Blade/Twig legados via `legacy-scan`).
+  - `python-dev-expert` bumped de `0.4.0-beta` para `0.5.0-beta` (varredura de templates Django/Jinja2 e WebMCP).
+  - `book-formatter` bumped de `0.17.0-beta` para `0.18.0-beta` (tipografia web moderna, escala fluida e validação de layouts HTML exportados).
+- **Sincronização Completa de Tabelas do README Raiz e Distribuição Global:**
+  - Atualizadas as tabelas de versões do ecossistema em inglês e português no `README.md` raiz.
+  - Sincronização dos pacotes atualizados para os 7 diretórios globais de agentes de IA (`~/.gemini/config/skills/`, `~/.claude/skills/`, `~/.codex/skills/`, `~/.cursor/skills/`, `~/.copilot/skills/`, `~/.opencode/skills/`, `~/.agents/skills/`) e para o repositório de desenvolvimento do Gravewright.
+
+---
+
 ## [1.30.0] - 2026-11-13
 
 ### Added / Adicionado

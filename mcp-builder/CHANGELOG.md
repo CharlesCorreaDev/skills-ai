@@ -6,6 +6,15 @@ O formato é baseado no [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.
 
 ---
 
+## [0.4.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Integração com `GoogleChrome/modern-web-guidance` e WebMCP:**
+  - Diretrizes para arquitetura híbrida de servidores MCP conectando-se a endpoints WebMCP (`agentic-forms` e `agentic-javascript-tools`).
+  - Auditoria automatizada de adaptadores e bridges web via `modern-web-guidance legacy-scan <path>`.
+
+---
+
 ## [0.3.0-beta] - 2026-11-13
 
 ### Added / Adicionado

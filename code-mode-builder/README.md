@@ -2,7 +2,7 @@
 
 > **Architect, Builder & Runtime Orchestrator for Programmatic Tool Calling & Code-as-Action in AI Agents**  
 > *Arquiteto, Gerador e Orquestrador de Code Mode (Chamada Programática de Ferramentas) para Agentes de IA por GM Charles Corrêa*  
-> **Status: Beta (v0.1.0-beta)**
+> **Status: Beta (v0.2.0-beta)**
 
 ---
 
@@ -38,7 +38,7 @@ O Code Mode substitui o padrão tradicional de despejar dezenas de ferramentas J
 code-mode-builder/
 ├── SKILL.md                          # Diretrizes mestras e padrões de arquitetura
 ├── README.md                         # Visão geral completa bilíngue (EN / PT-BR)
-├── VERSION                           # Versão semântica atual (0.1.0-beta)
+├── VERSION                           # Versão semântica atual (0.2.0-beta)
 ├── CHANGELOG.md                      # Histórico de alterações
 ├── scripts/
 │   ├── check_codemode_env.py         # Diagnóstico de runtimes (Node, Python, uv)

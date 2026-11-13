@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.22.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Integração Mandatória com `GoogleChrome/modern-web-guidance` e WebMCP:**
+  - Auditoria automatizada de código web em módulos e sistemas Foundry via `modern-web-guidance legacy-scan <path>`.
+  - Erradicação de práticas web obsoletas e adoção de padrões de acessibilidade e WebMCP (`agentic-forms` e `agentic-javascript-tools`) para interação de agentes em interfaces Canvas e `ApplicationV2`.
+
+---
+
 ## [0.21.0-beta] - 2026-11-13
 
 ### Added / Adicionado

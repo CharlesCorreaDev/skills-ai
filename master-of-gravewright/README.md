@@ -2,7 +2,7 @@
 
 > **Reverse Engineering, Systems, Modules, Compendiums, Architecture & Toolchain for Gravewright Virtual Tabletop**  
 > *Engenharia Reversa, Sistemas, Módulos, Compêndios, Arquitetura e Ferramental para o Gravewright VTT por GM Charles Corrêa*  
-> **Status: Beta (v0.4.0-beta)**
+> **Status: Beta (v0.5.0-beta)**
 
 ---
 
@@ -48,7 +48,7 @@ A skill fornece diagnóstico automatizado do ambiente de desenvolvimento, engenh
 master-of-gravewright/
 ├── SKILL.md                          # Diretrizes e mandatos mestres para a IA
 ├── README.md                         # Visão geral completa bilíngue (EN / PT-BR)
-├── VERSION                           # Versão semântica atual (0.4.0-beta)
+├── VERSION                           # Versão semântica atual (0.5.0-beta)
 ├── CHANGELOG.md                      # Histórico detalhado de versões
 ├── contracts/
 │   └── schemas/

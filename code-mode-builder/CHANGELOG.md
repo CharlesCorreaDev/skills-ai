@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.2.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Integração com `GoogleChrome/modern-web-guidance` e WebMCP:**
+  - Padrões de arquitetura para **WebMCP no Navegador** combinados com Code Mode (sandbox de execução de scripts de página e inspeção DOM direta).
+  - Uso de `modern-web-guidance legacy-scan <path>` nos repositórios-alvo de sandboxes web para auditar e assegurar código moderno sem APIs legadas ou vulnerabilidades de injeção.
+
+---
+
 ## [0.1.0-beta] - 2026-11-13
 
 ### Added / Adicionado

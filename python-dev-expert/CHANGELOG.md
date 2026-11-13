@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.5.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Integração com GoogleChrome/modern-web-guidance e WebMCP:**
+  - Auditoria automatizada de templates Django/Jinja2 e assets web via modern-web-guidance legacy-scan <path>.
+  - Erradicação de padrões obsoletos e adoção de WebMCP (gentic-forms e gentic-javascript-tools) para interação de agentes em formulários e APIs.
+
+---
+
 ## [0.4.0-beta] - 2026-11-09
 
 ### Added / Adicionado

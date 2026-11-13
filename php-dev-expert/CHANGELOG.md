@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.10.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Integração com GoogleChrome/modern-web-guidance e WebMCP:**
+  - Auditoria automatizada de views, templates Blade/Twig e assets estáticos via modern-web-guidance legacy-scan <path>.
+  - Conformidade estrita com padrões W3C modernos e boas práticas para evitar HTML/CSS legado em aplicações web PHP.
+
+---
+
 ## [0.9.0-beta] - 2026-11-09
 
 ### Added / Adicionado

@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.5.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Integração Mandatória com `GoogleChrome/modern-web-guidance` e WebMCP:**
+  - Auditoria automatizada de código web em extensões frontend do Gravewright via `modern-web-guidance legacy-scan <path>`.
+  - Conformidade estrita com padrões W3C/WHATWG e erradicação de práticas obsoletas nos módulos client ES Module (`module-runtime.js`).
+  - Adoção de WebMCP (`agentic-forms` e `agentic-javascript-tools`) para interação de agentes em superfícies reativas e formulários de atores e itens.
+
+---
+
 ## [0.4.0-beta] - 2026-11-13
 
 ### Fixed / Corrigido (Addressing GitHub Issue #6)

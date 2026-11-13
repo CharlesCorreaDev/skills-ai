@@ -2,7 +2,7 @@
 
 > **Senior Software Engineering, Modern Architecture, Framework Ecosystem, Critical Security (PHP2Shell), PDF Oxide & Web Servers for PHP (v7.4 to v8.5)**  
 > *Engenharia de Software Sênior, Arquitetura Moderna, Ecossistema de Frameworks, Segurança Crítica, PDF Oxide e Servidores Web para PHP por GM Charles Corrêa*  
-> **Status: Beta (v0.8.0-beta)**
+> **Status: Beta (v0.10.0-beta)**
 
 ---
 

@@ -7,6 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [0.7.0-beta] - 2026-11-13
+
+### Added / Adicionado
+- **Integração Mandatória com GoogleChrome/modern-web-guidance e WebMCP:**
+  - Auditoria automatizada de templates e componentes com modern-web-guidance legacy-scan <path> para erradicar práticas obsoletas de HTML/CSS.
+  - Adoção de padrões WebMCP (gentic-forms e gentic-javascript-tools) para permitir que agentes de IA interajam com formulários e interfaces ricas.
+
+---
+
 ## [0.6.0-beta] - 2026-11-13
 
 ### Added / Adicionado
