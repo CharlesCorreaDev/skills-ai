@@ -7,6 +7,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.32.0] - 2026-11-13
+
+### Added / Adicionado
+- **Lançamento Oficial da Skill `second-brain-plus` (v0.1.0-beta):**
+  - Criação da suíte definitiva de memória persistente, gestão de contexto e Segundo Cérebro para Agentes de IA.
+  - Sincronização bidirecional em tempo real entre a **Notion API** (SSOT em nuvem colaborativa) e o **Cofre Local Markdown** (`.second-brain/`) estruturado no Método P.A.R.A. 2.0.
+  - **Motor de Sincronização Automática em Tempo Real (`auto_sync.py`):**
+    - Suporte a modo `--now` (disparo pontual automático pelo agente) e modo `--watch` (monitor contínuo em segundo plano).
+    - Orquestração simultânea de 3 pilares: Notion API, `claude-mem` e `graphify`.
+  - **Interface Unificada de Comandos de Barra (`cli.py`):**
+    - `/second-brain install`: Assistente de configuração inicial e scaffolding de bancos no Notion.
+    - `/second-brain save memory <texto>`: Gravação imediata de fatos, decisões ou regras com auto-sincronização.
+    - `/second-brain adr <título>`: Criação de Architecture Decision Records formais anti-alucinação.
+    - `/second-brain sync`: Sincronização forçada sob demanda.
+    - `/second-brain status`: Painel de métricas do cofre, nós do grafo e conexão da API.
+    - `/second-brain tdah` / `/second-brain focus`: Ativação do modo de baixa carga cognitiva (Orbit OS / Brain Reset OS) integrado com `not-today-adhd`.
+  - **Ecossistema Completo de Memória & Contexto:**
+    - Integração de `claude-mem` (sessões episódicas), `graphify` (Grafo de Conhecimento), `caveman` (dialeto ASD-STE100, -70% tokens), `headroom` (otimizador de janela de contexto), `context7` (documentações em tempo real Upstash), `grill-me` (ciclo "Grill-then-Persist"), `karpathy-guidelines` (4 leis de engenharia) e `impeccable` (design craft).
+  - **Documentação e Código 100% Bilíngues (Português PT-BR e Inglês EN).**
+  - **Instalação Global e Local:**
+    - Registrada globalmente em `~/.gemini/config/skills/second-brain-plus` e localmente em `.agents/skills/second-brain-plus` via Directory Junctions.
+  - **Aprovada com Nota Máxima `[EXCELLENT]`** no auditor de conformidade de skills.
+
+---
+
 ## [1.31.0] - 2026-11-13
 
 ### Changed / Alterado

@@ -149,6 +149,7 @@ When an AI Agent encounters errors during skill installation, execution, or envi
 | **`sms-legal`** | Complete integration suite and native MCP Server (Node.js & Python) for SMS Legal / SMS Gateway API. Multi-language SDKs (PHP, Python, JS), batch sending, scheduling, voice, audio, and bi-directional replies. | [`1.1.0`](sms-legal/VERSION) | Stable | [README](sms-legal/README.md) • [Changelog](sms-legal/CHANGELOG.md) |
 | **`mcp-builder`** | Universal MCP Server Generator, Security Hardener, and Orchestrator for PHP 8.4+, Python 3.12+, and Node.js 22+. Features Code Mode architecture guidance, prompt injection defense, static code analysis (SAST), fail-safe background GitHub issue reporting, and self-updating. | [`0.4.0-beta`](mcp-builder/VERSION) | Beta | [README](mcp-builder/README.md) • [Changelog](mcp-builder/CHANGELOG.md) |
 | **`code-mode-builder`** | Architects, converts, and benchmarks Code Mode (Programmatic Tool Calling & Sandbox Execution) for AI Agents as an alternative or evolution to traditional MCP. | [`0.2.0-beta`](code-mode-builder/VERSION) | Beta | [README](code-mode-builder/README.md) • [Changelog](code-mode-builder/CHANGELOG.md) |
+| **`second-brain-plus`** | Persistent memory, context management, and second brain orchestration via Notion API & local Markdown with auto-sync, claude-mem, graphify, caveman, headroom, and context7. | [`0.1.0-beta`](second-brain-plus/VERSION) | Beta | [README](second-brain-plus/README.md) • [Changelog](second-brain-plus/CHANGELOG.md) |
 
 > ℹ️ *Note: All skills in this repository are currently in **Beta** and adhere to [Semantic Versioning (SemVer)](https://semver.org/spec/v2.0.0.html). Each skill contains a dedicated `VERSION` file and `CHANGELOG.md`. See also the global [**CHANGELOG.md**](CHANGELOG.md).*
 
@@ -240,6 +241,20 @@ python code-mode-builder/scripts/check_codemode_env.py
 python code-mode-builder/scripts/scaffold_code_mode.py --name "my-codemode-service" --runtime node --sandbox vm2
 ```
 👉 *Detailed instructions:* [code-mode-builder README](code-mode-builder/README.md)
+
+#### 10. Persistent Memory, Context Optimization & AI Second Brain (Second Brain Plus)
+Automate project memory persistence across Notion API and local Git vaults with real-time auto-sync:
+```bash
+# Save memory instantly and auto-sync to Notion, claude-mem, and graphify:
+python second-brain-plus/scripts/cli.py save memory "Production environment uses Node 22 on port 8080"
+
+# Register an immutable Architecture Decision Record (ADR):
+python second-brain-plus/scripts/cli.py adr "Adopting Redis for Session Caching"
+
+# Run continuous background watcher daemon:
+python second-brain-plus/scripts/auto_sync.py --watch
+```
+👉 *Detailed instructions:* [second-brain-plus README](second-brain-plus/README.md)
 
 ---
 
@@ -369,6 +384,7 @@ Sempre que o Agente de IA encontrar falhas na instalação, execução ou config
 | **`sms-legal`** | Suíte completa de integração e Servidor MCP Nativo (Node.js & Python) para a API SMS Legal / SMS Gateway. SDKs multilinguagem (PHP, Python, JS), envio em lote, agendamento, voz, áudio e captura de respostas. | [`1.1.0`](sms-legal/VERSION) | Estável | [README](sms-legal/README.md) • [Changelog](sms-legal/CHANGELOG.md) |
 | **`mcp-builder`** | Gerador, blindador de segurança e configurador universal de servidores Model Context Protocol (MCP) para PHP 8.4+, Python 3.12+ e Node.js 22+. Defesa contra prompt injection, arquitetura Code Mode, análise estática de código (SAST), fail-safe com abertura automática de issues no GitHub e auto-update. | [`0.4.0-beta`](mcp-builder/VERSION) | Beta | [README](mcp-builder/README.md) • [Changelog](mcp-builder/CHANGELOG.md) |
 | **`code-mode-builder`** | Arquiteta, converte e avalia Code Mode (Chamada Programática de Ferramentas e Execução Sandboxed) para Agentes de IA como alternativa ou evolução do MCP tradicional. | [`0.2.0-beta`](code-mode-builder/VERSION) | Beta | [README](code-mode-builder/README.md) • [Changelog](code-mode-builder/CHANGELOG.md) |
+| **`second-brain-plus`** | Suíte de memória persistente, gestão de contexto e Segundo Cérebro para Agentes de IA com Notion API, cofre local Markdown, auto-sync em tempo real, claude-mem, graphify, caveman, headroom, context7 e modo TDAH. | [`0.1.0-beta`](second-brain-plus/VERSION) | Beta | [README](second-brain-plus/README.md) • [Changelog](second-brain-plus/CHANGELOG.md) |
 
 > ℹ️ *Nota: Todas as skills deste repositório encontram-se em estágio **Beta** e aderem ao [Versionamento Semântico (SemVer)](https://semver.org/spec/v2.0.0.html). Cada skill conta com seu arquivo individual `VERSION` e `CHANGELOG.md`. Veja também o histórico global no [**CHANGELOG.md**](CHANGELOG.md).*
 
@@ -460,6 +476,20 @@ python code-mode-builder/scripts/check_codemode_env.py
 python code-mode-builder/scripts/scaffold_code_mode.py --name "meu-servico-codemode" --runtime node --sandbox vm2
 ```
 👉 *Consulte o guia completo:* [README do code-mode-builder](code-mode-builder/README.md)
+
+#### 10. Memória Persistente, Otimização de Contexto e Segundo Cérebro (Second Brain Plus)
+Automatize a persistência de memória e contexto entre Notion API e cofre Git local com auto-sync em tempo real:
+```bash
+# Salvar memória instantaneamente e sincronizar com Notion, claude-mem e graphify:
+python second-brain-plus/scripts/cli.py save memory "O ambiente de produção usa Node 22 na porta 8080"
+
+# Registrar uma Decisão Arquitetural (ADR) inviolável contra alucinações:
+python second-brain-plus/scripts/cli.py adr "Adoção de Redis para Cache de Sessões"
+
+# Monitoramento contínuo em segundo plano:
+python second-brain-plus/scripts/auto_sync.py --watch
+```
+👉 *Consulte o guia completo:* [README do second-brain-plus](second-brain-plus/README.md)
 
 ---
 

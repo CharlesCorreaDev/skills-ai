@@ -12,4 +12,6 @@ __pycache__/
 *.pyc
 .vscode/
 skills-lock.json
+.second-brain/
+second-brain-plus/.sync_state.json
 

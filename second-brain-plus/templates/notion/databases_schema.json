@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "name": "Second Brain Plus - Notion Databases Schemas",
+  "databases": {
+    "projects": {
+      "title": "Projects & Sprints (PARA: Projects)",
+      "properties": {
+        "Name": { "title": {} },
+        "Status": {
+          "select": {
+            "options": [
+              { "name": "Backlog", "color": "gray" },
+              { "name": "Active / Sprint", "color": "blue" },
+              { "name": "Blocked", "color": "red" },
+              { "name": "Review", "color": "yellow" },
+              { "name": "Completed", "color": "green" }
+            ]
+          }
+        },
+        "Priority": {
+          "select": {
+            "options": [
+              { "name": "P0 - Blocker", "color": "red" },
+              { "name": "P1 - High", "color": "orange" },
+              { "name": "P2 - Medium", "color": "yellow" },
+              { "name": "P3 - Low", "color": "gray" }
+            ]
+          }
+        },
+        "FocusMode_ADHD": { "checkbox": {} },
+        "Deadline": { "date": {} },
+        "LastSyncHash": { "rich_text": {} },
+        "LocalPath": { "rich_text": {} }
+      }
+    },
+    "adrs": {
+      "title": "Decisions & ADRs (Zero-Hallucination Base)",
+      "properties": {
+        "Title": { "title": {} },
+        "ID": { "rich_text": {} },
+        "Status": {
+          "select": {
+            "options": [
+              { "name": "Proposed", "color": "yellow" },
+              { "name": "Accepted", "color": "green" },
+              { "name": "Superseded", "color": "purple" },
+              { "name": "Deprecated", "color": "red" }
+            ]
+          }
+        },
+        "ImpactedModules": { "multi_select": {} },
+        "DecidedAt": { "date": {} },
+        "DecidedBy": { "rich_text": {} },
+        "Rationale": { "rich_text": {} },
+        "LocalPath": { "rich_text": {} }
+      }
+    },
+    "session_logs": {
+      "title": "Session Logs & AI Memories (Episodic)",
+      "properties": {
+        "SessionTitle": { "title": {} },
+        "Date": { "date": {} },
+        "Agent": {
+          "select": {
+            "options": [
+              { "name": "Antigravity", "color": "blue" },
+              { "name": "Claude Code", "color": "purple" },
+              { "name": "Cursor", "color": "green" },
+              { "name": "ChatGPT", "color": "orange" }
+            ]
+          }
+        },
+        "Summary": { "rich_text": {} },
+        "TokensSaved_Caveman": { "number": { "format": "number" } },
+        "GraphifyNodesUpdated": { "number": { "format": "number" } },
+        "NeurodivergentMode": { "checkbox": {} },
+        "LocalPath": { "rich_text": {} }
+      }
+    },
+    "resources": {
+      "title": "Resources & Knowledge Graph (Semantic)",
+      "properties": {
+        "ResourceName": { "title": {} },
+        "Category": {
+          "select": {
+            "options": [
+              { "name": "Architecture", "color": "blue" },
+              { "name": "API Docs", "color": "green" },
+              { "name": "CheatSheet", "color": "yellow" },
+              { "name": "Tutorial", "color": "gray" }
+            ]
+          }
+        },
+        "Tags": { "multi_select": {} },
+        "SourceURL": { "url": {} },
+        "LocalPath": { "rich_text": {} }
+      }
+    }
+  }
+}

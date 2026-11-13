@@ -17,6 +17,7 @@ skills = [
   'not-today-adhd',
   'php-dev-expert',
   'python-dev-expert',
+  'second-brain-plus',
   'sms-legal',
   'video-to-md',
   'website-for-markdown',
