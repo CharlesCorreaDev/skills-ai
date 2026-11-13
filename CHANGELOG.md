@@ -7,6 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.28.0] - 2026-11-13
+
+### Fixed / Corrigido
+- **`master-of-gravewright` (v0.4.0-beta) — Resolução Completa da Issue #6 (Feedback Oficial do Autor do Gravewright):**
+  - **Schema Oficial de Manifest (`contracts/schemas/manifest.json`):** Ajustado para Draft 2020-12 com `additionalProperties: false`. Removidos campos inexistentes (`title`, `compatibility`, `scripts`, `styles`, `django_app`). Adicionados campos obrigatórios `name`, `sdk` (com `requires` e `tested`) e `entry` (obrigatório para client e proibido em Django).
+  - **Regex e Sanitização de Identificador:** Validação de `id` via regex `^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$` e sanitização automática (`autor.modulo`).
+  - **Ciclo de Vida do Runtime JS:** `main.js` agora exporta como ES Module default `{ start, register, stop }` com carregamento de estilo isolado via `styles.use("styles.css")` e registro de superfícies reativas (`actor.directory`, `actor.sheet`, etc.) com descarte por `signal`.
+  - **Extensões Django Desacopladas:** Scaffold com `django.apps`, `AppConfig.ready()`, `services.py`, `models.py` e `migrations/` sem tocar no core do Gravewright e com registro público de regras via `api.systems.register_api`.
+  - **Empacotamento ZIP e Git (`docs/git-guide.md`):** Arquivos na raiz do ZIP, `LICENSE.txt` com extensão suportada, e exclusão de dotfiles e pastas ocultas.
+  - **Servidor MCP Nativo (`mcp/gravewright_mcp_server.py`):** Validação com JSON Schema 2020-12, busca em `data/media/modules/packages/` ou `GRAVEWRIGHT_MODULES_ROOT`, IDs canônicos no catálogo do marketplace (`gravewright-3d-dice` e `gravewright.5e-srd`), e mitigação contra path traversal.
+  - **Banco de Dados SQLite Exclusivo (`docs/database-guide.md`):** Removidas menções incorretas a PostgreSQL/`DATABASE_URL`; documentação de SQLite em `data/gravewright.sqlite3` com transações `IMMEDIATE`.
+  - **Engenharia Reversa Cross-VTT (`docs/reverse-engineering-cross-vtt.md`):** Orientações para empacotar sistemas de regras em extensões instaladas em vez de editar o core do Gravewright.
+  - **Stack Atualizada e Aviso de Licença Upstream:** Python 3.14+, Django 6.1, Datastar e PixiJS. Documentado [`docs/NOTICE.md`](master-of-gravewright/docs/NOTICE.md) com atribuição legal ao Gravewright (GPL-3.0-only).
+
+---
+
 ## [1.27.0] - 2026-11-12
 
 ### Added / Adicionado

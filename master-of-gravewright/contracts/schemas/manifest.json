@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "documentType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]*$",
+          "maxLength": 80
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "labelKey": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "icon": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+          "maxLength": 80
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "json": {
+      "anyOf": [
+        {
+          "type": [
+            "null",
+            "boolean",
+            "number",
+            "string"
+          ]
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/json"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/json"
+          }
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$",
+      "maxLength": 120
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "sdk": {
+      "type": "object",
+      "properties": {
+        "requires": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tested": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        }
+      },
+      "required": [
+        "requires",
+        "tested"
+      ],
+      "additionalProperties": false
+    },
+    "entry": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "locales": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 8,
+      "patternProperties": {
+        "^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "name",
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "content": {
+      "type": "object",
+      "description": "Read-only declarative compendiums of documents for this installed system.",
+      "properties": {
+        "compendiums": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1, "maxLength": 240 }
+        }
+      },
+      "required": ["compendiums"],
+      "additionalProperties": false
+    },
+    "system": {
+      "type": "object",
+      "description": "Registers this package ID and name as an installed campaign system.",
+      "properties": {
+        "combat": {
+          "type": "object",
+          "description": "Declarative initiative. @paths read finite numeric values from the actor or independent token sheet.",
+          "properties": {
+            "formula": { "type": "string", "minLength": 1, "maxLength": 120 },
+            "manualInput": { "enum": ["number", "text"] },
+            "showRoll": { "type": "boolean", "description": "Whether the native tracker shows initiative roll controls. Defaults to true." },
+            "requiresProvider": { "type": "boolean", "description": "Require a trusted server extension registered for this system identity. The host supplies no game rules." }
+          },
+          "required": ["formula"],
+          "additionalProperties": false
+        },
+        "actorTypes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/documentType"
+          }
+        },
+        "itemTypes": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/documentType"
+          }
+        }
+      },
+      "required": [
+        "actorTypes"
+      ],
+      "additionalProperties": false
+    },
+    "django": {
+      "type": "object",
+      "properties": {
+        "apps": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*(\\.[a-zA-Z_][a-zA-Z0-9_]*)*$"
+          }
+        },
+        "requirements": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*==[A-Za-z0-9][A-Za-z0-9.!+_-]*$"
+          }
+        }
+      },
+      "required": [
+        "apps"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "version",
+    "sdk",
+    "description",
+    "author",
+    "license"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "required": ["content"] },
+      "then": { "required": ["system"] }
+    },
+    {
+      "if": {
+        "required": [
+          "django"
+        ]
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "entry"
+              ]
+            },
+            {
+              "required": [
+                "system"
+              ]
+            },
+            {
+              "required": [
+                "locales"
+              ]
+            }
+          ]
+        }
+      },
+      "else": {
+        "required": [
+          "entry"
+        ]
+      }
+    }
+  ]
+}

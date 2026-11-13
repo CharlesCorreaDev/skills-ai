@@ -2,22 +2,22 @@
 
 Este documento descreve o funcionamento, configuração e ferramentas do servidor oficial **Model Context Protocol (MCP)** integrado à skill `master-of-gravewright`.
 
-O **Gravewright MCP Server** permite que Agentes de IA e assistentes de código inspecionem diretamente projetos do Gravewright VTT, validem manifests, criem scaffolds de módulos e consultem a documentação técnica offline através do protocolo padrão JSON-RPC 2.0 (stdio).
+O **Gravewright MCP Server** permite que Agentes de IA e assistentes de código inspecionem diretamente projetos do Gravewright VTT, validem manifests contra o JSON Schema Draft 2020-12 oficial, criem scaffolds de módulos e consultem a documentação técnica offline através do protocolo padrão JSON-RPC 2.0 (stdio).
 
 ---
 
 ## 🚀 Ferramentas Expostas pelo MCP Server
 
 1. **`inspect_gravewright_environment`:**
-   - Detecta automaticamente a raiz do projeto Gravewright, dependências do Astral `uv`, `manage.py`, subapps instaladas e diretórios de extensões.
+   - Detecta automaticamente a raiz do projeto Gravewright, dependências do Astral `uv`, `manage.py`, subapps instaladas e banco de dados SQLite (`data/gravewright.sqlite3`).
 2. **`list_installed_modules`:**
-   - Escaneia a pasta de extensões (`extensions/` ou caminhos personalizados) e lista todos os módulos ativos, versões, tipos (browser vs django) e compatibilidade.
+   - Escaneia a pasta de módulos oficiais (`data/media/modules/packages/`, `GRAVEWRIGHT_MODULES_ROOT` ou caminhos personalizados) e lista módulos instalados, identificando tipos (`browser`, `django`, `system`, `translation`).
 3. **`validate_module_manifest`:**
-   - Valida esquemas de arquivos `manifest.json`, verificando campos obrigatórios (`id`, `title`, `version`), referências de scripts JS e folhas de estilo CSS existentes.
+   - Valida esquemas de arquivos `manifest.json` contra o JSON Schema Draft 2020-12 oficial do Gravewright, checando campos obrigatórios (`id`, `name`, `version`, `sdk`, `entry`), regex de identificador e impedindo propriedades desconhecidas.
 4. **`query_marketplace_packages`:**
-   - Consulta o catálogo oficial do marketplace do Gravewright (como `gravewright.translator`, `gravewright.3d-dice`, pacotes de SRD 5e e Savage Worlds SWADE).
+   - Consulta o catálogo oficial de pacotes com IDs canônicos (como `gravewright.translator`, `gravewright-3d-dice`, `gravewright.5e-srd` e `gravewright.savage-worlds`).
 5. **`scaffold_extension`:**
-   - Gera scaffolding instantâneo de novos módulos de navegador (Vanilla JS/CSS isolado) ou aplicativos Django completos (services, models, views).
+   - Gera scaffolding instantâneo de novos módulos de navegador (ES Module com ciclo `start/register/stop`) ou aplicativos Django completos (`AppConfig`, `models.py`, `services.py` e `migrations/`).
 6. **`search_offline_docs`:**
    - Pesquisa semântica direta nos 50 manuais técnicos offline em português e inglês sem consumir tokens na internet.
 
@@ -25,7 +25,7 @@ O **Gravewright MCP Server** permite que Agentes de IA e assistentes de código 
 
 ## ⚙️ Como Configurar no seu Cliente MCP (Antigravity, Claude Desktop, Cursor)
 
-Adicione a seguinte configuração no seu arquivo de configuração MCP (`mcpServers`):
+Adicione a seguinte configuração no seu arquivo de configuração MCP (`mcpServers`), ajustando o caminho do script conforme seu ambiente:
 
 ```json
 {
@@ -33,7 +33,7 @@ Adicione a seguinte configuração no seu arquivo de configuração MCP (`mcpSer
     "master-of-gravewright-mcp": {
       "command": "python",
       "args": [
-        "e:/Projetos_Docker/skills-ai/master-of-gravewright/mcp/gravewright_mcp_server.py"
+        "${workspaceFolder}/master-of-gravewright/mcp/gravewright_mcp_server.py"
       ],
       "env": {
         "PYTHONIOENCODING": "utf-8"
@@ -42,4 +42,4 @@ Adicione a seguinte configuração no seu arquivo de configuração MCP (`mcpSer
   }
 }
 ```
-
+*(Nota: substitua `${workspaceFolder}` pelo caminho absoluto da raiz do repositório onde a skill está localizada caso seu cliente MCP não suporte variáveis de workspace)*

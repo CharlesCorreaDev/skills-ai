@@ -1,0 +1,13 @@
+{
+  "id": "example.actor-counter",
+  "name": "Actor counter",
+  "version": "1.0.0",
+  "sdk": {
+    "requires": ">=1.0.0 <2.0.0",
+    "tested": "1.0.0"
+  },
+  "entry": "main.js",
+  "description": "Shows the number of actors visible to the current user in Gravewright VTT.",
+  "author": "Gravewright Community",
+  "license": "MIT"
+}

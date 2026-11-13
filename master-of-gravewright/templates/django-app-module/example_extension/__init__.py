@@ -1,0 +1,3 @@
+"""
+Example Extension Package Initialization
+"""

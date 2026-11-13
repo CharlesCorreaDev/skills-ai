@@ -3,7 +3,7 @@
 Master of Gravewright VTT - Native MCP Server
 ==============================================
 Server Name: master-of-gravewright-mcp
-Version: 0.1.0-beta
+Version: 0.4.0-beta
 Author: GM Charles Corrêa
 License: MIT
 
@@ -11,13 +11,12 @@ Zero-dependency Model Context Protocol (MCP) server running over JSON-RPC 2.0 (s
 Connects AI coding assistants and agents directly into Gravewright VTT project contexts.
 
 Capabilities / Funcionalidades:
-1. inspect_gravewright_environment: Detects local repository, Django apps, uv environment, and database.
-2. list_installed_modules: Scans and reports installed Gravewright browser and Django modules.
-3. validate_module_manifest: Validates manifest.json schemas, compatibility tags, and assets.
-4. query_marketplace_packages: Searches the official Gravewright marketplace for modules and translation packages.
-5. scaffold_extension: Generates browser-module or django-app-module boilerplate with isolated CSS.
-6. inspect_campaign_data: Reads campaign structure, clocks, clues, and journals from project directory.
-7. search_offline_docs: Queries the 50 offline Markdown manuals in EN and pt-BR.
+1. inspect_gravewright_environment: Detects local repository, Django apps, uv environment, and SQLite database.
+2. list_installed_modules: Scans and reports installed Gravewright browser and Django modules in data/media/modules/packages or GRAVEWRIGHT_MODULES_ROOT.
+3. validate_module_manifest: Validates manifest.json schemas against official JSON Schema 2020-12 (contracts/schemas/manifest.json).
+4. query_marketplace_packages: Searches the official Gravewright marketplace for modules and translation packages with verified IDs.
+5. scaffold_extension: Generates browser-module (ESM start/register/stop) or django-app-module boilerplate adhering to official schema.
+6. search_offline_docs: Queries the 50 offline Markdown manuals in EN and pt-BR.
 """
 
 import sys
@@ -29,7 +28,7 @@ from pathlib import Path
 from typing import Dict, Any, List, Optional
 
 SERVER_NAME = "master-of-gravewright-mcp"
-SERVER_VERSION = "0.1.0-beta"
+SERVER_VERSION = "0.4.0-beta"
 
 def send_response(response: Dict[str, Any]):
     """
@@ -44,7 +43,7 @@ def handle_list_tools() -> List[Dict[str, Any]]:
     return [
         {
             "name": "inspect_gravewright_environment",
-            "description": "Inspects the local Gravewright VTT project root, Python/uv environment, Django configuration, and registered apps.",
+            "description": "Inspects the local Gravewright VTT project root, Python/uv environment, Django configuration, registered apps, and SQLite database.",
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -57,20 +56,20 @@ def handle_list_tools() -> List[Dict[str, Any]]:
         },
         {
             "name": "list_installed_modules",
-            "description": "Scans and lists installed Gravewright modules, reporting title, version, type (browser/django), and compatibility.",
+            "description": "Scans and lists installed Gravewright modules from data/media/modules/packages/ or custom path, reporting ID, name, version, and type (browser, django, system, translation).",
             "inputSchema": {
                 "type": "object",
                 "properties": {
                     "modules_path": {
                         "type": "string",
-                        "description": "Optional path to the extensions or modules directory."
+                        "description": "Optional path to the modules directory. Defaults to GRAVEWRIGHT_MODULES_ROOT or data/media/modules/packages/."
                     }
                 }
             }
         },
         {
             "name": "validate_module_manifest",
-            "description": "Validates a Gravewright module's manifest.json file against official schema requirements (id, title, version, scripts, compatibility).",
+            "description": "Validates a Gravewright module's manifest.json file against the official JSON Schema Draft 2020-12 schema rules (id regex, sdk, name, entry, no additional properties).",
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -84,7 +83,7 @@ def handle_list_tools() -> List[Dict[str, Any]]:
         },
         {
             "name": "query_marketplace_packages",
-            "description": "Queries the official Gravewright GitHub marketplace catalog for available extensions, 3D dice, and compatibility packages.",
+            "description": "Queries the official Gravewright GitHub marketplace catalog for available extensions, 3D dice, and compatibility packages with canonical IDs.",
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -97,19 +96,19 @@ def handle_list_tools() -> List[Dict[str, Any]]:
         },
         {
             "name": "scaffold_extension",
-            "description": "Generates a complete Gravewright module boilerplate (browser JavaScript or Django app) with isolated CSS and manifest.",
+            "description": "Generates a complete Gravewright module boilerplate adhering strictly to official manifest.json schema and lifecycle (ESM start/register/stop or Django AppConfig).",
             "inputSchema": {
                 "type": "object",
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "Module name or ID (e.g. 'custom-clocks', 'swade-helper')."
+                        "description": "Module name or ID (e.g. 'meu-modulo', 'swade-helper', 'charles.custom-clocks')."
                     },
                     "module_type": {
                         "type": "string",
                         "enum": ["browser", "django"],
                         "default": "browser",
-                        "description": "Type of module: 'browser' for client JS/CSS or 'django' for server app."
+                        "description": "Type of module: 'browser' for client ESM JS/CSS or 'django' for server AppConfig."
                     },
                     "author": {
                         "type": "string",
@@ -156,13 +155,17 @@ def tool_inspect_gravewright_environment(project_path: Optional[str] = None) -> 
     if (path / "gravewright").exists():
         apps = [d.name for d in (path / "gravewright").iterdir() if d.is_dir() and (d / "__init__.py").exists()]
         
+    db_sqlite = path / "data" / "gravewright.sqlite3"
+    
     return {
         "project_path": str(path.resolve()),
         "is_gravewright_root": is_gravewright,
         "uses_astral_uv": has_uv,
         "django_manage_py": (path / "manage.py").exists(),
         "detected_subapps": apps,
-        "extensions_dir_exists": (path / "extensions").exists() or (path / "data" / "extensions").exists(),
+        "sqlite_database_exists": db_sqlite.exists(),
+        "sqlite_path": str(db_sqlite.resolve()) if db_sqlite.exists() else None,
+        "modules_dir_exists": (path / "data" / "media" / "modules" / "packages").exists() or (path / "extensions").exists(),
         "status": "ready" if is_gravewright else "not_a_gravewright_repo"
     }
 
@@ -171,29 +174,51 @@ def tool_list_installed_modules(modules_path: Optional[str] = None) -> Dict[str,
     if modules_path:
         search_dirs.append(Path(modules_path))
     else:
+        env_root = os.environ.get("GRAVEWRIGHT_MODULES_ROOT")
+        if env_root:
+            search_dirs.append(Path(env_root))
+            
         cwd = Path.cwd()
         search_dirs.extend([
-            cwd / "extensions",
+            cwd / "data" / "media" / "modules" / "packages",
             cwd / "data" / "extensions",
-            cwd / "master-of-gravewright" / "templates"
+            cwd / "extensions"
         ])
         
     modules = []
+    visited_ids = set()
+    
     for d in search_dirs:
         if d.exists() and d.is_dir():
             for sub in d.iterdir():
-                if sub.is_dir() and (sub / "manifest.json").exists():
+                manifest_file = sub / "manifest.json"
+                if sub.is_dir() and manifest_file.exists():
                     try:
-                        with open(sub / "manifest.json", "r", encoding="utf-8") as f:
+                        with open(manifest_file, "r", encoding="utf-8") as f:
                             data = json.load(f)
+                        mod_id = data.get("id", sub.name)
+                        if mod_id in visited_ids:
+                            continue
+                        visited_ids.add(mod_id)
+                        
+                        # Determine package type from official schema blocks
+                        pkg_type = "browser"
+                        if "django" in data:
+                            pkg_type = "django"
+                        elif "system" in data:
+                            pkg_type = "system"
+                        elif "locales" in data:
+                            pkg_type = "translation"
+                            
                         modules.append({
                             "directory": str(sub.resolve()),
-                            "id": data.get("id", sub.name),
-                            "title": data.get("title", sub.name),
+                            "id": mod_id,
+                            "name": data.get("name", data.get("title", sub.name)),
                             "version": data.get("version", "0.0.0"),
-                            "type": "django" if data.get("django_app") else "browser",
+                            "sdk": data.get("sdk", {}),
+                            "type": pkg_type,
                             "author": data.get("author", "Unknown"),
-                            "compatibility": data.get("compatibility", {})
+                            "description": data.get("description", "")
                         })
                     except Exception as e:
                         modules.append({
@@ -217,26 +242,88 @@ def tool_validate_module_manifest(manifest_path: str) -> Dict[str, Any]:
     except Exception as e:
         return {"valid": False, "error": f"Invalid JSON format: {e}"}
         
+    # Load schema if available
+    schema_path = Path(__file__).resolve().parent.parent / "contracts" / "schemas" / "manifest.json"
+    if schema_path.exists():
+        try:
+            import jsonschema
+            with open(schema_path, "r", encoding="utf-8") as sf:
+                schema = json.load(sf)
+            validator = jsonschema.Draft202012Validator(schema)
+            raw_errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
+            if raw_errors:
+                err_messages = [f"{list(err.path)}: {err.message}" if err.path else err.message for err in raw_errors]
+                return {
+                    "valid": False,
+                    "validation_mode": "jsonschema-draft2020-12",
+                    "errors": err_messages
+                }
+            return {
+                "valid": True,
+                "validation_mode": "jsonschema-draft2020-12",
+                "manifest_id": data.get("id"),
+                "name": data.get("name"),
+                "version": data.get("version"),
+                "sdk": data.get("sdk")
+            }
+        except ImportError:
+            # Fallback to manual validation against official rules
+            pass
+
+    # Built-in strict manual fallback validator adhering to official schema rules
     errors = []
     warnings = []
     
-    required_keys = ["id", "title", "version"]
-    for k in required_keys:
-        if k not in data or not str(data[k]).strip():
-            errors.append(f"Missing required field: '{k}'")
+    # Required fields across all packages
+    for req in ["id", "name", "version", "sdk", "description", "author", "license"]:
+        if req not in data:
+            errors.append(f"Missing required field: '{req}'")
             
-    # Check script files if specified
-    base_dir = p.parent
-    for script in data.get("scripts", []):
-        if not (base_dir / script).exists():
-            warnings.append(f"Referenced script file does not exist: {script}")
+    # Prohibited deprecated fields
+    for forbidden in ["title", "compatibility", "scripts", "styles", "django_app"]:
+        if forbidden in data:
+            errors.append(f"Additional property not allowed in schema: '{forbidden}'")
             
-    for style in data.get("styles", []):
-        if not (base_dir / style).exists():
-            warnings.append(f"Referenced stylesheet does not exist: {style}")
+    # ID regex: ^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$
+    mod_id = data.get("id", "")
+    if mod_id and not re.match(r"^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$", mod_id):
+        errors.append(f"Field 'id' ('{mod_id}') does not match official regex '^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$'")
+        
+    # Version regex: ^[0-9]+\.[0-9]+\.[0-9]+$
+    ver = data.get("version", "")
+    if ver and not re.match(r"^[0-9]+\.[0-9]+\.[0-9]+$", ver):
+        errors.append(f"Field 'version' ('{ver}') must be strictly 'X.Y.Z' semver (no pre-release or build suffixes)")
+        
+    # SDK check
+    sdk = data.get("sdk")
+    if sdk is not None:
+        if not isinstance(sdk, dict) or "requires" not in sdk or "tested" not in sdk:
+            errors.append("Field 'sdk' must be an object with 'requires' and 'tested' keys")
             
+    # Django vs Browser checks
+    is_django = "django" in data
+    if is_django:
+        if "entry" in data:
+            errors.append("Field 'entry' cannot be defined when 'django' is present")
+        if "system" in data:
+            errors.append("Field 'system' cannot be defined when 'django' is present")
+        if "locales" in data:
+            errors.append("Field 'locales' cannot be defined when 'django' is present")
+        django_block = data.get("django")
+        if isinstance(django_block, dict):
+            if "apps" not in django_block or not isinstance(django_block["apps"], list):
+                errors.append("Field 'django.apps' is required and must be an array")
+    else:
+        if "entry" not in data:
+            errors.append("Field 'entry' is required for browser/client modules")
+        else:
+            entry_file = p.parent / data["entry"]
+            if not entry_file.exists():
+                warnings.append(f"Referenced entry file does not exist on disk: {data['entry']}")
+                
     return {
         "valid": len(errors) == 0,
+        "validation_mode": "manual-schema-rules",
         "manifest_id": data.get("id"),
         "version": data.get("version"),
         "errors": errors,
@@ -244,7 +331,7 @@ def tool_validate_module_manifest(manifest_path: str) -> Dict[str, Any]:
     }
 
 def tool_query_marketplace_packages(search_term: Optional[str] = None) -> Dict[str, Any]:
-    # Known official packages in the Gravewright ecosystem
+    # Known official packages in the Gravewright ecosystem with canonical IDs
     known_packages = [
         {
             "id": "gravewright.translator",
@@ -254,14 +341,14 @@ def tool_query_marketplace_packages(search_term: Optional[str] = None) -> Dict[s
             "category": "utility"
         },
         {
-            "id": "gravewright.3d-dice",
+            "id": "gravewright-3d-dice",
             "title": "Gravewright 3D Dice",
             "repo": "https://github.com/Gravewright/Gravewright-3D-Dice",
             "description": "3D dice rolling physics and animations for the tabletop canvas.",
             "category": "visual"
         },
         {
-            "id": "gravewright.dnd-srd-5e",
+            "id": "gravewright.5e-srd",
             "title": "D&D 5e SRD Compatibility Package",
             "repo": "https://github.com/Gravewright/dnd-srd-5e",
             "description": "SRD 5.1 rules, compendiums, spells, items and monsters for Gravewright.",
@@ -286,53 +373,208 @@ def tool_query_marketplace_packages(search_term: Optional[str] = None) -> Dict[s
         
     return {"packages": known_packages, "total": len(known_packages)}
 
+def sanitize_module_id(name: str) -> str:
+    cleaned = name.lower().strip()
+    cleaned = re.sub(r"[^a-z0-9.-]+", "-", cleaned)
+    cleaned = re.sub(r"-+", "-", cleaned).strip("-.")
+    if not ("." in cleaned or "-" in cleaned):
+        cleaned = f"custom.{cleaned}" if cleaned else "custom.module"
+    if not cleaned[0].isalpha():
+        cleaned = f"a.{cleaned}"
+    return cleaned
+
+def sanitize_python_ident(name: str) -> str:
+    ident = re.sub(r"[^a-zA-Z0-9_]", "_", name).lower()
+    ident = re.sub(r"_+", "_", ident).strip("_")
+    if not ident or ident[0].isdigit():
+        ident = f"gw_{ident}"
+    return ident
+
 def tool_scaffold_extension(name: str, module_type: str, author: str, target_dir: str) -> Dict[str, Any]:
-    dest = Path(target_dir) / name.lower().replace(" ", "-")
+    # Prevent path traversal
+    safe_name = os.path.basename(name.strip())
+    if not safe_name or safe_name in [".", ".."]:
+        return {"success": False, "error": "Invalid module name."}
+        
+    module_id = sanitize_module_id(safe_name)
+    folder_name = module_id.replace(".", "-")
+    
+    target_base = Path(target_dir).resolve()
+    dest = target_base / folder_name
+    
+    # Security check: ensure dest is within target_base
+    try:
+        dest.resolve().relative_to(target_base)
+    except ValueError:
+        return {"success": False, "error": "Path traversal detected in module target directory."}
+        
     if dest.exists():
         return {"success": False, "error": f"Target directory '{dest}' already exists."}
         
     dest.mkdir(parents=True)
     
-    manifest = {
-        "id": name.lower().replace(" ", "-"),
-        "title": name,
-        "version": "0.1.0",
-        "description": f"Custom {module_type} module for Gravewright VTT.",
-        "author": author,
-        "license": "MIT",
-        "compatibility": {
-            "minimum": "0.3.0",
-            "verified": "0.3.4"
-        },
-        "scripts": ["index.js"] if module_type == "browser" else [],
-        "styles": ["style.css"] if module_type == "browser" else [],
-        "django_app": f"{name.lower().replace('-', '_')}_app" if module_type == "django" else None
-    }
-    
-    with open(dest / "manifest.json", "w", encoding="utf-8") as f:
-        json.dump(manifest, f, indent=2, ensure_ascii=False)
-        
     if module_type == "browser":
-        (dest / "index.js").write_text(f"""// {name} - Browser Extension for Gravewright VTT
-// Author / Autor: {author}
-(() => {{
-    console.log("[Gravewright Extension] Initializing: {name}");
-}})();
+        manifest = {
+            "id": module_id,
+            "name": safe_name.replace("-", " ").title(),
+            "version": "0.1.0",
+            "sdk": {
+                "requires": ">=1.0.0 <2.0.0",
+                "tested": "1.0.0"
+            },
+            "entry": "main.js",
+            "description": f"Custom browser module for Gravewright VTT.",
+            "author": author,
+            "license": "MIT"
+        }
+        
+        with open(dest / "manifest.json", "w", encoding="utf-8") as f:
+            json.dump(manifest, f, indent=2, ensure_ascii=False)
+            
+        (dest / "main.js").write_text(f"""// {safe_name} - Browser Extension for Gravewright VTT
+// Official ESM Lifecycle: start, register, stop
+
+export default {{
+  start({{ styles }}) {{
+    // Load module-scoped CSS
+    styles.use("styles.css");
+  }},
+
+  register({{ register }}) {{
+    // Register module surfaces (actor.directory, actor.sheet, chat.log, scene.overlay, etc.)
+    register("actor.directory", async ({{ root, api, signal }}) => {{
+      const container = root.ownerDocument.createElement("div");
+      container.className = "{folder_name}-counter";
+      root.append(container);
+
+      const render = (actors) => {{
+        if (!signal.aborted) {{
+          container.textContent = `Visible Actors: ${{actors.length}}`;
+        }}
+      }};
+
+      render(await api.actors.list());
+      api.events.on("actors.changed", (snapshot) => render(snapshot.actors));
+    }});
+  }},
+
+  stop() {{
+    // Host automatically cleans up styles, registrations, and API handles
+  }}
+}};
 """, encoding="utf-8")
-        (dest / "style.css").write_text(f"""/* {name} - Isolated Styles */
-.{manifest['id']}-root {{
-    box-sizing: border-box;
+
+        (dest / "styles.css").write_text(f"""/* {safe_name} - Isolated Styles */
+.gw-module-root[data-module-id="{module_id}"] .{folder_name}-counter {{
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
 }}
 """, encoding="utf-8")
+
+        (dest / "LICENSE.txt").write_text(f"""MIT License
+
+Copyright (c) 2026 {author}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+""", encoding="utf-8")
+
     else:
-        app_name = f"{name.lower().replace('-', '_')}_app"
-        app_dir = dest / app_name
+        # Django app module
+        py_app = sanitize_python_ident(safe_name) + "_server"
+        class_name = "".join(w.capitalize() for w in py_app.split("_")) + "Config"
+        
+        manifest = {
+            "id": module_id,
+            "name": safe_name.replace("-", " ").title(),
+            "version": "0.1.0",
+            "sdk": {
+                "requires": ">=1.0.0 <2.0.0",
+                "tested": "1.0.0"
+            },
+            "description": f"Custom Django extension app for Gravewright VTT.",
+            "author": author,
+            "license": "MIT",
+            "django": {
+                "apps": [f"{py_app}.apps.{class_name}"],
+                "requirements": []
+            }
+        }
+        
+        with open(dest / "manifest.json", "w", encoding="utf-8") as f:
+            json.dump(manifest, f, indent=2, ensure_ascii=False)
+            
+        app_dir = dest / py_app
         app_dir.mkdir(parents=True)
         (app_dir / "__init__.py").write_text("", encoding="utf-8")
-        (app_dir / "models.py").write_text("# Django models for Gravewright extension\n", encoding="utf-8")
-        (app_dir / "services.py").write_text("# Domain services: owns validation and persistence\n", encoding="utf-8")
-        (app_dir / "views.py").write_text("# HTTP and API views\n", encoding="utf-8")
         
+        migrations_dir = app_dir / "migrations"
+        migrations_dir.mkdir(parents=True)
+        (migrations_dir / "__init__.py").write_text("", encoding="utf-8")
+        
+        (app_dir / "apps.py").write_text(f"""from django.apps import AppConfig
+
+class {class_name}(AppConfig):
+    name = "{py_app}"
+    label = "{py_app}"
+
+    def ready(self):
+        \"\"\"
+        Register public extension APIs or combat providers without mutating Gravewright core.
+        \"\"\"
+        try:
+            from api.systems import register_api
+            from .services import preview_roll
+
+            register_api("{module_id}", {{
+                "rules.preview": {{
+                    "effect": "read",
+                    "handler": preview_roll,
+                    "description": "Preview a rules calculation or roll."
+                }}
+            }})
+        except ImportError:
+            pass
+""", encoding="utf-8")
+
+        (app_dir / "services.py").write_text(f"""# Domain services: validation and persistence logic for {safe_name}
+
+def preview_roll(campaign_id, user_id, payload, request_id, scene_id):
+    \"\"\"
+    Public system operation callable from client via api.system.call('{module_id}.rules.preview', data)
+    \"\"\"
+    return {{
+        "success": True,
+        "echo": payload
+    }}
+""", encoding="utf-8")
+
+        (app_dir / "models.py").write_text(f"""from django.db import models
+
+# Custom SQLite extension models if persistent state is needed
+""", encoding="utf-8")
+
+        (dest / "LICENSE.txt").write_text(f"""MIT License
+
+Copyright (c) 2026 {author}
+""", encoding="utf-8")
+
     return {
         "success": True,
         "path": str(dest.resolve()),
@@ -357,7 +599,6 @@ def tool_search_offline_docs(query: str, language: str = "pt-BR") -> Dict[str, A
                 try:
                     text = doc_file.read_text(encoding="utf-8")
                     if q_lower in text.lower():
-                        # Find matching snippet
                         lines = text.splitlines()
                         matching_lines = [l.strip() for l in lines if q_lower in l.lower()][:3]
                         results.append({
@@ -438,7 +679,13 @@ def process_request(request: Dict[str, Any]):
                 })
                 return
                 
-            send_response({
+            # If the tool result contains an error or failure, return it as content with isError: true when relevant
+            is_error = False
+            if isinstance(res, dict):
+                if res.get("valid") is False or res.get("success") is False:
+                    is_error = True
+                    
+            response_payload = {
                 "jsonrpc": "2.0",
                 "id": req_id,
                 "result": {
@@ -449,14 +696,23 @@ def process_request(request: Dict[str, Any]):
                         }
                     ]
                 }
-            })
+            }
+            if is_error:
+                response_payload["result"]["isError"] = True
+                
+            send_response(response_payload)
         except Exception as e:
             send_response({
                 "jsonrpc": "2.0",
                 "id": req_id,
-                "error": {
-                    "code": -32000,
-                    "message": str(e)
+                "result": {
+                    "isError": True,
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": json.dumps({"error": str(e)}, indent=2, ensure_ascii=False)
+                        }
+                    ]
                 }
             })
     else:
@@ -478,9 +734,8 @@ def main():
         try:
             req = json.loads(line)
             process_request(req)
-        except Exception as e:
+        except Exception:
             pass
 
 if __name__ == "__main__":
     main()
-
