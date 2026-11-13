@@ -281,6 +281,64 @@
       color: #ffffff !important;
       box-shadow: 0 0 0 3px rgba(34, 67, 137, 0.35) !important;
     }
+
+    /* ==========================================================================
+       EFEITOS DE TRANSIÇÃO, HOVER, ACTIVE E MICROINTERAÇÕES (W3C / MOTION STANDARDS)
+       ========================================================================== */
+    .btn, button, .btn-interactive {
+      transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1), 
+                  background-color 0.15s ease, 
+                  color 0.15s ease !important;
+      will-change: transform;
+    }
+
+    .btn:active, button:active, .btn-interactive:active {
+      transform: scale(0.97) !important;
+    }
+
+    .card {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.25s ease !important;
+      will-change: transform, box-shadow;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(34, 67, 137, 0.08) !important;
+    }
+
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: skewX(-20deg);
+      transition: none;
+    }
+
+    .btn-glow:hover::before {
+      left: 200%;
+      transition: left 0.75s ease-in-out;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>

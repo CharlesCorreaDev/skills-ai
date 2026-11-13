@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.30.0] - 2026-11-13
+
+### Added / Adicionado
+- **Expansão de Padrões Canônicos W3Schools e Microinterações em `bootstrap-ux-ui-plus` (v0.6.0-beta):**
+  - **Manual Mestre de HTML5 & CSS3 Moderno (`standards/html5-css3-master-manual.md`):** Síntese técnica profunda das especificações W3C/WHATWG e da documentação clássica do W3Schools HTML & CSS (árvore AOM, meta tags vitais, guia mestre de formulários com 14 tipos de inputs, validação acessível, tabelas de dados de alta densidade e CSS3 com Cascade Layers, Container Queries e seletores `:is()`, `:where()`, `:has()`).
+  - **Efeitos Mandatórios de Transição, Hover, Active e Focus:** Diretriz obrigatória para que nenhum componente de interface pareça estático ou sem vida. Padrões de Underline Sweep, Botão Glow/Shimmer com reflexo deslizante de luz, Card 3D Tilt com elevação orgânica, Image Zoom Reveal, anel de foco acessível duplo (`:focus-visible`) e feedback tátil de clique (`:active`).
+  - **Benchmarks de Bibliotecas de Animação e Motion:** Integração de referências canônicas para Anime.js, Motion.dev, PureCSS-Animations, CodePen Hover Collections (pens de Morgan Carbon Fourteen `mOxYjY` e Nathan Long `MwOpxj`) e Prismic CSS Hover Effects Guide.
+  - **Acervos e Comunidades do Frontend Brasileiro:** Inclusão de **Recursos Frontend por Yuri Mutti** e **Guia do Frontend Brasil** como fontes canônicas de consulta e inspiração em `references/ui-inspiration-and-pattern-libraries.md`.
+  - **Templates Mazer e AdminKit Enriquecidos:** Injeção das classes de microinterações táteis, efeito glow, elevação em hover e desativação em `prefers-reduced-motion` em `templates/admin-dashboard-template.html` e `templates/adminkit-dashboard-template.html`.
+
+---
+
 ## [1.29.0] - 2026-11-13
 
 ### Added / Adicionado
