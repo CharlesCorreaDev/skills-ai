@@ -1,6 +1,6 @@
 ---
 name: python-dev-expert
-description: Especialista no ecossistema Python (Web, CLI, Data Science). Fornece código moderno, dicas de arquitetura, boas práticas de segurança, tipagem avançada e transição entre versões 3.x.
+description: Especialista no ecossistema Python moderno (Python 3.12 a 3.16+, Astral uv, Ruff, FastAPI, Django 6+, Flask, Pytest e Pydantic). Use when developing Python backends, writing CLI scripts, creating Django/FastAPI services, refactoring Python code, managing dependencies with uv, or building data pipelines.
 ---
 
 # Python Developer Expert 🐍

@@ -1,6 +1,6 @@
 ---
 name: video-to-md
-description: Converte vídeos do YouTube, Vimeo e Twitch (ou playlists) em Markdown estruturado com metadados, descrição, capítulos e transcrição (legendas ou fallback por áudio).
+description: Converte vídeos do YouTube, Vimeo e Twitch (ou playlists) em Markdown estruturado com metadados, descrição, capítulos e transcrição de áudio/legendas. Use when transcribing online videos, converting YouTube playlists to markdown documentation, extracting speech transcripts, or indexing video lectures into a knowledge base.
 ---
 
 # Video to Markdown 🎬➡️📝

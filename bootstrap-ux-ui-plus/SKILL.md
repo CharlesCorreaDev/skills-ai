@@ -1,6 +1,6 @@
 ---
 name: bootstrap-ux-ui-plus
-description: Master UX/UI design, usability engineering, responsive interface architecture, cognitive ergonomics, and neurodiversity (ADHD & Autism Spectrum) using Bootstrap (v5.3 & v6.0) across HTML, PHP, Node.js, React, Python, Django, Java, and modern web frameworks. Ingests Laws of UX (Hick, Fitts, Jakob, Zeigarnik, Miller), Jakob Nielsen's 10 Usability Heuristics, WCAG 2.2 AA accessibility, Peter Morville's UX Honeycomb, Eva Heller's Color Psychology, and corporate dashboard patterns by GM Charles Corrêa.
+description: Master UX/UI design, usability engineering, responsive interface architecture, cognitive ergonomics, and neurodiversity (ADHD & Autism Spectrum) using Bootstrap (v5.3 & v6.0) across HTML, PHP, Node.js, React, Python, Django, Java, and modern web frameworks. Ingests Laws of UX, Jakob Nielsen's 10 Usability Heuristics, WCAG 2.2 AA accessibility, Peter Morville's UX Honeycomb, and Eva Heller's Color Psychology. Use when designing user interfaces, reviewing usability, creating admin dashboards, building accessible forms, or preventing cognitive overload.
 ---
 
 # Bootstrap UX/UI Plus 🎨⚡

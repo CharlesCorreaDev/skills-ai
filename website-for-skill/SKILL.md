@@ -1,6 +1,6 @@
 ---
 name: website-for-skill
-description: End-to-end orchestration pipeline that crawls live websites, API documentation, and technical portals (including multi-thousand-page manuals) and compiles them into structured, token-efficient AI skills (SKILL.md, chapters/_INDEX.md, cheatsheet, glossary, patterns) with preserved internal links.
+description: End-to-end orchestration pipeline that crawls live websites, API documentation, and technical portals and compiles them into structured, token-efficient AI skills (SKILL.md, chapters, cheatsheet, patterns). Use when building an AI skill from a website or docs URL, ingesting online documentation into skills, or structuring web content for agents.
 ---
 
 # Website for Skill 🌐➡️🧠

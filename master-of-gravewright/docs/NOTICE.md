@@ -12,3 +12,4 @@ Partes da documentação técnica incluídas nos diretórios `docs/en/` e `docs/
 ## Licença desta Skill (`master-of-gravewright`)
 
 O código dos adaptadores, scripts utilitários (`scripts/setup_dev_env.py`), servidor MCP (`mcp/gravewright_mcp_server.py`) e instruções operacionais da skill desenvolvidos por Charles Corrêa são disponibilizados sob a licença **MIT**, respeitando a integridade, compatibilidade e termos da licença upstream da documentação e APIs de referência.
+

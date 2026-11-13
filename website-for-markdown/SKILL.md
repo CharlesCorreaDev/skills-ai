@@ -1,6 +1,6 @@
 ---
 name: website-for-markdown
-description: Web scraping and recursive crawling engine that captures single web pages, developer documentation portals, and JavaScript/SPA applications into noise-free, LLM-ready Markdown using local HTTP multi-thread crawler, Playwright Headless Chromium, or Firecrawl. Preserves and rewrites internal links (.php/.html to .md) and generates _INDEX.md and crawl_manifest.json.
+description: Web scraping and recursive crawling engine that captures single web pages, developer documentation portals, and JavaScript/SPA applications into noise-free, LLM-ready Markdown using local HTTP crawler, Playwright, or Firecrawl. Use when crawling websites, scraping documentation portals into markdown, converting web pages for LLM context, or preserving internal links.
 ---
 
 # Website for Markdown 🌐➡️📝
