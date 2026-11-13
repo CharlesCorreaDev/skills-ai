@@ -16,3 +16,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Padrões de sandbox seguro (V8 Isolates, QuickJS WASM, Docker, Rust Rhai) com timeout, quotas de memória e Gate Pattern de isolamento de credenciais.
   - Scripts de diagnóstico de ambiente e scaffolding inicial em Python e Node.js.
   - Documentação mestra bilíngue em `SKILL.md` e `README.md`.
+

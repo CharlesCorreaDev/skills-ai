@@ -116,3 +116,4 @@ Em vez de sobrecarregar a janela de contexto com centenas de definições de fer
 - **Economia Drástica de Tokens:** Redução de até 95% do overhead de esquemas no contexto.
 - **Orquestração Paralela:** Uso natural de `Promise.all` ou concorrência assíncrona.
 - **Segurança Reforçada:** O sandbox não expõe o sistema de arquivos do host nem chaves de API ao código dinâmico.
+
