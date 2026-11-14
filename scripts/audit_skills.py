@@ -9,6 +9,7 @@ skills = [
   'docker-master',
   'docs-for-markdown',
   'docs-for-skill',
+  'escritor-pro',
   'humanizer-plus',
   'image-to-prompt',
   'master-of-foundryvtt',

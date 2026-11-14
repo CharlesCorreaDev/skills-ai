@@ -7,6 +7,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ---
 
+## [1.33.0] - 2026-11-14
+
+### Added / Adicionado
+- **Lançamento Oficial da Skill `escritor-pro` (v0.1.0-beta.1):**
+  - Criação da suíte definitiva e referência arquitetural de escrita criativa, worldbuilding progressivo, storytelling de dados, copywriting e revisão gramatical normativa PT-BR.
+  - **Arquitetura de 8 Sub-agentes Virtuais Especializados:** Showrunner / Orquestrador Mestre, Worldbuilder 6 Camadas, Dramaturgo de Cenas, Prosador Literário, Consultor de RPG / Mesa, Copywriter Estratégico, Filólogo Normativo (MEC/ABL/VOLP) e Auditor de Continuidade & Anti-Slop.
+  - **Worldbuilding em 6 Camadas Progressivas (Macro Top-Down a Micro Bottom-Up):**
+    - Camada 1: O DNA do Mundo (Premissa, Metafísica & Leis de Sanderson sobre custos de poder).
+    - Camada 2: O Divino, o Oculto e o Folclore (Mitos, Superstições Locais & Tabus).
+    - Camada 3: Geografia, Ecologia e Recursos Escassos (O Palco Físico e Motivos de Guerras).
+    - Camada 4: História Viva, Cicatrizes e Guerras Recentes (O Passado que Sangra no Presente).
+    - Camada 5: Geopolítica, Facções e Economia (A Tríade das Facções: Desejo, Temor e Recurso).
+    - Camada 6: O Nível da Rua (Bairros, Arquitetura, Cheiros e Boatos de Esquina).
+  - **Regra do Iceberg Narrativo (10/90) & Filtro Sensorial Obrigatório (Regra 3+1):**
+    - Modo Semente em 5 perguntas cirúrgicas e expansão *Just-in-Time*.
+    - Toda cena obrigatoriamente inclui 3 estímulos sensoriais (visão, som, tato/olfato) e 1 tensão social ou econômica ativa.
+  - **Núcleo Canônico Único e Três Lentes de Saída (Single Source of Truth):**
+    - Lente A: Modo Literário (`--modo livro`) com foco em subtexto e *show, don't tell*, sem metalinguagem de regras.
+    - Lente B: Modo Campanha / RPG (`--modo rpg`) com 3 rumores (2V, 1F), relógios de perigo, ganchos e blocos compatíveis com Foundry VTT.
+    - Lente C: Modo Híbrido / Transmídia (`--modo ambos`) combinando prosa read-aloud com apêndice técnico recolhido.
+  - **Gramática Normativa e Correção Estrita (MEC / ABL / VOLP):**
+    - Princípio do Zero Achismo fundamentado no VOLP, Novo Acordo Ortográfico e mestres filológicos.
+    - Pontuação canônica de diálogos com travessão verdadeiro `—` (`\u2014`), diferenciação estrita entre verbos *dicendi* e de ação.
+    - Manual de vozes regionais das 5 macrorregiões brasileiras sem estereótipos ou caricaturas.
+  - **Copywriting, Headlines e Matriz 1 para 7:**
+    - Frameworks AIDA, PAS, BAB, 4Ps, QUEST e Star-Story-Solution.
+    - Fórmula dos 4Us para manchetes e Logline de alta tração em 25 palavras.
+    - Repropósito multicanal: de 1 capítulo a 7 formatos de conteúdo.
+  - **Ferramental Python Integrado:**
+    - `analisador_estilo.py`: verificação de travessões, AI slop, clichês e densidade sensorial.
+    - `consulta_lexico.py`: consulta de regência verbal canônica, ortografia oficial e dicionários abertos.
+    - `validador_biblia.py`: validação estrutural de arquivos de lore canônicos em Markdown.
+  - **Integração Ecossistêmica:**
+    - Suporte nativo a `grill-me`, `not-today-adhd`, `second-brain-plus`, `book-formatter`, `humanizer-plus` e `image-to-prompt`.
+  - **Homologação:** Aprovada com nota máxima `[EXCELLENT]` no script de auditoria de conformidade de skills.
+
+---
+
 ## [1.32.0] - 2026-11-13
 
 ### Added / Adicionado
