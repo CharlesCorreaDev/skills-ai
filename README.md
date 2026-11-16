@@ -33,16 +33,18 @@ Modern Large Language Models (LLMs) and Autonomous AI Agents (like Antigravity, 
 >    - **Linux:** `sudo apt install gh`
 >    - **Authenticate:** `gh auth login`
 >
-> 2. **Mandatory Companion Skills Trinity (Always Available Globally and in User Projects):**  
->    All skills strictly carry and integrate the following three core skills:
+> 2. **Mandatory Companion Skills Suite (Always Available Globally and in User Projects):**  
+>    All skills strictly carry and integrate the following core companion skills:
 >    - **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Pragmatic software engineering discipline, minimal code, zero blind assumptions.
 >    - **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Structured alignment interview with the user/author before starting tasks to eliminate design ambiguities.
 >    - **`skills-code-review`** (`https://www.aihero.dev/skills-code-review`): Rigorous automated code review and quality gating before delivering any work.
+>    - **`godmode`** (`https://github.com/noobygains/godmode`): Strict engineering discipline, gated TDD workflow, anti-"code vomit" pipeline, and refusal to declare tasks done without terminal proof.
 >    ```bash
 >    # Install globally and in local project
 >    npx skills@latest add multica-ai/andrej-karpathy-skills
 >    npx skills@latest add mattpocock/skills --skill=grill-me
 >    npx skills@latest add aihero-dev/skills-code-review
+>    npx skills@latest add noobygains/godmode
 >    ```
 
 #### 1. Clone the Repository
@@ -293,16 +295,18 @@ As **Skills** transformam dados brutos em **unidades modulares de conhecimento s
 >    - **Linux:** `sudo apt install gh`
 >    - **Autenticar:** `gh auth login`
 >
-> 2. **Tríade Obrigatória de Skills Companheiras (Disponíveis Globalmente e no Projeto):**  
+> 2. **Suíte Obrigatória de Skills Companheiras (Disponíveis Globalmente e no Projeto):**  
 >    Toda skill sempre operará em conjunto com:
 >    - **`andrej-karpathy-skills`** (`https://github.com/multica-ai/andrej-karpathy-skills`): Engenharia de software pragmática, código mínimo, validação contínua e ausência de suposições cegas.
 >    - **`grill-me`** (`https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me`): Entrevista profunda e estruturada com o autor/usuário antes de iniciar tarefas para evitar retrabalho.
 >    - **`skills-code-review`** (`https://www.aihero.dev/skills-code-review`): Revisão rigorosa de código automatizada e portão de qualidade pré-entrega.
+>    - **`godmode`** (`https://github.com/noobygains/godmode`): Disciplina de engenharia estrita, TDD com provas cabais em terminal, pipeline anti-"code vomit" e validação em múltiplos modelos.
 >    ```bash
 >    # Instalar globalmente e no projeto local
 >    npx skills@latest add multica-ai/andrej-karpathy-skills
 >    npx skills@latest add mattpocock/skills --skill=grill-me
 >    npx skills@latest add aihero-dev/skills-code-review
+>    npx skills@latest add noobygains/godmode
 >    ```
 
 #### 1. Clonar o Repositório

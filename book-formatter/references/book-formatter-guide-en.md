@@ -149,6 +149,7 @@ Every task must ensure that the companion skill trinity is installed and accessi
 npx skills@latest add multica-ai/andrej-karpathy-skills
 npx skills@latest add mattpocock/skills --skill=grill-me
 npx skills@latest add aihero-dev/skills-code-review
+npx skills@latest add noobygains/godmode
 npx modern-web-guidance@latest install
 `
 

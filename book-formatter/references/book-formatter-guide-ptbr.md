@@ -109,6 +109,7 @@ Antes de iniciar qualquer trabalho, o agente deve garantir a presença das skill
 npx skills@latest add multica-ai/andrej-karpathy-skills
 npx skills@latest add mattpocock/skills --skill=grill-me
 npx skills@latest add aihero-dev/skills-code-review
+npx skills@latest add noobygains/godmode
 `
 
 #### 2. Protocolo Andrej Karpathy (4 Princípios Operacionais)

@@ -48,3 +48,23 @@ pip install auto-ontology
 2. **Ancoragem em Dicionários e Esquemas Reais:** Em tarefas com bancos de dados, APIs ou JSONs, os campos devem ser rigorosamente validados contra a ontologia real do sistema (tabelas reais, tipos de dados canônicos, relacionamentos de chave estrangeira existentes).
 3. **Declaração de Incerteza:** Se um dado numérico, estatística ou metadado não estiver explícito na documentação ou no código inspecionado, o agente deve **consultar o arquivo ou explicitar que o valor precisa ser fornecido pelo usuário/ambiente**, sem tentar adivinhar ou extrapolar valores aleatórios.
 
+---
+
+## ⚡ Parte 3: NoobyGains GodMode (`noobygains/godmode`)
+
+- **Repositório:** [github.com/noobygains/godmode](https://github.com/noobygains/godmode)
+- **Propósito:** Pipeline de rigor de engenharia disciplinada (anti-"code vomit"), execução orientada a testes (TDD), especificação obrigatória prévia e recusa de conclusão de tarefa sem provas cabais de sucesso em terminal.
+
+### Instalação da Skill:
+```bash
+# Instalação via npx skills
+npx skills@latest add noobygains/godmode
+```
+
+### O Ciclo de Vida Obrigatório GodMode:
+1. **Question & Research:** Desafiar suposições do prompt, consultar documentação atualizada e reusar padrões canônicos comprovados em vez de reinventar do zero.
+2. **Plan & Spec:** Especificar a solução técnica detalhada em RFC/ADR e subdividir a execução em tarefas atômicas antes de escrever qualquer código.
+3. **Execute (Test-First / TDD):** Construir testes unitários/integração antes da implementação e validar cada etapa no sandbox/terminal.
+4. **Multi-Model Review:** Avaliar a entrega sob múltiplas perspectivas (revisão de conformidade com spec + auditoria de qualidade/segurança).
+5. **Prove & Ship:** Jamais declarar tarefa como "concluída" sem demonstrar no terminal a execução real, saída dos comandos e 100% dos testes aprovados.
+
