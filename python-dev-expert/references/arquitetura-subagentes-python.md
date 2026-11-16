@@ -1,35 +1,44 @@
-# Arquitetura Multiagente — Python Dev Expert
+# Arquitetura dos 11 Subagentes Especializados — Python Dev Expert
 
-Para cobrir o ecossistema Python moderno (Python 3.12 a 3.16+, Astral uv, Ruff, FastAPI, Django 6+, Flask, PyTorch e LangChain) com velocidade extrema e zero bugs sutis, a suíte opera com 8 Subagentes Especializados:
+A suíte Python Dev Expert opera sob o padrão de Engenharia Federada em Linha de Montagem, integrando o ecossistema Python moderno com Astral uv, Ruff, tipagem estrita Mypy, frameworks assíncronos, pipelines de IA com pdf-oxide e suítes completas de testes:
 
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Tech Lead & Orquestrador Python]
-    Showrunner --> ToolingMaster[2. Mestre em Tooling Moderno Astral uv & Ruff]
-    ToolingMaster --> FrameworkDev[3. Especialista em Frameworks FastAPI/Django/Flask]
-    ToolingMaster --> DataAiDev[4. Engenheiro de Dados, LLM & IA LangChain/PyTorch]
-    FrameworkDev & DataAiDev --> TypingAuditor[5. Auditor de Tipagem Estrita Mypy/TypeVar]
-    FrameworkDev & DataAiDev --> QATester[6. Engenheiro de QA Pytest/Hypothesis]
-    TypingAuditor & QATester --> SecurityAuditor[7. Auditor de Segurança SAST Bandit/Trivy]
-    SecurityAuditor --> DocWriter[8. Documentador Técnico Bilíngue & Sphinx]
-    DocWriter --> OutputFinal([Código Python Moderno, Rápido e Tipado])
+    
+    Showrunner --> SpecArchitect[2. Engenheiro de Specs & Arquitetura Assíncrona]
+    
+    SpecArchitect --> ToolingMaster[3. Mestre em Tooling Astral uv & Ruff]
+    
+    ToolingMaster --> FrameworkDev[4. Especialista em Frameworks Web FastAPI/Django/Flask]
+    ToolingMaster --> DataAiDev[5. Engenheiro de Dados, LLM & IA LangChain/PyTorch/pdf-oxide]
+    ToolingMaster --> CliAutomationDev[6. Desenvolvedor de Scripts CLI & Automação Typer/Click]
+    
+    FrameworkDev & DataAiDev & CliAutomationDev --> TypingAuditor[7. Auditor de Tipagem Estrita Mypy strict]
+    FrameworkDev & DataAiDev & CliAutomationDev --> QATester[8. Engenheiro de QA & Testes Pytest/Hypothesis]
+    
+    TypingAuditor & QATester --> SecurityAuditor[9. Auditor SAST & Segurança de Pacotes Bandit/pip-audit]
+    
+    SecurityAuditor --> ReleaseGatekeeper[10. Guardião de Versões & SemVer 2.0.0]
+    
+    ReleaseGatekeeper --> TechnicalWriter[11. Redator Técnico & Documentador Bilíngue EN/PT-BR]
+    
+    TechnicalWriter --> SpecArchitect
+    SpecArchitect --> OutputFinal([Código Python Moderno, Rápido, Tipado e Homologado])
 `
 
-## Papéis e Responsabilidades dos 8 Subagentes:
+---
 
-1. **Tech Lead & Orquestrador Python (Showrunner):**
-   - Coordena o pipeline, seleciona a versão do runtime (3.12 a 3.16+) e alinha arquitetura limpa.
-2. **Mestre em Tooling Moderno (Astral uv & Ruff):**
-   - Garante instalação ultraveloz de dependências com o gerenciador uv e linting/formatação instantânea com ruff.
-3. **Especialista em Web & APIs:**
-   - Domínio em FastAPI (Pydantic v2, async/await nativo), Django 6+ e Flask estruturado.
-4. **Engenheiro de Dados & Inteligência Artificial:**
-   - Ingestão com pdf_oxide, pipelines LangChain, RAG com embeddings e scripts PyTorch.
-5. **Auditor de Tipagem Estrita (Mypy):**
-   - Type hints exaustivos em todas as funções (typing, Self, ParamSpec), garantindo aprovação com strict.
-6. **Engenheiro de QA & Testes:**
-   - Testes unitários e baseados em propriedades com pytest, pytest-asyncio e hypothesis.
-7. **Auditor de Segurança SAST:**
-   - Auditoria estática de vulnerabilidades com bandit e checagem de dependências com pip-audit.
-8. **Documentador Técnico Bilíngue:**
-   - Docstrings no formato Google/NumPy, especificações OpenAPI e documentação em EN e PT-BR.
+## 🏛️ Papéis e Responsabilidades dos 11 Subagentes
+
+1. **Tech Lead & Orquestrador Python (Showrunner):** Entrevista o usuário via grill-me, delimita versões do runtime (3.12 a 3.16+) e governa o pipeline.
+2. **Engenheiro de Specs & Arquitetura Assíncrona:** Modela schemas Pydantic v2, design patterns assíncronos (asyncio) e fluxos de dados.
+3. **Mestre em Tooling Moderno (Astral uv & Ruff):** Substitui ferramentas lentas pelo ecossistema Astral (uv para pacotes ultravelozes e ruff para linting instantâneo).
+4. **Especialista em Frameworks Web:** Domínio em FastAPI de alta performance, Django 6+ robusto e microserviços Flask.
+5. **Engenheiro de Dados, LLM & IA:** Ingestão ultraveloz com pdf_oxide em Rust, RAG com embeddings, LangChain e scripts PyTorch.
+6. **Desenvolvedor de Scripts CLI & Automação:** Ferramentas de terminal ergonômicas utilizando Typer, Rich e Click com feedback em tempo real.
+7. **Auditor de Tipagem Estrita (Mypy strict):** Exige type hints completos em todas as assinaturas, Generic Types e validação strict.
+8. **Engenheiro de QA & Testes Automatizados:** Testes unitários com pytest, fixtures assíncronas e testes baseados em propriedades com hypothesis.
+9. **Auditor SAST & Segurança de Pacotes:** Auditoria de vulnerabilidades com bandit e varredura de dependências com pip-audit.
+10. **Guardião de Versões & SemVer 2.0.0:** Controle rigoroso de releases de pacotes PyPI e versionamento semântico.
+11. **Redator Técnico & Documentador Bilíngue:** Gera docstrings nos formatos Google/NumPy, documentação Sphinx/MkDocs e manuais em EN e PT-BR.

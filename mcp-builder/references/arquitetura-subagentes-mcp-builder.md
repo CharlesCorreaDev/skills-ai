@@ -1,32 +1,44 @@
-# Arquitetura Multiagente — MCP Builder 🔌🛠️
+# Arquitetura dos 10 Subagentes Especializados — MCP Builder 🔌🛠️
+## Gerador, Blindador e Orquestrador Universal de Servidores MCP — by GM Charles Corrêa
 
-Para gerar, blindar e auditar servidores Model Context Protocol (MCP) com total segurança e zero alucinações de API, a suíte opera com **7 Subagentes Especializados**:
+A suíte **MCP Builder** opera em linha de montagem com especialistas dedicados para erradicar prompt injection, vazamento de chaves de API, tipos fracos e incompatibilidade de IDEs:
 
 `mermaid
 flowchart TD
-    User([Usuário / Desenvolvedor]) --> Showrunner[1. Orquestrador de Protocolo MCP]
-    Showrunner --> ProtocolArchitect[2. Arquiteto de Ferramentas & Recursos]
-    ProtocolArchitect --> PolyglotDev[3. Desenvolvedor Poliglota TS/PHP/Python/Go/Rust]
-    PolyglotDev --> SecurityShield[4. Blindador de Segurança & Prompt Injection]
-    PolyglotDev --> SastAuditor[5. Auditor SAST & Validador de Tipos]
-    SecurityShield & SastAuditor --> IntegrationVerifier[6. Verificador de IDEs Claude/Cursor/Antigravity]
-    IntegrationVerifier --> ReleaseSigner[7. Publicador SemVer & Guardião de Versões]
-    ReleaseSigner --> OutputFinal([Servidor MCP Seguro, Testado e Homologado])
+    User([Usuário / Desenvolvedor]) --> Showrunner[1. Showrunner & Orquestrador MCP]
+    
+    Showrunner --> SpecHandoff[2. Engenheiro de Specs & OpenAPI/MCP]
+    
+    SpecHandoff --> ProtocolDev[3. Engenheiro de Protocolo JSON-RPC 2.0 & Stdio/SSE]
+    
+    ProtocolDev --> PolyglotDev[4. Desenvolvedor Poliglota TS/PHP/Python/Go/Rust]
+    
+    PolyglotDev --> SecurityShield[5. Blindador contra Prompt Injection & Secrets]
+    PolyglotDev --> TypingSastAuditor[6. Auditor de Tipagem Estrita & SAST L9/Mypy]
+    
+    SecurityShield & TypingSastAuditor --> IdeTester[7. Engenheiro de Conectividade Multi-IDE Claude/Cursor/Antigravity]
+    
+    IdeTester --> QABenchmarker[8. Engenheiro de QA, Stress Test & Latência]
+    
+    QABenchmarker --> ReleaseGatekeeper[9. Guardião de Versões & SemVer 2.0.0]
+    
+    ReleaseGatekeeper --> TechnicalWriter[10. Redator Técnico & Documentador Bilíngue EN/PT-BR]
+    
+    TechnicalWriter --> SpecHandoff
+    SpecHandoff --> OutputFinal([Servidor MCP Seguro, Blindado, Testado e Homologado])
 `
 
-## Papéis e Responsabilidades dos 7 Subagentes:
+---
 
-1. **Orquestrador de Protocolo MCP (Showrunner):**
-   - Coordena o pipeline do MCP Builder, mapeando contratos JSON-RPC 2.0 e orquestrando o scaffolding.
-2. **Arquiteto de Ferramentas, Recursos & Prompts:**
-   - Define a especificação OpenAPI/MCP, nomeação semântica de tools, schemas JSON Schema estritos e descrições claras para as LLMs.
-3. **Desenvolvedor Poliglota (TypeScript, PHP 8.4+, Python 3.12+, Go, Rust):**
-   - Implementa o servidor utilizando SDKs nativos oficiais ou stdio/SSE robustos com tratamento assíncrono de exceções.
-4. **Blindador de Segurança (Security Shield):**
-   - Protege contra Prompt Injection indireto, validação estrita de inputs, path traversal e vazamento de variáveis de ambiente (.env).
-5. **Auditor SAST & Validador de Tipos:**
-   - Executa análise estática de segurança (SAST) e valida conformidade estrita de tipagem (TypeScript strict, PHPStan L9, Mypy).
-6. **Verificador de Integração com IDEs:**
-   - Gera e testa as configurações de conexão (claude_desktop_config.json, .gemini/settings.json, .cursor/mcp.json).
-7. **Publicador SemVer & Guardião de Versões:**
-   - Valida conformance do manifesto, controle de versão SemVer 2.0.0 e monitoramento de atualizações do protocolo.
+## 🏛️ Papéis e Responsabilidades dos 10 Subagentes
+
+1. **Showrunner & Orquestrador MCP:** Entrevista o desenvolvedor, delimita fontes de dados (APIs, DBs, arquivos) e orquestra o pipeline.
+2. **Engenheiro de Specs & OpenAPI/MCP:** Modela schemas JSON Schema estritos, nomeação de tools sem ambiguidade e descrições semânticas para LLMs.
+3. **Engenheiro de Protocolo JSON-RPC 2.0 (Stdio & SSE):** Implementa o ciclo de transporte, tratamento assíncrono de mensagens e multiplexação.
+4. **Desenvolvedor Poliglota (TS, PHP 8.4+, Python 3.12+, Go, Rust):** Implementa os handlers nativos de ferramentas e recursos com alta velocidade.
+5. **Blindador de Segurança (Security Shield):** Contenção contra Prompt Injection indireto, validação de inputs e proteção de variáveis de ambiente.
+6. **Auditor de Tipagem Estrita & SAST:** Valida estaticamente TypeScript strict, PHPStan Level 9, Mypy strict e auditoria Bandit.
+7. **Engenheiro de Conectividade Multi-IDE:** Valida integração e gera arquivos de configuração para Claude Desktop, Antigravity, Cursor e VS Code.
+8. **Engenheiro de QA, Stress Test & Latência:** Executa benchmarks de tempo de resposta (<50ms em stdio), concorrência e resiliência a timeouts.
+9. **Guardião de Versões & SemVer 2.0.0:** Controla a semântica de versionamento de tools e backward compatibility.
+10. **Redator Técnico & Documentador Bilíngue:** Gera READMEs de instalação, documentação de tools e exemplos de prompts em EN e PT-BR.

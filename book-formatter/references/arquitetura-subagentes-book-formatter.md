@@ -1,36 +1,45 @@
-# Arquitetura Multiagente — Book Formatter 📕➡️📄
+# Arquitetura dos 10 Subagentes Especializados — Book Formatter 📕➡️📄
+## Suíte de Formatação, Tradução em Lotes e Diagramação de Livros de RPG — by GM Charles Corrêa
 
-Para garantir diagramações impecáveis, traduções fiéis sem alucinação e preservação total de colunas, fontes e ornamentos visuais, a suíte opera com **8 Subagentes Especializados**:
+A suíte **Book Formatter** opera sob o padrão de **Engenharia Federada em Linha de Montagem com Quality Gates**, espelhando o fluxo de uma editora profissional especializada em livros complexos de RPG (World of Darkness, Vampire: The Masquerade, D&D, Tormenta20):
 
 `mermaid
 flowchart TD
-    User([Usuário / Autor / GM]) --> Showrunner[1. Orquestrador de Diagramação]
-    Showrunner --> Extractor[2. Engenheiro de Ingestão & PDF Oxide]
-    Extractor --> Typographer[3. Analista Tipográfico & Fontes]
-    Typographer --> RpgAnalyst[4. Especialista em Regras & Glossário RPG]
-    RpgAnalyst --> BatchTranslator[5. Tradutor em Lotes de 5 Páginas]
-    BatchTranslator --> Reviewer[6. Revisor Semântico & Mecânico]
-    Reviewer --> Diagrammer[7. Diagramador & Compositor de PDF/MD]
-    Diagrammer --> Auditor[8. Auditor de Qualidade & Fidelidade Visual]
-    Auditor --> OutputFinal([Pacote Entregue: TXT, MD e PDF Diagramado])
+    User([Usuário / Autor / GM]) --> Showrunner[1. Showrunner & Diretor Editorial]
+    
+    Showrunner --> SpecHandoff[2. Engenheiro de Specs, Escopo & SemVer]
+    
+    SpecHandoff --> Extractor[3. Engenheiro de Ingestão & PDF Oxide/OCR]
+    
+    Extractor --> Typographer[4. Analista Tipográfico, Fontes & Margens]
+    Extractor --> RpgAnalyst[5. Especialista em Regras & Glossário RPG]
+    
+    Typographer & RpgAnalyst --> BatchTranslator[6. Tradutor em Lotes Estritos de 5 Páginas]
+    
+    BatchTranslator --> SemanticReviewer[7. Revisor Semântico, Fórmulas & Fidedignidade]
+    
+    SemanticReviewer --> Diagrammer[8. Diagramador & Compositor de PDF/MD/EPUB]
+    
+    Diagrammer --> QualityAuditor[9. Auditor Geral de Fidelidade Visual & Comparador de Páginas]
+    
+    QualityAuditor --> TechnicalWriter[10. Redator Técnico & Documentador Bilíngue EN/PT-BR]
+    
+    TechnicalWriter --> SpecHandoff
+    SpecHandoff --> OutputFinal([Pacote Entregue: TXT, MD e PDF Fielmente Diagramado])
 `
 
-## Papéis e Responsabilidades dos 8 Subagentes:
+---
 
-1. **Orquestrador de Diagramação (Showrunner):**
-   - Coordena o pipeline de 8 fases, define metas de páginas e orquestra handoffs entre extração, tradução e diagramação.
-2. **Engenheiro de Ingestão & PDF Oxide:**
-   - Executa extração ultrarrápida via pdf_oxide (ou OCR docling/
-ougat em scans antigos). Garante extração limpa sem quebra de fluxo.
-3. **Analista Tipográfico & Fontes:**
-   - Inspeciona fontes originais do livro (serifas, góticas, títulos, caixas de texto), mapeia substitutas idênticas e define pesos/entrelinhas.
-4. **Especialista em Regras & Glossário RPG:**
-   - Ingesta os glossários canônicos (World of Darkness, D20, etc.) em glossarys/ e assegura coerência estrita de termos de jogo e atributos.
-5. **Tradutor em Lotes de 5 Páginas:**
-   - Realiza a tradução em micro-lotes rigorosos (5 a 10 páginas por vez), impedindo estouro de contexto, omissão de parágrafos ou alucinações.
-6. **Revisor Semântico & Mecânico:**
-   - Compara o texto em português com o original em inglês linha a linha, checando integridade matemática, tabelas e fórmulas de dados.
-7. **Diagramador & Compositor de PDF/MD:**
-   - Recria o layout no padrão original: duas colunas, caixas de citação decoradas, capitulares, bordas de página e ilustrações nas exatas posições.
-8. **Auditor de Qualidade & Fidelidade Visual (Portão Final):**
-   - Compara página por página do PDF gerado com o PDF original, garantindo a mesma paginação (page count), índice remissivo e entrega impecável.
+## 🏛️ Papéis e Responsabilidades dos 10 Subagentes
+
+1. **Showrunner & Diretor Editorial:** Entrevista o autor via grill-me, define o estilo editorial, metas de páginas e orquestra as fases da esteira.
+2. **Engenheiro de Specs, Escopo & SemVer:** Mapeia a estrutura do livro (capítulos, apêndices), critérios de aceitação e versionamento de artefatos.
+3. **Engenheiro de Ingestão & PDF Oxide:** Executa extração ultraveloz com pdf_oxide (Rust) ou OCR avançado (docling/
+ougat em scans antigos) sem quebrar colunas.
+4. **Analista Tipográfico, Fontes & Margens:** Mapeia fontes exatas (serifas, títulos góticos, capitulares), pesos, entrelinhas e caixas de texto decoradas.
+5. **Especialista em Regras & Glossário RPG:** Ingesta glossários canônicos de sistemas (WoD, D20, YZE) e garante coerência mecânica e terminológica.
+6. **Tradutor em Lotes Estritos de 5 Páginas:** Tradução progressiva em micro-lotes (5 a 10 páginas por vez), impedindo alucinações ou omissão de parágrafos.
+7. **Revisor Semântico, Fórmulas & Fidedignidade:** Compara o texto traduzido contra o original em inglês linha por linha, validando tabelas e cálculos.
+8. **Diagramador & Compositor de PDF/MD/EPUB:** Reconstrói o layout original (duas colunas, caixas de citação, ornamentos de borda e posicionamento de imagens).
+9. **Auditor Geral de Fidelidade Visual (Portão Obrigatório):** Compara página por página do PDF gerado com o original, garantindo o mesmo número exato de páginas (page count).
+10. **Redator Técnico & Documentador Bilíngue:** Produz documentação técnica do livro, glossários gerados e relatórios de conformidade em EN e PT-BR.

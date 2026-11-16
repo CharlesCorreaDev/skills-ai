@@ -1,32 +1,44 @@
-# Arquitetura Multiagente — Bootstrap UX/UI Plus 🎨⚡
+# Arquitetura dos 10 Subagentes Especializados — Bootstrap UX/UI Plus 🎨⚡
+## Suíte de Design de Interface, Ergonomia Cognitiva e Acessibilidade — by GM Charles Corrêa
 
-Para projetar interfaces modernas (Bootstrap 5.3 & 6.0), acessíveis (WCAG 2.2 AA), cognitivamente ergonômicas para neurodivergentes (TDAH e Autismo/TEA) e livres de vazamento CSS, a suíte opera com 7 Subagentes Especializados:
+A suíte **Bootstrap UX/UI Plus** opera sob o padrão de **Engenharia Federada em Linha de Montagem**, garantindo interfaces visualmente impecáveis, responsivas (Bootstrap 5.3 & 6.0), acessíveis (WCAG 2.2 AA) e ergonomicamente confortáveis para neurodivergentes (TDAH & TEA):
 
 `mermaid
 flowchart TD
-    User([Usuário / Desenvolvedor]) --> Showrunner[1. Diretor de Design & Orquestrador UX/UI]
+    User([Usuário / Desenvolvedor]) --> Showrunner[1. Diretor de Arte & Orquestrador UX/UI]
+    
     Showrunner --> UxArchitect[2. Arquiteto de Leis de UX Fitts/Hick/Miller]
+    
     UxArchitect --> NeuroErgonomist[3. Engenheiro de Neurodiversidade TDAH/TEA]
-    NeuroErgonomist --> ComponentDev[4. Desenvolvedor Front-end Bootstrap & CSS Scoped]
-    ComponentDev --> AccessibilityAuditor[5. Auditor de Acessibilidade WCAG 2.2 AA]
-    AccessibilityAuditor --> MultiFrameworkDev[6. Adaptador Multi-Framework HTML/PHP/React/Django]
-    MultiFrameworkDev --> DesignSigner[7. Auditor Geral de Design & Anti-Slop]
-    DesignSigner --> OutputFinal([Interface Impecável, Acessível e Responsiva])
+    UxArchitect --> ColorPsychologist[4. Especialista em Psicologia das Cores Eva Heller/Contraste]
+    
+    NeuroErgonomist & ColorPsychologist --> ComponentDev[5. Desenvolvedor Front-end Bootstrap & CSS Scoped]
+    
+    ComponentDev --> ResponsiveArchitect[6. Especialista em Responsividade & Mobile-First]
+    
+    ComponentDev & ResponsiveArchitect --> AccessibilityAuditor[7. Auditor de Acessibilidade WCAG 2.2 AA & ARIA]
+    
+    AccessibilityAuditor --> MultiFrameworkDev[8. Adaptador Multi-Framework HTML/PHP/Blade/React]
+    
+    MultiFrameworkDev --> DesignSigner[9. Auditor Geral de Design & Anti-Slop]
+    
+    DesignSigner --> TechnicalWriter[10. Redator Técnico & Documentador de Design System EN/PT-BR]
+    
+    TechnicalWriter --> UxArchitect
+    UxArchitect --> OutputFinal([Interface Impecável, Acessível, Responsiva e Documentada])
 `
 
-## Papéis e Responsabilidades dos 7 Subagentes:
+---
 
-1. **Diretor de Design & Orquestrador UX/UI (Showrunner):**
-   - Coordena as diretrizes visuais, tipográficas e conceituais do projeto, garantindo consistência global.
-2. **Arquiteto de Leis de UX & Heurísticas:**
-   - Aplica as Leis de UX (Hick, Fitts, Jakob, Miller, Zeigarnik) e as 10 Heurísticas de Jakob Nielsen.
-3. **Engenheiro de Neurodiversidade (TDAH & Espectro Autista):**
-   - Elimina paralisia de decisão, aplica micro-passos visuais, contraste suave, redução de ruído e bionic bolding.
-4. **Desenvolvedor Front-end Bootstrap & CSS Scoped:**
-   - Constrói layouts fluidos utilizando Bootstrap 5.3/6.0 com isolamento rigoroso de classes para evitar vazamento no DOM.
-5. **Auditor de Acessibilidade WCAG 2.2 AA:**
-   - Valida contraste de cores (mínimo 4.5:1), navegação por teclado, leitor de tela (ARIA) e áreas de toque.
-6. **Adaptador Multi-Framework:**
-   - Adapta e integra os componentes para PHP/Blade/Twig, React, Node.js, Python/Django e HTML puro.
-7. **Auditor Geral de Design & Anti-Slop (Portão Final):**
-   - Elimina padrões genéricos artificiais de IA, validando hierarquia tipográfica, respiro e acabamento profissional.
+## 🏛️ Papéis e Responsabilidades dos 10 Subagentes
+
+1. **Diretor de Arte & Orquestrador UX/UI (Showrunner):** Entrevista o usuário via grill-me, define identidade visual e gerencia os ciclos dos subagentes.
+2. **Arquiteto de Leis de UX & Heurísticas:** Aplica as Leis de UX (Hick, Fitts, Miller, Jakob, Zeigarnik) e as 10 Heurísticas de Jakob Nielsen.
+3. **Engenheiro de Neurodiversidade (TDAH & Espectro Autista):** Elimina sobrecarga cognitiva, aplica micro-passos visuais, contraste suave e bionic bolding.
+4. **Especialista em Psicologia das Cores:** Seleciona paletas intencionais baseadas na Psicologia das Cores de Eva Heller com harmonia sensorial.
+5. **Desenvolvedor Front-end Bootstrap & CSS Scoped:** Constrói layouts com Bootstrap 5.3/6.0 com isolamento estrito de classes para evitar vazamento de estilos no DOM.
+6. **Especialista em Responsividade & Mobile-First:** Garante comportamento impecável em telas mobile, tablets, desktops e ultrawide.
+7. **Auditor de Acessibilidade WCAG 2.2 AA:** Valida contraste de cores (mínimo 4.5:1), navegação por teclado e semântica ARIA completa.
+8. **Adaptador Multi-Framework:** Converte componentes para PHP/Blade, Twig, React, Python/Django e HTML puro.
+9. **Auditor Geral de Design & Anti-Slop (Portão Obrigatório):** Elimina layouts artificiais genéricos, garantindo respiro e hierarquia visual refinada.
+10. **Redator Técnico & Documentador de Design System:** Cria o guia de estilo, documentação de componentes e snippets em Português e Inglês.

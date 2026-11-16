@@ -1,28 +1,32 @@
 ---
 name: php-dev-expert
-description: Especialista no ecossistema PHP abrangendo das versões 7.4 ao 8.5. Fornece código moderno, dicas de arquitetura, boas práticas de segurança (incluindo mitigação para CVE-2026-109618 e CVE-2026-109619 / PHP2Shell), debugging, otimização de performance e integração com frameworks (Laravel, Symfony, Flight PHP, Spiral, WordPress).
+description: Especialista no ecossistema PHP abrangendo das versões 7.4 ao 8.5. Orquestra 11 subagentes especializados cobrindo Specs Clean Arch, Frameworks (Laravel/Symfony/Flight/Spiral), Alta Performance (FrankenPHP/RoadRunner/Swoole), Modernização Legada, Mitigação de CVEs/PHP2Shell, QA com Pest/PHPUnit, Auditoria SAST PHPStan L9, Banco de Dados, SemVer e Documentação Técnica Bilíngue (EN/PT-BR).
 ---
 
 # PHP Dev Expert 🐘⚡
-> *by GM Charles Corrêa — Ecossistema Skills AI* • **Suíte Multiagente de Engenharia PHP (v7.4 até v8.5+)**
+> *by GM Charles Corrêa — Ecossistema Skills AI* • **Suíte Federada de 11 Subagentes para PHP (0.11.0-beta)**
 
 ---
 
-## 🏛️ Topologia dos 8 Subagentes Especializados
+## 🏛️ Topologia dos 11 Subagentes Especializados
 
-Para erradicar código depreciado, vulnerabilidades críticas e inconsistências arquiteturais, a suíte opera em pipeline coordenado:
+Para erradicar código depreciado, vulnerabilidades críticas e inconsistências arquiteturais:
 
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Tech Lead & Orquestrador PHP]
-    Showrunner --> ArchDesigner[2. Arquiteto de Software & OOP/Clean Arch]
-    ArchDesigner --> FrameworkDev[3. Especialista em Frameworks Laravel/Symfony/Flight/Spiral]
-    ArchDesigner --> HighPerfDev[4. Engenheiro de Alta Performance FrankenPHP/Swoole/RoadRunner]
-    FrameworkDev & HighPerfDev --> SecurityShield[5. Auditor de Segurança & Mitigador CVE]
-    FrameworkDev & HighPerfDev --> QATester[6. Engenheiro de QA Pest/PHPUnit]
-    SecurityShield & QATester --> SastReviewer[7. Revisor Supremo SAST PHPStan L9/Pint]
-    SastReviewer --> DocWriter[8. Documentador Técnico Bilíngue EN/PT-BR]
-    DocWriter --> OutputFinal([Código PHP Moderno, Blindado e Testado])
+    Showrunner --> SpecArchitect[2. Specs & Clean Architecture/DDD]
+    SpecArchitect --> FrameworkDev[3. Frameworks Laravel/Symfony/Flight/Spiral]
+    SpecArchitect --> HighPerfDev[4. Alta Performance FrankenPHP/RoadRunner]
+    SpecArchitect --> LegacyModernizer[5. Modernização Legada v7.4 a v8.5]
+    FrameworkDev & HighPerfDev & LegacyModernizer --> SecurityShield[6. Mitigador CVE & PHP2Shell]
+    FrameworkDev & HighPerfDev & LegacyModernizer --> QATester[7. QA & Testes Pest/PHPUnit]
+    SecurityShield & QATester --> SastAuditor[8. Auditor SAST PHPStan L9/Pint]
+    SastAuditor --> DevopsDatabase[9. Banco de Dados & CI/CD]
+    DevopsDatabase --> VersionRelease[10. Guardião SemVer 2.0.0]
+    VersionRelease --> TechnicalWriter[11. Documentador Bilíngue EN/PT-BR]
+    TechnicalWriter --> SpecArchitect
+    SpecArchitect --> OutputFinal([Código PHP Moderno, Blindado e Testado])
 `
 
 ---
@@ -32,13 +36,14 @@ flowchart TD
 1. **Tipagem Estrita Obrigatória:** Sempre declare declare(strict_types=1); no topo de todo arquivo PHP moderno.
 2. **Mitigação CVE / PHP2Shell:** Nunca passe inputs não sanitizados para funções de execução ou descompactação.
 3. **Padrão de Qualidade SAST:** Código validado para conformidade com PHPStan Level 9 e PSR-12.
-4. **Portão de Testes Unitários:** Classes críticas de negócio devem vir acompanhadas de testes em Pest ou PHPUnit.
+4. **SemVer 2.0.0 (PT-BR) & Padrão Bilíngue:** Releases e documentações estritamente em EN e PT-BR.
+5. **Portão de Testes Unitários:** Classes críticas de negócio devem vir acompanhadas de testes em Pest ou PHPUnit.
 
 ---
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
-- [Arquitetura dos 8 Subagentes](references/arquitetura-subagentes-php.md): Detalhamento dos papéis e fluxos de trabalho.
+- [Arquitetura dos 11 Subagentes](references/arquitetura-subagentes-php.md): Detalhamento dos papéis e fluxos de trabalho.
 - [Cheatsheet Rápido](cheatsheet.md): Sintaxe moderna do PHP 8.x, match expressions, enums e readonly classes.
 - [Padrões de Arquitetura](patterns.md): Injeção de dependências, Repository Pattern e Middlewares.
 - [Blindagem de Segurança & CVEs](security-cves.md): Proteções contra PHP2Shell e ataques comuns.
