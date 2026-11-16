@@ -1,130 +1,48 @@
 ---
 name: code-mode-builder
-description: Architect, builder, and orchestrator of Code Mode (Programmatic Tool Calling and Code Execution) systems for AI Agents. Replaces token-heavy JSON tool dumps with sandboxed code execution (TypeScript/JavaScript, Python, Rhai, Bash), compressing hundreds of MCP/API tools into 2-3 primitives (search, describe, execute) with up to 90% token reduction and 1-turn multi-step batching. Use when designing Code Mode harnesses, building programmatic tool bridges, replacing repetitive MCP tool-calling loops with code actions, or configuring secure VM/WASM/Docker execution sandboxes.
+description: Architect, builder, and orchestrator of Code Mode (Programmatic Tool Calling and Code Execution) systems for AI Agents. Condenses hundreds of MCP/API tools into 2-3 primitives (search, describe, execute) with up to 90% token reduction and 1-turn multi-step batching. Orquestra 10 subagentes cobrindo Specs CodeAct, Compressao de APIs, Sandboxing WASM/VM, Gate Pattern de Seguranca, Runtimes TS/Python, Benchmarks, QA e Documentacao Bilingue.
 ---
 
 # Code Mode Builder ⚡💻🧩
-> *by GM Charles Corrêa — Ecossistema Skills AI*  
-> **Status: Beta (v0.1.0-beta)**  
-> **Conceito Central:** Programmatic Tool Calling & Code-as-Action (CodeAct)
+> *by GM Charles Corrêa — Ecossistema Skills AI* • **Suíte Federada de 10 Subagentes para Code Mode (v0.2.0-beta)**
 
 ---
 
-## 🇺🇸 English
+## 🏛️ Topologia dos 10 Subagentes Especializados
 
-### 📌 Overview & Philosophy
+Para erradicar loops repetitivos de ferramentas JSON, desperdício de tokens e lentidão de chamadas atômicas:
 
-**Code Mode Builder** is the definitive architecture suite and engineering guide for building, adopting, and orchestrating **Code Mode** (also known as *Programmatic Tool Calling* or *Code-as-Action / CodeAct*) in AI agents.
-
-As established by **Anthropic** (*Code Execution with MCP*), **Cloudflare** (*Code Mode & Workers*), **Apple** (*CodeAct*), **Thoughtworks Radar**, and the **Universal Tool Calling Protocol (UTCP)**:
-> *"LLMs excel at writing structured code, but degrade rapidly when forced into multi-turn sequential JSON tool-calling loops."*
-
-Instead of flooding the agent's context window with dozens of tool schemas (costing 5,000 to 30,000+ tokens on every turn) and executing 10 to 20 round-trips for multi-step workflows, **Code Mode condenses the entire API/MCP catalog into 2 or 3 lightweight primitives (`search`, `describe`, `execute`)**. The agent writes a single sandboxed script that calls methods, filters datasets, and processes logic in-memory, returning only the final synthesized result into the conversation context.
-
----
-
-### 📊 Benchmark Comparison: Traditional Tool Calling vs. Code Mode
-
-| Metric / Cenário | Traditional JSON Tool Calling | Code Mode (Programmatic) | Ganho / Eficiência |
-|---|---|---|:---:|
-| **Context Overhead** | 50 a 300+ esquemas JSON por prompt | 2 a 3 ferramentas (`search` + `execute`) | **-80% a -95% tokens** |
-| **Paging & Filtering (ex: 50 arquivos/registros)** | 50 round-trips LLM (Turnos repetitivos) | 1 script em lote (`map()`, `filter()`, `reduce()`) | **1 única rodada** |
-| **Complex Workflows (8+ operações)** | 16 iterações sucessivas | 1 execução paralela (`Promise.all`) | **88% mais rápido** |
-| **Custo de API em Produção** | Custos crescentes com re-ingestão de prompt | Resposta final sintetizada | **Até 5.7x mais econômico** |
-| **Manipulação de Dados Intermediários** | Payload intermediário polui o contexto | Processado diretamente na memória do sandbox | **Zero poluição de contexto** |
+`mermaid
+flowchart TD
+    User([Usuário / Desenvolvedor]) --> Showrunner[1. Showrunner & Orquestrador CodeAct]
+    Showrunner --> SpecArchitect[2. Specs search/describe/execute]
+    SpecArchitect --> ApiCompressor[3. Compressao de APIs & Tipos .d.ts]
+    ApiCompressor --> SandboxEngineer[4. Sandboxing WASM/QuickJS/Node VM]
+    SandboxEngineer --> SecurityGatekeeper[5. Blindador & Gate Pattern]
+    SandboxEngineer --> MultiLangRuntime[6. Runtimes TS/JS/Python/Rhai]
+    SecurityGatekeeper & MultiLangRuntime --> TokenBenchmarker[7. Eficiencia de Tokens & Latencia]
+    TokenBenchmarker --> QATester[8. QA & Resiliencia/Timeouts]
+    QATester --> ReleaseGatekeeper[9. Guardiao SemVer 2.0.0]
+    ReleaseGatekeeper --> TechnicalWriter[10. Documentador Bilingue EN/PT-BR]
+    TechnicalWriter --> SpecArchitect
+    SpecArchitect --> OutputFinal([Harness Code Mode Testado e Homologado])
+`
 
 ---
 
-### 🏗️ Os 3 Padrões Canônicos de Implementação do Code Mode
+## ⚡ Regras Canônicas & Portões Obrigatórios (Fast Gates)
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       Arquiteturas de Code Mode Suportadas                  │
-├──────────────────────────────┬──────────────────────────────┬───────────────┤
-│ 1. Code Mode Gateway MCP     │ 2. In-Process Sandbox        │ 3. Native CLI │
-│    (Cloudflare / UTCP)       │    (Node VM / QuickJS WASM)  │    (Rhai Rust)│
-├──────────────────────────────┼──────────────────────────────┼───────────────┤
-│ • Servidor MCP com 2 ferramentas:│ • Script executado em VM     │ • Binário     │
-│   `search` + `execute`.      │   isolada sem rede externa.  │   compilado.  │
-│ • Expõe upstream tools como  │ • Suporte a TypeScript/JS    │ • Zero deps,  │
-│   globais no script (`await  │   com tipos estritos (.d.ts).│   executa via │
-│   github.get_pr()`).         │ • Timeout e quotas de RAM.   │   Bash host.  │
-└──────────────────────────────┴──────────────────────────────┴───────────────┘
-```
-
-#### Padrão A: O Gateway MCP de 2 Ferramentas (`search` & `execute`)
-1. **`search(query)`**: Busca semântica ou por palavra-chave no catálogo de ferramentas do servidor. Retorna apenas as assinaturas TypeScript/Python dos 2-3 métodos necessários para a tarefa imediata.
-2. **`execute(code)`**: Recebe o código gerado pelo modelo, compila e executa em ambiente sandbox onde cada ferramenta upstream é acessível como uma função global assíncrona (`await database.query(...)`, `await slack.send(...)`).
-
-#### Padrão B: Sandbox Embutido com Tipagem Estrita (TypeScript / Python)
-- Injeta interfaces `.d.ts` ou classes tipadas (Pydantic / Dataclasses).
-- O modelo aproveita a tipagem estrita para encadear operações (`Promise.all`, destructuring, transformações funcionais).
-
-#### Padrão C: Sandboxing Físico e Limites de Segurança
-- **Ambientes Recomendados:**
-  - **QuickJS / WebAssembly:** Leve, zero-network por padrão, sem acesso a filesystem host.
-  - **Node.js Isolates / V8 Contexts:** Isolamento de contexto sem bindings nativos.
-  - **Docker / OCI Containers:** Para fluxos que exigem ferramentas de compilação ou execução de shell com isolamento de kernel.
-- **Limites Obrigatórios:** Timeout rígido (ex: 15-30s), limite de memória (ex: 256MB/512MB), e quotas de saída (`max-output`).
+1. **Pensamento Code-First:** Agrupe operações e paginações em scripts em lote em vez de disparar chamadas atômicas sucessivas.
+2. **Gate Pattern de Segurança Obrigatório:** O script no sandbox NUNCA acessa segredos brutos; a autenticação reside estritamente no host.
+3. **Fail-Safe com isError: true:** Capture stdout, stderr e tracebacks limpos para permitir autocorreção em um único turno.
+4. **SemVer 2.0.0 (PT-BR) & Padrão Bilíngue:** Releases e documentações estritamente em EN e PT-BR.
+5. **Portão de Sandboxing & Quotas:** Todo runtime deve impor limites de memória (ex: 256MB), timeout (15-30s) e saída máxima.
 
 ---
 
-## 🚨 Diretrizes Mandatórias para Agentes de IA
+## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
-Quando esta skill estiver ativa ou o usuário pedir para aplicar Code Mode:
-
-### 1. Pensamento "Code-First" (Código como Ação)
-- Em vez de disparar ferramentas atômicas repetidas vezes (ex: listar pastas -> ler arquivo 1 -> ler arquivo 2 -> ler arquivo 3), o agente **DEVE gerar um script consolidado** que realiza a iteração em lote e processa os dados antes de retornar.
-- Nunca retorne JSONs brutos gigantescos de 500 linhas para o contexto quando apenas uma agregação (soma, contagem, filtro booleano) é solicitada.
-
-### 2. Tratamento de Credenciais Fora do Sandbox (The Gate Pattern)
-- **O script NUNCA deve ter acesso a tokens, chaves de API ou segredos brutos.**
-- As ferramentas registradas no sandbox invocam funções de host (*Gate*). O injetor de autenticação atua no host, fora do alcance da linguagem de script executada pelo modelo.
-
-### 3. Fail-Safe com `isError: true` e Observabilidade
-- O runtime de Code Mode deve capturar `stdout`, `stderr` e exceções não tratadas.
-- Se o script falhar, retorne um diagnóstico limpo com `isError: true`, traceback estruturado e as linhas relevantes para que o agente possa corrigir a sintaxe em uma única iteração.
-
----
-
-## 🛠️ Scaffolding & Scripts Disponíveis
-
-A skill fornece um kit inicial de geração de servidores e harnesses Code Mode:
-
-```bash
-# 1. Gerar boilerplate de Servidor MCP Code Mode em TypeScript/Node.js:
-python code-mode-builder/scripts/scaffold_code_mode.py --type ts-mcp --name "meu-code-gateway"
-
-# 2. Gerar boilerplate em Python com Sandbox:
-python code-mode-builder/scripts/scaffold_code_mode.py --type python-sandbox --name "py-codemode"
-
-# 3. Diagnosticar ambiente de execução (Node.js, Python, QuickJS, uv):
-python code-mode-builder/scripts/check_codemode_env.py
-```
-
----
-
-## 🌐 WebMCP & Modern Web Guidance no Navegador
-
-Para implementar Code Mode diretamente no contexto de navegadores web e aplicações client-side, esta skill adota o padrão **[GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)**:
-- **Instalação:** `npx modern-web-guidance@latest install` ou globalmente `npm install -g modern-web-guidance`.
-- **Integração com WebMCP:**
-  - Utilize `agentic-javascript-tools` do Chrome para registrar funções do cliente que o agente pode chamar programaticamente sem carregar schemas volumosos.
-  - Exponha formulários via `agentic-forms` com anotações declarativas para preenchimento em lote por agentes de IA.
-  - Escaneie os artefatos web gerados com `modern-web-guidance legacy-scan <diretório>` para assegurar compatibilidade nativa com os motores modernos de IA dos navegadores.
-
----
-
-## 🇧🇷 Português (Brasil)
-
-### 📌 Visão Geral & Filosofia
-
-O **Code Mode Builder** é a suíte de arquitetura para implementar **Code Mode** (Chamada Programática de Ferramentas / Code-as-Action) em agentes de inteligência artificial.
-
-Em vez de sobrecarregar a janela de contexto com centenas de definições de ferramentas JSON estáticas e forçar o agente a fazer dezenas de turnos de requisições lentas, **o Code Mode fornece apenas 2 ferramentas (`search` e `execute`)**. O agente escreve um script que roda em sandbox seguro, orquestra múltiplos métodos em lote, filtra coleções na memória e devolve apenas o resultado final limpo.
-
-### 🌟 Principais Vantagens
-- **Economia Drástica de Tokens:** Redução de até 95% do overhead de esquemas no contexto.
-- **Orquestração Paralela:** Uso natural de `Promise.all` ou concorrência assíncrona.
-- **Segurança Reforçada:** O sandbox não expõe o sistema de arquivos do host nem chaves de API ao código dinâmico.
-
+- [Arquitetura dos 10 Subagentes](references/arquitetura-subagentes-code-mode.md): Perfis e responsabilidades de cada especialista.
+- [Guia Canônico de Arquitetura Code Mode](references/guia-arquitetura-code-mode.md): Padrões de implementação Gateway MCP, In-Process VM e WASM.
+- [Templates de Scaffolding](templates/): Boilerplates para Node.js VM, QuickJS e Python.
+- [Scripts de Execução e Benchmarks](scripts/): Utilitários de teste e medição de tokens.
