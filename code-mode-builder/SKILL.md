@@ -43,8 +43,14 @@ flowchart TD
 ## 🔗 Protocolo de Skills Companheiras
 `ash
 npx skills@latest add noobygains/godmode
+npx skills@latest add addyosmani/agent-skills --skill=spec-driven-development
 npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add mattpocock/skills --skill=handoff
+npx skills@latest add mattpocock/skills --skill=tdd
+npx skills@latest add aihero-dev/skills-code-review
 npx skills@latest add multica-ai/andrej-karpathy-skills
+npx skills@latest add cloudflare/security-audit-skill
+npx skills@latest add NVIDIA/auto-ontology
 `
 
 ---
