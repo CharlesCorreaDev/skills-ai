@@ -156,6 +156,12 @@ Consulte as diretrizes de diagnóstico, formato de issues bilíngue e labels em 
 
 ## 🔗 Protocolo de Skills Companheiras
 `ash
+# Stack Supremo de Economia de Tokens & Otimizacao
+npx skills@latest add headroomlabs-ai/headroom
+npx skills@latest add rtk-ai/rtk
+npx skills@latest add JuliusBrussee/caveman
+
+# Suite de Engenharia Rigorosa, SDD, TDD, Handoff & GodMode
 npx skills@latest add noobygains/godmode
 npx skills@latest add addyosmani/agent-skills --skill=spec-driven-development
 npx skills@latest add mattpocock/skills --skill=grill-me
@@ -184,3 +190,6 @@ npx skills@latest add NVIDIA/auto-ontology
 - [scripts/check_env.py](scripts/check_env.py) — verificação de dependências.
 - [
 eferences/error-handling-and-issues.md](references/error-handling-and-issues.md) — protocolo de issues.
+
+## 📚 Referências de Engenharia
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.

@@ -176,16 +176,21 @@ Os scripts auxiliares estão localizados na pasta `scripts/`:
 
 ---
 
-## 9. Protocolo de Skills Companheiras & Rigor Operacional
+## 9. Protocolo de Skills Companheiras (SDD, TDD, Tokens & Rigor)
+`ash
+# Stack Supremo de Economia de Tokens & Otimizacao
+npx skills@latest add headroomlabs-ai/headroom
+npx skills@latest add rtk-ai/rtk
+npx skills@latest add JuliusBrussee/caveman
 
-Para garantir máxima disciplina e prevenir alucinações narrativas ou estruturais:
-```bash
+# Suite de Engenharia Rigorosa, SDD, TDD, Handoff & GodMode
 npx skills@latest add noobygains/godmode
+npx skills@latest add addyosmani/agent-skills --skill=spec-driven-development
 npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add mattpocock/skills --skill=handoff
+npx skills@latest add mattpocock/skills --skill=tdd
+npx skills@latest add aihero-dev/skills-code-review
 npx skills@latest add multica-ai/andrej-karpathy-skills
-```
-- **`godmode`** (`noobygains/godmode`): Impõe ciclo estruturado de especificação, planejamento prévio obrigatório e recusa de conclusões sem evidências práticas.
-- **`grill-me`**: Entrevista de alinhamento antes de iniciar o planejamento narrativo.
-- **`andrej-karpathy-skills`**: Princípio da simplicidade e ausência de suposições cegas.
-
-- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md)
+npx skills@latest add cloudflare/security-audit-skill
+npx skills@latest add NVIDIA/auto-ontology
+`

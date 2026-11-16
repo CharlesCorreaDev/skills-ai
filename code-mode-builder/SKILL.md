@@ -42,6 +42,12 @@ flowchart TD
 
 ## 🔗 Protocolo de Skills Companheiras
 `ash
+# Stack Supremo de Economia de Tokens & Otimizacao
+npx skills@latest add headroomlabs-ai/headroom
+npx skills@latest add rtk-ai/rtk
+npx skills@latest add JuliusBrussee/caveman
+
+# Suite de Engenharia Rigorosa, SDD, TDD, Handoff & GodMode
 npx skills@latest add noobygains/godmode
 npx skills@latest add addyosmani/agent-skills --skill=spec-driven-development
 npx skills@latest add mattpocock/skills --skill=grill-me

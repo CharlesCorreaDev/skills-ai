@@ -166,6 +166,12 @@ npx skills@latest add cloudflare/security-audit-skill`
 
 ## 🔗 Protocolo de Skills Companheiras (SDD, Handoff, TDD & Rigor)
 `ash
+# Stack Supremo de Economia de Tokens & Otimizacao
+npx skills@latest add headroomlabs-ai/headroom
+npx skills@latest add rtk-ai/rtk
+npx skills@latest add JuliusBrussee/caveman
+
+# Suite de Engenharia Rigorosa, SDD, TDD, Handoff & GodMode
 npx skills@latest add noobygains/godmode
 npx skills@latest add addyosmani/agent-skills --skill=spec-driven-development
 npx skills@latest add mattpocock/skills --skill=grill-me
@@ -176,3 +182,6 @@ npx skills@latest add multica-ai/andrej-karpathy-skills
 npx skills@latest add cloudflare/security-audit-skill
 npx skills@latest add NVIDIA/auto-ontology
 `
+
+## 📚 Referências de Engenharia
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.
