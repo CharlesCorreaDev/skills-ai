@@ -14,6 +14,7 @@ This guide establishes the canonical and mandatory companion skills and tooling 
 npx skills@latest add headroomlabs-ai/headroom
 npx skills@latest add rtk-ai/rtk
 npx skills@latest add JuliusBrussee/caveman
+npx skills@latest add dietrichgebert/ponytail
 
 # 2. Engenharia Rigorosa, SDD, TDD & GodMode
 npx skills@latest add noobygains/godmode
@@ -47,6 +48,11 @@ npx skills@latest add NVIDIA/auto-ontology
 - Repositorio: https://github.com/JuliusBrussee/caveman
 - PT-BR: Modificador comportamental que forca respostas ultra-diretas, enxutas e sem preambulos (why use many token when few token do trick), preservando integridade tecnica e economizando ate 75% dos tokens de geracao.
 - EN: Behavioral modifier enforcing concise, fluff-free communication (why use many token when few token do trick), slashing output tokens while preserving technical precision.
+
+### D. Ponytail (dietrichgebert/ponytail)
+- Repositorio: https://github.com/dietrichgebert/ponytail
+- PT-BR: Filosofia do "dev senior mais preguicoso da sala" (anti-bloat, YAGNI supremo). O melhor codigo e o que nunca foi escrito. Forca o agente a resolver problemas com standard library nativa, dependencias existentes e minimalismo cirurgico sem abstracoes ou wrappers desnecessarios.
+- EN: "Laziest senior developer in the room" philosophy (anti-bloat, ultimate YAGNI). The best code is the code you never wrote. Forces agents to solve problems using native standard libraries, existing project dependencies, and surgical minimalism without unnecessary abstractions or bloat.
 
 ---
 

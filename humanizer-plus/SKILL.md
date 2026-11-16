@@ -67,6 +67,7 @@ Consulte o catálogo completo e regras de substituição em [padroes-humanizacao
 npx skills@latest add headroomlabs-ai/headroom
 npx skills@latest add rtk-ai/rtk
 npx skills@latest add JuliusBrussee/caveman
+npx skills@latest add dietrichgebert/ponytail
 
 # Suite de Engenharia Rigorosa, SDD, TDD, Handoff & GodMode
 npx skills@latest add noobygains/godmode
