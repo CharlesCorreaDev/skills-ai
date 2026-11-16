@@ -237,8 +237,19 @@ As ferramentas em Python estão disponíveis na pasta `scripts/`:
 
 ---
 
-## 🔗 Integração com o Ecossistema de Skills
+## 🔗 Integração com o Ecossistema de Skills & Protocolo de Instalação
 
+O **Escritor Pro** integra-se com a suíte de ferramentas de rigor de engenharia e foco criativo do ecossistema. Para instalar ou provisionar as skills companheiras recomendadas:
+
+```bash
+# Instalação das skills companheiras recomendadas
+npx skills@latest add noobygains/godmode
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+npx skills@latest add aihero-dev/skills-code-review
+```
+
+- **`godmode`** (`noobygains/godmode`): Rigor de engenharia disciplinada, planejamento prévio obrigatório em etapas estruturadas, recusa de "alucinação/code vomit" e validação rigorosa de entregáveis.
 - **`grill-me`**: Entrevista inicial em 3 a 5 perguntas cirúrgicas para definir o projeto sem esforço mental excessivo.
 - **`not-today-adhd`**: Proteção contra sobrecarga cognitiva para autores neurodivergentes.
 - **`second-brain-plus`**: Persistência canônica do mundo na pasta `.second-brain/`.

@@ -173,3 +173,17 @@ Os scripts auxiliares estão localizados na pasta `scripts/`:
   ```bash
   python scripts/validador_biblia.py mundo/
   ```
+
+---
+
+## 9. Protocolo de Skills Companheiras & Rigor Operacional
+
+Para garantir máxima disciplina e prevenir alucinações narrativas ou estruturais:
+```bash
+npx skills@latest add noobygains/godmode
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+```
+- **`godmode`** (`noobygains/godmode`): Impõe ciclo estruturado de especificação, planejamento prévio obrigatório e recusa de conclusões sem evidências práticas.
+- **`grill-me`**: Entrevista de alinhamento antes de iniciar o planejamento narrativo.
+- **`andrej-karpathy-skills`**: Princípio da simplicidade e ausência de suposições cegas.
