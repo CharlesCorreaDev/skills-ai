@@ -99,3 +99,5 @@ npx skills@latest add multica-ai/andrej-karpathy-skills
 npx skills@latest add cloudflare/security-audit-skill
 npx skills@latest add NVIDIA/auto-ontology
 `
+
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md)

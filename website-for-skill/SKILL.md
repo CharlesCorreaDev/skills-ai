@@ -51,6 +51,7 @@ npx skills@latest add NVIDIA/auto-ontology
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.
 - [Arquitetura dos 6 Subagentes](references/arquitetura-subagentes-website-for-skill.md): Perfis e responsabilidades de cada especialista.
 - [Scripts de Compilação](Scripts/): Automação de crawling e compilação estruturada.
 - [Changelog de Versões](CHANGELOG.md): Histórico de melhorias da suíte.

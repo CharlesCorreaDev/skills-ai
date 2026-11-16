@@ -58,6 +58,7 @@ npx skills@latest add NVIDIA/auto-ontology
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.
 - [Arquitetura dos 10 Subagentes](references/arquitetura-subagentes-bootstrap.md): Papéis e especialidades detalhadas.
 - [Leis de UX](laws/): Hick, Fitts, Miller, Jakob e Zeigarnik explicadas e aplicadas.
 - [Heurísticas de Usabilidade](heuristics/): As 10 Heurísticas de Jakob Nielsen com exemplos.

@@ -58,6 +58,7 @@ npx skills@latest add NVIDIA/auto-ontology
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.
 - [Arquitetura dos 11 Subagentes](references/arquitetura-subagentes-php.md): Detalhamento dos papéis e fluxos de trabalho.
 - [Cheatsheet Rápido](cheatsheet.md): Sintaxe moderna do PHP 8.x, match expressions, enums e readonly classes.
 - [Padrões de Arquitetura](patterns.md): Injeção de dependências, Repository Pattern e Middlewares.

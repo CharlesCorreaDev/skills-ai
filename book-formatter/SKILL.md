@@ -58,6 +58,7 @@ npx skills@latest add NVIDIA/auto-ontology
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.
 - [Arquitetura dos 10 Subagentes](references/arquitetura-subagentes-book-formatter.md): Perfis e fluxo de trabalho de cada agente.
 - [Guia Completo de Diagramação (Português)](references/book-formatter-guide-ptbr.md): As 8 fases obrigatórias de diagramação, protocolos Karpathy e regras de tradução.
 - [Complete Diagramming Guide (English)](references/book-formatter-guide-en.md): Full extraction matrix, SOTA AI engines, format matrix and quality checklists.

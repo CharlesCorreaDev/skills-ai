@@ -187,3 +187,5 @@ npx skills@latest add multica-ai/andrej-karpathy-skills
 - **`godmode`** (`noobygains/godmode`): Impõe ciclo estruturado de especificação, planejamento prévio obrigatório e recusa de conclusões sem evidências práticas.
 - **`grill-me`**: Entrevista de alinhamento antes de iniciar o planejamento narrativo.
 - **`andrej-karpathy-skills`**: Princípio da simplicidade e ausência de suposições cegas.
+
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md)

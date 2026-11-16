@@ -57,6 +57,7 @@ npx skills@latest add NVIDIA/auto-ontology
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.
 - [Arquitetura dos 10 Subagentes](references/arquitetura-subagentes-code-mode.md): Perfis e responsabilidades de cada especialista.
 - [Guia Canônico de Arquitetura Code Mode](references/guia-arquitetura-code-mode.md): Padrões de implementação Gateway MCP, In-Process VM e WASM.
 - [Templates de Scaffolding](templates/): Boilerplates para Node.js VM, QuickJS e Python.

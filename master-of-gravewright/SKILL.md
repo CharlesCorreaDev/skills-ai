@@ -59,6 +59,7 @@ npx skills@latest add NVIDIA/auto-ontology
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.
 - [Arquitetura dos 12 Subagentes](references/arquitetura-subagentes-gravewright.md): Perfis, entregáveis e fluxos detalhados.
 - [Contratos de API & Schemas](contracts/): Especificações de eventos e serialização de dados.
 - [Templates de Desenvolvimento](templates/): Scaffolding moderno de módulos e extensões.

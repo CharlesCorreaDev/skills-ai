@@ -70,6 +70,7 @@ npx skills@latest add NVIDIA/auto-ontology
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
+- [Metodologias SDD, Handoff, Grill-Me & TDD](references/sdd-handoff-grillme-tdd.md): Especificação rigorosa, alinhamento, TDD e handoff.
 - [Arquitetura dos 7 Subagentes](references/arquitetura-subagentes-second-brain.md): Perfis e responsabilidades de cada especialista.
 - [Guia Completo em Português](references/guide-ptbr.md): Arquitetura detalhada das 5 camadas, sinergias e comandos de terminal.
 - [Full Documentation Guide (English)](references/guide-en.md): In-depth 5-layer memory model, Notion developer ecosystem and CLI options.
