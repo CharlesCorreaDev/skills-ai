@@ -4,16 +4,24 @@ description: Persistent memory, context management, and second brain orchestrati
 ---
 
 # Second Brain Plus 🧠⚡💾
-> *by GM Charles Corrêa — Ecossistema Skills AI* • **Status: Beta (0.1.0-beta)**
+> *by GM Charles Corrêa — Ecossistema Skills AI* • **Suíte Multiagente de Memória Persistente (0.1.0-beta)**
 
 ---
 
-## 📌 Visão Geral & Modelo Mental / Overview
+## 🏛️ Topologia dos 6 Subagentes Especializados
 
-O **Second Brain Plus** resolve a amnésia contextual, desperdício de tokens e alucinações de agentes de IA através de uma infraestrutura em 3 camadas (Single Source of Truth - SSOT):
-1. **Cofre Markdown Local (.second-brain/):** Estrutura P.A.R.A. 2.0 (Projetos, Áreas, Recursos, Arquivos).
-2. **Notion Central Hub:** Dashboard relacional com 7 bancos mestres via API oficial do Notion.
-3. **Repositórios Remotos Git (GitHub / GitLab):** Backup seguro, versionado e imutável.
+Para erradicar amnésia e garantir coerência perfeita entre Markdown local, Notion e Git remoto, a suíte opera de forma federada:
+
+`mermaid
+flowchart TD
+    User([Usuário / Desenvolvedor]) --> Showrunner[1. Orquestrador de Contexto & Memória]
+    Showrunner --> Ingestor[2. Ingestor & Triador P.A.R.A.]
+    Showrunner --> AdrArchitect[3. Arquiteto de Decisões & ADRs]
+    Ingestor --> NotionBridge[4. Engenheiro de Integração Notion API]
+    AdrArchitect --> GitSync[5. Guardião de Versionamento Git gh/glab]
+    NotionBridge & GitSync --> NeuroSync[6. Auditor de Saúde & Ergonomia TDAH]
+    NeuroSync --> OutputFinal([Memória Sincronizada, Consistente & Blindada])
+`
 
 ---
 
@@ -28,7 +36,7 @@ O **Second Brain Plus** resolve a amnésia contextual, desperdício de tokens e 
 | /second-brain status | Exibe telemetria, integridade de notas e conectividade com a API. |
 | /second-brain git-status | Audita sincronização remota via gh / glab e privacidade de repositórios. |
 | /second-brain git-sync | Comita e envia alterações do cofre para o repositório remoto Git. |
-| /second-brain focus / 	dah | Ativa visão de tarefa única e formatação com bionic reading (
+| /second-brain focus / 	dah | Ativa visão de tarefa única e formatação neurodivergente (
 ot-today-adhd). |
 
 ---
@@ -43,6 +51,7 @@ ot-today-adhd). |
 
 ## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
+- [Arquitetura dos 6 Subagentes](references/arquitetura-subagentes-second-brain.md): Papéis detalhados de cada especialista.
 - [Guia Completo em Português](references/guide-ptbr.md): Arquitetura detalhada das 5 camadas, sinergias e comandos de terminal.
 - [Full Documentation Guide (English)](references/guide-en.md): In-depth 5-layer memory model, Notion developer ecosystem and CLI options.
 - [Blueprint do Notion](templates/notion/second_brain_blueprint.json): Especificação JSON dos 7 bancos de dados relacionais.

@@ -1,78 +1,41 @@
 ---
 name: website-for-skill
-description: End-to-end orchestration pipeline that crawls live websites, API documentation, and technical portals and compiles them into structured, token-efficient AI skills (SKILL.md, chapters, cheatsheet, patterns). Use when building an AI skill from a website or docs URL, ingesting online documentation into skills, or structuring web content for agents.
+description: End-to-end orchestration pipeline that crawls live websites, API documentation, and technical portals and compiles them into structured, token-efficient AI skills (SKILL.md, chapters/_INDEX.md, cheatsheet, glossary, patterns) with preserved internal links.
 ---
 
 # Website for Skill 🌐➡️🧠
+> *by GM Charles Corrêa — Ecossistema Skills AI* • **Suíte Multiagente de Compilação Web para Skills (0.5.0-beta)**
 
 ---
 
-## 🇺🇸 English
+## 🏛️ Topologia dos 6 Subagentes Especializados
 
-### 📌 Objective & Orchestration Model
-**Website for Skill** (`v0.3.0-beta`) is the high-level orchestration pipeline that integrates `docs-for-markdown` and `website-for-markdown` to automatically convert live websites, developer documentation, and web portals into **fully structured, production-ready AI Skills**.
+Para erradicar ruído web, links quebrados e desorganização de capítulos, a suíte atua de forma orquestrada:
 
-### 🏗️ Generated Skill Structure
-- **Hardware-Aware Eco Compilation:** Automatically inspects the host CPU and available free RAM, sets process priority to `BELOW_NORMAL_PRIORITY_CLASS` (`nice(10)`), reads only the first 512 bytes per file when indexing titles, streams `_INDEX.md` directly to disk, and forces garbage collection (`gc.collect()`) with micro-pauses so RAM and CPU usage stay minimal even on 12,000-page skills.
-- `SKILL.md`: Master bilingual index and domain mental model (automatically groups large sites > 40 pages by category so the context window never overflows).
-- `chapters/_INDEX.md`: Complete searchable map of all captured pages and categories (named `_INDEX.md` to avoid case-insensitive collision with `index.md` on Windows/macOS).
-- `chapters/*.md`: Individual documentation chapters with preserved filenames and rewritten internal `.md` links.
-- `cheatsheet.md`, `glossary.md`, `patterns.md`, `VERSION`.
-
-### 🛠️ CLI Usage
-```bash
-# Check environment
-python Scripts/check_env.py
-
-# Build skill from single documentation URL
-python Scripts/build_skill.py "https://foundryvtt.com/api/v12/" "foundryvtt-api-v12" [output_dir]
-
-# Build skill with recursive local crawling (no API key required!)
-python Scripts/build_skill.py "https://www.php.net/manual/pt_BR/" "php-manual-pt-br" [output_dir] --crawl --fast --max-pages 200
-
-# Build skill filtering specific sections or from an existing folder of .md files
-python Scripts/build_skill.py "https://www.php.net/manual/pt_BR/" "php-manual-pt-br" [output_dir] --crawl --fast --include "security|language" --max-pages 0
-python Scripts/build_skill.py "https://www.php.net/manual/pt_BR/" "php-manual-pt-br" [output_dir] --from-dir "./pasta_mds_ja_baixados"
-```
+`mermaid
+flowchart TD
+    User([Usuário / Desenvolvedor]) --> Showrunner[1. Orquestrador de Crawling & Compilação]
+    Showrunner --> CrawlerEngineer[2. Engenheiro de Rastreamento HTTP/Playwright/Firecrawl]
+    CrawlerEngineer --> ContentSanitizer[3. Sanitizador de Ruído HTML & Parser DOM]
+    ContentSanitizer --> LinkRewriter[4. Especialista em Grafo & Links Internos .md]
+    LinkRewriter --> SkillSynthesizer[5. Compilador de Skill SKILL.md/Cheatsheet/Glossary]
+    SkillSynthesizer --> QualityAuditor[6. Auditor de Integridade & Token Efficiency]
+    QualityAuditor --> OutputFinal([Skill Estruturada, Enxuta e Pronta para Uso])
+`
 
 ---
 
-## 🇧🇷 Português (Brasil)
+## ⚡ Regras Canônicas & Portões Obrigatórios (Fast Gates)
 
-### 📌 Objetivo & Modelo de Orquestração
-O **Website for Skill** (`v0.3.0-beta`) é o orquestrador de alto nível que integra `docs-for-markdown` e `website-for-markdown` para converter automaticamente websites ao vivo, documentações de desenvolvedores e portais técnicos em **Skills Modulares Prontas para Agentes de IA**.
+1. **Eficiência Máxima de Contexto:** O SKILL.md gerado deve atuar apenas como índice mestre sob demanda (< 200 linhas).
+2. **Remoção Estrita de Ruído:** Banners, menus e footers de portais devem ser purgados antes da compilação em Markdown.
+3. **Preservação de Links Internos:** Links para outras páginas da documentação devem apontar para os arquivos .md locais gerados.
+4. **Portão de Auditoria de Capítulos:** Capítulos individuais mantidos entre 15KB e 40KB para carregamento otimizado.
 
-### 🏗️ Estrutura da Skill Gerada
-- `SKILL.md`: Índice mestre bilíngue e modelo mental do domínio (agrupa automaticamente sites grandes > 40 páginas por categoria para jamais estourar a janela de contexto).
-- `chapters/_INDEX.md`: Mapa completo pesquisável de todas as páginas e categorias capturadas (nomeado `_INDEX.md` para não colidir com `index.md` da página raiz no Windows/macOS).
-- `chapters/*.md`: Capítulos preservando os nomes originais e links internos `.md` funcionais entre si.
-- `cheatsheet.md`, `glossary.md`, `patterns.md`, `VERSION`.
+---
 
-### 🛠️ Uso via CLI
-```bash
-# Verificar ambiente
-python Scripts/check_env.py
+## 📚 Índice Modular de Referências (Carregamento Sob Demanda)
 
-# Gerar skill a partir de uma URL única
-python Scripts/build_skill.py "https://foundryvtt.com/api/v12/" "foundryvtt-api-v12" [diretorio_saida]
-
-# Gerar skill varrendo site inteiro localmente (sem precisar de chave Firecrawl!)
-python Scripts/build_skill.py "https://www.php.net/manual/pt_BR/" "php-manual-pt-br" [diretorio_saida] --crawl --fast --max-pages 200
-
-# Gerar skill filtrando seções via Regex ou a partir de uma pasta de .md já baixada
-python Scripts/build_skill.py "https://www.php.net/manual/pt_BR/" "php-manual-pt-br" [diretorio_saida] --crawl --fast --include "security|language" --max-pages 0
-python Scripts/build_skill.py "https://www.php.net/manual/pt_BR/" "php-manual-pt-br" [diretorio_saida] --from-dir "./pasta_mds_ja_baixados"
-```
-
-
-### 🛡️ Auditoria de Segurança Obrigatória (Cloudflare Security Audit) & Anti-Alucinação (NVIDIA Auto-Ontology)
-> [!IMPORTANT]
-> **Toda criação de código, arquitetura, automação, configuração ou resposta DEVE seguir as seguintes diretrizes:**
-> 1. **Cloudflare Security Audit (`cloudflare/security-audit-skill`):**
->    - Instalação: `npx skills@latest add cloudflare/security-audit-skill`
->    - Sempre que algo for desenvolvido, execute uma auditoria adversarial em 6 fases (Mapeamento de superfícies, Caça por cobertura, Validação cética de falso-positivo, Saída estruturada, Verificação de sinks e Relatório com correção imediata).
->    - Se forem detectadas vulnerabilidades, falhas de autorização, injeções ou vazamentos de dados, **o agente DEVE realizar as correções imediatamente**.
-> 2. **NVIDIA Auto-Ontology (`NVIDIA/auto-ontology`):**
->    - Instalação: `npx skills@latest add NVIDIA/auto-ontology` (ou `pip install auto-ontology`)
->    - **PROIBIDO INVENTAR NÚMEROS INEXISTENTES:** O agente JAMAIS deve alucinar estatísticas, portas arbitrárias, contagens fictícias, colunas inexistentes ou esquemas falsos. Se um número ou parâmetro não for conhecido com certeza matemática ou documental, declare incerteza e consulte as fontes reais.
-> - Consulte o guia canônico completo em [`docs-for-skill/security-audit-and-auto-ontology.md`](../docs-for-skill/security-audit-and-auto-ontology.md).
+- [Arquitetura dos 6 Subagentes](references/arquitetura-subagentes-website-for-skill.md): Perfis e responsabilidades de cada especialista.
+- [Scripts de Compilação](Scripts/): Automação de crawling e compilação estruturada.
+- [Changelog de Versões](CHANGELOG.md): Histórico de melhorias da suíte.
