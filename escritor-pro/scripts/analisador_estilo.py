@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Analisador de Estilo, Anti-Slop e Pontuação de Diálogos PT-BR
+Analisador de Estilo, Anti-Slop, Pontuação de Diálogos e Ritmo (Pacing) PT-BR
 Parte integrante da skill Escritor Pro.
 """
 
@@ -27,6 +27,17 @@ AI_SLOP_PATTERNS = [
     (r"\bum misto de emo[çc][õo]es\b", "misto de emoções (vaguidão emocional)"),
     (r"\bcalafrio na espinha\b", "calafrio na espinha (clichê físico gasto)"),
     (r"\bo cora[çc][ãa]o quase saltou pela boca\b", "coração saltou pela boca (clichê gasto)"),
+    (r"\bpisar em ovos\b", "pisar em ovos (expressão idiomática gasta)"),
+    (r"\bà beira do abismo\b", "à beira do abismo (hiperbólico genérico)"),
+]
+
+# Cacófatos e ruídos fonéticos comuns em PT-BR
+CACOFATO_PATTERNS = [
+    (r"\bpor cada\b", "por cada ➔ soa como 'porca da' (cacófato)"),
+    (r"\bvez passada\b", "vez passada ➔ soa como 'vespa assada' (cacófato)"),
+    (r"\buma m[ãa]o\b", "uma mão ➔ soa como 'mamão' (cacófato leve)"),
+    (r"\bboca dela\b", "boca dela ➔ soa como 'cadela' (cacófato pejorativo)"),
+    (r"\balma minha\b", "alma minha ➔ soa como 'maminha' (cacófato)"),
 ]
 
 # Léxicos sensoriais para checagem da Regra 3+1
@@ -57,6 +68,46 @@ PERCEPTION_VERBS = [
     r"\bele notou\b", r"\bela notou\b",
 ]
 
+def analyze_pacing(text: str) -> dict:
+    """Calcula o ritmo da prosa através do comprimento e variação das sentenças."""
+    # Quebra de sentenças por pontuação (. ! ? ...)
+    raw_sentences = re.split(r"[.!?…]+", text)
+    sentences = [s.strip() for s in raw_sentences if len(s.strip().split()) > 0]
+    
+    if not sentences:
+        return {"avg_words": 0, "variance": 0, "monotony_alerts": [], "sentence_count": 0}
+        
+    lengths = [len(re.findall(r"\b\w+\b", s)) for s in sentences]
+    avg_words = sum(lengths) / len(lengths)
+    
+    # Detecção de monotonia (5 ou mais sentenças seguidas com comprimento quase idêntico)
+    monotony_alerts = []
+    streak = 1
+    for i in range(1, len(lengths)):
+        if abs(lengths[i] - lengths[i-1]) <= 2:
+            streak += 1
+            if streak == 5:
+                monotony_alerts.append(f"Bloco monótono por volta da sentença {i-4} a {i} (~{lengths[i]} palavras cada). Varie frases curtas e longas.")
+        else:
+            streak = 1
+            
+    # Classificação de ritmo predominante
+    if avg_words < 9:
+        pacing_type = "Aceleradíssimo / Combate ou Pânico (Média baixa de palavras por frase)"
+    elif avg_words < 16:
+        pacing_type = "Equilibrado / Prosa Dinâmica e Envolvente"
+    else:
+        pacing_type = "Lento / Descritivo ou Acadêmico (Períodos longos e compostos)"
+        
+    return {
+        "sentence_count": len(sentences),
+        "avg_words": round(avg_words, 1),
+        "min_words": min(lengths),
+        "max_words": max(lengths),
+        "pacing_type": pacing_type,
+        "monotony_alerts": monotony_alerts
+    }
+
 def analyze_text(text: str) -> dict:
     lines = text.splitlines()
     words = re.findall(r"\b\w+\b", text, re.IGNORECASE)
@@ -79,7 +130,6 @@ def analyze_text(text: str) -> dict:
         if stripped.startswith("—") or stripped.startswith("- ") or stripped.startswith("– "):
             dialogue_count += 1
             # Checar fala terminada com ponto antes de verbo dicendi
-            # Ex: — Olá. — disse ele. (Errado)
             m = re.search(r"—\s*([^—]+?)\.\s*—\s*([a-zà-ú]+)", stripped)
             if m:
                 verbo = m.group(2)
@@ -98,14 +148,24 @@ def analyze_text(text: str) -> dict:
                 "pos": m.start()
             })
 
-    # 3. Verbos de Percepção (Filter Words)
+    # 3. Checagem de Cacófatos Fonéticos
+    cacofato_findings = []
+    for c_pat, c_label in CACOFATO_PATTERNS:
+        c_matches = re.finditer(c_pat, text, re.IGNORECASE)
+        for cm in c_matches:
+            cacofato_findings.append({
+                "trecho": cm.group(0),
+                "motivo": c_label
+            })
+
+    # 4. Verbos de Percepção (Filter Words)
     perception_findings = []
     for p_pat in PERCEPTION_VERBS:
         matches = re.finditer(p_pat, text, re.IGNORECASE)
         for m in matches:
             perception_findings.append(m.group(0))
 
-    # 4. Densidade Sensorial
+    # 5. Densidade Sensorial
     lower_text = text.lower()
     sensory_hits = {
         "visao": sum(lower_text.count(k) for k in SENSORY_LEXICON["visao"]),
@@ -113,27 +173,46 @@ def analyze_text(text: str) -> dict:
         "olfato_tato": sum(lower_text.count(k) for k in SENSORY_LEXICON["olfato_tato"]),
     }
 
+    # 6. Análise de Pacing e Ritmo
+    pacing_data = analyze_pacing(text)
+
     return {
         "word_count": word_count,
         "line_count": len(lines),
         "dialogue_count": dialogue_count,
         "dialogue_issues": dialogue_issues,
         "slop_findings": slop_findings,
+        "cacofato_findings": cacofato_findings,
         "perception_findings": perception_findings,
         "sensory_hits": sensory_hits,
+        "pacing": pacing_data,
         "reading_time_min": round(word_count / 200, 1)
     }
 
 def print_report(res: dict):
-    print("=" * 60)
-    print("  RELATÓRIO DE ESTILO E QUALIDADE TEXTUAL - ESCRITOR PRO")
-    print("=" * 60)
+    print("=" * 65)
+    print("  RELATÓRIO DE ESTILO, RITMO E QUALIDADE TEXTUAL - ESCRITOR PRO")
+    print("=" * 65)
     print(f"Total de Palavras: {res['word_count']}")
     print(f"Total de Linhas:   {res['line_count']}")
     print(f"Tempo de Leitura:  ~{res['reading_time_min']} min (base: 200 ppm)")
     print(f"Falas de Diálogo:  {res['dialogue_count']}")
-    print("-" * 60)
+    print("-" * 65)
     
+    # Ritmo Narrativo (Pacing)
+    p = res["pacing"]
+    print("RITMO NARRATIVO & EXTENSÃO DE SENTENÇAS (PACING):")
+    print(f"  • Total de Sentenças: {p['sentence_count']}")
+    print(f"  • Média por Frase:    {p['avg_words']} palavras (Mín: {p['min_words']}, Máx: {p['max_words']})")
+    print(f"  • Diagnóstico:        {p['pacing_type']}")
+    if p["monotony_alerts"]:
+        print("  ⚠️ Alertas de Monotonia Rítmica:")
+        for al in p["monotony_alerts"]:
+            print(f"     - {al}")
+    else:
+        print("  ✅ Cadência rítmica variada (sem períodos monótonos detectados)!")
+    print("-" * 65)
+
     # Sensorial
     print("DENSIDADE SENSORIAL (REGRA 3+1):")
     v = res["sensory_hits"]
@@ -145,7 +224,7 @@ def print_report(res: dict):
         print("  ✅ Estimulação multissensorial equilibrada presente!")
     else:
         print("  ⚠️ Atenção: ao menos um sentido vital está ausente ou pouco explorado.")
-    print("-" * 60)
+    print("-" * 65)
     
     # Diálogos
     if res["dialogue_issues"]:
@@ -156,7 +235,16 @@ def print_report(res: dict):
             print(f"  ... e mais {len(res['dialogue_issues']) - 10} avisos.")
     else:
         print("✅ Pontuação de diálogos em conformidade com as normas ABL!")
-    print("-" * 60)
+    print("-" * 65)
+
+    # Cacófatos Fonéticos
+    if res["cacofato_findings"]:
+        print(f"👂 RUÍDOS FONÉTICOS / CACÓFATOS DETECTADOS ({len(res['cacofato_findings'])}):")
+        for c in res["cacofato_findings"]:
+            print(f"  • '{c['trecho']}' ➔ {c['motivo']}")
+    else:
+        print("✅ Eufonia preservada (sem cacófatos óbvios encontrados)!")
+    print("-" * 65)
 
     # Slop
     if res["slop_findings"]:
@@ -165,7 +253,7 @@ def print_report(res: dict):
             print(f"  • '{s['trecho']}' ➔ {s['motivo']}")
     else:
         print("✅ Texto limpo de clichês estatísticos e AI slop!")
-    print("-" * 60)
+    print("-" * 65)
 
     # Verbos de Percepção
     if res["perception_findings"]:
@@ -174,10 +262,10 @@ def print_report(res: dict):
         print("   Dica: Transforme em 'Show, Don't Tell' direto eliminando 'ele sentiu / ela viu'.")
     else:
         print("✅ Excelente imersão direta sem verbos de percepção frouxos.")
-    print("=" * 60)
+    print("=" * 65)
 
 def main():
-    parser = argparse.ArgumentParser(description="Analisador de Estilo Literário e Anti-Slop PT-BR")
+    parser = argparse.ArgumentParser(description="Analisador de Estilo Literário, Pacing e Anti-Slop PT-BR")
     parser.add_argument("arquivo", nargs="?", help="Caminho do arquivo de texto ou Markdown para analisar")
     parser.add_argument("--texto", "-t", help="Texto direto entre aspas para análise rápida")
     
@@ -192,7 +280,6 @@ def main():
             sys.exit(1)
         text = p.read_text(encoding="utf-8")
     else:
-        # Lê de stdin se fornecido via pipe
         if not sys.stdin.isatty():
             text = sys.stdin.read()
         else:
