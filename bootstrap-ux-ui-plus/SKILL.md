@@ -1,10 +1,10 @@
 ---
 name: bootstrap-ux-ui-plus
-description: Master UX/UI design, usability engineering, responsive interface architecture, cognitive ergonomics, and neurodiversity (ADHD & Autism Spectrum) using Bootstrap (v5.3 & v6.0) across HTML, PHP, Node.js, React, Python, Django, Java, and modern web frameworks. Orquestra 10 subagentes cobrindo Leis de UX, Neurodiversidade (TDAH/TEA), Psicologia das Cores, CSS Scoped, Responsividade Mobile-First, Acessibilidade WCAG 2.2 AA, Multi-Framework, Design Anti-Slop e Design System Bilíngue.
+description: Master UX/UI design, usability engineering, responsive interface architecture, cognitive ergonomics, and neurodiversity (ADHD & Autism Spectrum) using Bootstrap (v5.3 & v6.0) across HTML, PHP, Node.js, React, Python, Django, Java, and modern web frameworks. Orquestra 11 subagentes cobrindo Specs/PRs/SSD/Handoff, Leis de UX, Neurodiversidade (TDAH/TEA), Psicologia das Cores, CSS Scoped, Responsividade Mobile-First, Acessibilidade WCAG 2.2 AA, Multi-Framework, Design Anti-Slop e Design System Bilíngue.
 ---
 
 # Bootstrap UX/UI Plus 🎨⚡
-> *by GM Charles Corrêa — Ecossistema Skills AI* • **Suíte Federada de 10 Subagentes de UX/UI & Ergonomia (0.8.0-beta)**
+> *by GM Charles Corrêa — Ecossistema Skills AI* • **Suíte Federada de 11 Subagentes de UX/UI & Ergonomia (0.8.0-beta)**
 
 ---
 
@@ -15,7 +15,8 @@ Para erradicar interfaces genéricas, falhas de acessibilidade e sobrecarga cogn
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Diretor de Arte & Orquestrador UX/UI]
-    Showrunner --> UxArchitect[2. Leis de UX Fitts/Hick/Miller]
+    Showrunner --> SpecUxHandoff[2. Specs, PRs, SSD & Handoff UX Design System]
+    SpecUxHandoff --> UxArchitect[3. Leis de UX Fitts/Hick/Miller]
     UxArchitect --> NeuroErgonomist[3. Neurodiversidade TDAH/TEA]
     UxArchitect --> ColorPsychologist[4. Psicologia das Cores Eva Heller]
     NeuroErgonomist & ColorPsychologist --> ComponentDev[5. Front-end Bootstrap & CSS Scoped]
@@ -37,6 +38,15 @@ flowchart TD
 3. **Isolamento de CSS (Scoped):** Utilize prefixos ou namespaces de classes para evitar vazamento de estilos no DOM hospedeiro.
 4. **SemVer 2.0.0 (PT-BR) & Padrão Bilíngue:** Releases e documentações estritamente em EN e PT-BR.
 5. **Portão de Design Anti-Slop:** Elimine layouts genéricos de IA; aplique espaçamento intencional e hierarquia precisa.
+
+---
+
+## 🔗 Protocolo de Skills Companheiras
+`ash
+npx skills@latest add noobygains/godmode
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+`
 
 ---
 

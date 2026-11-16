@@ -1,6 +1,6 @@
 ---
 name: docs-for-markdown
-description: Universal multi-format document to clean Markdown converter supporting PDF, DOCX, XLSX, PPTX, ODT, ODS, HTML, EPUB, RTF, images (OCR), and audio. Resolves complex layout edge cases, multi-column reading orders, merged spreadsheet cells, broken hyphenation, and noisy headers/footers across Windows, Linux, and macOS. Use when the user wants to convert documents into clean Markdown via Antigravity, Claude Code, Copilot CLI, Hermes Agent, Orca, Gemini, Kilo, NVIDIA, or Ollama, or prepare text for RAG, knowledge bases, and LLM context windows.
+description: Universal multi-format document to clean Markdown converter supporting PDF, DOCX, XLSX, PPTX, ODT, ODS, HTML, EPUB, RTF, images (OCR), and audio. Incorpora subagente de Specs, PRs, SSD e Handoff para rastreamento de conversões e memória persistente. to clean Markdown converter supporting PDF, DOCX, XLSX, PPTX, ODT, ODS, HTML, EPUB, RTF, images (OCR), and audio. Resolves complex layout edge cases, multi-column reading orders, merged spreadsheet cells, broken hyphenation, and noisy headers/footers across Windows, Linux, and macOS. Use when the user wants to convert documents into clean Markdown via Antigravity, Claude Code, Copilot CLI, Hermes Agent, Orca, Gemini, Kilo, NVIDIA, or Ollama, or prepare text for RAG, knowledge bases, and LLM context windows.
 ---
 
 # Docs for Markdown 📄➡️📝

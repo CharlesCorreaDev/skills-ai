@@ -11,7 +11,7 @@ A suíte **Master of Foundry VTT** opera sob o padrão de **Engenharia Federada 
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Showrunner & Orquestrador Mestre]
     
-    Showrunner --> SpecHandoff[2. Engenheiro de Specs, PRs & Handoff]
+    Showrunner --> SpecHandoff[2. Engenheiro de Specs, PRs, SSD & Handoff]
     
     SpecHandoff -->|Arquitetura de Pacote| Scaffolder[3. Arquiteto de Software & Scaffolding FNF]
     SpecHandoff -->|Matemática & Regras| RuleEngineer[4. Engenheiro de Regras & Analista RPG]
@@ -47,10 +47,10 @@ flowchart TD
 
 ---
 
-## 2. Engenheiro de Specs, PRs & Handoff (Release & Project Manager)
+## 2. Engenheiro de Specs, PRs, SSD & Handoff (Project Lifecycle & Memory Manager)
 - **Missão**: Gerenciar o ciclo de vida do projeto do primeiro requisito ao pacote final empacotado.
 - **Entregáveis**:
-  - **Especificação Técnica (Tech Spec / RFC)**: Documenta os modelos afetados (`Actor`, `Item`, `Combat`), fluxos de dados e critérios de aceitação (*Definition of Done*).
+  - **Especificação Técnica & SSD (Tech Spec / RFC / System Sequence Diagram)**: Modela fluxos de sequência (SSD), interações de sistema, Documenta os modelos afetados (`Actor`, `Item`, `Combat`), fluxos de dados e critérios de aceitação (*Definition of Done*).
   - **Pull Request (PR) Formatada**: Descrição detalhada da alteração, contexto, breaking changes, guia de testes manuais e checklist de aprovação.
   - **Handoff Guide**: Roteiro de homologação para o mestre ou usuário final.
   - **Manifesto de Publicação**: `module.json` ou `system.json` configurado com URLs de release, compatibilidade `compatibility.minimum/verified/maximum`.

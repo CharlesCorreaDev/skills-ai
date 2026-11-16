@@ -1,6 +1,6 @@
 ---
 name: video-to-md
-description: Converte vídeos do YouTube, Vimeo e Twitch (ou playlists) em Markdown estruturado com metadados, descrição, capítulos e transcrição de áudio/legendas. Use when transcribing online videos, converting YouTube playlists to markdown documentation, extracting speech transcripts, or indexing video lectures into a knowledge base.
+description: Converte vídeos do YouTube, Vimeo e Twitch (ou playlists) em Markdown estruturado com metadados, descrição, capítulos e transcrição de áudio/legendas. Incorpora subagente de Specs, PRs, SSD e Handoff para registro de transcrições e memória persistente., Vimeo e Twitch (ou playlists) em Markdown estruturado com metadados, descrição, capítulos e transcrição de áudio/legendas. Use when transcribing online videos, converting YouTube playlists to markdown documentation, extracting speech transcripts, or indexing video lectures into a knowledge base.
 ---
 
 # Video to Markdown 🎬➡️📝
@@ -151,6 +151,15 @@ Consulte as diretrizes de diagnóstico, formato de issues bilíngue e labels em 
 - **Vídeos privados, removidos ou com restrição de idade/região** – podem gerar apenas metadados parciais.
 - **Canais** – não são aceitos diretamente; use URLs de vídeos ou playlists.
 - **Dependência de Whisper** – requer `ffmpeg` e, para melhor desempenho, hardware compatível (GPU). Em CPUs, o tempo de transcrição pode ser elevado.
+
+---
+
+## 🔗 Protocolo de Skills Companheiras
+`ash
+npx skills@latest add noobygains/godmode
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+`
 
 ---
 

@@ -8,7 +8,8 @@ The **Bootstrap UX/UI Plus** suite operates under a federated assembly line engi
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor / User]) --> Showrunner[1. Diretor de Arte & Orquestrador UX/UI]
-    Showrunner --> UxArchitect[2. Leis de UX Fitts/Hick/Miller]
+    Showrunner --> SpecUxHandoff[2. Engenheiro de Specs, PRs, SSD & Handoff Design System]
+    SpecUxHandoff --> UxArchitect[3. Arquiteto de Leis de UX Fitts/Hick/Miller]
     UxArchitect --> NeuroErgonomist[3. Neurodiversidade TDAH/TEA]
     UxArchitect --> ColorPsychologist[4. Psicologia das Cores Eva Heller]
     NeuroErgonomist & ColorPsychologist --> ComponentDev[5. Front-end Bootstrap & CSS Scoped]
@@ -23,7 +24,10 @@ flowchart TD
 
 ---
 
-## 🇧🇷 Português (Brasil) — Papéis e Responsabilidades dos 10 Subagentes
+## 🇧🇷 Português (Brasil) — Papéis e Responsabilidades dos 11 Subagentes
+
+1. **Diretor de Arte & Orquestrador UX/UI (Showrunner):** Entrevista o usuário via grill-me, define identidade visual e gerencia os ciclos dos subagentes.
+2. **Engenheiro de Specs, PRs, SSD & Handoff (Memória de UI/Design System):** Centraliza especificações de UI/UX, diagramas de fluxo de tela (SSD), descrições de PRs e manuais de handoff para desenvolvedores front-end.
 
 1. **Diretor de Arte & Orquestrador UX/UI (Showrunner):** Entrevista o usuário via grill-me, define identidade visual e gerencia os ciclos dos subagentes.
 2. **Arquiteto de Leis de UX & Heurísticas:** Aplica as Leis de UX (Hick, Fitts, Miller, Jakob, Zeigarnik) e as 10 Heurísticas de Jakob Nielsen.
@@ -38,7 +42,10 @@ flowchart TD
 
 ---
 
-## 🇺🇸 English — Roles and Responsibilities of the 10 Subagents
+## 🇺🇸 English — Roles and Responsibilities of the 11 Subagents
+
+1. **Art Director & UX/UI Orchestrator (Showrunner):** Interviews stakeholders via grill-me, establishes design systems, and orchestrates creative turns.
+2. **Specs, PRs, SSD & Handoff Engineer (Design System Memory):** Centralizes UI/UX specifications, user interaction sequence diagrams (SSD), PR manifests, and frontend handoff guides.
 
 1. **Art Director & UX/UI Orchestrator (Showrunner):** Interviews stakeholders via grill-me, establishes design systems, and orchestrates creative turns.
 2. **Laws of UX & Heuristics Architect:** Applies cognitive UX Laws (Hick, Fitts, Miller, Jakob, Zeigarnik) and Jakob Nielsen's 10 Usability Heuristics.

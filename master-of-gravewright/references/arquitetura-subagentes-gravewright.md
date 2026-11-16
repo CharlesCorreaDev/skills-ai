@@ -47,7 +47,7 @@ ot-today-adhd), orquestra handoffs e impede desvio de foco.
 
 1. **Showrunner & Gravewright Orchestrator:** Interviews developers via grill-me, establishes scope bounds, supports neurodiversity (
 ot-today-adhd), and oversees agent handoffs.
-2. **Specs, PRs & Handoff Engineer:** Authors comprehensive Tech Specs/RFCs prior to code execution, drafts PRs, and enforces [SemVer 2.0.0](https://semver.org/).
+2. **Specs, PRs, SSD & Handoff Engineer:** Authors comprehensive Tech Specs/RFCs prior to code execution, drafts PRs, and enforces [SemVer 2.0.0](https://semver.org/).
 3. **Scaffolding & GW Module Architect:** Structures extension folders, manifests, lifecycle bootloaders, and bundlers.
 4. **RPG Rules & Compendium Engineer:** Transcribes tabletop rulebooks (D20, WoD, Tormenta20, YZE) into pure mathematical logic, tables, and serializable statblocks.
 5. **ECS Backend & Django Models Engineer:** Architect of decoupled entities, pure data components, and execution systems under the ECS paradigm.

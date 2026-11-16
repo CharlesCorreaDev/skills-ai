@@ -1,6 +1,6 @@
 ---
 name: python-dev-expert
-description: Especialista no ecossistema Python moderno (Python 3.12 a 3.16+, Astral uv, Ruff, FastAPI, Django 6+, Flask, PyTorch, LangChain). Orquestra 11 subagentes especializados cobrindo Specs Assíncronas, Tooling Astral (uv/ruff), Frameworks Web, Dados/IA (pdf-oxide/LangChain), CLI Typer, Tipagem Estrita Mypy, QA com Pytest, Auditoria SAST Bandit, SemVer e Documentação Técnica Bilíngue (EN/PT-BR).
+description: Especialista no ecossistema Python moderno (Python 3.12 a 3.16+, Astral uv, Ruff, FastAPI, Django 6+, Flask, PyTorch, LangChain). Orquestra 11 subagentes especializados cobrindo Specs, PRs, SSD & Handoff Assíncronas, Tooling Astral (uv/ruff), Frameworks Web, Dados/IA (pdf-oxide/LangChain), CLI Typer, Tipagem Estrita Mypy, QA com Pytest, Auditoria SAST Bandit, SemVer e Documentação Técnica Bilíngue (EN/PT-BR).
 ---
 
 # Python Dev Expert 🐍⚡
@@ -15,7 +15,7 @@ Para erradicar código lento, dependências conflitantes e tipagem ausente:
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Tech Lead & Orquestrador Python]
-    Showrunner --> SpecArchitect[2. Specs & Arquitetura Assíncrona]
+    Showrunner --> SpecArchitect[2. Specs, PRs, SSD & Handoff Arquitetura Assíncrona]
     SpecArchitect --> ToolingMaster[3. Tooling Astral uv & Ruff]
     ToolingMaster --> FrameworkDev[4. Frameworks FastAPI/Django/Flask]
     ToolingMaster --> DataAiDev[5. Dados, LLM & IA pdf-oxide/PyTorch]

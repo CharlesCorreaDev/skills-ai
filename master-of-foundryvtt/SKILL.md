@@ -15,7 +15,7 @@ Para erradicar alucinações de API entre versões do Foundry e garantir código
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Showrunner & Orquestrador Mestre]
-    Showrunner --> SpecHandoff[2. Specs, PRs & Handoff SemVer]
+    Showrunner --> SpecHandoff[2. Specs, PRs, SSD & Handoff SemVer]
     SpecHandoff -->|Scaffolding| Scaffolder[3. Arquiteto FNF Vite/ESM]
     SpecHandoff -->|Regras RPG| RuleEngineer[4. Engenheiro de Regras 60+ Sistemas]
     RuleEngineer --> BackendDev[5. Backend & TypeDataModel]

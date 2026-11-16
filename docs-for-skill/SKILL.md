@@ -1,6 +1,6 @@
 ---
 name: docs-for-skill
-description: Ingests documents (PDF, DOCX, XLSX, PPTX, ODT, ODS, HTML, EPUB) and transforms them into modular, high-performance agent skills with master index, mental models, on-demand chapters, cheatsheets, glossaries, and architectural patterns. Use when the user wants to convert a document into an actionable AI skill via Antigravity, Claude Code, Copilot CLI, Hermes Agent, Orca, Gemini, Kilo, NVIDIA, or Ollama, build a token-efficient knowledge base, or extract structured frameworks from complex manuals.
+description: Ingests documents (PDF, DOCX, XLSX, PPTX, ODT, ODS, HTML, EPUB) and transforms them into modular, high-performance agent skills with master index, mental models, on-demand chapters, cheatsheets, glossaries, and architectural patterns. Incorpora subagente de Specs, PRs, SSD e Handoff para memória perene de compilação., DOCX, XLSX, PPTX, ODT, ODS, HTML, EPUB) and transforms them into modular, high-performance agent skills with master index, mental models, on-demand chapters, cheatsheets, glossaries, and architectural patterns. Use when the user wants to convert a document into an actionable AI skill via Antigravity, Claude Code, Copilot CLI, Hermes Agent, Orca, Gemini, Kilo, NVIDIA, or Ollama, build a token-efficient knowledge base, or extract structured frameworks from complex manuals.
 ---
 
 # Docs for Skill 🚀

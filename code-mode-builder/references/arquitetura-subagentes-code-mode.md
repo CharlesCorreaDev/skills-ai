@@ -9,7 +9,7 @@ The **Code Mode Builder** suite operates as an assembly line of 10 dedicated spe
 flowchart TD
     User([Usuário / Desenvolvedor / User]) --> Showrunner[1. Showrunner & Orquestrador CodeAct]
     
-    Showrunner --> SpecArchitect[2. Engenheiro de Specs & Primitivas search/describe/execute]
+    Showrunner --> SpecHandoff[2. Engenheiro de Specs, PRs, SSD & Handoff Primitivas CodeAct]
     
     SpecArchitect --> ApiCompressor[3. Especialista em Compressão de APIs & Tipos .d.ts]
     
@@ -35,7 +35,7 @@ flowchart TD
 ## 🇧🇷 Português (Brasil) — Papéis e Responsabilidades dos 10 Subagentes
 
 1. **Showrunner & Orquestrador CodeAct:** Entrevista o usuário via grill-me, delimita fluxos repetitivos de chamadas de ferramentas e define a estratégia de sandboxing.
-2. **Engenheiro de Specs & Primitivas (search, describe, xecute):** Modela o contrato canônico do gateway, condensando centenas de ferramentas em 2-3 primitivas leves.
+2. **Engenheiro de Specs, PRs, SSD & Handoff (Primitivas search/describe/xecute):** Formaliza Tech Specs de Code Mode, diagramas de sequência de sandbox (SSD), documentação de PRs e guias de handoff, além de  Modela o contrato canônico do gateway, condensando centenas de ferramentas em 2-3 primitivas leves.
 3. **Especialista em Compressão de APIs & Tipos (.d.ts / Pydantic):** Gera definições de tipos compactas e expressivas para que a LLM compreenda o catálogo sem sobrecarga de tokens.
 4. **Engenheiro de Sandboxing (WASM, QuickJS, Node VM, Docker):** Configura os isolamentos de execução em memória, cotas de CPU/RAM, limites de saída e timeouts rígidos.
 5. **Blindador de Segurança & Gate Pattern:** Garante que chaves de API, credenciais e conexões ao host fiquem no host (*Gate*), nunca acessíveis pelo script executado.
@@ -50,7 +50,7 @@ flowchart TD
 ## 🇺🇸 English — Roles and Responsibilities of the 10 Subagents
 
 1. **Showrunner & CodeAct Orchestrator:** Interviews the developer via grill-me, isolates repetitive JSON tool calls, and defines sandbox isolation strategy.
-2. **Specs & Primitives Engineer (search, describe, xecute):** Formulates canonical gateway contracts, condensing hundreds of API tools into 2-3 lightweight primitives.
+2. **Specs, PRs, SSD & Handoff Engineer (CodeAct Primitives):** Authors formal Code Mode Tech Specs, sandbox System Sequence Diagrams (SSD), PR definitions, and handoff guides, along with  Formulates canonical gateway contracts, condensing hundreds of API tools into 2-3 lightweight primitives.
 3. **API Compression & Type Definitions Specialist (.d.ts / Pydantic):** Generates compact, strongly typed signatures enabling LLMs to understand catalogs without token overhead.
 4. **Sandboxing Engineer (WASM, QuickJS, Node VM, Docker):** Provisions in-memory isolation, CPU/RAM quotas, execution timeouts, and output limits.
 5. **Security Gatekeeper & Gate Pattern Architect:** Enforces that raw API credentials, secrets, and host connections remain on the host (*Gate*), inaccessible to the executed script.

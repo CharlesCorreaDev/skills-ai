@@ -1,6 +1,6 @@
 ---
 name: mcp-builder
-description: Gerador, blindador de segurança e configurador universal de servidores Model Context Protocol (MCP) para PHP 8.4+, Python 3.12+, Node.js 22+, TypeScript 5+, Go 1.22+ e Rust 2021+. Orquestra 10 subagentes cobrindo Specs OpenAPI/MCP, transporte Stdio/SSE, código poliglota, contenção contra prompt injection, auditoria SAST, testes multi-IDE (Claude/Cursor/Antigravity), benchmarks de latência e documentação técnica bilíngue.
+description: Gerador, blindador de segurança e configurador universal de servidores Model Context Protocol (MCP) para PHP 8.4+, Python 3.12+, Node.js 22+, TypeScript 5+, Go 1.22+ e Rust 2021+. Orquestra 10 subagentes cobrindo Specs, PRs, SSD e Handoff OpenAPI/MCP, transporte Stdio/SSE, código poliglota, contenção contra prompt injection, auditoria SAST, testes multi-IDE (Claude/Cursor/Antigravity), benchmarks de latência e documentação técnica bilíngue.
 ---
 
 # MCP Builder 🔌🛠️
@@ -15,7 +15,7 @@ Para erradicar vulnerabilidades de injeção, falhas de transporte e configuraç
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Showrunner & Orquestrador MCP]
-    Showrunner --> SpecHandoff[2. Specs & OpenAPI/MCP]
+    Showrunner --> SpecHandoff[2. Specs, PRs, SSD & OpenAPI/MCP Handoff]
     SpecHandoff --> ProtocolDev[3. Protocolo JSON-RPC Stdio/SSE]
     ProtocolDev --> PolyglotDev[4. Dev Poliglota TS/PHP/Python/Go/Rust]
     PolyglotDev --> SecurityShield[5. Blindador contra Prompt Injection]
@@ -38,6 +38,15 @@ equired).
 3. **Conectividade Multi-IDE:** Forneça configurações validadas para Claude Desktop, Antigravity e Cursor.
 4. **SemVer 2.0.0 (PT-BR) & Padrão Bilíngue:** Nomenclatura e documentação estritamente em EN e PT-BR.
 5. **Portão SAST & Latência:** Nenhum servidor é entregue sem passar por análise estática e teste de latência.
+
+---
+
+## 🔗 Protocolo de Skills Companheiras
+`ash
+npx skills@latest add noobygains/godmode
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+`
 
 ---
 

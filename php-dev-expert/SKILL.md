@@ -1,6 +1,6 @@
 ---
 name: php-dev-expert
-description: Especialista no ecossistema PHP abrangendo das versões 7.4 ao 8.5. Orquestra 11 subagentes especializados cobrindo Specs Clean Arch, Frameworks (Laravel/Symfony/Flight/Spiral), Alta Performance (FrankenPHP/RoadRunner/Swoole), Modernização Legada, Mitigação de CVEs/PHP2Shell, QA com Pest/PHPUnit, Auditoria SAST PHPStan L9, Banco de Dados, SemVer e Documentação Técnica Bilíngue (EN/PT-BR).
+description: Especialista no ecossistema PHP abrangendo das versões 7.4 ao 8.5. Orquestra 11 subagentes especializados cobrindo Specs, PRs, SSD & Handoff Clean Arch, Frameworks (Laravel/Symfony/Flight/Spiral), Alta Performance (FrankenPHP/RoadRunner/Swoole), Modernização Legada, Mitigação de CVEs/PHP2Shell, QA com Pest/PHPUnit, Auditoria SAST PHPStan L9, Banco de Dados, SemVer e Documentação Técnica Bilíngue (EN/PT-BR).
 ---
 
 # PHP Dev Expert 🐘⚡
@@ -15,7 +15,7 @@ Para erradicar código depreciado, vulnerabilidades críticas e inconsistências
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Tech Lead & Orquestrador PHP]
-    Showrunner --> SpecArchitect[2. Specs & Clean Architecture/DDD]
+    Showrunner --> SpecArchitect[2. Specs, PRs, SSD & Handoff Clean Arch/DDD]
     SpecArchitect --> FrameworkDev[3. Frameworks Laravel/Symfony/Flight/Spiral]
     SpecArchitect --> HighPerfDev[4. Alta Performance FrankenPHP/RoadRunner]
     SpecArchitect --> LegacyModernizer[5. Modernização Legada v7.4 a v8.5]

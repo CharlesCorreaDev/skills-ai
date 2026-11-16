@@ -27,7 +27,7 @@ flowchart TD
 ## 🇧🇷 Português (Brasil) — Papéis e Responsabilidades dos 11 Subagentes
 
 1. **Tech Lead & Orquestrador Python (Showrunner):** Entrevista o usuário via grill-me, delimita versões do runtime (3.12 a 3.16+) e governa o pipeline.
-2. **Engenheiro de Specs & Arquitetura Assíncrona:** Modela schemas Pydantic v2, design patterns assíncronos (asyncio) e fluxos de dados.
+2. **Engenheiro de Specs, PRs, SSD & Handoff (Arquitetura Assíncrona):** Modela Tech Specs/RFCs, diagramas de sequência (SSD), documentação de PRs e guias de handoff salvos em memória perene, além de  Modela schemas Pydantic v2, design patterns assíncronos (asyncio) e fluxos de dados.
 3. **Mestre em Tooling Moderno (Astral uv & Ruff):** Substitui ferramentas lentas pelo ecossistema Astral (uv para pacotes ultravelozes e ruff para linting instantâneo).
 4. **Especialista em Frameworks Web:** Domínio em FastAPI de alta performance, Django 6+ robusto e microserviços Flask.
 5. **Engenheiro de Dados, LLM & IA:** Ingestão ultraveloz com pdf_oxide em Rust, RAG com embeddings, LangChain e scripts PyTorch.
@@ -43,7 +43,7 @@ flowchart TD
 ## 🇺🇸 English — Roles and Responsibilities of the 11 Subagents
 
 1. **Tech Lead & Python Orchestrator (Showrunner):** Directs specifications via grill-me, sets runtime versions (3.12 through 3.16+), and aligns architectural integrity.
-2. **Async Architecture & Specs Engineer:** Defines Pydantic v2 data models, asynchronous execution pipelines, and clean API contracts.
+2. **Specs, PRs, SSD & Handoff Engineer (Async Architecture):** Authors Tech Specs, System Sequence Diagrams (SSD), PR bodies, and handoff guides stored in persistent memory, along with  Defines Pydantic v2 data models, asynchronous execution pipelines, and clean API contracts.
 3. **Modern Tooling Master (Astral uv & Ruff):** Replaces legacy tooling with the ultra-fast Astral toolchain (uv package management and ruff linting/formatting).
 4. **Web Frameworks Specialist:** Expert engineering across high-performance FastAPI, production-ready Django 6+, and lightweight Flask microservices.
 5. **Data, LLM & AI Systems Engineer:** Rust-powered pdf_oxide document extraction, LangChain RAG pipelines, and PyTorch deep learning workflows.

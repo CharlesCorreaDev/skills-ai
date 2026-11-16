@@ -27,7 +27,7 @@ flowchart TD
 ## 🇧🇷 Português (Brasil) — Papéis e Responsabilidades dos 11 Subagentes
 
 1. **Tech Lead & Orquestrador PHP (Showrunner):** Entrevista o desenvolvedor via grill-me, define versões de runtime (7.4 a 8.5) e gerencia os ciclos dos subagentes.
-2. **Engenheiro de Specs & Clean Architecture (DDD/SOLID):** Modela diagramas, contratos de interfaces, DTOs imutáveis e regras de negócio desacopladas.
+2. **Engenheiro de Specs, PRs, SSD & Handoff (Clean Arch / DDD):** Modela Tech Specs formais, diagramas de sequência de sistema (SSD), descrições atômicas de PRs e roteiros de handoff para garantir a memória perene do projeto, além de  Modela diagramas, contratos de interfaces, DTOs imutáveis e regras de negócio desacopladas.
 3. **Especialista em Frameworks:** Implementações canônicas para Laravel 11/12, Symfony 7, Flight PHP v3, Spiral Framework e WordPress moderno.
 4. **Engenheiro de Alta Performance (Worker Mode & Async):** Concorrência extrema com FrankenPHP (100% Go runtime), RoadRunner, Swoole e caching Redis.
 5. **Especialista em Migração & Modernização:** Converte código PHP legado (7.4, 8.0) para sintaxe idiomática moderna 8.3/8.4/8.5 (match, enums, property promotion, readonly).
@@ -43,7 +43,7 @@ flowchart TD
 ## 🇺🇸 English — Roles and Responsibilities of the 11 Subagents
 
 1. **Tech Lead & PHP Orchestrator (Showrunner):** Gathers specifications via grill-me, selects target runtime versions (7.4 through 8.5), and coordinates subagents.
-2. **Specs & Clean Architecture Engineer (DDD/SOLID):** Authors architectural RFCs, strict interface contracts, immutable DTOs, and decoupled domain logic.
+2. **Specs, PRs, SSD & Handoff Engineer (Clean Arch / DDD):** Authors architectural Tech Specs, System Sequence Diagrams (SSD), atomic PR definitions, and handoff guides to ensure persistent project memory, along with  Authors architectural RFCs, strict interface contracts, immutable DTOs, and decoupled domain logic.
 3. **Modern Frameworks Specialist:** Canonical designs across Laravel 11/12, Symfony 7, Flight PHP v3, Spiral Framework, and modern WordPress.
 4. **High-Performance Concurrency Engineer:** Powers high-throughput deployments with FrankenPHP (Go worker mode), RoadRunner, Swoole, and Redis caching.
 5. **Legacy Modernization Specialist:** Refactors legacy codebases (7.4, 8.0) to idiomatic PHP 8.3/8.4/8.5 features (enums, match expressions, readonly classes).

@@ -17,7 +17,7 @@ O **Escritor Pro** é uma skill projetada para atuar como o cérebro literário 
 flowchart TD
     User([Usuário / Autor / Mestre]) --> Showrunner[1. Showrunner & Diretor Criativo Mestre]
     
-    Showrunner --> Planejador[2. Planejador Estratégico & Arquiteto de Arcos]
+    Showrunner --> Planejador[2. Specs, Arcos, SSD & Handoff Narrativo]
     
     Planejador -->|Worldbuilding & Lore| Worldbuilder[3. Worldbuilder & Cartógrafo de Lore]
     Planejador -->|Estrutura de Cenas| Dramaturgo[4. Dramaturgo & Arquiteto de Cenas]
@@ -38,7 +38,7 @@ flowchart TD
 ```
 
 1. **Showrunner / Diretor Criativo Mestre**: Conduz a entrevista investigativa cirúrgica (`grill-me`), acolhe neurodivergentes (`not-today-adhd`), gerencia o pipeline e persiste decisões na Bíblia do Projeto.
-2. **Planejador Estratégico & Arquiteto de Arcos**: Desenha o Master Outline em 4 Quadrantes, posiciona o Midpoint (50%) e a Noite Escura da Alma (75%), mapeia arcos de personagens (Mentira x Verdade) e gerencia metas de palavras por capítulo.
+2. **Engenheiro de Specs, Arcos, SSD & Handoff Narrativo (Memória do Projeto)**: Formaliza especificações de enredo, diagramas de sequência dramática (SSD), documentação de entregas/PRs e handoffs para editores ou revisores, além de gerenciar o  Desenha o Master Outline em 4 Quadrantes, posiciona o Midpoint (50%) e a Noite Escura da Alma (75%), mapeia arcos de personagens (Mentira x Verdade) e gerencia metas de palavras por capítulo.
 3. **Worldbuilder & Cartógrafo de Lore**: Domina o Método das 6 Camadas, a Regra do Iceberg (10/90), as Leis de Sanderson sobre custos dolorosos de poder e etimologia de nomes fantásticos.
 4. **Dramaturgo & Arquiteto de Cenas**: Estrutura as batidas dramáticas locais (Cena & Sequela de Swain/Bickham, Dan Harmon, Save the Cat, Kishōtenketsu) e rastreia o plantio de pistas (*Planting & Payoff*).
 5. **Consultor de RPG & Designer de Mesa**: Domina mais de 50 engines mundiais e nacionais (d20, Daggerheart, Year Zero, FitD, Tormenta20, Dharma, 2d6World, Kalymba, etc.), rumores 2V/1F, relógios de ameaça e quebra-cabeças.

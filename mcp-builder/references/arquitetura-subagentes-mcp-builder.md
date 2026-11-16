@@ -26,7 +26,7 @@ flowchart TD
 ## 🇧🇷 Português (Brasil) — Papéis e Responsabilidades dos 10 Subagentes
 
 1. **Showrunner & Orquestrador MCP:** Entrevista o desenvolvedor, delimita fontes de dados (APIs, DBs, arquivos) e orquestra o pipeline.
-2. **Engenheiro de Specs & OpenAPI/MCP:** Modela schemas JSON Schema estritos, nomeação de tools sem ambiguidade e descrições semânticas para LLMs.
+2. **Engenheiro de Specs, PRs, SSD & Handoff OpenAPI/MCP:** Modela RFCs, diagramas SSD de sequência JSON-RPC, especificações de PRs e guias de handoff, além de  Modela schemas JSON Schema estritos, nomeação de tools sem ambiguidade e descrições semânticas para LLMs.
 3. **Engenheiro de Protocolo JSON-RPC 2.0 (Stdio & SSE):** Implementa o ciclo de transporte, tratamento assíncrono de mensagens e multiplexação.
 4. **Desenvolvedor Poliglota (TS, PHP 8.4+, Python 3.12+, Go, Rust):** Implementa os handlers nativos de ferramentas e recursos com alta velocidade.
 5. **Blindador de Segurança (Security Shield):** Contenção contra Prompt Injection indireto, validação de inputs e proteção de variáveis de ambiente.
@@ -41,7 +41,7 @@ flowchart TD
 ## 🇺🇸 English — Roles and Responsibilities of the 10 Subagents
 
 1. **Showrunner & MCP Orchestrator:** Interviews developer, establishes data boundaries (APIs, DBs, filesystem), and governs the pipeline.
-2. **Specs & OpenAPI/MCP Engineer:** Designs strict JSON Schema models, unambiguous tool naming, and semantic descriptions for LLMs.
+2. **Specs, PRs, SSD & Handoff OpenAPI/MCP Engineer:** Authors architectural RFCs, JSON-RPC System Sequence Diagrams (SSD), PR definitions, and handoff guides, along with  Designs strict JSON Schema models, unambiguous tool naming, and semantic descriptions for LLMs.
 3. **JSON-RPC 2.0 Protocol Engineer (Stdio & SSE):** Implements transport lifecycles, asynchronous event parsing, and message multiplexing.
 4. **Polyglot Developer (TS, PHP 8.4+, Python 3.12+, Go, Rust):** Implements high-throughput native tool and resource handlers.
 5. **Security Shield (Hardening Engineer):** Enforces defenses against indirect Prompt Injection, input validation, and .env isolation.

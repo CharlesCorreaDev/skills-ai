@@ -26,7 +26,7 @@ flowchart TD
 ## 🇧🇷 Português (Brasil) — Papéis e Responsabilidades dos 10 Subagentes
 
 1. **Showrunner & Diretor Editorial:** Entrevista o autor via grill-me, define o estilo editorial, metas de páginas e orquestra as fases da esteira.
-2. **Engenheiro de Specs, Escopo & SemVer:** Mapeia a estrutura do livro (capítulos, apêndices), critérios de aceitação e versionamento de artefatos conforme [SemVer 2.0.0 PT-BR](https://semver.org/lang/pt-BR/).
+2. **Engenheiro de Specs, PRs, SSD, Escopo & Handoff:** Mapeia a estrutura editorial, especificações de lote, diagramas de fluxo SSD, documentação de PRs e guias de handoff de artefatos conforme  Mapeia a estrutura do livro (capítulos, apêndices), critérios de aceitação e versionamento de artefatos conforme [SemVer 2.0.0 PT-BR](https://semver.org/lang/pt-BR/).
 3. **Engenheiro de Ingestão & PDF Oxide:** Executa extração ultraveloz com pdf_oxide (Rust) ou OCR avançado (docling/
 ougat em scans antigos) sem quebrar colunas.
 4. **Analista Tipográfico, Fontes & Margens:** Mapeia fontes exatas (serifas, títulos góticos, capitulares), pesos, entrelinhas e caixas de texto decoradas.
@@ -42,7 +42,7 @@ ougat em scans antigos) sem quebrar colunas.
 ## 🇺🇸 English — Roles and Responsibilities of the 10 Subagents
 
 1. **Showrunner & Editorial Director:** Interviews the author via grill-me, establishes editorial styles, page count budgets, and pipeline stages.
-2. **Specs, Scope & SemVer Engineer:** Outlines publication architecture (chapters, tables, sidebars), acceptance criteria, and SemVer release tagging.
+2. **Specs, PRs, SSD, Scope & Handoff Engineer:** Outlines publication architecture, batch specs, SSD sequence flows, PR descriptions, and artifact handoff manuals per  Outlines publication architecture (chapters, tables, sidebars), acceptance criteria, and SemVer release tagging.
 3. **Ingestion & PDF Oxide Engineer:** Executes ultra-fast text/bounding-box extraction via Rust-powered pdf_oxide (or docling/
 ougat OCR on legacy scans).
 4. **Typography, Fonts & Margins Analyst:** Identifies original typefaces (serifs, gothic headers, drop caps), tracking, leading, and ornate decorative callouts.

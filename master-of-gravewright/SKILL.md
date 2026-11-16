@@ -1,6 +1,6 @@
 ---
 name: master-of-gravewright
-description: Suíte de Engenharia Reversa, Desenvolvimento de Sistemas, Módulos, Extensões, Itens, Compêndios e Diagnóstico Especializado para Gravewright VTT por GM Charles Corrêa. Orquestra 12 subagentes especializados cobrindo Specs SemVer, Scaffolding, regras de RPG, backend ECS/Django, UI reativa, Canvas WebGPU/WebGL, Sockets em tempo real, Bridge Cross-VTT, QA automatizado, auditoria SAST e documentação técnica bilíngue (EN/PT-BR).
+description: Suíte de Engenharia Reversa, Desenvolvimento de Sistemas, Módulos, Extensões, Itens, Compêndios e Diagnóstico Especializado para Gravewright VTT por GM Charles Corrêa. Orquestra 12 subagentes especializados cobrindo Specs, PRs, SSD & Handoff SemVer, Scaffolding, regras de RPG, backend ECS/Django, UI reativa, Canvas WebGPU/WebGL, Sockets em tempo real, Bridge Cross-VTT, QA automatizado, auditoria SAST e documentação técnica bilíngue (EN/PT-BR).
 ---
 
 # Master of Gravewright ⚔️🎲
@@ -15,7 +15,7 @@ Para erradicar alucinações de engine, falhas de sincronização e perda de per
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Showrunner & Orquestrador Gravewright]
-    Showrunner --> SpecHandoff[2. Specs, PRs & Handoff SemVer]
+    Showrunner --> SpecHandoff[2. Specs, PRs, SSD & Handoff SemVer]
     SpecHandoff --> Scaffolder[3. Scaffolding & Módulos GW]
     SpecHandoff --> RuleEngineer[4. Regras RPG & Compêndios]
     RuleEngineer --> EcsBackendDev[5. Backend ECS & Modelos Django]
@@ -39,6 +39,15 @@ flowchart TD
 3. **Bridge Cross-VTT Precisa:** Conversões de Foundry ou Roll20 devem validar paridade de atributos e grids.
 4. **SemVer 2.0.0 (PT-BR) & Padrão Bilíngue:** Releases e documentações obrigatoriamente bilíngues (EN/PT-BR).
 5. **Portão de Auditoria Supremo:** O Auditor Geral (SAST) valida segurança e estabilidade antes da homologação.
+
+---
+
+## 🔗 Protocolo de Skills Companheiras
+`ash
+npx skills@latest add noobygains/godmode
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+`
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: book-formatter
-description: Book formatting and RPG book diagramming suite for AI agents. Installs any required document-reading toolchain (PDF with or without OCR, TXT, DOCX, DOC, CSV/TSV, XLSX/XLS, HTML, EPUB, images OCR) and orchestrates book diagramming delivering a TXT with the texts, a Markdown and a duly diagrammed PDF preserving the original layout. Orquestra 10 subagentes cobrindo Direção Editorial, Specs SemVer, Ingestão PDF Oxide, Tipografia e Fontes, Regras RPG, Tradução em Lotes de 5 Páginas, Revisão Semântica, Diagramação Fiel, Auditoria de Páginas e Documentação Bilíngue.
+description: Book formatting and RPG book diagramming suite for AI agents. Installs any required document-reading toolchain (PDF with or without OCR, TXT, DOCX, DOC, CSV/TSV, XLSX/XLS, HTML, EPUB, images OCR) and orchestrates book diagramming delivering a TXT with the texts, a Markdown and a duly diagrammed PDF preserving the original layout. Orquestra 10 subagentes cobrindo Direção Editorial, Specs, PRs, SSD & Handoff SemVer, Ingestão PDF Oxide, Tipografia e Fontes, Regras RPG, Tradução em Lotes de 5 Páginas, Revisão Semântica, Diagramação Fiel, Auditoria de Páginas e Documentação Bilíngue.
 ---
 
 # Book Formatter / Diagramador de Livros 📕➡️📄
@@ -15,7 +15,7 @@ Para erradicar omissões e garantir fidelidade tipográfica e visual idêntica a
 `mermaid
 flowchart TD
     User([Usuário / Autor / GM]) --> Showrunner[1. Showrunner & Diretor Editorial]
-    Showrunner --> SpecHandoff[2. Specs, Escopo & SemVer]
+    Showrunner --> SpecHandoff[2. Specs, PRs, SSD, Escopo & Handoff]
     SpecHandoff --> Extractor[3. Ingestão PDF Oxide/OCR]
     Extractor --> Typographer[4. Tipografia, Fontes & Margens]
     Extractor --> RpgAnalyst[5. Regras & Glossário RPG]

@@ -17,7 +17,7 @@ Quando uma solicitação é recebida, o **Showrunner / Diretor Criativo Mestre**
 [Usuário] ──> [1. Showrunner / Diretor Criativo]
                     │
                     ▼
-          [2. Planejador Estratégico] ───> Master Outline, Arcos em 4 Quadrantes, Metas
+          [2. Engenheiro de Specs, Arcos, SSD & Handoff Narrativo] ───> Master Outline, Arcos em 4 Quadrantes, Metas
                     │
        ┌────────────┼────────────┐
        ▼            ▼            ▼

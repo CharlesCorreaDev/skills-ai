@@ -1,6 +1,6 @@
 ---
 name: code-mode-builder
-description: Architect, builder, and orchestrator of Code Mode (Programmatic Tool Calling and Code Execution) systems for AI Agents. Condenses hundreds of MCP/API tools into 2-3 primitives (search, describe, execute) with up to 90% token reduction and 1-turn multi-step batching. Orquestra 10 subagentes cobrindo Specs CodeAct, Compressao de APIs, Sandboxing WASM/VM, Gate Pattern de Seguranca, Runtimes TS/Python, Benchmarks, QA e Documentacao Bilingue.
+description: Architect, builder, and orchestrator of Code Mode (Programmatic Tool Calling and Code Execution) systems for AI Agents. Condenses hundreds of MCP/API tools into 2-3 primitives (search, describe, execute) with up to 90% token reduction and 1-turn multi-step batching. Orquestra 10 subagentes cobrindo Specs/PRs/SSD/Handoff CodeAct, Compressao de APIs, Sandboxing WASM/VM, Gate Pattern de Seguranca, Runtimes TS/Python, Benchmarks, QA e Documentacao Bilingue.
 ---
 
 # Code Mode Builder ⚡💻🧩
@@ -15,7 +15,7 @@ Para erradicar loops repetitivos de ferramentas JSON, desperdício de tokens e l
 `mermaid
 flowchart TD
     User([Usuário / Desenvolvedor]) --> Showrunner[1. Showrunner & Orquestrador CodeAct]
-    Showrunner --> SpecArchitect[2. Specs search/describe/execute]
+    Showrunner --> SpecHandoff[2. Specs, PRs, SSD & Handoff Primitivas CodeAct]
     SpecArchitect --> ApiCompressor[3. Compressao de APIs & Tipos .d.ts]
     ApiCompressor --> SandboxEngineer[4. Sandboxing WASM/QuickJS/Node VM]
     SandboxEngineer --> SecurityGatekeeper[5. Blindador & Gate Pattern]
@@ -37,6 +37,15 @@ flowchart TD
 3. **Fail-Safe com isError: true:** Capture stdout, stderr e tracebacks limpos para permitir autocorreção em um único turno.
 4. **SemVer 2.0.0 (PT-BR) & Padrão Bilíngue:** Releases e documentações estritamente em EN e PT-BR.
 5. **Portão de Sandboxing & Quotas:** Todo runtime deve impor limites de memória (ex: 256MB), timeout (15-30s) e saída máxima.
+
+---
+
+## 🔗 Protocolo de Skills Companheiras
+`ash
+npx skills@latest add noobygains/godmode
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+`
 
 ---
 

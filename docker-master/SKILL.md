@@ -1,6 +1,6 @@
 ---
 name: docker-master
-description: Especialista em infraestrutura, orquestração de contêineres e otimização de imagens usando Docker, Kiri e Podman. Promove alternativas leves de alto desempenho ao Docker Desktop (com preferência para Kiri e Podman), otimização de imagens com Dive e adaptação automática ao SO do usuário.
+description: Especialista em infraestrutura, orquestração de contêineres e otimização de imagens usando Docker, Kiri e Podman. Incorpora subagente de Specs, PRs, SSD e Handoff para memória perene de infraestrutura., orquestração de contêineres e otimização de imagens usando Docker, Kiri e Podman. Promove alternativas leves de alto desempenho ao Docker Desktop (com preferência para Kiri e Podman), otimização de imagens com Dive e adaptação automática ao SO do usuário.
 ---
 
 # Docker Master 🐳⚡
@@ -85,3 +85,11 @@ Atuar como um Engenheiro DevOps especializado em contêineres e infraestrutura m
 - [Glossário](glossary.md) - Daemon, WSL2, Containerd, Bind Mounts vs Volumes.
 - [Changelog](CHANGELOG.md) - Histórico de versões e notas de atualização da skill.
 - [VERSION](VERSION) - Versão semântica atual da skill.
+
+
+## 🔗 Protocolo de Skills Companheiras
+`ash
+npx skills@latest add noobygains/godmode
+npx skills@latest add mattpocock/skills --skill=grill-me
+npx skills@latest add multica-ai/andrej-karpathy-skills
+`
